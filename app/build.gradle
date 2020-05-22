@@ -1,15 +1,30 @@
+buildscript {
+    repositories {
+        maven { url 'https://maven.fabric.io/public' }
+    }
+
+    dependencies {
+        classpath 'io.fabric.tools:gradle:1.+'
+    }
+}
 apply plugin: 'com.android.application'
+apply plugin: 'io.fabric'
+
+repositories {
+    maven { url 'https://maven.fabric.io/public' }
+}
+
 
 android {
-    compileSdkVersion 23
-    buildToolsVersion "23.0.1"
+    compileSdkVersion 28
+    buildToolsVersion '28.0.3'
 
     defaultConfig {
-        applicationId "info.devexchanges.pageflip"
+        applicationId "com.minda.sparsh"
         minSdkVersion 14
-        targetSdkVersion 23
-        versionCode 1
-        versionName "1.0"
+        targetSdkVersion 28
+        versionCode 26
+        versionName "1.26"
     }
     buildTypes {
         release {
@@ -20,8 +35,26 @@ android {
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
-    testCompile 'junit:junit:4.12'
-    compile 'com.android.support:appcompat-v7:23.1.0'
-    compile project(':aphidFlipViewLibrary')
+    implementation 'com.android.support.constraint:constraint-layout:1.1.3'
+    implementation 'com.android.support:support-v4:28.0.0'
+    implementation 'com.google.firebase:firebase-messaging:11.0.4'
+    implementation 'com.squareup.retrofit2:retrofit:2.5.0'
+    implementation "com.squareup.picasso:picasso:2.5.2"
+    implementation 'com.squareup.retrofit2:converter-gson:2.4.0'
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    testImplementation 'junit:junit:4.12'
+    implementation 'com.android.support:appcompat-v7:28.0.0'
+    implementation 'org.jsoup:jsoup:1.8.3'
+    implementation 'com.android.support:design:28.0.0'
+    implementation 'com.android.support.constraint:constraint-layout:1.0.0-alpha1'
+    implementation 'com.android.support:cardview-v7:28.0.0'
+    api('com.crashlytics.sdk.android:crashlytics:2.9.2@aar') {
+        transitive = true;
+    }
+
+    implementation 'com.github.pratikbutani:MultiSelectSpinner:-SNAPSHOT'
+
 }
+
+
+apply plugin: 'com.google.gms.google-services'

@@ -1,0 +1,146 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.minda.sparsh.fragment.FourFragment">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/museosans_500"
+                    android:gravity="center"
+                    android:padding="5dp"
+                    android:text="IT"
+                    android:textColor="#000000"
+                    android:textSize="18dp" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1.5dp"
+                    android:background="@drawable/gradientline" />
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/museosans_300"
+                android:gravity="center"
+                android:padding="10dp"
+                android:text="Sed ut Perspiciatis Under omnis iste natus error sit voluptatem accu santium doloremque laudantium, totam rem aperiam."
+                android:textColor="#353434"
+                android:textSize="12sp"
+                android:visibility="gone" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="30dp"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:id="@+id/lay_identity_access_management"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+
+                    <ImageButton
+                        android:id="@+id/im_identity_access_management"
+                        android:layout_width="120dp"
+                        android:layout_height="120dp"
+                        android:layout_marginRight="5dp"
+                        android:background="@drawable/project_icons" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="50dp"
+                        android:layout_marginTop="5dp"
+                        android:fontFamily="@font/museosans_300"
+                        android:gravity="center"
+                        android:text="ID &amp; Access Management"
+                        android:textColor="#000000"
+                        android:textSize="17sp" />
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:background="#d7d1d1"
+
+                    />
+
+
+                <!--second menu-->
+                <LinearLayout
+                    android:id="@+id/lay_change_request_from"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+
+                    <ImageButton
+                        android:id="@+id/im_change_request_from"
+                        android:layout_width="120dp"
+                        android:layout_height="120dp"
+                        android:layout_marginRight="5dp"
+                        android:background="@drawable/change_request_form" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="50dp"
+                        android:layout_marginTop="5dp"
+                        android:fontFamily="@font/museosans_300"
+                        android:gravity="center"
+                        android:text="Change Request From"
+                        android:textColor="#000000"
+                        android:textSize="17sp" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/im_right"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="20dp"
+            android:src="@drawable/right_arrow" />
+
+        <ImageView
+            android:id="@+id/im_left"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_alignParentLeft="true"
+            android:layout_marginTop="20dp"
+            android:src="@drawable/left_arrow" />
+    </RelativeLayout>
+
+
+</LinearLayout>
