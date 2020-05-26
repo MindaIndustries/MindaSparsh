@@ -64,7 +64,7 @@
             android:name=".MainActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".SplashActivity"
+            android:name=".DWMActivity"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -75,9 +75,9 @@
         <activity
             android:name=".LoginActivity"
             android:screenOrientation="portrait" />
-        <activity
+       <!-- <activity
             android:name=".DWMActivity"
-            android:screenOrientation="landscape" />
+            android:screenOrientation="landscape" />-->
         <activity
             android:name=".DashBoardActivity"
             android:screenOrientation="portrait"

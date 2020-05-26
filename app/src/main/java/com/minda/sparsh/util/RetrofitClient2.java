@@ -9,10 +9,13 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class RetrofitClient2 {
 //        public static final String BASE_URL = "http://52.172.191.61/testminda.com/Service.asmx/ ";
     //public static final String BASE_URL = "https://app.mindasparsh.com/service.asmx/";
-    public static final String BASE_URL = "http://176.9.28.166/MindaSparshTest/Service.asmx/";
-    //public static final String BASE_URL = "http://52.172.191.61/Test.mindasparsh.com/Service.asmx/";
+   //master public static final String BASE_URL = "http://176.9.28.166/MindaSparshTest/Service.asmx/";
+   // public static final String BASE_URL = "http://52.172.191.61/Test.mindasparsh.com/Service.asmx/";
+     public static final String BASE_URL = "http://dev.mindasparsh.com/Service.asmx/";
 
     public static final String CKEY = "bWRhQHNQciRyWiNHISE=";
+    //public static final String CKEY = "mda@sPr$rZ#G!!";
+
     private static Retrofit retrofit = null;
 
 

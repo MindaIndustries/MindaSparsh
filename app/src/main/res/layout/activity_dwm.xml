@@ -346,7 +346,7 @@
                                     android:layout_height="match_parent"
                                     android:gravity="center"
                                     android:padding="4dp"
-                                    android:text="15"
+                                    android:text="18.75"
                                     android:textSize="10dp"></TextView>
 
                                 <View
@@ -358,10 +358,8 @@
                                     android:layout_width="58dp"
                                     android:layout_height="match_parent"
                                     android:gravity="center"
-
                                     android:padding="4dp"
-                                    android:text="7.5%"
-
+                                    android:text="9.4%"
                                     android:textSize="10dp" />
 
 
@@ -553,6 +551,302 @@
                                     android:visibility="gone"></EditText>
 
                             </LinearLayout>
+
+                            <!--1a-->
+
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="50dp"
+                                android:background="@drawable/abc"
+                                android:orientation="horizontal">
+
+
+                                <TextView
+                                    android:layout_width="25dp"
+                                    android:layout_height="match_parent"
+                                    android:gravity="center"
+                                    android:padding="4dp"
+                                    android:text="1a"
+                                    android:textSize="10dp"
+                                    android:textStyle="bold"
+
+                                    ></TextView>
+
+                                <View
+                                    android:layout_width="1dp"
+                                    android:layout_height="fill_parent"
+                                    android:background="#FF000000" />
+
+
+                                <TextView
+                                    android:layout_width="100dp"
+                                    android:layout_height="match_parent"
+                                    android:gravity="center"
+                                    android:padding="4dp"
+                                    android:text=""
+                                    android:textSize="10dp"></TextView>
+
+                                <View
+                                    android:layout_width="1dp"
+                                    android:layout_height="match_parent"
+                                    android:background="#FF000000" />
+
+                                <TextView
+                                    android:layout_width="299dp"
+                                    android:layout_height="match_parent"
+                                    android:gravity="center"
+                                    android:text="Covid-19 - Discussion &amp; Review for all concern related to daily challenges"
+                                    android:textSize="10dp">
+
+                                </TextView>
+
+                                <View
+                                    android:layout_width="1dp"
+                                    android:layout_height="fill_parent"
+                                    android:background="#FF000000" />
+
+                                <TextView
+                                    android:layout_width="27dp"
+                                    android:layout_height="match_parent"
+                                    android:gravity="center"
+                                    android:padding="4dp"
+                                    android:text="D"
+                                    android:textSize="10dp"></TextView>
+
+                                <View
+                                    android:layout_width="1dp"
+                                    android:layout_height="fill_parent"
+                                    android:background="#FF000000" />
+
+                                <TextView
+                                    android:layout_width="40dp"
+                                    android:layout_height="match_parent"
+                                    android:gravity="center"
+                                    android:padding="4dp"
+                                    android:text="30Min"
+                                    android:textSize="10dp" />
+
+                                <View
+                                    android:layout_width="1dp"
+                                    android:layout_height="fill_parent"
+                                    android:background="#FF000000" />
+
+                                <TextView
+                                    android:layout_width="58dp"
+                                    android:layout_height="match_parent"
+                                    android:gravity="center"
+                                    android:padding="4dp"
+                                    android:text="12.5"
+                                    android:textSize="10dp"></TextView>
+
+                                <View
+                                    android:layout_width="1dp"
+                                    android:layout_height="fill_parent"
+                                    android:background="#FF000000" />
+
+                                <TextView
+                                    android:layout_width="58dp"
+                                    android:layout_height="match_parent"
+                                    android:gravity="center"
+                                    android:padding="4dp"
+                                    android:text="6.3%"
+                                    android:textSize="10dp" />
+
+
+                                <View
+                                    android:layout_width="1dp"
+                                    android:layout_height="fill_parent"
+                                    android:background="#FF000000" />
+
+
+                                <!--<TextView-->
+                                <!--android:layout_width="200dp"-->
+                                <!--android:layout_height="match_parent"-->
+                                <!--android:gravity="center"-->
+                                <!--android:padding="2dp"-->
+                                <!--android:text="Cover one department once in a week)(Considering 20 Days Only)"-->
+                                <!--android:textSize="10dp" />-->
+
+                                <View
+                                    android:layout_width="1dp"
+                                    android:layout_height="fill_parent"
+                                    android:background="#FF000000" />
+
+
+                                <EditText
+                                    android:id="@+id/tv_1_1_1a"
+                                    style="@style/editTextStyle"
+                                    android:layout_width="40dp"
+                                    android:layout_height="match_parent"
+                                    android:background="@drawable/light_line"
+                                    android:gravity="center"
+                                    android:imeOptions="actionDone"
+                                    android:inputType="number"
+                                    android:padding="4dp"
+                                    android:textSize="10dp"
+                                    android:visibility="gone"></EditText>
+
+                                <TextView
+                                    android:id="@+id/tv_1_1_1_1a"
+                                    android:layout_width="20dp"
+                                    android:layout_height="match_parent"
+                                    android:drawablePadding="1dp"
+                                    android:drawableTop="@drawable/comment"
+                                    android:onClick="onClick"
+                                    android:textSize="10dp"
+                                    android:visibility="gone"></TextView>
+
+                                <View
+                                    android:id="@+id/tv_1_1a_view"
+                                    android:layout_width="1dp"
+                                    android:layout_height="fill_parent"
+                                    android:background="#FF000000"
+                                    android:visibility="gone" />
+
+                                <EditText
+                                    android:id="@+id/tv_1_14"
+                                    android:layout_width="100dp"
+                                    android:layout_height="match_parent"
+                                    android:background="@drawable/commentoutlineview"
+                                    android:gravity="center"
+                                    android:hint="Comment"
+                                    android:imeOptions="actionDone"
+                                    android:inputType="textMultiLine"
+                                    android:lines="8"
+                                    android:maxLines="5"
+                                    android:minLines="6"
+                                    android:overScrollMode="always"
+                                    android:scrollbarStyle="insideInset"
+                                    android:scrollbars="vertical"
+                                    android:singleLine="false"
+                                    android:textAppearance="?android:attr/textAppearanceMedium"
+                                    android:textColor="#b1aeae"
+                                    android:textSize="10dp"
+                                    android:visibility="gone"></EditText>
+
+                                <View
+                                    android:id="@+id/tv_1_1a_viewa"
+                                    android:layout_width="1dp"
+                                    android:layout_height="fill_parent"
+                                    android:background="#FF000000"
+                                    android:visibility="gone" />
+
+
+                                <EditText
+                                    android:id="@+id/tv_1_1aE"
+                                    style="@style/editTextStyle"
+                                    android:layout_width="40dp"
+                                    android:layout_height="match_parent"
+                                    android:background="@drawable/light_line"
+                                    android:gravity="center"
+                                    android:imeOptions="actionDone"
+                                    android:inputType="number"
+                                    android:padding="4dp"
+                                    android:textSize="10dp"
+                                    android:visibility="gone"></EditText>
+
+                                <TextView
+                                    android:id="@+id/tv_1_1b"
+                                    android:layout_width="20dp"
+                                    android:layout_height="match_parent"
+                                    android:drawablePadding="1dp"
+                                    android:drawableTop="@drawable/comment"
+                                    android:onClick="onClick"
+                                    android:textSize="10dp"
+                                    android:visibility="gone"></TextView>
+
+                                <View
+                                    android:id="@+id/tv_1_1_viewa"
+                                    android:layout_width="1dp"
+                                    android:layout_height="fill_parent"
+                                    android:background="#FF000000"
+                                    android:visibility="gone" />
+
+                                <EditText
+                                    android:id="@+id/tv_1_5a"
+                                    android:layout_width="100dp"
+                                    android:layout_height="match_parent"
+
+                                    android:background="@drawable/commentoutlineview"
+                                    android:gravity="center"
+                                    android:hint="Comment"
+                                    android:imeOptions="actionDone"
+                                    android:inputType="textMultiLine"
+                                    android:lines="8"
+                                    android:maxLines="5"
+                                    android:minLines="6"
+                                    android:overScrollMode="always"
+                                    android:scrollbarStyle="insideInset"
+                                    android:scrollbars="vertical"
+
+                                    android:singleLine="false"
+                                    android:textAppearance="?android:attr/textAppearanceMedium"
+                                    android:textColor="#b1aeae"
+                                    android:textSize="10dp"
+                                    android:visibility="gone"></EditText>
+
+                                <View
+                                    android:id="@+id/tv_1_5_viewa"
+                                    android:layout_width="1dp"
+                                    android:layout_height="fill_parent"
+                                    android:background="#FF000000"
+                                    android:visibility="gone" />
+
+                                <EditText
+                                    android:id="@+id/tv_1_3a"
+                                    style="@style/editTextStyle"
+                                    android:layout_width="40dp"
+                                    android:layout_height="match_parent"
+                                    android:background="@drawable/light_line"
+                                    android:gravity="center"
+                                    android:imeOptions="actionDone"
+                                    android:inputType="number"
+                                    android:padding="4dp"
+                                    android:textSize="10dp"></EditText>
+
+                                <TextView
+                                    android:id="@+id/tv_1_ca"
+                                    android:layout_width="20dp"
+                                    android:layout_height="match_parent"
+                                    android:drawablePadding="1dp"
+                                    android:drawableTop="@drawable/comment"
+                                    android:onClick="onClick"
+                                    android:textSize="10dp"></TextView>
+
+                                <View
+                                    android:id="@+id/tv_1_c_viewa"
+                                    android:layout_width="1dp"
+                                    android:layout_height="fill_parent"
+                                    android:background="#FF000000" />
+
+
+                                <EditText
+                                    android:id="@+id/tv_1_6a"
+                                    android:layout_width="100dp"
+                                    android:layout_height="match_parent"
+
+                                    android:background="@drawable/commentoutlineview"
+                                    android:gravity="center"
+                                    android:hint="Comment"
+                                    android:imeOptions="actionDone"
+                                    android:inputType="textMultiLine"
+                                    android:lines="8"
+                                    android:maxLines="5"
+                                    android:minLines="6"
+                                    android:overScrollMode="always"
+                                    android:scrollbarStyle="insideInset"
+                                    android:scrollbars="vertical"
+
+                                    android:singleLine="false"
+                                    android:textAppearance="?android:attr/textAppearanceMedium"
+                                    android:textColor="#b1aeae"
+                                    android:textSize="10dp"
+                                    android:visibility="gone"></EditText>
+
+                            </LinearLayout>
+
+
                             <!--2-->
 
                             <LinearLayout
@@ -850,292 +1144,7 @@
 
                             </LinearLayout>
 
-                          <!--for check and check-->
-                            <LinearLayout
-                                android:layout_width="wrap_content"
-                                android:layout_height="50dp"
-                                android:background="@drawable/abc"
-                                android:orientation="horizontal">
-
-
-                                <TextView
-                                    android:layout_width="25dp"
-                                    android:layout_height="match_parent"
-                                    android:gravity="center"
-                                    android:padding="4dp"
-                                    android:text="3"
-                                    android:textSize="10dp"
-                                    android:textStyle="bold" />
-
-                                <View
-                                    android:layout_width="1dp"
-                                    android:layout_height="fill_parent"
-                                    android:background="#FF000000" />
-
-
-                                <TextView
-                                    android:layout_width="100dp"
-                                    android:layout_height="match_parent"
-                                    android:gravity="center"
-                                    android:padding="4dp"
-                                    android:text="Check on check"
-                                    android:textSize="10dp"/>
-
-                                <View
-                                    android:layout_width="1dp"
-                                    android:layout_height="match_parent"
-                                    android:background="#FF000000" />
-
-
-                                <TextView
-                                    android:layout_width="299dp"
-                                    android:layout_height="match_parent"
-                                    android:gravity="center"
-                                    android:text="Check on check for critical Process"
-                                    android:textSize="10dp"/>
-
-                                <View
-                                    android:layout_width="1dp"
-                                    android:layout_height="fill_parent"
-                                    android:background="#FF000000" />
-
-                                <TextView
-                                    android:layout_width="27dp"
-                                    android:layout_height="match_parent"
-                                    android:gravity="center"
-                                    android:padding="4dp"
-                                    android:text="2/M"
-                                    android:textSize="10dp"/>
-
-                                <View
-                                    android:layout_width="1dp"
-                                    android:layout_height="fill_parent"
-                                    android:background="#FF000000" />
-
-                                <TextView
-                                    android:layout_width="40dp"
-                                    android:layout_height="match_parent"
-                                    android:gravity="center"
-                                    android:padding="4dp"
-                                    android:text="1.0 Hrs"
-                                    android:textSize="10dp" />
-
-                                <View
-                                    android:layout_width="1dp"
-                                    android:layout_height="fill_parent"
-                                    android:background="#FF000000" />
-
-                                <TextView
-                                    android:layout_width="58dp"
-                                    android:layout_height="match_parent"
-                                    android:gravity="center"
-                                    android:padding="4dp"
-                                    android:text="1"
-                                    android:textSize="10sp"/>
-
-                                <View
-                                    android:layout_width="1dp"
-                                    android:layout_height="fill_parent"
-                                    android:background="#FF000000" />
-
-                                <TextView
-                                    android:layout_width="58dp"
-                                    android:layout_height="match_parent"
-                                    android:gravity="center"
-                                    android:padding="4dp"
-                                    android:text=""
-                                    android:textSize="10sp" />
-
-                                <View
-                                    android:layout_width="1dp"
-                                    android:layout_height="fill_parent"
-                                    android:background="#FF000000" />
-
-
-                                <!--<TextView-->
-                                <!--android:layout_width="200dp"-->
-                                <!--android:layout_height="match_parent"-->
-                                <!--android:gravity="center"-->
-                                <!--android:padding="2dp"-->
-                                <!--android:text="(Considering 20 Days Only)"-->
-                                <!--android:textSize="10dp" />-->
-
-                                <View
-                                    android:layout_width="1dp"
-                                    android:layout_height="fill_parent"
-                                    android:background="#FF000000" />
-
-
-                                <EditText
-                                    android:id="@+id/tv_check_1"
-                                    style="@style/editTextStyle"
-                                    android:layout_width="40dp"
-                                    android:layout_height="match_parent"
-                                    android:background="@drawable/light_line"
-                                    android:gravity="center"
-                                    android:imeOptions="actionDone"
-                                    android:inputType="number"
-                                    android:padding="4dp"
-                                    android:textSize="10dp"
-                                    android:visibility="gone"/>
-
-                                <TextView
-                                    android:id="@+id/tv_check_a"
-                                    android:layout_width="20dp"
-                                    android:layout_height="match_parent"
-                                    android:drawablePadding="1dp"
-                                    android:drawableTop="@drawable/comment"
-                                    android:onClick="onClick"
-                                    android:textSize="10dp"
-                                    android:visibility="gone"/>
-
-                                <View
-                                    android:id="@+id/tv_check_1_view"
-                                    android:layout_width="1dp"
-                                    android:layout_height="fill_parent"
-                                    android:background="#FF000000"
-                                    android:visibility="gone" />
-
-                                <EditText
-                                    android:id="@+id/tv_check_4"
-                                    android:layout_width="100dp"
-                                    android:layout_height="match_parent"
-                                    android:background="@drawable/commentoutlineview"
-                                    android:gravity="center"
-                                    android:hint="Comment"
-                                    android:imeOptions="actionDone"
-                                    android:inputType="textMultiLine"
-                                    android:lines="8"
-                                    android:maxLines="5"
-                                    android:minLines="6"
-                                    android:overScrollMode="always"
-                                    android:scrollbarStyle="insideInset"
-                                    android:scrollbars="vertical"
-                                    android:singleLine="false"
-                                    android:textAppearance="?android:attr/textAppearanceMedium"
-                                    android:textColor="#b1aeae"
-                                    android:textSize="10dp"
-                                    android:visibility="gone"/>
-
-                                <View
-                                    android:id="@+id/tv_check_4_view"
-                                    android:layout_width="1dp"
-                                    android:layout_height="fill_parent"
-                                    android:background="#FF000000"
-                                    android:visibility="gone" />
-
-                                <EditText
-                                    android:id="@+id/tv_check_2"
-                                    style="@style/editTextStyle"
-                                    android:layout_width="40dp"
-                                    android:layout_height="match_parent"
-                                    android:background="@drawable/light_line"
-                                    android:gravity="center"
-                                    android:imeOptions="actionDone"
-                                    android:inputType="number"
-                                    android:padding="4dp"
-                                    android:textSize="10dp"
-                                    android:visibility="gone"/>
-
-                                <TextView
-                                    android:id="@+id/tv_check_b"
-                                    android:layout_width="20dp"
-                                    android:layout_height="match_parent"
-                                    android:drawablePadding="1dp"
-                                    android:drawableTop="@drawable/comment"
-                                    android:onClick="onClick"
-                                    android:textSize="10dp"
-                                    android:visibility="gone"/>
-
-                                <View
-                                    android:id="@+id/tv_check_2_view"
-                                    android:layout_width="1dp"
-                                    android:layout_height="fill_parent"
-                                    android:background="#FF000000"
-                                    android:visibility="gone" />
-
-                                <EditText
-                                    android:id="@+id/tv_check_5"
-                                    android:layout_width="100dp"
-                                    android:layout_height="match_parent"
-
-                                    android:background="@drawable/commentoutlineview"
-                                    android:gravity="center"
-                                    android:hint="Comment"
-                                    android:imeOptions="actionDone"
-                                    android:inputType="textMultiLine"
-                                    android:lines="8"
-                                    android:maxLines="5"
-                                    android:minLines="6"
-                                    android:overScrollMode="always"
-                                    android:scrollbarStyle="insideInset"
-                                    android:scrollbars="vertical"
-                                    android:singleLine="false"
-                                    android:textAppearance="?android:attr/textAppearanceMedium"
-                                    android:textColor="#b1aeae"
-                                    android:textSize="10dp"
-                                    android:visibility="gone"/>
-
-                                <View
-                                    android:id="@+id/tv_check_5_view"
-                                    android:layout_width="1dp"
-                                    android:layout_height="fill_parent"
-                                    android:background="#FF000000"
-                                    android:visibility="gone" />
-
-
-                                <EditText
-                                    android:id="@+id/tv_check_3"
-                                    style="@style/editTextStyle"
-                                    android:layout_width="40dp"
-                                    android:layout_height="match_parent"
-                                    android:background="@drawable/light_line"
-                                    android:gravity="center"
-                                    android:imeOptions="actionDone"
-                                    android:inputType="number"
-                                    android:padding="4dp"
-                                    android:textSize="10dp"/>
-
-                                <TextView
-                                    android:id="@+id/tv_check_c"
-                                    android:layout_width="20dp"
-                                    android:layout_height="match_parent"
-                                    android:drawablePadding="1dp"
-                                    android:drawableTop="@drawable/comment"
-                                    android:onClick="onClick"
-                                    android:textSize="10dp"/>
-
-                                <View
-                                    android:id="@+id/tv_check_c_view"
-                                    android:layout_width="1dp"
-                                    android:layout_height="fill_parent"
-                                    android:background="#FF000000" />
-
-                                <EditText
-                                    android:id="@+id/tv_check_6"
-                                    android:layout_width="100dp"
-                                    android:layout_height="match_parent"
-                                    android:background="@drawable/commentoutlineview"
-                                    android:gravity="center"
-                                    android:hint="Comment"
-                                    android:imeOptions="actionDone"
-                                    android:inputType="textMultiLine"
-                                    android:lines="8"
-                                    android:maxLines="5"
-                                    android:minLines="6"
-                                    android:overScrollMode="always"
-                                    android:scrollbarStyle="insideInset"
-                                    android:scrollbars="vertical"
-                                    android:singleLine="false"
-                                    android:textAppearance="?android:attr/textAppearanceMedium"
-                                    android:textColor="#b1aeae"
-                                    android:textSize="10dp"
-                                    android:visibility="gone"/>
-
-
-                            </LinearLayout>
-
-                            <!--3-->
+<!--2a-->
 
                             <LinearLayout
                                 android:layout_width="wrap_content"
@@ -1149,7 +1158,7 @@
                                     android:layout_height="match_parent"
                                     android:gravity="center"
                                     android:padding="4dp"
-                                    android:text="4"
+                                    android:text="2a"
                                     android:textSize="10dp"
                                     android:textStyle="bold"></TextView>
 
@@ -1164,7 +1173,7 @@
                                     android:layout_height="match_parent"
                                     android:gravity="center"
                                     android:padding="4dp"
-                                    android:text="Quality Review"
+                                    android:text="Quality Review at Obeya"
                                     android:textSize="10dp"></TextView>
 
                                 <View
@@ -1464,7 +1473,9 @@
 
 
                             </LinearLayout>
-                            <!--4-->
+
+
+                            <!--2b-->
 
                             <LinearLayout
                                 android:layout_width="wrap_content"
@@ -1478,7 +1489,602 @@
                                     android:layout_height="match_parent"
                                     android:gravity="center"
                                     android:padding="4dp"
-                                    android:text="5"
+                                    android:text="2b"
+                                    android:textSize="10dp"
+                                    android:textStyle="bold"
+
+                                    ></TextView>
+
+                                <View
+                                    android:layout_width="1dp"
+                                    android:layout_height="fill_parent"
+                                    android:background="#FF000000" />
+
+
+                                <TextView
+                                    android:layout_width="100dp"
+                                    android:layout_height="match_parent"
+                                    android:gravity="center"
+                                    android:padding="4dp"
+                                    android:text="LPA"
+                                    android:textSize="10dp"></TextView>
+
+                                <View
+                                    android:layout_width="1dp"
+                                    android:layout_height="match_parent"
+                                    android:background="#FF000000" />
+
+                                <TextView
+                                    android:layout_width="299dp"
+                                    android:layout_height="match_parent"
+                                    android:gravity="center"
+                                    android:text="LPA at CTQ (Station / Line) as per SOP-0803"
+                                    android:textSize="10dp"
+
+                                    ></TextView>
+
+                                <View
+                                    android:layout_width="1dp"
+                                    android:layout_height="fill_parent"
+                                    android:background="#FF000000" />
+
+                                <TextView
+                                    android:layout_width="27dp"
+                                    android:layout_height="match_parent"
+                                    android:gravity="center"
+                                    android:padding="4dp"
+                                    android:text="W"
+                                    android:textSize="10dp"></TextView>
+
+                                <View
+                                    android:layout_width="1dp"
+                                    android:layout_height="fill_parent"
+                                    android:background="#FF000000" />
+
+                                <TextView
+                                    android:layout_width="40dp"
+                                    android:layout_height="match_parent"
+                                    android:gravity="center"
+                                    android:padding="4dp"
+                                    android:text="45Min"
+                                    android:textSize="10dp" />
+
+                                <View
+                                    android:layout_width="1dp"
+                                    android:layout_height="fill_parent"
+                                    android:background="#FF000000" />
+
+                                <TextView
+                                    android:layout_width="58dp"
+                                    android:layout_height="match_parent"
+                                    android:gravity="center"
+                                    android:padding="4dp"
+                                    android:text="3"
+                                    android:textSize="10dp"></TextView>
+
+                                <View
+                                    android:layout_width="1dp"
+                                    android:layout_height="fill_parent"
+                                    android:background="#FF000000" />
+
+                                <TextView
+                                    android:layout_width="58dp"
+                                    android:layout_height="match_parent"
+                                    android:gravity="center"
+
+                                    android:padding="4dp"
+                                    android:text="1.5%"
+
+                                    android:textSize="10dp" />
+
+
+                                <View
+                                    android:layout_width="1dp"
+                                    android:layout_height="fill_parent"
+                                    android:background="#FF000000" />
+
+
+                                <!--<TextView-->
+                                <!--android:layout_width="200dp"-->
+                                <!--android:layout_height="match_parent"-->
+                                <!--android:gravity="center"-->
+                                <!--android:padding="2dp"-->
+                                <!--android:text="Cover one department once in a week)(Considering 20 Days Only)"-->
+                                <!--android:textSize="10dp" />-->
+
+                                <View
+                                    android:layout_width="1dp"
+                                    android:layout_height="fill_parent"
+                                    android:background="#FF000000" />
+
+
+                                <EditText
+                                    android:id="@+id/tv_2_1_1b"
+                                    style="@style/editTextStyle"
+                                    android:layout_width="40dp"
+                                    android:layout_height="match_parent"
+                                    android:background="@drawable/light_line"
+                                    android:gravity="center"
+                                    android:imeOptions="actionDone"
+                                    android:inputType="number"
+                                    android:padding="4dp"
+                                    android:textSize="10dp"
+                                    android:visibility="gone"></EditText>
+
+                                <TextView
+                                    android:id="@+id/tv_2_1_1_1b"
+                                    android:layout_width="20dp"
+                                    android:layout_height="match_parent"
+                                    android:drawablePadding="1dp"
+                                    android:drawableTop="@drawable/comment"
+                                    android:onClick="onClick"
+                                    android:textSize="10dp"
+                                    android:visibility="gone"></TextView>
+
+                                <View
+                                    android:id="@+id/tv_2_1b_view"
+                                    android:layout_width="1dp"
+                                    android:layout_height="fill_parent"
+                                    android:background="#FF000000"
+                                    android:visibility="gone" />
+
+                                <EditText
+                                    android:id="@+id/tv_2_1b4"
+                                    android:layout_width="100dp"
+                                    android:layout_height="match_parent"
+
+                                    android:background="@drawable/commentoutlineview"
+                                    android:gravity="center"
+                                    android:hint="Comment"
+                                    android:imeOptions="actionDone"
+                                    android:inputType="textMultiLine"
+                                    android:lines="8"
+                                    android:maxLines="5"
+                                    android:minLines="6"
+                                    android:overScrollMode="always"
+                                    android:scrollbarStyle="insideInset"
+                                    android:scrollbars="vertical"
+
+                                    android:singleLine="false"
+                                    android:textAppearance="?android:attr/textAppearanceMedium"
+                                    android:textColor="#b1aeae"
+                                    android:textSize="10dp"
+                                    android:visibility="gone"></EditText>
+
+                                <View
+                                    android:id="@+id/tv_2_1b_viewa"
+                                    android:layout_width="1dp"
+                                    android:layout_height="fill_parent"
+                                    android:background="#FF000000"
+                                    android:visibility="gone" />
+
+
+                                <EditText
+                                    android:id="@+id/tv_2_1bE"
+                                    style="@style/editTextStyle"
+                                    android:layout_width="40dp"
+                                    android:layout_height="match_parent"
+                                    android:background="@drawable/light_line"
+                                    android:gravity="center"
+                                    android:imeOptions="actionDone"
+                                    android:inputType="number"
+                                    android:padding="4dp"
+                                    android:textSize="10dp"
+                                    android:visibility="gone"></EditText>
+
+                                <TextView
+                                    android:id="@+id/tv_2_1b"
+                                    android:layout_width="20dp"
+                                    android:layout_height="match_parent"
+                                    android:drawablePadding="1dp"
+                                    android:drawableTop="@drawable/comment"
+                                    android:onClick="onClick"
+                                    android:textSize="10dp"
+                                    android:visibility="gone"></TextView>
+
+                                <View
+                                    android:id="@+id/tv_2_1_viewb"
+                                    android:layout_width="1dp"
+                                    android:layout_height="fill_parent"
+                                    android:background="#FF000000"
+                                    android:visibility="gone" />
+
+                                <EditText
+                                    android:id="@+id/tv_2_1b5"
+                                    android:layout_width="100dp"
+                                    android:layout_height="match_parent"
+
+                                    android:background="@drawable/commentoutlineview"
+                                    android:gravity="center"
+                                    android:hint="Comment"
+                                    android:imeOptions="actionDone"
+                                    android:inputType="textMultiLine"
+                                    android:lines="8"
+                                    android:maxLines="5"
+                                    android:minLines="6"
+                                    android:overScrollMode="always"
+                                    android:scrollbarStyle="insideInset"
+                                    android:scrollbars="vertical"
+
+                                    android:singleLine="false"
+                                    android:textAppearance="?android:attr/textAppearanceMedium"
+                                    android:textColor="#b1aeae"
+                                    android:textSize="10dp"
+                                    android:visibility="gone"></EditText>
+
+                                <View
+                                    android:id="@+id/tv_2_5_viewb"
+                                    android:layout_width="1dp"
+                                    android:layout_height="fill_parent"
+                                    android:background="#FF000000"
+                                    android:visibility="gone" />
+
+                                <EditText
+                                    android:id="@+id/tv_2_3b"
+                                    style="@style/editTextStyle"
+                                    android:layout_width="40dp"
+                                    android:layout_height="match_parent"
+                                    android:background="@drawable/light_line"
+                                    android:gravity="center"
+                                    android:imeOptions="actionDone"
+                                    android:inputType="number"
+                                    android:padding="4dp"
+                                    android:textSize="10dp"></EditText>
+
+                                <TextView
+                                    android:id="@+id/tv_2_cb"
+                                    android:layout_width="20dp"
+                                    android:layout_height="match_parent"
+                                    android:drawablePadding="1dp"
+                                    android:drawableTop="@drawable/comment"
+                                    android:onClick="onClick"
+                                    android:textSize="10dp"></TextView>
+
+                                <View
+                                    android:id="@+id/tv_2_c_viewb"
+                                    android:layout_width="1dp"
+                                    android:layout_height="fill_parent"
+                                    android:background="#FF000000" />
+
+
+                                <EditText
+                                    android:id="@+id/tv_2_6b"
+                                    android:layout_width="100dp"
+                                    android:layout_height="match_parent"
+
+                                    android:background="@drawable/commentoutlineview"
+                                    android:gravity="center"
+                                    android:hint="Comment"
+                                    android:imeOptions="actionDone"
+                                    android:inputType="textMultiLine"
+                                    android:lines="8"
+                                    android:maxLines="5"
+                                    android:minLines="6"
+                                    android:overScrollMode="always"
+                                    android:scrollbarStyle="insideInset"
+                                    android:scrollbars="vertical"
+
+                                    android:singleLine="false"
+                                    android:textAppearance="?android:attr/textAppearanceMedium"
+                                    android:textColor="#b1aeae"
+                                    android:textSize="10dp"
+                                    android:visibility="gone"></EditText>
+
+                            </LinearLayout>
+
+                            <!--2c-->
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="50dp"
+                                android:background="@drawable/abc"
+                                android:orientation="horizontal">
+
+
+                                <TextView
+                                    android:layout_width="25dp"
+                                    android:layout_height="match_parent"
+                                    android:gravity="center"
+                                    android:padding="4dp"
+                                    android:text="2c"
+                                    android:textSize="10dp"
+                                    android:textStyle="bold"
+
+                                    ></TextView>
+
+                                <View
+                                    android:layout_width="1dp"
+                                    android:layout_height="fill_parent"
+                                    android:background="#FF000000" />
+
+
+                                <TextView
+                                    android:layout_width="100dp"
+                                    android:layout_height="match_parent"
+                                    android:gravity="center"
+                                    android:padding="4dp"
+                                    android:text=""
+                                    android:textSize="10dp"></TextView>
+
+                                <View
+                                    android:layout_width="1dp"
+                                    android:layout_height="match_parent"
+                                    android:background="#FF000000" />
+
+                                <TextView
+                                    android:layout_width="299dp"
+                                    android:layout_height="match_parent"
+                                    android:gravity="center"
+                                    android:text="Covid-19- LPA &amp; HR Activity Review (As Covid-19 LPA &amp; HR DWM)"
+                                    android:textSize="10dp"
+
+                                    ></TextView>
+
+                                <View
+                                    android:layout_width="1dp"
+                                    android:layout_height="fill_parent"
+                                    android:background="#FF000000" />
+
+                                <TextView
+                                    android:layout_width="27dp"
+                                    android:layout_height="match_parent"
+                                    android:gravity="center"
+                                    android:padding="4dp"
+                                    android:text="D"
+                                    android:textSize="10dp"></TextView>
+
+                                <View
+                                    android:layout_width="1dp"
+                                    android:layout_height="fill_parent"
+                                    android:background="#FF000000" />
+
+                                <TextView
+                                    android:layout_width="40dp"
+                                    android:layout_height="match_parent"
+                                    android:gravity="center"
+                                    android:padding="4dp"
+                                    android:text="1 Hrs"
+                                    android:textSize="10dp" />
+
+                                <View
+                                    android:layout_width="1dp"
+                                    android:layout_height="fill_parent"
+                                    android:background="#FF000000" />
+
+                                <TextView
+                                    android:layout_width="58dp"
+                                    android:layout_height="match_parent"
+                                    android:gravity="center"
+                                    android:padding="4dp"
+                                    android:text="25"
+                                    android:textSize="10dp"></TextView>
+
+                                <View
+                                    android:layout_width="1dp"
+                                    android:layout_height="fill_parent"
+                                    android:background="#FF000000" />
+
+                                <TextView
+                                    android:layout_width="58dp"
+                                    android:layout_height="match_parent"
+                                    android:gravity="center"
+
+                                    android:padding="4dp"
+                                    android:text="12.5%"
+
+                                    android:textSize="10dp" />
+
+
+                                <View
+                                    android:layout_width="1dp"
+                                    android:layout_height="fill_parent"
+                                    android:background="#FF000000" />
+
+
+                                <!--<TextView-->
+                                <!--android:layout_width="200dp"-->
+                                <!--android:layout_height="match_parent"-->
+                                <!--android:gravity="center"-->
+                                <!--android:padding="2dp"-->
+                                <!--android:text="Cover one department once in a week)(Considering 20 Days Only)"-->
+                                <!--android:textSize="10dp" />-->
+
+                                <View
+                                    android:layout_width="1dp"
+                                    android:layout_height="fill_parent"
+                                    android:background="#FF000000" />
+
+
+                                <EditText
+                                    android:id="@+id/tv_2_1_1c"
+                                    style="@style/editTextStyle"
+                                    android:layout_width="40dp"
+                                    android:layout_height="match_parent"
+                                    android:background="@drawable/light_line"
+                                    android:gravity="center"
+                                    android:imeOptions="actionDone"
+                                    android:inputType="number"
+                                    android:padding="4dp"
+                                    android:textSize="10dp"
+                                    android:visibility="gone"></EditText>
+
+                                <TextView
+                                    android:id="@+id/tv_2_1_1_1c"
+                                    android:layout_width="20dp"
+                                    android:layout_height="match_parent"
+                                    android:drawablePadding="1dp"
+                                    android:drawableTop="@drawable/comment"
+                                    android:onClick="onClick"
+                                    android:textSize="10dp"
+                                    android:visibility="gone"></TextView>
+
+                                <View
+                                    android:id="@+id/tv_2_1c_view"
+                                    android:layout_width="1dp"
+                                    android:layout_height="fill_parent"
+                                    android:background="#FF000000"
+                                    android:visibility="gone" />
+
+                                <EditText
+                                    android:id="@+id/tv_2_1c4"
+                                    android:layout_width="100dp"
+                                    android:layout_height="match_parent"
+
+                                    android:background="@drawable/commentoutlineview"
+                                    android:gravity="center"
+                                    android:hint="Comment"
+                                    android:imeOptions="actionDone"
+                                    android:inputType="textMultiLine"
+                                    android:lines="8"
+                                    android:maxLines="5"
+                                    android:minLines="6"
+                                    android:overScrollMode="always"
+                                    android:scrollbarStyle="insideInset"
+                                    android:scrollbars="vertical"
+
+                                    android:singleLine="false"
+                                    android:textAppearance="?android:attr/textAppearanceMedium"
+                                    android:textColor="#b1aeae"
+                                    android:textSize="10dp"
+                                    android:visibility="gone"></EditText>
+
+                                <View
+                                    android:id="@+id/tv_2_1c_viewa"
+                                    android:layout_width="1dp"
+                                    android:layout_height="fill_parent"
+                                    android:background="#FF000000"
+                                    android:visibility="gone" />
+
+
+                                <EditText
+                                    android:id="@+id/tv_2_1cE"
+                                    style="@style/editTextStyle"
+                                    android:layout_width="40dp"
+                                    android:layout_height="match_parent"
+                                    android:background="@drawable/light_line"
+                                    android:gravity="center"
+                                    android:imeOptions="actionDone"
+                                    android:inputType="number"
+                                    android:padding="4dp"
+                                    android:textSize="10dp"
+                                    android:visibility="gone"></EditText>
+
+                                <TextView
+                                    android:id="@+id/tv_2_1c"
+                                    android:layout_width="20dp"
+                                    android:layout_height="match_parent"
+                                    android:drawablePadding="1dp"
+                                    android:drawableTop="@drawable/comment"
+                                    android:onClick="onClick"
+                                    android:textSize="10dp"
+                                    android:visibility="gone"></TextView>
+
+                                <View
+                                    android:id="@+id/tv_2_1_viewc"
+                                    android:layout_width="1dp"
+                                    android:layout_height="fill_parent"
+                                    android:background="#FF000000"
+                                    android:visibility="gone" />
+
+                                <EditText
+                                    android:id="@+id/tv_2_1c5"
+                                    android:layout_width="100dp"
+                                    android:layout_height="match_parent"
+
+                                    android:background="@drawable/commentoutlineview"
+                                    android:gravity="center"
+                                    android:hint="Comment"
+                                    android:imeOptions="actionDone"
+                                    android:inputType="textMultiLine"
+                                    android:lines="8"
+                                    android:maxLines="5"
+                                    android:minLines="6"
+                                    android:overScrollMode="always"
+                                    android:scrollbarStyle="insideInset"
+                                    android:scrollbars="vertical"
+
+                                    android:singleLine="false"
+                                    android:textAppearance="?android:attr/textAppearanceMedium"
+                                    android:textColor="#b1aeae"
+                                    android:textSize="10dp"
+                                    android:visibility="gone"></EditText>
+
+                                <View
+                                    android:id="@+id/tv_2_c_viewc"
+                                    android:layout_width="1dp"
+                                    android:layout_height="fill_parent"
+                                    android:background="#FF000000"
+                                    android:visibility="gone" />
+
+                                <EditText
+                                    android:id="@+id/tv_2_3c"
+                                    style="@style/editTextStyle"
+                                    android:layout_width="40dp"
+                                    android:layout_height="match_parent"
+                                    android:background="@drawable/light_line"
+                                    android:gravity="center"
+                                    android:imeOptions="actionDone"
+                                    android:inputType="number"
+                                    android:padding="4dp"
+                                    android:textSize="10dp"></EditText>
+
+                                <TextView
+                                    android:id="@+id/tv_2_cc"
+                                    android:layout_width="20dp"
+                                    android:layout_height="match_parent"
+                                    android:drawablePadding="1dp"
+                                    android:drawableTop="@drawable/comment"
+                                    android:onClick="onClick"
+                                    android:textSize="10dp"></TextView>
+
+                                <View
+                                    android:id="@+id/tv_2_c_view2c"
+                                    android:layout_width="1dp"
+                                    android:layout_height="fill_parent"
+                                    android:background="#FF000000" />
+
+
+                                <EditText
+                                    android:id="@+id/tv_2_6c"
+                                    android:layout_width="100dp"
+                                    android:layout_height="match_parent"
+
+                                    android:background="@drawable/commentoutlineview"
+                                    android:gravity="center"
+                                    android:hint="Comment"
+                                    android:imeOptions="actionDone"
+                                    android:inputType="textMultiLine"
+                                    android:lines="8"
+                                    android:maxLines="5"
+                                    android:minLines="6"
+                                    android:overScrollMode="always"
+                                    android:scrollbarStyle="insideInset"
+                                    android:scrollbars="vertical"
+
+                                    android:singleLine="false"
+                                    android:textAppearance="?android:attr/textAppearanceMedium"
+                                    android:textColor="#b1aeae"
+                                    android:textSize="10dp"
+                                    android:visibility="gone"></EditText>
+
+                            </LinearLayout>
+
+
+                            <!--3-->
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="50dp"
+                                android:background="@drawable/abc"
+                                android:orientation="horizontal">
+
+
+                                <TextView
+                                    android:layout_width="25dp"
+                                    android:layout_height="match_parent"
+                                    android:gravity="center"
+                                    android:padding="4dp"
+                                    android:text="3"
                                     android:textSize="10dp"
                                     android:textStyle="bold"
                                     ></TextView>
@@ -1509,7 +2115,6 @@
                                     android:layout_height="match_parent"
                                     android:gravity="center"
                                     android:text="All Customers (A/B/C Customers)"
-
                                     android:textSize="10dp"></TextView>
 
                                 <View
@@ -1549,7 +2154,7 @@
                                     android:layout_height="match_parent"
                                     android:gravity="center"
                                     android:padding="4dp"
-                                    android:text="16"
+                                    android:text="4"
                                     android:textSize="10dp"></TextView>
 
                                 <View
@@ -1563,7 +2168,7 @@
                                     android:gravity="center"
 
                                     android:padding="4dp"
-                                    android:text="8.0%"
+                                    android:text="2.0%"
 
                                     android:textSize="10dp" />
 
@@ -1757,321 +2362,7 @@
 
 
                             </LinearLayout>
-                            <!--5-->
-
-                            <LinearLayout
-                                android:layout_width="wrap_content"
-                                android:layout_height="50dp"
-                                android:background="@drawable/abc"
-                                android:orientation="horizontal">
-
-
-                                <TextView
-                                    android:layout_width="25dp"
-                                    android:layout_height="match_parent"
-                                    android:gravity="center"
-                                    android:padding="4dp"
-                                    android:text="6"
-                                    android:textSize="10dp"
-                                    android:textStyle="bold"></TextView>
-
-                                <View
-                                    android:layout_width="1dp"
-                                    android:layout_height="fill_parent"
-                                    android:background="#FF000000" />
-
-
-                                <TextView
-                                    android:layout_width="100dp"
-                                    android:layout_height="match_parent"
-                                    android:gravity="center"
-                                    android:padding="4dp"
-                                    android:text="Costing Review"
-                                    android:textSize="10dp"></TextView>
-
-                                <View
-                                    android:layout_width="1dp"
-                                    android:layout_height="match_parent"
-                                    android:background="#FF000000" />
-
-                                <LinearLayout
-                                    android:layout_width="299dp"
-                                    android:layout_height="wrap_content"
-                                    android:orientation="vertical">
-
-                                    <TextView
-                                        android:layout_width="match_parent"
-                                        android:layout_height="match_parent"
-                                        android:background="@drawable/doted_line"
-                                        android:gravity="center"
-                                        android:text="Inventory (Dead / Red / Imported / Local etc.)"
-                                        android:textSize="10dp"></TextView>
-
-                                    <TextView
-                                        android:layout_width="match_parent"
-                                        android:layout_height="match_parent"
-                                        android:background="@drawable/doted_line"
-                                        android:gravity="center"
-                                        android:text="6 in 1 -Review and Actions"
-                                        android:textSize="10dp"></TextView>
-
-                                    <TextView
-                                        android:layout_width="match_parent"
-                                        android:layout_height="match_parent"
-                                        android:gravity="center"
-                                        android:text="VA/VE,RMC, Red Product, Freight etc"
-                                        android:textSize="10dp"></TextView>
-
-
-                                </LinearLayout>
-
-
-                                <View
-                                    android:layout_width="1dp"
-                                    android:layout_height="fill_parent"
-                                    android:background="#FF000000" />
-
-                                <TextView
-                                    android:layout_width="27dp"
-                                    android:layout_height="match_parent"
-                                    android:gravity="center"
-                                    android:padding="4dp"
-                                    android:text="2/M"
-                                    android:textSize="10dp"></TextView>
-
-                                <View
-                                    android:layout_width="1dp"
-                                    android:layout_height="fill_parent"
-                                    android:background="#FF000000" />
-
-                                <TextView
-                                    android:layout_width="40dp"
-                                    android:layout_height="match_parent"
-                                    android:gravity="center"
-                                    android:padding="4dp"
-                                    android:text="4Hrs"
-                                    android:textSize="10dp" />
-
-                                <View
-                                    android:layout_width="1dp"
-                                    android:layout_height="fill_parent"
-                                    android:background="#FF000000" />
-
-                                <TextView
-                                    android:layout_width="58dp"
-                                    android:layout_height="match_parent"
-                                    android:gravity="center"
-                                    android:padding="4dp"
-                                    android:text="8"
-                                    android:textSize="10dp"></TextView>
-
-                                <View
-                                    android:layout_width="1dp"
-                                    android:layout_height="fill_parent"
-                                    android:background="#FF000000" />
-
-                                <TextView
-                                    android:layout_width="58dp"
-                                    android:layout_height="match_parent"
-                                    android:gravity="center"
-
-                                    android:padding="4dp"
-                                    android:text="4.0%"
-
-                                    android:textSize="10dp" />
-
-
-                                <View
-                                    android:layout_width="1dp"
-                                    android:layout_height="fill_parent"
-                                    android:background="#FF000000" />
-
-
-                                <!--<TextView-->
-                                <!--android:layout_width="200dp"-->
-                                <!--android:layout_height="match_parent"-->
-                                <!--android:gravity="center"-->
-                                <!--android:padding="2dp"-->
-                                <!--android:text=""-->
-                                <!--android:textSize="10dp" />-->
-
-                                <View
-                                    android:layout_width="1dp"
-                                    android:layout_height="fill_parent"
-                                    android:background="#FF000000" />
-
-
-                                <EditText
-                                    android:id="@+id/tv_5_1"
-                                    style="@style/editTextStyle"
-                                    android:layout_width="40dp"
-                                    android:layout_height="match_parent"
-                                    android:background="@drawable/light_line"
-                                    android:gravity="center"
-                                    android:imeOptions="actionDone"
-                                    android:inputType="number"
-                                    android:padding="4dp"
-                                    android:textSize="10dp"
-                                    android:visibility="gone"></EditText>
-
-                                <TextView
-                                    android:id="@+id/tv_5_a"
-                                    android:layout_width="20dp"
-                                    android:layout_height="match_parent"
-                                    android:drawablePadding="1dp"
-                                    android:drawableTop="@drawable/comment"
-                                    android:onClick="onClick"
-                                    android:textSize="10dp"
-                                    android:visibility="gone"></TextView>
-
-                                <View
-                                    android:id="@+id/tv_5_1_view"
-                                    android:layout_width="1dp"
-                                    android:layout_height="fill_parent"
-                                    android:background="#FF000000"
-                                    android:visibility="gone" />
-
-                                <EditText
-                                    android:id="@+id/tv_5_4"
-                                    android:layout_width="100dp"
-                                    android:layout_height="match_parent"
-
-                                    android:background="@drawable/commentoutlineview"
-                                    android:gravity="center"
-                                    android:hint="Comment"
-                                    android:imeOptions="actionDone"
-                                    android:inputType="textMultiLine"
-                                    android:lines="8"
-                                    android:maxLines="5"
-                                    android:minLines="6"
-                                    android:overScrollMode="always"
-                                    android:scrollbarStyle="insideInset"
-                                    android:scrollbars="vertical"
-                                    android:singleLine="false"
-                                    android:textAppearance="?android:attr/textAppearanceMedium"
-                                    android:textColor="#b1aeae"
-                                    android:textSize="10dp"
-                                    android:visibility="gone"></EditText>
-
-                                <View
-                                    android:id="@+id/tv_5_4_view"
-                                    android:layout_width="1dp"
-                                    android:layout_height="fill_parent"
-                                    android:background="#FF000000"
-                                    android:visibility="gone" />
-
-
-                                <EditText
-                                    android:id="@+id/tv_5_2"
-                                    style="@style/editTextStyle"
-                                    android:layout_width="40dp"
-                                    android:layout_height="match_parent"
-                                    android:background="@drawable/light_line"
-                                    android:gravity="center"
-                                    android:imeOptions="actionDone"
-                                    android:inputType="number"
-                                    android:padding="4dp"
-                                    android:textSize="10dp"
-                                    android:visibility="gone"></EditText>
-
-                                <TextView
-                                    android:id="@+id/tv_5_b"
-                                    android:layout_width="20dp"
-                                    android:layout_height="match_parent"
-                                    android:drawablePadding="1dp"
-                                    android:drawableTop="@drawable/comment"
-                                    android:onClick="onClick"
-                                    android:textSize="10dp"
-                                    android:visibility="gone"></TextView>
-
-                                <View
-                                    android:id="@+id/tv_5_2_view"
-                                    android:layout_width="1dp"
-                                    android:layout_height="fill_parent"
-                                    android:background="#FF000000"
-                                    android:visibility="gone" />
-
-                                <EditText
-                                    android:id="@+id/tv_5_5"
-                                    android:layout_width="100dp"
-                                    android:layout_height="match_parent"
-
-                                    android:background="@drawable/commentoutlineview"
-                                    android:gravity="center"
-                                    android:hint="Comment"
-                                    android:imeOptions="actionDone"
-                                    android:inputType="textMultiLine"
-                                    android:lines="8"
-                                    android:maxLines="5"
-                                    android:minLines="6"
-                                    android:overScrollMode="always"
-                                    android:scrollbarStyle="insideInset"
-                                    android:scrollbars="vertical"
-                                    android:singleLine="false"
-                                    android:textAppearance="?android:attr/textAppearanceMedium"
-                                    android:textColor="#b1aeae"
-                                    android:textSize="10dp"
-                                    android:visibility="gone"></EditText>
-
-                                <View
-                                    android:id="@+id/tv_5_5_view"
-                                    android:layout_width="1dp"
-                                    android:layout_height="fill_parent"
-                                    android:background="#FF000000"
-                                    android:visibility="gone" />
-
-
-                                <EditText
-                                    android:id="@+id/tv_5_3"
-                                    style="@style/editTextStyle"
-                                    android:layout_width="40dp"
-                                    android:layout_height="match_parent"
-                                    android:background="@drawable/light_line"
-                                    android:gravity="center"
-                                    android:imeOptions="actionDone"
-                                    android:inputType="number"
-                                    android:padding="4dp"
-                                    android:textSize="10dp"></EditText>
-
-                                <TextView
-                                    android:id="@+id/tv_5_c"
-                                    android:layout_width="20dp"
-                                    android:layout_height="match_parent"
-                                    android:drawablePadding="1dp"
-                                    android:drawableTop="@drawable/comment"
-                                    android:onClick="onClick"
-                                    android:textSize="10dp"></TextView>
-
-                                <View
-                                    android:id="@+id/tv_5_c_view"
-                                    android:layout_width="1dp"
-                                    android:layout_height="fill_parent"
-                                    android:background="#FF000000" />
-
-                                <EditText
-                                    android:id="@+id/tv_5_6"
-                                    android:layout_width="100dp"
-                                    android:layout_height="match_parent"
-
-                                    android:background="@drawable/commentoutlineview"
-                                    android:gravity="center"
-                                    android:hint="Comment"
-                                    android:imeOptions="actionDone"
-                                    android:inputType="textMultiLine"
-                                    android:lines="8"
-                                    android:maxLines="5"
-                                    android:minLines="6"
-                                    android:overScrollMode="always"
-                                    android:scrollbarStyle="insideInset"
-                                    android:scrollbars="vertical"
-                                    android:singleLine="false"
-                                    android:textAppearance="?android:attr/textAppearanceMedium"
-                                    android:textColor="#b1aeae"
-                                    android:textSize="10dp"
-                                    android:visibility="gone"></EditText>
-
-                            </LinearLayout>
-                            <!--6-->
+                            <!--4-->
 
                             <LinearLayout
                                 android:layout_width="wrap_content"
@@ -2085,7 +2376,7 @@
                                     android:layout_height="match_parent"
                                     android:gravity="center"
                                     android:padding="4dp"
-                                    android:text="7"
+                                    android:text="4"
                                     android:textSize="10dp"
                                     android:textStyle="bold"></TextView>
 
@@ -2150,6 +2441,7 @@
                                         android:layout_height="50dp"
                                         android:background="@drawable/doted_line"
                                         android:gravity="center"
+                                        android:visibility="gone"
                                         android:text="BEST Review (Review of Improvement Projects / CFT's/Convention/Safety etc)"
                                         android:textSize="10dp"></TextView>
 
@@ -2211,6 +2503,7 @@
                                         android:background="@drawable/doted_line"
                                         android:gravity="center"
                                         android:text="2/M"
+                                        android:visibility="gone"
                                         android:textSize="10dp"></TextView>
 
                                     <TextView
@@ -2260,7 +2553,7 @@
                                         android:layout_height="50dp"
                                         android:background="@drawable/doted_line"
                                         android:gravity="center"
-                                        android:text="8Hrs"
+                                        android:text="4Hrs"
                                         android:textSize="10dp"></TextView>
 
                                     <TextView
@@ -2269,6 +2562,7 @@
                                         android:background="@drawable/doted_line"
                                         android:gravity="center"
                                         android:text="4Hrs"
+                                        android:visibility="gone"
                                         android:textSize="10dp"></TextView>
 
                                     <TextView
@@ -2318,7 +2612,7 @@
                                         android:layout_height="50dp"
                                         android:background="@drawable/doted_line"
                                         android:gravity="center"
-                                        android:text="8"
+                                        android:text="4"
                                         android:textSize="10dp"></TextView>
 
                                     <TextView
@@ -2327,6 +2621,7 @@
                                         android:background="@drawable/doted_line"
                                         android:gravity="center"
                                         android:text="8"
+                                        android:visibility="gone"
                                         android:textSize="10dp"></TextView>
 
                                     <TextView
@@ -2376,7 +2671,7 @@
                                         android:layout_height="50dp"
                                         android:background="@drawable/doted_line"
                                         android:gravity="center"
-                                        android:text="4.0%"
+                                        android:text="2.0%"
                                         android:textSize="10dp"></TextView>
 
                                     <TextView
@@ -2384,6 +2679,7 @@
                                         android:layout_height="50dp"
                                         android:background="@drawable/doted_line"
                                         android:gravity="center"
+                                        android:visibility="gone"
                                         android:text="4.0%"
                                         android:textSize="10dp"></TextView>
 
@@ -3431,7 +3727,7 @@
                                 </LinearLayout>
 
                             </LinearLayout>
-                            <!--7-->
+                            <!--5-->
 
                             <LinearLayout
                                 android:layout_width="wrap_content"
@@ -3445,7 +3741,7 @@
                                     android:layout_height="match_parent"
                                     android:gravity="center"
                                     android:padding="4dp"
-                                    android:text="8"
+                                    android:text="5"
                                     android:textSize="10dp"
                                     android:textStyle="bold"></TextView>
 
@@ -3490,6 +3786,7 @@
                                         android:textSize="10dp"></TextView>
 
                                     <TextView
+                                        android:visibility="gone"
                                         android:layout_width="match_parent"
                                         android:layout_height="50dp"
                                         android:background="@drawable/doted_line"
@@ -3535,6 +3832,7 @@
                                         android:textSize="10dp"></TextView>
 
                                     <TextView
+                                        android:visibility="gone"
                                         android:layout_width="match_parent"
                                         android:layout_height="50dp"
                                         android:background="@drawable/doted_line"
@@ -3574,7 +3872,7 @@
                                         android:layout_height="50dp"
                                         android:background="@drawable/doted_line"
                                         android:gravity="center"
-                                        android:text="6Hrs"
+                                        android:text="3Hrs"
                                         android:textSize="10dp"></TextView>
 
                                     <TextView
@@ -3583,6 +3881,7 @@
                                         android:background="@drawable/doted_line"
                                         android:gravity="center"
                                         android:text="3Hrs"
+                                        android:visibility="gone"
                                         android:textSize="10dp"></TextView>
 
                                     <TextView
@@ -3609,14 +3908,6 @@
                                         android:layout_height="50dp"
                                         android:background="@drawable/doted_line"
                                         android:gravity="center"
-                                        android:text="12"
-                                        android:textSize="10dp"></TextView>
-
-                                    <TextView
-                                        android:layout_width="match_parent"
-                                        android:layout_height="50dp"
-                                        android:background="@drawable/doted_line"
-                                        android:gravity="center"
                                         android:text="6"
                                         android:textSize="10dp"></TextView>
 
@@ -3625,7 +3916,16 @@
                                         android:layout_height="50dp"
                                         android:background="@drawable/doted_line"
                                         android:gravity="center"
+                                        android:text="3"
+                                        android:textSize="10dp"></TextView>
+
+                                    <TextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="50dp"
+                                        android:background="@drawable/doted_line"
+                                        android:gravity="center"
                                         android:text="12"
+                                        android:visibility="gone"
                                         android:textSize="10dp"></TextView>
 
                                     <TextView
@@ -3652,14 +3952,6 @@
                                         android:layout_height="50dp"
                                         android:background="@drawable/doted_line"
                                         android:gravity="center"
-                                        android:text="6.0%"
-                                        android:textSize="10dp"></TextView>
-
-                                    <TextView
-                                        android:layout_width="match_parent"
-                                        android:layout_height="50dp"
-                                        android:background="@drawable/doted_line"
-                                        android:gravity="center"
                                         android:text="3.0%"
                                         android:textSize="10dp"></TextView>
 
@@ -3668,7 +3960,16 @@
                                         android:layout_height="50dp"
                                         android:background="@drawable/doted_line"
                                         android:gravity="center"
+                                        android:text="1.5%"
+                                        android:textSize="10dp"></TextView>
+
+                                    <TextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="50dp"
+                                        android:background="@drawable/doted_line"
+                                        android:gravity="center"
                                         android:text="6.0%"
+                                        android:visibility="gone"
                                         android:textSize="10dp"></TextView>
 
                                     <TextView
@@ -4422,11 +4723,11 @@
                                 </LinearLayout>
 
                             </LinearLayout>
-                            <!--8-->
 
+                            <!--6-->
                             <LinearLayout
                                 android:layout_width="wrap_content"
-                                android:layout_height="400dp"
+                                android:layout_height="500dp"
                                 android:background="@drawable/abcd"
                                 android:orientation="horizontal">
 
@@ -4436,7 +4737,7 @@
                                     android:layout_height="match_parent"
                                     android:gravity="center"
                                     android:padding="4dp"
-                                    android:text="9"
+                                    android:text="6"
                                     android:textSize="10dp"
                                     android:textStyle="bold"></TextView>
 
@@ -4477,8 +4778,24 @@
                                         android:layout_height="50dp"
                                         android:background="@drawable/doted_line"
                                         android:gravity="center"
+                                        android:text="BEST Review (Review of Improvement Projects / CFT's/Convention/Safety etc)"
+                                        android:textSize="10dp"></TextView>
+
+                                    <TextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="50dp"
+                                        android:background="@drawable/doted_line"
+                                        android:gravity="center"
                                         android:text="System Meeting (Product/Process Audit)"
                                         android:textSize="10dp"></TextView>
+                                    <TextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="50dp"
+                                        android:background="@drawable/doted_line"
+                                        android:gravity="center"
+                                        android:text="Unit review against Budget/MIS/SQPCDM targets"
+                                        android:textSize="10dp"></TextView>
+
 
                                     <TextView
                                         android:layout_width="match_parent"
@@ -4510,7 +4827,7 @@
                                         android:layout_height="50dp"
                                         android:background="@drawable/doted_line"
                                         android:gravity="center"
-                                        android:text="Manufacturing Road Map"
+                                        android:text="Manufacturing Road Map (Focus on Mfg. cost optimisation)- Productivity/QPH, Energy Cost &amp; Other Variable Cost"
                                         android:textSize="10dp"></TextView>
 
                                     <TextView
@@ -4518,7 +4835,7 @@
                                         android:layout_height="50dp"
                                         android:background="@drawable/doted_line"
                                         android:gravity="center"
-                                        android:text="MPCP Review for all deptt."
+                                        android:text="MIS &amp; MPCP Review for all deptt."
                                         android:textSize="10dp"></TextView>
 
                                     <TextView
@@ -4544,26 +4861,9 @@
 
                                     <TextView
                                         android:layout_width="match_parent"
-                                        android:layout_height="50dp"
-                                        android:background="@drawable/doted_line"
+                                        android:layout_height="250dp"
                                         android:gravity="center"
                                         android:text="W"
-                                        android:textSize="10dp"></TextView>
-
-                                    <TextView
-                                        android:layout_width="match_parent"
-                                        android:layout_height="50dp"
-                                        android:background="@drawable/doted_line"
-                                        android:gravity="center"
-                                        android:text="W"
-                                        android:textSize="10dp"></TextView>
-
-                                    <TextView
-                                        android:layout_width="match_parent"
-                                        android:layout_height="50dp"
-                                        android:background="@drawable/doted_line"
-                                        android:gravity="center"
-                                        android:text="2/M"
                                         android:textSize="10dp"></TextView>
 
                                     <TextView
@@ -4601,6 +4901,24 @@
                                     <TextView
                                         android:layout_width="match_parent"
                                         android:layout_height="50dp"
+                                        android:background="@drawable/doted_line"
+                                        android:gravity="center"
+                                        android:text="2/M"
+                                        android:textSize="10dp"></TextView>
+
+                                    <TextView
+                                        android:visibility="gone"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="40dp"
+                                        android:background="@drawable/doted_line"
+                                        android:gravity="center"
+                                        android:text="M"
+                                        android:textSize="10dp"></TextView>
+
+                                    <TextView
+                                        android:visibility="gone"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="40dp"
                                         android:gravity="center"
                                         android:text="2/M"
                                         android:textSize="10dp"></TextView>
@@ -4620,10 +4938,26 @@
 
                                     <TextView
                                         android:layout_width="match_parent"
+                                        android:layout_height="250dp"
+                                        android:background="@drawable/doted_line"
+                                        android:gravity="center"
+                                        android:text="4Hrs"
+                                        android:textSize="10dp"></TextView>
+
+                                    <TextView
+                                        android:layout_width="match_parent"
                                         android:layout_height="50dp"
                                         android:background="@drawable/doted_line"
                                         android:gravity="center"
-                                        android:text="2Hrs"
+                                        android:text="1Hrs"
+                                        android:textSize="10dp"></TextView>
+
+                                    <TextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="50dp"
+                                        android:background="@drawable/doted_line"
+                                        android:gravity="center"
+                                        android:text="30Min"
                                         android:textSize="10dp"></TextView>
 
                                     <TextView
@@ -4656,22 +4990,7 @@
                                         android:background="@drawable/doted_line"
                                         android:gravity="center"
                                         android:text="1Hrs"
-                                        android:textSize="10dp"></TextView>
-
-                                    <TextView
-                                        android:layout_width="match_parent"
-                                        android:layout_height="50dp"
-                                        android:background="@drawable/doted_line"
-                                        android:gravity="center"
-                                        android:text="1Hrs"
-                                        android:textSize="10dp"></TextView>
-
-                                    <TextView
-                                        android:layout_width="match_parent"
-                                        android:layout_height="50dp"
-                                        android:background="@drawable/doted_line"
-                                        android:gravity="center"
-                                        android:text="1Hrs"
+                                        android:visibility="gone"
                                         android:textSize="10dp"></TextView>
 
                                     <TextView
@@ -4679,6 +4998,7 @@
                                         android:layout_height="50dp"
                                         android:gravity="center"
                                         android:text="2Hrs"
+                                        android:visibility="gone"
                                         android:textSize="10dp"></TextView>
 
                                 </LinearLayout>
@@ -4695,10 +5015,10 @@
 
                                     <TextView
                                         android:layout_width="match_parent"
-                                        android:layout_height="50dp"
+                                        android:layout_height="250dp"
                                         android:background="@drawable/doted_line"
                                         android:gravity="center"
-                                        android:text="8"
+                                        android:text="16"
                                         android:textSize="10dp"></TextView>
 
                                     <TextView
@@ -4722,7 +5042,15 @@
                                         android:layout_height="50dp"
                                         android:background="@drawable/doted_line"
                                         android:gravity="center"
-                                        android:text="8"
+                                        android:text="2"
+                                        android:textSize="10dp"></TextView>
+
+                                    <TextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="50dp"
+                                        android:background="@drawable/doted_line"
+                                        android:gravity="center"
+                                        android:text="6"
                                         android:textSize="10dp"></TextView>
 
                                     <TextView
@@ -4734,14 +5062,7 @@
                                         android:textSize="10dp"></TextView>
 
                                     <TextView
-                                        android:layout_width="match_parent"
-                                        android:layout_height="50dp"
-                                        android:background="@drawable/doted_line"
-                                        android:gravity="center"
-                                        android:text="2"
-                                        android:textSize="10dp"></TextView>
-
-                                    <TextView
+                                        android:visibility="gone"
                                         android:layout_width="match_parent"
                                         android:layout_height="50dp"
                                         android:background="@drawable/doted_line"
@@ -4750,6 +5071,7 @@
                                         android:textSize="10dp"></TextView>
 
                                     <TextView
+                                        android:visibility="gone"
                                         android:layout_width="match_parent"
                                         android:layout_height="50dp"
                                         android:gravity="center"
@@ -4771,10 +5093,10 @@
 
                                     <TextView
                                         android:layout_width="match_parent"
-                                        android:layout_height="50dp"
+                                        android:layout_height="250dp"
                                         android:background="@drawable/doted_line"
                                         android:gravity="center"
-                                        android:text="4.0%"
+                                        android:text="8.0%"
                                         android:textSize="10dp"></TextView>
 
                                     <TextView
@@ -4798,22 +5120,6 @@
                                         android:layout_height="50dp"
                                         android:background="@drawable/doted_line"
                                         android:gravity="center"
-                                        android:text="4.0%"
-                                        android:textSize="10dp"></TextView>
-
-                                    <TextView
-                                        android:layout_width="match_parent"
-                                        android:layout_height="50dp"
-                                        android:background="@drawable/doted_line"
-                                        android:gravity="center"
-                                        android:text="2.0%"
-                                        android:textSize="10dp"></TextView>
-
-                                    <TextView
-                                        android:layout_width="match_parent"
-                                        android:layout_height="50dp"
-                                        android:background="@drawable/doted_line"
-                                        android:gravity="center"
                                         android:text="1.0%"
                                         android:textSize="10dp"></TextView>
 
@@ -4822,7 +5128,7 @@
                                         android:layout_height="50dp"
                                         android:background="@drawable/doted_line"
                                         android:gravity="center"
-                                        android:text="4.0%"
+                                        android:text="3.0%"
                                         android:textSize="10dp"></TextView>
 
                                     <TextView
@@ -4831,6 +5137,24 @@
                                         android:background="@drawable/doted_line"
                                         android:gravity="center"
                                         android:text="2.0%"
+                                        android:textSize="10dp"></TextView>
+
+                                    <TextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="50dp"
+                                        android:background="@drawable/doted_line"
+                                        android:gravity="center"
+                                        android:text="3.0%"
+                                        android:visibility="gone"
+                                        android:textSize="10dp"></TextView>
+
+                                    <TextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="50dp"
+                                        android:background="@drawable/doted_line"
+                                        android:gravity="center"
+                                        android:text="2.0%"
+                                        android:visibility="gone"
                                         android:textSize="10dp"></TextView>
 
                                 </LinearLayout>
@@ -4924,7 +5248,7 @@
                                         style="@style/editTextStyle"
                                         android:id="@+id/et_8_1_1"
                                         android:layout_width="match_parent"
-                                        android:layout_height="50dp"
+                                        android:layout_height="250dp"
                                         android:background="@drawable/darkline"
                                         android:gravity="center"
                                         android:imeOptions="actionDone"
@@ -4997,6 +5321,7 @@
                                         android:gravity="center"
                                         android:imeOptions="actionDone"
                                         android:inputType="number"
+                                        android:visibility="gone"
                                         android:textSize="10dp"></EditText>
 
                                     <EditText
@@ -5008,6 +5333,7 @@
                                         android:gravity="center"
                                         android:imeOptions="actionDone"
                                         android:inputType="number"
+                                        android:visibility="gone"
                                         android:textSize="10dp"></EditText>
 
 
@@ -5776,7 +6102,7 @@
                                         style="@style/editTextStyle"
                                         android:id="@+id/et_8_3_1"
                                         android:layout_width="match_parent"
-                                        android:layout_height="50dp"
+                                        android:layout_height="250dp"
                                         android:background="@drawable/darkline"
                                         android:gravity="center"
                                         android:imeOptions="actionDone"
@@ -5842,6 +6168,7 @@
                                     <EditText
                                         style="@style/editTextStyle"
                                         android:id="@+id/et_8_3_7"
+                                        android:visibility="gone"
                                         android:layout_width="match_parent"
                                         android:layout_height="50dp"
                                         android:background="@drawable/darkline"
@@ -5852,6 +6179,7 @@
 
                                     <EditText
                                         style="@style/editTextStyle"
+                                        android:visibility="gone"
                                         android:id="@+id/et_8_3_8"
                                         android:layout_width="match_parent"
                                         android:layout_height="50dp"
@@ -5879,7 +6207,7 @@
                                         <TextView
                                             android:id="@+id/tv_8_c1"
                                             android:layout_width="match_parent"
-                                            android:layout_height="50dp"
+                                            android:layout_height="250dp"
                                             android:drawablePadding="1dp"
                                             android:drawableTop="@drawable/comment"
                                             android:onClick="onClick"
@@ -6185,7 +6513,320 @@
 
 
                             </LinearLayout>
-                            <!--9-->
+                            <!--7-->
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="50dp"
+                                android:background="@drawable/abc"
+                                android:orientation="horizontal">
+
+
+                                <TextView
+                                    android:layout_width="25dp"
+                                    android:layout_height="match_parent"
+                                    android:gravity="center"
+                                    android:padding="4dp"
+                                    android:text="7"
+                                    android:textSize="10dp"
+                                    android:textStyle="bold"></TextView>
+
+                                <View
+                                    android:layout_width="1dp"
+                                    android:layout_height="fill_parent"
+                                    android:background="#FF000000" />
+
+
+                                <TextView
+                                    android:layout_width="100dp"
+                                    android:layout_height="match_parent"
+                                    android:gravity="center"
+                                    android:padding="4dp"
+                                    android:text="Costing Review"
+                                    android:textSize="10dp"></TextView>
+
+                                <View
+                                    android:layout_width="1dp"
+                                    android:layout_height="match_parent"
+                                    android:background="#FF000000" />
+
+                                <LinearLayout
+                                    android:layout_width="299dp"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="vertical">
+
+                                    <TextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:background="@drawable/doted_line"
+                                        android:gravity="center"
+                                        android:text="Inventory (Dead / Red / Imported / Local etc.)"
+                                        android:textSize="10dp"></TextView>
+
+                                    <TextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:background="@drawable/doted_line"
+                                        android:gravity="center"
+                                        android:text="6 in 1 -Review and Actions"
+                                        android:textSize="10dp"></TextView>
+
+                                    <TextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:gravity="center"
+                                        android:text="VA/VE,RMC, Red Product, Freight etc"
+                                        android:textSize="10dp"></TextView>
+
+
+                                </LinearLayout>
+
+
+                                <View
+                                    android:layout_width="1dp"
+                                    android:layout_height="fill_parent"
+                                    android:background="#FF000000" />
+
+                                <TextView
+                                    android:layout_width="27dp"
+                                    android:layout_height="match_parent"
+                                    android:gravity="center"
+                                    android:padding="4dp"
+                                    android:text="D"
+                                    android:textSize="10dp"></TextView>
+
+                                <View
+                                    android:layout_width="1dp"
+                                    android:layout_height="fill_parent"
+                                    android:background="#FF000000" />
+
+                                <TextView
+                                    android:layout_width="40dp"
+                                    android:layout_height="match_parent"
+                                    android:gravity="center"
+                                    android:padding="4dp"
+                                    android:text="1Hrs"
+                                    android:textSize="10dp" />
+
+                                <View
+                                    android:layout_width="1dp"
+                                    android:layout_height="fill_parent"
+                                    android:background="#FF000000" />
+
+                                <TextView
+                                    android:layout_width="58dp"
+                                    android:layout_height="match_parent"
+                                    android:gravity="center"
+                                    android:padding="4dp"
+                                    android:text="25"
+                                    android:textSize="10dp"></TextView>
+
+                                <View
+                                    android:layout_width="1dp"
+                                    android:layout_height="fill_parent"
+                                    android:background="#FF000000" />
+
+                                <TextView
+                                    android:layout_width="58dp"
+                                    android:layout_height="match_parent"
+                                    android:gravity="center"
+
+                                    android:padding="4dp"
+                                    android:text="12.5%"
+
+                                    android:textSize="10dp" />
+
+
+                                <View
+                                    android:layout_width="1dp"
+                                    android:layout_height="fill_parent"
+                                    android:background="#FF000000" />
+
+
+                                <!--<TextView-->
+                                <!--android:layout_width="200dp"-->
+                                <!--android:layout_height="match_parent"-->
+                                <!--android:gravity="center"-->
+                                <!--android:padding="2dp"-->
+                                <!--android:text=""-->
+                                <!--android:textSize="10dp" />-->
+
+                                <View
+                                    android:layout_width="1dp"
+                                    android:layout_height="fill_parent"
+                                    android:background="#FF000000" />
+
+
+                                <EditText
+                                    android:id="@+id/tv_5_1"
+                                    style="@style/editTextStyle"
+                                    android:layout_width="40dp"
+                                    android:layout_height="match_parent"
+                                    android:background="@drawable/light_line"
+                                    android:gravity="center"
+                                    android:imeOptions="actionDone"
+                                    android:inputType="number"
+                                    android:padding="4dp"
+                                    android:textSize="10dp"
+                                    android:visibility="gone"></EditText>
+
+                                <TextView
+                                    android:id="@+id/tv_5_a"
+                                    android:layout_width="20dp"
+                                    android:layout_height="match_parent"
+                                    android:drawablePadding="1dp"
+                                    android:drawableTop="@drawable/comment"
+                                    android:onClick="onClick"
+                                    android:textSize="10dp"
+                                    android:visibility="gone"></TextView>
+
+                                <View
+                                    android:id="@+id/tv_5_1_view"
+                                    android:layout_width="1dp"
+                                    android:layout_height="fill_parent"
+                                    android:background="#FF000000"
+                                    android:visibility="gone" />
+
+                                <EditText
+                                    android:id="@+id/tv_5_4"
+                                    android:layout_width="100dp"
+                                    android:layout_height="match_parent"
+
+                                    android:background="@drawable/commentoutlineview"
+                                    android:gravity="center"
+                                    android:hint="Comment"
+                                    android:imeOptions="actionDone"
+                                    android:inputType="textMultiLine"
+                                    android:lines="8"
+                                    android:maxLines="5"
+                                    android:minLines="6"
+                                    android:overScrollMode="always"
+                                    android:scrollbarStyle="insideInset"
+                                    android:scrollbars="vertical"
+                                    android:singleLine="false"
+                                    android:textAppearance="?android:attr/textAppearanceMedium"
+                                    android:textColor="#b1aeae"
+                                    android:textSize="10dp"
+                                    android:visibility="gone"></EditText>
+
+                                <View
+                                    android:id="@+id/tv_5_4_view"
+                                    android:layout_width="1dp"
+                                    android:layout_height="fill_parent"
+                                    android:background="#FF000000"
+                                    android:visibility="gone" />
+
+
+                                <EditText
+                                    android:id="@+id/tv_5_2"
+                                    style="@style/editTextStyle"
+                                    android:layout_width="40dp"
+                                    android:layout_height="match_parent"
+                                    android:background="@drawable/light_line"
+                                    android:gravity="center"
+                                    android:imeOptions="actionDone"
+                                    android:inputType="number"
+                                    android:padding="4dp"
+                                    android:textSize="10dp"
+                                    android:visibility="gone"></EditText>
+
+                                <TextView
+                                    android:id="@+id/tv_5_b"
+                                    android:layout_width="20dp"
+                                    android:layout_height="match_parent"
+                                    android:drawablePadding="1dp"
+                                    android:drawableTop="@drawable/comment"
+                                    android:onClick="onClick"
+                                    android:textSize="10dp"
+                                    android:visibility="gone"></TextView>
+
+                                <View
+                                    android:id="@+id/tv_5_2_view"
+                                    android:layout_width="1dp"
+                                    android:layout_height="fill_parent"
+                                    android:background="#FF000000"
+                                    android:visibility="gone" />
+
+                                <EditText
+                                    android:id="@+id/tv_5_5"
+                                    android:layout_width="100dp"
+                                    android:layout_height="match_parent"
+
+                                    android:background="@drawable/commentoutlineview"
+                                    android:gravity="center"
+                                    android:hint="Comment"
+                                    android:imeOptions="actionDone"
+                                    android:inputType="textMultiLine"
+                                    android:lines="8"
+                                    android:maxLines="5"
+                                    android:minLines="6"
+                                    android:overScrollMode="always"
+                                    android:scrollbarStyle="insideInset"
+                                    android:scrollbars="vertical"
+                                    android:singleLine="false"
+                                    android:textAppearance="?android:attr/textAppearanceMedium"
+                                    android:textColor="#b1aeae"
+                                    android:textSize="10dp"
+                                    android:visibility="gone"></EditText>
+
+                                <View
+                                    android:id="@+id/tv_5_5_view"
+                                    android:layout_width="1dp"
+                                    android:layout_height="fill_parent"
+                                    android:background="#FF000000"
+                                    android:visibility="gone" />
+
+
+                                <EditText
+                                    android:id="@+id/tv_5_3"
+                                    style="@style/editTextStyle"
+                                    android:layout_width="40dp"
+                                    android:layout_height="match_parent"
+                                    android:background="@drawable/light_line"
+                                    android:gravity="center"
+                                    android:imeOptions="actionDone"
+                                    android:inputType="number"
+                                    android:padding="4dp"
+                                    android:textSize="10dp"></EditText>
+
+                                <TextView
+                                    android:id="@+id/tv_5_c"
+                                    android:layout_width="20dp"
+                                    android:layout_height="match_parent"
+                                    android:drawablePadding="1dp"
+                                    android:drawableTop="@drawable/comment"
+                                    android:onClick="onClick"
+                                    android:textSize="10dp"></TextView>
+
+                                <View
+                                    android:id="@+id/tv_5_c_view"
+                                    android:layout_width="1dp"
+                                    android:layout_height="fill_parent"
+                                    android:background="#FF000000" />
+
+                                <EditText
+                                    android:id="@+id/tv_5_6"
+                                    android:layout_width="100dp"
+                                    android:layout_height="match_parent"
+
+                                    android:background="@drawable/commentoutlineview"
+                                    android:gravity="center"
+                                    android:hint="Comment"
+                                    android:imeOptions="actionDone"
+                                    android:inputType="textMultiLine"
+                                    android:lines="8"
+                                    android:maxLines="5"
+                                    android:minLines="6"
+                                    android:overScrollMode="always"
+                                    android:scrollbarStyle="insideInset"
+                                    android:scrollbars="vertical"
+                                    android:singleLine="false"
+                                    android:textAppearance="?android:attr/textAppearanceMedium"
+                                    android:textColor="#b1aeae"
+                                    android:textSize="10dp"
+                                    android:visibility="gone"></EditText>
+
+                            </LinearLayout>
+                            <!--8-->
 
                             <LinearLayout
                                 android:layout_width="wrap_content"
@@ -6199,7 +6840,7 @@
                                     android:layout_height="match_parent"
                                     android:gravity="center"
                                     android:padding="4dp"
-                                    android:text="10"
+                                    android:text="8"
                                     android:textSize="10dp"
                                     android:textStyle="bold"></TextView>
 
@@ -6232,7 +6873,7 @@
                                         android:layout_height="50dp"
                                         android:background="@drawable/doted_line"
                                         android:gravity="center"
-                                        android:text="Communication Meeting"
+                                        android:text="Communication Meeting Including Covid-19"
                                         android:textSize="10dp"></TextView>
 
                                     <TextView
@@ -6285,7 +6926,7 @@
                                         android:layout_width="match_parent"
                                         android:layout_height="50dp"
                                         android:gravity="center"
-                                        android:text="-"
+                                        android:text="M"
                                         android:textSize="10dp"></TextView>
 
 
@@ -6321,7 +6962,7 @@
                                         android:layout_width="match_parent"
                                         android:layout_height="50dp"
                                         android:gravity="center"
-                                        android:text="-"
+                                        android:text="4Hrs"
                                         android:textSize="10dp"></TextView>
 
 
@@ -6357,7 +6998,7 @@
                                         android:layout_width="match_parent"
                                         android:layout_height="50dp"
                                         android:gravity="center"
-                                        android:text="16"
+                                        android:text="4"
                                         android:textSize="10dp"></TextView>
 
 
@@ -6393,7 +7034,7 @@
                                         android:layout_width="match_parent"
                                         android:layout_height="50dp"
                                         android:gravity="center"
-                                        android:text="8.0%"
+                                        android:text="2.0%"
                                         android:textSize="10dp"></TextView>
 
 
@@ -6990,12 +7631,11 @@
 
                             </LinearLayout>
 
-                            <!--other-->
+                            <!--other 9-->
 
                             <LinearLayout
                                 android:layout_width="wrap_content"
-                                android:layout_height="200dp"
-
+                                android:layout_height="50dp"
                                 android:orientation="horizontal">
 
 
@@ -7004,7 +7644,7 @@
                                     android:layout_height="match_parent"
                                     android:gravity="center"
                                     android:padding="4dp"
-                                    android:text="11"
+                                    android:text="9"
                                     android:textSize="10dp"
                                     android:textStyle="bold"
 
@@ -7022,7 +7662,7 @@
                                     android:layout_height="match_parent"
                                     android:gravity="center"
                                     android:padding="4dp"
-                                    android:text="Other Activities"
+                                    android:text="Other Activity"
                                     android:textSize="10dp"></TextView>
 
                                 <View
@@ -7034,7 +7674,7 @@
                                     android:layout_width="299dp"
                                     android:layout_height="match_parent"
                                     android:orientation="vertical"
-                                    android:weightSum="10">
+                                    android:weightSum="4">
 
 
                                     <TextView
@@ -7044,7 +7684,7 @@
                                         android:layout_weight="2"
                                         android:background="@drawable/doted_line"
                                         android:gravity="center"
-                                        android:text="Activity A"
+                                        android:text=""
                                         android:textSize="10dp"></TextView>
 
                                     <TextView
@@ -7052,12 +7692,12 @@
                                         android:layout_width="299dp"
                                         android:layout_height="0dp"
                                         android:layout_weight="2"
-                                        android:background="@drawable/doted_line"
                                         android:gravity="center"
-                                        android:text="Activity B"
+                                        android:text=""
                                         android:textSize="10dp"></TextView>
 
                                     <TextView
+                                        android:visibility="gone"
                                         android:id="@+id/textView63"
                                         android:layout_width="299dp"
                                         android:layout_height="0dp"
@@ -7068,6 +7708,7 @@
                                         android:textSize="10dp"></TextView>
 
                                     <TextView
+                                        android:visibility="gone"
                                         android:id="@+id/textView64"
                                         android:layout_width="299dp"
                                         android:layout_height="0dp"
@@ -7078,6 +7719,7 @@
                                         android:textSize="10dp"></TextView>
 
                                     <TextView
+                                        android:visibility="gone"
                                         android:id="@+id/textView65"
                                         android:layout_width="299dp"
                                         android:layout_height="0dp"
@@ -7091,7 +7733,7 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="match_parent"
                                     android:orientation="vertical"
-                                    android:weightSum="10">
+                                    android:weightSum="4">
 
                                     <LinearLayout
                                         android:layout_width="wrap_content"
@@ -7114,7 +7756,7 @@
                                             android:layout_height="match_parent"
                                             android:gravity="center"
                                             android:padding="4dp"
-                                            android:text="D"
+                                            android:text=""
                                             android:textSize="10dp"></TextView>
 
                                         <View
@@ -7127,7 +7769,7 @@
                                             android:layout_height="match_parent"
                                             android:gravity="center"
                                             android:padding="4dp"
-                                            android:text="1Hrs"
+                                            android:text=""
                                             android:textSize="10dp" />
 
                                         <View
@@ -7140,7 +7782,7 @@
                                             android:layout_height="match_parent"
                                             android:gravity="center"
                                             android:padding="4dp"
-                                            android:text="20"
+                                            android:text=""
                                             android:textSize="10dp"></TextView>
 
                                         <View
@@ -7154,7 +7796,7 @@
                                             android:gravity="center"
 
                                             android:padding="4dp"
-                                            android:text="10.0%"
+                                            android:text=""
 
                                             android:textSize="10dp" />
 
@@ -7333,7 +7975,6 @@
                                             android:id="@+id/tv_10_6"
                                             android:layout_width="100dp"
                                             android:layout_height="match_parent"
-
                                             android:background="@drawable/commentoutlineview"
                                             android:gravity="center"
                                             android:hint="Comment"
@@ -7378,7 +8019,7 @@
                                             android:layout_height="match_parent"
                                             android:gravity="center"
                                             android:padding="4dp"
-                                            android:text="D"
+                                            android:text=""
                                             android:textSize="10dp"></TextView>
 
                                         <View
@@ -7391,7 +8032,7 @@
                                             android:layout_height="match_parent"
                                             android:gravity="center"
                                             android:padding="4dp"
-                                            android:text="1Hrs"
+                                            android:text=""
                                             android:textSize="10dp" />
 
                                         <View
@@ -7404,7 +8045,7 @@
                                             android:layout_height="match_parent"
                                             android:gravity="center"
                                             android:padding="4dp"
-                                            android:text="20"
+                                            android:text=""
                                             android:textSize="10dp"></TextView>
 
                                         <View
@@ -7418,7 +8059,7 @@
                                             android:gravity="center"
 
                                             android:padding="4dp"
-                                            android:text="10.0%"
+                                            android:text=""
 
                                             android:textSize="10dp" />
 
@@ -7614,6 +8255,7 @@
                                     </LinearLayout>
 
                                     <View
+                                        android:visibility="gone"
                                         android:layout_width="match_parent"
                                         android:layout_height="1dp"
                                         android:background="#FF000000" />
@@ -7639,7 +8281,7 @@
                                             android:layout_height="match_parent"
                                             android:gravity="center"
                                             android:padding="4dp"
-                                            android:text="D"
+                                            android:text=""
                                             android:textSize="10dp"></TextView>
 
                                         <View
@@ -7652,7 +8294,7 @@
                                             android:layout_height="match_parent"
                                             android:gravity="center"
                                             android:padding="4dp"
-                                            android:text="1Hrs"
+                                            android:text=""
                                             android:textSize="10dp" />
 
                                         <View
@@ -7665,7 +8307,7 @@
                                             android:layout_height="match_parent"
                                             android:gravity="center"
                                             android:padding="4dp"
-                                            android:text="20"
+                                            android:text=""
                                             android:textSize="10dp"></TextView>
 
                                         <View
@@ -7679,7 +8321,7 @@
                                             android:gravity="center"
 
                                             android:padding="4dp"
-                                            android:text="10.0%"
+                                            android:text=""
 
                                             android:textSize="10dp" />
 
@@ -7875,11 +8517,14 @@
                                     </LinearLayout>
 
                                     <View
+                                        android:visibility="gone"
+
                                         android:layout_width="match_parent"
                                         android:layout_height="1dp"
                                         android:background="#FF000000" />
 
                                     <LinearLayout
+                                        android:visibility="gone"
                                         android:layout_width="wrap_content"
                                         android:layout_height="0dp"
                                         android:layout_weight="2"
@@ -7900,7 +8545,7 @@
                                             android:layout_height="match_parent"
                                             android:gravity="center"
                                             android:padding="4dp"
-                                            android:text="D"
+                                            android:text=""
                                             android:textSize="10dp"></TextView>
 
                                         <View
@@ -8136,11 +8781,13 @@
                                     </LinearLayout>
 
                                     <View
+                                        android:visibility="gone"
                                         android:layout_width="match_parent"
                                         android:layout_height="1dp"
                                         android:background="#FF000000" />
 
                                     <LinearLayout
+                                        android:visibility="gone"
                                         android:layout_width="wrap_content"
                                         android:layout_height="0dp"
                                         android:layout_weight="2"
@@ -8399,6 +9046,311 @@
 
                             </LinearLayout>
 
+                            <!--for check and check-->
+                            <LinearLayout
+                                android:visibility="gone"
+                                android:layout_width="wrap_content"
+                                android:layout_height="50dp"
+                                android:background="@drawable/abc"
+                                android:orientation="horizontal">
+
+
+                                <TextView
+                                    android:layout_width="25dp"
+                                    android:layout_height="match_parent"
+                                    android:gravity="center"
+                                    android:padding="4dp"
+                                    android:text="3"
+                                    android:textSize="10dp"
+                                    android:textStyle="bold" />
+
+                                <View
+                                    android:layout_width="1dp"
+                                    android:layout_height="fill_parent"
+                                    android:background="#FF000000" />
+
+
+                                <TextView
+                                    android:layout_width="100dp"
+                                    android:layout_height="match_parent"
+                                    android:gravity="center"
+                                    android:padding="4dp"
+                                    android:text="Check on check"
+                                    android:textSize="10dp"/>
+
+                                <View
+                                    android:layout_width="1dp"
+                                    android:layout_height="match_parent"
+                                    android:background="#FF000000" />
+
+
+                                <TextView
+                                    android:layout_width="299dp"
+                                    android:layout_height="match_parent"
+                                    android:gravity="center"
+                                    android:text="Check on check for critical Process"
+                                    android:textSize="10dp"/>
+
+                                <View
+                                    android:layout_width="1dp"
+                                    android:layout_height="fill_parent"
+                                    android:background="#FF000000" />
+
+                                <TextView
+                                    android:layout_width="27dp"
+                                    android:layout_height="match_parent"
+                                    android:gravity="center"
+                                    android:padding="4dp"
+                                    android:text="2/M"
+                                    android:textSize="10dp"/>
+
+                                <View
+                                    android:layout_width="1dp"
+                                    android:layout_height="fill_parent"
+                                    android:background="#FF000000" />
+
+                                <TextView
+                                    android:layout_width="40dp"
+                                    android:layout_height="match_parent"
+                                    android:gravity="center"
+                                    android:padding="4dp"
+                                    android:text="1.0 Hrs"
+                                    android:textSize="10dp" />
+
+                                <View
+                                    android:layout_width="1dp"
+                                    android:layout_height="fill_parent"
+                                    android:background="#FF000000" />
+
+                                <TextView
+                                    android:layout_width="58dp"
+                                    android:layout_height="match_parent"
+                                    android:gravity="center"
+                                    android:padding="4dp"
+                                    android:text="1"
+                                    android:textSize="10sp"/>
+
+                                <View
+                                    android:layout_width="1dp"
+                                    android:layout_height="fill_parent"
+                                    android:background="#FF000000" />
+
+                                <TextView
+                                    android:layout_width="58dp"
+                                    android:layout_height="match_parent"
+                                    android:gravity="center"
+                                    android:padding="4dp"
+                                    android:text=""
+                                    android:textSize="10sp" />
+
+                                <View
+                                    android:layout_width="1dp"
+                                    android:layout_height="fill_parent"
+                                    android:background="#FF000000" />
+
+
+                                <!--<TextView-->
+                                <!--android:layout_width="200dp"-->
+                                <!--android:layout_height="match_parent"-->
+                                <!--android:gravity="center"-->
+                                <!--android:padding="2dp"-->
+                                <!--android:text="(Considering 20 Days Only)"-->
+                                <!--android:textSize="10dp" />-->
+
+                                <View
+                                    android:layout_width="1dp"
+                                    android:layout_height="fill_parent"
+                                    android:background="#FF000000" />
+
+
+                                <EditText
+                                    android:id="@+id/tv_check_1"
+                                    style="@style/editTextStyle"
+                                    android:layout_width="40dp"
+                                    android:layout_height="match_parent"
+                                    android:background="@drawable/light_line"
+                                    android:gravity="center"
+                                    android:imeOptions="actionDone"
+                                    android:inputType="number"
+                                    android:padding="4dp"
+                                    android:textSize="10dp"
+                                    android:visibility="gone"/>
+
+                                <TextView
+                                    android:id="@+id/tv_check_a"
+                                    android:layout_width="20dp"
+                                    android:layout_height="match_parent"
+                                    android:drawablePadding="1dp"
+                                    android:drawableTop="@drawable/comment"
+                                    android:onClick="onClick"
+                                    android:textSize="10dp"
+                                    android:visibility="gone"/>
+
+                                <View
+                                    android:id="@+id/tv_check_1_view"
+                                    android:layout_width="1dp"
+                                    android:layout_height="fill_parent"
+                                    android:background="#FF000000"
+                                    android:visibility="gone" />
+
+                                <EditText
+                                    android:id="@+id/tv_check_4"
+                                    android:layout_width="100dp"
+                                    android:layout_height="match_parent"
+                                    android:background="@drawable/commentoutlineview"
+                                    android:gravity="center"
+                                    android:hint="Comment"
+                                    android:imeOptions="actionDone"
+                                    android:inputType="textMultiLine"
+                                    android:lines="8"
+                                    android:maxLines="5"
+                                    android:minLines="6"
+                                    android:overScrollMode="always"
+                                    android:scrollbarStyle="insideInset"
+                                    android:scrollbars="vertical"
+                                    android:singleLine="false"
+                                    android:textAppearance="?android:attr/textAppearanceMedium"
+                                    android:textColor="#b1aeae"
+                                    android:textSize="10dp"
+                                    android:visibility="gone"/>
+
+                                <View
+                                    android:id="@+id/tv_check_4_view"
+                                    android:layout_width="1dp"
+                                    android:layout_height="fill_parent"
+                                    android:background="#FF000000"
+                                    android:visibility="gone" />
+
+                                <EditText
+                                    android:id="@+id/tv_check_2"
+                                    style="@style/editTextStyle"
+                                    android:layout_width="40dp"
+                                    android:layout_height="match_parent"
+                                    android:background="@drawable/light_line"
+                                    android:gravity="center"
+                                    android:imeOptions="actionDone"
+                                    android:inputType="number"
+                                    android:padding="4dp"
+                                    android:textSize="10dp"
+                                    android:visibility="gone"/>
+
+                                <TextView
+                                    android:id="@+id/tv_check_b"
+                                    android:layout_width="20dp"
+                                    android:layout_height="match_parent"
+                                    android:drawablePadding="1dp"
+                                    android:drawableTop="@drawable/comment"
+                                    android:onClick="onClick"
+                                    android:textSize="10dp"
+                                    android:visibility="gone"/>
+
+                                <View
+                                    android:id="@+id/tv_check_2_view"
+                                    android:layout_width="1dp"
+                                    android:layout_height="fill_parent"
+                                    android:background="#FF000000"
+                                    android:visibility="gone" />
+
+                                <EditText
+                                    android:id="@+id/tv_check_5"
+                                    android:layout_width="100dp"
+                                    android:layout_height="match_parent"
+
+                                    android:background="@drawable/commentoutlineview"
+                                    android:gravity="center"
+                                    android:hint="Comment"
+                                    android:imeOptions="actionDone"
+                                    android:inputType="textMultiLine"
+                                    android:lines="8"
+                                    android:maxLines="5"
+                                    android:minLines="6"
+                                    android:overScrollMode="always"
+                                    android:scrollbarStyle="insideInset"
+                                    android:scrollbars="vertical"
+                                    android:singleLine="false"
+                                    android:textAppearance="?android:attr/textAppearanceMedium"
+                                    android:textColor="#b1aeae"
+                                    android:textSize="10dp"
+                                    android:visibility="gone"/>
+
+                                <View
+                                    android:id="@+id/tv_check_5_view"
+                                    android:layout_width="1dp"
+                                    android:layout_height="fill_parent"
+                                    android:background="#FF000000"
+                                    android:visibility="gone" />
+
+
+                                <EditText
+                                    android:id="@+id/tv_check_3"
+                                    style="@style/editTextStyle"
+                                    android:layout_width="40dp"
+                                    android:layout_height="match_parent"
+                                    android:background="@drawable/light_line"
+                                    android:gravity="center"
+                                    android:imeOptions="actionDone"
+                                    android:inputType="number"
+                                    android:padding="4dp"
+                                    android:textSize="10dp"/>
+
+                                <TextView
+                                    android:id="@+id/tv_check_c"
+                                    android:layout_width="20dp"
+                                    android:layout_height="match_parent"
+                                    android:drawablePadding="1dp"
+                                    android:drawableTop="@drawable/comment"
+                                    android:onClick="onClick"
+                                    android:textSize="10dp"/>
+
+                                <View
+                                    android:id="@+id/tv_check_c_view"
+                                    android:layout_width="1dp"
+                                    android:layout_height="fill_parent"
+                                    android:background="#FF000000" />
+
+                                <EditText
+                                    android:id="@+id/tv_check_6"
+                                    android:layout_width="100dp"
+                                    android:layout_height="match_parent"
+                                    android:background="@drawable/commentoutlineview"
+                                    android:gravity="center"
+                                    android:hint="Comment"
+                                    android:imeOptions="actionDone"
+                                    android:inputType="textMultiLine"
+                                    android:lines="8"
+                                    android:maxLines="5"
+                                    android:minLines="6"
+                                    android:overScrollMode="always"
+                                    android:scrollbarStyle="insideInset"
+                                    android:scrollbars="vertical"
+                                    android:singleLine="false"
+                                    android:textAppearance="?android:attr/textAppearanceMedium"
+                                    android:textColor="#b1aeae"
+                                    android:textSize="10dp"
+                                    android:visibility="gone"/>
+
+
+                            </LinearLayout>
+
+
+
+
+
+
+
+
+
+
+                            <!--5-->
+
+
+                            <!--8-->
+
+                            <!--9-->
+
+
+
+
                             <View
                                 android:layout_width="match_parent"
                                 android:layout_height="1dp"
@@ -8477,7 +9429,7 @@
                                     android:layout_height="wrap_content"
                                     android:gravity="center"
                                     android:padding="4dp"
-                                    android:text="199.5"
+                                    android:text="196.75"
                                     android:textSize="10dp"
                                     android:textStyle="bold" />
 
@@ -8493,7 +9445,7 @@
                                     android:layout_height="wrap_content"
                                     android:gravity="center"
                                     android:padding="2dp"
-                                    android:text="100"
+                                    android:text="98%"
                                     android:textSize="10dp"
                                     android:textStyle="bold" />
 
@@ -8660,7 +9612,7 @@
                                     android:layout_height="wrap_content"
                                     android:gravity="center"
                                     android:padding="2dp"
-                                    android:text="99"
+                                    android:text=""
                                     android:textSize="10dp"
                                     android:textStyle="bold" />
 
