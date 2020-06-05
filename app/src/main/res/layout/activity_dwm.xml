@@ -36,9 +36,7 @@
                 android:text="Daily Work Management----Plant Head"
                 android:textSize="16dp"
                 android:textStyle="bold"
-                android:typeface="serif"
-
-                />
+                android:typeface="serif" />
 
 
             <!--<ImageView-->
@@ -767,7 +765,6 @@
                                     android:id="@+id/tv_1_5a"
                                     android:layout_width="100dp"
                                     android:layout_height="match_parent"
-
                                     android:background="@drawable/commentoutlineview"
                                     android:gravity="center"
                                     android:hint="Comment"
@@ -825,7 +822,6 @@
                                     android:id="@+id/tv_1_6a"
                                     android:layout_width="100dp"
                                     android:layout_height="match_parent"
-
                                     android:background="@drawable/commentoutlineview"
                                     android:gravity="center"
                                     android:hint="Comment"
@@ -1632,7 +1628,6 @@
                                     android:id="@+id/tv_2_1b4"
                                     android:layout_width="100dp"
                                     android:layout_height="match_parent"
-
                                     android:background="@drawable/commentoutlineview"
                                     android:gravity="center"
                                     android:hint="Comment"
@@ -1751,7 +1746,6 @@
                                     android:id="@+id/tv_2_6b"
                                     android:layout_width="100dp"
                                     android:layout_height="match_parent"
-
                                     android:background="@drawable/commentoutlineview"
                                     android:gravity="center"
                                     android:hint="Comment"
@@ -1763,7 +1757,6 @@
                                     android:overScrollMode="always"
                                     android:scrollbarStyle="insideInset"
                                     android:scrollbars="vertical"
-
                                     android:singleLine="false"
                                     android:textAppearance="?android:attr/textAppearanceMedium"
                                     android:textColor="#b1aeae"
@@ -1929,7 +1922,6 @@
                                     android:id="@+id/tv_2_1c4"
                                     android:layout_width="100dp"
                                     android:layout_height="match_parent"
-
                                     android:background="@drawable/commentoutlineview"
                                     android:gravity="center"
                                     android:hint="Comment"
@@ -1990,7 +1982,6 @@
                                     android:id="@+id/tv_2_1c5"
                                     android:layout_width="100dp"
                                     android:layout_height="match_parent"
-
                                     android:background="@drawable/commentoutlineview"
                                     android:gravity="center"
                                     android:hint="Comment"
@@ -2002,7 +1993,6 @@
                                     android:overScrollMode="always"
                                     android:scrollbarStyle="insideInset"
                                     android:scrollbars="vertical"
-
                                     android:singleLine="false"
                                     android:textAppearance="?android:attr/textAppearanceMedium"
                                     android:textColor="#b1aeae"
@@ -2048,7 +2038,6 @@
                                     android:id="@+id/tv_2_6c"
                                     android:layout_width="100dp"
                                     android:layout_height="match_parent"
-
                                     android:background="@drawable/commentoutlineview"
                                     android:gravity="center"
                                     android:hint="Comment"
@@ -3791,7 +3780,7 @@
                                         android:layout_height="50dp"
                                         android:background="@drawable/doted_line"
                                         android:gravity="center"
-                                        android:text="Unit QCD review against Budget/MIS/PQCDSM targets"
+                                        android:text="Unit QCD review against Budget/MIS/SQPCDM targets"
                                         android:textSize="10dp"></TextView>
 
                                     <TextView
@@ -4786,7 +4775,7 @@
                                         android:layout_height="50dp"
                                         android:background="@drawable/doted_line"
                                         android:gravity="center"
-                                        android:text="System Meeting (Product/Process Audit)"
+                                        android:text="System Meeting (System/Product/Process Audit)"
                                         android:textSize="10dp"></TextView>
                                     <TextView
                                         android:layout_width="match_parent"
@@ -5238,17 +5227,29 @@
 
 
                                 <LinearLayout
+                                    android:visibility="gone"
                                     android:id="@+id/layout_8_1"
                                     android:layout_width="40dp"
                                     android:layout_height="wrap_content"
                                     android:orientation="vertical"
-                                    android:visibility="gone">
+                                    >
 
                                     <EditText
                                         style="@style/editTextStyle"
                                         android:id="@+id/et_8_1_1"
                                         android:layout_width="match_parent"
-                                        android:layout_height="250dp"
+                                        android:layout_height="50dp"
+                                        android:background="@drawable/darkline"
+                                        android:gravity="center"
+                                        android:imeOptions="actionDone"
+                                        android:inputType="number"
+                                        android:textSize="10dp"></EditText>
+
+                                    <EditText
+                                        style="@style/editTextStyle"
+                                        android:id="@+id/et_8_1_1_best_review"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="50dp"
                                         android:background="@drawable/darkline"
                                         android:gravity="center"
                                         android:imeOptions="actionDone"
@@ -5265,6 +5266,18 @@
                                         android:imeOptions="actionDone"
                                         android:inputType="number"
                                         android:textSize="10dp"></EditText>
+
+                                    <EditText
+                                        style="@style/editTextStyle"
+                                        android:id="@+id/et_8_1_2_unitReview"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="50dp"
+                                        android:background="@drawable/darkline"
+                                        android:gravity="center"
+                                        android:imeOptions="actionDone"
+                                        android:inputType="number"
+                                        android:textSize="10dp"></EditText>
+
 
                                     <EditText
                                         style="@style/editTextStyle"
@@ -5321,7 +5334,6 @@
                                         android:gravity="center"
                                         android:imeOptions="actionDone"
                                         android:inputType="number"
-                                        android:visibility="gone"
                                         android:textSize="10dp"></EditText>
 
                                     <EditText
@@ -5333,7 +5345,6 @@
                                         android:gravity="center"
                                         android:imeOptions="actionDone"
                                         android:inputType="number"
-                                        android:visibility="gone"
                                         android:textSize="10dp"></EditText>
 
 
@@ -5369,7 +5380,39 @@
                                         android:orientation="vertical">
 
                                         <TextView
+                                            android:id="@+id/tv_8_a1_bestReview"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="50dp"
+                                            android:drawablePadding="1dp"
+                                            android:drawableTop="@drawable/comment"
+                                            android:onClick="onClick"
+                                            android:textSize="10dp"></TextView>
+                                    </LinearLayout>
+
+                                    <LinearLayout
+                                        android:layout_width="20dp"
+                                        android:layout_height="wrap_content"
+                                        android:background="@drawable/darkline"
+                                        android:orientation="vertical">
+
+                                        <TextView
                                             android:id="@+id/tv_8_a2"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="50dp"
+                                            android:drawablePadding="1dp"
+                                            android:drawableTop="@drawable/comment"
+                                            android:onClick="onClick"
+                                            android:textSize="10dp"></TextView>
+                                    </LinearLayout>
+
+                                    <LinearLayout
+                                        android:layout_width="20dp"
+                                        android:layout_height="wrap_content"
+                                        android:background="@drawable/darkline"
+                                        android:orientation="vertical">
+
+                                        <TextView
+                                            android:id="@+id/tv_8_a2_unitReview"
                                             android:layout_width="match_parent"
                                             android:layout_height="50dp"
                                             android:drawablePadding="1dp"
@@ -5493,6 +5536,25 @@
                                         android:id="@+id/cmt8_1_1"
                                         android:layout_width="100dp"
                                         android:layout_height="50dp"
+                                        android:background="@drawable/commentoutlineview"
+                                        android:gravity="center"
+                                        android:hint="Comment"
+                                        android:imeOptions="actionDone"
+                                        android:inputType="textMultiLine"
+                                        android:lines="8"
+                                        android:maxLines="5"
+                                        android:minLines="6"
+                                        android:overScrollMode="always"
+                                        android:scrollbarStyle="insideInset"
+                                        android:scrollbars="vertical"
+                                        android:singleLine="false"
+                                        android:textAppearance="?android:attr/textAppearanceMedium"
+                                        android:textColor="#b1aeae"
+                                        android:textSize="10dp"></EditText>
+                                    <EditText
+                                        android:id="@+id/cmt8_1_1_bestReview"
+                                        android:layout_width="100dp"
+                                        android:layout_height="50dp"
 
                                         android:background="@drawable/commentoutlineview"
                                         android:gravity="center"
@@ -5512,6 +5574,27 @@
 
                                     <EditText
                                         android:id="@+id/cmt8_1_2"
+                                        android:layout_width="100dp"
+                                        android:layout_height="50dp"
+
+                                        android:background="@drawable/commentoutlineview"
+                                        android:gravity="center"
+                                        android:hint="Comment"
+                                        android:imeOptions="actionDone"
+                                        android:inputType="textMultiLine"
+                                        android:lines="8"
+                                        android:maxLines="5"
+                                        android:minLines="6"
+                                        android:overScrollMode="always"
+                                        android:scrollbarStyle="insideInset"
+                                        android:scrollbars="vertical"
+                                        android:singleLine="false"
+                                        android:textAppearance="?android:attr/textAppearanceMedium"
+                                        android:textColor="#b1aeae"
+                                        android:textSize="10dp"></EditText>
+
+                                    <EditText
+                                        android:id="@+id/cmt8_1_2_unitReview"
                                         android:layout_width="100dp"
                                         android:layout_height="50dp"
 
@@ -5683,10 +5766,30 @@
                                         android:imeOptions="actionDone"
                                         android:inputType="number"
                                         android:textSize="10dp"></EditText>
+                                    <EditText
+                                        style="@style/editTextStyle"
+                                        android:id="@+id/et_8_2_1_bestReview"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="50dp"
+                                        android:background="@drawable/darkline"
+                                        android:gravity="center"
+                                        android:imeOptions="actionDone"
+                                        android:inputType="number"
+                                        android:textSize="10dp"></EditText>
 
                                     <EditText
                                         style="@style/editTextStyle"
                                         android:id="@+id/et_8_2_2"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="50dp"
+                                        android:background="@drawable/darkline"
+                                        android:gravity="center"
+                                        android:imeOptions="actionDone"
+                                        android:inputType="number"
+                                        android:textSize="10dp"></EditText>
+                                    <EditText
+                                        style="@style/editTextStyle"
+                                        android:id="@+id/et_8_2_2_unitReview"
                                         android:layout_width="match_parent"
                                         android:layout_height="50dp"
                                         android:background="@drawable/darkline"
@@ -5787,6 +5890,22 @@
                                             android:textSize="10dp"></TextView>
                                     </LinearLayout>
 
+                                        <LinearLayout
+                                            android:layout_width="20dp"
+                                            android:layout_height="wrap_content"
+                                            android:background="@drawable/darkline"
+                                            android:orientation="vertical">
+
+                                            <TextView
+                                                android:id="@+id/tv_8_b1_bestReview"
+                                                android:layout_width="match_parent"
+                                                android:layout_height="50dp"
+                                                android:drawablePadding="1dp"
+                                                android:drawableTop="@drawable/comment"
+                                                android:onClick="onClick"
+                                                android:textSize="10dp"></TextView>
+                                    </LinearLayout>
+
                                     <LinearLayout
                                         android:layout_width="20dp"
                                         android:layout_height="wrap_content"
@@ -5802,6 +5921,21 @@
                                             android:onClick="onClick"
                                             android:textSize="10dp"></TextView>
                                     </LinearLayout>
+                                        <LinearLayout
+                                            android:layout_width="20dp"
+                                            android:layout_height="wrap_content"
+                                            android:background="@drawable/darkline"
+                                            android:orientation="vertical">
+
+                                            <TextView
+                                                android:id="@+id/tv_8_b2_unitReview"
+                                                android:layout_width="match_parent"
+                                                android:layout_height="50dp"
+                                                android:drawablePadding="1dp"
+                                                android:drawableTop="@drawable/comment"
+                                                android:onClick="onClick"
+                                                android:textSize="10dp"></TextView>
+                                        </LinearLayout>
 
                                     <LinearLayout
                                         android:layout_width="20dp"
@@ -5937,7 +6071,51 @@
                                         android:textSize="10dp"></EditText>
 
                                     <EditText
+                                        android:id="@+id/cmt8_2_1_bestReview"
+                                        android:layout_width="100dp"
+                                        android:layout_height="50dp"
+
+                                        android:background="@drawable/commentoutlineview"
+                                        android:gravity="center"
+                                        android:hint="Comment"
+                                        android:imeOptions="actionDone"
+                                        android:inputType="textMultiLine"
+                                        android:lines="8"
+                                        android:maxLines="5"
+                                        android:minLines="6"
+                                        android:overScrollMode="always"
+                                        android:scrollbarStyle="insideInset"
+                                        android:scrollbars="vertical"
+                                        android:singleLine="false"
+                                        android:textAppearance="?android:attr/textAppearanceMedium"
+                                        android:textColor="#b1aeae"
+                                        android:textSize="10dp"></EditText>
+
+
+
+                                    <EditText
                                         android:id="@+id/cmt8_2_2"
+                                        android:layout_width="100dp"
+                                        android:layout_height="50dp"
+
+                                        android:background="@drawable/commentoutlineview"
+                                        android:gravity="center"
+                                        android:hint="Comment"
+                                        android:imeOptions="actionDone"
+                                        android:inputType="textMultiLine"
+                                        android:lines="8"
+                                        android:maxLines="5"
+                                        android:minLines="6"
+                                        android:overScrollMode="always"
+                                        android:scrollbarStyle="insideInset"
+                                        android:scrollbars="vertical"
+                                        android:singleLine="false"
+                                        android:textAppearance="?android:attr/textAppearanceMedium"
+                                        android:textColor="#b1aeae"
+                                        android:textSize="10dp"></EditText>
+
+                                    <EditText
+                                        android:id="@+id/cmt8_2_2_unitReview"
                                         android:layout_width="100dp"
                                         android:layout_height="50dp"
 
@@ -6102,7 +6280,17 @@
                                         style="@style/editTextStyle"
                                         android:id="@+id/et_8_3_1"
                                         android:layout_width="match_parent"
-                                        android:layout_height="250dp"
+                                        android:layout_height="50dp"
+                                        android:background="@drawable/darkline"
+                                        android:gravity="center"
+                                        android:imeOptions="actionDone"
+                                        android:inputType="number"
+                                        android:textSize="10dp"></EditText>
+                                    <EditText
+                                        style="@style/editTextStyle"
+                                        android:id="@+id/et_8_3_1_bestReview"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="50dp"
                                         android:background="@drawable/darkline"
                                         android:gravity="center"
                                         android:imeOptions="actionDone"
@@ -6112,6 +6300,16 @@
                                     <EditText
                                         style="@style/editTextStyle"
                                         android:id="@+id/et_8_3_2"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="50dp"
+                                        android:background="@drawable/darkline"
+                                        android:gravity="center"
+                                        android:imeOptions="actionDone"
+                                        android:inputType="number"
+                                        android:textSize="10dp"></EditText>
+                                    <EditText
+                                        style="@style/editTextStyle"
+                                        android:id="@+id/et_8_3_2_unitReview"
                                         android:layout_width="match_parent"
                                         android:layout_height="50dp"
                                         android:background="@drawable/darkline"
@@ -6168,7 +6366,6 @@
                                     <EditText
                                         style="@style/editTextStyle"
                                         android:id="@+id/et_8_3_7"
-                                        android:visibility="gone"
                                         android:layout_width="match_parent"
                                         android:layout_height="50dp"
                                         android:background="@drawable/darkline"
@@ -6179,7 +6376,6 @@
 
                                     <EditText
                                         style="@style/editTextStyle"
-                                        android:visibility="gone"
                                         android:id="@+id/et_8_3_8"
                                         android:layout_width="match_parent"
                                         android:layout_height="50dp"
@@ -6207,7 +6403,23 @@
                                         <TextView
                                             android:id="@+id/tv_8_c1"
                                             android:layout_width="match_parent"
-                                            android:layout_height="250dp"
+                                            android:layout_height="50dp"
+                                            android:drawablePadding="1dp"
+                                            android:drawableTop="@drawable/comment"
+                                            android:onClick="onClick"
+                                            android:textSize="10dp"></TextView>
+                                    </LinearLayout>
+
+                                    <LinearLayout
+                                        android:layout_width="20dp"
+                                        android:layout_height="wrap_content"
+                                        android:background="@drawable/darkline"
+                                        android:orientation="vertical">
+
+                                        <TextView
+                                            android:id="@+id/tv_8_c1_bestReview"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="50dp"
                                             android:drawablePadding="1dp"
                                             android:drawableTop="@drawable/comment"
                                             android:onClick="onClick"
@@ -6222,6 +6434,21 @@
 
                                         <TextView
                                             android:id="@+id/tv_8_c2"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="50dp"
+                                            android:drawablePadding="1dp"
+                                            android:drawableTop="@drawable/comment"
+                                            android:onClick="onClick"
+                                            android:textSize="10dp"></TextView>
+                                    </LinearLayout>
+                                    <LinearLayout
+                                        android:layout_width="20dp"
+                                        android:layout_height="wrap_content"
+                                        android:background="@drawable/darkline"
+                                        android:orientation="vertical">
+
+                                        <TextView
+                                            android:id="@+id/tv_8_c2_unitReview"
                                             android:layout_width="match_parent"
                                             android:layout_height="50dp"
                                             android:drawablePadding="1dp"
@@ -6360,6 +6587,26 @@
                                         android:textAppearance="?android:attr/textAppearanceMedium"
                                         android:textColor="#b1aeae"
                                         android:textSize="10dp"></EditText>
+                                    <EditText
+                                        android:id="@+id/cmt8_3_1_bestReview"
+                                        android:layout_width="100dp"
+                                        android:layout_height="50dp"
+
+                                        android:background="@drawable/commentoutlineview"
+                                        android:gravity="center"
+                                        android:hint="Comment"
+                                        android:imeOptions="actionDone"
+                                        android:inputType="textMultiLine"
+                                        android:lines="8"
+                                        android:maxLines="5"
+                                        android:minLines="6"
+                                        android:overScrollMode="always"
+                                        android:scrollbarStyle="insideInset"
+                                        android:scrollbars="vertical"
+                                        android:singleLine="false"
+                                        android:textAppearance="?android:attr/textAppearanceMedium"
+                                        android:textColor="#b1aeae"
+                                        android:textSize="10dp"></EditText>
 
                                     <EditText
                                         android:id="@+id/cmt8_3_2"
@@ -6381,6 +6628,28 @@
                                         android:textAppearance="?android:attr/textAppearanceMedium"
                                         android:textColor="#b1aeae"
                                         android:textSize="10dp"></EditText>
+
+                                    <EditText
+                                        android:id="@+id/cmt8_3_2_unitReview"
+                                        android:layout_width="100dp"
+                                        android:layout_height="50dp"
+
+                                        android:background="@drawable/commentoutlineview"
+                                        android:gravity="center"
+                                        android:hint="Comment"
+                                        android:imeOptions="actionDone"
+                                        android:inputType="textMultiLine"
+                                        android:lines="8"
+                                        android:maxLines="5"
+                                        android:minLines="6"
+                                        android:overScrollMode="always"
+                                        android:scrollbarStyle="insideInset"
+                                        android:scrollbars="vertical"
+                                        android:singleLine="false"
+                                        android:textAppearance="?android:attr/textAppearanceMedium"
+                                        android:textColor="#b1aeae"
+                                        android:textSize="10dp"></EditText>
+
 
                                     <EditText
                                         android:id="@+id/cmt8_3_3"
@@ -6567,7 +6836,7 @@
                                         android:layout_height="match_parent"
                                         android:background="@drawable/doted_line"
                                         android:gravity="center"
-                                        android:text="6 in 1 -Review and Actions"
+                                        android:text="COPQ Review and Actions"
                                         android:textSize="10dp"></TextView>
 
                                     <TextView
@@ -7635,7 +7904,7 @@
 
                             <LinearLayout
                                 android:layout_width="wrap_content"
-                                android:layout_height="50dp"
+                                android:layout_height="200dp"
                                 android:orientation="horizontal">
 
 
@@ -7662,7 +7931,7 @@
                                     android:layout_height="match_parent"
                                     android:gravity="center"
                                     android:padding="4dp"
-                                    android:text="Other Activity"
+                                    android:text="Other Activities"
                                     android:textSize="10dp"></TextView>
 
                                 <View
@@ -7674,7 +7943,7 @@
                                     android:layout_width="299dp"
                                     android:layout_height="match_parent"
                                     android:orientation="vertical"
-                                    android:weightSum="4">
+                                    android:weightSum="10">
 
 
                                     <TextView
@@ -7684,7 +7953,7 @@
                                         android:layout_weight="2"
                                         android:background="@drawable/doted_line"
                                         android:gravity="center"
-                                        android:text=""
+                                        android:text="Activity A"
                                         android:textSize="10dp"></TextView>
 
                                     <TextView
@@ -7692,12 +7961,12 @@
                                         android:layout_width="299dp"
                                         android:layout_height="0dp"
                                         android:layout_weight="2"
+                                        android:background="@drawable/doted_line"
                                         android:gravity="center"
-                                        android:text=""
+                                        android:text="Activity B"
                                         android:textSize="10dp"></TextView>
 
                                     <TextView
-                                        android:visibility="gone"
                                         android:id="@+id/textView63"
                                         android:layout_width="299dp"
                                         android:layout_height="0dp"
@@ -7708,7 +7977,6 @@
                                         android:textSize="10dp"></TextView>
 
                                     <TextView
-                                        android:visibility="gone"
                                         android:id="@+id/textView64"
                                         android:layout_width="299dp"
                                         android:layout_height="0dp"
@@ -7719,7 +7987,6 @@
                                         android:textSize="10dp"></TextView>
 
                                     <TextView
-                                        android:visibility="gone"
                                         android:id="@+id/textView65"
                                         android:layout_width="299dp"
                                         android:layout_height="0dp"
@@ -7733,7 +8000,7 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="match_parent"
                                     android:orientation="vertical"
-                                    android:weightSum="4">
+                                    android:weightSum="10">
 
                                     <LinearLayout
                                         android:layout_width="wrap_content"
@@ -7975,6 +8242,7 @@
                                             android:id="@+id/tv_10_6"
                                             android:layout_width="100dp"
                                             android:layout_height="match_parent"
+
                                             android:background="@drawable/commentoutlineview"
                                             android:gravity="center"
                                             android:hint="Comment"
@@ -8255,7 +8523,6 @@
                                     </LinearLayout>
 
                                     <View
-                                        android:visibility="gone"
                                         android:layout_width="match_parent"
                                         android:layout_height="1dp"
                                         android:background="#FF000000" />
@@ -8517,14 +8784,11 @@
                                     </LinearLayout>
 
                                     <View
-                                        android:visibility="gone"
-
                                         android:layout_width="match_parent"
                                         android:layout_height="1dp"
                                         android:background="#FF000000" />
 
                                     <LinearLayout
-                                        android:visibility="gone"
                                         android:layout_width="wrap_content"
                                         android:layout_height="0dp"
                                         android:layout_weight="2"
@@ -8558,7 +8822,7 @@
                                             android:layout_height="match_parent"
                                             android:gravity="center"
                                             android:padding="4dp"
-                                            android:text="1Hrs"
+                                            android:text=""
                                             android:textSize="10dp" />
 
                                         <View
@@ -8571,7 +8835,7 @@
                                             android:layout_height="match_parent"
                                             android:gravity="center"
                                             android:padding="4dp"
-                                            android:text="20"
+                                            android:text=""
                                             android:textSize="10dp"></TextView>
 
                                         <View
@@ -8585,7 +8849,7 @@
                                             android:gravity="center"
 
                                             android:padding="4dp"
-                                            android:text="10.0%"
+                                            android:text=""
 
                                             android:textSize="10dp" />
 
@@ -8781,13 +9045,11 @@
                                     </LinearLayout>
 
                                     <View
-                                        android:visibility="gone"
                                         android:layout_width="match_parent"
                                         android:layout_height="1dp"
                                         android:background="#FF000000" />
 
                                     <LinearLayout
-                                        android:visibility="gone"
                                         android:layout_width="wrap_content"
                                         android:layout_height="0dp"
                                         android:layout_weight="2"
@@ -8808,7 +9070,7 @@
                                             android:layout_height="match_parent"
                                             android:gravity="center"
                                             android:padding="4dp"
-                                            android:text="D"
+                                            android:text=""
                                             android:textSize="10dp"></TextView>
 
                                         <View
@@ -8821,7 +9083,7 @@
                                             android:layout_height="match_parent"
                                             android:gravity="center"
                                             android:padding="4dp"
-                                            android:text="1Hrs"
+                                            android:text=""
                                             android:textSize="10dp" />
 
                                         <View
@@ -8834,7 +9096,7 @@
                                             android:layout_height="match_parent"
                                             android:gravity="center"
                                             android:padding="4dp"
-                                            android:text="20"
+                                            android:text=""
                                             android:textSize="10dp"></TextView>
 
                                         <View
@@ -8848,7 +9110,7 @@
                                             android:gravity="center"
 
                                             android:padding="4dp"
-                                            android:text="10.0%"
+                                            android:text=""
 
                                             android:textSize="10dp" />
 
