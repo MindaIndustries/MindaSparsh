@@ -1,0 +1,285 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <include layout="@layout/toolbar"/>
+
+
+    <RelativeLayout
+        android:padding="20dp"
+        android:layout_marginTop="?attr/actionBarSize"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <View
+            android:id="@+id/view"
+            android:layout_centerInParent="true"
+            android:layout_width="0dp"
+            android:layout_height="1dp"/>
+
+        <TextView
+            android:fontFamily="@font/museosans_500"
+            android:id="@+id/heading"
+            android:textSize="18sp"
+            android:text="Unsafe Act/Unsafe Condition/ Near Miss /	Accident Reporting Form"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+
+        <TextView
+            android:layout_marginTop="30dp"
+            android:id="@+id/obs_date"
+            android:text="Observation Date :"
+            android:textSize="16sp"
+            android:textColor="@color/black"
+            android:fontFamily="@font/museosans_300"
+            android:layout_below="@+id/heading"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <Spinner
+            android:layout_marginTop="30dp"
+            style="@style/lipstick_spinner_header_style"
+            android:id="@+id/obs_date_spinner"
+            android:spinnerMode="dropdown"
+            android:popupElevation="6dp"
+            android:layout_below="@+id/heading"
+            android:dropDownVerticalOffset="20dp"
+            android:layout_alignParentRight="true"
+            android:layout_width="match_parent"
+            android:layout_toRightOf="@+id/view"
+            android:layout_height="wrap_content"></Spinner>
+
+        <LinearLayout
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="#414042"
+            android:layout_below="@+id/obs_date"
+            android:orientation="horizontal"
+            android:id="@+id/ll1"></LinearLayout>
+
+
+        <TextView
+            android:layout_marginTop="30dp"
+            android:id="@+id/unit"
+            android:text="Unit :"
+            android:textSize="16sp"
+            android:textColor="@color/black"
+            android:fontFamily="@font/museosans_300"
+            android:layout_below="@+id/ll1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <Spinner
+            android:layout_marginTop="30dp"
+            style="@style/lipstick_spinner_header_style"
+            android:id="@+id/unit_spinner"
+            android:spinnerMode="dropdown"
+            android:popupElevation="6dp"
+            android:layout_below="@+id/ll1"
+            android:dropDownVerticalOffset="20dp"
+            android:layout_alignParentRight="true"
+            android:layout_width="match_parent"
+            android:layout_toRightOf="@+id/view"
+            android:layout_height="wrap_content"></Spinner>
+
+        <LinearLayout
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="#414042"
+            android:layout_below="@+id/unit"
+            android:orientation="horizontal"
+            android:id="@+id/ll2"></LinearLayout>
+        <TextView
+            android:layout_marginTop="30dp"
+            android:id="@+id/typeofObs"
+            android:text="Type of Observation :"
+            android:textSize="16sp"
+            android:textColor="@color/black"
+            android:fontFamily="@font/museosans_300"
+            android:layout_below="@+id/ll2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <Spinner
+            android:layout_marginTop="30dp"
+            style="@style/lipstick_spinner_header_style"
+            android:id="@+id/type_spinner"
+            android:spinnerMode="dropdown"
+            android:popupElevation="6dp"
+            android:layout_below="@+id/ll2"
+            android:dropDownVerticalOffset="20dp"
+            android:layout_alignParentRight="true"
+            android:layout_width="match_parent"
+            android:layout_toRightOf="@+id/view"
+            android:layout_height="wrap_content"></Spinner>
+
+        <LinearLayout
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="#414042"
+            android:layout_below="@+id/typeofObs"
+            android:orientation="horizontal"
+            android:id="@+id/ll3"></LinearLayout>
+
+        <TextView
+            android:layout_marginTop="30dp"
+            android:id="@+id/safety_officer"
+            android:text="Safety Officer"
+            android:textSize="16sp"
+            android:textColor="@color/black"
+            android:fontFamily="@font/museosans_300"
+            android:layout_below="@+id/ll3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <Spinner
+            android:layout_marginTop="30dp"
+            style="@style/lipstick_spinner_header_style"
+            android:id="@+id/safety_officer_spinner"
+            android:spinnerMode="dropdown"
+            android:popupElevation="6dp"
+            android:layout_below="@+id/ll3"
+            android:dropDownVerticalOffset="20dp"
+            android:layout_alignParentRight="true"
+            android:layout_width="match_parent"
+            android:layout_toRightOf="@+id/view"
+            android:layout_height="wrap_content"></Spinner>
+
+        <LinearLayout
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="#414042"
+            android:layout_below="@+id/safety_officer"
+            android:orientation="horizontal"
+            android:id="@+id/ll4"></LinearLayout>
+
+        <TextView
+            android:layout_marginTop="30dp"
+            android:id="@+id/identified_loc"
+            android:text="Identified Location :"
+            android:textSize="16sp"
+            android:textColor="@color/black"
+            android:fontFamily="@font/museosans_300"
+            android:layout_below="@+id/ll4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <Spinner
+            android:layout_marginTop="30dp"
+            style="@style/lipstick_spinner_header_style"
+            android:id="@+id/identified_loc_spinner"
+            android:spinnerMode="dropdown"
+            android:popupElevation="6dp"
+            android:layout_below="@+id/ll4"
+            android:dropDownVerticalOffset="20dp"
+            android:layout_alignParentRight="true"
+            android:layout_width="match_parent"
+            android:layout_toRightOf="@+id/view"
+            android:layout_height="wrap_content"></Spinner>
+
+        <LinearLayout
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="#414042"
+            android:layout_below="@+id/identified_loc"
+            android:orientation="horizontal"
+            android:id="@+id/ll5"></LinearLayout>
+        <TextView
+            android:layout_marginTop="30dp"
+            android:id="@+id/category"
+            android:text="Category :"
+            android:textSize="16sp"
+            android:textColor="@color/black"
+            android:fontFamily="@font/museosans_300"
+            android:layout_below="@+id/ll5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <Spinner
+            android:layout_marginTop="30dp"
+            style="@style/lipstick_spinner_header_style"
+            android:id="@+id/category_spinner"
+            android:spinnerMode="dropdown"
+            android:popupElevation="6dp"
+            android:layout_below="@+id/ll5"
+            android:dropDownVerticalOffset="20dp"
+            android:layout_alignParentRight="true"
+            android:layout_width="match_parent"
+            android:layout_toRightOf="@+id/view"
+            android:layout_height="wrap_content"></Spinner>
+
+        <LinearLayout
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="#414042"
+            android:layout_below="@+id/category"
+            android:orientation="horizontal"
+            android:id="@+id/ll6"></LinearLayout>
+
+
+        <TextView
+            android:layout_marginTop="30dp"
+            android:id="@+id/sub_category"
+            android:text="Sub Category :"
+            android:textSize="16sp"
+            android:textColor="@color/black"
+            android:fontFamily="@font/museosans_300"
+            android:layout_below="@+id/ll6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <Spinner
+            android:layout_marginTop="30dp"
+            style="@style/lipstick_spinner_header_style"
+            android:id="@+id/sub_category_spinner"
+            android:spinnerMode="dropdown"
+            android:popupElevation="6dp"
+            android:layout_below="@+id/ll6"
+            android:dropDownVerticalOffset="20dp"
+            android:layout_alignParentRight="true"
+            android:layout_width="match_parent"
+            android:layout_toRightOf="@+id/view"
+            android:layout_height="wrap_content"></Spinner>
+
+        <LinearLayout
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="#414042"
+            android:layout_below="@+id/sub_category"
+            android:orientation="horizontal"
+            android:id="@+id/ll7"></LinearLayout>
+
+
+       <TextView
+            android:layout_marginTop="30dp"
+            android:id="@+id/description"
+            android:text="Description :"
+            android:textSize="16sp"
+            android:textColor="@color/black"
+            android:fontFamily="@font/museosans_300"
+            android:layout_below="@+id/ll7"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+
+        <EditText
+            android:layout_below="@+id/ll7"
+            android:id="@+id/description_et"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:background="@drawable/rec_bg"
+
+            />
+
+
+    </RelativeLayout>
+
+
+</RelativeLayout>

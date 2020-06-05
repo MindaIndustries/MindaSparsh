@@ -12,8 +12,13 @@
     <style name="AppTheme.NoActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
+        <item name="android:statusBarColor">#000000</item>
+
     </style>
 
+    <style name="lipstick_spinner_header_style">
+    <item name="android:background">@drawable/spinner_bg</item>
+    </style>
     <style name="AppTheme.NoStatusbar">
         <item name="android:windowFullscreen">true</item>
         <item name="windowNoTitle">true</item>

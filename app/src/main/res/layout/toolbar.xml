@@ -41,7 +41,7 @@
                 android:textColor="@android:color/white"
                 android:id="@+id/title"
                 android:visibility="visible"
-                android:text="Environment Health &amp; Safety"
+                android:text=""
                 android:layout_marginRight="?android:attr/actionBarSize"
                 android:singleLine="true"
                 android:textSize="18sp"

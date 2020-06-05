@@ -144,6 +144,12 @@
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
 
+        <activity
+            android:name=".EHSInitiate"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar" />
+
+
         <meta-data
             android:name="io.fabric.ApiKey"
             android:value="c1f5ef83f72e5070441c78d862cd163770598051" />

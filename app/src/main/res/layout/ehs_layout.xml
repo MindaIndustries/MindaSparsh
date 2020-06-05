@@ -2,14 +2,12 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
-<!--
+    xmlns:card_view="http://schemas.android.com/apk/res-auto">
     <include layout="@layout/toolbar"/>
--->
 
     <RelativeLayout
         android:layout_marginTop="?attr/actionBarSize"
-        android:padding="10dp"
+        android:padding="20dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -17,9 +15,12 @@
             android:id="@+id/initiate_card"
             android:layout_width="match_parent"
             android:layout_height="100dp"
-            app:cardCornerRadius="5dp"
-            app:cardUseCompatPadding="true"
-            app:cardBackgroundColor="@color/colorPrimary"
+            card_view:cardCornerRadius="5dp"
+            card_view:cardElevation="5dp"
+            card_view:cardUseCompatPadding="true"
+            android:foreground="?android:attr/selectableItemBackground"
+            android:clickable="true"
+            card_view:cardBackgroundColor="@color/colorPrimary"
             >
             <RelativeLayout
                 android:padding="20dp"
@@ -48,10 +49,12 @@
             android:id="@+id/observation_card"
             android:layout_width="match_parent"
             android:layout_height="100dp"
-            app:cardCornerRadius="5dp"
-            app:cardUseCompatPadding="true"
-            app:cardBackgroundColor="#43428e"
-            >
+            card_view:cardCornerRadius="5dp"
+            card_view:cardElevation="5dp"
+            card_view:cardUseCompatPadding="true"
+            card_view:cardBackgroundColor="#43428e"
+            android:foreground="?android:attr/selectableItemBackground"
+            android:clickable="true" >
             <RelativeLayout
                 android:padding="20dp"
                 android:layout_width="match_parent"
