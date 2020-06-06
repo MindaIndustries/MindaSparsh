@@ -293,6 +293,13 @@
             />
 
 
+        <Button
+            android:background=""
+            android:layout_toLeftOf="@+id/view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/description_et"/>
+
     </RelativeLayout>
 
 </ScrollView>
