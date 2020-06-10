@@ -12,9 +12,9 @@ public class RetrofitClient2 {
    //master public static final String BASE_URL = "http://176.9.28.166/MindaSparshTest/Service.asmx/";
    // public static final String BASE_URL = "http://52.172.191.61/Test.mindasparsh.com/Service.asmx/";
     //dev
-     public static final String BASE_URL = "http://dev.mindasparsh.com/Service.asmx/";
+    // public static final String BASE_URL = "http://dev.mindasparsh.com/Service.asmx/";
  //prod
-   // public static final String BASE_URL = "https://app.mindasparsh.com/Service.asmx/";
+    public static final String BASE_URL = "https://app.mindasparsh.com/Service.asmx/";
 
    // public static final String CKEY = "bWRhQHNQciRyWiNHISE=";
     public static final String CKEY = "mda@sPr$rZ#G!!";
