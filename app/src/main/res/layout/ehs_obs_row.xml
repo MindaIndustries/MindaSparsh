@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto">
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        card_view:cardCornerRadius="5dp"
+        card_view:cardElevation="5dp"
+        card_view:cardUseCompatPadding="true"
+        android:foreground="?android:attr/selectableItemBackground"
+        android:clickable="true"
+        card_view:cardBackgroundColor="@color/white">
+
+    <RelativeLayout
+        android:padding="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <View
+            android:layout_centerHorizontal="true"
+            android:id="@+id/view"
+            android:layout_width="2dp"
+            android:layout_height="1dp"
+            />
+
+        <TextView
+            android:id="@+id/obs_type"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/museosans_700"
+            android:text="Unsafe Act"
+            android:textSize="18sp"
+            />
+        <ImageView
+            android:id="@+id/edit"
+            android:src="@drawable/edit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            />
+        <TextView
+            android:layout_marginTop="10dp"
+            android:id="@+id/act_no"
+            android:layout_below="@+id/obs_type"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Act No. :"
+            />
+
+        <TextView
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_toRightOf="@+id/view"
+            android:id="@+id/act_no_value"
+            android:layout_below="@+id/obs_type"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=""
+            />
+        <TextView
+            android:layout_marginTop="10dp"
+            android:id="@+id/obs_date"
+            android:layout_below="@+id/act_no"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Observation Date :"
+            />
+
+        <TextView
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_toRightOf="@+id/view"
+            android:id="@+id/obs_date_value"
+            android:layout_below="@+id/act_no"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=""
+            />
+
+        <TextView
+            android:layout_marginTop="10dp"
+            android:id="@+id/raised_on"
+            android:layout_below="@+id/obs_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Raised On :"
+            />
+
+        <TextView
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_toRightOf="@+id/view"
+            android:id="@+id/raised_on_value"
+            android:layout_below="@+id/obs_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=""
+            />
+
+        <TextView
+            android:layout_marginTop="10dp"
+            android:id="@+id/unit"
+            android:layout_below="@+id/raised_on"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Raised On :"
+            />
+
+        <TextView
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_toRightOf="@+id/view"
+            android:id="@+id/unit_vaue"
+            android:layout_below="@+id/raised_on"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=""
+            />
+        <TextView
+            android:layout_marginTop="10dp"
+            android:id="@+id/identified_loc"
+            android:layout_below="@+id/unit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Identified Location :"
+            />
+
+        <TextView
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_toRightOf="@+id/view"
+            android:id="@+id/identified_loc_value"
+            android:layout_below="@+id/unit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=""
+            />
+        <TextView
+            android:layout_marginTop="10dp"
+            android:id="@+id/category"
+            android:layout_below="@+id/identified_loc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Category :"
+            />
+
+        <TextView
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_toRightOf="@+id/view"
+            android:id="@+id/category_value"
+            android:layout_below="@+id/identified_loc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=""
+            />
+
+        <TextView
+            android:layout_marginTop="10dp"
+            android:id="@+id/status"
+            android:layout_below="@+id/category"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Status :"
+            />
+
+        <TextView
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_toRightOf="@+id/view"
+            android:id="@+id/status_value"
+            android:layout_below="@+id/category"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=""
+            />
+
+            </RelativeLayout>
+
+    </android.support.v7.widget.CardView>
+
+</RelativeLayout>

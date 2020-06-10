@@ -292,13 +292,32 @@
 
             />
 
-
         <Button
-            android:background=""
+            android:textColor="@color/white"
+            android:layout_marginTop="10dp"
+            android:id="@+id/submit"
+            android:layout_marginRight="10dp"
+            android:background="@color/colorPrimary"
             android:layout_toLeftOf="@+id/view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/description_et"/>
+            android:layout_below="@+id/description_et"
+            android:text="Submit"
+            android:fontFamily="@font/museosans_500"
+            />
+        <Button
+            android:textColor="@color/white"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:id="@+id/reset"
+            android:background="@color/colorPrimary"
+            android:layout_toRightOf="@+id/view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/description_et"
+            android:text="Reset"
+            android:fontFamily="@font/museosans_500"
+            />
 
     </RelativeLayout>
 
