@@ -73,7 +73,7 @@
 
                 <TextView
                     android:textSize="20sp"
-                    android:text="50"
+                    android:text=""
                     android:fontFamily="@font/museosans_500"
                     android:textStyle="bold"
                     android:textColor="@color/white"

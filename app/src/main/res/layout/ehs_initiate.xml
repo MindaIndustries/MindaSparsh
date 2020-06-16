@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:descendantFocusability="beforeDescendants"
+    android:focusableInTouchMode="true">
     <include layout="@layout/toolbar"/>
 
 <ScrollView
@@ -40,18 +42,19 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
 
-        <Spinner
+        <TextView
             android:layout_marginTop="30dp"
-            style="@style/lipstick_spinner_header_style"
             android:id="@+id/obs_date_spinner"
-            android:spinnerMode="dropdown"
-            android:popupElevation="6dp"
             android:layout_below="@+id/heading"
-            android:dropDownVerticalOffset="20dp"
             android:layout_alignParentRight="true"
             android:layout_width="match_parent"
+            android:layout_marginLeft="-20dp"
             android:layout_toRightOf="@+id/view"
-            android:layout_height="wrap_content"></Spinner>
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:gravity="center"
+            android:drawableRight="@drawable/downward_arrow"
+            ></TextView>
 
         <LinearLayout
             android:layout_marginTop="10dp"
@@ -74,7 +77,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
 
-        <Spinner
+        <com.minda.sparsh.customview.NoDefaultSpinner
             android:layout_marginTop="30dp"
             style="@style/lipstick_spinner_header_style"
             android:id="@+id/unit_spinner"
@@ -82,10 +85,13 @@
             android:popupElevation="6dp"
             android:layout_below="@+id/ll1"
             android:dropDownVerticalOffset="20dp"
+            android:layout_marginLeft="-20dp"
             android:layout_alignParentRight="true"
             android:layout_width="match_parent"
             android:layout_toRightOf="@+id/view"
-            android:layout_height="wrap_content"></Spinner>
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            ></com.minda.sparsh.customview.NoDefaultSpinner>
 
         <LinearLayout
             android:layout_marginTop="10dp"
@@ -107,18 +113,21 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
 
-        <Spinner
+        <com.minda.sparsh.customview.NoDefaultSpinner
             android:layout_marginTop="30dp"
             style="@style/lipstick_spinner_header_style"
             android:id="@+id/safety_officer_spinner"
             android:spinnerMode="dropdown"
             android:popupElevation="6dp"
+            android:layout_marginLeft="-20dp"
             android:layout_below="@+id/ll2"
             android:dropDownVerticalOffset="20dp"
             android:layout_alignParentRight="true"
             android:layout_width="match_parent"
             android:layout_toRightOf="@+id/view"
-            android:layout_height="wrap_content"></Spinner>
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            ></com.minda.sparsh.customview.NoDefaultSpinner>
 
         <LinearLayout
             android:layout_marginTop="10dp"
@@ -140,18 +149,20 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
 
-        <Spinner
+        <com.minda.sparsh.customview.NoDefaultSpinner
             android:layout_marginTop="30dp"
             style="@style/lipstick_spinner_header_style"
             android:id="@+id/type_spinner"
             android:spinnerMode="dropdown"
             android:popupElevation="6dp"
             android:layout_below="@+id/ll4"
+            android:layout_marginLeft="-20dp"
             android:dropDownVerticalOffset="20dp"
             android:layout_alignParentRight="true"
             android:layout_width="match_parent"
             android:layout_toRightOf="@+id/view"
-            android:layout_height="wrap_content"></Spinner>
+            android:layout_height="wrap_content"
+            android:padding="5dp"></com.minda.sparsh.customview.NoDefaultSpinner>
 
         <LinearLayout
             android:layout_marginTop="10dp"
@@ -175,18 +186,20 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
 
-        <Spinner
+        <com.minda.sparsh.customview.NoDefaultSpinner
             android:layout_marginTop="30dp"
             style="@style/lipstick_spinner_header_style"
             android:id="@+id/identified_loc_spinner"
             android:spinnerMode="dropdown"
             android:popupElevation="6dp"
             android:layout_below="@+id/ll3"
+            android:layout_marginLeft="-20dp"
             android:dropDownVerticalOffset="20dp"
             android:layout_alignParentRight="true"
             android:layout_width="match_parent"
             android:layout_toRightOf="@+id/view"
-            android:layout_height="wrap_content"></Spinner>
+            android:padding="5dp"
+            android:layout_height="wrap_content"></com.minda.sparsh.customview.NoDefaultSpinner>
 
         <LinearLayout
             android:layout_marginTop="10dp"
@@ -207,18 +220,20 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
 
-        <Spinner
+        <com.minda.sparsh.customview.NoDefaultSpinner
             android:layout_marginTop="30dp"
             style="@style/lipstick_spinner_header_style"
             android:id="@+id/category_spinner"
             android:spinnerMode="dropdown"
             android:popupElevation="6dp"
+            android:layout_marginLeft="-20dp"
             android:layout_below="@+id/ll5"
             android:dropDownVerticalOffset="20dp"
             android:layout_alignParentRight="true"
             android:layout_width="match_parent"
             android:layout_toRightOf="@+id/view"
-            android:layout_height="wrap_content"></Spinner>
+            android:padding="5dp"
+            android:layout_height="wrap_content"></com.minda.sparsh.customview.NoDefaultSpinner>
 
         <LinearLayout
             android:layout_marginTop="10dp"
@@ -241,7 +256,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
 
-        <Spinner
+        <com.minda.sparsh.customview.NoDefaultSpinner
             android:layout_marginTop="30dp"
             style="@style/lipstick_spinner_header_style"
             android:id="@+id/sub_category_spinner"
@@ -250,9 +265,11 @@
             android:layout_below="@+id/ll6"
             android:dropDownVerticalOffset="20dp"
             android:layout_alignParentRight="true"
+            android:layout_marginLeft="-20dp"
             android:layout_width="match_parent"
             android:layout_toRightOf="@+id/view"
-            android:layout_height="wrap_content"></Spinner>
+            android:padding="5dp"
+            android:layout_height="wrap_content"></com.minda.sparsh.customview.NoDefaultSpinner>
 
         <LinearLayout
             android:layout_marginTop="10dp"
@@ -277,8 +294,6 @@
 
 
         <EditText
-            android:focusable="false"
-            android:enabled="false"
             android:layout_marginTop="10dp"
             android:layout_below="@+id/description"
             android:id="@+id/description_et"
@@ -289,33 +304,53 @@
             android:scrollbars="vertical"
             android:gravity="left|top"
             android:overScrollMode="always"
+            />
 
+        <ImageView
+            android:layout_marginTop="10dp"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/description_et"
+            android:src="@drawable/attach"
+            android:id="@+id/attachment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:layout_marginRight="10dp"
+            android:layout_alignBottom="@+id/attachment"
+            android:layout_alignTop="@+id/attachment"
+            android:layout_below="@+id/description_et"
+            android:id="@+id/attachImage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toLeftOf="@+id/attachment"
+            android:text="Attach related document or Image"
             />
 
         <Button
             android:textColor="@color/white"
             android:layout_marginTop="10dp"
-            android:id="@+id/submit"
+            android:id="@+id/reset"
             android:layout_marginRight="10dp"
             android:background="@color/colorPrimary"
             android:layout_toLeftOf="@+id/view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/description_et"
-            android:text="Submit"
+            android:layout_below="@+id/attachment"
+            android:text="Reset"
             android:fontFamily="@font/museosans_500"
             />
         <Button
             android:textColor="@color/white"
             android:layout_marginLeft="10dp"
             android:layout_marginTop="10dp"
-            android:id="@+id/reset"
+            android:id="@+id/submit"
             android:background="@color/colorPrimary"
             android:layout_toRightOf="@+id/view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/description_et"
-            android:text="Reset"
+            android:layout_below="@+id/attachment"
+            android:text="Submit"
             android:fontFamily="@font/museosans_500"
             />
 

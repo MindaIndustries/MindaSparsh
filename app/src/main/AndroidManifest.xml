@@ -19,7 +19,6 @@
 
     <application
         android:allowBackup="true"
-        android:hardwareAccelerated="false"
         android:icon="@drawable/loncher"
         android:label="@string/app_name"
         android:largeHeap="true"
@@ -146,6 +145,10 @@
 
         <activity
             android:name=".EHSInitiate"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".EHSObservations"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
 
