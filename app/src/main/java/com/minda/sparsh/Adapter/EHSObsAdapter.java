@@ -9,14 +9,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import com.minda.sparsh.EHSInitiate;
 import com.minda.sparsh.R;
 import com.minda.sparsh.model.EHSObsModel;
-
-import java.util.ArrayList;
 import java.util.List;
-
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
@@ -36,8 +32,8 @@ public class EHSObsAdapter extends RecyclerView.Adapter<EHSObsAdapter.ViewHolder
         View itemView = LayoutInflater.from(viewGroup.getContext())
                 .inflate(R.layout.ehs_obs_row, viewGroup, false);
 
-
-        return new ViewHolder(itemView);    }
+        return new ViewHolder(itemView);
+    }
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, final int i) {
@@ -63,7 +59,6 @@ public class EHSObsAdapter extends RecyclerView.Adapter<EHSObsAdapter.ViewHolder
         }
         else{
             viewHolder.statusValue.setText("Pending");
-
         }
 
         viewHolder.edit.setOnClickListener(new View.OnClickListener() {
@@ -82,7 +77,6 @@ public class EHSObsAdapter extends RecyclerView.Adapter<EHSObsAdapter.ViewHolder
                 in.putExtra("actNo",myObservations.get(i).getActNo());
                 in.putExtra("catId",myObservations.get(i).getCategoryID());
                 in.putExtra("obsId",myObservations.get(i).getObservationID());
-
                 mContext.startActivity(in);
             }
         });

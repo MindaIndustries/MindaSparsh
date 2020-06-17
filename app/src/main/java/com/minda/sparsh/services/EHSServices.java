@@ -200,7 +200,7 @@ public class EHSServices {
         });
     }
 
-    public void saveEHS(final OnTaskComplete onTaskComplete,String EmpCode,String AcrNo,String ActDate,String HOD,String UnitSafetyOfficer,String UnitCode,String Description,String Attachment,String AttachmentType,String LocationID,String CategoryID,String SubCategoryID,String ObservationID,String IncidenceTime,String IncidenceActionTaken,String ObservationName, String LocationName ){
+    public void saveEHS(final OnTaskComplete onTaskComplete,String EmpCode,String ActNo,String ActDate,String HOD,String UnitSafetyOfficer,String UnitCode,String Description,String Attachment,String AttachmentType,String LocationID,String CategoryID,String SubCategoryID,String ObservationID,String IncidenceTime,String IncidenceActionTaken,String ObservationName, String LocationName ){
         EHSClient ehsClient = RetrofitClient2.createServiceEHS(EHSClient.class);
         Call<Void> call = ehsClient.submitEHS(EmpCode,"",ActDate,HOD,UnitSafetyOfficer,UnitCode,Description,Attachment,AttachmentType,LocationID,CategoryID,SubCategoryID,ObservationID,IncidenceTime,IncidenceActionTaken,ObservationName,LocationName);
         call.enqueue(new Callback<Void>() {

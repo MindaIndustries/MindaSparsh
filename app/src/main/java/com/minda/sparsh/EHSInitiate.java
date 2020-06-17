@@ -1,12 +1,27 @@
 package com.minda.sparsh;
 
+import android.Manifest;
+import android.app.Activity;
 import android.app.DatePickerDialog;
+import android.content.ContentResolver;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
+import android.database.Cursor;
+import android.graphics.Bitmap;
 import android.graphics.Color;
+import android.graphics.Matrix;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Environment;
 import android.os.Handler;
+import android.provider.MediaStore;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
@@ -16,6 +31,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -30,7 +46,10 @@ import com.minda.sparsh.model.EHSSubCategoryModel;
 import com.minda.sparsh.model.EHSUnitModel;
 import com.minda.sparsh.model.SafetyOfficerModel;
 import com.minda.sparsh.services.EHSServices;
+import com.minda.sparsh.util.Utility;
 
+import java.io.File;
+import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.OffsetDateTime;
@@ -72,6 +91,15 @@ public class EHSInitiate extends BaseActivity{
     Button submit;
     @BindView(R.id.reset)
     Button reset;
+    @BindView(R.id.attachment)
+    ImageView attachment;
+    @BindView(R.id.attachtext)
+    TextView attachtext;
+    private File mDestinationFile;
+    private String mUserChoosenTask="";
+    public static final int MY_PERMISSIONS_REQUEST_READ_EXTERNAL_STORAGE = 123;
+
+
     ArrayList<String> unitsName = new ArrayList<String>();
     List<EHSUnitModel> units = new ArrayList<EHSUnitModel>();
     ArrayList<String> officersName = new ArrayList<String>();
@@ -93,6 +121,8 @@ public class EHSInitiate extends BaseActivity{
     String empCode,actId,actNo;
     String safetyOfficer,obstype,identifiedLocation,category,subcategory,locationID, subCategoryID,observationID;
 
+    private static final int CAPTURE_FROM_CAMERA = 1;
+    private static final int SELECT_FROM_GALLERY = 2;
 
 
     @Override
@@ -125,6 +155,8 @@ public class EHSInitiate extends BaseActivity{
         if(getIntent()!=null && getIntent().hasExtra("obsDate")){
             submit.setText("Update");
             reset.setVisibility(View.GONE);
+            observationDateSpinner.setEnabled(false);
+            observationDateSpinner.setTextColor(Color.parseColor("#000000"));
 
             if(getIntent().getStringExtra("actId")!=null) {
                 actId = getIntent().getStringExtra("actId");
@@ -139,13 +171,16 @@ public class EHSInitiate extends BaseActivity{
         else{
             reset.setVisibility(View.VISIBLE);
             submit.setText("Submit");
-
+            observationDateSpinner.setEnabled(true);
+            observationDateSpinner.setTextColor(Color.parseColor("#000000"));
         }
 
         safetyOfficerSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                safetyOfficer = officersName.get(position);
+              if(safetyOfficers!=null && safetyOfficers.size()>0)
+                safetyOfficer = safetyOfficers.get(position-1).getUnitOfficer();
+
             }
 
             @Override
@@ -229,6 +264,18 @@ public class EHSInitiate extends BaseActivity{
             String locationId = ehsIdentifiedLocations.get(i).getID();
             updateEHS(actId,empCode,actNo,observationDateSpinner.getText().toString(),"",getIntent().getStringExtra("safetyOfficer"),unitcode,descriptionEdit.getText().toString(),"","",locationId,getIntent().getStringExtra("catId"),getIntent().getStringExtra("subCategory"),getIntent().getStringExtra("obsId"),"","");
         }
+    }
+
+    @OnClick(R.id.attachtext)
+    public void onClickAttachText(){
+
+        selectFile();
+    }
+
+    @OnClick(R.id.attachment)
+    public void onClickAttachment(){
+
+        selectFile();
     }
 
     @OnClick(R.id.obs_date_spinner)
@@ -796,6 +843,161 @@ public class EHSInitiate extends BaseActivity{
         },ActID,EmpCode,ActNo,ActDate,HOD,UnitSafetyOfficer,UnitCode,Description,Attachment,AttachmentType,LocationID,CategoryID,SubCategoryID,ObservationID,IncidenceTime,IncidenceActionTaken);
 
     }
+
+
+
+
+    public void selectFile(){
+        requestAppPermissions();
+    }
+    private void cameraIntent() {
+        Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        startActivityForResult(intent, CAPTURE_FROM_CAMERA);
+    }
+
+    private void galleryIntent() {
+        Intent pickPhoto = new Intent(Intent.ACTION_PICK,
+                android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+        startActivityForResult(pickPhoto, SELECT_FROM_GALLERY);
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode == Activity.RESULT_OK) {
+            if (requestCode == SELECT_FROM_GALLERY)
+                onSelectFromGalleryResult(data);
+            else if (requestCode == CAPTURE_FROM_CAMERA)
+                onCaptureImageResult(data);
+        }
+    }
+    private void onCaptureImageResult(Intent data) {
+
+        Bitmap thumbnail = (Bitmap) data.getExtras().get("data");
+        mDestinationFile = new File(Environment.getExternalStorageDirectory(),
+                System.currentTimeMillis() + ".jpg");
+        Utility.saveFileToSdCard(mDestinationFile, thumbnail);
+        String fileName = mDestinationFile.getAbsolutePath();
+        System.out.println("fileName" + fileName);
+       // addUserImage(fileName);
+    }
+
+
+    private void onSelectFromGalleryResult(Intent data) {
+        Bitmap bm = null;
+
+        if (mDestinationFile != null) {
+            mDestinationFile.delete();
+        }
+        if (data != null) {
+            try {
+                bm = MediaStore.Images.Media.getBitmap(getApplicationContext().getContentResolver(), data.getData());
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        mDestinationFile = new File(Environment.getExternalStorageDirectory(),
+                System.currentTimeMillis() + ".jpg");
+
+
+        bm = rotateImageIfRequired(EHSInitiate.this,bm, Uri.parse(mDestinationFile.toString()));
+        Utility.saveFileToSdCard(mDestinationFile, bm);
+        String fileName = mDestinationFile.getAbsolutePath();
+        System.out.println("fileName" + fileName);
+
+
+      //  addUserImage(fileName);
+    }
+    private static Bitmap rotateImageIfRequired(Context context, Bitmap img, Uri selectedImage) {
+
+        // Detect rotation
+        int rotation = getRotation(context, selectedImage);
+        if (rotation != 0) {
+            Matrix matrix = new Matrix();
+            matrix.postRotate(rotation);
+            Bitmap rotatedImg = Bitmap.createBitmap(img, 0, 0, img.getWidth(), img.getHeight(), matrix, true);
+            img.recycle();
+            return rotatedImg;
+        }
+        else{
+            return img;
+        }
+    }
+
+    private static int getRotation(Context context,Uri selectedImage) {
+
+        int rotation = 0;
+        ContentResolver content = context.getContentResolver();
+
+        Cursor mediaCursor = content.query(MediaStore.Images.Media.EXTERNAL_CONTENT_URI,
+                new String[] { "orientation", "date_added" },
+                null, null, "date_added desc");
+
+        if (mediaCursor != null && mediaCursor.getCount() != 0) {
+            while(mediaCursor.moveToNext()){
+                rotation = mediaCursor.getInt(0);
+                break;
+            }
+        }
+        mediaCursor.close();
+        return rotation;
+    }
+
+    private void selectImage() {
+        final CharSequence[] items = {"Take Photo", "Choose from Gallery",
+                "Cancel"};
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Add Photo!");
+        builder.setItems(items, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int item) {
+                boolean result = Utility.checkPermission(EHSInitiate.this);
+                if (items[item].equals("Take Photo")) {
+                    mUserChoosenTask = "Take Photo";
+                    if (result) {
+                        cameraIntent();
+                    }
+                } else if (items[item].equals("Choose from Gallery")) {
+                    mUserChoosenTask = "Choose from Gallery";
+                    if (result) {
+                        galleryIntent();
+                    }
+                } else if (items[item].equals("Cancel")) {
+                    dialog.dismiss();
+                }
+            }
+        });
+        builder.show();
+    }
+
+    private void requestAppPermissions() {
+        if (android.os.Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP) {
+            selectImage();
+
+            return;
+        }
+
+        if (hasReadPermissions() && hasWritePermissions()) {
+            selectImage();
+
+            return;
+        }
+
+        ActivityCompat.requestPermissions(this,
+                new String[] {
+                        android.Manifest.permission.READ_EXTERNAL_STORAGE,
+                        android.Manifest.permission.WRITE_EXTERNAL_STORAGE
+                }, MY_PERMISSIONS_REQUEST_READ_EXTERNAL_STORAGE); // your request code
+    }
+
+    private boolean hasReadPermissions() {
+        return (ContextCompat.checkSelfPermission(getBaseContext(), android.Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED);
+    }
+
+    private boolean hasWritePermissions() {
+        return (ContextCompat.checkSelfPermission(getBaseContext(), Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED);
+    }
+
 }
 
 
