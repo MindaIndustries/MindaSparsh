@@ -4,6 +4,8 @@ import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import butterknife.BindView;
@@ -16,6 +18,10 @@ public class BottomUpConcernActivity extends BaseActivity {
     TextView title;
     @BindView(R.id.tablayout)
     TabLayout tabLayout;
+    @BindView(R.id.new_concern)
+    RelativeLayout newConcern;
+    @BindView(R.id.view_concern)
+    RelativeLayout viewConcern;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,9 +37,12 @@ public class BottomUpConcernActivity extends BaseActivity {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
                 if(tab.getPosition()==0){
-
+                    viewConcern.setVisibility(View.GONE);
+                    newConcern.setVisibility(View.VISIBLE);
                 }
                 else{
+                    viewConcern.setVisibility(View.GONE);
+                    newConcern.setVisibility(View.GONE);
 
                 }
             }
