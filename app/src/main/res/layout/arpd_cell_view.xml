@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:stretchColumns="*">
+
+        <TableRow android:background="@color/white">
+
+            <TextView
+                android:id="@+id/tv_s_no"
+                style="@style/content_style"
+                android:layout_width="40dp"
+                android:layout_height="match_parent"
+                android:background="@drawable/border"
+                android:text="S.No" />
+
+            <TextView
+                android:id="@+id/tv_emp_code"
+                style="@style/content_style"
+                android:layout_width="100dp"
+                android:layout_height="match_parent"
+                android:background="@drawable/border"
+                android:text="Emp Code" />
+
+            <TextView
+                android:id="@+id/tv_name"
+                style="@style/content_style"
+                android:layout_width="120dp"
+                android:layout_height="match_parent"
+                android:background="@drawable/border"
+                android:text="Name" />
+
+            <TextView
+                android:id="@+id/tv_status"
+                style="@style/content_style"
+                android:layout_width="100dp"
+                android:layout_height="match_parent"
+                android:background="@drawable/border"
+               />
+
+            <TextView
+                android:id="@+id/tv_processor_no"
+                style="@style/content_style"
+                android:layout_width="100dp"
+                android:layout_height="match_parent"
+                android:background="@drawable/border"
+               />
+
+            <TextView
+                android:id="@+id/tv_request_on"
+                style="@style/content_style"
+                android:layout_width="120dp"
+                android:layout_height="match_parent"
+                android:background="@drawable/border"
+                />
+
+            <TextView
+                android:id="@+id/tv_processed_rejected_on"
+                style="@style/content_style"
+                android:layout_width="120dp"
+                android:layout_height="match_parent"
+                android:background="@drawable/border"
+                />
+
+            <TextView
+                android:id="@+id/processed_by"
+                style="@style/content_style"
+                android:layout_width="100dp"
+                android:layout_height="match_parent"
+                android:background="@drawable/border"
+                />
+
+            <TextView
+                android:id="@+id/tv_remarks"
+                style="@style/content_style"
+                android:layout_width="100dp"
+                android:layout_height="match_parent"
+                android:background="@drawable/border"
+                />
+
+
+        </TableRow>
+
+
+    </TableLayout>
+</LinearLayout>

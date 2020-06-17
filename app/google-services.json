@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "836592576900",
+    "firebase_url": "https://mindasparsh.firebaseio.com",
+    "project_id": "mindasparsh",
+    "storage_bucket": "mindasparsh.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:836592576900:android:62e0ba1ed221a588",
+        "android_client_info": {
+          "package_name": "com.minda.sparsh"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "836592576900-8n2690dk19ofet6oro8ddee1f7boqtaq.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.minda.sparsh",
+            "certificate_hash": "ee8c19426053dff91c45f09522153f36a78dfa79"
+          }
+        },
+        {
+          "client_id": "836592576900-4p0c75ks3jaudt5rcrjloqipus3nsp29.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDmC3PLUMFMYUyXJI4k9G00Q96OgV9NuCg"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "836592576900-4p0c75ks3jaudt5rcrjloqipus3nsp29.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
