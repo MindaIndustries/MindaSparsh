@@ -73,7 +73,7 @@ public class BottomUpConcernActivity extends BaseActivity {
                     viewConcern.setVisibility(View.GONE);
                     newConcern.setVisibility(View.VISIBLE);
                 } else {
-                    //  viewConcern.setVisibility(View.VISIBLE);
+                    viewConcern.setVisibility(View.VISIBLE);
                     newConcern.setVisibility(View.GONE);
                 }
             }
