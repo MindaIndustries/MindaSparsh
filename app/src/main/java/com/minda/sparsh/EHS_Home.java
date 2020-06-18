@@ -3,7 +3,6 @@ package com.minda.sparsh;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.widget.TextView;
@@ -34,25 +33,24 @@ public class EHS_Home extends BaseActivity {
     }
 
     @OnClick(R.id.initiate_card)
-    public void onClickInitiate(){
+    public void onClickInitiate() {
         if (Utility.isOnline(EHS_Home.this)) {
             Intent in = new Intent(EHS_Home.this, EHSInitiate.class);
             startActivity(in);
-        }
-        else{
+        } else {
             Toast.makeText(EHS_Home.this, "Please Check Your Network Connection", Toast.LENGTH_LONG).show();
 
         }
 
     }
+
     @OnClick(R.id.observation_card)
-    public void onClickObservations(){
+    public void onClickObservations() {
         if (Utility.isOnline(EHS_Home.this)) {
 
             Intent in = new Intent(EHS_Home.this, EHSObservations.class);
             startActivity(in);
-        }
-        else{
+        } else {
             Toast.makeText(EHS_Home.this, "Please Check Your Network Connection", Toast.LENGTH_LONG).show();
 
         }
