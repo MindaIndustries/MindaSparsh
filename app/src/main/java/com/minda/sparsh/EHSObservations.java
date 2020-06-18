@@ -7,6 +7,7 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.minda.sparsh.Adapter.EHSObsAdapter;
 import com.minda.sparsh.listener.CarotResponse;
@@ -30,9 +31,7 @@ public class EHSObservations extends BaseActivity {
     @BindView(R.id.title)
     TextView title;
     EHSObsAdapter ehsObsAdapter;
-
     List<EHSObsModel> myObservations = new ArrayList<EHSObsModel>();
-
     String empCode;
     SharedPreferences myPref;
     @Override
@@ -68,7 +67,9 @@ public class EHSObservations extends BaseActivity {
                     }
                     ehsObsAdapter.notifyDataSetChanged();
                 }
-
+                else{
+                    Toast.makeText(EHSObservations.this,"Oops! Something went wrong.",Toast.LENGTH_LONG).show();
+                }
             }
         },empCode);
 

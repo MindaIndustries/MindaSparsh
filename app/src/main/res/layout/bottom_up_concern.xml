@@ -89,9 +89,7 @@
                         android:layout_toRightOf="@+id/view"
                         android:layout_height="wrap_content"
                         android:padding="5dp"
-                        android:gravity="center"
-                        android:drawableRight="@drawable/downward_arrow">
-                    </TextView>
+                        android:gravity="center" />
 
                     <LinearLayout
                         android:layout_marginTop="10dp"
@@ -294,7 +292,13 @@
             android:id="@+id/view_concern"
             android:visibility="gone"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"></RelativeLayout>
+            android:layout_height="match_parent">
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/bottomup_rv"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
+        </RelativeLayout>
 
     </RelativeLayout>
 

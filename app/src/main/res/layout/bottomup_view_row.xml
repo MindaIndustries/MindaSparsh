@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="5dp"
+        app:cardElevation="5dp"
+        app:cardUseCompatPadding="true"
+        app:cardBackgroundColor="@color/white">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+
+            <TextView
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:background="@drawable/textview_bg"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Pending"
+                android:textColor="@color/white"
+                android:id="@+id/status"
+                />
+            <RelativeLayout
+                android:padding="20dp"
+                android:layout_below="@+id/status"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <View
+                    android:layout_centerHorizontal="true"
+                    android:id="@+id/view"
+                    android:layout_width="2dp"
+                    android:layout_height="1dp"
+                    />
+
+
+                <TextView
+                    android:id="@+id/concern_no"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Concern No. :"
+                    android:fontFamily="@font/museosans_500"
+                    />
+
+                <TextView
+                    android:layout_marginLeft="10dp"
+                    android:layout_toRightOf="@+id/view"
+                    android:id="@+id/concern_no_value"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:fontFamily="@font/museosans_300"
+                    />
+                <TextView
+                    android:layout_below="@+id/concern_no_value"
+                    android:layout_marginTop="10dp"
+                    android:id="@+id/raised_on"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Raised On :"
+                    android:fontFamily="@font/museosans_500"
+                    />
+
+                <TextView
+                    android:layout_below="@+id/concern_no_value"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_toRightOf="@+id/view"
+                    android:id="@+id/raised_on_value"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:fontFamily="@font/museosans_300"
+                    />
+                <TextView
+                    android:layout_below="@+id/raised_on_value"
+                    android:layout_marginTop="10dp"
+                    android:id="@+id/unit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Unit :"
+                    android:fontFamily="@font/museosans_500"
+                    />
+
+                <TextView
+                    android:layout_below="@+id/raised_on_value"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_toRightOf="@+id/view"
+                    android:id="@+id/unit_value"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:fontFamily="@font/museosans_300"
+                    />
+                <TextView
+                    android:layout_below="@+id/unit_value"
+                    android:layout_marginTop="10dp"
+                    android:id="@+id/responsible6M"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Responsible 6M :"
+                    android:fontFamily="@font/museosans_500"
+                    />
+
+                <TextView
+                    android:layout_below="@+id/unit_value"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_toRightOf="@+id/view"
+                    android:id="@+id/responsible6M_value"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:fontFamily="@font/museosans_300"
+                    />
+                <TextView
+                    android:visibility="gone"
+                    android:layout_below="@+id/responsible6M_value"
+                    android:layout_marginTop="10dp"
+                    android:id="@+id/msm_reference"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="MSM/Reference :"
+                    android:fontFamily="@font/museosans_500"
+                    />
+
+                <TextView
+                    android:visibility="gone"
+                    android:layout_below="@+id/responsible6M_value"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_toRightOf="@+id/view"
+                    android:id="@+id/msm_reference_value"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:fontFamily="@font/museosans_300"
+                    />
+                <TextView
+                    android:visibility="gone"
+                    android:layout_below="@+id/msm_reference_value"
+                    android:layout_marginTop="10dp"
+                    android:id="@+id/existing_system"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Existing System :"
+                    android:fontFamily="@font/museosans_500"
+                    />
+
+                <TextView
+                    android:visibility="gone"
+                    android:layout_below="@+id/msm_reference_value"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_toRightOf="@+id/view"
+                    android:id="@+id/existing_system_value"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:fontFamily="@font/museosans_300"
+                    />
+                <TextView
+                    android:visibility="gone"
+                    android:layout_below="@+id/existing_system_value"
+                    android:layout_marginTop="10dp"
+                    android:id="@+id/proposed_system"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Proposed System :"
+                    android:fontFamily="@font/museosans_500"
+                    />
+
+                <TextView
+                    android:visibility="gone"
+                    android:layout_below="@+id/existing_system_value"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_toRightOf="@+id/view"
+                    android:id="@+id/proposed_system_value"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:fontFamily="@font/museosans_300"
+                    />
+                <TextView
+                    android:layout_below="@+id/proposed_system_value"
+                    android:layout_marginTop="10dp"
+                    android:id="@+id/benefit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Benefit :"
+                    android:visibility="gone"
+                    android:fontFamily="@font/museosans_500"
+                    />
+
+                <TextView
+                    android:layout_below="@+id/proposed_system_value"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_toRightOf="@+id/view"
+                    android:id="@+id/benefit_value"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:visibility="gone"
+                    android:fontFamily="@font/museosans_300"
+                    />
+
+                <Button
+                    android:layout_marginTop="10dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_below="@+id/responsible6M_value"
+                    android:id="@+id/view_details"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:textColor="@color/white"
+                    android:text="View"
+                    android:background="@drawable/btn_bg"
+                    />
+
+
+
+            </RelativeLayout>
+
+        </RelativeLayout>
+    </android.support.v7.widget.CardView>
+
+
+</RelativeLayout>
