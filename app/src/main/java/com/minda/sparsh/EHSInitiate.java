@@ -237,6 +237,12 @@ public class EHSInitiate extends BaseActivity{
 
     }
 
+    @OnClick(R.id.reset)
+    public void onClickReset(){
+        finish();
+        startActivity(getIntent());
+    }
+
     @OnClick(R.id.submit)
    public void onClickSubmit(){
         if(safetyOfficer!=null && safetyOfficer.equals("Select")){

@@ -2,6 +2,8 @@ package com.minda.sparsh;
 
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
@@ -10,8 +12,11 @@ import android.widget.EditText;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.minda.sparsh.Adapter.BottomUpConcernAdapter;
+import com.minda.sparsh.Adapter.EHSObsAdapter;
 import com.minda.sparsh.customview.NoDefaultSpinner;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 
 import butterknife.BindView;
@@ -45,6 +50,10 @@ public class BottomUpConcernActivity extends BaseActivity {
     EditText benefitValue;
     @BindView(R.id.save)
     Button save;
+    @BindView(R.id.bottomup_rv)
+    RecyclerView bottomupRv;
+    BottomUpConcernAdapter bottomUpConcernAdapter;
+    ArrayList<String> concerns = new ArrayList<String>();
 
 
     @Override
@@ -65,9 +74,8 @@ public class BottomUpConcernActivity extends BaseActivity {
                     newConcern.setVisibility(View.VISIBLE);
                 }
                 else{
-                    viewConcern.setVisibility(View.GONE);
+                    viewConcern.setVisibility(View.VISIBLE);
                     newConcern.setVisibility(View.GONE);
-
                 }
             }
 
@@ -82,6 +90,11 @@ public class BottomUpConcernActivity extends BaseActivity {
             }
         });
 
+        bottomUpConcernAdapter = new BottomUpConcernAdapter(BottomUpConcernActivity.this,concerns);
+        final LinearLayoutManager mLayoutManager = new LinearLayoutManager(BottomUpConcernActivity.this, LinearLayoutManager.VERTICAL, false);
+        bottomupRv.setLayoutManager(mLayoutManager);
+        bottomupRv.setAdapter(bottomUpConcernAdapter);
+        bottomUpConcernAdapter.notifyDataSetChanged();
         concernDateText.setText(getlogDate(System.currentTimeMillis()));
 
     }

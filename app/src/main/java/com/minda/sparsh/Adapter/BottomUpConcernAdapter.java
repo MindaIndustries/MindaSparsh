@@ -51,7 +51,8 @@ public class BottomUpConcernAdapter extends RecyclerView.Adapter<BottomUpConcern
 
     @Override
     public int getItemCount() {
-        return concerns.size();
+      //  return concerns.size();
+        return 5;
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder{
