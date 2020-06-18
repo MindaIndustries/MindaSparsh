@@ -9,10 +9,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+
 import com.minda.sparsh.EHSInitiate;
 import com.minda.sparsh.R;
 import com.minda.sparsh.model.EHSObsModel;
+
 import java.util.List;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
@@ -41,23 +44,22 @@ public class EHSObsAdapter extends RecyclerView.Adapter<EHSObsAdapter.ViewHolder
         viewHolder.obsType.setText(myObservations.get(i).getOBName());
         viewHolder.actNoValue.setText(myObservations.get(i).getActNo());
 
-        String [] actDate = myObservations.get(i).getActDate().split("/");
+        String[] actDate = myObservations.get(i).getActDate().split("/");
         String actmonth = actDate[0];
         String actday = actDate[1];
         String actyear = actDate[2];
-        viewHolder.obsDateValue.setText(actday+"/"+actmonth+"/"+actyear);
-        String [] raisedDate = myObservations.get(i).getCreatedOn().split("/");
+        viewHolder.obsDateValue.setText(actday + "/" + actmonth + "/" + actyear);
+        String[] raisedDate = myObservations.get(i).getCreatedOn().split("/");
         String raisedmonth = raisedDate[0];
         String raisedday = raisedDate[1];
         String raisedyear = raisedDate[2];
-        viewHolder.raisedOnValue.setText(raisedday+"/"+raisedmonth+"/"+raisedyear);
+        viewHolder.raisedOnValue.setText(raisedday + "/" + raisedmonth + "/" + raisedyear);
         viewHolder.unitValue.setText(myObservations.get(i).getUnitName());
         viewHolder.identifiedLocValue.setText(myObservations.get(i).getLocation());
         viewHolder.categoryValue.setText(myObservations.get(i).getCatName());
-        if(myObservations.get(i).getStatus().equals("3")) {
+        if (myObservations.get(i).getStatus().equals("3")) {
             viewHolder.statusValue.setText("Completed");
-        }
-        else{
+        } else {
             viewHolder.statusValue.setText("Pending");
         }
 
@@ -65,18 +67,18 @@ public class EHSObsAdapter extends RecyclerView.Adapter<EHSObsAdapter.ViewHolder
             @Override
             public void onClick(View v) {
                 Intent in = new Intent(mContext, EHSInitiate.class);
-                in.putExtra("obsDate",myObservations.get(i).getActDate());
-                in.putExtra("unit",myObservations.get(i).getUnitCode()+":"+myObservations.get(i).getUnitName());
-                in.putExtra("typeOfObs",myObservations.get(i).getOBName());
-                in.putExtra("safetyOfficer",myObservations.get(i).getUnitSafetyOfficer());
-                in.putExtra("identifiedLoc",myObservations.get(i).getLocation());
-                in.putExtra("category",myObservations.get(i).getCatName());
-                in.putExtra("subCategory",myObservations.get(i).getSubCategoryID());
-                in.putExtra("description",myObservations.get(i).getDescription());
-                in.putExtra("actId",myObservations.get(i).getID());
-                in.putExtra("actNo",myObservations.get(i).getActNo());
-                in.putExtra("catId",myObservations.get(i).getCategoryID());
-                in.putExtra("obsId",myObservations.get(i).getObservationID());
+                in.putExtra("obsDate", myObservations.get(i).getActDate());
+                in.putExtra("unit", myObservations.get(i).getUnitCode() + ":" + myObservations.get(i).getUnitName());
+                in.putExtra("typeOfObs", myObservations.get(i).getOBName());
+                in.putExtra("safetyOfficer", myObservations.get(i).getUnitSafetyOfficer());
+                in.putExtra("identifiedLoc", myObservations.get(i).getLocation());
+                in.putExtra("category", myObservations.get(i).getCatName());
+                in.putExtra("subCategory", myObservations.get(i).getSubCategoryID());
+                in.putExtra("description", myObservations.get(i).getDescription());
+                in.putExtra("actId", myObservations.get(i).getID());
+                in.putExtra("actNo", myObservations.get(i).getActNo());
+                in.putExtra("catId", myObservations.get(i).getCategoryID());
+                in.putExtra("obsId", myObservations.get(i).getObservationID());
                 mContext.startActivity(in);
             }
         });
@@ -87,7 +89,7 @@ public class EHSObsAdapter extends RecyclerView.Adapter<EHSObsAdapter.ViewHolder
         return myObservations.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder{
+    public class ViewHolder extends RecyclerView.ViewHolder {
         @BindView(R.id.obs_type)
         TextView obsType;
         @BindView(R.id.act_no_value)
@@ -109,7 +111,7 @@ public class EHSObsAdapter extends RecyclerView.Adapter<EHSObsAdapter.ViewHolder
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            ButterKnife.bind(this,itemView);
+            ButterKnife.bind(this, itemView);
         }
     }
 }

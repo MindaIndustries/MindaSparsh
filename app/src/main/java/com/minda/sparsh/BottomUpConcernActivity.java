@@ -69,12 +69,11 @@ public class BottomUpConcernActivity extends BaseActivity {
         tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
-                if(tab.getPosition()==0){
+                if (tab.getPosition() == 0) {
                     viewConcern.setVisibility(View.GONE);
                     newConcern.setVisibility(View.VISIBLE);
-                }
-                else{
-                    viewConcern.setVisibility(View.VISIBLE);
+                } else {
+                    //  viewConcern.setVisibility(View.VISIBLE);
                     newConcern.setVisibility(View.GONE);
                 }
             }
@@ -90,7 +89,7 @@ public class BottomUpConcernActivity extends BaseActivity {
             }
         });
 
-        bottomUpConcernAdapter = new BottomUpConcernAdapter(BottomUpConcernActivity.this,concerns);
+        bottomUpConcernAdapter = new BottomUpConcernAdapter(BottomUpConcernActivity.this, concerns);
         final LinearLayoutManager mLayoutManager = new LinearLayoutManager(BottomUpConcernActivity.this, LinearLayoutManager.VERTICAL, false);
         bottomupRv.setLayoutManager(mLayoutManager);
         bottomupRv.setAdapter(bottomUpConcernAdapter);
@@ -109,33 +108,30 @@ public class BottomUpConcernActivity extends BaseActivity {
         int min = cal.get(Calendar.MINUTE);
         int am_pm = cal.get(Calendar.AM_PM);
         String AM_PM;
-        if(am_pm ==0){
-            AM_PM="AM";
-        }
-        else{
-            AM_PM="PM";
+        if (am_pm == 0) {
+            AM_PM = "AM";
+        } else {
+            AM_PM = "PM";
         }
         month = month + 1;
         String monthNo;
-        if(month <10){
-            monthNo = "0"+month;
-        }
-        else{
-            monthNo = ""+month;
+        if (month < 10) {
+            monthNo = "0" + month;
+        } else {
+            monthNo = "" + month;
         }
         String dayOfMonthStr;
-        if(day<10){
-            dayOfMonthStr = "0"+day;
-        }
-        else{
-            dayOfMonthStr =""+ day;
+        if (day < 10) {
+            dayOfMonthStr = "0" + day;
+        } else {
+            dayOfMonthStr = "" + day;
         }
 
-        return dayOfMonthStr  + "-" + monthNo + "-" + year+" "+hr+":"+min+" "+AM_PM;
+        return dayOfMonthStr + "-" + monthNo + "-" + year + " " + hr + ":" + min + " " + AM_PM;
     }
 
     @OnClick(R.id.save)
-    public void onClickSave(){
+    public void onClickSave() {
 
     }
 

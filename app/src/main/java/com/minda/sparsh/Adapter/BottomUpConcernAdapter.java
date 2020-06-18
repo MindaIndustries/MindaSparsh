@@ -35,7 +35,8 @@ public class BottomUpConcernAdapter extends RecyclerView.Adapter<BottomUpConcern
         View itemView = LayoutInflater.from(viewGroup.getContext())
                 .inflate(R.layout.bottomup_view_row, viewGroup, false);
 
-        return new ViewHolder(itemView);    }
+        return new ViewHolder(itemView);
+    }
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, int i) {
@@ -43,7 +44,7 @@ public class BottomUpConcernAdapter extends RecyclerView.Adapter<BottomUpConcern
         viewHolder.viewDetails.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent in  = new Intent(mContext, BottomUpConcernDetailActivity.class);
+                Intent in = new Intent(mContext, BottomUpConcernDetailActivity.class);
                 mContext.startActivity(in);
             }
         });
@@ -51,11 +52,11 @@ public class BottomUpConcernAdapter extends RecyclerView.Adapter<BottomUpConcern
 
     @Override
     public int getItemCount() {
-      //  return concerns.size();
+        //  return concerns.size();
         return 5;
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder{
+    public class ViewHolder extends RecyclerView.ViewHolder {
         @BindView(R.id.status)
         TextView status;
         @BindView(R.id.concern_no_value)
@@ -71,7 +72,7 @@ public class BottomUpConcernAdapter extends RecyclerView.Adapter<BottomUpConcern
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            ButterKnife.bind(this,itemView);
+            ButterKnife.bind(this, itemView);
 
         }
     }

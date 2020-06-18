@@ -62,10 +62,10 @@
                     android:fontFamily="@font/museosans_300"
                     android:gravity="center"
                     android:padding="10dp"
-                    android:textColor="#353434"
                     android:text="Sed ut Perspiciatis Under omnis iste natus error sit voluptatem accu santium doloremque laudantium, totam rem aperiam."
+                    android:textColor="#353434"
                     android:textSize="12sp"
-                    android:visibility="gone"/>
+                    android:visibility="gone" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -92,13 +92,14 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="5dp"
-                            android:fontFamily="@font/museosans_300"
-                            android:text="Attendance and Leave Management System"
                             android:layout_marginBottom="10dp"
+                            android:fontFamily="@font/museosans_300"
                             android:gravity="center"
+                            android:text="Attendance and Leave Management System"
                             android:textColor="#000000"
                             android:textSize="17sp" />
                     </LinearLayout>
+
                     <View
                         android:layout_width="1dp"
                         android:layout_height="match_parent"
@@ -109,9 +110,9 @@
                     <LinearLayout
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
                         android:layout_weight="1"
                         android:gravity="center"
-                        android:layout_marginTop="10dp"
                         android:orientation="vertical">
 
                         <ImageButton
@@ -125,10 +126,10 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="5dp"
-                            android:fontFamily="@font/museosans_300"
-                            android:text="Visitor Management"
-                            android:gravity="center"
                             android:layout_marginBottom="10dp"
+                            android:fontFamily="@font/museosans_300"
+                            android:gravity="center"
+                            android:text="Visitor Management"
                             android:textColor="#000000"
                             android:textSize="17sp" />
                     </LinearLayout>
@@ -151,20 +152,21 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="5dp"
-                            android:fontFamily="@font/museosans_300"
-                            android:text="Internal Job Portal"
-                            android:gravity="center"
                             android:layout_marginBottom="10dp"
+                            android:fontFamily="@font/museosans_300"
+                            android:gravity="center"
+                            android:text="Internal Job Portal"
                             android:textColor="#000000"
                             android:textSize="17sp" />
                     </LinearLayout>
 
                 </LinearLayout>
+
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
-                    android:background="#d7d1d1"
-                    />
+                    android:background="#d7d1d1" />
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -172,13 +174,11 @@
                     android:orientation="horizontal">
 
 
-
-
                     <LinearLayout
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
                         android:layout_marginTop="10dp"
+                        android:layout_weight="1"
                         android:gravity="center"
                         android:orientation="vertical">
 
@@ -192,23 +192,25 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="5dp"
+                            android:layout_marginBottom="10dp"
                             android:fontFamily="@font/museosans_300"
                             android:text="Meetings"
-                            android:layout_marginBottom="10dp"
                             android:textColor="#000000"
                             android:textSize="17sp" />
                     </LinearLayout>
-                    <View
-                    android:layout_width="1dp"
-                    android:layout_height="match_parent"
-                    android:background="#d7d1d1"
 
-                    />
+                    <View
+                        android:layout_width="1dp"
+                        android:layout_height="match_parent"
+                        android:background="#d7d1d1"
+
+                        />
+
                     <LinearLayout
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
                         android:layout_marginTop="10dp"
+                        android:layout_weight="1"
                         android:gravity="center"
                         android:orientation="vertical">
 
@@ -216,29 +218,26 @@
                             android:id="@+id/bottom_up"
                             android:layout_width="120dp"
                             android:layout_height="120dp"
-                             />
+                            android:layout_marginRight="5dp"
+                            android:background="@drawable/bottomupconcern" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="5dp"
+                            android:layout_marginBottom="10dp"
                             android:fontFamily="@font/museosans_300"
                             android:text="Bottom Up Concern"
-                            android:layout_marginBottom="10dp"
                             android:textColor="#000000"
                             android:textSize="17sp" />
-
                     </LinearLayout>
-
-
-
-
                 </LinearLayout>
+
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
-                    android:background="#d7d1d1"
-                    />
+                    android:background="#d7d1d1" />
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -249,9 +248,9 @@
                     <LinearLayout
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
                         android:layout_weight="1"
                         android:gravity="center"
-                        android:layout_marginTop="10dp"
                         android:orientation="vertical"
                         android:visibility="gone">
 
@@ -266,13 +265,14 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="5dp"
-                            android:fontFamily="@font/museosans_300"
-                            android:text="Employee Engagement Survey"
-                            android:gravity="center"
                             android:layout_marginBottom="10dp"
+                            android:fontFamily="@font/museosans_300"
+                            android:gravity="center"
+                            android:text="Employee Engagement Survey"
                             android:textColor="#000000"
                             android:textSize="17sp" />
                     </LinearLayout>
+
                     <View
                         android:layout_width="1dp"
                         android:layout_height="match_parent"
@@ -283,8 +283,8 @@
                     <LinearLayout
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
                         android:layout_marginTop="10dp"
+                        android:layout_weight="1"
                         android:gravity="center"
                         android:orientation="vertical"
                         android:visibility="gone">
@@ -299,31 +299,33 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="5dp"
+                            android:layout_marginBottom="10dp"
                             android:fontFamily="@font/museosans_300"
                             android:text="PMS"
-                            android:layout_marginBottom="10dp"
                             android:textColor="#000000"
                             android:textSize="17sp" />
                     </LinearLayout>
 
 
                 </LinearLayout>
+
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
-                    android:background="#d7d1d1"
-                    />
+                    android:background="#d7d1d1" />
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center_horizontal"
                     android:orientation="horizontal"
                     android:visibility="gone">
+
                     <LinearLayout
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
                         android:layout_marginTop="10dp"
+                        android:layout_weight="1"
                         android:gravity="center"
                         android:orientation="vertical">
 
@@ -343,6 +345,7 @@
                             android:textColor="#000000"
                             android:textSize="17sp" />
                     </LinearLayout>
+
                     <View
                         android:layout_width="1dp"
                         android:layout_height="match_parent"
@@ -353,9 +356,9 @@
                     <LinearLayout
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
                         android:layout_weight="1"
                         android:gravity="center"
-                        android:layout_marginTop="10dp"
                         android:orientation="vertical"
                         android:visibility="gone">
 
@@ -370,15 +373,13 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="5dp"
-                            android:fontFamily="@font/museosans_300"
-                            android:text="Attendance Management"
-                            android:gravity="center"
                             android:layout_marginBottom="10dp"
+                            android:fontFamily="@font/museosans_300"
+                            android:gravity="center"
+                            android:text="Attendance Management"
                             android:textColor="#000000"
                             android:textSize="17sp" />
                     </LinearLayout>
-
-
 
 
                     <!--<ImageButton-->
@@ -392,26 +393,22 @@
             </LinearLayout>
 
 
-
-                <ImageView
-                    android:id="@+id/im_right"
-                    android:layout_width="35dp"
-                    android:layout_height="35dp"
-                    android:layout_alignParentRight="true"
-                    android:layout_marginTop="20dp"
-                    android:src="@drawable/right_arrow" />
-
+            <ImageView
+                android:id="@+id/im_right"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_alignParentRight="true"
+                android:layout_marginTop="20dp"
+                android:src="@drawable/right_arrow" />
 
 
-
-
-                <ImageView
-                    android:id="@+id/im_left"
-                    android:layout_width="35dp"
-                    android:layout_height="35dp"
-                    android:layout_alignParentLeft="true"
-                    android:layout_marginTop="20dp"
-                    android:src="@drawable/left_arrow" />
+            <ImageView
+                android:id="@+id/im_left"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_alignParentLeft="true"
+                android:layout_marginTop="20dp"
+                android:src="@drawable/left_arrow" />
 
 
         </RelativeLayout>

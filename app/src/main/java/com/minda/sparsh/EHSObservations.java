@@ -34,6 +34,7 @@ public class EHSObservations extends BaseActivity {
     List<EHSObsModel> myObservations = new ArrayList<EHSObsModel>();
     String empCode;
     SharedPreferences myPref;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,7 +45,7 @@ public class EHSObservations extends BaseActivity {
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setHomeAsUpIndicator(R.drawable.back);
         title.setText("My Identified Acts");
-        ehsObsAdapter = new EHSObsAdapter(EHSObservations.this,myObservations);
+        ehsObsAdapter = new EHSObsAdapter(EHSObservations.this, myObservations);
         final LinearLayoutManager mLayoutManager = new LinearLayoutManager(EHSObservations.this, LinearLayoutManager.VERTICAL, false);
         observations.setLayoutManager(mLayoutManager);
         observations.setAdapter(ehsObsAdapter);
@@ -54,24 +55,24 @@ public class EHSObservations extends BaseActivity {
         getObservations(empCode);
 
     }
-    public void getObservations(String empCode){
+
+    public void getObservations(String empCode) {
         EHSServices ehsServices = new EHSServices();
         ehsServices.getIdentifiedObservations(new OnTaskComplete() {
             @Override
             public void onTaskComplte(CarotResponse carotResponse) {
 
-                if(carotResponse.getStatuscode()== HttpsURLConnection.HTTP_OK){
+                if (carotResponse.getStatuscode() == HttpsURLConnection.HTTP_OK) {
                     List<EHSObsModel> list = (List<EHSObsModel>) carotResponse.getData();
-                    if(list!=null && list.size()>0){
+                    if (list != null && list.size() > 0) {
                         myObservations.addAll(list);
                     }
                     ehsObsAdapter.notifyDataSetChanged();
-                }
-                else{
-                    Toast.makeText(EHSObservations.this,"Oops! Something went wrong.",Toast.LENGTH_LONG).show();
+                } else {
+                    Toast.makeText(EHSObservations.this, "Oops! Something went wrong.", Toast.LENGTH_LONG).show();
                 }
             }
-        },empCode);
+        }, empCode);
 
     }
 

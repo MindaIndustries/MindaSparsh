@@ -66,7 +66,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class EHSInitiate extends BaseActivity{
+public class EHSInitiate extends BaseActivity {
     @BindView(R.id.toolbar)
     Toolbar toolbar;
     @BindView(R.id.title)
@@ -96,7 +96,7 @@ public class EHSInitiate extends BaseActivity{
     @BindView(R.id.attachtext)
     TextView attachtext;
     private File mDestinationFile;
-    private String mUserChoosenTask="";
+    private String mUserChoosenTask = "";
     public static final int MY_PERMISSIONS_REQUEST_READ_EXTERNAL_STORAGE = 123;
 
 
@@ -106,20 +106,20 @@ public class EHSInitiate extends BaseActivity{
     List<SafetyOfficerModel> safetyOfficers = new ArrayList<SafetyOfficerModel>();
     ArrayList<String> observationtypeNames = new ArrayList<String>();
     List<EHSObservationModel> observationTypes = new ArrayList<EHSObservationModel>();
-    ArrayList<String> identifiedLocations =  new ArrayList<String>();
+    ArrayList<String> identifiedLocations = new ArrayList<String>();
     List<EHSIdentifiedLocationModel> ehsIdentifiedLocations = new ArrayList<EHSIdentifiedLocationModel>();
-    ArrayList<String> categories =  new ArrayList<String>();
-    List<EHSCategoryModel> ehsCategories =  new ArrayList<EHSCategoryModel>();
-    ArrayList<String> subCategories =  new ArrayList<String>();
-    List<EHSSubCategoryModel> ehsSubCategories =  new ArrayList<EHSSubCategoryModel>();
-    ArrayAdapter<String> adapterUnit, adapterSafetyOfficer,adapterObservationType,adapterIdentifiedLocation,adapterCategory,adapterSubCategory;
+    ArrayList<String> categories = new ArrayList<String>();
+    List<EHSCategoryModel> ehsCategories = new ArrayList<EHSCategoryModel>();
+    ArrayList<String> subCategories = new ArrayList<String>();
+    List<EHSSubCategoryModel> ehsSubCategories = new ArrayList<EHSSubCategoryModel>();
+    ArrayAdapter<String> adapterUnit, adapterSafetyOfficer, adapterObservationType, adapterIdentifiedLocation, adapterCategory, adapterSubCategory;
     String catId;
     DatePickerDialog observationDatePicker;
     Calendar cal;
     SharedPreferences myPref;
     String unitcode;
-    String empCode,actId,actNo;
-    String safetyOfficer,obstype,identifiedLocation,category,subcategory,locationID, subCategoryID,observationID;
+    String empCode, actId, actNo;
+    String safetyOfficer, obstype, identifiedLocation, category, subcategory, locationID, subCategoryID, observationID;
 
     private static final int CAPTURE_FROM_CAMERA = 1;
     private static final int SELECT_FROM_GALLERY = 2;
@@ -136,7 +136,7 @@ public class EHSInitiate extends BaseActivity{
         getSupportActionBar().setHomeAsUpIndicator(R.drawable.back);
         title.setText("EHS Initiate");
         myPref = getSharedPreferences("MyPref", MODE_PRIVATE);
-        unitcode = myPref.getString("Um_div_code","");
+        unitcode = myPref.getString("Um_div_code", "");
         empCode = myPref.getString("Id", "Id");
 
         initObservationDatePicker();
@@ -152,23 +152,22 @@ public class EHSInitiate extends BaseActivity{
         getIdentifiedLocations();
         getCategories();
 
-        if(getIntent()!=null && getIntent().hasExtra("obsDate")){
+        if (getIntent() != null && getIntent().hasExtra("obsDate")) {
             submit.setText("Update");
             reset.setVisibility(View.GONE);
             observationDateSpinner.setEnabled(false);
             observationDateSpinner.setTextColor(Color.parseColor("#000000"));
 
-            if(getIntent().getStringExtra("actId")!=null) {
+            if (getIntent().getStringExtra("actId") != null) {
                 actId = getIntent().getStringExtra("actId");
             }
-            if(getIntent().getStringExtra("actNo")!=null) {
+            if (getIntent().getStringExtra("actNo") != null) {
                 actNo = getIntent().getStringExtra("actNo");
             }
-            if(getIntent().getStringExtra("description")!=null) {
+            if (getIntent().getStringExtra("description") != null) {
                 descriptionEdit.setText(getIntent().getStringExtra("description"));
             }
-        }
-        else{
+        } else {
             reset.setVisibility(View.VISIBLE);
             submit.setText("Submit");
             observationDateSpinner.setEnabled(true);
@@ -178,8 +177,8 @@ public class EHSInitiate extends BaseActivity{
         safetyOfficerSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-              if(safetyOfficers!=null && safetyOfficers.size()>0)
-                safetyOfficer = safetyOfficers.get(position-1).getUnitOfficer();
+                if (safetyOfficers != null && safetyOfficers.size() > 0)
+                    safetyOfficer = safetyOfficers.get(position - 1).getUnitOfficer();
 
             }
 
@@ -192,9 +191,9 @@ public class EHSInitiate extends BaseActivity{
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 obstype = observationtypeNames.get(position);
-                if(observationTypes.size()>1) {
-                    if(position>0)
-                    observationID = observationTypes.get(position-1).getId();
+                if (observationTypes.size() > 1) {
+                    if (position > 0)
+                        observationID = observationTypes.get(position - 1).getId();
                 }
 
             }
@@ -208,8 +207,8 @@ public class EHSInitiate extends BaseActivity{
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 identifiedLocation = identifiedLocations.get(position);
-                if(ehsIdentifiedLocations.size()>0) {
-                    if(position>0)
+                if (ehsIdentifiedLocations.size() > 0) {
+                    if (position > 0)
                         locationID = ehsIdentifiedLocations.get(position - 1).getID();
                 }
             }
@@ -223,8 +222,8 @@ public class EHSInitiate extends BaseActivity{
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 subcategory = subCategories.get(position);
-                if(ehsSubCategories.size()>1) {
-                    if(position>0)
+                if (ehsSubCategories.size() > 1) {
+                    if (position > 0)
                         subCategoryID = ehsSubCategories.get(position - 1).getID();
                 }
             }
@@ -238,61 +237,66 @@ public class EHSInitiate extends BaseActivity{
     }
 
     @OnClick(R.id.reset)
-    public void onClickReset(){
+    public void onClickReset() {
         finish();
         startActivity(getIntent());
     }
 
     @OnClick(R.id.submit)
-   public void onClickSubmit(){
-        if(safetyOfficer!=null && safetyOfficer.equals("Select")){
+    public void onClickSubmit() {
+        if (safetyOfficer != null && safetyOfficer.equals("Select") || safetyOfficer == null) {
+            Toast.makeText(EHSInitiate.this, "Safety Officer not selected", Toast.LENGTH_LONG).show();
             return;
         }
-        if(obstype!=null && obstype.equals("Select")){
+        if (obstype != null && obstype.equals("Select") || obstype == null) {
+            Toast.makeText(EHSInitiate.this, "Type of Observation not selected", Toast.LENGTH_LONG).show();
             return;
         }
-        if(category!=null && category.equals("Select")){
+        if (category != null && category.equals("Select") || category == null) {
+            Toast.makeText(EHSInitiate.this, "Category not selected", Toast.LENGTH_LONG).show();
             return;
         }
-        if(subcategory!=null && subcategory.equals("Select")){
+        if (subcategory != null && subcategory.equals("Select")) {
+            Toast.makeText(EHSInitiate.this, "Sub Category not selected", Toast.LENGTH_LONG).show();
             return;
         }
-        if(descriptionEdit.getText().toString().equals("")){
+        if (descriptionEdit.getText().toString().equals("")) {
+            Toast.makeText(EHSInitiate.this, "Please fill some description", Toast.LENGTH_LONG).show();
             return;
         }
 
-        if(submit.getText().equals("Submit")) {
+        if (submit.getText().equals("Submit")) {
             saveEHS(empCode, observationDateSpinner.getText().toString(), "", safetyOfficer, unitcode, descriptionEdit.getText().toString(), "", "", locationID, catId, subCategoryID, observationID, "", "", obstype, identifiedLocation);
-        }
-        else{
+        } else {
             String idLocaton = getIntent().getStringExtra("identifiedLoc");
             int i = idLocaton.indexOf(identifiedLocation);
             String locationId = ehsIdentifiedLocations.get(i).getID();
-            updateEHS(actId,empCode,actNo,observationDateSpinner.getText().toString(),"",getIntent().getStringExtra("safetyOfficer"),unitcode,descriptionEdit.getText().toString(),"","",locationId,getIntent().getStringExtra("catId"),getIntent().getStringExtra("subCategory"),getIntent().getStringExtra("obsId"),"","");
+            updateEHS(actId, empCode, actNo, observationDateSpinner.getText().toString(), "", getIntent().getStringExtra("safetyOfficer"), unitcode, descriptionEdit.getText().toString(), "", "", locationId, getIntent().getStringExtra("catId"), getIntent().getStringExtra("subCategory"), getIntent().getStringExtra("obsId"), "", "");
         }
     }
 
     @OnClick(R.id.attachtext)
-    public void onClickAttachText(){
+    public void onClickAttachText() {
 
         selectFile();
     }
 
     @OnClick(R.id.attachment)
-    public void onClickAttachment(){
+    public void onClickAttachment() {
 
         selectFile();
     }
 
     @OnClick(R.id.obs_date_spinner)
-    public void onClickObservationDateSpinner(){
+    public void onClickObservationDateSpinner() {
         observationDatePicker.show();
     }
-    public void initObservationDatePicker(){
+
+    public void initObservationDatePicker() {
         cal = Calendar.getInstance();
         cal.setTimeInMillis(System.currentTimeMillis());
-        observationDateSpinner.setText(""+getlogDate(cal.getTimeInMillis()));
-        if(getIntent().getStringExtra("obsDate")!=null) {
+        observationDateSpinner.setText("" + getlogDate(cal.getTimeInMillis()));
+        if (getIntent().getStringExtra("obsDate") != null) {
             String givenDateString = getIntent().getStringExtra("obsDate").split(" ")[0];
             String givenDate[] = givenDateString.split("/");
             String monthgiven;
@@ -304,16 +308,15 @@ public class EHSInitiate extends BaseActivity{
                 monthgiven = givenDate[0];
             }
 
-            if (Integer.parseInt(givenDate[1].toString()) < 10){
-                daygiven ="0"+givenDate[1];
-            }
-            else{
+            if (Integer.parseInt(givenDate[1].toString()) < 10) {
+                daygiven = "0" + givenDate[1];
+            } else {
                 daygiven = givenDate[1];
             }
             cal.set(Calendar.DAY_OF_MONTH, Integer.parseInt(daygiven));
-            cal.set(Calendar.MONTH, Integer.parseInt(monthgiven)-1);
+            cal.set(Calendar.MONTH, Integer.parseInt(monthgiven) - 1);
             cal.set(Calendar.YEAR, Integer.parseInt(givenDate[2]));
-            observationDateSpinner.setText(""+getlogDate(cal.getTimeInMillis()));
+            observationDateSpinner.setText("" + getlogDate(cal.getTimeInMillis()));
 
 
 
@@ -332,31 +335,29 @@ public class EHSInitiate extends BaseActivity{
         observationDatePicker = new DatePickerDialog(EHSInitiate.this, new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-                int mMonth = month+1;
+                int mMonth = month + 1;
                 String monthNo;
-                if(mMonth <10){
-                    monthNo = "0"+mMonth;
-                }
-                else{
-                    monthNo = ""+mMonth;
+                if (mMonth < 10) {
+                    monthNo = "0" + mMonth;
+                } else {
+                    monthNo = "" + mMonth;
                 }
                 String dayOfMonthStr;
-                if(dayOfMonth<10){
-                    dayOfMonthStr = "0"+dayOfMonth;
+                if (dayOfMonth < 10) {
+                    dayOfMonthStr = "0" + dayOfMonth;
+                } else {
+                    dayOfMonthStr = "" + dayOfMonth;
                 }
-                else{
-                    dayOfMonthStr =""+ dayOfMonth;
-                }
-                observationDateSpinner.setText(""+dayOfMonthStr+"/"+monthNo+"/"+year);
+                observationDateSpinner.setText("" + dayOfMonthStr + "/" + monthNo + "/" + year);
 
             }
-        },cal.get(Calendar.YEAR),cal.get(Calendar.MONTH),cal.get(Calendar.DAY_OF_MONTH));
+        }, cal.get(Calendar.YEAR), cal.get(Calendar.MONTH), cal.get(Calendar.DAY_OF_MONTH));
 
         try {
 
             observationDatePicker.getDatePicker().setMaxDate(Calendar.getInstance().getTimeInMillis() - 10000);
-            long previoustime = Calendar.getInstance().getTimeInMillis() - (7*24*60*60*1000);
-                observationDatePicker.getDatePicker().setMinDate((previoustime));
+            long previoustime = Calendar.getInstance().getTimeInMillis() - (7 * 24 * 60 * 60 * 1000);
+            observationDatePicker.getDatePicker().setMinDate((previoustime));
 
 
         } catch (Exception e) {
@@ -373,21 +374,19 @@ public class EHSInitiate extends BaseActivity{
         int year = cal.get(Calendar.YEAR);
         month = month + 1;
         String monthNo;
-        if(month <10){
-            monthNo = "0"+month;
-        }
-        else{
-            monthNo = ""+month;
+        if (month < 10) {
+            monthNo = "0" + month;
+        } else {
+            monthNo = "" + month;
         }
         String dayOfMonthStr;
-        if(day<10){
-            dayOfMonthStr = "0"+day;
-        }
-        else{
-            dayOfMonthStr =""+ day;
+        if (day < 10) {
+            dayOfMonthStr = "0" + day;
+        } else {
+            dayOfMonthStr = "" + day;
         }
 
-        return dayOfMonthStr  + "/" + monthNo + "/" + year;
+        return dayOfMonthStr + "/" + monthNo + "/" + year;
     }
 
     @Override
@@ -403,26 +402,26 @@ public class EHSInitiate extends BaseActivity{
     }
 
 
-    public void getUnits(){
+    public void getUnits() {
 
         EHSServices ehsServices = new EHSServices();
         ehsServices.getUnits(new OnTaskComplete() {
             @Override
             public void onTaskComplte(CarotResponse carotResponse) {
                 units.clear();
-                if(carotResponse.getStatuscode()== HttpsURLConnection.HTTP_OK){
+                if (carotResponse.getStatuscode() == HttpsURLConnection.HTTP_OK) {
                     List<EHSUnitModel> list = (List<EHSUnitModel>) carotResponse.getData();
-                    if(list!=null && list.size()>0) {
+                    if (list != null && list.size() > 0) {
                         units.addAll(list);
                         for (EHSUnitModel unit : units) {
                             unitsName.add(unit.getUnitCode() + ":" + unit.getUnitName());
                         }
                         adapterUnit.notifyDataSetChanged();
-                        if(unitsName.size()>0) {
+                        if (unitsName.size() > 0) {
                             unitSpinner.setSelection(1);
                         }
-                        if(getIntent().getStringExtra("unit")!=null){
-                            int i= unitsName.indexOf(getIntent().getStringExtra("unit"));
+                        if (getIntent().getStringExtra("unit") != null) {
+                            int i = unitsName.indexOf(getIntent().getStringExtra("unit"));
                             unitSpinner.setSelection(i);
 
                         }
@@ -430,52 +429,52 @@ public class EHSInitiate extends BaseActivity{
 
                 }
             }
-        },unitcode);
+        }, unitcode);
 
     }
 
-    public void getSafetyOfficers(){
+    public void getSafetyOfficers() {
         EHSServices ehsServices = new EHSServices();
         ehsServices.getSafetyOfficers(new OnTaskComplete() {
             @Override
             public void onTaskComplte(CarotResponse carotResponse) {
                 safetyOfficers.clear();
-                if(carotResponse.getStatuscode()==HttpsURLConnection.HTTP_OK){
+                if (carotResponse.getStatuscode() == HttpsURLConnection.HTTP_OK) {
                     List<SafetyOfficerModel> list = (List<SafetyOfficerModel>) carotResponse.getData();
-                    if(list!=null && list.size()>0){
+                    if (list != null && list.size() > 0) {
                         safetyOfficers.addAll(list);
                         for (SafetyOfficerModel safetyOfficer : safetyOfficers) {
                             officersName.add(safetyOfficer.getUSName());
                         }
                         adapterSafetyOfficer.notifyDataSetChanged();
-                        if(officersName.size()>1){
+                        if (officersName.size() > 1) {
                             safetyOfficerSpinner.setSelection(1);
                         }
-                        if(getIntent().getStringExtra("safetyOfficer")!=null && getIntent().getStringExtra("safetyOfficer").length()>0) {
+                        if (getIntent().getStringExtra("safetyOfficer") != null && getIntent().getStringExtra("safetyOfficer").length() > 0) {
                             int i = officersName.indexOf(getIntent().getStringExtra("safetyOfficer"));
                             safetyOfficerSpinner.setSelection(i);
                         }
                     }
                 }
             }
-        },unitcode);
+        }, unitcode);
     }
 
-    public void getObservationTypes(){
+    public void getObservationTypes() {
         EHSServices ehsServices = new EHSServices();
         ehsServices.getObservationTypes(new OnTaskComplete() {
             @Override
             public void onTaskComplte(CarotResponse carotResponse) {
 
-                if(carotResponse.getStatuscode()==HttpsURLConnection.HTTP_OK){
+                if (carotResponse.getStatuscode() == HttpsURLConnection.HTTP_OK) {
                     List<EHSObservationModel> list = (List<EHSObservationModel>) carotResponse.getData();
-                    if(list!=null && list.size()>0){
+                    if (list != null && list.size() > 0) {
                         observationTypes.addAll(list);
                         for (EHSObservationModel observationType : observationTypes) {
                             observationtypeNames.add(observationType.getName());
                         }
                         adapterObservationType.notifyDataSetChanged();
-                        if(getIntent().getStringExtra("typeOfObs")!=null){
+                        if (getIntent().getStringExtra("typeOfObs") != null) {
                             int i = observationtypeNames.indexOf(getIntent().getStringExtra("typeOfObs"));
                             typeOfObservationSpinner.setSelection(i);
                         }
@@ -485,22 +484,22 @@ public class EHSInitiate extends BaseActivity{
         });
     }
 
-    public void getIdentifiedLocations(){
+    public void getIdentifiedLocations() {
         EHSServices ehsServices = new EHSServices();
         ehsServices.getIdentifiedLocations(new OnTaskComplete() {
             @Override
             public void onTaskComplte(CarotResponse carotResponse) {
-                if(carotResponse.getStatuscode() == HttpsURLConnection.HTTP_OK){
+                if (carotResponse.getStatuscode() == HttpsURLConnection.HTTP_OK) {
                     List<EHSIdentifiedLocationModel> list = (List<EHSIdentifiedLocationModel>) carotResponse.getData();
-                    if(list!=null && list.size()>0){
+                    if (list != null && list.size() > 0) {
                         ehsIdentifiedLocations.addAll(list);
                         for (EHSIdentifiedLocationModel ehsIdentifiedLocation : ehsIdentifiedLocations) {
                             identifiedLocations.add(ehsIdentifiedLocation.getName());
                         }
                         adapterIdentifiedLocation.notifyDataSetChanged();
-                        if(getIntent().getStringExtra("identifiedLoc")!=null) {
-                            int i= identifiedLocations.indexOf(getIntent().getStringExtra("identifiedLoc"));
-                                identifiedLocationSpinner.setSelection(i);
+                        if (getIntent().getStringExtra("identifiedLoc") != null) {
+                            int i = identifiedLocations.indexOf(getIntent().getStringExtra("identifiedLoc"));
+                            identifiedLocationSpinner.setSelection(i);
                         }
                     }
                 }
@@ -508,29 +507,29 @@ public class EHSInitiate extends BaseActivity{
         });
     }
 
-    public void getCategories(){
+    public void getCategories() {
         EHSServices ehsServices = new EHSServices();
         ehsServices.getCategories(new OnTaskComplete() {
             @Override
             public void onTaskComplte(CarotResponse carotResponse) {
-                      if(carotResponse.getStatuscode() == HttpsURLConnection.HTTP_OK){
+                if (carotResponse.getStatuscode() == HttpsURLConnection.HTTP_OK) {
                     List<EHSCategoryModel> list = (List<EHSCategoryModel>) carotResponse.getData();
-                    if(list!=null && list.size()>0){
+                    if (list != null && list.size() > 0) {
                         ehsCategories.addAll(list);
                         for (EHSCategoryModel ehsCategory : ehsCategories) {
                             categories.add(ehsCategory.getName());
                         }
                         adapterCategory.notifyDataSetChanged();
 
-                        if(getIntent().getStringExtra("catId")!=null) {
-                           // int i = ehsCategories.indexOf(getIntent().getStringExtra("catId"));
+                        if (getIntent().getStringExtra("catId") != null) {
+                            // int i = ehsCategories.indexOf(getIntent().getStringExtra("catId"));
                             categorySpinner.setSelection(Integer.parseInt(getIntent().getStringExtra("catId")));
                         }
 
                         categorySpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                             @Override
                             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                                catId = ehsCategories.get(position-1).getId();
+                                catId = ehsCategories.get(position - 1).getId();
                                 category = categories.get(position);
                                 subCategories.clear();
                                 subCategories.add("Select");
@@ -547,28 +546,28 @@ public class EHSInitiate extends BaseActivity{
 
                 }
 
-                }
-        },"1");
+            }
+        }, "1");
     }
 
-    public void getSubCategories(String catId){
+    public void getSubCategories(String catId) {
         EHSServices ehsServices = new EHSServices();
         ehsServices.getSubCategories(new OnTaskComplete() {
             @Override
             public void onTaskComplte(CarotResponse carotResponse) {
-                if(carotResponse.getStatuscode() == HttpsURLConnection.HTTP_OK){
+                if (carotResponse.getStatuscode() == HttpsURLConnection.HTTP_OK) {
                     List<EHSSubCategoryModel> list = (List<EHSSubCategoryModel>) carotResponse.getData();
-                    if(list!=null && list.size()>0){
+                    if (list != null && list.size() > 0) {
                         ehsSubCategories.addAll(list);
                         for (EHSSubCategoryModel ehsSubCategory : ehsSubCategories) {
                             subCategories.add(ehsSubCategory.getName());
                         }
                         adapterSubCategory.notifyDataSetChanged();
-                        if(getIntent().getStringExtra("subCategory")!=null) {
+                        if (getIntent().getStringExtra("subCategory") != null) {
                             EHSSubCategoryModel ehsSubCategoryModel = new EHSSubCategoryModel();
                             ehsSubCategoryModel.setID(getIntent().getStringExtra("subCategory"));
                             int i = ehsSubCategories.indexOf(ehsSubCategoryModel);
-                            subCategorySpinner.setSelection(i+1);
+                            subCategorySpinner.setSelection(i + 1);
                         }
 
 
@@ -576,10 +575,10 @@ public class EHSInitiate extends BaseActivity{
 
                 }
             }
-        },catId);
+        }, catId);
     }
 
-    public void initUnitSpinner(){
+    public void initUnitSpinner() {
         unitsName.clear();
         unitsName.add("Select");
         adapterUnit = new ArrayAdapter<String>(EHSInitiate.this, R.layout.spinner_row, unitsName) {
@@ -598,7 +597,7 @@ public class EHSInitiate extends BaseActivity{
                 View view = super.getDropDownView(position, convertView, parent);
                 TextView itemTv = (TextView) view;
                 itemTv.setSingleLine(true);
-                itemTv.setPadding(10,10,10,10);
+                itemTv.setPadding(10, 10, 10, 10);
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
                     itemTv.setBackground(getResources().getDrawable(R.drawable.darkline));
                 }
@@ -617,7 +616,7 @@ public class EHSInitiate extends BaseActivity{
 
     }
 
-    public void initSafetyOfficerSpinner(){
+    public void initSafetyOfficerSpinner() {
         officersName.clear();
         officersName.add("Select");
         adapterSafetyOfficer = new ArrayAdapter<String>(EHSInitiate.this, R.layout.spinner_row, officersName) {
@@ -636,7 +635,7 @@ public class EHSInitiate extends BaseActivity{
                 View view = super.getDropDownView(position, convertView, parent);
                 TextView itemTv = (TextView) view;
                 itemTv.setSingleLine(true);
-                itemTv.setPadding(10,10,10,10);
+                itemTv.setPadding(10, 10, 10, 10);
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
                     itemTv.setBackground(getResources().getDrawable(R.drawable.darkline));
                 }
@@ -655,7 +654,7 @@ public class EHSInitiate extends BaseActivity{
 
     }
 
-    public void initObservationTypeSpinner(){
+    public void initObservationTypeSpinner() {
         observationtypeNames.clear();
         observationtypeNames.add("Select");
         adapterObservationType = new ArrayAdapter<String>(EHSInitiate.this, R.layout.spinner_row, observationtypeNames) {
@@ -674,7 +673,7 @@ public class EHSInitiate extends BaseActivity{
                 View view = super.getDropDownView(position, convertView, parent);
                 TextView itemTv = (TextView) view;
                 itemTv.setSingleLine(true);
-                itemTv.setPadding(10,10,10,10);
+                itemTv.setPadding(10, 10, 10, 10);
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
                     itemTv.setBackground(getResources().getDrawable(R.drawable.darkline));
                 }
@@ -692,7 +691,8 @@ public class EHSInitiate extends BaseActivity{
         typeOfObservationSpinner.setSelection(0);
 
     }
-    public void initIdentifiedLocationSpinner(){
+
+    public void initIdentifiedLocationSpinner() {
         identifiedLocations.clear();
         identifiedLocations.add("Select");
         adapterIdentifiedLocation = new ArrayAdapter<String>(EHSInitiate.this, R.layout.spinner_row, identifiedLocations) {
@@ -711,7 +711,7 @@ public class EHSInitiate extends BaseActivity{
                 View view = super.getDropDownView(position, convertView, parent);
                 TextView itemTv = (TextView) view;
                 itemTv.setSingleLine(true);
-                itemTv.setPadding(10,10,10,10);
+                itemTv.setPadding(10, 10, 10, 10);
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
                     itemTv.setBackground(getResources().getDrawable(R.drawable.darkline));
                 }
@@ -729,7 +729,8 @@ public class EHSInitiate extends BaseActivity{
         identifiedLocationSpinner.setSelection(0);
 
     }
-    public void initCategorySpinner(){
+
+    public void initCategorySpinner() {
         categories.clear();
         categories.add("Select");
         adapterCategory = new ArrayAdapter<String>(EHSInitiate.this, R.layout.spinner_row, categories) {
@@ -748,7 +749,7 @@ public class EHSInitiate extends BaseActivity{
                 View view = super.getDropDownView(position, convertView, parent);
                 TextView itemTv = (TextView) view;
                 itemTv.setSingleLine(true);
-                itemTv.setPadding(10,10,10,10);
+                itemTv.setPadding(10, 10, 10, 10);
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
                     itemTv.setBackground(getResources().getDrawable(R.drawable.darkline));
                 }
@@ -767,7 +768,7 @@ public class EHSInitiate extends BaseActivity{
 
     }
 
-    public void initSubCategorySpinner(){
+    public void initSubCategorySpinner() {
         subCategories.clear();
         subCategories.add("Select");
         adapterSubCategory = new ArrayAdapter<String>(EHSInitiate.this, R.layout.spinner_row, subCategories) {
@@ -786,7 +787,7 @@ public class EHSInitiate extends BaseActivity{
                 View view = super.getDropDownView(position, convertView, parent);
                 TextView itemTv = (TextView) view;
                 itemTv.setSingleLine(true);
-                itemTv.setPadding(10,10,10,10);
+                itemTv.setPadding(10, 10, 10, 10);
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
                     itemTv.setBackground(getResources().getDrawable(R.drawable.darkline));
                 }
@@ -805,13 +806,13 @@ public class EHSInitiate extends BaseActivity{
 
     }
 
-    public void saveEHS(String EmpCode,String ActDate,String HOD,String UnitSafetyOfficer,String UnitCode,String Description,String Attachment,String AttachmentType,String LocationID,String CategoryID,String SubCategoryID,String ObservationID,String IncidenceTime,String IncidenceActionTaken,String ObservationName, String LocationName){
+    public void saveEHS(String EmpCode, String ActDate, String HOD, String UnitSafetyOfficer, String UnitCode, String Description, String Attachment, String AttachmentType, String LocationID, String CategoryID, String SubCategoryID, String ObservationID, String IncidenceTime, String IncidenceActionTaken, String ObservationName, String LocationName) {
         EHSServices ehsServices = new EHSServices();
         ehsServices.saveEHS(new OnTaskComplete() {
             @Override
             public void onTaskComplte(CarotResponse carotResponse) {
-                if(carotResponse.getStatuscode()==HttpsURLConnection.HTTP_OK){
-                    Toast.makeText(EHSInitiate.this,"Successfully submitted",Toast.LENGTH_LONG).show();
+                if (carotResponse.getStatuscode() == HttpsURLConnection.HTTP_OK) {
+                    Toast.makeText(EHSInitiate.this, "Successfully submitted", Toast.LENGTH_LONG).show();
                     new Handler().postDelayed(new Runnable() {
                         @Override
                         public void run() {
@@ -820,23 +821,23 @@ public class EHSInitiate extends BaseActivity{
                         }
                     }, 1000);
 
-                        }
+                }
             }
-        },EmpCode,"",ActDate,HOD,UnitSafetyOfficer,UnitCode,Description,Attachment,AttachmentType,LocationID,CategoryID,SubCategoryID,ObservationID,IncidenceTime,IncidenceActionTaken,ObservationName,LocationName);
+        }, EmpCode, "", ActDate, HOD, UnitSafetyOfficer, UnitCode, Description, Attachment, AttachmentType, LocationID, CategoryID, SubCategoryID, ObservationID, IncidenceTime, IncidenceActionTaken, ObservationName, LocationName);
     }
 
-    public void updateEHS(String ActID,String EmpCode,String ActNo,String ActDate,String HOD,String UnitSafetyOfficer,String UnitCode,String Description,String Attachment,String AttachmentType,String LocationID,String CategoryID,String SubCategoryID,String ObservationID,String IncidenceTime,String IncidenceActionTaken){
+    public void updateEHS(String ActID, String EmpCode, String ActNo, String ActDate, String HOD, String UnitSafetyOfficer, String UnitCode, String Description, String Attachment, String AttachmentType, String LocationID, String CategoryID, String SubCategoryID, String ObservationID, String IncidenceTime, String IncidenceActionTaken) {
         EHSServices ehsServices = new EHSServices();
         ehsServices.update(new OnTaskComplete() {
             @Override
             public void onTaskComplte(CarotResponse carotResponse) {
-                if(carotResponse.getStatuscode()==HttpsURLConnection.HTTP_OK){
-                    Toast.makeText(EHSInitiate.this,"Successfully updated",Toast.LENGTH_LONG).show();
+                if (carotResponse.getStatuscode() == HttpsURLConnection.HTTP_OK) {
+                    Toast.makeText(EHSInitiate.this, "Successfully updated", Toast.LENGTH_LONG).show();
                     new Handler().postDelayed(new Runnable() {
                         @Override
                         public void run() {
 
-                            Intent in = new Intent(EHSInitiate.this,EHS_Home.class);
+                            Intent in = new Intent(EHSInitiate.this, EHS_Home.class);
                             in.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
                             startActivity(in);
                             finish();
@@ -846,16 +847,15 @@ public class EHSInitiate extends BaseActivity{
 
                 }
             }
-        },ActID,EmpCode,ActNo,ActDate,HOD,UnitSafetyOfficer,UnitCode,Description,Attachment,AttachmentType,LocationID,CategoryID,SubCategoryID,ObservationID,IncidenceTime,IncidenceActionTaken);
+        }, ActID, EmpCode, ActNo, ActDate, HOD, UnitSafetyOfficer, UnitCode, Description, Attachment, AttachmentType, LocationID, CategoryID, SubCategoryID, ObservationID, IncidenceTime, IncidenceActionTaken);
 
     }
 
 
-
-
-    public void selectFile(){
+    public void selectFile() {
         requestAppPermissions();
     }
+
     private void cameraIntent() {
         Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         startActivityForResult(intent, CAPTURE_FROM_CAMERA);
@@ -877,6 +877,7 @@ public class EHSInitiate extends BaseActivity{
                 onCaptureImageResult(data);
         }
     }
+
     private void onCaptureImageResult(Intent data) {
 
         Bitmap thumbnail = (Bitmap) data.getExtras().get("data");
@@ -885,7 +886,7 @@ public class EHSInitiate extends BaseActivity{
         Utility.saveFileToSdCard(mDestinationFile, thumbnail);
         String fileName = mDestinationFile.getAbsolutePath();
         System.out.println("fileName" + fileName);
-       // addUserImage(fileName);
+        // addUserImage(fileName);
     }
 
 
@@ -906,14 +907,15 @@ public class EHSInitiate extends BaseActivity{
                 System.currentTimeMillis() + ".jpg");
 
 
-        bm = rotateImageIfRequired(EHSInitiate.this,bm, Uri.parse(mDestinationFile.toString()));
+        bm = rotateImageIfRequired(EHSInitiate.this, bm, Uri.parse(mDestinationFile.toString()));
         Utility.saveFileToSdCard(mDestinationFile, bm);
         String fileName = mDestinationFile.getAbsolutePath();
         System.out.println("fileName" + fileName);
 
 
-      //  addUserImage(fileName);
+        //  addUserImage(fileName);
     }
+
     private static Bitmap rotateImageIfRequired(Context context, Bitmap img, Uri selectedImage) {
 
         // Detect rotation
@@ -924,23 +926,22 @@ public class EHSInitiate extends BaseActivity{
             Bitmap rotatedImg = Bitmap.createBitmap(img, 0, 0, img.getWidth(), img.getHeight(), matrix, true);
             img.recycle();
             return rotatedImg;
-        }
-        else{
+        } else {
             return img;
         }
     }
 
-    private static int getRotation(Context context,Uri selectedImage) {
+    private static int getRotation(Context context, Uri selectedImage) {
 
         int rotation = 0;
         ContentResolver content = context.getContentResolver();
 
         Cursor mediaCursor = content.query(MediaStore.Images.Media.EXTERNAL_CONTENT_URI,
-                new String[] { "orientation", "date_added" },
+                new String[]{"orientation", "date_added"},
                 null, null, "date_added desc");
 
         if (mediaCursor != null && mediaCursor.getCount() != 0) {
-            while(mediaCursor.moveToNext()){
+            while (mediaCursor.moveToNext()) {
                 rotation = mediaCursor.getInt(0);
                 break;
             }
@@ -990,7 +991,7 @@ public class EHSInitiate extends BaseActivity{
         }
 
         ActivityCompat.requestPermissions(this,
-                new String[] {
+                new String[]{
                         android.Manifest.permission.READ_EXTERNAL_STORAGE,
                         android.Manifest.permission.WRITE_EXTERNAL_STORAGE
                 }, MY_PERMISSIONS_REQUEST_READ_EXTERNAL_STORAGE); // your request code
