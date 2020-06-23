@@ -123,6 +123,7 @@ public class EHSInitiate extends BaseActivity {
 
     private static final int CAPTURE_FROM_CAMERA = 1;
     private static final int SELECT_FROM_GALLERY = 2;
+    String ActId;
 
 
     @Override
@@ -179,7 +180,6 @@ public class EHSInitiate extends BaseActivity {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 if (safetyOfficers != null && safetyOfficers.size() > 0)
                     safetyOfficer = safetyOfficers.get(position - 1).getUnitOfficer();
-
             }
 
             @Override
@@ -192,8 +192,10 @@ public class EHSInitiate extends BaseActivity {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 obstype = observationtypeNames.get(position);
                 if (observationTypes.size() > 1) {
-                    if (position > 0)
+                    if (position > 0) {
                         observationID = observationTypes.get(position - 1).getId();
+                        actId = observationTypes.get(position - 1).getShortName() + "-" + unitcode+"-";
+                    }
                 }
 
             }
@@ -266,12 +268,17 @@ public class EHSInitiate extends BaseActivity {
         }
 
         if (submit.getText().equals("Submit")) {
-            saveEHS(empCode, observationDateSpinner.getText().toString(), "", safetyOfficer, unitcode, descriptionEdit.getText().toString(), "", "", locationID, catId, subCategoryID, observationID, "", "", obstype, identifiedLocation);
+
+            String [] ActDate = observationDateSpinner.getText().toString().split("/");
+            String newActDate = ActDate[2]+"/"+ActDate[1]+"/"+ActDate[0];
+            saveEHS(empCode, newActDate, "", safetyOfficer, unitcode, descriptionEdit.getText().toString(), "", "", locationID, catId, subCategoryID, observationID, "", "", obstype, identifiedLocation);
         } else {
             String idLocaton = getIntent().getStringExtra("identifiedLoc");
             int i = idLocaton.indexOf(identifiedLocation);
             String locationId = ehsIdentifiedLocations.get(i).getID();
-            updateEHS(actId, empCode, actNo, observationDateSpinner.getText().toString(), "", getIntent().getStringExtra("safetyOfficer"), unitcode, descriptionEdit.getText().toString(), "", "", locationId, getIntent().getStringExtra("catId"), getIntent().getStringExtra("subCategory"), getIntent().getStringExtra("obsId"), "", "");
+            String [] ActDate = observationDateSpinner.getText().toString().split("/");
+            String newActDate = ActDate[2]+"/"+ActDate[1]+"/"+ActDate[0];
+            updateEHS(actId, empCode, actNo, newActDate, "", getIntent().getStringExtra("safetyOfficer"), unitcode, descriptionEdit.getText().toString(), "", "", locationId, getIntent().getStringExtra("catId"), getIntent().getStringExtra("subCategory"), getIntent().getStringExtra("obsId"), "", "");
         }
     }
 
@@ -823,7 +830,7 @@ public class EHSInitiate extends BaseActivity {
 
                 }
             }
-        }, EmpCode, "", ActDate, HOD, UnitSafetyOfficer, UnitCode, Description, Attachment, AttachmentType, LocationID, CategoryID, SubCategoryID, ObservationID, IncidenceTime, IncidenceActionTaken, ObservationName, LocationName);
+        }, EmpCode, actId, ActDate, HOD, UnitSafetyOfficer, UnitCode, Description, Attachment, AttachmentType, LocationID, CategoryID, SubCategoryID, ObservationID, IncidenceTime, IncidenceActionTaken, ObservationName, LocationName);
     }
 
     public void updateEHS(String ActID, String EmpCode, String ActNo, String ActDate, String HOD, String UnitSafetyOfficer, String UnitCode, String Description, String Attachment, String AttachmentType, String LocationID, String CategoryID, String SubCategoryID, String ObservationID, String IncidenceTime, String IncidenceActionTaken) {

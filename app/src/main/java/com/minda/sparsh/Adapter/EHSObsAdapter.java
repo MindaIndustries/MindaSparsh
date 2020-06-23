@@ -43,7 +43,6 @@ public class EHSObsAdapter extends RecyclerView.Adapter<EHSObsAdapter.ViewHolder
 
         viewHolder.obsType.setText(myObservations.get(i).getOBName());
         viewHolder.actNoValue.setText(myObservations.get(i).getActNo());
-
         String[] actDate = myObservations.get(i).getActDate().split("/");
         String actmonth = actDate[0];
         String actday = actDate[1];
