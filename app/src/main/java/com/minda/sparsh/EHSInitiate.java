@@ -123,8 +123,7 @@ public class EHSInitiate extends BaseActivity {
 
     private static final int CAPTURE_FROM_CAMERA = 1;
     private static final int SELECT_FROM_GALLERY = 2;
-    String ActId;
-
+    String ActID;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -194,7 +193,7 @@ public class EHSInitiate extends BaseActivity {
                 if (observationTypes.size() > 1) {
                     if (position > 0) {
                         observationID = observationTypes.get(position - 1).getId();
-                        actId = observationTypes.get(position - 1).getShortName() + "-" + unitcode+"-";
+                        ActID = observationTypes.get(position - 1).getShortName() + "-" + unitcode + "-";
                     }
                 }
 
@@ -268,29 +267,26 @@ public class EHSInitiate extends BaseActivity {
         }
 
         if (submit.getText().equals("Submit")) {
-
-            String [] ActDate = observationDateSpinner.getText().toString().split("/");
-            String newActDate = ActDate[2]+"/"+ActDate[1]+"/"+ActDate[0];
+            String[] ActDate = observationDateSpinner.getText().toString().split("/");
+            String newActDate = ActDate[2] + "/" + ActDate[1] + "/" + ActDate[0];
             saveEHS(empCode, newActDate, "", safetyOfficer, unitcode, descriptionEdit.getText().toString(), "", "", locationID, catId, subCategoryID, observationID, "", "", obstype, identifiedLocation);
         } else {
             String idLocaton = getIntent().getStringExtra("identifiedLoc");
             int i = idLocaton.indexOf(identifiedLocation);
             String locationId = ehsIdentifiedLocations.get(i).getID();
-            String [] ActDate = observationDateSpinner.getText().toString().split("/");
-            String newActDate = ActDate[2]+"/"+ActDate[1]+"/"+ActDate[0];
+            String[] ActDate = observationDateSpinner.getText().toString().split("/");
+            String newActDate = ActDate[2] + "/" + ActDate[1] + "/" + ActDate[0];
             updateEHS(actId, empCode, actNo, newActDate, "", getIntent().getStringExtra("safetyOfficer"), unitcode, descriptionEdit.getText().toString(), "", "", locationId, getIntent().getStringExtra("catId"), getIntent().getStringExtra("subCategory"), getIntent().getStringExtra("obsId"), "", "");
         }
     }
 
     @OnClick(R.id.attachtext)
     public void onClickAttachText() {
-
         selectFile();
     }
 
     @OnClick(R.id.attachment)
     public void onClickAttachment() {
-
         selectFile();
     }
 
@@ -813,24 +809,23 @@ public class EHSInitiate extends BaseActivity {
 
     }
 
-    public void saveEHS(String EmpCode, String ActDate, String HOD, String UnitSafetyOfficer, String UnitCode, String Description, String Attachment, String AttachmentType, String LocationID, String CategoryID, String SubCategoryID, String ObservationID, String IncidenceTime, String IncidenceActionTaken, String ObservationName, String LocationName) {
+    public void saveEHS(final String EmpCode, String ActDate, String HOD, String UnitSafetyOfficer, String UnitCode, final String Description, String Attachment, String AttachmentType, String LocationID, String CategoryID, String SubCategoryID, String ObservationID, String IncidenceTime, String IncidenceActionTaken, final String ObservationName, final String LocationName) {
         EHSServices ehsServices = new EHSServices();
         ehsServices.saveEHS(new OnTaskComplete() {
             @Override
-            public void onTaskComplte(CarotResponse carotResponse) {
+            public void onTaskComplte(final CarotResponse carotResponse) {
                 if (carotResponse.getStatuscode() == HttpsURLConnection.HTTP_OK) {
                     Toast.makeText(EHSInitiate.this, "Successfully submitted", Toast.LENGTH_LONG).show();
                     new Handler().postDelayed(new Runnable() {
                         @Override
                         public void run() {
-
-                            onBackPressed();
+                            sendMail(EmpCode, ObservationName, LocationName, Description, (String) carotResponse.getData(), unitcode);
                         }
                     }, 1000);
 
                 }
             }
-        }, EmpCode, actId, ActDate, HOD, UnitSafetyOfficer, UnitCode, Description, Attachment, AttachmentType, LocationID, CategoryID, SubCategoryID, ObservationID, IncidenceTime, IncidenceActionTaken, ObservationName, LocationName);
+        }, EmpCode, ActID, ActDate, HOD, UnitSafetyOfficer, UnitCode, Description, Attachment, AttachmentType, LocationID, CategoryID, SubCategoryID, ObservationID, IncidenceTime, IncidenceActionTaken, ObservationName, LocationName);
     }
 
     public void updateEHS(String ActID, String EmpCode, String ActNo, String ActDate, String HOD, String UnitSafetyOfficer, String UnitCode, String Description, String Attachment, String AttachmentType, String LocationID, String CategoryID, String SubCategoryID, String ObservationID, String IncidenceTime, String IncidenceActionTaken) {
@@ -843,7 +838,6 @@ public class EHSInitiate extends BaseActivity {
                     new Handler().postDelayed(new Runnable() {
                         @Override
                         public void run() {
-
                             Intent in = new Intent(EHSInitiate.this, EHS_Home.class);
                             in.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
                             startActivity(in);
@@ -1012,6 +1006,16 @@ public class EHSInitiate extends BaseActivity {
         return (ContextCompat.checkSelfPermission(getBaseContext(), Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED);
     }
 
+
+    public void sendMail(String Empcode, String ObservationName, String Location, String description, String ActNo, String UnitCode) {
+        EHSServices ehsServices = new EHSServices();
+        ehsServices.sendmail(new OnTaskComplete() {
+            @Override
+            public void onTaskComplte(CarotResponse carotResponse) {
+                onBackPressed();
+            }
+        }, Empcode, ObservationName, Location, description, ActNo, UnitCode);
+    }
 }
 
 
