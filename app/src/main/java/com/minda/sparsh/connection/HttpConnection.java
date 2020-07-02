@@ -20,7 +20,7 @@ public class HttpConnection {
     //dev environment
     public static String BASE_URL = "http://dev.mindasparsh.com/service.asmx/";
    //prod environment
-  // public static String BASE_URL = "https://app.mindasparsh.com/service.asmx/";
+   //public static String BASE_URL = "https://app.mindasparsh.com/service.asmx/";
 
 
 

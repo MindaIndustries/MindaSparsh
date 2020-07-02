@@ -181,7 +181,21 @@ public class AccessRequestDetailsActivity extends AppCompatActivity implements V
                             tv_sub_category.setText(accessRequestDetailsModels.get(0).getSubCategory() + "");
                             tv_user_authorisation_profile.setText(accessRequestDetailsModels.get(0).getProfileName() + "");
                             tv_approval_status.setText(accessRequestDetailsModels.get(0).getFlag());
-                            tv_access_requirement_details.setText(accessRequestDetailsModels.get(0).getRequirementDetail());
+
+
+                           /* if(accessRequestDetailsModels.get(0).getFlag().contains("Pending")){
+                                btn_un_approve.setVisibility(View.VISIBLE);
+                                tv_approve_unapprove_heading.setVisibility(View.VISIBLE);
+                                btn_send_back.setVisibility(View.VISIBLE);
+
+                            }
+                            else{
+                                btn_un_approve.setVisibility(View.GONE);
+                                tv_approve_unapprove_heading.setVisibility(View.GONE);
+                                btn_send_back.setVisibility(View.GONE);
+
+                            }
+                           */ tv_access_requirement_details.setText(accessRequestDetailsModels.get(0).getRequirementDetail());
 
                             lay_access_request_by.setVisibility(View.VISIBLE);
                             tv_access_request_by.setText(accessRequestDetailsModels.get(0).getCreatedByName() + "(" + accessRequestDetailsModels.get(0).getCreatedBy() + ")");

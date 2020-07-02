@@ -17,6 +17,7 @@ import com.minda.sparsh.AbnormalityAddressingActivity;
 import com.minda.sparsh.DWMActivity;
 
 import com.minda.sparsh.DashBoardActivity;
+import com.minda.sparsh.EHS_Home;
 import com.minda.sparsh.Interface;
 import com.minda.sparsh.LoginActivity;
 import com.minda.sparsh.R;
@@ -36,7 +37,7 @@ import retrofit2.Response;
 
 public class ManufacturingFragment extends Fragment {
 
-    ImageButton dmwButton, dwm_btn1;
+    ImageButton dmwButton, dwm_btn1,ehs;
     private ProgressDialog progress = null;
     SharedPreferences myPref;
     Set<String> loginAccess;
@@ -59,6 +60,7 @@ public class ManufacturingFragment extends Fragment {
         View convertView = inflater.inflate(R.layout.fragment_manufacturing, container, false);
         dmwButton = (ImageButton) convertView.findViewById(R.id.dwm_btn);
         dwm_btn1 = (ImageButton) convertView.findViewById(R.id.dwm_btn1);
+        ehs = convertView.findViewById(R.id.ehs);
         ImageView im_right = (ImageView) convertView.findViewById(R.id.im_right);
         ImageView im_left = (ImageView) convertView.findViewById(R.id.im_left);
         progress = new ProgressDialog(getActivity());
@@ -79,6 +81,15 @@ public class ManufacturingFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 contaxt.viewPager.setCurrentItem(contaxt.getItem(-1), true);
+            }
+        });
+
+        ehs.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent in =new Intent(getActivity(), EHS_Home.class);
+                startActivity(in);
+
             }
         });
         // Inflate the layout for this fragment
@@ -125,10 +136,7 @@ public class ManufacturingFragment extends Fragment {
                 public void onResponse(Call<List<UserDetail_Model>> call, Response<List<UserDetail_Model>> response) {
                     showProgress(false);
                     List<UserDetail_Model> userDetail_models = response.body();
-
-
                     if (userDetail_models != null && userDetail_models.size() != 0) {
-
                         DashBoardActivity.time = 1;
                         Intent intent = new Intent(getActivity(), AbnormalityAddressingActivity.class);
                         intent.putExtra("EDOMAIN",userDetail_models.get(0).getDOMAIN());

@@ -14,6 +14,7 @@ import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.Toast;
@@ -74,6 +75,7 @@ public class RequestForAccessActivity extends AppCompatActivity implements View.
             sp_user_authorization_profile_value = "", catListValue = "", unitCheckId = "";
 
     EditText et_name, et_organisation, et_purpose, et_accessRequirementDetail;
+    ImageView im_back;
 
     HashSet<String> set = new HashSet<String>();
 
@@ -92,6 +94,13 @@ public class RequestForAccessActivity extends AppCompatActivity implements View.
         btn_cancel = (Button) findViewById(R.id.btn_cancel);
 
         et_empCode = (AutoCompleteTextView) findViewById(R.id.et_empCode);
+        im_back = (ImageView) findViewById(R.id.im_back);
+        im_back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
 
         et_name = (EditText) findViewById(R.id.et_name);
         et_organisation = (EditText) findViewById(R.id.et_organisation);
@@ -390,9 +399,9 @@ public class RequestForAccessActivity extends AppCompatActivity implements View.
                     IAMGetAccessTypeSpinnerModel iam = new IAMGetAccessTypeSpinnerModel();
                     iam.setAccessTypeId(0);
                     iam.setAccessType("Please Select Access Type");
-                    responseList.add(0, iam);
 
                     if (responseList != null) {
+                        responseList.add(0, iam);
                         IAMIAMGetAccessTypeAdapter mAdapter = new IAMIAMGetAccessTypeAdapter(RequestForAccessActivity.this, responseList);
                         sp_access_type.setAdapter(mAdapter);
                     }

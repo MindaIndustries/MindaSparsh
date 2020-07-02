@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     tools:context="com.minda.sparsh.SplashActivity"
     android:gravity="center"
+    android:orientation="vertical"
    >
     <!--android:background="@drawable/splash_sparsh"-->
     <ImageView
@@ -14,5 +15,11 @@
         android:src="@drawable/login_logo"
         android:scaleType="fitCenter"
         android:adjustViewBounds="true" />
+
+
+    <ImageView
+        android:src="@drawable/iconic_brand"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
 
 </LinearLayout>

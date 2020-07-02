@@ -95,6 +95,8 @@ public class EHSInitiate extends BaseActivity {
     ImageView attachment;
     @BindView(R.id.attachtext)
     TextView attachtext;
+    @BindView(R.id.doc_view)
+    ImageView docView;
     private File mDestinationFile;
     private String mUserChoosenTask = "";
     public static final int MY_PERMISSIONS_REQUEST_READ_EXTERNAL_STORAGE = 123;
@@ -269,14 +271,14 @@ public class EHSInitiate extends BaseActivity {
         if (submit.getText().equals("Submit")) {
             String[] ActDate = observationDateSpinner.getText().toString().split("/");
             String newActDate = ActDate[2] + "/" + ActDate[1] + "/" + ActDate[0];
-            saveEHS(empCode, newActDate, "", safetyOfficer, unitcode, descriptionEdit.getText().toString(), "", "", locationID, catId, subCategoryID, observationID, "", "", obstype, identifiedLocation);
+        //    saveEHS(empCode, newActDate, "", safetyOfficer, unitcode, descriptionEdit.getText().toString(), "", "", locationID, catId, subCategoryID, observationID, "", "", obstype, identifiedLocation);
         } else {
             String idLocaton = getIntent().getStringExtra("identifiedLoc");
             int i = idLocaton.indexOf(identifiedLocation);
             String locationId = ehsIdentifiedLocations.get(i).getID();
             String[] ActDate = observationDateSpinner.getText().toString().split("/");
             String newActDate = ActDate[2] + "/" + ActDate[1] + "/" + ActDate[0];
-            updateEHS(actId, empCode, actNo, newActDate, "", getIntent().getStringExtra("safetyOfficer"), unitcode, descriptionEdit.getText().toString(), "", "", locationId, getIntent().getStringExtra("catId"), getIntent().getStringExtra("subCategory"), getIntent().getStringExtra("obsId"), "", "");
+            //updateEHS(actId, empCode, actNo, newActDate, "", getIntent().getStringExtra("safetyOfficer"), unitcode, descriptionEdit.getText().toString(), "", "", locationId, getIntent().getStringExtra("catId"), getIntent().getStringExtra("subCategory"), getIntent().getStringExtra("obsId"), "", "");
         }
     }
 
@@ -809,6 +811,7 @@ public class EHSInitiate extends BaseActivity {
 
     }
 
+/*
     public void saveEHS(final String EmpCode, String ActDate, String HOD, String UnitSafetyOfficer, String UnitCode, final String Description, String Attachment, String AttachmentType, String LocationID, String CategoryID, String SubCategoryID, String ObservationID, String IncidenceTime, String IncidenceActionTaken, final String ObservationName, final String LocationName) {
         EHSServices ehsServices = new EHSServices();
         ehsServices.saveEHS(new OnTaskComplete() {
@@ -827,7 +830,9 @@ public class EHSInitiate extends BaseActivity {
             }
         }, EmpCode, ActID, ActDate, HOD, UnitSafetyOfficer, UnitCode, Description, Attachment, AttachmentType, LocationID, CategoryID, SubCategoryID, ObservationID, IncidenceTime, IncidenceActionTaken, ObservationName, LocationName);
     }
+*/
 
+/*
     public void updateEHS(String ActID, String EmpCode, String ActNo, String ActDate, String HOD, String UnitSafetyOfficer, String UnitCode, String Description, String Attachment, String AttachmentType, String LocationID, String CategoryID, String SubCategoryID, String ObservationID, String IncidenceTime, String IncidenceActionTaken) {
         EHSServices ehsServices = new EHSServices();
         ehsServices.update(new OnTaskComplete() {
@@ -851,6 +856,7 @@ public class EHSInitiate extends BaseActivity {
         }, ActID, EmpCode, ActNo, ActDate, HOD, UnitSafetyOfficer, UnitCode, Description, Attachment, AttachmentType, LocationID, CategoryID, SubCategoryID, ObservationID, IncidenceTime, IncidenceActionTaken);
 
     }
+*/
 
 
     public void selectFile() {
@@ -887,6 +893,8 @@ public class EHSInitiate extends BaseActivity {
         Utility.saveFileToSdCard(mDestinationFile, thumbnail);
         String fileName = mDestinationFile.getAbsolutePath();
         System.out.println("fileName" + fileName);
+        docView.setImageBitmap(thumbnail);
+
         // addUserImage(fileName);
     }
 
@@ -912,6 +920,7 @@ public class EHSInitiate extends BaseActivity {
         Utility.saveFileToSdCard(mDestinationFile, bm);
         String fileName = mDestinationFile.getAbsolutePath();
         System.out.println("fileName" + fileName);
+        docView.setImageBitmap(bm);
 
 
         //  addUserImage(fileName);

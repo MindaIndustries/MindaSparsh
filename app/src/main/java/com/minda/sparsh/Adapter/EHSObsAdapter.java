@@ -2,7 +2,9 @@ package com.minda.sparsh.Adapter;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,6 +14,7 @@ import android.widget.TextView;
 
 import com.minda.sparsh.EHSInitiate;
 import com.minda.sparsh.R;
+import com.minda.sparsh.fragment.EHSInitiateFragment;
 import com.minda.sparsh.model.EHSObsModel;
 
 import java.util.List;
@@ -62,10 +65,39 @@ public class EHSObsAdapter extends RecyclerView.Adapter<EHSObsAdapter.ViewHolder
             viewHolder.statusValue.setText("Pending");
         }
 
+        if(myObservations.get(i).getStatus().equals("1")){
+            viewHolder.edit.setVisibility(View.VISIBLE);
+        }
+        else{
+            viewHolder.edit.setVisibility(View.GONE);
+        }
+
         viewHolder.edit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent in = new Intent(mContext, EHSInitiate.class);
+                Bundle bundle = new Bundle();
+                bundle.putString("obsDate", myObservations.get(i).getActDate());
+                bundle.putString("unit", myObservations.get(i).getUnitCode() + ":" + myObservations.get(i).getUnitName());
+                bundle.putString("typeOfObs", myObservations.get(i).getOBName());
+                bundle.putString("safetyOfficer", myObservations.get(i).getUnitSafetyOfficer());
+                bundle.putString("identifiedLoc", myObservations.get(i).getLocation());
+                bundle.putString("category", myObservations.get(i).getCatName());
+                bundle.putString("subCategory", myObservations.get(i).getSubCategoryID());
+                bundle.putString("description", myObservations.get(i).getDescription());
+                bundle.putString("actId", myObservations.get(i).getID());
+                bundle.putString("actNo", myObservations.get(i).getActNo());
+                bundle.putString("catId", myObservations.get(i).getCategoryID());
+                bundle.putString("obsId", myObservations.get(i).getObservationID());
+                bundle.putString("incidenceTime",myObservations.get(i).getIncidenceTime());
+                bundle.putString("incidenceAction",myObservations.get(i).getIncidentceAction());
+                EHSInitiateFragment ehsInitiateFragment = new EHSInitiateFragment();
+                ehsInitiateFragment.setArguments(bundle);
+                ((AppCompatActivity) mContext).getSupportFragmentManager().beginTransaction()
+                        .replace(R.id.framelayout, ehsInitiateFragment)
+                        .addToBackStack(null)
+                        .commit();
+
+             /*   Intent in = new Intent(mContext, EHSInitiate.class);
                 in.putExtra("obsDate", myObservations.get(i).getActDate());
                 in.putExtra("unit", myObservations.get(i).getUnitCode() + ":" + myObservations.get(i).getUnitName());
                 in.putExtra("typeOfObs", myObservations.get(i).getOBName());
@@ -79,7 +111,7 @@ public class EHSObsAdapter extends RecyclerView.Adapter<EHSObsAdapter.ViewHolder
                 in.putExtra("catId", myObservations.get(i).getCategoryID());
                 in.putExtra("obsId", myObservations.get(i).getObservationID());
                 mContext.startActivity(in);
-            }
+      */      }
         });
     }
 

@@ -41,6 +41,10 @@ public class EHSObsModel {
     String CategoryID;
     @SerializedName("ObservationID")
     String ObservationID;
+    @SerializedName("IncidenceTime")
+    String IncidenceTime;
+    @SerializedName("IncidentceAction")
+    String IncidentceAction;
 
 
     public String getID() {
@@ -194,5 +198,21 @@ public class EHSObsModel {
 
     public void setObservationID(String observationID) {
         ObservationID = observationID;
+    }
+
+    public String getIncidenceTime() {
+        return IncidenceTime;
+    }
+
+    public void setIncidenceTime(String incidenceTime) {
+        IncidenceTime = incidenceTime;
+    }
+
+    public String getIncidentceAction() {
+        return IncidentceAction;
+    }
+
+    public void setIncidentceAction(String incidentceAction) {
+        IncidentceAction = incidentceAction;
     }
 }

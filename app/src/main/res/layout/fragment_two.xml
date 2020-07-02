@@ -14,9 +14,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center"
-            android:orientation="vertical"
-
-            >
+            android:orientation="vertical">
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -63,14 +61,14 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="80 B"
+                            android:text="72 B"
                             android:textColor="@color/colorPrimary"
                             android:textSize="16dp" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text=" Group Turnover (FY19)"
+                            android:text=" Group Turnover (FY20)"
                             android:textColor="#000000"
                             android:textStyle="italic" />
                     </LinearLayout>
@@ -102,14 +100,14 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="15 "
+                            android:text="17 "
                             android:textColor="@color/colorPrimary"
                             android:textSize="16dp" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Joint Ventures/Partner"
+                            android:text="Joint Ventures/Associations"
                             android:textColor="#000000"
                             android:textStyle="italic" />
                     </LinearLayout>
@@ -121,7 +119,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="4 "
+                            android:text="5 "
                             android:textColor="@color/colorPrimary"
                             android:textSize="16dp" />
 
@@ -141,14 +139,14 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="8 "
+                            android:text="10+ "
                             android:textColor="@color/colorPrimary"
                             android:textSize="16dp" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="F/D Centers"
+                            android:text="R&amp;D Centers"
                             android:textColor="#000000"
                             android:textStyle="italic" />
                     </LinearLayout>
@@ -167,7 +165,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Product lines"
+                            android:text="Product Lines"
                             android:textColor="#000000"
                             android:textStyle="italic" />
                     </LinearLayout>
@@ -179,7 +177,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="215+ "
+                            android:text="260+ "
                             android:textColor="@color/colorPrimary"
                             android:textSize="16dp" />
 
@@ -198,7 +196,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="230+ "
+                            android:text="250+ "
                             android:textColor="@color/colorPrimary"
                             android:textSize="16dp" />
 
@@ -224,6 +222,9 @@
                         android:scaleType="fitXY"
                         android:src="@drawable/car"
                         android:textColor="@color/colorPrimary" />
+
+
+
                 </LinearLayout>
 
 
@@ -246,9 +247,14 @@
             android:layout_alignParentRight="true"
             android:layout_marginTop="20dp"
             android:src="@drawable/right_arrow"
-
             />
 
+        <ImageView
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
+            android:src="@drawable/iconic_brand"
+            android:layout_width="80dp"
+            android:layout_height="80dp"/>
 
     </RelativeLayout>
 

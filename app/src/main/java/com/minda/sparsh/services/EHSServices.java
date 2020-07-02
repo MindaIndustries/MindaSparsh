@@ -228,9 +228,9 @@ public class EHSServices {
 
     }
 
-    public void saveEHS(final OnTaskComplete onTaskComplete, final String EmpCode, String ActNo, String ActDate, String HOD, String UnitSafetyOfficer, String UnitCode, String Description, String Attachment, String AttachmentType, String LocationID, String CategoryID, String SubCategoryID, String ObservationID, String IncidenceTime, String IncidenceActionTaken, final String ObservationName, final String LocationName) {
+    public void saveEHS(final OnTaskComplete onTaskComplete, final String EmpCode, String ActNo, String ActDate, String HOD, String UnitSafetyOfficer, String UnitCode, String Description, String Attachment, String AttachmentType, String LocationID, String CategoryID, String SubCategoryID, String ObservationID, String IncidenceHour,String IncidenceMin,String IncidenceZone, String IncidenceActionTaken, final String ObservationName, final String LocationName) {
         EHSClient ehsClient = RetrofitClient2.createServiceEHS(EHSClient.class);
-        Call<String> call = ehsClient.submitEHS(EmpCode, ActNo, ActDate, HOD, UnitSafetyOfficer, UnitCode, Description, Attachment, AttachmentType, LocationID, CategoryID, SubCategoryID, ObservationID, IncidenceTime, IncidenceActionTaken, ObservationName, LocationName);
+        Call<String> call = ehsClient.submitEHS(EmpCode, ActNo, ActDate, HOD, UnitSafetyOfficer, UnitCode, Description, Attachment, AttachmentType, LocationID, CategoryID, SubCategoryID, ObservationID, IncidenceHour,IncidenceMin,IncidenceZone, IncidenceActionTaken, ObservationName, LocationName);
         call.enqueue(new Callback<String>() {
             @Override
             public void onResponse(Call<String> call, Response<String> response) {
@@ -254,9 +254,9 @@ public class EHSServices {
 
     }
 
-    public void update(final OnTaskComplete onTaskComplete, String ActID, String EmpCode, String ActNo, String ActDate, String HOD, String UnitSafetyOfficer, String UnitCode, String Description, String Attachment, String AttachmentType, String LocationID, String CategoryID, String SubCategoryID, String ObservationID, String IncidenceTime, String IncidenceActionTaken) {
+    public void update(final OnTaskComplete onTaskComplete, String ActID, String EmpCode, String ActNo, String ActDate, String HOD, String UnitSafetyOfficer, String UnitCode, String Description, String Attachment, String AttachmentType, String LocationID, String CategoryID, String SubCategoryID, String ObservationID, String IncidenceHour,String IncidenceMin,String IncidenceZone, String IncidenceActionTaken) {
         EHSClient ehsClient = RetrofitClient2.createServiceEHS(EHSClient.class);
-        Call<Void> call = ehsClient.updateEhs(ActID, EmpCode, ActNo, ActDate, HOD, UnitSafetyOfficer, UnitCode, Description, Attachment, AttachmentType, LocationID, CategoryID, SubCategoryID, ObservationID, IncidenceTime, IncidenceActionTaken);
+        Call<Void> call = ehsClient.updateEhs(ActID, EmpCode, ActNo, ActDate, HOD, UnitSafetyOfficer, UnitCode, Description, Attachment, AttachmentType, LocationID, CategoryID, SubCategoryID, ObservationID, IncidenceHour,IncidenceMin,IncidenceZone, IncidenceActionTaken);
         call.enqueue(new Callback<Void>() {
             @Override
             public void onResponse(Call<Void> call, Response<Void> response) {
@@ -278,6 +278,31 @@ public class EHSServices {
             }
         });
 
+    }
+
+    public void uploadFile(final OnTaskComplete onTaskComplete, String attachment, String bytes){
+        EHSClient ehsClient = RetrofitClient2.createServiceEHS(EHSClient.class);
+        Call<Void> call = ehsClient.uploadFile(attachment,bytes);
+        call.enqueue(new Callback<Void>() {
+            @Override
+            public void onResponse(Call<Void> call, Response<Void> response) {
+                CarotResponse carotResponse = new CarotResponse();
+                carotResponse.setStatuscode(response.code());
+                if (response.code() == HttpsURLConnection.HTTP_OK) {
+                    carotResponse.setData(response.body());
+                }
+                onTaskComplete.onTaskComplte(carotResponse);
+            }
+
+            @Override
+            public void onFailure(Call<Void> call, Throwable t) {
+                CarotResponse carotResponse = new CarotResponse();
+                if (t instanceof IOException) {
+                    carotResponse.setMessage("Please hold on a moment, the internet connectivity seems to be slow");
+                }
+                onTaskComplete.onTaskComplte(carotResponse);
+            }
+        });
     }
 
 }

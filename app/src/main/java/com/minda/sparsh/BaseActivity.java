@@ -179,12 +179,6 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
         if (id == R.id.nav_setting) {
 
         }
-
-        if(id == R.id.ehs){
-            Intent in =new Intent(BaseActivity.this, EHS_Home.class);
-            startActivity(in);
-        }
-
         if (id == R.id.nav_signout) {
             showMsg();
         }

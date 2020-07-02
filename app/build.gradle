@@ -23,7 +23,7 @@ android {
         applicationId "com.minda.sparsh"
         minSdkVersion 14
         targetSdkVersion 28
-        versionCode 30
+        versionCode 32
         versionName "1.26"
     }
     buildTypes {
@@ -58,6 +58,8 @@ dependencies {
     }
 
     implementation 'com.github.pratikbutani:MultiSelectSpinner:-SNAPSHOT'
+    implementation 'dk.nodes.filepicker:filepicker:2.0.1'
+
 
 }
 
