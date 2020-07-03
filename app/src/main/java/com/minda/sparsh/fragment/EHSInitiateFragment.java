@@ -4,7 +4,6 @@ import android.Manifest;
 import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
-import android.content.ActivityNotFoundException;
 import android.content.ContentResolver;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -13,7 +12,6 @@ import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.graphics.Matrix;
 import android.net.Uri;
@@ -21,22 +19,17 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
-import android.os.ParcelFileDescriptor;
-import android.preference.PreferenceManager;
 import android.provider.MediaStore;
-import android.provider.OpenableColumns;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
-import android.support.v7.widget.Toolbar;
 import android.util.Base64;
 import android.util.Base64OutputStream;
 import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -50,11 +43,8 @@ import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
-import com.minda.sparsh.BaseActivity;
-import com.minda.sparsh.EHSInitiate;
 import com.minda.sparsh.EHS_Home;
 import com.minda.sparsh.R;
-import com.minda.sparsh.customview.FilePath;
 import com.minda.sparsh.customview.NoDefaultSpinner;
 import com.minda.sparsh.listener.CarotResponse;
 import com.minda.sparsh.listener.OnTaskComplete;
@@ -69,12 +59,10 @@ import com.minda.sparsh.util.Utility;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
-import java.io.FileDescriptor;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
-import java.net.URI;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -92,10 +80,6 @@ import dk.nodes.filepicker.uriHelper.FilePickerUriHelper;
 import static android.content.Context.MODE_PRIVATE;
 
 public class EHSInitiateFragment extends Fragment {
-    /*@BindView(R.id.toolbar)
-    Toolbar toolbar;
-    @BindView(R.id.title)
-    TextView title;*/
     @BindView(R.id.obs_date_spinner)
     TextView observationDateSpinner;
     @BindView(R.id.unit_spinner)
@@ -1128,7 +1112,7 @@ public class EHSInitiateFragment extends Fragment {
         if (data != null) {
             try {
                 bm = MediaStore.Images.Media.getBitmap(getActivity().getContentResolver(), data.getData());
-            } catch (IOException e) {
+            } catch (Exception e) {
                 e.printStackTrace();
             }
         }
@@ -1235,6 +1219,9 @@ public class EHSInitiateFragment extends Fragment {
             e1.printStackTrace();
         }
         catch (IOException e) {
+            e.printStackTrace();
+        }
+        catch (Exception e){
             e.printStackTrace();
         }
         lastVal = encodedFile;
