@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.minda.sparsh">
 
     <permission android:name="android.permission.CAMERA" />
@@ -24,7 +25,9 @@
         android:largeHeap="true"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
-        android:usesCleartextTraffic="true">
+        android:usesCleartextTraffic="true"
+
+        >
 
         <activity android:name=".ApproveListActivity1"
             android:screenOrientation="portrait"
@@ -160,6 +163,10 @@
             android:theme="@style/AppTheme.NoActionBar"/>
 
 
+        <activity android:name=".ViewEHSImage"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"
+            />
 
 
 

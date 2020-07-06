@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.minda.sparsh.EHSInitiate;
@@ -90,6 +91,50 @@ public class EHSObsAdapter extends RecyclerView.Adapter<EHSObsAdapter.ViewHolder
                 bundle.putString("obsId", myObservations.get(i).getObservationID());
                 bundle.putString("incidenceTime",myObservations.get(i).getIncidenceTime());
                 bundle.putString("incidenceAction",myObservations.get(i).getIncidentceAction());
+                bundle.putString("attachment",myObservations.get(i).getAttachment());
+                EHSInitiateFragment ehsInitiateFragment = new EHSInitiateFragment();
+                ehsInitiateFragment.setArguments(bundle);
+                ((AppCompatActivity) mContext).getSupportFragmentManager().beginTransaction()
+                        .replace(R.id.framelayout, ehsInitiateFragment)
+                        .addToBackStack(null)
+                        .commit();
+
+             /*   Intent in = new Intent(mContext, EHSInitiate.class);
+                in.putExtra("obsDate", myObservations.get(i).getActDate());
+                in.putExtra("unit", myObservations.get(i).getUnitCode() + ":" + myObservations.get(i).getUnitName());
+                in.putExtra("typeOfObs", myObservations.get(i).getOBName());
+                in.putExtra("safetyOfficer", myObservations.get(i).getUnitSafetyOfficer());
+                in.putExtra("identifiedLoc", myObservations.get(i).getLocation());
+                in.putExtra("category", myObservations.get(i).getCatName());
+                in.putExtra("subCategory", myObservations.get(i).getSubCategoryID());
+                in.putExtra("description", myObservations.get(i).getDescription());
+                in.putExtra("actId", myObservations.get(i).getID());
+                in.putExtra("actNo", myObservations.get(i).getActNo());
+                in.putExtra("catId", myObservations.get(i).getCategoryID());
+                in.putExtra("obsId", myObservations.get(i).getObservationID());
+                mContext.startActivity(in);
+      */      }
+        });
+
+        viewHolder.row.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Bundle bundle = new Bundle();
+                bundle.putString("obsDate", myObservations.get(i).getActDate());
+                bundle.putString("unit", myObservations.get(i).getUnitCode() + ":" + myObservations.get(i).getUnitName());
+                bundle.putString("typeOfObs", myObservations.get(i).getOBName());
+                bundle.putString("safetyOfficer", myObservations.get(i).getUnitSafetyOfficer());
+                bundle.putString("identifiedLoc", myObservations.get(i).getLocation());
+                bundle.putString("category", myObservations.get(i).getCatName());
+                bundle.putString("subCategory", myObservations.get(i).getSubCategoryID());
+                bundle.putString("description", myObservations.get(i).getDescription());
+                bundle.putString("actId", myObservations.get(i).getID());
+                bundle.putString("actNo", myObservations.get(i).getActNo());
+                bundle.putString("catId", myObservations.get(i).getCategoryID());
+                bundle.putString("obsId", myObservations.get(i).getObservationID());
+                bundle.putString("incidenceTime",myObservations.get(i).getIncidenceTime());
+                bundle.putString("incidenceAction",myObservations.get(i).getIncidentceAction());
+                bundle.putString("attachment",myObservations.get(i).getAttachment());
                 EHSInitiateFragment ehsInitiateFragment = new EHSInitiateFragment();
                 ehsInitiateFragment.setArguments(bundle);
                 ((AppCompatActivity) mContext).getSupportFragmentManager().beginTransaction()
@@ -139,6 +184,8 @@ public class EHSObsAdapter extends RecyclerView.Adapter<EHSObsAdapter.ViewHolder
         TextView statusValue;
         @BindView(R.id.edit)
         ImageView edit;
+        @BindView(R.id.row)
+        RelativeLayout row;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);

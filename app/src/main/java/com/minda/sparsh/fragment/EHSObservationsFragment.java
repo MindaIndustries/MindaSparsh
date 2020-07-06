@@ -7,16 +7,15 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.minda.sparsh.Adapter.EHSObsAdapter;
-import com.minda.sparsh.BaseActivity;
 import com.minda.sparsh.R;
 import com.minda.sparsh.listener.CarotResponse;
 import com.minda.sparsh.listener.OnTaskComplete;
@@ -40,6 +39,10 @@ public class EHSObservationsFragment extends Fragment {
     List<EHSObsModel> myObservations = new ArrayList<EHSObsModel>();
     String empCode;
     SharedPreferences myPref;
+    @BindView(R.id.progressBar)
+    ProgressBar progressBar;
+    @BindView(R.id.no_list)
+    TextView no_list;
 
 
     @Nullable
@@ -61,20 +64,33 @@ public class EHSObservationsFragment extends Fragment {
 
 
     public void getObservations(String empCode) {
+        myObservations.clear();
+        observations.getRecycledViewPool().clear();
+        ehsObsAdapter.notifyDataSetChanged();
+
+        progressBar.setVisibility(View.VISIBLE);
         EHSServices ehsServices = new EHSServices();
+
         ehsServices.getIdentifiedObservations(new OnTaskComplete() {
             @Override
             public void onTaskComplte(CarotResponse carotResponse) {
-
                 if (carotResponse.getStatuscode() == HttpsURLConnection.HTTP_OK) {
                     List<EHSObsModel> list = (List<EHSObsModel>) carotResponse.getData();
                     if (list != null && list.size() > 0) {
                         myObservations.addAll(list);
+                        no_list.setVisibility(View.GONE);
+
+                    }
+                    else{
+                        no_list.setVisibility(View.VISIBLE);
                     }
                     ehsObsAdapter.notifyDataSetChanged();
                 } else {
-                    Toast.makeText(getActivity(), "Oops! Something went wrong.", Toast.LENGTH_LONG).show();
+                    if (getActivity() != null && isAdded()) {
+                        Toast.makeText(getActivity(), "Oops! Something went wrong.", Toast.LENGTH_LONG).show();
+                    }
                 }
+                progressBar.setVisibility(View.GONE);
             }
         }, empCode);
 

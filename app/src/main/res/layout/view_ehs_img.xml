@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+<include layout="@layout/toolbar"/>
+    <RelativeLayout
+        android:layout_marginTop="?android:attr/actionBarSize"
+        android:layout_width="match_parent"
+        android:id="@+id/container"
+        android:layout_height="match_parent">
+
+
+        <com.minda.sparsh.customview.TouchImageView
+            android:id="@+id/docImage"
+            android:adjustViewBounds="true"
+            android:scaleType="fitCenter"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+
+
+            />
+
+
+
+
+
+
+    </RelativeLayout>
+
+
+</RelativeLayout>

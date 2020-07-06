@@ -13,7 +13,6 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.minda.sparsh.Adapter.BottomUpConcernAdapter;
-import com.minda.sparsh.Adapter.EHSObsAdapter;
 import com.minda.sparsh.customview.NoDefaultSpinner;
 
 import java.util.ArrayList;

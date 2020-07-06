@@ -256,10 +256,10 @@ public class EHSServices {
 
     public void update(final OnTaskComplete onTaskComplete, String ActID, String EmpCode, String ActNo, String ActDate, String HOD, String UnitSafetyOfficer, String UnitCode, String Description, String Attachment, String AttachmentType, String LocationID, String CategoryID, String SubCategoryID, String ObservationID, String IncidenceHour,String IncidenceMin,String IncidenceZone, String IncidenceActionTaken) {
         EHSClient ehsClient = RetrofitClient2.createServiceEHS(EHSClient.class);
-        Call<Void> call = ehsClient.updateEhs(ActID, EmpCode, ActNo, ActDate, HOD, UnitSafetyOfficer, UnitCode, Description, Attachment, AttachmentType, LocationID, CategoryID, SubCategoryID, ObservationID, IncidenceHour,IncidenceMin,IncidenceZone, IncidenceActionTaken);
-        call.enqueue(new Callback<Void>() {
+        Call<String> call = ehsClient.updateEhs(ActID, EmpCode, ActNo, ActDate, HOD, UnitSafetyOfficer, UnitCode, Description, Attachment, AttachmentType, LocationID, CategoryID, SubCategoryID, ObservationID, IncidenceHour,IncidenceMin,IncidenceZone, IncidenceActionTaken);
+        call.enqueue(new Callback<String>() {
             @Override
-            public void onResponse(Call<Void> call, Response<Void> response) {
+            public void onResponse(Call<String> call, Response<String> response) {
                 CarotResponse carotResponse = new CarotResponse();
                 carotResponse.setStatuscode(response.code());
                 if (response.code() == HttpsURLConnection.HTTP_OK) {
@@ -269,7 +269,7 @@ public class EHSServices {
             }
 
             @Override
-            public void onFailure(Call<Void> call, Throwable t) {
+            public void onFailure(Call<String> call, Throwable t) {
                 CarotResponse carotResponse = new CarotResponse();
                 if (t instanceof IOException) {
                     carotResponse.setMessage("Please hold on a moment, the internet connectivity seems to be slow");

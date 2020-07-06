@@ -39,12 +39,15 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.minda.sparsh.EHS_Home;
 import com.minda.sparsh.R;
+import com.minda.sparsh.ViewEHSImage;
 import com.minda.sparsh.customview.NoDefaultSpinner;
 import com.minda.sparsh.listener.CarotResponse;
 import com.minda.sparsh.listener.OnTaskComplete;
@@ -55,6 +58,7 @@ import com.minda.sparsh.model.EHSSubCategoryModel;
 import com.minda.sparsh.model.EHSUnitModel;
 import com.minda.sparsh.model.SafetyOfficerModel;
 import com.minda.sparsh.services.EHSServices;
+import com.minda.sparsh.util.RetrofitClient2;
 import com.minda.sparsh.util.Utility;
 
 import java.io.ByteArrayOutputStream;
@@ -120,10 +124,14 @@ public class EHSInitiateFragment extends Fragment {
     EditText actionTakenEt;
     @BindView(R.id.doc_view)
     ImageView docView;
+    @BindView(R.id.progressBar)
+    ProgressBar progressBar;
 
     private File mDestinationFile;
     private String mUserChoosenTask = "";
     public static final int MY_PERMISSIONS_REQUEST_READ_EXTERNAL_STORAGE = 123;
+    public static final int MY_PERMISSIONS_REQUEST_CAMERA = 1234;
+
     Date millisecondsdailyfrom = null, millisecondsdailyto = null;
 
 
@@ -160,6 +168,7 @@ public class EHSInitiateFragment extends Fragment {
     String incidencehr="0",incidencemin="0", incidencezone="";
 
      String imgString;
+     Bitmap bmp;
 
     @Nullable
     @Override
@@ -222,6 +231,13 @@ public class EHSInitiateFragment extends Fragment {
                 actionTakenEt.setText(""+getArguments().getString("incidenceAction"));
             }
 
+            if(getArguments().getString("attachment")!=null){
+                if(getArguments().getString("attachment").contains(".jpg")||getArguments().getString("attachment").contains(".png")) {
+                 attachmentName = getArguments().getString("attachment");
+                    Glide.with(getActivity()).load(RetrofitClient2.ehs_img + getArguments().getString("attachment")).into(docView);
+                    }
+                attachtext.setText(""+getArguments().getString("attachment"));
+            }
 
 
 
@@ -391,6 +407,27 @@ public class EHSInitiateFragment extends Fragment {
         selectFile();
     }
 
+    @OnClick(R.id.doc_view)
+    public void onClickViewDoc(){
+
+        if(getArguments()!=null && getArguments().getString("attachment")!=null) {
+
+            Intent in = new Intent(getActivity(), ViewEHSImage.class);
+            in.putExtra("attachment", attachmentName);
+            getActivity().startActivity(in);
+        }
+        else if(bmp!=null){
+
+            ByteArrayOutputStream stream = new ByteArrayOutputStream();
+            bmp.compress(Bitmap.CompressFormat.PNG, 100, stream);
+            byte[] byteArray = stream.toByteArray();
+
+            Intent in = new Intent(getActivity(), ViewEHSImage.class);
+            in.putExtra("bitmap", byteArray);
+            getActivity().startActivity(in);
+
+        }
+    }
     @OnClick(R.id.attachment)
     public void onClickAttachment() {
         selectFile();
@@ -994,6 +1031,8 @@ public class EHSInitiateFragment extends Fragment {
     }
 
     public void saveEHS(final String EmpCode, String ActDate, String HOD, String UnitSafetyOfficer, String UnitCode, final String Description, String Attachment, String AttachmentType, String LocationID, String CategoryID, String SubCategoryID, String ObservationID, String IncidenceHour,String IncidenceMin,String IncidenceZone, String IncidenceActionTaken, final String ObservationName, final String LocationName) {
+
+        progressBar.setVisibility(View.VISIBLE);
         EHSServices ehsServices = new EHSServices();
         ehsServices.saveEHS(new OnTaskComplete() {
             @Override
@@ -1011,29 +1050,31 @@ public class EHSInitiateFragment extends Fragment {
                                 sendMail(EmpCode, ObservationName, LocationName, Description, (String) carotResponse.getData(), unitcode);
                             }
                 }
+                progressBar.setVisibility(View.GONE);
+
             }
         }, EmpCode, ActID, ActDate, HOD, UnitSafetyOfficer, UnitCode, Description, Attachment, AttachmentType, LocationID, CategoryID, SubCategoryID, ObservationID, IncidenceHour,IncidenceMin,IncidenceZone,IncidenceActionTaken, ObservationName, LocationName);
     }
 
-    public void updateEHS(String ActID, String EmpCode, String ActNo, String ActDate, String HOD, String UnitSafetyOfficer, String UnitCode, String Description, String Attachment, String AttachmentType, String LocationID, String CategoryID, String SubCategoryID, String ObservationID, String IncidenceHour,String IncidenceMin,String IncidenceZone, String IncidenceActionTaken) {
+    public void updateEHS(String ActID, final String EmpCode, final String ActNo, String ActDate, String HOD, String UnitSafetyOfficer, String UnitCode, final String Description, String Attachment, String AttachmentType, String LocationID, String CategoryID, String SubCategoryID, String ObservationID, String IncidenceHour, String IncidenceMin, String IncidenceZone, String IncidenceActionTaken) {
         EHSServices ehsServices = new EHSServices();
+        progressBar.setVisibility(View.VISIBLE);
         ehsServices.update(new OnTaskComplete() {
             @Override
             public void onTaskComplte(CarotResponse carotResponse) {
                 if (carotResponse.getStatuscode() == HttpsURLConnection.HTTP_OK) {
-                    Toast.makeText(getActivity(), "Successfully updated", Toast.LENGTH_LONG).show();
-                    new Handler().postDelayed(new Runnable() {
-                        @Override
-                        public void run() {
-                            getActivity().getSupportFragmentManager().beginTransaction()
-                                    .replace(R.id.framelayout, new EHSObservationsFragment())
-                                    .addToBackStack(null)
-                                    .commit();
-                        }
-                    }, 1000);
+                    if (carotResponse.getStatuscode() == HttpsURLConnection.HTTP_OK) {
+                        if (carotResponse.getData() != null) {
+                                uploadFile(carotResponse.getData().toString(), imgString);
+                                sendMail(EmpCode, obstype, identifiedLocation, Description, ActNo, unitcode);
+
+                            }
+                    }
 
 
                 }
+                progressBar.setVisibility(View.GONE);
+
             }
         }, ActID, EmpCode, ActNo, ActDate, HOD, UnitSafetyOfficer, UnitCode, Description, Attachment, AttachmentType, LocationID, CategoryID, SubCategoryID, ObservationID, IncidenceHour,IncidenceMin,IncidenceZone, IncidenceActionTaken);
 
@@ -1045,6 +1086,7 @@ public class EHSInitiateFragment extends Fragment {
     }
 
     private void cameraIntent() {
+
         Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         startActivityForResult(intent, CAPTURE_FROM_CAMERA);
 
@@ -1097,6 +1139,7 @@ public class EHSInitiateFragment extends Fragment {
         attachmentName = fileName;
         attachtext.setText(attachmentName);
         attachmentType = ".jpg";
+        bmp = thumbnail;
         docView.setImageBitmap(thumbnail);
 
 
@@ -1121,6 +1164,7 @@ public class EHSInitiateFragment extends Fragment {
 
 
         bm = rotateImageIfRequired(getActivity(), bm, Uri.parse(mDestinationFile.toString()));
+        docView.setImageBitmap(bm);
         Utility.saveFileToSdCard(mDestinationFile, bm);
         String fileName = mDestinationFile.getName();
         System.out.println("fileName" + fileName);
@@ -1129,8 +1173,7 @@ public class EHSInitiateFragment extends Fragment {
         attachtext.setText(attachmentName);
         bytes = getBytesFromBitmap(bm);
         imgString = Base64.encodeToString(bytes,Base64.NO_WRAP);
-        docView.setImageBitmap(bm);
-
+        bmp = bm;
 
                 //  addUserImage(fileName);
     }
@@ -1292,7 +1335,7 @@ public class EHSInitiateFragment extends Fragment {
     }
 
     private void selectImage() {
-        final CharSequence[] items = {"Take Photo", "Choose from Gallery","Choose Document",
+        final CharSequence[] items = {"Take Photo", "Choose from Gallery",/*"Choose Document",*/
                 "Cancel"};
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         builder.setTitle("Add Photo!");
@@ -1303,6 +1346,8 @@ public class EHSInitiateFragment extends Fragment {
                 if (items[item].equals("Take Photo")) {
                     mUserChoosenTask = "Take Photo";
                     if (result) {
+                        requestCameraPermission();
+                        if(hasCameraPermission())
                         cameraIntent();
                     }
                 } else if (items[item].equals("Choose from Gallery")) {
@@ -1312,14 +1357,14 @@ public class EHSInitiateFragment extends Fragment {
                     }
 
                 }
-                else if(items[item].equals("Choose Document")){
+                /*else if(items[item].equals("Choose Document")){
                     mUserChoosenTask = "Choose Document";
                     if(result){
                         fileIntent();
                     }
 
                 }
-                else if (items[item].equals("Cancel")) {
+                */else if (items[item].equals("Cancel")) {
                     dialog.dismiss();
                 }
             }
@@ -1347,6 +1392,16 @@ public class EHSInitiateFragment extends Fragment {
                 }, MY_PERMISSIONS_REQUEST_READ_EXTERNAL_STORAGE); // your request code
     }
 
+
+
+    private void requestCameraPermission(){
+
+        ActivityCompat.requestPermissions(getActivity(),
+                new String[]{Manifest.permission.CAMERA}, MY_PERMISSIONS_REQUEST_CAMERA); // your request code
+
+
+    }
+
     private boolean hasReadPermissions() {
         return (ContextCompat.checkSelfPermission(getActivity(), Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED);
     }
@@ -1355,9 +1410,14 @@ public class EHSInitiateFragment extends Fragment {
         return (ContextCompat.checkSelfPermission(getActivity(), Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED);
     }
 
+    private boolean hasCameraPermission(){
+        return (ContextCompat.checkSelfPermission(getActivity(), Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED);
+
+    }
 
     public void sendMail(String Empcode, String ObservationName, String Location, String description, String ActNo, String UnitCode) {
         EHSServices ehsServices = new EHSServices();
+        progressBar.setVisibility(View.VISIBLE);
         ehsServices.sendmail(new OnTaskComplete() {
             @Override
             public void onTaskComplte(CarotResponse carotResponse) {
@@ -1373,19 +1433,20 @@ public void run() {
 }
         }, 1000);
 
+                progressBar.setVisibility(View.GONE);
 
             }
         }, Empcode, ObservationName, Location, description, ActNo, UnitCode);
     }
 
     public void uploadFile(String attachmentName, String bytes){
+        progressBar.setVisibility(View.VISIBLE);
+
         EHSServices ehsServices = new EHSServices();
         ehsServices.uploadFile(new OnTaskComplete() {
             @Override
             public void onTaskComplte(CarotResponse carotResponse) {
-
-            }{
-
+                progressBar.setVisibility(View.GONE);
             }
         },attachmentName,bytes);
 

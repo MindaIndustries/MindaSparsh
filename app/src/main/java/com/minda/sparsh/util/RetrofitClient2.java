@@ -24,7 +24,9 @@ public class RetrofitClient2 {
     //dev
      public static final String BASE_URL = "http://dev.mindasparsh.com/Service.asmx/";
     public static  final String EHS_BASE_URL="http://dev.mindasparsh.com/ServiceEHS.asmx/";
- //prod
+    public static  final String ehs_img="http://dev.mindasparsh.com/ehs/files/";
+
+    //prod
   //  public static final String BASE_URL = "https://app.mindasparsh.com/Service.asmx/";
 
    // public static final String CKEY = "bWRhQHNQciRyWiNHISE=";

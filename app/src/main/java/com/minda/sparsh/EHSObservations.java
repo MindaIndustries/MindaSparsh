@@ -51,9 +51,7 @@ public class EHSObservations extends BaseActivity {
         observations.setAdapter(ehsObsAdapter);
         myPref = getSharedPreferences("MyPref", MODE_PRIVATE);
         empCode = myPref.getString("Id", "Id");
-
         getObservations(empCode);
-
     }
 
     public void getObservations(String empCode) {
@@ -61,7 +59,6 @@ public class EHSObservations extends BaseActivity {
         ehsServices.getIdentifiedObservations(new OnTaskComplete() {
             @Override
             public void onTaskComplte(CarotResponse carotResponse) {
-
                 if (carotResponse.getStatuscode() == HttpsURLConnection.HTTP_OK) {
                     List<EHSObsModel> list = (List<EHSObsModel>) carotResponse.getData();
                     if (list != null && list.size() > 0) {
