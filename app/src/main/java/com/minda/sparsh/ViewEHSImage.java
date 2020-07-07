@@ -16,7 +16,7 @@ import com.minda.sparsh.util.RetrofitClient2;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class ViewEHSImage extends  BaseActivity {
+public class ViewEHSImage extends BaseActivity {
 
     @BindView(R.id.toolbar)
     Toolbar toolbar;
@@ -36,34 +36,29 @@ public class ViewEHSImage extends  BaseActivity {
         getSupportActionBar().setHomeAsUpIndicator(R.drawable.back);
         title.setText("Environment Health & Safety");
 
-        if(getIntent().getStringExtra("attachment")!=null){
-         String attachment = getIntent().getStringExtra("attachment");
-            if(attachment!=null){
-                    Glide.with(ViewEHSImage.this).load(RetrofitClient2.ehs_img+attachment).apply(new RequestOptions()
-                            .diskCacheStrategy(DiskCacheStrategy.ALL)
-                            .dontAnimate()
-                            .fitCenter()
-                            .dontTransform())
-                            .into(docImage);
+        if (getIntent().getStringExtra("attachment") != null) {
+            String attachment = getIntent().getStringExtra("attachment");
+            if (attachment != null) {
+                Glide.with(ViewEHSImage.this).load(RetrofitClient2.ehs_img + attachment).apply(new RequestOptions()
+                        .diskCacheStrategy(DiskCacheStrategy.ALL)
+                        .dontAnimate()
+                        .fitCenter()
+                        .dontTransform())
+                        .into(docImage);
 
-                }
             }
-        else{
-            if(getIntent().getByteArrayExtra("bitmap")!=null){
+        } else {
+            if (getIntent().getByteArrayExtra("bitmap") != null) {
                 byte[] byteArray = getIntent().getByteArrayExtra("bitmap");
-
                 Bitmap bmp = BitmapFactory.decodeByteArray(byteArray, 0, byteArray.length);
-
                 docImage.setImageBitmap(bmp);
             }
         }
         docImage.setMaxZoom(4f);
 
 
-
-
-
     }
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {

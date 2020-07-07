@@ -162,13 +162,13 @@ public class EHSInitiateFragment extends Fragment {
     private static final int LOAD_IMAGE_RESULTS = 3;
     String ActID;
 
-    Calendar cal2 ;
-    byte[] bytes ;
-    String attachmentName="",attachmentType="";
-    String incidencehr="0",incidencemin="0", incidencezone="";
+    Calendar cal2;
+    byte[] bytes;
+    String attachmentName = "", attachmentType = "";
+    String incidencehr = "0", incidencemin = "0", incidencezone = "";
 
-     String imgString;
-     Bitmap bmp;
+    String imgString;
+    Bitmap bmp;
 
     @Nullable
     @Override
@@ -181,7 +181,7 @@ public class EHSInitiateFragment extends Fragment {
         return ehsInitiate;
     }
 
-    public void initUI(){
+    public void initUI() {
         myPref = getActivity().getSharedPreferences("MyPref", MODE_PRIVATE);
         unitcode = myPref.getString("Um_div_code", "");
         empCode = myPref.getString("Id", "Id");
@@ -199,7 +199,7 @@ public class EHSInitiateFragment extends Fragment {
         getObservationTypes();
         getIdentifiedLocations();
 
-        if (getArguments() != null && getArguments().getString("obsDate")!=null) {
+        if (getArguments() != null && getArguments().getString("obsDate") != null) {
             submit.setText("Update");
             reset.setVisibility(View.GONE);
             observationDateSpinner.setEnabled(false);
@@ -224,21 +224,20 @@ public class EHSInitiateFragment extends Fragment {
             if (getArguments().getString("subCategory") != null) {
                 subCategoryID = getArguments().getString("subCategory");
             }
-            if(getArguments().getString("incidenceTime")!=null){
-                timeSelector.setText(""+getArguments().getString("incidenceTime"));
+            if (getArguments().getString("incidenceTime") != null) {
+                timeSelector.setText("" + getArguments().getString("incidenceTime"));
             }
-            if(getArguments().getString("incidenceAction")!=null){
-                actionTakenEt.setText(""+getArguments().getString("incidenceAction"));
+            if (getArguments().getString("incidenceAction") != null) {
+                actionTakenEt.setText("" + getArguments().getString("incidenceAction"));
             }
 
-            if(getArguments().getString("attachment")!=null){
-                if(getArguments().getString("attachment").contains(".jpg")||getArguments().getString("attachment").contains(".png")) {
-                 attachmentName = getArguments().getString("attachment");
+            if (getArguments().getString("attachment") != null) {
+                if (getArguments().getString("attachment").contains(".jpg") || getArguments().getString("attachment").contains(".png")) {
+                    attachmentName = getArguments().getString("attachment");
                     Glide.with(getActivity()).load(RetrofitClient2.ehs_img + getArguments().getString("attachment")).into(docView);
-                    }
-                attachtext.setText(""+getArguments().getString("attachment"));
+                }
+                attachtext.setText("" + getArguments().getString("attachment"));
             }
-
 
 
         } else {
@@ -251,12 +250,12 @@ public class EHSInitiateFragment extends Fragment {
         safetyOfficerSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                if(position==0){
+                if (position == 0) {
                     return;
                 }
                 if (officersName != null && officersName.size() > 1)
                     safetyOfficer = safetyOfficers.get(position - 1).getUnitOfficer();
-                            }
+            }
 
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
@@ -271,7 +270,7 @@ public class EHSInitiateFragment extends Fragment {
                     if (position > 0) {
                         observationID = observationTypes.get(position - 1).getId();
                         ActID = observationTypes.get(position - 1).getShortName() + "-" + unitcode + "-";
-                        if(observationID.equals("4")){
+                        if (observationID.equals("4")) {
                             categories.clear();
                             ehsCategories.clear();
                             categories.add("Select");
@@ -284,8 +283,7 @@ public class EHSInitiateFragment extends Fragment {
                             ll8.setVisibility(View.VISIBLE);
                             actiontaken.setVisibility(View.VISIBLE);
                             actionTakenEt.setVisibility(View.VISIBLE);
-                        }
-                        else{
+                        } else {
                             categories.clear();
                             ehsCategories.clear();
                             categories.add("Select");
@@ -349,8 +347,8 @@ public class EHSInitiateFragment extends Fragment {
 
     @OnClick(R.id.reset)
     public void onClickReset() {
-       // finish();
-       // startActivity(getIntent());
+        // finish();
+        // startActivity(getIntent());
     }
 
     @OnClick(R.id.submit)
@@ -376,11 +374,11 @@ public class EHSInitiateFragment extends Fragment {
             return;
         }
 
-        if(observationID.equals("4")){
-            subCategoryID="0";
-            String [] incidencetime = timeSelector.getText().toString().split(":");
+        if (observationID.equals("4")) {
+            subCategoryID = "0";
+            String[] incidencetime = timeSelector.getText().toString().split(":");
             incidencehr = incidencetime[0];
-            String [] min_am = incidencetime[1].split(" ");
+            String[] min_am = incidencetime[1].split(" ");
             incidencemin = min_am[0];
             incidencezone = min_am[1];
         }
@@ -388,7 +386,7 @@ public class EHSInitiateFragment extends Fragment {
         if (submit.getText().equals("Submit")) {
             String[] ActDate = observationDateSpinner.getText().toString().split("/");
             String newActDate = ActDate[2] + "/" + ActDate[1] + "/" + ActDate[0];
-            saveEHS(empCode, newActDate, "", safetyOfficer, unitcode, descriptionEdit.getText().toString(), attachmentName, attachmentType, locationID, catId, subCategoryID, observationID, incidencehr,incidencemin,incidencezone,actionTakenEt.getText().toString(), obstype, identifiedLocation);
+            saveEHS(empCode, newActDate, "", safetyOfficer, unitcode, descriptionEdit.getText().toString(), attachmentName, attachmentType, locationID, catId, subCategoryID, observationID, incidencehr, incidencemin, incidencezone, actionTakenEt.getText().toString(), obstype, identifiedLocation);
         } else {
 
             String[] ActDate = observationDateSpinner.getText().toString().split("/");
@@ -398,7 +396,8 @@ public class EHSInitiateFragment extends Fragment {
             String [] min_am = incidencetime[1].split(" ");
             incidencemin = min_am[0];
             incidencezone = min_am[1];
-          */  updateEHS(actId, empCode, actNo, newActDate, "", getArguments().getString("safetyOfficer"), unitcode, descriptionEdit.getText().toString(),attachmentName, attachmentType, locationID, catId, subCategoryID, observationID, incidencehr,incidencemin,incidencezone, actionTakenEt.getText().toString());
+          */
+            updateEHS(actId, empCode, actNo, newActDate, "", getArguments().getString("safetyOfficer"), unitcode, descriptionEdit.getText().toString(), attachmentName, attachmentType, locationID, catId, subCategoryID, observationID, incidencehr, incidencemin, incidencezone, actionTakenEt.getText().toString());
         }
     }
 
@@ -408,15 +407,14 @@ public class EHSInitiateFragment extends Fragment {
     }
 
     @OnClick(R.id.doc_view)
-    public void onClickViewDoc(){
+    public void onClickViewDoc() {
 
-        if(getArguments()!=null && getArguments().getString("attachment")!=null) {
+        if (getArguments() != null && getArguments().getString("attachment") != null) {
 
             Intent in = new Intent(getActivity(), ViewEHSImage.class);
             in.putExtra("attachment", attachmentName);
             getActivity().startActivity(in);
-        }
-        else if(bmp!=null){
+        } else if (bmp != null) {
 
             ByteArrayOutputStream stream = new ByteArrayOutputStream();
             bmp.compress(Bitmap.CompressFormat.PNG, 100, stream);
@@ -428,12 +426,14 @@ public class EHSInitiateFragment extends Fragment {
 
         }
     }
+
     @OnClick(R.id.attachment)
     public void onClickAttachment() {
         selectFile();
     }
+
     @OnClick(R.id.time_selector)
-    public void onClicktimeSelector(){
+    public void onClicktimeSelector() {
         observationTimePicker.show();
     }
 
@@ -442,62 +442,58 @@ public class EHSInitiateFragment extends Fragment {
         observationDatePicker.show();
     }
 
-    public void initTimePicker(){
+    public void initTimePicker() {
         final Calendar cal1 = Calendar.getInstance();
-        final int hour_init,minute_init;
-        cal1.add(Calendar.HOUR_OF_DAY,cal.get(Calendar.HOUR_OF_DAY));
+        final int hour_init, minute_init;
+        cal1.add(Calendar.HOUR_OF_DAY, cal.get(Calendar.HOUR_OF_DAY));
         cal1.add(Calendar.MINUTE, cal.get(Calendar.MINUTE));
         hour_init = cal1.get(Calendar.HOUR_OF_DAY);
         minute_init = cal1.get(Calendar.MINUTE);
-        cal1.set(Calendar.DAY_OF_MONTH,cal.get(Calendar.DAY_OF_MONTH));
-        cal1.set(Calendar.MONTH,cal.get(Calendar.MONTH));
-        cal1.set(Calendar.YEAR,cal.get(Calendar.YEAR));
+        cal1.set(Calendar.DAY_OF_MONTH, cal.get(Calendar.DAY_OF_MONTH));
+        cal1.set(Calendar.MONTH, cal.get(Calendar.MONTH));
+        cal1.set(Calendar.YEAR, cal.get(Calendar.YEAR));
         millisecondsdailyto = cal1.getTime();
 
         observationTimePicker = new TimePickerDialog(getActivity(), new TimePickerDialog.OnTimeSetListener() {
             @Override
             public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
-              String AM_PM;
-                if(cal1.get(Calendar.AM_PM)== Calendar.AM){
+                String AM_PM;
+                if (cal1.get(Calendar.AM_PM) == Calendar.AM) {
                     AM_PM = "AM";
-                }
-                else{
+                } else {
                     AM_PM = "PM";
                 }
 
-                cal1.set(Calendar.HOUR_OF_DAY,hourOfDay);
-                cal1.set(Calendar.MINUTE,minute);
+                cal1.set(Calendar.HOUR_OF_DAY, hourOfDay);
+                cal1.set(Calendar.MINUTE, minute);
                 cal1.set(Calendar.AM_PM, cal1.get(Calendar.AM_PM));
-                cal1.set(Calendar.DAY_OF_MONTH,cal.get(Calendar.DAY_OF_MONTH));
-                cal1.set(Calendar.MONTH,cal.get(Calendar.MONTH));
-                cal1.set(Calendar.YEAR,cal.get(Calendar.YEAR));
+                cal1.set(Calendar.DAY_OF_MONTH, cal.get(Calendar.DAY_OF_MONTH));
+                cal1.set(Calendar.MONTH, cal.get(Calendar.MONTH));
+                cal1.set(Calendar.YEAR, cal.get(Calendar.YEAR));
 
                 millisecondsdailyto = cal1.getTime();
 
 
-                if(hourOfDay>12){
-                    hourOfDay-=12;
+                if (hourOfDay > 12) {
+                    hourOfDay -= 12;
                 }
                 cal2.setTimeInMillis(System.currentTimeMillis());
 
-                if(millisecondsdailyto.before(cal2.getTime())) {
+                if (millisecondsdailyto.before(cal2.getTime())) {
                     String minute_str = null;
-                    if(minute<10){
-                        minute_str= "0"+minute;
-                    }
-                    else
-                    {
-                        minute_str = ""+minute;
+                    if (minute < 10) {
+                        minute_str = "0" + minute;
+                    } else {
+                        minute_str = "" + minute;
                     }
                     timeSelector.setText("" + hourOfDay + ":" + minute_str + " " + AM_PM);
-                }
-                else{
+                } else {
                     timeSelector.setText("");
 
-                    Toast.makeText(getActivity(),"Invalid time selected",Toast.LENGTH_LONG).show();
+                    Toast.makeText(getActivity(), "Invalid time selected", Toast.LENGTH_LONG).show();
                 }
             }
-        },hour_init, minute_init,false);
+        }, hour_init, minute_init, false);
     }
 
     public void initObservationDatePicker() {
@@ -505,7 +501,7 @@ public class EHSInitiateFragment extends Fragment {
         cal.setTimeInMillis(System.currentTimeMillis());
         millisecondsdailyfrom = cal.getTime();
         observationDateSpinner.setText("" + getlogDate(cal.getTimeInMillis()));
-        if(getArguments()!=null) {
+        if (getArguments() != null) {
             if (getArguments().getString("obsDate") != null) {
                 String givenDateString = getArguments().getString("obsDate").split(" ")[0];
                 String givenDate[] = givenDateString.split("/");
@@ -561,9 +557,9 @@ public class EHSInitiateFragment extends Fragment {
                 } else {
                     dayOfMonthStr = "" + dayOfMonth;
                 }
-                cal.set(Calendar.DAY_OF_MONTH,dayOfMonth);
-                cal.set(Calendar.MONTH,month);
-                cal.set(Calendar.YEAR,year);
+                cal.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+                cal.set(Calendar.MONTH, month);
+                cal.set(Calendar.YEAR, year);
                 millisecondsdailyfrom = cal.getTime();
                 timeSelector.setText("");
 
@@ -609,7 +605,6 @@ public class EHSInitiateFragment extends Fragment {
     }
 
 
-
     public void getUnits() {
 
         EHSServices ehsServices = new EHSServices();
@@ -628,7 +623,7 @@ public class EHSInitiateFragment extends Fragment {
                         if (unitsName.size() > 0) {
                             unitSpinner.setSelection(1);
                         }
-                        if (getArguments()!=null && getArguments().getString("unit") != null) {
+                        if (getArguments() != null && getArguments().getString("unit") != null) {
                             int i = unitsName.indexOf(getArguments().getString("unit"));
                             unitSpinner.setSelection(i);
 
@@ -658,7 +653,7 @@ public class EHSInitiateFragment extends Fragment {
                         if (officersName.size() > 1) {
                             safetyOfficerSpinner.setSelection(1);
                         }
-                        if (getArguments()!=null && getArguments().getString("safetyOfficer") != null && getArguments().getString("safetyOfficer").length() > 0) {
+                        if (getArguments() != null && getArguments().getString("safetyOfficer") != null && getArguments().getString("safetyOfficer").length() > 0) {
                             int i = officersName.indexOf(getArguments().getString("safetyOfficer"));
                             safetyOfficerSpinner.setSelection(i);
                         }
@@ -682,7 +677,7 @@ public class EHSInitiateFragment extends Fragment {
                             observationtypeNames.add(observationType.getName());
                         }
                         adapterObservationType.notifyDataSetChanged();
-                        if (getArguments()!=null && getArguments().getString("typeOfObs") != null) {
+                        if (getArguments() != null && getArguments().getString("typeOfObs") != null) {
                             int i = observationtypeNames.indexOf(getArguments().getString("typeOfObs"));
                             typeOfObservationSpinner.setSelection(i);
 
@@ -708,10 +703,10 @@ public class EHSInitiateFragment extends Fragment {
                             identifiedLocations.add(ehsIdentifiedLocation.getName());
                         }
                         adapterIdentifiedLocation.notifyDataSetChanged();
-                        if (getArguments()!=null && getArguments().getString("identifiedLoc") != null) {
+                        if (getArguments() != null && getArguments().getString("identifiedLoc") != null) {
                             int i = identifiedLocations.indexOf(getArguments().getString("identifiedLoc"));
                             identifiedLocationSpinner.setSelection(i);
-                                locationID = ehsIdentifiedLocations.get(i - 1).getID();
+                            locationID = ehsIdentifiedLocations.get(i - 1).getID();
                         }
                     }
                 }
@@ -733,10 +728,10 @@ public class EHSInitiateFragment extends Fragment {
                         }
                         adapterCategory.notifyDataSetChanged();
 
-                        if (getArguments()!=null && getArguments().getString("catId") != null) {
-                            for(int i=0;i<ehsCategories.size();i++){
-                                if(getArguments().getString("catId").equals(ehsCategories.get(i).getId())){
-                                    categorySpinner.setSelection(i+1);
+                        if (getArguments() != null && getArguments().getString("catId") != null) {
+                            for (int i = 0; i < ehsCategories.size(); i++) {
+                                if (getArguments().getString("catId").equals(ehsCategories.get(i).getId())) {
+                                    categorySpinner.setSelection(i + 1);
                                 }
                             }
                         }
@@ -745,15 +740,14 @@ public class EHSInitiateFragment extends Fragment {
                             @Override
                             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
-                                if(position>0) {
+                                if (position > 0) {
                                     catId = ehsCategories.get(position - 1).getId();
                                     category = categories.get(position);
                                     subCategories.clear();
                                     subCategories.add("Select");
                                     initSubCategorySpinner();
                                     getSubCategories(catId);
-                                }
-                                else{
+                                } else {
                                     subCategories.clear();
                                     subCategories.add("Select");
                                     adapterSubCategory.notifyDataSetChanged();
@@ -1030,7 +1024,7 @@ public class EHSInitiateFragment extends Fragment {
 
     }
 
-    public void saveEHS(final String EmpCode, String ActDate, String HOD, String UnitSafetyOfficer, String UnitCode, final String Description, String Attachment, String AttachmentType, String LocationID, String CategoryID, String SubCategoryID, String ObservationID, String IncidenceHour,String IncidenceMin,String IncidenceZone, String IncidenceActionTaken, final String ObservationName, final String LocationName) {
+    public void saveEHS(final String EmpCode, String ActDate, String HOD, String UnitSafetyOfficer, String UnitCode, final String Description, String Attachment, String AttachmentType, String LocationID, String CategoryID, String SubCategoryID, String ObservationID, String IncidenceHour, String IncidenceMin, String IncidenceZone, String IncidenceActionTaken, final String ObservationName, final String LocationName) {
 
         progressBar.setVisibility(View.VISIBLE);
         EHSServices ehsServices = new EHSServices();
@@ -1038,22 +1032,21 @@ public class EHSInitiateFragment extends Fragment {
             @Override
             public void onTaskComplte(final CarotResponse carotResponse) {
                 if (carotResponse.getStatuscode() == HttpsURLConnection.HTTP_OK) {
-                            String[] response;
+                    String[] response;
 
-                            if(((String)carotResponse.getData()).contains("/")){
-                                response = ((String)carotResponse.getData()).split("/");
-                                uploadFile(response[1],imgString);
-                                sendMail(EmpCode, ObservationName, LocationName, Description, ((String) carotResponse.getData()).split("/")[0], unitcode);
+                    if (((String) carotResponse.getData()).contains("/")) {
+                        response = ((String) carotResponse.getData()).split("/");
+                        uploadFile(response[1], imgString);
+                        sendMail(EmpCode, ObservationName, LocationName, Description, ((String) carotResponse.getData()).split("/")[0], unitcode);
 
-                            }
-                            else {
-                                sendMail(EmpCode, ObservationName, LocationName, Description, (String) carotResponse.getData(), unitcode);
-                            }
+                    } else {
+                        sendMail(EmpCode, ObservationName, LocationName, Description, (String) carotResponse.getData(), unitcode);
+                    }
                 }
                 progressBar.setVisibility(View.GONE);
 
             }
-        }, EmpCode, ActID, ActDate, HOD, UnitSafetyOfficer, UnitCode, Description, Attachment, AttachmentType, LocationID, CategoryID, SubCategoryID, ObservationID, IncidenceHour,IncidenceMin,IncidenceZone,IncidenceActionTaken, ObservationName, LocationName);
+        }, EmpCode, ActID, ActDate, HOD, UnitSafetyOfficer, UnitCode, Description, Attachment, AttachmentType, LocationID, CategoryID, SubCategoryID, ObservationID, IncidenceHour, IncidenceMin, IncidenceZone, IncidenceActionTaken, ObservationName, LocationName);
     }
 
     public void updateEHS(String ActID, final String EmpCode, final String ActNo, String ActDate, String HOD, String UnitSafetyOfficer, String UnitCode, final String Description, String Attachment, String AttachmentType, String LocationID, String CategoryID, String SubCategoryID, String ObservationID, String IncidenceHour, String IncidenceMin, String IncidenceZone, String IncidenceActionTaken) {
@@ -1065,10 +1058,10 @@ public class EHSInitiateFragment extends Fragment {
                 if (carotResponse.getStatuscode() == HttpsURLConnection.HTTP_OK) {
                     if (carotResponse.getStatuscode() == HttpsURLConnection.HTTP_OK) {
                         if (carotResponse.getData() != null) {
-                                uploadFile(carotResponse.getData().toString(), imgString);
-                                sendMail(EmpCode, obstype, identifiedLocation, Description, ActNo, unitcode);
+                            uploadFile(carotResponse.getData().toString(), imgString);
+                            sendMail(EmpCode, obstype, identifiedLocation, Description, ActNo, unitcode);
 
-                            }
+                        }
                     }
 
 
@@ -1076,7 +1069,7 @@ public class EHSInitiateFragment extends Fragment {
                 progressBar.setVisibility(View.GONE);
 
             }
-        }, ActID, EmpCode, ActNo, ActDate, HOD, UnitSafetyOfficer, UnitCode, Description, Attachment, AttachmentType, LocationID, CategoryID, SubCategoryID, ObservationID, IncidenceHour,IncidenceMin,IncidenceZone, IncidenceActionTaken);
+        }, ActID, EmpCode, ActNo, ActDate, HOD, UnitSafetyOfficer, UnitCode, Description, Attachment, AttachmentType, LocationID, CategoryID, SubCategoryID, ObservationID, IncidenceHour, IncidenceMin, IncidenceZone, IncidenceActionTaken);
 
     }
 
@@ -1103,7 +1096,7 @@ public class EHSInitiateFragment extends Fragment {
         startActivityForResult(pickPhoto, SELECT_FROM_GALLERY);
     }
 
-    private void fileIntent(){
+    private void fileIntent() {
         chooseFile();
     }
 
@@ -1115,7 +1108,7 @@ public class EHSInitiateFragment extends Fragment {
                 onSelectFromGalleryResult(data);
             else if (requestCode == CAPTURE_FROM_CAMERA)
                 onCaptureImageResult(data);
-            else if(requestCode == LOAD_IMAGE_RESULTS)
+            else if (requestCode == LOAD_IMAGE_RESULTS)
                 onSelectFile(data);
         }
     }
@@ -1172,14 +1165,14 @@ public class EHSInitiateFragment extends Fragment {
         attachmentType = ".jpg";
         attachtext.setText(attachmentName);
         bytes = getBytesFromBitmap(bm);
-        imgString = Base64.encodeToString(bytes,Base64.NO_WRAP);
+        imgString = Base64.encodeToString(bytes, Base64.NO_WRAP);
         bmp = bm;
 
-                //  addUserImage(fileName);
+        //  addUserImage(fileName);
     }
 
 
-    private String onSelectFile(Intent data){
+    private String onSelectFile(Intent data) {
 
        /*String Filepath = data.getData().getPath();
        imgString = getStringFile(new File(Filepath));
@@ -1188,7 +1181,7 @@ public class EHSInitiateFragment extends Fragment {
 
         File file = FilePickerUriHelper.getFile(getActivity(), data);
         attachmentName = file.getName();
-        attachmentType="doc";
+        attachmentType = "doc";
         attachtext.setText(attachmentName);
         return getStringFile(file);
 
@@ -1241,9 +1234,9 @@ public class EHSInitiateFragment extends Fragment {
     }
 
 
-   public String getStringFile(File f) {
+    public String getStringFile(File f) {
         InputStream inputStream = null;
-        String encodedFile= "", lastVal;
+        String encodedFile = "", lastVal;
         try {
             inputStream = new FileInputStream(f.getPath());
 
@@ -1256,15 +1249,12 @@ public class EHSInitiateFragment extends Fragment {
                 output64.write(buffer, 0, bytesRead);
             }
             output64.close();
-            encodedFile =  output.toString();
-        }
-        catch (FileNotFoundException e1 ) {
+            encodedFile = output.toString();
+        } catch (FileNotFoundException e1) {
             e1.printStackTrace();
-        }
-        catch (IOException e) {
+        } catch (IOException e) {
             e.printStackTrace();
-        }
-        catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
         lastVal = encodedFile;
@@ -1300,6 +1290,7 @@ public class EHSInitiateFragment extends Fragment {
         bitmap.compress(Bitmap.CompressFormat.JPEG, 70, stream);
         return stream.toByteArray();
     }
+
     private static Bitmap rotateImageIfRequired(Context context, Bitmap img, Uri selectedImage) {
 
         // Detect rotation
@@ -1347,8 +1338,8 @@ public class EHSInitiateFragment extends Fragment {
                     mUserChoosenTask = "Take Photo";
                     if (result) {
                         requestCameraPermission();
-                        if(hasCameraPermission())
-                        cameraIntent();
+                        if (hasCameraPermission())
+                            cameraIntent();
                     }
                 } else if (items[item].equals("Choose from Gallery")) {
                     mUserChoosenTask = "Choose from Gallery";
@@ -1364,7 +1355,8 @@ public class EHSInitiateFragment extends Fragment {
                     }
 
                 }
-                */else if (items[item].equals("Cancel")) {
+                */
+                else if (items[item].equals("Cancel")) {
                     dialog.dismiss();
                 }
             }
@@ -1393,8 +1385,7 @@ public class EHSInitiateFragment extends Fragment {
     }
 
 
-
-    private void requestCameraPermission(){
+    private void requestCameraPermission() {
 
         ActivityCompat.requestPermissions(getActivity(),
                 new String[]{Manifest.permission.CAMERA}, MY_PERMISSIONS_REQUEST_CAMERA); // your request code
@@ -1410,7 +1401,7 @@ public class EHSInitiateFragment extends Fragment {
         return (ContextCompat.checkSelfPermission(getActivity(), Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED);
     }
 
-    private boolean hasCameraPermission(){
+    private boolean hasCameraPermission() {
         return (ContextCompat.checkSelfPermission(getActivity(), Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED);
 
     }
@@ -1421,17 +1412,17 @@ public class EHSInitiateFragment extends Fragment {
         ehsServices.sendmail(new OnTaskComplete() {
             @Override
             public void onTaskComplte(CarotResponse carotResponse) {
-        new Handler().postDelayed(new Runnable() {
-@Override
-public void run() {
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
 
-        Toast.makeText(getActivity(), "Successfully submitted", Toast.LENGTH_LONG).show();
-                Intent in = new Intent(getActivity(), EHS_Home.class);
-                in.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                startActivity(in);
-                getActivity().finish();
-}
-        }, 1000);
+                        Toast.makeText(getActivity(), "Successfully submitted", Toast.LENGTH_LONG).show();
+                        Intent in = new Intent(getActivity(), EHS_Home.class);
+                        in.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                        startActivity(in);
+                        getActivity().finish();
+                    }
+                }, 1000);
 
                 progressBar.setVisibility(View.GONE);
 
@@ -1439,7 +1430,7 @@ public void run() {
         }, Empcode, ObservationName, Location, description, ActNo, UnitCode);
     }
 
-    public void uploadFile(String attachmentName, String bytes){
+    public void uploadFile(String attachmentName, String bytes) {
         progressBar.setVisibility(View.VISIBLE);
 
         EHSServices ehsServices = new EHSServices();
@@ -1448,10 +1439,9 @@ public void run() {
             public void onTaskComplte(CarotResponse carotResponse) {
                 progressBar.setVisibility(View.GONE);
             }
-        },attachmentName,bytes);
+        }, attachmentName, bytes);
 
     }
-
 
 
     private void chooseFile() {
@@ -1471,7 +1461,7 @@ public void run() {
 
         Intent in = new Intent(getActivity(), FilePickerActivity.class);
         in.putExtra(FilePickerConstants.FILE, true);
-        in.putExtra(FilePickerConstants.MULTIPLE_TYPES, new String[]{/*FilePickerConstants.MIME_IMAGE,*/ FilePickerConstants.MIME_PDF,FilePickerConstants.MIME_TEXT_PLAIN,"application/xls","application/docx","application/doc"});
+        in.putExtra(FilePickerConstants.MULTIPLE_TYPES, new String[]{/*FilePickerConstants.MIME_IMAGE,*/ FilePickerConstants.MIME_PDF, FilePickerConstants.MIME_TEXT_PLAIN, "application/xls", "application/docx", "application/doc"});
         startActivityForResult(in, LOAD_IMAGE_RESULTS);
 
 
