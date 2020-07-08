@@ -65,7 +65,7 @@ public class Utility {
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
@@ -338,6 +338,7 @@ public class Utility {
         return false;
 
     }
+
     public static boolean hasReadPermissions(Context context) {
         return (ContextCompat.checkSelfPermission(context, Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED);
     }

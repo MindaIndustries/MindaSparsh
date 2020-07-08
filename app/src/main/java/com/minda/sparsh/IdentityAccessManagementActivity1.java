@@ -10,7 +10,7 @@ import android.widget.Toast;
 
 public class IdentityAccessManagementActivity1 extends AppCompatActivity {
 
-    ImageView iv_approve,im_back,iv_process;
+    ImageView iv_approve, im_back, iv_process;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,7 +31,7 @@ public class IdentityAccessManagementActivity1 extends AppCompatActivity {
         iv_approve.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(IdentityAccessManagementActivity1.this,ApproveListActivity1.class));
+                startActivity(new Intent(IdentityAccessManagementActivity1.this, ApproveListActivity1.class));
             }
         });
 

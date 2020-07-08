@@ -67,7 +67,7 @@ public class AbnormalityAddressing2Activity extends AppCompatActivity {
 
     ListView list_abnormalty;
     LinearLayout lay_out, footer;
-    TextView tv_submit, tv_upload, tv_Department, tv_plant, tv_business, tv_domain,et_finddate;
+    TextView tv_submit, tv_upload, tv_Department, tv_plant, tv_business, tv_domain, et_finddate;
     ImageView Im_capture, im_back;
     Uri picUri = null;
     Bitmap myBitmap;
@@ -78,7 +78,7 @@ public class AbnormalityAddressing2Activity extends AppCompatActivity {
     private final static int ALL_PERMISSIONS_RESULT = 107;
     boolean pic_uploaded = false;
     private ProgressDialog progress = null;
-    EditText  et_descripton,et_benefits;
+    EditText et_descripton, et_benefits;
     String ImplementationDate, Action;
     int AbnormalID;
     SharedPreferences myPref;
@@ -93,7 +93,7 @@ public class AbnormalityAddressing2Activity extends AppCompatActivity {
         tv_plant = (TextView) findViewById(R.id.tv_plant);
         tv_business = (TextView) findViewById(R.id.tv_business);
         tv_domain = (TextView) findViewById(R.id.tv_domain);
-         myPref = getSharedPreferences("MyPref", Context.MODE_PRIVATE);
+        myPref = getSharedPreferences("MyPref", Context.MODE_PRIVATE);
         if (getIntent().getExtras() != null) {
             AbnormalID = getIntent().getIntExtra("ID", 0);
             tv_Department.setText(getIntent().getStringExtra("department"));
@@ -126,9 +126,7 @@ public class AbnormalityAddressing2Activity extends AppCompatActivity {
             }
         });
         String date = new SimpleDateFormat("dd-MM-yyy", Locale.getDefault()).format(new Date());
-                et_finddate.setText(date);
-
-
+        et_finddate.setText(date);
 
 
         Im_capture.setOnClickListener(new View.OnClickListener() {
@@ -157,19 +155,15 @@ public class AbnormalityAddressing2Activity extends AppCompatActivity {
                 Action = et_descripton.getText().toString();
                 ImplementationDate = et_finddate.getText().toString();
 
-                    if (Action.length() != 0) {
-                        if (sImage.length() != 0) {
-                            hitUpdateAbnormalityApi(AbnormalID, sImage, Action, ImplementationDate, et_benefits.getText().toString(),myPref.getString("Id", ""));
-                        } else {
-                            Toast.makeText(AbnormalityAddressing2Activity.this, "Please Attach Image", Toast.LENGTH_LONG).show();
-                        }
+                if (Action.length() != 0) {
+                    if (sImage.length() != 0) {
+                        hitUpdateAbnormalityApi(AbnormalID, sImage, Action, ImplementationDate, et_benefits.getText().toString(), myPref.getString("Id", ""));
                     } else {
-                        Toast.makeText(AbnormalityAddressing2Activity.this, "Please fill Action", Toast.LENGTH_LONG).show();
+                        Toast.makeText(AbnormalityAddressing2Activity.this, "Please Attach Image", Toast.LENGTH_LONG).show();
                     }
-
-
-
-
+                } else {
+                    Toast.makeText(AbnormalityAddressing2Activity.this, "Please fill Action", Toast.LENGTH_LONG).show();
+                }
 
 
             }
@@ -452,7 +446,6 @@ public class AbnormalityAddressing2Activity extends AppCompatActivity {
     }
 
 
-
     private void showProgress(boolean b) {
         try {
             if (b)
@@ -465,13 +458,11 @@ public class AbnormalityAddressing2Activity extends AppCompatActivity {
     }
 
 
-
-
-    public void hitUpdateAbnormalityApi(int AbnormalID, String ImagePathAfter, String Action, String ImplementationDate ,String benifits,String UpdatedBy) {
+    public void hitUpdateAbnormalityApi(int AbnormalID, String ImagePathAfter, String Action, String ImplementationDate, String benifits, String UpdatedBy) {
         if (Utility.isOnline(AbnormalityAddressing2Activity.this)) {
             showProgress(true);
             Interface promotingMyinterface = RetrofitClient2.getClient().create(Interface.class);
-            Call<List<AddAbnormality_Model>> response = promotingMyinterface.UpdateAbnormality(RetrofitClient2.CKEY,AbnormalID, ImagePathAfter, Action, ImplementationDate,benifits,UpdatedBy);
+            Call<List<AddAbnormality_Model>> response = promotingMyinterface.UpdateAbnormality(RetrofitClient2.CKEY, AbnormalID, ImagePathAfter, Action, ImplementationDate, benifits, UpdatedBy);
             response.enqueue(new Callback<List<AddAbnormality_Model>>() {
                 @Override
                 public void onResponse(Call<List<AddAbnormality_Model>> call, Response<List<AddAbnormality_Model>> response) {
@@ -482,12 +473,10 @@ public class AbnormalityAddressing2Activity extends AppCompatActivity {
                         if (Departmentresponse.get(0).getColumn1().equalsIgnoreCase("success")) {
                             Toast.makeText(AbnormalityAddressing2Activity.this, "Date Save Successfully", Toast.LENGTH_LONG).show();
 
-                            Intent intent= new Intent(AbnormalityAddressing2Activity.this, AbnormalityAddressingActivity.class);
+                            Intent intent = new Intent(AbnormalityAddressing2Activity.this, AbnormalityAddressingActivity.class);
                             intent.putExtra("ADD", false);
                             startActivity(intent);
                             finish();
-
-
 
 
                         } else {

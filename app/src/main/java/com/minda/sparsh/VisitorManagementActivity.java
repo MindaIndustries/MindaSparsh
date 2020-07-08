@@ -219,9 +219,9 @@ public class VisitorManagementActivity extends AppCompatActivity implements View
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
                 et_mobile.setText(et_visitor_mobile_no.getText().toString());
                 et_mobile.setEnabled(false);
-               if (!et_visitor_mobile_no.getText().toString().equalsIgnoreCase(et_mobile.getText().toString())){
-                   callCondition=true;
-               }
+                if (!et_visitor_mobile_no.getText().toString().equalsIgnoreCase(et_mobile.getText().toString())) {
+                    callCondition = true;
+                }
                 if (charSequence.length() == 10 && callCondition) {
 
                     hitGetVisitorDetailbyMobileApi(RetrofitClient2.CKEY, et_visitor_mobile_no.getText().toString());
@@ -337,7 +337,6 @@ public class VisitorManagementActivity extends AppCompatActivity implements View
         sp_end_time_minutes.setAdapter(adapterMinutes);
         sp_start_time_minutes.setSelection(1);
         sp_end_time_minutes.setSelection(1);
-
 
 
         if (!s1.equalsIgnoreCase("")) {
@@ -838,10 +837,10 @@ public class VisitorManagementActivity extends AppCompatActivity implements View
 //                            tv_end_time.setText(autoFillMobileModels.get(0).getTimeOut() + "");
 //                            et_additional_no_person.setText(autoFillMobileModels.get(0).getAddPersons() + "");
                             if (autoFillMobileModels.get(0).getGender().equalsIgnoreCase("M")) {
-                               RadioButton radioButton=(RadioButton)findViewById (R.id.rb_male);
-                               radioButton.setChecked(true);
-                            }else {
-                                RadioButton radioButton=(RadioButton)findViewById (R.id.rb_female);
+                                RadioButton radioButton = (RadioButton) findViewById(R.id.rb_male);
+                                radioButton.setChecked(true);
+                            } else {
+                                RadioButton radioButton = (RadioButton) findViewById(R.id.rb_female);
                                 radioButton.setChecked(true);
                             }
 
@@ -856,7 +855,7 @@ public class VisitorManagementActivity extends AppCompatActivity implements View
                             et_address.setText("");
                             et_city.setText("");
                             et_pin_code.setText("");
-                            RadioButton radioButton=(RadioButton)findViewById (R.id.rb_male);
+                            RadioButton radioButton = (RadioButton) findViewById(R.id.rb_male);
                             radioButton.setChecked(true);
 //                            et_purpose.setText(autoFillMobileModels.get(0).getP() + "");
 //                            tv_from_date.setText(autoFillMobileModels.get(0).getAppointmentDate1() + "");

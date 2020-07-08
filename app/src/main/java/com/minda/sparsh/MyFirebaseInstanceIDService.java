@@ -10,7 +10,8 @@ import com.google.firebase.iid.FirebaseInstanceIdService;
  */
 
 public class MyFirebaseInstanceIDService extends FirebaseInstanceIdService {
-    String TAG="test";
+    String TAG = "test";
+
     // Not getting messages here? See why this may be: https://goo.gl/39bRNJ
     @Override
     public void onTokenRefresh() {

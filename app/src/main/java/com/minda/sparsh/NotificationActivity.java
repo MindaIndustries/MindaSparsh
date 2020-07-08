@@ -22,7 +22,7 @@ import retrofit2.Response;
 
 public class NotificationActivity extends AppCompatActivity {
     ListView list_notification;
-    java.util.List<String> List=new ArrayList<>();
+    java.util.List<String> List = new ArrayList<>();
     SharedPreferences myPref;
     ImageView im_back;
 
@@ -31,12 +31,12 @@ public class NotificationActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_notification);
         getSupportActionBar().hide();
-        im_back=(ImageView) findViewById(R.id.im_back);
-        list_notification=(ListView) findViewById(R.id.list_notification);
+        im_back = (ImageView) findViewById(R.id.im_back);
+        list_notification = (ListView) findViewById(R.id.list_notification);
         myPref = getSharedPreferences("MyPref", Context.MODE_PRIVATE);
 
 
-        HitMyorder(myPref.getString("Id",""));
+        HitMyorder(myPref.getString("Id", ""));
         im_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -45,10 +45,10 @@ public class NotificationActivity extends AppCompatActivity {
         });
     }
 
-    public void HitMyorder( String UserId) {
+    public void HitMyorder(String UserId) {
         if (Utility.isOnline(NotificationActivity.this)) {
             Interface loginInterface = RetrofitClient.getClient().create(Interface.class);
-            Call<java.util.List<NotificationModel>> loginResponse = loginInterface.GetPushNot( UserId,"mda@sPr$rZ#G!!");
+            Call<java.util.List<NotificationModel>> loginResponse = loginInterface.GetPushNot(UserId, "mda@sPr$rZ#G!!");
             loginResponse.enqueue(new Callback<List<NotificationModel>>() {
                 @Override
                 public void onResponse(Call<List<NotificationModel>> call, Response<List<NotificationModel>> response) {
@@ -59,10 +59,8 @@ public class NotificationActivity extends AppCompatActivity {
                         setadapter(responseItem);
 
 
-
-
+                    } else {
                     }
-                    else {}
 
 
                 }
@@ -77,9 +75,9 @@ public class NotificationActivity extends AppCompatActivity {
         } else
             Toast.makeText(NotificationActivity.this, "Please Check Your Network Connection", Toast.LENGTH_LONG).show();
     }
-    public  void setadapter(List<NotificationModel> list)
-    {
-        NotificationAdapter notificationAdapter=new NotificationAdapter(NotificationActivity.this,list);
+
+    public void setadapter(List<NotificationModel> list) {
+        NotificationAdapter notificationAdapter = new NotificationAdapter(NotificationActivity.this, list);
         list_notification.setAdapter(notificationAdapter);
     }
 }

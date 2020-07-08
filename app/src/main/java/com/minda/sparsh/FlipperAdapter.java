@@ -141,7 +141,7 @@ public class FlipperAdapter extends BaseAdapter {
         private TouchImageView imageView;
 
         public ViewHolder(View v) {
-            imageView = (TouchImageView)v.findViewById(R.id.image);
+            imageView = (TouchImageView) v.findViewById(R.id.image);
 //            textView = (TextView) v.findViewById(R.id.text);
 
 

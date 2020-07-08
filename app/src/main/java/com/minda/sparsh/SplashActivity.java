@@ -9,6 +9,7 @@ import android.os.Handler;
 
 import com.minda.sparsh.R;
 import com.crashlytics.android.Crashlytics;
+
 import io.fabric.sdk.android.Fabric;
 
 public class SplashActivity extends Activity {

@@ -17,19 +17,19 @@ import retrofit2.converter.scalars.ScalarsConverterFactory;
 
 
 public class RetrofitClient2 {
-//        public static final String BASE_URL = "http://52.172.191.61/testminda.com/Service.asmx/ ";
+    //        public static final String BASE_URL = "http://52.172.191.61/testminda.com/Service.asmx/ ";
     //public static final String BASE_URL = "https://app.mindasparsh.com/service.asmx/";
-   //master public static final String BASE_URL = "http://176.9.28.166/MindaSparshTest/Service.asmx/";
-   // public static final String BASE_URL = "http://52.172.191.61/Test.mindasparsh.com/Service.asmx/";
+    //master public static final String BASE_URL = "http://176.9.28.166/MindaSparshTest/Service.asmx/";
+    // public static final String BASE_URL = "http://52.172.191.61/Test.mindasparsh.com/Service.asmx/";
     //dev
-     public static final String BASE_URL = "http://dev.mindasparsh.com/Service.asmx/";
-    public static  final String EHS_BASE_URL="http://dev.mindasparsh.com/ServiceEHS.asmx/";
-    public static  final String ehs_img="http://dev.mindasparsh.com/ehs/files/";
+    public static final String BASE_URL = "http://dev.mindasparsh.com/Service.asmx/";
+    public static final String EHS_BASE_URL = "http://dev.mindasparsh.com/ServiceEHS.asmx/";
+    public static final String ehs_img = "http://dev.mindasparsh.com/ehs/files/";
 
     //prod
-  //  public static final String BASE_URL = "https://app.mindasparsh.com/Service.asmx/";
+    //  public static final String BASE_URL = "https://app.mindasparsh.com/Service.asmx/";
 
-   // public static final String CKEY = "bWRhQHNQciRyWiNHISE=";
+    // public static final String CKEY = "bWRhQHNQciRyWiNHISE=";
     public static final String CKEY = "mda@sPr$rZ#G!!";
 
     private static Retrofit retrofit = null;
@@ -51,21 +51,19 @@ public class RetrofitClient2 {
         return retrofit;
     }
 
-    public  static <S> S createServiceEHS(Class<S> serviceClass) {
+    public static <S> S createServiceEHS(Class<S> serviceClass) {
         OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
-        httpClient.addInterceptor(new Interceptor()
-        {
+        httpClient.addInterceptor(new Interceptor() {
             @Override
-            public Response intercept(Interceptor.Chain chain) throws IOException
-            {
+            public Response intercept(Interceptor.Chain chain) throws IOException {
                 Request original = chain.request();
 
                 Request request = original.newBuilder()
                         .addHeader("User", "Minda89652$%@@#")
-                        .addHeader("Password","98541$%#85%$PUAtadniM")
+                        .addHeader("Password", "98541$%#85%$PUAtadniM")
                         .method(original.method(), original.body())
                         .build();
-                Response response =  chain.proceed(request);
+                Response response = chain.proceed(request);
                 return response;
             }
         });
@@ -84,13 +82,12 @@ public class RetrofitClient2 {
 
         return retrofit.create(serviceClass);
     }
-    public  static <S> S createServiceEHSUpload(Class<S> serviceClass) {
+
+    public static <S> S createServiceEHSUpload(Class<S> serviceClass) {
         OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
-        httpClient.addInterceptor(new Interceptor()
-        {
+        httpClient.addInterceptor(new Interceptor() {
             @Override
-            public Response intercept(Interceptor.Chain chain) throws IOException
-            {
+            public Response intercept(Interceptor.Chain chain) throws IOException {
                 Request original = chain.request();
 
               /*  Request request = original.newBuilder()
@@ -98,7 +95,8 @@ public class RetrofitClient2 {
                         .addHeader("Password","98541$%#85%$PUAtadniM")
                         .method(original.method(), original.body())
                         .build();
-              */  Response response =  chain.proceed(original);
+              */
+                Response response = chain.proceed(original);
                 return response;
             }
         });

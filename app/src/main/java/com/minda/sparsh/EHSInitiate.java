@@ -271,7 +271,7 @@ public class EHSInitiate extends BaseActivity {
         if (submit.getText().equals("Submit")) {
             String[] ActDate = observationDateSpinner.getText().toString().split("/");
             String newActDate = ActDate[2] + "/" + ActDate[1] + "/" + ActDate[0];
-        //    saveEHS(empCode, newActDate, "", safetyOfficer, unitcode, descriptionEdit.getText().toString(), "", "", locationID, catId, subCategoryID, observationID, "", "", obstype, identifiedLocation);
+            //    saveEHS(empCode, newActDate, "", safetyOfficer, unitcode, descriptionEdit.getText().toString(), "", "", locationID, catId, subCategoryID, observationID, "", "", obstype, identifiedLocation);
         } else {
             String idLocaton = getIntent().getStringExtra("identifiedLoc");
             int i = idLocaton.indexOf(identifiedLocation);

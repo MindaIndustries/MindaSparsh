@@ -39,22 +39,22 @@ public class DWMActivity extends AppCompatActivity {
             tv_10_3_a, tv_10_3_b, tv_10_3_c,
             tv_10_4_a, tv_10_4_b, tv_10_4_c,
             tv_10_5_a, tv_10_5_b, tv_10_5_c,
-            tv_check_a, tv_check_b, tv_check_c,tv_1_1_1_1a,tv_1_1b,tv_2_1_1_1b,tv_2_1b,tv_2_cb,tv_2_1_1_1c,tv_2_1c,tv_2_cc,tv_8_a1_bestReview;
+            tv_check_a, tv_check_b, tv_check_c, tv_1_1_1_1a, tv_1_1b, tv_2_1_1_1b, tv_2_1b, tv_2_cb, tv_2_1_1_1c, tv_2_1c, tv_2_cc, tv_8_a1_bestReview;
 
 
-    private EditText tv_1_1, tv_1_2, tv_1_3,tv_1_3_a, tv_1_4,tv_1_14, tv_1_5, tv_1_6,tv_1_6a,tv_2_1_1b,
+    private EditText tv_1_1, tv_1_2, tv_1_3, tv_1_3_a, tv_1_4, tv_1_14, tv_1_5, tv_1_6, tv_1_6a, tv_2_1_1b,
             tv_2_1, tv_2_2, tv_2_3, tv_2_6, tv_2_5, tv_2_4,
             tv_3_1, tv_3_2, tv_3_3, tv_3_6, tv_3_5, tv_3_4,
             tv_4_1, tv_4_2, tv_4_3, tv_4_6, tv_4_5, tv_4_4,
             tv_5_1, tv_5_2, tv_5_3, tv_5_6, tv_5_5, tv_5_4,
-            et_6_1_1, et_6_1_2, et_6_1_3, et_6_1_4, et_6_1_5,et_8_1_1_best_review, et_6_1_6,
-            et_6_2_1, et_6_2_2, et_6_2_3, et_6_2_4, et_6_2_5, et_8_2_1_bestReview , et_6_2_6,
-            et_6_3_1, et_6_3_2, et_6_3_3, et_6_3_4, et_6_3_5,et_8_3_1_bestReview, et_6_3_6,
+            et_6_1_1, et_6_1_2, et_6_1_3, et_6_1_4, et_6_1_5, et_8_1_1_best_review, et_6_1_6,
+            et_6_2_1, et_6_2_2, et_6_2_3, et_6_2_4, et_6_2_5, et_8_2_1_bestReview, et_6_2_6,
+            et_6_3_1, et_6_3_2, et_6_3_3, et_6_3_4, et_6_3_5, et_8_3_1_bestReview, et_6_3_6,
             cmt6_1_1, cmt6_1_2, cmt6_1_3, cmt6_1_4, cmt6_1_5, cmt6_1_6,
             cmt6_2_1, cmt6_2_2, cmt6_2_3, cmt6_2_4, cmt6_2_5, cmt8_2_1_bestReview, cmt6_2_6,
-            cmt6_3_1, cmt6_3_2, cmt6_3_3, cmt6_3_4, cmt6_3_5,cmt8_3_1_bestReview, cmt6_3_6,
-            et_7_1_1, et_7_1_2, et_7_1_3,et_8_1_2_unitReview,cmt8_1_2_unitReview,et_8_2_2_unitReview,cmt8_2_2_unitReview, et_7_1_4,
-            et_7_2_1, et_7_2_2, et_7_2_3, et_7_2_4,et_8_3_2_unitReview,cmt8_3_2_unitReview,
+            cmt6_3_1, cmt6_3_2, cmt6_3_3, cmt6_3_4, cmt6_3_5, cmt8_3_1_bestReview, cmt6_3_6,
+            et_7_1_1, et_7_1_2, et_7_1_3, et_8_1_2_unitReview, cmt8_1_2_unitReview, et_8_2_2_unitReview, cmt8_2_2_unitReview, et_7_1_4,
+            et_7_2_1, et_7_2_2, et_7_2_3, et_7_2_4, et_8_3_2_unitReview, cmt8_3_2_unitReview,
             et_7_3_1, et_7_3_2, et_7_3_3, et_7_3_4,
             cmt7_1_1, cmt7_1_2, cmt7_1_3, cmt7_1_4,
             cmt7_2_1, cmt7_2_2, cmt7_2_3, cmt7_2_4,
@@ -71,14 +71,14 @@ public class DWMActivity extends AppCompatActivity {
             cmt9_1_1, cmt9_1_2, cmt9_1_3,
             cmt9_2_1, cmt9_2_2, cmt9_2_3,
             cmt9_3_1, cmt9_3_2, cmt9_3_3,
-            tv_10_1, tv_10_2, tv_10_3, tv_10_6, tv_10_5, tv_10_4,cmt8_1_1_bestReview,
+            tv_10_1, tv_10_2, tv_10_3, tv_10_6, tv_10_5, tv_10_4, cmt8_1_1_bestReview,
     //
     tv_10_2_1, tv_10_2_2, tv_10_2_3, tv_10_2_6, tv_10_2_5, tv_10_2_4,
             tv_10_3_1, tv_10_3_2, tv_10_3_3, tv_10_3_6, tv_10_3_5, tv_10_3_4,
             tv_10_4_1, tv_10_4_2, tv_10_4_3, tv_10_4_6, tv_10_4_5, tv_10_4_4,
             tv_10_5_1, tv_10_5_2, tv_10_5_3, tv_10_5_6, tv_10_5_5, tv_10_5_4,
 
-    tv_check_1, tv_check_2, tv_check_3, tv_check_4, tv_check_5, tv_check_6,tv_2_6b, tv_1_1_1a,tv_1_1aE,tv_1_5a,tv_2_1b4,tv_2_1bE,tv_2_1b5, tv_2_3b, tv_2_1_1c, tv_2_1c4, tv_2_1cE,tv_2_1c5,tv_2_3c,tv_2_6c;
+    tv_check_1, tv_check_2, tv_check_3, tv_check_4, tv_check_5, tv_check_6, tv_2_6b, tv_1_1_1a, tv_1_1aE, tv_1_5a, tv_2_1b4, tv_2_1bE, tv_2_1b5, tv_2_3b, tv_2_1_1c, tv_2_1c4, tv_2_1cE, tv_2_1c5, tv_2_3c, tv_2_6c;
 
 
     private View two_view, three_view, tv_1_1_view, tv_1_2_view, tv_1_c_view, tv_1_4_view, tv_1_5_view,
@@ -91,7 +91,7 @@ public class DWMActivity extends AppCompatActivity {
             layout_8_1_view, layout_8_2_view, layout_8_6_view, layout_8_8_view,
             layout_9_1_view, layout_9_2_view, layout_9_6_view, layout_9_8_view,
             d_y_submit_btn_view, yes_submit_btn_view, d_y_tv_total_hour_view, yes_tv_total_hour_view,
-            tv_10_1_view, tv_10_2_view, tv_10_c_view, tv_10_5_view, tv_10_4_view,tv_2_1_viewb,tv_2_5_viewb,tv_2_c_viewb, tv_2_1c_view, tv_2_1c_viewa,tv_2_1_viewc,tv_2_c_viewc,tv_2_c_view2c,
+            tv_10_1_view, tv_10_2_view, tv_10_c_view, tv_10_5_view, tv_10_4_view, tv_2_1_viewb, tv_2_5_viewb, tv_2_c_viewb, tv_2_1c_view, tv_2_1c_viewa, tv_2_1_viewc, tv_2_c_viewc, tv_2_c_view2c,
     //
     tv_10_2_1_view, tv_10_2_2_view,
             tv_10_3_1_view, tv_10_3_2_view,
@@ -101,7 +101,7 @@ public class DWMActivity extends AppCompatActivity {
             tv_10_3_5_view, tv_10_3_4_view,
             tv_10_4_5_view, tv_10_4_4_view,
             tv_10_5_5_view, tv_10_5_4_view,
-            tv_check_1_view, tv_check_4_view, tv_check_2_view, tv_check_5_view, tv_check_c_view,tv_1_1a_view,tv_1_1a_viewa,tv_1_1_viewa,tv_1_5_viewa,tv_1_c_viewa,tv_2_1b_view,tv_2_1b_viewa;
+            tv_check_1_view, tv_check_4_view, tv_check_2_view, tv_check_5_view, tv_check_c_view, tv_1_1a_view, tv_1_1a_viewa, tv_1_1_viewa, tv_1_5_viewa, tv_1_c_viewa, tv_2_1b_view, tv_2_1b_viewa;
     //
     private LinearLayout layout_6_1, layout_6_2, layout_6_4, layout_6_5, layout_6_6, layout_6_7, layout_6_8,
             layout_7_1, layout_7_2, layout_7_4, layout_7_5, layout_7_6, layout_7_7, layout_7_8,
@@ -114,23 +114,23 @@ public class DWMActivity extends AppCompatActivity {
     private GetyesterdayTimeSheetTask getyesterdayTimeSheetTask = null;
     private Get_Current_TimeSheetTask getCurrentTimeSheetTask = null;
     private Getd_y_TimeSheetTask getdYTimeSheetTask = null;
-    public int int_tv_1_3 = 0,int_tv_1_3a=0,int_tv_1_1aE=0,int_tv_1_1_1a=0,int_tv_2_3 = 0, int_tv_3_3 = 0, int_tv_4_3 = 0, int_tv_5_3 = 0,int_tv_2_1_1b,int_tv_2_3b,
-            int_et_6_3_1 = 0, int_et_6_3_2 = 0, int_et_6_3_3 = 0, int_et_6_3_4 = 0, int_et_6_3_5 = 0, int_et_8_3_1_bestReview=0, int_et_6_3_6 = 0,
-            int_et_7_3_1 = 0, int_et_7_3_2 = 0, int_et_7_3_3 = 0,int_et_8_3_2_unitReview=0, int_et_7_3_4 = 0,
+    public int int_tv_1_3 = 0, int_tv_1_3a = 0, int_tv_1_1aE = 0, int_tv_1_1_1a = 0, int_tv_2_3 = 0, int_tv_3_3 = 0, int_tv_4_3 = 0, int_tv_5_3 = 0, int_tv_2_1_1b, int_tv_2_3b,
+            int_et_6_3_1 = 0, int_et_6_3_2 = 0, int_et_6_3_3 = 0, int_et_6_3_4 = 0, int_et_6_3_5 = 0, int_et_8_3_1_bestReview = 0, int_et_6_3_6 = 0,
+            int_et_7_3_1 = 0, int_et_7_3_2 = 0, int_et_7_3_3 = 0, int_et_8_3_2_unitReview = 0, int_et_7_3_4 = 0,
             int_et_8_3_1 = 0, int_et_8_3_2 = 0, int_et_8_3_3 = 0, int_et_8_3_4 = 0, int_et_8_3_5 = 0, int_et_8_3_6 = 0, int_et_8_3_7 = 0, int_et_8_3_8 = 0,
             int_et_9_3_1 = 0, int_et_9_3_2 = 0, int_et_9_3_3 = 0,
             int_tv_10_1 = 0, int_tv_10_2 = 0, int_tv_10_3 = 0, int_tv_10_2_1 = 0, int_tv_10_2_2 = 0, int_tv_10_2_3 = 0, int_tv_10_3_1 = 0, int_tv_10_3_2 = 0, int_tv_10_3_3 = 0, int_tv_10_4_1 = 0,
-            int_tv_10_4_2 = 0, int_tv_10_4_3 = 0,int_tv_2_1_1c,
-            int_tv_10_5_1 = 0, int_tv_10_5_2 = 0, int_tv_10_5_3 = 0,int_tv_2_1bE=0,int_tv_2_1cE=0,int_tv_2_3c=0;
+            int_tv_10_4_2 = 0, int_tv_10_4_3 = 0, int_tv_2_1_1c,
+            int_tv_10_5_1 = 0, int_tv_10_5_2 = 0, int_tv_10_5_3 = 0, int_tv_2_1bE = 0, int_tv_2_1cE = 0, int_tv_2_3c = 0;
     private int int_tv_1_2 = 0, int_tv_2_2 = 0, int_tv_3_2 = 0, int_tv_4_2 = 0, int_tv_5_2 = 0,
-            int_et_6_2_1 = 0, int_et_6_2_2 = 0, int_et_6_2_3 = 0, int_et_6_2_4 = 0, int_et_6_2_5 = 0,int_et_8_2_1_bestReview=0, int_et_6_2_6 = 0,
-            int_et_7_2_1 = 0, int_et_7_2_2 = 0, int_et_7_2_3 = 0,int_et_8_2_2_unitReview=0, int_et_7_2_4 = 0,
+            int_et_6_2_1 = 0, int_et_6_2_2 = 0, int_et_6_2_3 = 0, int_et_6_2_4 = 0, int_et_6_2_5 = 0, int_et_8_2_1_bestReview = 0, int_et_6_2_6 = 0,
+            int_et_7_2_1 = 0, int_et_7_2_2 = 0, int_et_7_2_3 = 0, int_et_8_2_2_unitReview = 0, int_et_7_2_4 = 0,
             int_et_8_2_1 = 0, int_et_8_2_2 = 0, int_et_8_2_3 = 0, int_et_8_2_4 = 0, int_et_8_2_5 = 0, int_et_8_2_6 = 0, int_et_8_2_7 = 0, int_et_8_2_8 = 0,
             int_et_9_2_1 = 0, int_et_9_2_2 = 0, int_et_9_2_3 = 0;
 
     private int int_tv_1_1 = 0, int_tv_2_1 = 0, int_tv_3_1 = 0, int_tv_4_1 = 0, int_tv_5_1 = 0,
-            int_et_6_1_1 = 0, int_et_6_1_2 = 0, int_et_6_1_3 = 0, int_et_6_1_4 = 0, int_et_6_1_5 = 0,int_et_8_1_1_best_review=0, int_et_6_1_6 = 0,
-            int_et_7_1_1 = 0, int_et_7_1_2 = 0, int_et_7_1_3 = 0,int_et_8_1_2_unitReview=0, int_et_7_1_4 = 0,
+            int_et_6_1_1 = 0, int_et_6_1_2 = 0, int_et_6_1_3 = 0, int_et_6_1_4 = 0, int_et_6_1_5 = 0, int_et_8_1_1_best_review = 0, int_et_6_1_6 = 0,
+            int_et_7_1_1 = 0, int_et_7_1_2 = 0, int_et_7_1_3 = 0, int_et_8_1_2_unitReview = 0, int_et_7_1_4 = 0,
             int_et_8_1_1 = 0, int_et_8_1_2 = 0, int_et_8_1_3 = 0, int_et_8_1_4 = 0, int_et_8_1_5 = 0, int_et_8_1_6 = 0, int_et_8_1_7 = 0, int_et_8_1_8 = 0,
             int_et_9_1_1 = 0, int_et_9_1_2 = 0, int_et_9_1_3 = 0,
             int_check_1_1 = 0, int_check_1_2 = 0, int_check_1_3 = 0;
@@ -143,14 +143,14 @@ public class DWMActivity extends AppCompatActivity {
     private String date1;
     private ArrayList<Dwm_Model> dwmData;
     EditText editText;
-    private String tv_1_4_String, tv_1_5_String,tv_1_5a_String,tv_1_14_String, tv_1_6_String,tv_1_6a_String, tv_2_4_String, tv_2_5_String, tv_2_6_String, tv_3_4_String, tv_3_5_String, tv_3_6_String, tv_4_4_String, tv_4_5_String, tv_4_6_String, tv_5_4_String, tv_5_5_String, tv_5_6_String,tv_2_1b4_String,tv_2_1b5_String,tv_2_6b_String,
-            tv_2_1c4_String,tv_2_1c5_String,tv_2_6c_String,
+    private String tv_1_4_String, tv_1_5_String, tv_1_5a_String, tv_1_14_String, tv_1_6_String, tv_1_6a_String, tv_2_4_String, tv_2_5_String, tv_2_6_String, tv_3_4_String, tv_3_5_String, tv_3_6_String, tv_4_4_String, tv_4_5_String, tv_4_6_String, tv_5_4_String, tv_5_5_String, tv_5_6_String, tv_2_1b4_String, tv_2_1b5_String, tv_2_6b_String,
+            tv_2_1c4_String, tv_2_1c5_String, tv_2_6c_String,
             cmt6_1_1_String, cmt6_1_2_String, cmt6_1_3_String, cmt6_1_4_String, cmt6_1_5_String, cmt8_1_1_bestReview_String, cmt6_1_6_String,
-            cmt6_2_1_String, cmt6_2_2_String, cmt6_2_3_String, cmt6_2_4_String, cmt6_2_5_String,cmt8_2_1_bestReview_String, cmt6_2_6_String,
-            cmt6_3_1_String, cmt6_3_2_String, cmt6_3_3_String, cmt6_3_4_String, cmt6_3_5_String,cmt8_3_1_bestReview_String, cmt6_3_6_String,
-            cmt7_1_1_String, cmt7_1_2_String, cmt7_1_3_String,cmt8_1_2_unitReview_String, cmt7_1_4_String,
-            cmt7_2_1_String, cmt7_2_2_String, cmt7_2_3_String,cmt8_2_2_unitReview_String, cmt7_2_4_String,
-            cmt7_3_1_String, cmt7_3_2_String, cmt7_3_3_String,cmt8_3_2_unitReview_String, cmt7_3_4_String,
+            cmt6_2_1_String, cmt6_2_2_String, cmt6_2_3_String, cmt6_2_4_String, cmt6_2_5_String, cmt8_2_1_bestReview_String, cmt6_2_6_String,
+            cmt6_3_1_String, cmt6_3_2_String, cmt6_3_3_String, cmt6_3_4_String, cmt6_3_5_String, cmt8_3_1_bestReview_String, cmt6_3_6_String,
+            cmt7_1_1_String, cmt7_1_2_String, cmt7_1_3_String, cmt8_1_2_unitReview_String, cmt7_1_4_String,
+            cmt7_2_1_String, cmt7_2_2_String, cmt7_2_3_String, cmt8_2_2_unitReview_String, cmt7_2_4_String,
+            cmt7_3_1_String, cmt7_3_2_String, cmt7_3_3_String, cmt8_3_2_unitReview_String, cmt7_3_4_String,
             cmt8_1_1_String, cmt8_1_2_String, cmt8_1_3_String, cmt8_1_4_String, cmt8_1_5_String, cmt8_1_6_String, cmt8_1_7_String, cmt8_1_8_String,
             cmt8_2_1_String, cmt8_2_2_String, cmt8_2_3_String, cmt8_2_4_String, cmt8_2_5_String, cmt8_2_6_String, cmt8_2_7_String, cmt8_2_8_String,
             cmt8_3_1_String, cmt8_3_2_String, cmt8_3_3_String, cmt8_3_4_String, cmt8_3_5_String, cmt8_3_6_String, cmt8_3_7_String, cmt8_3_8_String,
@@ -160,7 +160,7 @@ public class DWMActivity extends AppCompatActivity {
             cmt_tv_10_4_String, cmt_tv_10_5_String, cmt_10_6_String,
     //
     tv_10_2_4_String, tv_10_2_5_String, tv_10_2_6_String, tv_10_3_4_String, tv_10_3_5_String, tv_10_3_6_String, tv_10_4_6_String, tv_10_4_5_String,
-            tv_10_4_4_String, tv_10_5_6_String, tv_10_5_5_String, tv_10_5_4_String,check_6_comment,check_5_comment,check_4_comment;
+            tv_10_4_4_String, tv_10_5_6_String, tv_10_5_5_String, tv_10_5_4_String, check_6_comment, check_5_comment, check_4_comment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -262,26 +262,26 @@ public class DWMActivity extends AppCompatActivity {
         tv_1_3_a = (EditText) findViewById(R.id.tv_1_3a);
         tv_2_1_1b = (EditText) findViewById(R.id.tv_2_1_1b);
         tv_1_4 = (EditText) findViewById(R.id.tv_1_4);
-        tv_1_14 = (EditText)findViewById(R.id.tv_1_14);
+        tv_1_14 = (EditText) findViewById(R.id.tv_1_14);
         tv_1_1aE = (EditText) findViewById(R.id.tv_1_1aE);
-        tv_1_5a =(EditText)findViewById(R.id.tv_1_5a);
+        tv_1_5a = (EditText) findViewById(R.id.tv_1_5a);
         tv_1_1_viewa = (View) findViewById(R.id.tv_1_1_viewa);
-        tv_1_5_viewa =(View) findViewById(R.id.tv_1_5_viewa);
-        tv_1_c_viewa =(View) findViewById(R.id.tv_1_c_viewa);
+        tv_1_5_viewa = (View) findViewById(R.id.tv_1_5_viewa);
+        tv_1_c_viewa = (View) findViewById(R.id.tv_1_c_viewa);
         tv_1_1b = (TextView) findViewById(R.id.tv_1_1b);
 
         tv_1_5 = (EditText) findViewById(R.id.tv_1_5);
         tv_1_6 = (EditText) findViewById(R.id.tv_1_6);
         tv_1_6a = (EditText) findViewById(R.id.tv_1_6a);
-        tv_2_1bE =(EditText) findViewById(R.id.tv_2_1bE);
-        tv_2_1b5 =(EditText) findViewById(R.id.tv_2_1b5);
-        tv_2_3b =(EditText) findViewById(R.id.tv_2_3b);
+        tv_2_1bE = (EditText) findViewById(R.id.tv_2_1bE);
+        tv_2_1b5 = (EditText) findViewById(R.id.tv_2_1b5);
+        tv_2_3b = (EditText) findViewById(R.id.tv_2_3b);
         tv_2_1_1c = (EditText) findViewById(R.id.tv_2_1_1c);
-        tv_2_1c4 =(EditText) findViewById(R.id.tv_2_1c4);
-        tv_2_1cE =(EditText) findViewById(R.id.tv_2_1cE);
-        tv_2_1c5 =(EditText) findViewById(R.id.tv_2_1c5);
+        tv_2_1c4 = (EditText) findViewById(R.id.tv_2_1c4);
+        tv_2_1cE = (EditText) findViewById(R.id.tv_2_1cE);
+        tv_2_1c5 = (EditText) findViewById(R.id.tv_2_1c5);
         tv_2_3c = (EditText) findViewById(R.id.tv_2_3c);
-        tv_2_6c =(EditText) findViewById(R.id.tv_2_6c);
+        tv_2_6c = (EditText) findViewById(R.id.tv_2_6c);
 
 
         tv_1_1_view = (View) findViewById(R.id.tv_1_1_view);
@@ -305,7 +305,7 @@ public class DWMActivity extends AppCompatActivity {
         tv_2_5_view = (View) findViewById(R.id.tv_2_5_view);
         tv_2_4 = (EditText) findViewById(R.id.tv_2_4);
         tv_2_4_view = (View) findViewById(R.id.tv_2_4_view);
-        tv_2_1b4 =(EditText) findViewById(R.id.tv_2_1b4);
+        tv_2_1b4 = (EditText) findViewById(R.id.tv_2_1b4);
 
         tv_3_1 = (EditText) findViewById(R.id.tv_3_1);
         tv_3_2 = (EditText) findViewById(R.id.tv_3_2);
@@ -405,7 +405,7 @@ public class DWMActivity extends AppCompatActivity {
         cmt8_2_1_bestReview = (EditText) findViewById(R.id.cmt8_2_1_bestReview);
         et_6_3_6 = (EditText) findViewById(R.id.et_6_3_6);
 
-        tv_1_1_1a =(EditText) findViewById(R.id.tv_1_1_1a);
+        tv_1_1_1a = (EditText) findViewById(R.id.tv_1_1_1a);
 
 
         layout_7_1 = (LinearLayout) findViewById(R.id.layout_7_1);
@@ -428,7 +428,7 @@ public class DWMActivity extends AppCompatActivity {
         et_7_2_1 = (EditText) findViewById(R.id.et_7_2_1);
         et_7_2_2 = (EditText) findViewById(R.id.et_7_2_2);
         et_7_2_3 = (EditText) findViewById(R.id.et_7_2_3);
-        et_8_2_2_unitReview =(EditText) findViewById(R.id.et_8_2_2_unitReview);
+        et_8_2_2_unitReview = (EditText) findViewById(R.id.et_8_2_2_unitReview);
         et_7_2_4 = (EditText) findViewById(R.id.et_7_2_4);
 
         et_7_3_1 = (EditText) findViewById(R.id.et_7_3_1);
@@ -601,7 +601,6 @@ public class DWMActivity extends AppCompatActivity {
         cmt8_1_1_bestReview = findViewById(R.id.cmt8_1_1_bestReview);
 
 
-
         // textview refrence
         tv_10_2_a = (TextView) findViewById(R.id.tv_10_2_a);
         tv_10_2_b = (TextView) findViewById(R.id.tv_10_2_b);
@@ -620,12 +619,12 @@ public class DWMActivity extends AppCompatActivity {
         tv_check_c = (TextView) findViewById(R.id.tv_check_c);
         tv_1_1_1_1a = (TextView) findViewById(R.id.tv_1_1_1_1a);
         tv_2_1_1_1b = (TextView) findViewById(R.id.tv_2_1_1_1b);
-        tv_2_1b =(TextView) findViewById(R.id.tv_2_1b);
-        tv_2_cb =(TextView) findViewById(R.id.tv_2_cb);
-        tv_2_1_1_1c =(TextView) findViewById(R.id.tv_2_1_1_1c);
+        tv_2_1b = (TextView) findViewById(R.id.tv_2_1b);
+        tv_2_cb = (TextView) findViewById(R.id.tv_2_cb);
+        tv_2_1_1_1c = (TextView) findViewById(R.id.tv_2_1_1_1c);
         tv_2_1c = (TextView) findViewById(R.id.tv_2_1c);
         tv_2_cc = (TextView) findViewById(R.id.tv_2_cc);
-        tv_8_a1_bestReview =(TextView) findViewById(R.id.tv_8_a1_bestReview);
+        tv_8_a1_bestReview = (TextView) findViewById(R.id.tv_8_a1_bestReview);
 
         // view refrence
         tv_10_2_1_view = (View) findViewById(R.id.tv_10_2_1_view);
@@ -637,8 +636,8 @@ public class DWMActivity extends AppCompatActivity {
         tv_10_5_1_view = (View) findViewById(R.id.tv_10_5_1_view);
         tv_10_5_2_view = (View) findViewById(R.id.tv_10_5_2_view);
         tv_2_c_viewb = (View) findViewById(R.id.tv_2_c_viewb);
-        tv_2_1c_view =(View) findViewById(R.id.tv_2_1c_view);
-        tv_2_1c_viewa =(View) findViewById(R.id.tv_2_1c_viewa);
+        tv_2_1c_view = (View) findViewById(R.id.tv_2_1c_view);
+        tv_2_1c_viewa = (View) findViewById(R.id.tv_2_1c_viewa);
         tv_2_1_viewc = (View) findViewById(R.id.tv_2_1_viewc);
         tv_2_c_viewc = (View) findViewById(R.id.tv_2_c_viewc);
         tv_2_c_view2c = (View) findViewById(R.id.tv_2_c_view2c);
@@ -658,7 +657,7 @@ public class DWMActivity extends AppCompatActivity {
         tv_check_c_view = (View) findViewById(R.id.tv_check_c_view);
         tv_2_1b_view = (View) findViewById(R.id.tv_2_1b_view);
         tv_2_1b_viewa = (View) findViewById(R.id.tv_2_1b_viewa);
-        tv_2_1_viewb =(View) findViewById(R.id.tv_2_1_viewb);
+        tv_2_1_viewb = (View) findViewById(R.id.tv_2_1_viewb);
         tv_2_5_viewb = findViewById(R.id.tv_2_5_viewb);
 
 
@@ -667,7 +666,7 @@ public class DWMActivity extends AppCompatActivity {
         d_y_submit_btn_view = (View) findViewById(R.id.d_y_submit_btn_view);
         yes_submit_btn_view = (View) findViewById(R.id.yes_submit_btn_view);
         tv_1_1a_view = (View) findViewById(R.id.tv_1_1a_view);
-        tv_1_1a_viewa =(View) findViewById(R.id.tv_1_1a_viewa);
+        tv_1_1a_viewa = (View) findViewById(R.id.tv_1_1a_viewa);
 
 //        tv_1_6.setOnClickListener(new View.OnClickListener() {
 //            @Override
@@ -1072,7 +1071,7 @@ public class DWMActivity extends AppCompatActivity {
                 }
 
 
-                Add = int_tv_1_3 +int_tv_1_3a+int_tv_2_3b+ int_tv_2_3+int_tv_2_3c + int_tv_3_3 + int_tv_4_3 + int_tv_5_3 +
+                Add = int_tv_1_3 + int_tv_1_3a + int_tv_2_3b + int_tv_2_3 + int_tv_2_3c + int_tv_3_3 + int_tv_4_3 + int_tv_5_3 +
                         int_et_6_3_1 + int_et_6_3_2 + int_et_6_3_3 + int_et_6_3_4 +
                         /*int_et_6_3_5*/int_et_8_3_1_bestReview + int_et_6_3_6 + int_et_7_3_1 + int_et_7_3_2 +
                         /*int_et_7_3_3*/int_et_8_3_2_unitReview + int_et_7_3_4 + int_et_8_3_1 + int_et_8_3_2 +
@@ -1095,7 +1094,7 @@ public class DWMActivity extends AppCompatActivity {
                 cmt6_3_3_String = cmt6_3_3.getText().toString();
                 cmt6_3_4_String = cmt6_3_4.getText().toString();
                 cmt6_3_5_String = cmt6_3_5.getText().toString();
-                cmt8_3_1_bestReview_String =cmt8_3_1_bestReview.getText().toString();
+                cmt8_3_1_bestReview_String = cmt8_3_1_bestReview.getText().toString();
                 cmt6_3_6_String = cmt6_3_6.getText().toString();
 
                 cmt7_3_1_String = cmt7_3_1.getText().toString();
@@ -1122,7 +1121,7 @@ public class DWMActivity extends AppCompatActivity {
                 tv_10_3_6_String = tv_10_3_6.getText().toString();
                 tv_10_4_6_String = tv_10_4_6.getText().toString();
                 tv_10_5_6_String = tv_10_5_6.getText().toString();
-                check_6_comment=tv_check_6.getText().toString();
+                check_6_comment = tv_check_6.getText().toString();
 
 
                 if (Utility.isOnline(getApplicationContext())) {
@@ -1170,7 +1169,7 @@ public class DWMActivity extends AppCompatActivity {
                     int_tv_1_1aE = 0;
                 }
 
-                if ((tv_3_2.getText().toString() != null) && (!tv_3_2.getText().toString().isEmpty()) && !tv_3_2.getText().toString().contains("nul") ) {
+                if ((tv_3_2.getText().toString() != null) && (!tv_3_2.getText().toString().isEmpty()) && !tv_3_2.getText().toString().contains("nul")) {
                     int_tv_3_2 = Integer.parseInt(tv_3_2.getText().toString());
                 } else {
                     int_tv_3_2 = 0;
@@ -1330,7 +1329,7 @@ public class DWMActivity extends AppCompatActivity {
                 } else {
                     int_tv_10_5_2 = 0;
                 }
-                YesterdayAdd = int_tv_1_2 +int_tv_2_1bE+ int_tv_2_2+int_tv_1_1aE + int_tv_2_1cE + int_tv_3_2 + int_tv_4_2 + int_tv_5_2 +
+                YesterdayAdd = int_tv_1_2 + int_tv_2_1bE + int_tv_2_2 + int_tv_1_1aE + int_tv_2_1cE + int_tv_3_2 + int_tv_4_2 + int_tv_5_2 +
                         int_et_6_2_1 + int_et_6_2_2 + int_et_6_2_3 + int_et_6_2_4 + /*int_et_6_2_5*/int_et_8_2_1_bestReview + int_et_6_2_6 +
                         int_et_7_2_1 + int_et_7_2_2 + /*int_et_7_2_3*/int_et_8_2_2_unitReview + int_et_7_2_4 +
                         int_et_8_2_1 + int_et_8_2_2 + int_et_8_2_3 + int_et_8_2_4 + int_et_8_2_5 + int_et_8_2_6 + int_et_8_2_7 + int_et_8_2_8 +
@@ -1379,7 +1378,7 @@ public class DWMActivity extends AppCompatActivity {
                 tv_10_3_5_String = tv_10_3_5.getText().toString();
                 tv_10_4_5_String = tv_10_4_5.getText().toString();
                 tv_10_5_5_String = tv_10_5_5.getText().toString();
-                check_5_comment=tv_check_5.getText().toString();
+                check_5_comment = tv_check_5.getText().toString();
 
 
                 yes_tv_total_hour.setText(String.valueOf(YesterdayAdd));
@@ -1594,8 +1593,8 @@ public class DWMActivity extends AppCompatActivity {
                     int_tv_10_5_1 = 0;
                 }
 
-                D_Y_Add = int_tv_1_1 + int_tv_2_1 + int_tv_1_1_1a + int_tv_2_1_1c+int_tv_2_1_1b + int_tv_3_1 + int_tv_4_1 + int_tv_5_1 +
-                        int_et_6_1_1 + int_et_6_1_2 + int_et_6_1_3 + int_et_6_1_4 + /*int_et_6_1_5 +*/int_et_8_1_1_best_review+ int_et_6_1_6 +
+                D_Y_Add = int_tv_1_1 + int_tv_2_1 + int_tv_1_1_1a + int_tv_2_1_1c + int_tv_2_1_1b + int_tv_3_1 + int_tv_4_1 + int_tv_5_1 +
+                        int_et_6_1_1 + int_et_6_1_2 + int_et_6_1_3 + int_et_6_1_4 + /*int_et_6_1_5 +*/int_et_8_1_1_best_review + int_et_6_1_6 +
                         int_et_7_1_1 + int_et_7_1_2 + /*int_et_7_1_3*/int_et_8_1_2_unitReview + int_et_7_1_4 +
                         int_et_8_1_1 + int_et_8_1_2 + int_et_8_1_3 + int_et_8_1_4 + int_et_8_1_5 + int_et_8_1_6 + int_et_8_1_7 + int_et_8_1_8 +
                         int_et_9_1_1 + int_et_9_1_2 + int_et_9_1_3 + int_tv_10_1 + int_tv_10_2_1 + int_tv_10_3_1 + int_tv_10_4_1 + int_tv_10_5_1
@@ -1636,12 +1635,11 @@ public class DWMActivity extends AppCompatActivity {
                 tv_2_1c4_String = tv_2_1c4.getText().toString();
 
 
-
                 tv_10_2_4_String = tv_10_2_4.getText().toString();
                 tv_10_3_4_String = tv_10_3_4.getText().toString();
                 tv_10_4_4_String = tv_10_4_4.getText().toString();
                 tv_10_5_4_String = tv_10_5_4.getText().toString();
-                check_4_comment= tv_check_4.getText().toString();
+                check_4_comment = tv_check_4.getText().toString();
 //
 //                tv_1_4_String = tv_1_4.getText().toString();
 //                tv_2_4_String = tv_2_4.getText().toString();
@@ -1687,58 +1685,46 @@ public class DWMActivity extends AppCompatActivity {
                     ? View.GONE: View.VISIBLE);
         }*/
 
-        else if(Parent_tv.getId()==R.id.tv_2_1_1_1b){
+        else if (Parent_tv.getId() == R.id.tv_2_1_1_1b) {
             tv_2_1b4.setVisibility((tv_2_1b4.getVisibility() == View.VISIBLE)
                     ? View.GONE : View.VISIBLE);
             tv_2_1b_view.setVisibility((tv_2_1b_view.getVisibility() == View.VISIBLE)
                     ? View.GONE : View.VISIBLE);
-        }
-        else if(Parent_tv.getId()==R.id.tv_1_1_1_1a){
+        } else if (Parent_tv.getId() == R.id.tv_1_1_1_1a) {
             tv_1_14.setVisibility((tv_1_14.getVisibility() == View.VISIBLE)
                     ? View.GONE : View.VISIBLE);
             tv_1_1a_viewa.setVisibility((tv_1_1a_viewa.getVisibility() == View.VISIBLE)
                     ? View.GONE : View.VISIBLE);
-        }
-        else if (Parent_tv.getId() == R.id.tv_1_1b) {
+        } else if (Parent_tv.getId() == R.id.tv_1_1b) {
             tv_1_5a.setVisibility((tv_1_5a.getVisibility() == View.VISIBLE)
                     ? View.GONE : View.VISIBLE);
             tv_1_5_viewa.setVisibility((tv_1_5_viewa.getVisibility() == View.VISIBLE)
                     ? View.GONE : View.VISIBLE);
-        }
-        else if (Parent_tv.getId() == R.id.tv_2_1c) {
+        } else if (Parent_tv.getId() == R.id.tv_2_1c) {
             tv_2_1c5.setVisibility((tv_2_1c5.getVisibility() == View.VISIBLE)
                     ? View.GONE : View.VISIBLE);
             tv_2_c_viewc.setVisibility((tv_2_c_viewc.getVisibility() == View.VISIBLE)
                     ? View.GONE : View.VISIBLE);
-        }
-
-        else if (Parent_tv.getId() == R.id.tv_2_cc) {
+        } else if (Parent_tv.getId() == R.id.tv_2_cc) {
             tv_2_6c.setVisibility((tv_2_6c.getVisibility() == View.VISIBLE)
                     ? View.GONE : View.VISIBLE);
             tv_2_c_view2c.setVisibility((tv_2_c_view2c.getVisibility() == View.VISIBLE)
                     ? View.GONE : View.VISIBLE);
 
-        }
-        else if(Parent_tv.getId() == R.id.tv_2_1b){
+        } else if (Parent_tv.getId() == R.id.tv_2_1b) {
             tv_2_1b5.setVisibility((tv_2_1b5.getVisibility() == View.VISIBLE)
                     ? View.GONE : View.VISIBLE);
             tv_2_5_viewb.setVisibility((tv_2_5_viewb.getVisibility() == View.VISIBLE)
                     ? View.GONE : View.VISIBLE);
-        }
-
-        else if(Parent_tv.getId() == R.id.tv_2_1_1_1c){
+        } else if (Parent_tv.getId() == R.id.tv_2_1_1_1c) {
             tv_2_1c4.setVisibility((tv_2_1c4.getVisibility() == View.VISIBLE)
                     ? View.GONE : View.VISIBLE);
             tv_2_1c_viewa.setVisibility((tv_2_1c_viewa.getVisibility() == View.VISIBLE)
                     ? View.GONE : View.VISIBLE);
-        }
-
-        else if(Parent_tv.getId() == R.id.tv_2_cb){
+        } else if (Parent_tv.getId() == R.id.tv_2_cb) {
             tv_2_6b.setVisibility((tv_2_6b.getVisibility() == View.VISIBLE)
                     ? View.GONE : View.VISIBLE);
-        }
-
-        else if (Parent_tv.getId() == R.id.tv_1_a) {
+        } else if (Parent_tv.getId() == R.id.tv_1_a) {
             tv_1_4.setVisibility((tv_1_4.getVisibility() == View.VISIBLE)
                     ? View.GONE : View.VISIBLE);
             tv_1_4_view.setVisibility((tv_1_4_view.getVisibility() == View.VISIBLE)
@@ -1774,11 +1760,7 @@ public class DWMActivity extends AppCompatActivity {
                     ? View.GONE : View.VISIBLE);
             tv_3_4_view.setVisibility((tv_3_4_view.getVisibility() == View.VISIBLE)
                     ? View.GONE : View.VISIBLE);
-        }
-
-
-
-        else if (Parent_tv.getId() == R.id.tv_3_b) {
+        } else if (Parent_tv.getId() == R.id.tv_3_b) {
             tv_3_5.setVisibility((tv_3_5.getVisibility() == View.VISIBLE)
                     ? View.GONE : View.VISIBLE);
             tv_3_5_view.setVisibility((tv_3_5_view.getVisibility() == View.VISIBLE)
@@ -1974,7 +1956,7 @@ public class DWMActivity extends AppCompatActivity {
                     + "&PeopleBMRemark=" + cmt6_3_2_String + "&PeopleLLLGRemark=" + cmt6_3_3_String + "&PeopleTrainingRemark=" + cmt6_3_4_String + "&PeopleBestRemark=" + cmt8_3_1_bestReview_String + "&PeopleCDPRemark=" + cmt6_3_6_String + "&ManagementCorpRemark=" + cmt7_3_1_String + "&ManagementProtivityRemark=" + cmt7_3_2_String + "&ManagementUnitRemark=" + /*cmt7_3_3_String*/cmt8_3_2_unitReview_String
                     + "&ManagementMeetingRemark=" + cmt7_3_4_String + "&RegularMMCRemark=" + cmt8_3_1_String + "&RegularSystemRemark=" + cmt8_3_2_String + "&RegularIndentRemark=" + cmt8_3_3_String + "&RegularDevelopmentRemark=" + cmt8_3_4_String + "&RegularSAPRemark=" + cmt8_3_5_String + "&RegularManufactRemark=" + cmt8_3_6_String + "&RegularMPCPRemark=" + cmt8_3_7_String
                     + "&RegularSafetyRemark=" + cmt8_3_8_String + "&SupplierCommRemark=" + cmt9_3_1_String + "&SupplierWorstRemark=" + cmt9_3_2_String + "&SupplierSupplierRemark=" + cmt9_3_3_String + "&OtherActRemark=" + cmt_10_6_String + "&OtherActRemark2=" + tv_10_2_6_String + "&OtherActRemark3=" + tv_10_3_6_String + "&OtherActRemark4=" + tv_10_4_6_String + "&OtherActRemark5=" + tv_10_5_6_String
-                    + "&CheckOnCheck=" + int_check_1_3 + "&CheckOnCheckRmk=" + check_6_comment + "&Covid="+int_tv_1_3a+"&LPA="+int_tv_2_3b+"&LpaCovid="+int_tv_2_3c+"&CovidRemark="+tv_1_6a_String+"&LpaRemark="+tv_2_6b_String+"&CovidLpaRemark="+tv_2_6c_String + "&CKey=" + "mda@sPr$rZ#G!!";
+                    + "&CheckOnCheck=" + int_check_1_3 + "&CheckOnCheckRmk=" + check_6_comment + "&Covid=" + int_tv_1_3a + "&LPA=" + int_tv_2_3b + "&LpaCovid=" + int_tv_2_3c + "&CovidRemark=" + tv_1_6a_String + "&LpaRemark=" + tv_2_6b_String + "&CovidLpaRemark=" + tv_2_6c_String + "&CKey=" + "mda@sPr$rZ#G!!";
             response = new HttpConnection().requestGetContent(body.replace(" ", "%20"));
             return false;
         }
@@ -2001,11 +1983,11 @@ public class DWMActivity extends AppCompatActivity {
                     + "&PeopleTraining=" + int_et_6_2_4 + "&PeopleBest=" + /*int_et_6_2_5*/int_et_8_2_1_bestReview + "&PeopleCDP=" + int_et_6_2_6 + "&ManagementCorp=" + int_et_7_2_1 + "&ManagementProtivity=" + int_et_7_2_2 + "&ManagementUnit=" + /*int_et_7_2_3*/int_et_8_2_2_unitReview
                     + "&ManagementMeeting=" + int_et_7_2_4 + "&RegularMMC=" + int_et_8_2_1 + "&RegularSystem=" + int_et_8_2_2 + "&RegularIndent=" + int_et_8_2_3 + "&RegularDevelopment=" + int_et_8_2_4 + "&RegularSAP=" + int_et_8_2_5
                     + "&RegularManufact=" + int_et_8_2_6 + "&RegularMPCP=" + int_et_8_2_7 + "&RegularSafety=" + int_et_8_2_8 + "&SupplierComm=" + int_et_9_2_1 + "&SupplierWorst=" + int_et_9_2_2 + "&SupplierSupplier=" + int_et_9_2_3 + "&OtherAct=" + int_tv_10_2 + "&OtherAct2=" + int_tv_10_2_2 + "&OtherAct3=" + int_tv_10_3_2 + "&OtherAct4=" + int_tv_10_4_2 + "&OtherAct5=" + int_tv_10_5_2
-                    + "&ReportingDate=" + date2  + "&DailyMMeetingRemark=" + tv_1_5_String + "&DWNGembaRemark=" + tv_2_5_String + "&QualityReviewRemark=" + tv_3_5_String + "&CustomerVisitsRemark=" + tv_4_5_String + "&CostingReviewRemark=" + tv_5_5_String + "&PeopleUnitRemark=" + cmt6_2_1_String
+                    + "&ReportingDate=" + date2 + "&DailyMMeetingRemark=" + tv_1_5_String + "&DWNGembaRemark=" + tv_2_5_String + "&QualityReviewRemark=" + tv_3_5_String + "&CustomerVisitsRemark=" + tv_4_5_String + "&CostingReviewRemark=" + tv_5_5_String + "&PeopleUnitRemark=" + cmt6_2_1_String
                     + "&PeopleBMRemark=" + cmt6_2_2_String + "&PeopleLLLGRemark=" + cmt6_2_3_String + "&PeopleTrainingRemark=" + cmt6_2_4_String + "&PeopleBestRemark=" + /*cmt6_2_5_String*/cmt8_2_1_bestReview_String + "&PeopleCDPRemark=" + cmt6_2_6_String + "&ManagementCorpRemark=" + cmt7_2_1_String + "&ManagementProtivityRemark=" + cmt7_2_2_String + "&ManagementUnitRemark=" + /*cmt7_2_3_String*/cmt8_2_2_unitReview_String
                     + "&ManagementMeetingRemark=" + cmt7_2_4_String + "&RegularMMCRemark=" + cmt8_2_1_String + "&RegularSystemRemark=" + cmt8_2_2_String + "&RegularIndentRemark=" + cmt8_2_3_String + "&RegularDevelopmentRemark=" + cmt8_2_4_String + "&RegularSAPRemark=" + cmt8_2_5_String + "&RegularManufactRemark=" + cmt8_2_6_String + "&RegularMPCPRemark=" + cmt8_2_7_String
                     + "&RegularSafetyRemark=" + cmt8_2_8_String + "&SupplierCommRemark=" + cmt9_2_1_String + "&SupplierWorstRemark=" + cmt9_2_2_String + "&SupplierSupplierRemark=" + cmt9_2_3_String + "&OtherActRemark=" + cmt_tv_10_5_String + "&OtherActRemark2=" + tv_10_2_5_String + "&OtherActRemark3=" + tv_10_3_5_String + "&OtherActRemark4=" + tv_10_4_5_String + "&OtherActRemark5=" + tv_10_5_5_String
-                    + "&CheckOnCheck=" + int_check_1_2 + "&CheckOnCheckRmk=" + check_5_comment + "&Covid="+int_tv_1_1aE+"&LPA="+int_tv_2_1bE+"&LpaCovid="+int_tv_2_1cE+"&CovidRemark="+tv_1_5a_String+"&LpaRemark="+tv_2_1b5_String+"&CovidLpaRemark="+tv_2_1c5_String+ "&CKey=" + "mda@sPr$rZ#G!!";
+                    + "&CheckOnCheck=" + int_check_1_2 + "&CheckOnCheckRmk=" + check_5_comment + "&Covid=" + int_tv_1_1aE + "&LPA=" + int_tv_2_1bE + "&LpaCovid=" + int_tv_2_1cE + "&CovidRemark=" + tv_1_5a_String + "&LpaRemark=" + tv_2_1b5_String + "&CovidLpaRemark=" + tv_2_1c5_String + "&CKey=" + "mda@sPr$rZ#G!!";
 
             response = new HttpConnection().requestGetContent(body.replace(" ", "%20"));
             return false;
@@ -2034,14 +2016,14 @@ public class DWMActivity extends AppCompatActivity {
         protected Boolean doInBackground(Void... params) {
             String body = "AddDailyReport?EmpCode=" + myPref.getString("Id", "Id") + "&DailyMMeeting=" + int_tv_1_1 + "&DWNGemba=" + int_tv_2_1
                     + "&QualityReview=" + int_tv_3_1 + "&CustomerVisits=" + int_tv_4_1 + "&CostingReview=" + int_tv_5_1 + "&PeopleUnit=" + int_et_6_1_1 + "&PeopleBM=" + int_et_6_1_2 + "&PeopleLLLG=" + int_et_6_1_3
-                    + "&PeopleTraining=" + int_et_6_1_4 + "&PeopleBest=" + /*int_et_6_1_5*/ int_et_8_1_1_best_review+ "&PeopleCDP=" + int_et_6_1_6 + "&ManagementCorp=" + int_et_7_1_1 + "&ManagementProtivity=" + int_et_7_1_2 + "&ManagementUnit=" + /*int_et_7_1_3*/int_et_8_1_2_unitReview
+                    + "&PeopleTraining=" + int_et_6_1_4 + "&PeopleBest=" + /*int_et_6_1_5*/ int_et_8_1_1_best_review + "&PeopleCDP=" + int_et_6_1_6 + "&ManagementCorp=" + int_et_7_1_1 + "&ManagementProtivity=" + int_et_7_1_2 + "&ManagementUnit=" + /*int_et_7_1_3*/int_et_8_1_2_unitReview
                     + "&ManagementMeeting=" + int_et_7_1_4 + "&RegularMMC=" + int_et_8_1_1 + "&RegularSystem=" + int_et_8_1_2 + "&RegularIndent=" + int_et_8_1_3 + "&RegularDevelopment=" + int_et_8_1_4 + "&RegularSAP=" + int_et_8_1_5
                     + "&RegularManufact=" + int_et_8_1_6 + "&RegularMPCP=" + int_et_8_1_7 + "&RegularSafety=" + int_et_8_1_8 + "&SupplierComm=" + int_et_9_1_1 + "&SupplierWorst=" + int_et_9_1_2 + "&SupplierSupplier=" + int_et_9_1_3 + "&OtherAct=" + int_tv_10_1 + "&OtherAct2=" + int_tv_10_2_1 + "&OtherAct3=" + int_tv_10_3_1 + "&OtherAct4=" + int_tv_10_4_1 + "&OtherAct5=" + int_tv_10_5_1
-                    + "&ReportingDate=" + date1  + "&DailyMMeetingRemark=" + tv_1_4_String + "&DWNGembaRemark=" + tv_2_4_String + "&QualityReviewRemark=" + tv_3_4_String + "&CustomerVisitsRemark=" + tv_4_4_String + "&CostingReviewRemark=" + tv_5_4_String + "&PeopleUnitRemark=" + cmt6_1_1_String
+                    + "&ReportingDate=" + date1 + "&DailyMMeetingRemark=" + tv_1_4_String + "&DWNGembaRemark=" + tv_2_4_String + "&QualityReviewRemark=" + tv_3_4_String + "&CustomerVisitsRemark=" + tv_4_4_String + "&CostingReviewRemark=" + tv_5_4_String + "&PeopleUnitRemark=" + cmt6_1_1_String
                     + "&PeopleBMRemark=" + cmt6_1_2_String + "&PeopleLLLGRemark=" + cmt6_1_3_String + "&PeopleTrainingRemark=" + cmt6_1_4_String + "&PeopleBestRemark=" + /*cmt6_1_5_String*/cmt8_1_1_bestReview_String + "&PeopleCDPRemark=" + cmt6_1_6_String + "&ManagementCorpRemark=" + cmt7_1_1_String + "&ManagementProtivityRemark=" + cmt7_1_2_String + "&ManagementUnitRemark=" + /*cmt7_1_3_String*/cmt8_1_2_unitReview_String
                     + "&ManagementMeetingRemark=" + cmt7_1_4_String + "&RegularMMCRemark=" + cmt8_1_1_String + "&RegularSystemRemark=" + cmt8_1_2_String + "&RegularIndentRemark=" + cmt8_1_3_String + "&RegularDevelopmentRemark=" + cmt8_1_4_String + "&RegularSAPRemark=" + cmt8_1_5_String + "&RegularManufactRemark=" + cmt8_1_6_String + "&RegularMPCPRemark=" + cmt8_1_7_String
                     + "&RegularSafetyRemark=" + cmt8_1_8_String + "&SupplierCommRemark=" + cmt9_1_1_String + "&SupplierWorstRemark=" + cmt9_1_2_String + "&SupplierSupplierRemark=" + cmt9_1_3_String + "&OtherActRemark=" + cmt_tv_10_4_String + "&OtherActRemark2=" + tv_10_2_4_String + "&OtherActRemark3=" + tv_10_3_4_String + "&OtherActRemark4=" + tv_10_4_4_String + "&OtherActRemark5=" + tv_10_5_4_String
-                    + "&CheckOnCheck=" + int_check_1_1 + "&CheckOnCheckRmk=" + check_4_comment+ "&Covid="+int_tv_1_1_1a+"&LPA="+int_tv_2_1_1b+"&LpaCovid="+int_tv_2_1_1c+"&CovidRemark="+tv_1_14_String+"&LpaRemark="+tv_2_1b4_String+"&CovidLpaRemark="+tv_2_1c4_String+ "&CKey=" + "mda@sPr$rZ#G!!";
+                    + "&CheckOnCheck=" + int_check_1_1 + "&CheckOnCheckRmk=" + check_4_comment + "&Covid=" + int_tv_1_1_1a + "&LPA=" + int_tv_2_1_1b + "&LpaCovid=" + int_tv_2_1_1c + "&CovidRemark=" + tv_1_14_String + "&LpaRemark=" + tv_2_1b4_String + "&CovidLpaRemark=" + tv_2_1c4_String + "&CKey=" + "mda@sPr$rZ#G!!";
             response = new HttpConnection().requestGetContent(body.replace(" ", "&20"));
 
             return false;
@@ -2149,12 +2131,12 @@ public class DWMActivity extends AppCompatActivity {
 
                 tv_check_3.setText(dwmData.get(0).getCheckoncheck());
                 tv_check_6.setText(dwmData.get(0).getCheckoncheckrmk());
-                tv_1_3_a.setText(""+dwmData.get(0).getCovid());
-                tv_1_6a.setText(""+dwmData.get(0).getCovidRemark());
-                tv_2_3b.setText(""+dwmData.get(0).getLpa());
-                tv_2_6b.setText(""+dwmData.get(0).getLapRemark());
-                tv_2_3c.setText(""+dwmData.get(0).getLpaCovid());
-                tv_2_6c.setText(""+dwmData.get(0).getLpaCovidremark());
+                tv_1_3_a.setText("" + dwmData.get(0).getCovid());
+                tv_1_6a.setText("" + dwmData.get(0).getCovidRemark());
+                tv_2_3b.setText("" + dwmData.get(0).getLpa());
+                tv_2_6b.setText("" + dwmData.get(0).getLapRemark());
+                tv_2_3c.setText("" + dwmData.get(0).getLpaCovid());
+                tv_2_6c.setText("" + dwmData.get(0).getLpaCovidremark());
 
 
             } else {
@@ -2258,12 +2240,12 @@ public class DWMActivity extends AppCompatActivity {
 
                 tv_check_2.setText(dwmData.get(0).getCheckoncheck());
                 tv_check_5.setText(dwmData.get(0).getCheckoncheckrmk());
-                tv_1_1aE.setText(""+dwmData.get(0).getCovid());
-                tv_1_5a.setText(""+dwmData.get(0).getCovidRemark());
-                tv_2_1bE.setText(""+dwmData.get(0).getLpa());
-                tv_2_1b5.setText(""+dwmData.get(0).getLapRemark());
-                tv_2_1cE.setText(""+dwmData.get(0).getLpaCovid());
-                tv_2_1c5.setText(""+dwmData.get(0).getLpaCovidremark());
+                tv_1_1aE.setText("" + dwmData.get(0).getCovid());
+                tv_1_5a.setText("" + dwmData.get(0).getCovidRemark());
+                tv_2_1bE.setText("" + dwmData.get(0).getLpa());
+                tv_2_1b5.setText("" + dwmData.get(0).getLapRemark());
+                tv_2_1cE.setText("" + dwmData.get(0).getLpaCovid());
+                tv_2_1c5.setText("" + dwmData.get(0).getLpaCovidremark());
             } else {
 
             }
@@ -2283,7 +2265,7 @@ public class DWMActivity extends AppCompatActivity {
 
         @Override
         protected Boolean doInBackground(Void... params) {
-            response = new HttpConnection().requestGetContent("GetDetails?userid=" + myPref.getString("Id", "Id") + "&date=" + date1/*"21/05/2020" */+ "&CKey=" + "mda@sPr$rZ#G!!");
+            response = new HttpConnection().requestGetContent("GetDetails?userid=" + myPref.getString("Id", "Id") + "&date=" + date1/*"21/05/2020" */ + "&CKey=" + "mda@sPr$rZ#G!!");
             return false;
         }
 
@@ -2293,220 +2275,220 @@ public class DWMActivity extends AppCompatActivity {
             if (response != null && response.length() > 5) {
                 d_y_submit_btn.setText("Update");
                 dwmData = new ParseData().getDwmData(response);
-                if(dwmData.get(0).getDailyMMeeting()!=null) {
+                if (dwmData.get(0).getDailyMMeeting() != null) {
                     tv_1_1.setText(String.valueOf(dwmData.get(0).getDailyMMeeting()));
                 }
-                if(dwmData.get(0).getdWNGemba()!=null) {
+                if (dwmData.get(0).getdWNGemba() != null) {
                     tv_2_1.setText(String.valueOf(dwmData.get(0).getdWNGemba()));
                 }
-                if(dwmData.get(0).getQualityReview()!=null) {
+                if (dwmData.get(0).getQualityReview() != null) {
                     tv_3_1.setText(String.valueOf(dwmData.get(0).getQualityReview()));
                 }
-                if(dwmData.get(0).getCustomerVisits()!=null) {
+                if (dwmData.get(0).getCustomerVisits() != null) {
                     tv_4_1.setText(String.valueOf(dwmData.get(0).getCustomerVisits()));
                 }
-                if(dwmData.get(0).getCostingReview()!=null) {
+                if (dwmData.get(0).getCostingReview() != null) {
                     tv_5_1.setText(String.valueOf(dwmData.get(0).getCostingReview()));
                 }
-                if(dwmData.get(0).getPeopleUnit()!=null) {
+                if (dwmData.get(0).getPeopleUnit() != null) {
                     et_6_1_1.setText(String.valueOf(dwmData.get(0).getPeopleUnit()));
                 }
-                if(dwmData.get(0).getPeopleBM()!=null) {
+                if (dwmData.get(0).getPeopleBM() != null) {
                     et_6_1_2.setText(String.valueOf(dwmData.get(0).getPeopleBM()));
                 }
-                if(dwmData.get(0).getPeopleLLLG()!=null) {
+                if (dwmData.get(0).getPeopleLLLG() != null) {
                     et_6_1_3.setText(String.valueOf(dwmData.get(0).getPeopleLLLG()));
                 }
-                if(dwmData.get(0).getPeopleTraining()!=null) {
+                if (dwmData.get(0).getPeopleTraining() != null) {
                     et_6_1_4.setText(String.valueOf(dwmData.get(0).getPeopleTraining()));
                 }
-                if(dwmData.get(0).getPeopleBest()!=null) {
+                if (dwmData.get(0).getPeopleBest() != null) {
                     et_6_1_5.setText(String.valueOf(dwmData.get(0).getPeopleBest()));
                     et_8_1_1_best_review.setText(String.valueOf(dwmData.get(0).getPeopleBest()));
                 }
-                if(dwmData.get(0).getPeopleCDP()!=null) {
+                if (dwmData.get(0).getPeopleCDP() != null) {
                     et_6_1_6.setText(String.valueOf(dwmData.get(0).getPeopleCDP()));
                 }
-                if(dwmData.get(0).getManagementCorp()!=null) {
+                if (dwmData.get(0).getManagementCorp() != null) {
                     et_7_1_1.setText(String.valueOf(dwmData.get(0).getManagementCorp()));
                 }
-                if(dwmData.get(0).getManagementProtivity()!=null) {
+                if (dwmData.get(0).getManagementProtivity() != null) {
                     et_7_1_2.setText(String.valueOf(dwmData.get(0).getManagementProtivity()));
                 }
-                if(dwmData.get(0).getManagementUnit()!=null) {
+                if (dwmData.get(0).getManagementUnit() != null) {
                     et_7_1_3.setText(String.valueOf(dwmData.get(0).getManagementUnit()));
                     et_8_1_2_unitReview.setText(String.valueOf(dwmData.get(0).getManagementUnit()));
                 }
-                if(dwmData.get(0).getManagementMeeting()!=null) {
+                if (dwmData.get(0).getManagementMeeting() != null) {
                     et_7_1_4.setText(String.valueOf(dwmData.get(0).getManagementMeeting()));
                 }
-                if(dwmData.get(0).getRegularMMC()!=null) {
+                if (dwmData.get(0).getRegularMMC() != null) {
                     et_8_1_1.setText(String.valueOf(dwmData.get(0).getRegularMMC()));
                 }
-                if(dwmData.get(0).getRegularSystem()!=null) {
+                if (dwmData.get(0).getRegularSystem() != null) {
                     et_8_1_2.setText(String.valueOf(dwmData.get(0).getRegularSystem()));
                 }
-                if(dwmData.get(0).getRegularIndent()!=null) {
+                if (dwmData.get(0).getRegularIndent() != null) {
                     et_8_1_3.setText(String.valueOf(dwmData.get(0).getRegularIndent()));
                 }
-                if(dwmData.get(0).getRegularDevelopment()!=null) {
+                if (dwmData.get(0).getRegularDevelopment() != null) {
                     et_8_1_4.setText(String.valueOf(dwmData.get(0).getRegularDevelopment()));
                 }
-                if(dwmData.get(0).getRegularSAP()!=null) {
+                if (dwmData.get(0).getRegularSAP() != null) {
                     et_8_1_5.setText(String.valueOf(dwmData.get(0).getRegularSAP()));
                 }
-                if(dwmData.get(0).getRegularManufact()!=null) {
+                if (dwmData.get(0).getRegularManufact() != null) {
                     et_8_1_6.setText(String.valueOf(dwmData.get(0).getRegularManufact()));
                 }
-                if(dwmData.get(0).getRegularMPCP()!=null) {
+                if (dwmData.get(0).getRegularMPCP() != null) {
                     et_8_1_7.setText(String.valueOf(dwmData.get(0).getRegularMPCP()));
                 }
-                if(dwmData.get(0).getRegularSafety()!=null) {
+                if (dwmData.get(0).getRegularSafety() != null) {
                     et_8_1_8.setText(String.valueOf(dwmData.get(0).getRegularSafety()));
                 }
-                if(dwmData.get(0).getSupplierComm()!=null) {
+                if (dwmData.get(0).getSupplierComm() != null) {
                     et_9_1_1.setText(String.valueOf(dwmData.get(0).getSupplierComm()));
                 }
-                if(dwmData.get(0).getSupplierWorst()!=null) {
+                if (dwmData.get(0).getSupplierWorst() != null) {
                     et_9_1_2.setText(String.valueOf(dwmData.get(0).getSupplierWorst()));
                 }
-                if(dwmData.get(0).getSupplierSupplier()!=null) {
+                if (dwmData.get(0).getSupplierSupplier() != null) {
                     et_9_1_3.setText(String.valueOf(dwmData.get(0).getSupplierSupplier()));
                 }
-                if(dwmData.get(0).getOtherAct()!=null) {
+                if (dwmData.get(0).getOtherAct() != null) {
                     tv_10_1.setText(String.valueOf(dwmData.get(0).getOtherAct()));
                 }
-                if(dwmData.get(0).getOtherAct2()!=null) {
+                if (dwmData.get(0).getOtherAct2() != null) {
                     tv_10_2_1.setText(String.valueOf(dwmData.get(0).getOtherAct2()));
                 }
-                if(dwmData.get(0).getOtherAct3()!=null) {
+                if (dwmData.get(0).getOtherAct3() != null) {
                     tv_10_3_1.setText(String.valueOf(dwmData.get(0).getOtherAct3()));
                 }
-                if(dwmData.get(0).getOtherAct4()!=null) {
+                if (dwmData.get(0).getOtherAct4() != null) {
                     tv_10_4_1.setText(String.valueOf(dwmData.get(0).getOtherAct4()));
                 }
-                if(dwmData.get(0).getOtherAct5()!=null) {
+                if (dwmData.get(0).getOtherAct5() != null) {
                     tv_10_5_1.setText(String.valueOf(dwmData.get(0).getOtherAct5()));
                 }
-                if(dwmData.get(0).getDailyMMeetingRemark()!=null) {
+                if (dwmData.get(0).getDailyMMeetingRemark() != null) {
                     tv_1_4.setText(dwmData.get(0).getDailyMMeetingRemark());
                 }
-                if(dwmData.get(0).getDWNGembaRemark()!=null) {
+                if (dwmData.get(0).getDWNGembaRemark() != null) {
                     tv_2_4.setText(dwmData.get(0).getDWNGembaRemark());
                 }
-                if(dwmData.get(0).getQualityReviewRemark()!=null) {
+                if (dwmData.get(0).getQualityReviewRemark() != null) {
                     tv_3_4.setText(dwmData.get(0).getQualityReviewRemark());
                 }
-                if(dwmData.get(0).getCustomerVisitsRemark()!=null) {
+                if (dwmData.get(0).getCustomerVisitsRemark() != null) {
                     tv_4_4.setText(dwmData.get(0).getCustomerVisitsRemark());
                 }
-                if(dwmData.get(0).getCostingReviewRemark()!=null) {
+                if (dwmData.get(0).getCostingReviewRemark() != null) {
                     tv_5_4.setText(dwmData.get(0).getCostingReviewRemark());
                 }
-                if(dwmData.get(0).getPeopleUnitRemark()!=null) {
+                if (dwmData.get(0).getPeopleUnitRemark() != null) {
                     cmt6_1_1.setText(dwmData.get(0).getPeopleUnitRemark());
                 }
-                if(dwmData.get(0).getPeopleBMRemark()!=null) {
+                if (dwmData.get(0).getPeopleBMRemark() != null) {
                     cmt6_1_2.setText(dwmData.get(0).getPeopleBMRemark());
                 }
-                if(dwmData.get(0).getPeopleLLLGRemark()!=null) {
+                if (dwmData.get(0).getPeopleLLLGRemark() != null) {
                     cmt6_1_3.setText(dwmData.get(0).getPeopleLLLGRemark());
                 }
-                if(dwmData.get(0).getPeopleTrainingRemark()!=null) {
+                if (dwmData.get(0).getPeopleTrainingRemark() != null) {
                     cmt6_1_4.setText(dwmData.get(0).getPeopleTrainingRemark());
                 }
-                if(dwmData.get(0).getPeopleBestRemark()!=null) {
+                if (dwmData.get(0).getPeopleBestRemark() != null) {
                     cmt6_1_5.setText(dwmData.get(0).getPeopleBestRemark());
                 }
-                if(dwmData.get(0).getPeopleCDPRemark()!=null) {
+                if (dwmData.get(0).getPeopleCDPRemark() != null) {
                     cmt6_1_6.setText(dwmData.get(0).getPeopleCDPRemark());
                 }
-                if(dwmData.get(0).getManagementCorpRemark()!=null) {
+                if (dwmData.get(0).getManagementCorpRemark() != null) {
                     cmt7_1_1.setText(dwmData.get(0).getManagementCorpRemark());
                 }
-                if(dwmData.get(0).getManagementProtivityRemark()!=null) {
+                if (dwmData.get(0).getManagementProtivityRemark() != null) {
                     cmt7_1_2.setText(dwmData.get(0).getManagementProtivityRemark());
                 }
-                if(dwmData.get(0).getManagementUnitRemark()!=null) {
+                if (dwmData.get(0).getManagementUnitRemark() != null) {
                     cmt7_1_3.setText(dwmData.get(0).getManagementUnitRemark());
                 }
-                if(dwmData.get(0).getManagementUnitRemark()!=null) {
+                if (dwmData.get(0).getManagementUnitRemark() != null) {
                     cmt8_1_2_unitReview.setText(dwmData.get(0).getManagementUnitRemark());
                 }
-                if(dwmData.get(0).getManagementMeetingRemark()!=null) {
+                if (dwmData.get(0).getManagementMeetingRemark() != null) {
                     cmt7_1_4.setText(dwmData.get(0).getManagementMeetingRemark());
                 }
-                if(dwmData.get(0).getRegularMMCRemark()!=null) {
+                if (dwmData.get(0).getRegularMMCRemark() != null) {
                     cmt8_1_1.setText(dwmData.get(0).getRegularMMCRemark());
                 }
-                if(dwmData.get(0).getRegularSystemRemark()!=null) {
+                if (dwmData.get(0).getRegularSystemRemark() != null) {
                     cmt8_1_2.setText(dwmData.get(0).getRegularSystemRemark());
                 }
-                if(dwmData.get(0).getRegularIndentRemark()!=null) {
+                if (dwmData.get(0).getRegularIndentRemark() != null) {
                     cmt8_1_3.setText(dwmData.get(0).getRegularIndentRemark());
                 }
-                if(dwmData.get(0).getRegularDevelopmentRemark()!=null) {
+                if (dwmData.get(0).getRegularDevelopmentRemark() != null) {
                     cmt8_1_4.setText(dwmData.get(0).getRegularDevelopmentRemark());
                 }
-                if(dwmData.get(0).getRegularSAPRemark()!=null) {
+                if (dwmData.get(0).getRegularSAPRemark() != null) {
                     cmt8_1_5.setText(dwmData.get(0).getRegularSAPRemark());
                 }
-                if(dwmData.get(0).getRegularManufactRemark()!=null) {
+                if (dwmData.get(0).getRegularManufactRemark() != null) {
                     cmt8_1_6.setText(dwmData.get(0).getRegularManufactRemark());
                 }
 
-                if(dwmData.get(0).getRegularMPCPRemark()!=null) {
+                if (dwmData.get(0).getRegularMPCPRemark() != null) {
                     cmt8_1_7.setText(dwmData.get(0).getRegularMPCPRemark());
                 }
-                if(dwmData.get(0).getRegularSafetyRemark()!=null) {
+                if (dwmData.get(0).getRegularSafetyRemark() != null) {
                     cmt8_1_8.setText(dwmData.get(0).getRegularSafetyRemark());
                 }
-                if(dwmData.get(0).getSupplierCommRemark()!=null) {
+                if (dwmData.get(0).getSupplierCommRemark() != null) {
                     cmt9_1_1.setText(dwmData.get(0).getSupplierCommRemark());
                 }
-                if(dwmData.get(0).getSupplierWorstRemark()!=null) {
+                if (dwmData.get(0).getSupplierWorstRemark() != null) {
                     cmt9_1_2.setText(dwmData.get(0).getSupplierWorstRemark());
                 }
-                if(dwmData.get(0).getSupplierSupplierRemark()!=null) {
+                if (dwmData.get(0).getSupplierSupplierRemark() != null) {
                     cmt9_1_3.setText(dwmData.get(0).getSupplierSupplierRemark());
                 }
-                if(dwmData.get(0).getOtherActRemark()!=null) {
+                if (dwmData.get(0).getOtherActRemark() != null) {
                     tv_10_4.setText(dwmData.get(0).getOtherActRemark());
                 }
-                if(dwmData.get(0).getOtherActRemark2()!=null) {
+                if (dwmData.get(0).getOtherActRemark2() != null) {
                     tv_10_2_4.setText(dwmData.get(0).getOtherActRemark2());
                 }
-                if(dwmData.get(0).getOtherActRemark3()!=null) {
+                if (dwmData.get(0).getOtherActRemark3() != null) {
                     tv_10_3_4.setText(dwmData.get(0).getOtherActRemark3());
                 }
-                if(dwmData.get(0).getOtherActRemark4()!=null) {
+                if (dwmData.get(0).getOtherActRemark4() != null) {
                     tv_10_4_4.setText(dwmData.get(0).getOtherActRemark4());
                 }
-                if(dwmData.get(0).getOtherActRemark5()!=null) {
+                if (dwmData.get(0).getOtherActRemark5() != null) {
                     tv_10_5_4.setText(dwmData.get(0).getOtherActRemark5());
                 }
-                if(dwmData.get(0).getCheckoncheck()!=null) {
+                if (dwmData.get(0).getCheckoncheck() != null) {
                     tv_check_1.setText(dwmData.get(0).getCheckoncheck());
                 }
-                if(dwmData.get(0).getCheckoncheckrmk()!=null) {
+                if (dwmData.get(0).getCheckoncheckrmk() != null) {
                     tv_check_4.setText(dwmData.get(0).getCheckoncheckrmk());
                 }
-                if(dwmData.get(0).getCovid()!=null) {
+                if (dwmData.get(0).getCovid() != null) {
                     tv_1_1_1a.setText("" + dwmData.get(0).getCovid());
                 }
-                if(dwmData.get(0).getCovidRemark()!=null) {
+                if (dwmData.get(0).getCovidRemark() != null) {
                     tv_1_14.setText("" + dwmData.get(0).getCovidRemark());
                 }
-                if(dwmData.get(0).getLpa()!=null) {
+                if (dwmData.get(0).getLpa() != null) {
                     tv_2_1_1b.setText("" + dwmData.get(0).getLpa());
                 }
-                if(dwmData.get(0).getLapRemark()!=null) {
+                if (dwmData.get(0).getLapRemark() != null) {
                     tv_2_1b4.setText("" + dwmData.get(0).getLapRemark());
                 }
-                if(dwmData.get(0).getLpaCovid()!=null) {
+                if (dwmData.get(0).getLpaCovid() != null) {
                     tv_2_1_1c.setText("" + dwmData.get(0).getLpaCovid());
                 }
-                if(dwmData.get(0).getLpaCovidremark()!=null) {
+                if (dwmData.get(0).getLpaCovidremark() != null) {
                     tv_2_1c4.setText("" + dwmData.get(0).getLpaCovidremark());
                 }
 
@@ -4580,7 +4562,7 @@ public class DWMActivity extends AppCompatActivity {
 
     //for current date data adding
     void currentDateAdd() {
-        if ((tv_1_3.getText().toString() != null) && (!tv_1_3.getText().toString().isEmpty())&& !tv_1_3.getText().toString().equals("null")) {
+        if ((tv_1_3.getText().toString() != null) && (!tv_1_3.getText().toString().isEmpty()) && !tv_1_3.getText().toString().equals("null")) {
             int_tv_1_3 = Integer.parseInt(tv_1_3.getText().toString());
         } else {
             int_tv_1_3 = 0;
@@ -4655,7 +4637,6 @@ public class DWMActivity extends AppCompatActivity {
         } else {
             int_et_8_3_1_bestReview = 0;
         }
-
 
 
         if ((et_6_3_6.getText().toString() != null) && (!et_6_3_6.getText().toString().isEmpty()) && !et_6_3_6.getText().toString().contains("nul")) {
@@ -4777,13 +4758,13 @@ public class DWMActivity extends AppCompatActivity {
             int_tv_10_5_3 = 0;
         }
 
-        Add = int_tv_1_3 +int_tv_1_3a+ int_tv_2_3 + int_tv_3_3 + int_tv_4_3 + int_tv_5_3 +int_tv_2_3b+int_tv_2_3c+
+        Add = int_tv_1_3 + int_tv_1_3a + int_tv_2_3 + int_tv_3_3 + int_tv_4_3 + int_tv_5_3 + int_tv_2_3b + int_tv_2_3c +
                 int_et_6_3_1 + int_et_6_3_2 + int_et_6_3_3 + int_et_6_3_4 +
                 /*int_et_6_3_5*/ int_et_8_3_1_bestReview + int_et_6_3_6 + int_et_7_3_1 + int_et_7_3_2 +
                 /*int_et_7_3_3*/int_et_8_3_2_unitReview + int_et_7_3_4 + int_et_8_3_1 + int_et_8_3_2 +
                 int_et_8_3_3 + int_et_8_3_4 + int_et_8_3_5 + int_et_8_3_6 +
                 int_et_8_3_7 + int_et_8_3_8 + int_et_9_3_1 + int_et_9_3_2 +
-                int_et_9_3_3 + int_tv_10_3 + int_tv_10_2_3 + int_tv_10_3_3 + int_tv_10_4_3 + int_tv_10_5_3+int_check_1_3;
+                int_et_9_3_3 + int_tv_10_3 + int_tv_10_2_3 + int_tv_10_3_3 + int_tv_10_4_3 + int_tv_10_5_3 + int_check_1_3;
         tv_total_hour.setText(String.valueOf(Add));
     }
 
@@ -4911,7 +4892,7 @@ public class DWMActivity extends AppCompatActivity {
         } else {
             int_et_8_2_1 = 0;
         }
-        if ((et_8_2_2.getText().toString() != null) && (!et_8_2_2.getText().toString().isEmpty()) && !et_8_2_2.getText().toString().contains("nul") ) {
+        if ((et_8_2_2.getText().toString() != null) && (!et_8_2_2.getText().toString().isEmpty()) && !et_8_2_2.getText().toString().contains("nul")) {
             int_et_8_2_2 = Integer.parseInt(et_8_2_2.getText().toString());
         } else {
             int_et_8_2_2 = 0;
@@ -4942,12 +4923,12 @@ public class DWMActivity extends AppCompatActivity {
         } else {
             int_et_8_2_7 = 0;
         }
-        if ((et_8_2_8.getText().toString() != null) && (!et_8_2_8.getText().toString().isEmpty())&& !et_8_2_8.getText().toString().contains("nul")) {
+        if ((et_8_2_8.getText().toString() != null) && (!et_8_2_8.getText().toString().isEmpty()) && !et_8_2_8.getText().toString().contains("nul")) {
             int_et_8_2_8 = Integer.parseInt(et_8_2_8.getText().toString());
         } else {
             int_et_8_2_8 = 0;
         }
-        if ((et_9_2_1.getText().toString() != null) && (!et_9_2_1.getText().toString().isEmpty()) &&  !et_9_2_1.getText().toString().contains("nul")) {
+        if ((et_9_2_1.getText().toString() != null) && (!et_9_2_1.getText().toString().isEmpty()) && !et_9_2_1.getText().toString().contains("nul")) {
             int_et_9_2_1 = Integer.parseInt(et_9_2_1.getText().toString());
         } else {
             int_et_9_2_1 = 0;
@@ -4987,23 +4968,23 @@ public class DWMActivity extends AppCompatActivity {
         } else {
             int_tv_10_5_2 = 0;
         }
-        YesterdayAdd = int_tv_1_2 +int_tv_1_1aE+ int_tv_2_2 + int_tv_3_2 + int_tv_4_2 + int_tv_5_2 +int_tv_2_1bE+int_tv_2_1cE+
+        YesterdayAdd = int_tv_1_2 + int_tv_1_1aE + int_tv_2_2 + int_tv_3_2 + int_tv_4_2 + int_tv_5_2 + int_tv_2_1bE + int_tv_2_1cE +
                 int_et_6_2_1 + int_et_6_2_2 + int_et_6_2_3 + int_et_6_2_4 + int_et_6_2_5 + int_et_6_2_6 +
                 int_et_7_2_1 + int_et_7_2_2 + /*int_et_7_2_3*/int_et_8_2_2_unitReview + int_et_7_2_4 +
                 int_et_8_2_1 + int_et_8_2_2 + int_et_8_2_3 + int_et_8_2_4 + int_et_8_2_5 + int_et_8_2_6 + int_et_8_2_7 + int_et_8_2_8 +
-                int_et_9_2_1 + int_et_9_2_2 + int_et_9_2_3 + int_tv_10_2 + int_tv_10_2_2 + int_tv_10_3_2 + int_tv_10_4_2 + int_tv_10_5_2  +
+                int_et_9_2_1 + int_et_9_2_2 + int_et_9_2_3 + int_tv_10_2 + int_tv_10_2_2 + int_tv_10_3_2 + int_tv_10_4_2 + int_tv_10_5_2 +
                 int_check_1_2;
         yes_tv_total_hour.setText(String.valueOf(YesterdayAdd));
     }
 
 
     void dayBeforeYesAdd() {
-        if ((tv_1_1.getText().toString() != null) && (!tv_1_1.getText().toString().isEmpty())&& !tv_1_1.getText().toString().contains("nul")) {
+        if ((tv_1_1.getText().toString() != null) && (!tv_1_1.getText().toString().isEmpty()) && !tv_1_1.getText().toString().contains("nul")) {
             int_tv_1_1 = Integer.parseInt(tv_1_1.getText().toString());
         } else {
             int_tv_1_1 = 0;
         }
-        if ((tv_2_1.getText().toString() != null) && (!tv_2_1.getText().toString().isEmpty())&& !tv_2_1.getText().toString().contains("nul")) {
+        if ((tv_2_1.getText().toString() != null) && (!tv_2_1.getText().toString().isEmpty()) && !tv_2_1.getText().toString().contains("nul")) {
             int_tv_2_1 = Integer.parseInt(tv_2_1.getText().toString());
         } else {
             int_tv_2_1 = 0;
@@ -5056,7 +5037,7 @@ public class DWMActivity extends AppCompatActivity {
         } else {
             int_et_6_1_3 = 0;
         }
-        if ((et_6_1_4.getText().toString() != null) && (!et_6_1_4.getText().toString().isEmpty()) && !et_6_1_4.getText().toString().contains("nul")	) {
+        if ((et_6_1_4.getText().toString() != null) && (!et_6_1_4.getText().toString().isEmpty()) && !et_6_1_4.getText().toString().contains("nul")) {
             int_et_6_1_4 = Integer.parseInt(et_6_1_4.getText().toString());
         } else {
             int_et_6_1_4 = 0;
@@ -5194,7 +5175,7 @@ public class DWMActivity extends AppCompatActivity {
             int_tv_1_1_1a = 0;
         }
 
-        D_Y_Add = int_tv_1_1 +int_tv_1_1_1a+ int_tv_2_1 + int_tv_2_1_1b + int_tv_3_1 + int_tv_4_1 + int_tv_5_1 +int_tv_2_1_1c+
+        D_Y_Add = int_tv_1_1 + int_tv_1_1_1a + int_tv_2_1 + int_tv_2_1_1b + int_tv_3_1 + int_tv_4_1 + int_tv_5_1 + int_tv_2_1_1c +
                 int_et_6_1_1 + int_et_6_1_2 + int_et_6_1_3 + int_et_6_1_4 + /*int_et_6_1_5*/ int_et_8_1_1_best_review + int_et_6_1_6 +
                 int_et_7_1_1 + int_et_7_1_2 + /*int_et_7_1_3*/int_et_8_1_2_unitReview + int_et_7_1_4 +
                 int_et_8_1_1 + int_et_8_1_2 + int_et_8_1_3 + int_et_8_1_4 + int_et_8_1_5 + int_et_8_1_6 + int_et_8_1_7 + int_et_8_1_8 +

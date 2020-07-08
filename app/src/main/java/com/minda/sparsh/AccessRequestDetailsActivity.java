@@ -40,7 +40,7 @@ public class AccessRequestDetailsActivity extends AppCompatActivity implements V
     TextView tv_access_request_no, tv_request_on, tv_request_type, tv_access_type, tv_access_sub_type, tv_access_for,
             tv_access_for_name, tv_category, tv_sub_category, tv_user_authorisation_profile, tv_approval_status,
             tv_access_requirement_details, tv_access_request_by, tv_source, tv_name, tv_organisation, tv_purpose,
-            tv_approve_unapprove_heading, tv_processor_detail,tv_scroll;
+            tv_approve_unapprove_heading, tv_processor_detail, tv_scroll;
     LinearLayout lay_access_request_by, lay_source, lay_name, lay_organisation, lay_purpose, lay_access_for_name, lay_sub_category,
             lay_user_authorisation_profile;
     Button btn_approve, btn_un_approve, btn_send_back;
@@ -102,7 +102,7 @@ public class AccessRequestDetailsActivity extends AppCompatActivity implements V
         tv_purpose = (TextView) findViewById(R.id.tv_purpose);
         tv_approve_unapprove_heading = (TextView) findViewById(R.id.tv_approve_unapprove_heading);
         tv_processor_detail = (TextView) findViewById(R.id.tv_processor_detail);
-        tv_scroll=(TextView)findViewById(R.id.tv_scroll);
+        tv_scroll = (TextView) findViewById(R.id.tv_scroll);
 
         lay_access_request_by = (LinearLayout) findViewById(R.id.lay_access_request_by);
         lay_source = (LinearLayout) findViewById(R.id.lay_source);
@@ -149,7 +149,7 @@ public class AccessRequestDetailsActivity extends AppCompatActivity implements V
                     public void run() {
                         lay_processor_view.fullScroll(HorizontalScrollView.FOCUS_RIGHT);
                     }
-                },100L);
+                }, 100L);
             }
         });
 
@@ -195,7 +195,8 @@ public class AccessRequestDetailsActivity extends AppCompatActivity implements V
                                 btn_send_back.setVisibility(View.GONE);
 
                             }
-                           */ tv_access_requirement_details.setText(accessRequestDetailsModels.get(0).getRequirementDetail());
+                           */
+                            tv_access_requirement_details.setText(accessRequestDetailsModels.get(0).getRequirementDetail());
 
                             lay_access_request_by.setVisibility(View.VISIBLE);
                             tv_access_request_by.setText(accessRequestDetailsModels.get(0).getCreatedByName() + "(" + accessRequestDetailsModels.get(0).getCreatedBy() + ")");
@@ -652,7 +653,7 @@ public class AccessRequestDetailsActivity extends AppCompatActivity implements V
                     } else {
                         et_approve_unapprove.setError("Please Fill Rejected Remarks");
                     }
-                }else {
+                } else {
                     hitIAMApproveApi(RetrofitClient2.CKEY, approvalId_val, tv_access_request_no.getText().toString(), myPref.getString("Id", "Id"), et_approve_unapprove.getText().toString(), "", approvalLevel_val);
                 }
 

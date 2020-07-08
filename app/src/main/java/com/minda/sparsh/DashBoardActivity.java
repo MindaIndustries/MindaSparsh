@@ -50,13 +50,13 @@ import retrofit2.Response;
 public class DashBoardActivity extends BaseActivity implements View.OnClickListener {
     public TextView tv_user_name;
     SharedPreferences myPref;
-    String User,currentVersion;
+    String User, currentVersion;
     LinearLayout lay_logout;
-    int count =0;
+    int count = 0;
     public static TextView tv_unread;
-    public ImageView im_right,im_left,im_logo;
+    public ImageView im_right, im_left, im_logo;
     Timer timer;
-    public static  Integer time=0;
+    public static Integer time = 0;
 
 
     @Override
@@ -68,15 +68,15 @@ public class DashBoardActivity extends BaseActivity implements View.OnClickListe
 
 //        ((ImageButton) findViewById(R.id.dwm_btn)).setOnClickListener(this);
 //        ((ImageButton) findViewById(R.id.jagriti_btn)).setOnClickListener(this);
-        tv_unread= (TextView) findViewById(R.id.tv_unread);
+        tv_unread = (TextView) findViewById(R.id.tv_unread);
 //        im_right= (ImageView) findViewById(R.id.im_right);
 //        im_left= (ImageView) findViewById(R.id.im_left);
 //        im_logo=(ImageView) findViewById(R.id.im_logo);
-        tv_user_name=(TextView) findViewById(R.id.tv_user_name);
-        lay_logout=(LinearLayout) findViewById(R.id.lay_logout);
+        tv_user_name = (TextView) findViewById(R.id.tv_user_name);
+        lay_logout = (LinearLayout) findViewById(R.id.lay_logout);
         viewPager = (ViewPager) findViewById(R.id.pager);
         myPref = getSharedPreferences("MyPref", Context.MODE_PRIVATE);
-        User=myPref.getString("username","");
+        User = myPref.getString("username", "");
         tv_user_name.setText(User);
 //        im_left.setOnClickListener(this);
 //        im_right.setOnClickListener(this);
@@ -87,7 +87,7 @@ public class DashBoardActivity extends BaseActivity implements View.OnClickListe
         } catch (PackageManager.NameNotFoundException e) {
             e.printStackTrace();
         }
-        GetVersionCode getVersionCode=new GetVersionCode();
+        GetVersionCode getVersionCode = new GetVersionCode();
         getVersionCode.execute();
 
 
@@ -101,9 +101,6 @@ public class DashBoardActivity extends BaseActivity implements View.OnClickListe
 //        adapter.addFragment(new SevenFragment(), "Survey");
 //        adapter.addFragment(new EightFragment(), "Abnormality");
 //        adapter.addFragment(new SixFragment(), "Support");
-
-
-
 
 
         viewPager.setAdapter(adapter);
@@ -132,7 +129,7 @@ public class DashBoardActivity extends BaseActivity implements View.OnClickListe
             @Override
             public void onClick(View view) {
 
-                Intent intent =new Intent(DashBoardActivity.this,NotificationActivity.class);
+                Intent intent = new Intent(DashBoardActivity.this, NotificationActivity.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(intent);
             }
@@ -140,7 +137,7 @@ public class DashBoardActivity extends BaseActivity implements View.OnClickListe
         myPref = getSharedPreferences("MyPref", Context.MODE_PRIVATE);
 
 
-        HitMyorder(myPref.getString("Id",""));
+        HitMyorder(myPref.getString("Id", ""));
 
 
     }
@@ -163,7 +160,6 @@ public class DashBoardActivity extends BaseActivity implements View.OnClickListe
 //                break;
         }
     }
-
 
 
     // Adapter for the viewpager using FragmentPagerAdapter
@@ -195,10 +191,11 @@ public class DashBoardActivity extends BaseActivity implements View.OnClickListe
             return mFragmentTitleList.get(position);
         }
     }
-    public void HitMyorder( String UserId) {
+
+    public void HitMyorder(String UserId) {
         if (Utility.isOnline(DashBoardActivity.this)) {
             Interface loginInterface = RetrofitClient.getClient().create(Interface.class);
-            Call<List<NotificationModel>> loginResponse = loginInterface.GetPushNot( UserId,"mda@sPr$rZ#G!!");
+            Call<List<NotificationModel>> loginResponse = loginInterface.GetPushNot(UserId, "mda@sPr$rZ#G!!");
             loginResponse.enqueue(new Callback<List<NotificationModel>>() {
                 @Override
                 public void onResponse(Call<List<NotificationModel>> call, Response<List<NotificationModel>> response) {
@@ -207,11 +204,9 @@ public class DashBoardActivity extends BaseActivity implements View.OnClickListe
                     response.message();
                     if (responseItem != null) {
 
-                        for(int i=0;i<responseItem.size(); i++)
-                        {
-                            if(!responseItem.get(i).getIsRead())
-                            {
-                                count=count+1;
+                        for (int i = 0; i < responseItem.size(); i++) {
+                            if (!responseItem.get(i).getIsRead()) {
+                                count = count + 1;
                             }
 
                         }
@@ -222,10 +217,8 @@ public class DashBoardActivity extends BaseActivity implements View.OnClickListe
 //                        }
 
 
-
-
+                    } else {
                     }
-                    else {}
 
 
                 }
@@ -240,6 +233,7 @@ public class DashBoardActivity extends BaseActivity implements View.OnClickListe
         } else
             Toast.makeText(DashBoardActivity.this, "Please Check Your Network Connection", Toast.LENGTH_LONG).show();
     }
+
     public int getItem(int i) {
         return viewPager.getCurrentItem() + i;
     }
@@ -276,7 +270,7 @@ public class DashBoardActivity extends BaseActivity implements View.OnClickListe
             super.onPostExecute(onlineVersion);
 //            appupdate.dismiss();
             try {
-                if (onlineVersion != null && !onlineVersion.isEmpty()&&onlineVersion.contains("1.")) {
+                if (onlineVersion != null && !onlineVersion.isEmpty() && onlineVersion.contains("1.")) {
                     if (!currentVersion.equalsIgnoreCase(onlineVersion)) {
                         //show dialog
                         updateapp();

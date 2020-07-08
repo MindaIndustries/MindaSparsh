@@ -52,7 +52,7 @@ import retrofit2.http.Query;
 public interface Interface {
 
 
-   // @FormUrlEncoded
+    // @FormUrlEncoded
     @GET("GetLogin")
     Call<List<LoginResponse>> GetLogin(@Query("username") String username, @Query("pass") String pass, @Query("CKey") String CKey);
 
