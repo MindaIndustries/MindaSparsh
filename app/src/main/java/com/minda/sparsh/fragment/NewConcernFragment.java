@@ -58,7 +58,7 @@ public class NewConcernFragment extends Fragment {
     SharedPreferences myPref;
     ArrayList<String> unitsName = new ArrayList<String>();
     List<EHSUnitModel> units = new ArrayList<EHSUnitModel>();
-    ArrayAdapter<String> adapterUnit, adapterresponsible6M;
+    ArrayAdapter<String> adapterUnit, adapterResponsible6M;
 
 
     @Nullable
