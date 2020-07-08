@@ -56,21 +56,17 @@ public class EHSObservationsFragment extends Fragment {
         observations.setAdapter(ehsObsAdapter);
         myPref = getActivity().getSharedPreferences("MyPref", MODE_PRIVATE);
         empCode = myPref.getString("Id", "Id");
-
         getObservations(empCode);
         return ehsInitiate;
     }
-
 
 
     public void getObservations(String empCode) {
         myObservations.clear();
         observations.getRecycledViewPool().clear();
         ehsObsAdapter.notifyDataSetChanged();
-
         progressBar.setVisibility(View.VISIBLE);
         EHSServices ehsServices = new EHSServices();
-
         ehsServices.getIdentifiedObservations(new OnTaskComplete() {
             @Override
             public void onTaskComplte(CarotResponse carotResponse) {
@@ -80,8 +76,7 @@ public class EHSObservationsFragment extends Fragment {
                         myObservations.addAll(list);
                         no_list.setVisibility(View.GONE);
 
-                    }
-                    else{
+                    } else {
                         no_list.setVisibility(View.VISIBLE);
                     }
                     ehsObsAdapter.notifyDataSetChanged();
@@ -100,7 +95,7 @@ public class EHSObservationsFragment extends Fragment {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case android.R.id.home:
-              //  onBackPressed();
+                //  onBackPressed();
                 return true;
 
             default:

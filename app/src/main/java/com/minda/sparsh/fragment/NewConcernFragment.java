@@ -61,7 +61,6 @@ public class NewConcernFragment extends Fragment {
     ArrayAdapter<String> adapterUnit, adapterresponsible6M;
 
 
-
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -107,6 +106,7 @@ public class NewConcernFragment extends Fragment {
 
         return dayOfMonthStr + "-" + monthNo + "-" + year + " " + hr + ":" + min + " " + AM_PM;
     }
+
     public void getUnits() {
         EHSServices ehsServices = new EHSServices();
         ehsServices.getUnits(new OnTaskComplete() {
@@ -129,6 +129,7 @@ public class NewConcernFragment extends Fragment {
         }, unitcode);
 
     }
+
     public void initUnitSpinner() {
         unitsName.clear();
         unitsName.add("Select");

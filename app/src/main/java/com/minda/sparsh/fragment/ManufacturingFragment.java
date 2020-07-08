@@ -37,7 +37,7 @@ import retrofit2.Response;
 
 public class ManufacturingFragment extends Fragment {
 
-    ImageButton dmwButton, dwm_btn1,ehs;
+    ImageButton dmwButton, dwm_btn1, ehs;
     private ProgressDialog progress = null;
     SharedPreferences myPref;
     Set<String> loginAccess;
@@ -87,7 +87,7 @@ public class ManufacturingFragment extends Fragment {
         ehs.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent in =new Intent(getActivity(), EHS_Home.class);
+                Intent in = new Intent(getActivity(), EHS_Home.class);
                 startActivity(in);
 
             }
@@ -98,16 +98,14 @@ public class ManufacturingFragment extends Fragment {
             @Override
             public void onClick(View v) {
 
-                if (loginAccess.contains("dwm")||loginAccess.contains("DWM")||
-                        loginAccess.contains("odwm") ||loginAccess.contains("ODWM")||
-                        loginAccess.contains("mdwm")||loginAccess.contains("MDWM")) {
+                if (loginAccess.contains("dwm") || loginAccess.contains("DWM") ||
+                        loginAccess.contains("odwm") || loginAccess.contains("ODWM") ||
+                        loginAccess.contains("mdwm") || loginAccess.contains("MDWM")) {
                     Intent intent = new Intent(getActivity(), SheedActivity.class);
                     startActivity(intent);
                 } else {
                     Toast.makeText(getContext(), "You Are Not Authorized", Toast.LENGTH_LONG).show();
                 }
-
-
 
 
             }
@@ -116,8 +114,7 @@ public class ManufacturingFragment extends Fragment {
             @Override
             public void onClick(View view) {
 
-                    hitGetUserDetail(myPref.getString("EmainId", ""));
-
+                hitGetUserDetail(myPref.getString("EmainId", ""));
 
 
             }
@@ -139,9 +136,9 @@ public class ManufacturingFragment extends Fragment {
                     if (userDetail_models != null && userDetail_models.size() != 0) {
                         DashBoardActivity.time = 1;
                         Intent intent = new Intent(getActivity(), AbnormalityAddressingActivity.class);
-                        intent.putExtra("EDOMAIN",userDetail_models.get(0).getDOMAIN());
-                        intent.putExtra("EBUSINESS",userDetail_models.get(0).getBUSINESS());
-                        intent.putExtra("EPLANT",userDetail_models.get(0).getUNITCODE());
+                        intent.putExtra("EDOMAIN", userDetail_models.get(0).getDOMAIN());
+                        intent.putExtra("EBUSINESS", userDetail_models.get(0).getBUSINESS());
+                        intent.putExtra("EPLANT", userDetail_models.get(0).getUNITCODE());
                         intent.putExtra("ADD", true);
                         startActivity(intent);
                     } else {

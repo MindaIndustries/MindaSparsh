@@ -25,11 +25,9 @@ public class SevenFragment extends Fragment {
     private String mParam2;
 
 
-
     public SevenFragment() {
         // Required empty public constructor
     }
-
 
 
     @Override
@@ -44,12 +42,12 @@ public class SevenFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view=inflater.inflate(R.layout.fragment_seven, container, false);
-        ImageView im_right=(ImageView) view.findViewById(R.id.im_right);
-        ImageView im_left=(ImageView) view.findViewById(R.id.im_left);
-        ImageView dwm_btn=(ImageView) view.findViewById(R.id.dwm_btn);
+        View view = inflater.inflate(R.layout.fragment_seven, container, false);
+        ImageView im_right = (ImageView) view.findViewById(R.id.im_right);
+        ImageView im_left = (ImageView) view.findViewById(R.id.im_left);
+        ImageView dwm_btn = (ImageView) view.findViewById(R.id.dwm_btn);
 
-        final DashBoardActivity contaxt=(DashBoardActivity) getActivity();
+        final DashBoardActivity contaxt = (DashBoardActivity) getActivity();
         im_right.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

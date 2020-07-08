@@ -42,7 +42,7 @@ public class OneFragment extends Fragment {
         final DashBoardActivity contaxt = (DashBoardActivity) getActivity();
         ImageButton ib_samwad = (ImageButton) view.findViewById(R.id.ib_samwad);
         ImageButton ib_engg = (ImageButton) view.findViewById(R.id.ib_engg);
-        ImageButton ib_manufacturing=(ImageButton)view.findViewById(R.id.ib_manufacturing);
+        ImageButton ib_manufacturing = (ImageButton) view.findViewById(R.id.ib_manufacturing);
         im_left.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

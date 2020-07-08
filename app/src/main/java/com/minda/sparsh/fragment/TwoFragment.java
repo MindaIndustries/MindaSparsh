@@ -24,7 +24,6 @@ public class TwoFragment extends Fragment {
     private String mParam2;
 
 
-
     public TwoFragment() {
         // Required empty public constructor
     }
@@ -50,17 +49,16 @@ public class TwoFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view =inflater.inflate(R.layout.fragment_two, container, false);
-        ImageView im_web= (ImageView) view.findViewById(R.id.im_web);
-        ImageView im_right=(ImageView) view.findViewById(R.id.im_right);
-       final DashBoardActivity contaxt=(DashBoardActivity) getActivity();
-       im_right.setOnClickListener(new View.OnClickListener() {
-           @Override
-           public void onClick(View view) {
-               contaxt.viewPager.setCurrentItem(contaxt.getItem(+1), true);
-           }
-       });
-
+        View view = inflater.inflate(R.layout.fragment_two, container, false);
+        ImageView im_web = (ImageView) view.findViewById(R.id.im_web);
+        ImageView im_right = (ImageView) view.findViewById(R.id.im_right);
+        final DashBoardActivity contaxt = (DashBoardActivity) getActivity();
+        im_right.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                contaxt.viewPager.setCurrentItem(contaxt.getItem(+1), true);
+            }
+        });
 
 
         im_web.setOnClickListener(new View.OnClickListener() {
@@ -76,9 +74,6 @@ public class TwoFragment extends Fragment {
         // Inflate the layout for this fragment
         return view;
     }
-
-
-
 
 
 }

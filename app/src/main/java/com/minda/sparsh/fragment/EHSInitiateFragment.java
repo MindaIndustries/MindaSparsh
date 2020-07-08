@@ -239,8 +239,8 @@ public class EHSInitiateFragment extends Fragment {
                 attachtext.setText("" + getArguments().getString("attachment"));
             }
 
-            if(getArguments().getString("status")!=null){
-                if(getArguments().getString("status").equals("1")){
+            if (getArguments().getString("status") != null) {
+                if (getArguments().getString("status").equals("1")) {
                     submit.setVisibility(View.VISIBLE);
                     unitSpinner.setEnabled(true);
                     safetyOfficerSpinner.setEnabled(true);
@@ -252,9 +252,7 @@ public class EHSInitiateFragment extends Fragment {
                     attachtext.setEnabled(true);
                     attachment.setEnabled(true);
                     timeSelector.setEnabled(true);
-                }
-                else
-                {
+                } else {
                     submit.setVisibility(View.GONE);
                     unitSpinner.setEnabled(false);
                     safetyOfficerSpinner.setEnabled(false);

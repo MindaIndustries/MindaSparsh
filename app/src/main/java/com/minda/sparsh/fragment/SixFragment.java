@@ -39,10 +39,10 @@ public class SixFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view=inflater.inflate(R.layout.fragment_six, container, false);
+        View view = inflater.inflate(R.layout.fragment_six, container, false);
 //        ImageView im_right=(ImageView) view.findViewById(R.id.im_right);
-        ImageView im_left=(ImageView) view.findViewById(R.id.im_left);
-        final DashBoardActivity contaxt=(DashBoardActivity) getActivity();
+        ImageView im_left = (ImageView) view.findViewById(R.id.im_left);
+        final DashBoardActivity contaxt = (DashBoardActivity) getActivity();
 //        im_right.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View view) {

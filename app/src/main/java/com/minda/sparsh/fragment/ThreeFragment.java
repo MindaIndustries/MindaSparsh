@@ -53,7 +53,7 @@ public class ThreeFragment extends Fragment {
         ImageView im_right = (ImageView) convertView.findViewById(R.id.im_right);
         ImageView im_left = (ImageView) convertView.findViewById(R.id.im_left);
         ImageButton Ib_visitor = convertView.findViewById(R.id.Ib_visitor);
-        ImageButton bottom_up =(ImageButton) convertView.findViewById(R.id.bottom_up);
+        ImageButton bottom_up = (ImageButton) convertView.findViewById(R.id.bottom_up);
 
         final DashBoardActivity contaxt = (DashBoardActivity) getActivity();
         im_right.setOnClickListener(new View.OnClickListener() {
