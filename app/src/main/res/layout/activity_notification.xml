@@ -10,7 +10,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:background="@color/colorPrimary">
+        android:background="@drawable/toolbar_gradient">
         <ImageView
             android:id="@+id/im_back"
             android:layout_width="wrap_content"

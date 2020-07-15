@@ -3,6 +3,9 @@ package com.minda.sparsh.util;
 import android.content.Context;
 import android.content.Intent;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
@@ -22,12 +25,15 @@ public class RetrofitClient2 {
     //master public static final String BASE_URL = "http://176.9.28.166/MindaSparshTest/Service.asmx/";
     // public static final String BASE_URL = "http://52.172.191.61/Test.mindasparsh.com/Service.asmx/";
     //dev
-    public static final String BASE_URL = "http://dev.mindasparsh.com/Service.asmx/";
-    public static final String EHS_BASE_URL = "http://dev.mindasparsh.com/ServiceEHS.asmx/";
-    public static final String ehs_img = "http://dev.mindasparsh.com/ehs/files/";
+  //  public static final String BASE_URL = "http://dev.mindasparsh.com/Service.asmx/";
+   // public static final String EHS_BASE_URL = "http://dev.mindasparsh.com/ServiceEHS.asmx/";
+   // public static final String ehs_img = "http://dev.mindasparsh.com/ehs/files/";
 
     //prod
-    //  public static final String BASE_URL = "https://app.mindasparsh.com/Service.asmx/";
+      public static final String BASE_URL = "https://app.mindasparsh.com/Service.asmx/";
+      public static final String ehs_img = "https://app.mindasparsh.com/ehs/files/";
+      public static final String EHS_BASE_URL = "https://app.mindasparsh.com/ServiceEHS.asmx/";
+
 
     // public static final String CKEY = "bWRhQHNQciRyWiNHISE=";
     public static final String CKEY = "mda@sPr$rZ#G!!";
@@ -71,12 +77,16 @@ public class RetrofitClient2 {
         dispatcher1.setMaxRequests(3000);
         httpClient.dispatcher(dispatcher1);
 
+        Gson gson = new GsonBuilder()
+                .setLenient()
+                .create();
+
         OkHttpClient client = httpClient.readTimeout(60, TimeUnit.SECONDS)
                 .connectTimeout(60, TimeUnit.SECONDS).build();
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(EHS_BASE_URL)
                 .addConverterFactory(ScalarsConverterFactory.create())
-                .addConverterFactory(GsonConverterFactory.create())
+                .addConverterFactory(GsonConverterFactory.create(gson))
                 .client(client)
                 .build();
 

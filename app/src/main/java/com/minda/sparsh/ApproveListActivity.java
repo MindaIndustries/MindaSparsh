@@ -17,7 +17,10 @@ import com.minda.sparsh.model.ApproveList;
 import com.minda.sparsh.util.RetrofitClient2;
 import com.minda.sparsh.util.Utility;
 
+import java.util.ArrayList;
 import java.util.List;
+
+import javax.net.ssl.HttpsURLConnection;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -29,7 +32,8 @@ public class ApproveListActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     ImageView im_back;
     SwipeRefreshLayout mSwipeRefreshLayout;
-
+    ApproveListAdapter mAdapter;
+    List<ApproveList> approveLists = new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -59,12 +63,24 @@ public class ApproveListActivity extends AppCompatActivity {
             }
         });
         recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
-        hitGetApprovalListApi(RetrofitClient2.CKEY, myPref.getString("Id", "Id"));
+        mAdapter = new ApproveListAdapter(approveLists, ApproveListActivity.this);
+        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(ApproveListActivity.this);
+        recyclerView.setLayoutManager(mLayoutManager);
+        recyclerView.setItemAnimator(new DefaultItemAnimator());
+        recyclerView.setAdapter(mAdapter);
+
+
+       // hitGetApprovalListApi(RetrofitClient2.CKEY, myPref.getString("Id", "Id"));
 
     }
 
 
     public void hitGetApprovalListApi(String key, String EmpCode) {
+        approveLists.clear();
+        recyclerView.getRecycledViewPool().clear();
+        mAdapter.notifyDataSetChanged();
+
+
         if (Utility.isOnline(getApplicationContext())) {
             showProgress();
             Interface anInterface = RetrofitClient2.getClient().create(Interface.class);
@@ -73,24 +89,22 @@ public class ApproveListActivity extends AppCompatActivity {
                 @Override
                 public void onResponse(Call<List<ApproveList>> call, Response<List<ApproveList>> response) {
                     dismissProgress();
-                    List<ApproveList> approveLists = response.body();
+                    if(response.code()== HttpsURLConnection.HTTP_OK) {
+                        List<ApproveList> approveLists1 = response.body();
 
-                    try {
-                        if (approveLists != null) {
-                            if (approveLists.get(0).getApprovalId() != null) {
-                                ApproveListAdapter mAdapter = new ApproveListAdapter(response.body(), ApproveListActivity.this);
-                                RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(ApproveListActivity.this);
-                                recyclerView.setLayoutManager(mLayoutManager);
-                                recyclerView.setItemAnimator(new DefaultItemAnimator());
-                                recyclerView.setAdapter(mAdapter);
-
-                            } else {
-                                Toast.makeText(getApplicationContext(), "Something went wrong", Toast.LENGTH_LONG).show();
+                        try {
+                            if (approveLists1 != null) {
+                                if (approveLists1.get(0).getApprovalId() != null) {
+                                    approveLists.addAll(approveLists1);
+                                } else {
+                                    Toast.makeText(getApplicationContext(), "Something went wrong", Toast.LENGTH_LONG).show();
+                                }
                             }
+                        } catch (Exception e) {
+                            e.printStackTrace();
                         }
-                    } catch (Exception e) {
-                        e.printStackTrace();
                     }
+                    mAdapter.notifyDataSetChanged();
                 }
 
                 @Override

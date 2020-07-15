@@ -36,7 +36,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="70dp"
                 android:layout_marginTop="10dp"
-                android:src="@drawable/login_logo"/>
+                android:src="@drawable/minda_sparshlogo"/>
             <android.support.v4.view.ViewPager
                 android:id="@+id/pager"
                 android:layout_width="match_parent"

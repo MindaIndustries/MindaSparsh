@@ -10,9 +10,9 @@
    >
     <!--android:background="@drawable/splash_sparsh"-->
     <ImageView
-        android:layout_width="150dp"
-        android:layout_height="wrap_content"
-        android:src="@drawable/login_logo"
+        android:layout_width="wrap_content"
+        android:layout_height="100dp"
+        android:src="@drawable/minda_sparshlogo"
         android:scaleType="fitCenter"
         android:adjustViewBounds="true" />
 

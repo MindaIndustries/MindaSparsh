@@ -375,8 +375,8 @@ public class EHSInitiateFragment extends Fragment {
 
     @OnClick(R.id.reset)
     public void onClickReset() {
-        // finish();
-        // startActivity(getIntent());
+        getActivity().finish();
+        getActivity().startActivity(getActivity().getIntent());
     }
 
     @OnClick(R.id.submit)
@@ -1444,11 +1444,13 @@ public class EHSInitiateFragment extends Fragment {
                     @Override
                     public void run() {
 
-                        Toast.makeText(getActivity(), "Successfully submitted", Toast.LENGTH_LONG).show();
-                        Intent in = new Intent(getActivity(), EHS_Home.class);
-                        in.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                        startActivity(in);
-                        getActivity().finish();
+                       if(getActivity()!=null && isAdded()) {
+                           Toast.makeText(getActivity(), "Successfully submitted", Toast.LENGTH_LONG).show();
+                           Intent in = new Intent(getActivity(), EHS_Home.class);
+                           in.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                           startActivity(in);
+                           getActivity().finish();
+                       }
                     }
                 }, 1000);
 

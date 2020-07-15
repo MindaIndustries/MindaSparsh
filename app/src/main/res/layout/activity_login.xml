@@ -7,41 +7,35 @@
     tools:context="com.minda.sparsh.LoginActivity"
     android:background="@color/white">
 
-    <ScrollView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent">
+
+
 
 
         <!--<ScrollView-->
             <!--android:layout_width="fill_parent"-->
             <!--android:layout_height="fill_parent"-->
             <!--android:fitsSystemWindows="true">-->
-            <LinearLayout
+            <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:orientation="vertical">
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center">
-                    <ImageView
-                        android:layout_width="match_parent"
-                        android:layout_height="80dp"
-                        android:background="@drawable/title"/>
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:textColor="@color/colorPrimary"
-                        android:textSize="20dp"
-                        android:layout_marginTop="20dp"
-                        android:gravity="center"
-                        android:text="Minda Sparsh"/>
-                </RelativeLayout>
+                <ImageView
+                    android:layout_centerHorizontal="true"
+                    android:id="@+id/sparsh_logo"
+                    android:layout_marginTop="?attr/actionBarSize"
+                    android:layout_width="wrap_content"
+                    android:layout_height="100dp"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginBottom="10dp"
+                    android:src="@drawable/minda_sparshlogo"
+                    android:scaleType="fitCenter"
+                    android:adjustViewBounds="true" />
                 <LinearLayout
+                    android:layout_centerInParent="true"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
@@ -50,14 +44,6 @@
                     android:paddingTop="10dp">
 
 
-                    <ImageView
-                        android:layout_width="150dp"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        android:layout_marginBottom="10dp"
-                        android:src="@drawable/login_logo"
-                        android:scaleType="fitCenter"
-                        android:adjustViewBounds="true" />
 
                     <!--  Email Label -->
                     <android.support.design.widget.TextInputLayout
@@ -78,8 +64,7 @@
                     <android.support.design.widget.TextInputLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginBottom="8dp"
-                        >
+                        android:layout_marginBottom="8dp">
 
                         <EditText
                             android:id="@+id/input_password"
@@ -100,6 +85,7 @@
                         />
 
                     <LinearLayout
+                        android:orientation="vertical"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="center">
@@ -113,6 +99,9 @@
                             android:text="Login"
                             android:textColor="@color/white" />
 
+
+
+
                     </LinearLayout>
 
 
@@ -120,6 +109,116 @@
 
 
                 </LinearLayout>
+
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Powered by"
+                    android:textColor="#999999"
+                    android:fontFamily="@font/museosans_300"
+                    android:layout_centerHorizontal="true"
+                    android:layout_above="@+id/unominda_icon"
+                    />
+                <ImageView
+                    android:id="@+id/unominda_icon"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/login_logo"
+                    android:scaleType="fitCenter"
+                    android:layout_above="@+id/bottom"
+                    android:layout_centerHorizontal="true"
+                    android:adjustViewBounds="true"
+                    />
+
+                <LinearLayout
+                    android:id="@+id/bottom"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_alignParentBottom="true"
+                    android:background="@color/white">
+
+                    <LinearLayout
+                        android:id="@+id/lay_vision"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:orientation="vertical">
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/ivision"/>
+
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="vision"
+                            android:textColor="@color/colorPrimary" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:visibility="gone"
+                        android:id="@+id/lay_mission"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:orientation="vertical">
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/imission"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="mission"
+                            android:textColor="@color/colorPrimary" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/lay_values"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:orientation="vertical">
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/ivalue"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="values"
+                            android:textColor="@color/colorPrimary" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/lay_needhelp"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:orientation="vertical">
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/ineedhelp"/>
+
+                        <!--<TextView-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:text="Need help"-->
+                        <!--android:textColor="@color/colorPrimary" />-->
+                    </LinearLayout>
+                </LinearLayout>
+
+
                 <android.support.v4.view.ViewPager
                     android:id="@+id/showpager"
                     android:layout_width="match_parent"
@@ -128,10 +227,13 @@
                     android:filterTouchesWhenObscured="true"
                     app:layout_collapseMode="parallax"
                     android:background="#ffffff"
+                    android:visibility="gone"
                     >
 
+
                 </android.support.v4.view.ViewPager>
-            </LinearLayout>
+
+            </RelativeLayout>
 
 
 
@@ -139,90 +241,8 @@
 
 
     </RelativeLayout>
-    </ScrollView>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_alignParentBottom="true"
-        android:background="@color/white">
-
-        <LinearLayout
-            android:id="@+id/lay_vision"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:orientation="vertical">
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/ivision"/>
 
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="vision"
-                android:textColor="@color/colorPrimary" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/lay_mission"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:orientation="vertical">
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/imission"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="mission"
-                android:textColor="@color/colorPrimary" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/lay_values"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:orientation="vertical">
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/ivalue"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="values"
-                android:textColor="@color/colorPrimary" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/lay_needhelp"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:orientation="vertical">
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/ineedhelp"/>
-
-            <!--<TextView-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:text="Need help"-->
-            <!--android:textColor="@color/colorPrimary" />-->
-        </LinearLayout>
-    </LinearLayout>
 
 
 </RelativeLayout>

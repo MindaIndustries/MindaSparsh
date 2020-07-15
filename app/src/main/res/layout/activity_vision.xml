@@ -65,7 +65,7 @@
                 android:layout_height="wrap_content"
                 android:textColor="@color/colorPrimary"
                 android:textSize="25dp"
-                android:text="Vision"/>
+                android:text="Our Vision"/>
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
@@ -79,7 +79,7 @@
                 android:textSize="16dp"
                 android:textStyle="italic"
                 android:gravity="center"
-                android:text="Group to be Global Benchmark in Quality, Productivity, Cost, Delivery, Safety, Morale (QPCDSM) and pioneer in technology. Group turnover – 10K Crores by FY20 ensuring Group Financial norms. International Business to be 25% of turnover."/>
+                android:text="To be a sustainable global organization that enhance value for all its stakeholders, attains technology leadership and cares for its people like a family"/>
         </LinearLayout>
 
     </LinearLayout>
