@@ -1,12 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context="com.minda.sparsh.IdentityAccessManagementActivity">
+    android:background="#cbe5fc"
+    >
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:adjustViewBounds="true"
+            android:src="@drawable/birds"
+            android:scaleType="centerCrop"
+            />
+    </RelativeLayout>
 
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="50dp"
@@ -25,7 +39,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
             android:layout_weight="2"
-            android:text="Identity &amp; Access Management"
+            android:text="Change Request Form"
             android:textColor="@color/white"
             android:textSize="20dp"
             android:textStyle="bold" />
@@ -61,5 +75,5 @@
 
     </LinearLayout>
 
-
-</LinearLayout>
+    </LinearLayout>
+</RelativeLayout>

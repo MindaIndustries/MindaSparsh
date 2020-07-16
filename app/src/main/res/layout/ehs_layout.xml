@@ -3,8 +3,22 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="#cbe5fc"
+    >
     <include layout="@layout/toolbar1"/>
+    <RelativeLayout
+        android:layout_marginTop="?attr/actionBarSize"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:adjustViewBounds="true"
+            android:src="@drawable/birds"
+            android:scaleType="centerCrop"
+            />
+    </RelativeLayout>
 
     <RelativeLayout
         android:layout_marginTop="?attr/actionBarSize"

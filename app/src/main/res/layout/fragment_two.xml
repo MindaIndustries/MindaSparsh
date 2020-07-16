@@ -220,7 +220,7 @@
                         android:layout_height="wrap_content"
                         android:adjustViewBounds="false"
                         android:scaleType="fitXY"
-                        android:src="@drawable/car"
+                        android:src="@drawable/car1"
                         android:textColor="@color/colorPrimary" />
 
 
@@ -252,7 +252,7 @@
         <ImageView
             android:layout_alignParentRight="true"
             android:layout_alignParentBottom="true"
-            android:src="@drawable/iconic_brand"
+            android:src="@drawable/iconiclogo"
             android:layout_width="80dp"
             android:layout_height="80dp"/>
 

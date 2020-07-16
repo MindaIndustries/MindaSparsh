@@ -11,7 +11,7 @@
                 android:color="#FF000000"
                 />
 
-            <solid android:color="#E6E6FA" />
+            <solid android:color="@android:color/transparent" />
         </shape>
     </item>
 

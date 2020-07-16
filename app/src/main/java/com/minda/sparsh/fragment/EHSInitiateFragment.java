@@ -1084,13 +1084,12 @@ public class EHSInitiateFragment extends Fragment {
             @Override
             public void onTaskComplte(CarotResponse carotResponse) {
                 if (carotResponse.getStatuscode() == HttpsURLConnection.HTTP_OK) {
-                    if (carotResponse.getStatuscode() == HttpsURLConnection.HTTP_OK) {
                         if (carotResponse.getData() != null) {
                             uploadFile(carotResponse.getData().toString(), imgString);
                             sendMail(EmpCode, obstype, identifiedLocation, Description, ActNo, unitcode);
 
                         }
-                    }
+
 
 
                 }
@@ -1445,6 +1444,7 @@ public class EHSInitiateFragment extends Fragment {
                     public void run() {
 
                        if(getActivity()!=null && isAdded()) {
+                           progressBar.setVisibility(View.GONE);
                            Toast.makeText(getActivity(), "Successfully submitted", Toast.LENGTH_LONG).show();
                            Intent in = new Intent(getActivity(), EHS_Home.class);
                            in.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
@@ -1454,7 +1454,6 @@ public class EHSInitiateFragment extends Fragment {
                     }
                 }, 1000);
 
-                progressBar.setVisibility(View.GONE);
 
             }
         }, Empcode, ObservationName, Location, description, ActNo, UnitCode);

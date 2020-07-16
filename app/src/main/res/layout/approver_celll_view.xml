@@ -8,7 +8,7 @@
         android:layout_height="match_parent"
         android:stretchColumns="*">
 
-        <TableRow android:background="@color/white">
+        <TableRow>
 
             <TextView
                 android:id="@+id/tv_s_no"
