@@ -145,15 +145,6 @@
             android:name=".EHS_Home"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
-
-       <!-- <activity
-            android:name=".EHSInitiate"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name=".EHSObservations"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar" />-->
         <activity
             android:name=".BottomUpConcernDetailActivity"
             android:screenOrientation="portrait"
@@ -194,6 +185,7 @@
                 <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
             </intent-filter>
         </service>
+        <service android:name=".util.BackgroundNotificationService"/>
     </application>
 
 </manifest>

@@ -94,6 +94,8 @@ public class EHSInitiateFragment extends Fragment {
     NoDefaultSpinner typeOfObservationSpinner;
     @BindView(R.id.identified_loc_spinner)
     NoDefaultSpinner identifiedLocationSpinner;
+    @BindView(R.id.category)
+    TextView categoryText;
     @BindView(R.id.category_spinner)
     NoDefaultSpinner categorySpinner;
     @BindView(R.id.sub_category_spinner)
@@ -126,6 +128,8 @@ public class EHSInitiateFragment extends Fragment {
     ImageView docView;
     @BindView(R.id.progressBar)
     ProgressBar progressBar;
+    @BindView(R.id.ll6)
+    LinearLayout ll6;
 
     private File mDestinationFile;
     private String mUserChoosenTask = "";
@@ -311,7 +315,21 @@ public class EHSInitiateFragment extends Fragment {
                             ll8.setVisibility(View.VISIBLE);
                             actiontaken.setVisibility(View.VISIBLE);
                             actionTakenEt.setVisibility(View.VISIBLE);
-                        } else {
+                            categoryText.setVisibility(View.VISIBLE);
+                            categorySpinner.setVisibility(View.VISIBLE);
+                            ll6.setVisibility(View.VISIBLE);
+
+                        }
+                        else if(observationID.equals("3")){
+                            categoryText.setVisibility(View.GONE);
+                            categorySpinner.setVisibility(View.GONE);
+                            ll6.setVisibility(View.GONE);
+                            subCategorySpinner.setVisibility(View.GONE);
+                            subCategorytext.setVisibility(View.GONE);
+                            ll7.setVisibility(View.GONE);
+
+                        }
+                        else {
                             categories.clear();
                             ehsCategories.clear();
                             categories.add("Select");
@@ -324,6 +342,10 @@ public class EHSInitiateFragment extends Fragment {
                             ll8.setVisibility(View.GONE);
                             actiontaken.setVisibility(View.GONE);
                             actionTakenEt.setVisibility(View.GONE);
+                            categoryText.setVisibility(View.VISIBLE);
+                            categorySpinner.setVisibility(View.VISIBLE);
+                            ll6.setVisibility(View.VISIBLE);
+
 
                         }
                         getCategories(observationID);
@@ -389,13 +411,18 @@ public class EHSInitiateFragment extends Fragment {
             Toast.makeText(getActivity(), "Type of Observation not selected", Toast.LENGTH_LONG).show();
             return;
         }
-        if (category != null && category.equals("Select") || category == null) {
-            Toast.makeText(getActivity(), "Category not selected", Toast.LENGTH_LONG).show();
-            return;
+        if (category != null && category.equals("Select") || category == null ) {
+            if(!obstype.equals("Near Miss Reporting")) {
+                Toast.makeText(getActivity(), "Category not selected", Toast.LENGTH_LONG).show();
+                return;
+            }
+
         }
         if (subcategory != null && subcategory.equals("Select")) {
-            Toast.makeText(getActivity(), "Sub Category not selected", Toast.LENGTH_LONG).show();
-            return;
+            if(!obstype.equals("Near Miss Reporting")) {
+                Toast.makeText(getActivity(), "Sub Category not selected", Toast.LENGTH_LONG).show();
+                return;
+            }
         }
         if (descriptionEdit.getText().toString().equals("")) {
             Toast.makeText(getActivity(), "Please fill some description", Toast.LENGTH_LONG).show();
@@ -409,6 +436,10 @@ public class EHSInitiateFragment extends Fragment {
             String[] min_am = incidencetime[1].split(" ");
             incidencemin = min_am[0];
             incidencezone = min_am[1];
+        }
+        if(observationID.equals("3")){
+            subCategoryID ="0";
+            catId="0";
         }
 
         if (submit.getText().equals("Submit")) {

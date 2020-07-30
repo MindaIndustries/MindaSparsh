@@ -12,8 +12,6 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-
-import com.minda.sparsh.EHSInitiate;
 import com.minda.sparsh.R;
 import com.minda.sparsh.fragment.EHSInitiateFragment;
 import com.minda.sparsh.model.EHSObsModel;
@@ -100,21 +98,7 @@ public class EHSObsAdapter extends RecyclerView.Adapter<EHSObsAdapter.ViewHolder
                             .addToBackStack(null)
                             .commit();
 
-             /*   Intent in = new Intent(mContext, EHSInitiate.class);
-                in.putExtra("obsDate", myObservations.get(i).getActDate());
-                in.putExtra("unit", myObservations.get(i).getUnitCode() + ":" + myObservations.get(i).getUnitName());
-                in.putExtra("typeOfObs", myObservations.get(i).getOBName());
-                in.putExtra("safetyOfficer", myObservations.get(i).getUnitSafetyOfficer());
-                in.putExtra("identifiedLoc", myObservations.get(i).getLocation());
-                in.putExtra("category", myObservations.get(i).getCatName());
-                in.putExtra("subCategory", myObservations.get(i).getSubCategoryID());
-                in.putExtra("description", myObservations.get(i).getDescription());
-                in.putExtra("actId", myObservations.get(i).getID());
-                in.putExtra("actNo", myObservations.get(i).getActNo());
-                in.putExtra("catId", myObservations.get(i).getCategoryID());
-                in.putExtra("obsId", myObservations.get(i).getObservationID());
-                mContext.startActivity(in);
-      */
+
                 }
             });
 

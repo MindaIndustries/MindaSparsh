@@ -88,8 +88,7 @@ public class EHS_Home extends BaseActivity {
     @OnClick(R.id.initiate_card)
     public void onClickInitiate() {
         if (Utility.isOnline(EHS_Home.this)) {
-            Intent in = new Intent(EHS_Home.this, EHSInitiate.class);
-            startActivity(in);
+
         } else {
             Toast.makeText(EHS_Home.this, "Please Check Your Network Connection", Toast.LENGTH_LONG).show();
 
@@ -100,8 +99,7 @@ public class EHS_Home extends BaseActivity {
     @OnClick(R.id.observation_card)
     public void onClickObservations() {
         if (Utility.isOnline(EHS_Home.this)) {
-            Intent in = new Intent(EHS_Home.this, EHSObservations.class);
-            startActivity(in);
+
         } else {
             Toast.makeText(EHS_Home.this, "Please Check Your Network Connection", Toast.LENGTH_LONG).show();
 

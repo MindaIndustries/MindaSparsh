@@ -156,7 +156,7 @@ public class RequestForAccessActivity extends AppCompatActivity implements View.
                         hiIAMGetCategoryApi(selectedItem.getRequestTypeId().toString(), "3");
                     } else {
                         sp_request_type_id = selectedItem.getRequestTypeId().toString();
-                        layAccessCategory.setVisibility(View.VISIBLE);
+                            layAccessCategory.setVisibility(View.VISIBLE);
                         layMultiAccessCategory.setVisibility(View.GONE);
                         hiIAMGetCategoryApi(selectedItem.getRequestTypeId().toString(), "1");
                     }

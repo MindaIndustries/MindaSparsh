@@ -420,8 +420,7 @@ public interface Interface {
                                                          @Query("CompanyName") String CompanyName, @Query("Address") String Address, @Query("City") String City,
                                                          @Query("PinCode") String PinCode, @Query("Gender") String Gender, @Query("Purpose") String Purpose,
                                                          @Query("TimeIn") String TimeIn, @Query("TimeOut") String TimeOut, @Query("VisitingDate") String VisitingDate,
-                                                         @Query("AppointmentDate") String AppointmentDate, @Query("UnitCode") String UnitCode, @Query("AddPerson") String AddPerson
-    );
+                                                         @Query("AppointmentDate") String AppointmentDate, @Query("UnitCode") String UnitCode, @Query("AddPerson") String AddPerson);
 
 
     @GET("IAMGetRequestType")

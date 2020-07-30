@@ -136,7 +136,7 @@ public class ManufacturingFragment extends Fragment {
                     if (userDetail_models != null && userDetail_models.size() != 0) {
                         DashBoardActivity.time = 1;
                         Intent intent = new Intent(getActivity(), AbnormalityAddressingActivity.class);
-                        intent.putExtra("EDOMAIN", userDetail_models.get(0).getDOMAIN());
+                        intent.putExtra(    "EDOMAIN", userDetail_models.get(0).getDOMAIN());
                         intent.putExtra("EBUSINESS", userDetail_models.get(0).getBUSINESS());
                         intent.putExtra("EPLANT", userDetail_models.get(0).getUNITCODE());
                         intent.putExtra("ADD", true);

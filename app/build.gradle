@@ -23,12 +23,13 @@ android {
         applicationId "com.minda.sparsh"
         minSdkVersion 14
         targetSdkVersion 28
-        versionCode 35
+        versionCode 36
         versionName "1.26"
     }
     buildTypes {
         release {
             minifyEnabled false
+            shrinkResources false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }

@@ -171,7 +171,6 @@ public class MainActivity extends AppCompatActivity {
 
         } else {
             wv_jagriti.loadUrl("http://drive.google.com/viewerng/viewer?embedded=true&url=" + url);
-
         }
     }
 

@@ -156,6 +156,7 @@
                     android:padding="5dp"
                     android:imeOptions="actionNext"
                     android:inputType="text"
+                    android:gravity="left|top|center"
                     ></EditText>
 
 
@@ -180,6 +181,7 @@
                     android:padding="5dp"
                     android:imeOptions="actionNext"
                     android:inputType="text"
+                    android:gravity="left|top|center"
                     android:background="@drawable/cardview_bg">
 
                 </EditText>
@@ -206,6 +208,16 @@
                     android:text="Attach related file"
                     />
 
+                <ImageView
+                    android:id="@+id/doc_view1"
+                    android:layout_below="@+id/existing_system_value"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:visibility="visible"
+                    android:layout_margin="5dp"
+                    />
+
+
 
                 <TextView
                     android:layout_marginTop="10dp"
@@ -214,7 +226,7 @@
                     android:textSize="16sp"
                     android:textColor="@color/black"
                     android:fontFamily="@font/museosans_300"
-                    android:layout_below="@+id/attachment1"
+                    android:layout_below="@+id/doc_view1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
 
@@ -229,6 +241,7 @@
                     android:imeOptions="actionNext"
                     android:inputType="text"
                     android:background="@drawable/cardview_bg"
+                    android:gravity="left|top|center"
                     ></EditText>
 
                 <ImageView
@@ -252,6 +265,14 @@
                     android:layout_toLeftOf="@+id/attachment2"
                     android:text="Attach related file"
                     />
+                <ImageView
+                    android:id="@+id/doc_view2"
+                    android:layout_below="@+id/proposed_system_value"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:visibility="visible"
+                    android:layout_margin="5dp"
+                    />
 
 
                 <TextView
@@ -261,7 +282,7 @@
                     android:textSize="16sp"
                     android:textColor="@color/black"
                     android:fontFamily="@font/museosans_300"
-                    android:layout_below="@+id/proposed_system_value"
+                    android:layout_below="@+id/doc_view2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
 
@@ -275,6 +296,7 @@
                     android:padding="5dp"
                     android:inputType="text"
                     android:imeOptions="actionDone"
+                    android:gravity="left|top|center"
                     android:background="@drawable/cardview_bg"
                     ></EditText>
                 <ImageView
@@ -284,7 +306,8 @@
                     android:src="@drawable/attach"
                     android:id="@+id/attachment3"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
+                    android:layout_height="wrap_content"
+                    />
 
                 <TextView
                     android:layout_marginTop="10dp"
@@ -300,9 +323,17 @@
                     />
 
 
+                <ImageView
+                    android:id="@+id/doc_view3"
+                    android:layout_below="@+id/benefit_value"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:visibility="visible"
+                    android:layout_margin="5dp"
+                    />
 
                 <Button
-                    android:layout_below="@+id/attachment3"
+                    android:layout_below="@+id/doc_view3"
                     android:layout_marginTop="30dp"
                     android:id="@+id/save"
                     android:text="Save"

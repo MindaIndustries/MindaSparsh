@@ -4,6 +4,19 @@
     android:layout_height="match_parent">
     <include layout="@layout/toolbar"/>
 
+    <RelativeLayout
+        android:layout_marginTop="?attr/actionBarSize"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:adjustViewBounds="true"
+            android:src="@drawable/birds"
+            android:scaleType="centerCrop"
+            />
+    </RelativeLayout>
+
     <ScrollView
         android:layout_marginTop="?android:attr/actionBarSize"
         android:layout_width="match_parent"
@@ -20,7 +33,7 @@
                 android:layout_height="1dp"/>
             <TextView
                 android:visibility="gone"
-                android:fontFamily="@font/museosans_500"
+                android:fontFamily="@font/museosans_300"
                 android:id="@+id/heading"
                 android:textSize="18sp"
                 android:text="Bottom-up Concern"
@@ -48,6 +61,8 @@
                 android:layout_toRightOf="@+id/view"
                 android:layout_height="wrap_content"
                 android:padding="5dp"
+                android:textSize="16sp"
+                android:fontFamily="@font/museosans_300"
                 android:gravity="center"
                 >
             </TextView>
@@ -83,6 +98,8 @@
                 android:layout_toRightOf="@+id/view"
                 android:layout_height="wrap_content"
                 android:padding="5dp"
+                android:textSize="16sp"
+                android:fontFamily="@font/museosans_300"
                 android:gravity="center"
                 >
             </TextView>
@@ -118,6 +135,9 @@
                 android:layout_toRightOf="@+id/view"
                 android:layout_height="wrap_content"
                 android:padding="5dp"
+                android:fontFamily="@font/museosans_300"
+                android:gravity="center"
+                android:textSize="16sp"
                 ></TextView>
 
             <LinearLayout
@@ -144,12 +164,14 @@
                 android:layout_marginTop="30dp"
                 android:id="@+id/responsible_spinner"
                 android:layout_below="@+id/ll2"
-                android:layout_marginLeft="-20dp"
                 android:layout_alignParentRight="true"
                 android:layout_width="match_parent"
                 android:layout_toRightOf="@+id/view"
                 android:layout_height="wrap_content"
                 android:padding="5dp"
+                android:fontFamily="@font/museosans_300"
+                android:gravity="center"
+                android:textSize="14sp"
                 ></TextView>
 
             <LinearLayout
@@ -184,6 +206,9 @@
                 android:layout_toRightOf="@+id/view"
                 android:layout_height="wrap_content"
                 android:padding="5dp"
+                android:textSize="16sp"
+                android:fontFamily="@font/museosans_300"
+                android:gravity="center"
                 ></TextView>
 
             <LinearLayout
@@ -217,6 +242,10 @@
                 android:layout_toRightOf="@+id/view"
                 android:layout_height="wrap_content"
                 android:padding="5dp"
+                android:textSize="16sp"
+                android:gravity="center"
+                android:fontFamily="@font/museosans_300"
+
                 ></TextView>
 
             <LinearLayout
@@ -248,8 +277,15 @@
                 android:layout_alignParentRight="true"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
+                android:textSize="16sp"
                 android:background="@drawable/cardview_bg"
+                android:singleLine="false"
+                android:overScrollMode="always"
+                android:scrollbarStyle="insideInset"
+                android:scrollbars="vertical"
                 android:padding="5dp"
+                android:fontFamily="@font/museosans_300"
+
                 ></TextView>
 
 
@@ -272,8 +308,36 @@
                 android:layout_width="match_parent"
                 android:layout_height="100dp"
                 android:padding="5dp"
+                android:textSize="16sp"
+                android:singleLine="false"
+                android:fontFamily="@font/museosans_300"
+                android:overScrollMode="always"
+                android:scrollbarStyle="insideInset"
+                android:scrollbars="vertical"
                 android:background="@drawable/cardview_bg"
                 ></TextView>
+
+            <TextView
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_below="@+id/existing_system_value"
+                android:id="@+id/attachtext1"
+                android:layout_width="wrap_content"
+                android:textSize="16sp"
+                android:layout_height="wrap_content"
+                android:text="Attach related file"
+                android:layout_alignParentRight="true"
+                />
+
+
+            <ImageView
+                android:id="@+id/doc_view1"
+                android:layout_below="@+id/existing_system_value"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:visibility="visible"
+                android:layout_margin="5dp"
+                />
 
 
             <TextView
@@ -283,7 +347,7 @@
                 android:textSize="16sp"
                 android:textColor="@color/black"
                 android:fontFamily="@font/museosans_300"
-                android:layout_below="@+id/existing_system_value"
+                android:layout_below="@+id/doc_view1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
 
@@ -295,9 +359,37 @@
                 android:layout_width="match_parent"
                 android:layout_height="100dp"
                 android:padding="5dp"
+                android:textSize="16sp"
+                android:fontFamily="@font/museosans_300"
+                android:singleLine="false"
+                android:overScrollMode="always"
+                android:scrollbarStyle="insideInset"
+                android:scrollbars="vertical"
                 android:background="@drawable/cardview_bg"
                 ></TextView>
 
+            <TextView
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_below="@+id/proposed_system_value"
+                android:id="@+id/attachtext2"
+                android:textSize="16sp"
+                android:fontFamily="@font/museosans_300"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Attach related file"
+                android:layout_alignParentRight="true"
+                />
+
+
+            <ImageView
+                android:id="@+id/doc_view2"
+                android:layout_below="@+id/proposed_system_value"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:visibility="visible"
+                android:layout_margin="5dp"
+                />
 
 
             <TextView
@@ -307,11 +399,12 @@
                 android:textSize="16sp"
                 android:textColor="@color/black"
                 android:fontFamily="@font/museosans_300"
-                android:layout_below="@+id/proposed_system_value"
+                android:layout_below="@+id/doc_view2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
 
             <TextView
+                android:textSize="16sp"
                 android:layout_marginTop="10dp"
                 android:id="@+id/benefit_value"
                 android:layout_below="@+id/benefit"
@@ -319,8 +412,318 @@
                 android:layout_width="match_parent"
                 android:layout_height="100dp"
                 android:padding="5dp"
+                android:singleLine="false"
+                android:overScrollMode="always"
+                android:scrollbarStyle="insideInset"
+                android:scrollbars="vertical"
                 android:background="@drawable/cardview_bg"
+                android:fontFamily="@font/museosans_300"
+
                 ></TextView>
+
+
+            <TextView
+                android:textSize="16sp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_below="@+id/benefit_value"
+                android:id="@+id/attachtext3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Attach related file"
+                android:layout_alignParentRight="true"
+                android:fontFamily="@font/museosans_300"
+                />
+
+
+            <ImageView
+                android:id="@+id/doc_view3"
+                android:layout_below="@+id/benefit_value"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:visibility="visible"
+                android:layout_margin="5dp"
+                />
+            <RelativeLayout
+                android:layout_marginTop="10dp"
+                android:id="@+id/assignedDetails"
+                android:layout_below="@+id/doc_view3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:id="@+id/action_suggestion_assigned"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Action Suggestion:"
+                    android:textSize="16sp"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/museosans_300"/>
+                <TextView
+                    android:id="@+id/action_suggestion_assigned_value"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="16sp"
+                    android:layout_marginTop="10dp"
+                    android:padding="5dp"
+                    android:singleLine="false"
+                    android:layout_below="@+id/action_suggestion_assigned"
+                    android:overScrollMode="always"
+                    android:scrollbarStyle="insideInset"
+                    android:scrollbars="vertical"
+                    android:background="@drawable/cardview_bg"
+                    android:fontFamily="@font/museosans_300"
+                    />
+
+                <TextView
+                    android:layout_below="@+id/action_suggestion_assigned_value"
+                    android:id="@+id/assigned_to"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Assigned To:"
+                    android:textSize="16sp"
+                    android:layout_marginTop="10dp"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/museosans_300"/>
+                <TextView
+                    android:layout_below="@+id/assigned_to"
+                    android:id="@+id/assigned_to_value"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="16sp"
+                    android:layout_marginTop="10dp"
+                    android:padding="5dp"
+                    android:singleLine="false"
+                    android:overScrollMode="always"
+                    android:scrollbarStyle="insideInset"
+                    android:scrollbars="vertical"
+                    android:background="@drawable/cardview_bg"
+                    android:fontFamily="@font/museosans_300"
+                    />
+                <TextView
+                    android:layout_below="@+id/assigned_to_value"
+                    android:id="@+id/target_dated"
+                    android:layout_marginTop="10dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Target Date:"
+                    android:textSize="16sp"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/museosans_300"/>
+                <TextView
+                    android:layout_below="@+id/target_dated"
+                    android:id="@+id/target_dated_value"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="16sp"
+                    android:layout_marginTop="10dp"
+                    android:padding="5dp"
+                    android:singleLine="false"
+                    android:overScrollMode="always"
+                    android:scrollbarStyle="insideInset"
+                    android:scrollbars="vertical"
+                    android:background="@drawable/cardview_bg"
+                    android:fontFamily="@font/museosans_300"
+                    />
+                <TextView
+                    android:layout_below="@+id/target_dated_value"
+                    android:id="@+id/remarked"
+                    android:layout_marginTop="10dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Remarks:"
+                    android:textSize="16sp"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/museosans_300"/>
+                <TextView
+                    android:layout_below="@+id/remarked"
+                    android:id="@+id/remarked_value"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="16sp"
+                    android:layout_marginTop="10dp"
+                    android:padding="5dp"
+                    android:singleLine="false"
+                    android:overScrollMode="always"
+                    android:scrollbarStyle="insideInset"
+                    android:scrollbars="vertical"
+                    android:background="@drawable/cardview_bg"
+                    android:fontFamily="@font/museosans_300"
+                    />
+
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_marginTop="10dp"
+                android:visibility="gone"
+                android:id="@+id/assign_detail_layout"
+                android:layout_below="@+id/doc_view3"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+            <TextView
+                android:id="@+id/assign_details"
+                android:text="Assign Details"
+                android:fontFamily="@font/museosans_700"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/red_text"
+                android:textSize="18sp"
+                />
+
+            <TextView
+                android:id="@+id/assign_to"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Assign To:"
+                android:layout_below="@+id/assign_details"
+                android:textSize="16sp"
+                android:fontFamily="@font/museosans_300"
+
+                />
+
+            <EditText
+                android:layout_marginTop="10dp"
+                android:id="@+id/assign_to_value"
+                android:layout_below="@+id/assign_to"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/cardview_bg"
+                android:padding="5dp"
+                android:textSize="16sp"
+                android:imeOptions="actionNext"
+                android:inputType="text"
+                ></EditText>
+                <TextView
+                    android:id="@+id/target_date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/assign_to_value"
+                    android:text="Target Date:"
+                    android:textSize="16sp"
+                    android:layout_marginTop="10dp"
+                    android:fontFamily="@font/museosans_300"
+                    />
+                <EditText
+                    android:layout_marginTop="10dp"
+                    android:id="@+id/target_date_value"
+                    android:layout_below="@+id/target_date"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/cardview_bg"
+                    android:padding="5dp"
+                    android:textSize="16sp"
+                    android:imeOptions="actionNext"
+                    android:inputType="text"
+                    ></EditText>
+                <TextView
+                    android:layout_marginTop="10dp"
+                    android:layout_below="@+id/target_date_value"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Action Suggestion:"
+                    android:id="@+id/action_suggestion"
+                    android:fontFamily="@font/museosans_300"
+                    android:textSize="16sp"
+                    />
+                <EditText
+                    android:layout_marginTop="10dp"
+                    android:id="@+id/action_suggestion_value"
+                    android:layout_below="@+id/action_suggestion"
+                    android:layout_width="match_parent"
+                    android:layout_height="80dp"
+                    android:scrollbars="vertical"
+                    android:background="@drawable/cardview_bg"
+                    android:padding="5dp"
+                    android:imeOptions="actionNext"
+                    android:inputType="text"
+                    android:textSize="16sp"
+                    ></EditText>
+                <TextView
+                    android:layout_below="@+id/action_suggestion_value"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Remarks:"
+                    android:fontFamily="@font/museosans_300"
+                    android:id="@+id/remarks"
+                    android:textSize="16sp"
+                    android:layout_marginTop="10dp"
+                    />
+                <EditText
+                    android:layout_marginTop="10dp"
+                    android:id="@+id/remarks_value"
+                    android:layout_below="@+id/remarks"
+                    android:layout_width="match_parent"
+                    android:layout_height="80dp"
+                    android:scrollbars="vertical"
+                    android:background="@drawable/cardview_bg"
+                    android:padding="5dp"
+                    android:imeOptions="actionNext"
+                    android:inputType="text"
+                    android:textSize="16sp"
+                    ></EditText>
+
+            </RelativeLayout>
+
+
+                <LinearLayout
+                    android:visibility="gone"
+                    android:id="@+id/btn_layout"
+                    android:layout_marginTop="20dp"
+                    android:layout_below="@+id/assign_detail_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center">
+
+                    <Button
+                        android:id="@+id/btn_cancel"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="5dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/roundcornerbutton"
+                        android:text="Cancel"
+                        android:textSize="16sp"
+                        android:textColor="@color/white" />
+
+                    <View
+                        android:layout_width="1dp"
+                        android:layout_height="match_parent"
+                         />
+
+                    <Button
+                        android:id="@+id/btn_complete"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:layout_weight="1"
+                        android:textSize="16sp"
+                        android:background="@drawable/roundcornerbutton"
+                        android:text="Complete"
+                        android:textColor="@color/white" />
+
+
+                    <View
+                        android:layout_width="1dp"
+                        android:layout_height="match_parent"
+                         />
+
+
+                    <Button
+                        android:id="@+id/btn_assign"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:background="@drawable/roundcornerbutton"
+                        android:text="Assign"
+                        android:textColor="@color/white"
+                        android:layout_weight="1"
+                        android:textSize="16sp"
+                        />
+
+
+
+                </LinearLayout>
+
 
 
         </RelativeLayout>

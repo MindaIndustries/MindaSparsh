@@ -1,29 +1,17 @@
 package com.minda.sparsh;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
-
-import com.minda.sparsh.Adapter.BottomUpConcernAdapter;
-import com.minda.sparsh.customview.NoDefaultSpinner;
-import com.minda.sparsh.fragment.EHSInitiateFragment;
+import com.minda.sparsh.fragment.AssignConcernFragment;
 import com.minda.sparsh.fragment.NewConcernFragment;
 import com.minda.sparsh.fragment.ViewConcernFragment;
-
-import java.util.ArrayList;
-import java.util.Calendar;
-
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import butterknife.OnClick;
 
 public class BottomUpConcernActivity extends BaseActivity {
     @BindView(R.id.toolbar)
@@ -50,13 +38,15 @@ public class BottomUpConcernActivity extends BaseActivity {
             public void onTabSelected(TabLayout.Tab tab) {
                 if (tab.getPosition() == 0) {
                     getSupportFragmentManager().beginTransaction().replace(R.id.framelayout, new NewConcernFragment()).commitAllowingStateLoss();
-
                 }
-                else{
+
+                else if(tab.getPosition()==1){
                     getSupportFragmentManager().beginTransaction().replace(R.id.framelayout, new ViewConcernFragment()).commitAllowingStateLoss();
-
                 }
 
+                else{
+                    getSupportFragmentManager().beginTransaction().replace(R.id.framelayout, new AssignConcernFragment()).commitAllowingStateLoss();
+                }
             }
 
             @Override
@@ -71,6 +61,24 @@ public class BottomUpConcernActivity extends BaseActivity {
         });
 
     }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (resultCode == Activity.RESULT_OK) {
+            switch (requestCode) {
+                case 1:
+                case 2:
+                case 3:
+                    NewConcernFragment ehsInitiateFragment = new NewConcernFragment();
+                    ehsInitiateFragment.onActivityResult(requestCode, resultCode, data);
+                    break;
+            }
+        }
+
+        super.onActivityResult(requestCode, resultCode, data);
+
+    }
+
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {

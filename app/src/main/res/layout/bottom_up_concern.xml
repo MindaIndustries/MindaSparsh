@@ -5,6 +5,19 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <include layout="@layout/toolbar1"
         />
+
+    <RelativeLayout
+        android:layout_marginTop="?attr/actionBarSize"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:adjustViewBounds="true"
+            android:src="@drawable/birds"
+            android:scaleType="centerCrop"
+            />
+    </RelativeLayout>
     <RelativeLayout
         android:layout_marginTop="?attr/actionBarSize"
         android:layout_width="match_parent"
@@ -25,19 +38,24 @@
             app:tabSelectedTextColor="#ffffff">
 
             <android.support.design.widget.TabItem
-                android:id="@+id/dashboardscreen_my_car_item"
+                android:id="@+id/new_concern"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="New Concern"
                 />
-
             <android.support.design.widget.TabItem
-                android:id="@+id/dashboardscreen_share_item"
+                android:id="@+id/view_concern"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="View Concern"
                 />
-
+           <!-- <android.support.design.widget.TabItem
+                android:id="@+id/assign_concern"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Assigned Concern"
+                />
+-->
         </android.support.design.widget.TabLayout>
 
         <FrameLayout
