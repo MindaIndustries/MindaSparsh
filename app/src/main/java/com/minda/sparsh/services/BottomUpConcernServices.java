@@ -4,9 +4,11 @@ import android.content.Context;
 import android.os.Environment;
 import android.util.Log;
 
+import com.minda.sparsh.RetrofitClient;
 import com.minda.sparsh.client.BottomUpClient;
 import com.minda.sparsh.listener.CarotResponse;
 import com.minda.sparsh.listener.OnTaskComplete;
+import com.minda.sparsh.model.AssignedConcernModel;
 import com.minda.sparsh.model.BottomUpConcern;
 import com.minda.sparsh.model.EHSUnitModel;
 import com.minda.sparsh.model.SixMModel;
@@ -41,7 +43,6 @@ public class BottomUpConcernServices {
                     carotResponse.setData(response.body());
                 }
                 onTaskComplete.onTaskComplte(carotResponse);
-
             }
 
             @Override
@@ -70,7 +71,6 @@ public class BottomUpConcernServices {
                     carotResponse.setData(response.body());
                 }
                 onTaskComplete.onTaskComplte(carotResponse);
-
             }
 
             @Override
@@ -194,6 +194,112 @@ public class BottomUpConcernServices {
         }
     }
 
+    public void getAssignedConcerns(final OnTaskComplete onTaskComplete, String empcode){
+
+        BottomUpClient bottomUpClient = RetrofitClient2.createServiceBottomUponcern(BottomUpClient.class);
+        Call<List<BottomUpConcern>> call = bottomUpClient.getAssignedConcerns(empcode);
+        call.enqueue(new Callback<List<BottomUpConcern>>() {
+            @Override
+            public void onResponse(Call<List<BottomUpConcern>> call, Response<List<BottomUpConcern>> response) {
+                CarotResponse carotResponse = new CarotResponse();
+                carotResponse.setStatuscode(response.code());
+                if (response.code() == HttpsURLConnection.HTTP_OK) {
+                    carotResponse.setData(response.body());
+                }
+                onTaskComplete.onTaskComplte(carotResponse);
+            }
+
+            @Override
+            public void onFailure(Call<List<BottomUpConcern>> call, Throwable t) {
+                CarotResponse carotResponse = new CarotResponse();
+                if (t instanceof IOException) {
+                    carotResponse.setMessage("Please hold on a moment, the internet connectivity seems to be slow");
+                }
+                onTaskComplete.onTaskComplte(carotResponse);
+            }
+        });
+
+
+
+    }
+    public void assignConcern(final OnTaskComplete onTaskComplete, String concernNo, String empCode, String targetDate){
+        BottomUpClient bottomUpClient = RetrofitClient2.createServiceBottomUponcern(BottomUpClient.class);
+        Call<String> call = bottomUpClient.assignAConcern(concernNo,empCode,targetDate);
+        call.enqueue(new Callback<String>() {
+            @Override
+            public void onResponse(Call<String> call, Response<String> response) {
+                CarotResponse carotResponse = new CarotResponse();
+                carotResponse.setStatuscode(response.code());
+                if (response.code() == HttpsURLConnection.HTTP_OK) {
+                    carotResponse.setData(response.body());
+                }
+                onTaskComplete.onTaskComplte(carotResponse);
+            }
+
+            @Override
+            public void onFailure(Call<String> call, Throwable t) {
+                CarotResponse carotResponse = new CarotResponse();
+                if (t instanceof IOException) {
+                    carotResponse.setMessage("Please hold on a moment, the internet connectivity seems to be slow");
+                }
+                onTaskComplete.onTaskComplte(carotResponse);
+            }
+        });
+    }
+
+    public void completeConcern(final OnTaskComplete onTaskComplete, String concernNo){
+        BottomUpClient bottomUpClient = RetrofitClient2.createServiceBottomUponcern(BottomUpClient.class);
+        Call<String> call = bottomUpClient.markCompleteConcern(concernNo);
+        call.enqueue(new Callback<String>() {
+            @Override
+            public void onResponse(Call<String> call, Response<String> response) {
+                CarotResponse carotResponse = new CarotResponse();
+                carotResponse.setStatuscode(response.code());
+                if (response.code() == HttpsURLConnection.HTTP_OK) {
+                    carotResponse.setData(response.body());
+                }
+                onTaskComplete.onTaskComplte(carotResponse);
+            }
+
+            @Override
+            public void onFailure(Call<String> call, Throwable t) {
+                CarotResponse carotResponse = new CarotResponse();
+                if (t instanceof IOException) {
+                    carotResponse.setMessage("Please hold on a moment, the internet connectivity seems to be slow");
+                }
+                onTaskComplete.onTaskComplte(carotResponse);
+            }
+        });
+
+    }
+
+
+    public void submitSuggestion(final OnTaskComplete onTaskComplete, String suggestion, String empCode, String CostAmount, String other, String FileName, String FileType, String FileByte){
+        BottomUpClient bottomUpClient = RetrofitClient2.createServiceSuggestionBox(BottomUpClient.class);
+        Call<String> call = bottomUpClient.submitSuggestion(suggestion,empCode,CostAmount,other,FileName,FileType,FileByte);
+        call.enqueue(new Callback<String>() {
+            @Override
+            public void onResponse(Call<String> call, Response<String> response) {
+                CarotResponse carotResponse = new CarotResponse();
+                carotResponse.setStatuscode(response.code());
+                if (response.code() == HttpsURLConnection.HTTP_OK) {
+                    carotResponse.setData(response.body());
+                }
+                onTaskComplete.onTaskComplte(carotResponse);
+
+            }
+
+            @Override
+            public void onFailure(Call<String> call, Throwable t) {
+                CarotResponse carotResponse = new CarotResponse();
+                if (t instanceof IOException) {
+                    carotResponse.setMessage("Please hold on a moment, the internet connectivity seems to be slow");
+                }
+                onTaskComplete.onTaskComplte(carotResponse);
+
+            }
+        });
+    }
 }
 
 

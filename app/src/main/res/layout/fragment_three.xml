@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.minda.sparsh.fragment.ThreeFragment">
+    >
     <!--<LinearLayout-->
     <!--android:layout_width="match_parent"-->
     <!--android:layout_height="wrap_content"-->
@@ -76,6 +76,7 @@
 
 
                     <LinearLayout
+                        android:visibility="gone"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -97,8 +98,37 @@
                             android:gravity="center"
                             android:text="Attendance and Leave Management System"
                             android:textColor="#000000"
-                            android:textSize="17sp" />
+                            android:textSize="12sp" />
                     </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <ImageButton
+                            android:visibility="visible"
+                            android:id="@+id/bottom_up"
+                            android:layout_width="100dp"
+                            android:layout_height="100dp"
+                            android:layout_marginRight="5dp"
+                            android:background="@drawable/bottomupconcern" />
+
+                        <TextView
+                            android:gravity="center"
+                            android:visibility="visible"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="5dp"
+                            android:layout_marginBottom="10dp"
+                            android:fontFamily="@font/museosans_300"
+                            android:text="Bottom Up Concern"
+                            android:textColor="#000000"
+                            android:textSize="12sp" />
+                    </LinearLayout>
+
 
                     <View
                         android:layout_width="1dp"
@@ -117,8 +147,8 @@
 
                         <ImageButton
                             android:id="@+id/Ib_visitor"
-                            android:layout_width="120dp"
-                            android:layout_height="120dp"
+                            android:layout_width="100dp"
+                            android:layout_height="100dp"
                             android:layout_marginRight="5dp"
                             android:background="@drawable/visitor_icons" />
 
@@ -131,7 +161,7 @@
                             android:gravity="center"
                             android:text="Visitor Management"
                             android:textColor="#000000"
-                            android:textSize="17sp" />
+                            android:textSize="12sp" />
                     </LinearLayout>
                     <!--android:visibility="gone"-->
                     <LinearLayout
@@ -173,19 +203,20 @@
                     android:gravity="center_horizontal"
                     android:orientation="horizontal">
 
-
                     <LinearLayout
+                        android:visibility="visible"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
                         android:layout_weight="1"
+                        android:layout_marginTop="10dp"
                         android:gravity="center"
                         android:orientation="vertical">
 
                         <ImageButton
-                            android:layout_width="120dp"
-                            android:layout_height="120dp"
-                            android:background="@drawable/meeting_icons" />
+                            android:id="@+id/suggestion_box"
+                            android:layout_width="100dp"
+                            android:layout_height="100dp"
+                            android:background="@drawable/suggestion_box" />
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -193,10 +224,13 @@
                             android:layout_marginTop="5dp"
                             android:layout_marginBottom="10dp"
                             android:fontFamily="@font/museosans_300"
-                            android:text="Meetings"
+                            android:gravity="center"
+                            android:text="Cost Cutting Suggestion Box"
                             android:textColor="#000000"
-                            android:textSize="17sp" />
+                            android:textSize="12sp" />
                     </LinearLayout>
+
+
 
                     <View
                         android:layout_width="1dp"
@@ -214,25 +248,23 @@
                         android:orientation="vertical">
 
                         <ImageButton
-                            android:visibility="visible"
-                            android:id="@+id/bottom_up"
-                            android:layout_width="120dp"
-                            android:layout_height="120dp"
-                            android:layout_marginRight="5dp"
-                            android:background="@drawable/bottomupconcern" />
+                            android:id="@+id/meetings"
+                            android:layout_width="100dp"
+                            android:layout_height="100dp"
+                            android:background="@drawable/meeting_icons" />
 
                         <TextView
-                            android:gravity="center"
-                            android:visibility="visible"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="5dp"
                             android:layout_marginBottom="10dp"
                             android:fontFamily="@font/museosans_300"
-                            android:text="Bottom Up Concern"
+                            android:text="Meetings"
                             android:textColor="#000000"
-                            android:textSize="17sp" />
+                            android:textSize="12sp" />
                     </LinearLayout>
+
+
                 </LinearLayout>
 
                 <View

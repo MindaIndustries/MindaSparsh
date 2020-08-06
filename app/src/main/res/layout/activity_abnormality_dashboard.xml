@@ -1,14 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.minda.sparsh.util.AbnormalityDashboard"
-    android:orientation="vertical">
+    >
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:adjustViewBounds="true"
+            android:src="@drawable/birds"
+            android:scaleType="centerCrop"
+            />
+        <LinearLayout
+            android:background="@color/translucent"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+
+    </RelativeLayout>
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="?attr/actionBarSize"
         android:background="@color/colorPrimary"
         android:gravity="center_vertical">
         <ImageView
@@ -137,5 +155,5 @@
             android:textStyle="bold" />
 
     </LinearLayout>
-
-</LinearLayout>
+    </LinearLayout>
+</RelativeLayout>

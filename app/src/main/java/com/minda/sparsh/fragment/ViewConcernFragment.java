@@ -10,6 +10,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
 
 import com.minda.sparsh.Adapter.BottomUpConcernAdapter;
 import com.minda.sparsh.R;
@@ -31,6 +32,8 @@ import static android.content.Context.MODE_PRIVATE;
 public class ViewConcernFragment extends Fragment {
     @BindView(R.id.bottomup_rv)
     RecyclerView bottomupRv;
+    @BindView(R.id.progressBar)
+    ProgressBar progressBar;
     BottomUpConcernAdapter bottomUpConcernAdapter;
     ArrayList<BottomUpConcern> concerns = new ArrayList<BottomUpConcern>();
     SharedPreferences myPref;
@@ -57,6 +60,7 @@ public class ViewConcernFragment extends Fragment {
 
 
     public void getConcerns(){
+        progressBar.setVisibility(View.VISIBLE);
 
         concerns.clear();
         bottomupRv.getRecycledViewPool().clear();
@@ -73,6 +77,7 @@ public class ViewConcernFragment extends Fragment {
                     }
                 }
                 bottomUpConcernAdapter.notifyDataSetChanged();
+                progressBar.setVisibility(View.GONE);
 
             }
         },empCode);

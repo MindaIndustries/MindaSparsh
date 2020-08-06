@@ -27,6 +27,7 @@ import com.minda.sparsh.util.AbnormalityDashboard;
 import com.minda.sparsh.util.RetrofitClient2;
 import com.minda.sparsh.util.Utility;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.Set;
 
@@ -152,6 +153,9 @@ public class ManufacturingFragment extends Fragment {
                 public void onFailure(Call<List<UserDetail_Model>> call, Throwable t) {
 
                     showProgress(false);
+                    if (t instanceof IOException) {
+                        Toast.makeText(getActivity(), "Please hold on a moment, the internet connectivity seems to be slow",Toast.LENGTH_LONG).show();
+                    }
 
                 }
             });

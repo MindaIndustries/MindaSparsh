@@ -40,6 +40,7 @@
             android:textColor="#000000"/>
     </group>
     <group android:checkableBehavior="single"
+        android:visible="false"
         >
         <item android:title="Finance"
             android:id="@+id/nav_finance"
@@ -54,6 +55,7 @@
 
 
     <group android:checkableBehavior="single"
+        android:visible="false"
         >
         <item android:title="Support"
             android:id="@+id/nav_support"
@@ -61,6 +63,7 @@
     </group>
 
     <group android:checkableBehavior="single"
+        android:visible="false"
         >
         <item android:title="Setting"
             android:id="@+id/nav_setting"

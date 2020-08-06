@@ -15,5 +15,6 @@
     <color name="visitor_bg_color">#F9F9F9</color>
     <color name="black">#090808</color>
     <color name="red_text">#d8241c</color>
+    <color name="translucent">#1A000000</color>
 
 </resources>

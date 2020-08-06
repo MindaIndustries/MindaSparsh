@@ -158,6 +158,9 @@
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar"
             />
+        <activity android:name=".SuggestionBox"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"/>
 
 
 

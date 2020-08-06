@@ -26,9 +26,11 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
+import android.text.method.ScrollingMovementMethod;
 import android.util.Base64;
 import android.util.Base64OutputStream;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -36,6 +38,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -105,6 +108,8 @@ public class NewConcernFragment extends Fragment {
     ImageView docView2;
     @BindView(R.id.doc_view3)
     ImageView docView3;
+    @BindView(R.id.progressBar)
+    ProgressBar progressBar;
 
 
 
@@ -144,10 +149,61 @@ public class NewConcernFragment extends Fragment {
         empCode = myPref.getString("Id", "Id");
         username = myPref.getString("username","");
 
+        msmReferenceValue.setMovementMethod(new ScrollingMovementMethod());
+        existingSystemValue.setMovementMethod(new ScrollingMovementMethod());
+        proposedSystemValue.setMovementMethod(new ScrollingMovementMethod());
+        benefitValue.setMovementMethod(new ScrollingMovementMethod());
+        ScrollingMovementMethod.getInstance();
+        msmReferenceValue.setOnTouchListener(new View.OnTouchListener() {
+
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                msmReferenceValue.getParent().requestDisallowInterceptTouchEvent(true);
+                return false;
+            }
+
+
+        });
+        existingSystemValue.setOnTouchListener(new View.OnTouchListener() {
+
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                existingSystemValue.getParent().requestDisallowInterceptTouchEvent(true);
+                return false;
+            }
+
+
+        });
+        proposedSystemValue.setOnTouchListener(new View.OnTouchListener() {
+
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                proposedSystemValue.getParent().requestDisallowInterceptTouchEvent(true);
+                return false;
+            }
+
+
+        });
+
+        benefitValue.setOnTouchListener(new View.OnTouchListener() {
+
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                benefitValue.getParent().requestDisallowInterceptTouchEvent(true);
+                return false;
+            }
+
+
+        });
+
+
+
+
         initUnitSpinner();
         getUnits();
         initSixMSpinner();
         getSixMList();
+
 
 
         unitSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -189,12 +245,49 @@ public class NewConcernFragment extends Fragment {
     }
 
     @OnClick(R.id.save)
-    public void onClickSave(){
-        saveConcern(empCode,concernDateText.getText().toString(),unitcode,department,msmReferenceValue.getText().toString(),existingSystemValue.getText().toString(),proposedSystemValue.getText().toString(),benefitValue.getText().toString(),esFilename,esFilebyte,psfilename,psfilebyte,benFilename,benfilebyte,username);
+    public void onClickSave() {
+        if (msmReferenceValue.getText().toString().length() == 0) {
+            Toast.makeText(getActivity(), "MSM/ Reference needs to be filled", Toast.LENGTH_LONG).show();
+            return;
+        }
+        if (existingSystemValue.getText().toString().length() == 0) {
+            Toast.makeText(getActivity(), "Existing System needs to be filled", Toast.LENGTH_LONG).show();
+            return;
+        }
+        if (proposedSystemValue.getText().toString().length() == 0) {
+            Toast.makeText(getActivity(), "Proposed System needs to be filled", Toast.LENGTH_LONG).show();
+            return;
+        }
+
+        if (benefitValue.getText().toString().length() == 0) {
+            Toast.makeText(getActivity(), "Benefit needs to be filled", Toast.LENGTH_LONG).show();
+            return;
+        }
+        if (Utility.isOnline(getActivity())) {
+            saveConcern(empCode, concernDateText.getText().toString(), unitcode, department, msmReferenceValue.getText().toString(), existingSystemValue.getText().toString(), proposedSystemValue.getText().toString(), benefitValue.getText().toString(), esFilename, esFilebyte, psfilename, psfilebyte, benFilename, benfilebyte, username);
+        }
+        else{
+            Toast.makeText(getActivity(), "Please Check Your Network Connection", Toast.LENGTH_LONG).show();
+        }
+    }
+
+    @OnClick(R.id.reset)
+    public void onClickReset(){
+        Intent in = new Intent(getActivity(), BottomUpConcernActivity.class);
+        in.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(in);
+        getActivity().finish();
     }
 
     @OnClick(R.id.attachtext1)
     public void onClickattach1(){
+        attachtext = attachtext1;
+        selectFile();
+
+    }
+
+    @OnClick(R.id.attachment1)
+    public void onClickattacmnt1(){
         attachtext = attachtext1;
         selectFile();
 
@@ -207,10 +300,24 @@ public class NewConcernFragment extends Fragment {
 
     }
 
+    @OnClick(R.id.attachment2)
+    public void onClickattcmnt2(){
+        attachtext = attachtext2;
+        selectFile();
+    }
+
+
     @OnClick(R.id.attachtext3)
     public void onClickattach3(){
         attachtext = attachtext3;
         selectFile();
+    }
+
+    @OnClick(R.id.attachment3)
+    public void onClickattcmnt3(){
+        attachtext = attachtext3;
+        selectFile();
+
     }
 
     public String getlogDate(long milliseconds) {
@@ -370,7 +477,7 @@ public class NewConcernFragment extends Fragment {
     }
 
     public void saveConcern(String RaisedBy, String RaisedOn, String Unit, String Department, String ReferenceNo, String ExistingSystem, String ProposedSystem, String Benefit, String ESFile, String ESFileByte, String PSFile, String PSFileByte, String BenFile, String BenFileByte, String FirstName){
-
+        progressBar.setVisibility(View.VISIBLE);
         BottomUpConcernServices bottomUpConcernServices = new BottomUpConcernServices();
         bottomUpConcernServices.saveConcern(new OnTaskComplete() {
             @Override
@@ -378,6 +485,7 @@ public class NewConcernFragment extends Fragment {
                 if(carotResponse.getStatuscode()==HttpsURLConnection.HTTP_OK){
 
                 }
+                progressBar.setVisibility(View.GONE);
                 new Handler().postDelayed(new Runnable() {
                     @Override
                     public void run() {
@@ -393,6 +501,7 @@ public class NewConcernFragment extends Fragment {
                 }, 1000);
 
             }
+
         },RaisedBy,RaisedOn,Unit,Department,ReferenceNo,ExistingSystem,ProposedSystem,Benefit,ESFile,ESFileByte,PSFile,PSFileByte,BenFile,BenFileByte,FirstName);
 
     }
@@ -518,6 +627,7 @@ public class NewConcernFragment extends Fragment {
             attachtext1.setText(attachmentName);
             esFilename = attachmentName;
             esFilebyte = Base64.encodeToString(bytes, Base64.NO_WRAP);
+            docView1.setVisibility(View.VISIBLE);
             docView1.setImageBitmap(thumbnail);
 
 
@@ -526,6 +636,7 @@ public class NewConcernFragment extends Fragment {
             attachtext2.setText(attachmentName);
             psfilename = attachmentName;
             psfilebyte = Base64.encodeToString(bytes, Base64.NO_WRAP);
+            docView2.setVisibility(View.VISIBLE);
             docView2.setImageBitmap(thumbnail);
 
 
@@ -534,6 +645,7 @@ public class NewConcernFragment extends Fragment {
             benFilename = attachmentName;
             attachtext3.setText(attachmentName);
             benfilebyte = Base64.encodeToString(bytes, Base64.NO_WRAP);
+            docView3.setVisibility(View.VISIBLE);
             docView3.setImageBitmap(thumbnail);
 
 
@@ -613,18 +725,21 @@ public class NewConcernFragment extends Fragment {
             attachtext1.setText(attachmentName);
             esFilename = attachmentName;
             esFilebyte = Base64.encodeToString(bytes, Base64.NO_WRAP);
+            docView1.setVisibility(View.VISIBLE);
             docView1.setImageBitmap(bm);
         }
         else if (attachtext == attachtext2){
             attachtext2.setText(attachmentName);
             psfilename = attachmentName;
             psfilebyte = Base64.encodeToString(bytes, Base64.NO_WRAP);
+            docView2.setVisibility(View.VISIBLE);
             docView2.setImageBitmap(bm);
         }
         else{
             benFilename = attachmentName;
             attachtext3.setText(attachmentName);
             benfilebyte = Base64.encodeToString(bytes, Base64.NO_WRAP);
+            docView3.setVisibility(View.VISIBLE);
             docView3.setImageBitmap(bm);
         }
 
@@ -691,35 +806,6 @@ public class NewConcernFragment extends Fragment {
      //   return getStringFile(file);
     }
 
-
-
-
-    public String getStringFile(File f) {
-        InputStream inputStream = null;
-        String encodedFile = "", lastVal;
-        try {
-            inputStream = new FileInputStream(f.getPath());
-
-            byte[] buffer = new byte[10240];//specify the size to allow
-            int bytesRead;
-            ByteArrayOutputStream output = new ByteArrayOutputStream();
-            Base64OutputStream output64 = new Base64OutputStream(output, Base64.DEFAULT);
-
-            while ((bytesRead = inputStream.read(buffer)) != -1) {
-                output64.write(buffer, 0, bytesRead);
-            }
-            output64.close();
-            encodedFile = output.toString();
-        } catch (FileNotFoundException e1) {
-            e1.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        lastVal = encodedFile;
-        return lastVal;
-    }
 
     private void requestCameraPermission() {
 

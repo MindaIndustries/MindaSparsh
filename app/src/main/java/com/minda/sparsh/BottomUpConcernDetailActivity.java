@@ -1,6 +1,7 @@
 package com.minda.sparsh;
 
 import android.Manifest;
+import android.app.DatePickerDialog;
 import android.app.IntentService;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
@@ -25,6 +26,8 @@ import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
+import android.widget.DatePicker;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
@@ -47,6 +50,8 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.util.Calendar;
+import java.util.Date;
 
 import javax.net.ssl.HttpsURLConnection;
 
@@ -109,12 +114,20 @@ public class BottomUpConcernDetailActivity extends BaseActivity {
     TextView action_suggestion_assigned_value;
     @BindView(R.id.assigned_to_value)
     TextView assigned_to_value;
-    @BindView(R.id.target_dated_value)
-    TextView target_dated_value;
     @BindView(R.id.remarked_value)
     TextView remarked_value;
     SharedPreferences myPref;
     String name;
+    Calendar cal;
+    DatePickerDialog observationDatePicker;
+    Date millisecondsdailyfrom = null, millisecondsdailyto = null;
+    @BindView(R.id.target_date_value)
+    TextView target_date_value;
+
+    @BindView(R.id.target_dated_value)
+    TextView targetDatedValue;
+    String empCode;
+
 
     private static final int PERMISSION_REQUEST_CODE = 1;
 
@@ -131,6 +144,9 @@ public class BottomUpConcernDetailActivity extends BaseActivity {
         getSupportActionBar().setHomeAsUpIndicator(R.drawable.back);
         title.setText("Bottom Up Concern");
         myPref = getSharedPreferences("MyPref", MODE_PRIVATE);
+        empCode = myPref.getString("Id", "Id");
+
+        initObservationDatePicker();
 
 
         if (getIntent() != null && getIntent().getSerializableExtra("concernModel") != null) {
@@ -157,6 +173,7 @@ public class BottomUpConcernDetailActivity extends BaseActivity {
             } else {
                 if (bottomUpConcern.getFlag().equalsIgnoreCase("True")) {
                     status_value.setText("Assigned");
+                    assignedDetails.setVisibility(View.VISIBLE);
 
                 } else {
                     status_value.setText("Pending");
@@ -167,35 +184,46 @@ public class BottomUpConcernDetailActivity extends BaseActivity {
                 btnLayout.setVisibility(View.GONE);
                 assigned_to_value.setText(bottomUpConcern.getAssignedName());
                 action_suggestion_assigned_value.setText(bottomUpConcern.getAction());
-                target_dated_value.setText(bottomUpConcern.getTargetDate());
+                targetDatedValue.setText(bottomUpConcern.getTargetDate());
                 remarked_value.setText(bottomUpConcern.getRemarks1());
             }
             else{
                 assignedDetails.setVisibility(View.GONE);
-                btnLayout.setVisibility(View.VISIBLE);
+                if(bottomUpConcern.getStatus().equalsIgnoreCase("True")) {
+                    btnLayout.setVisibility(View.GONE);
+                }
+                else{
+                //    btnLayout.setVisibility(View.VISIBLE);
+
+                }
             }
 
             msm_reference_value.setText(bottomUpConcern.getReferenceNo());
             existing_system_value.setText(bottomUpConcern.getExistingSystem());
             proposed_system_value.setText(bottomUpConcern.getProposedSystem());
             benefit_value.setText(bottomUpConcern.getBenefit());
-            if (bottomUpConcern.getESDocument() != null) {
+            if (bottomUpConcern.getESDocument() != null && bottomUpConcern.getESDocument().length()>0) {
                 attachtext1.setText(bottomUpConcern.getESDocument());
-                if (bottomUpConcern.getESDocument().contains("png") || bottomUpConcern.getESDocument().contains("jpg") || bottomUpConcern.getESDocument().contains("jpeg")){
+                    docView1.setVisibility(View.VISIBLE);
+                    if (bottomUpConcern.getESDocument().contains("png") || bottomUpConcern.getESDocument().contains("jpg") || bottomUpConcern.getESDocument().contains("jpeg")) {
+                        Glide.with(BottomUpConcernDetailActivity.this).load(RetrofitClient2.bottomup_img + bottomUpConcern.getESDocument()).apply(new RequestOptions()
+                                .diskCacheStrategy(DiskCacheStrategy.ALL)
+                                .dontAnimate()
+                                .fitCenter()
+                                .dontTransform())
+                                .into(docView1);
+                    }
+                }
+                else{
+                    docView1.setVisibility(View.GONE);
 
-                Glide.with(BottomUpConcernDetailActivity.this).load(RetrofitClient2.bottomup_img + bottomUpConcern.getESDocument()).apply(new RequestOptions()
-                        .diskCacheStrategy(DiskCacheStrategy.ALL)
-                        .dontAnimate()
-                        .fitCenter()
-                        .dontTransform())
-                        .into(docView1);
-            }
+                }
 
             }
-            if (bottomUpConcern.getPSDocument() != null) {
+            if (bottomUpConcern.getPSDocument() != null && bottomUpConcern.getPSDocument().length()>0) {
                 attachtext2.setText(bottomUpConcern.getPSDocument());
+                docView2.setVisibility(View.VISIBLE);
                 if (bottomUpConcern.getPSDocument().contains("png") || bottomUpConcern.getPSDocument().contains("jpg") || bottomUpConcern.getPSDocument().contains("jpeg")) {
-
                     Glide.with(BottomUpConcernDetailActivity.this).load(RetrofitClient2.bottomup_img + bottomUpConcern.getPSDocument()).apply(new RequestOptions()
                             .diskCacheStrategy(DiskCacheStrategy.ALL)
                             .dontAnimate()
@@ -204,11 +232,13 @@ public class BottomUpConcernDetailActivity extends BaseActivity {
                             .into(docView2);
                 }
             }
+            else{
+                docView2.setVisibility(View.GONE);
 
-            if (bottomUpConcern.getBDocument() != null) {
+            if (bottomUpConcern.getBDocument() != null && bottomUpConcern.getBDocument().length()>0) {
                 attachtext3.setText(bottomUpConcern.getBDocument());
+                docView3.setVisibility(View.VISIBLE);
                 if (bottomUpConcern.getBDocument().contains("png") || bottomUpConcern.getBDocument().contains("jpg") || bottomUpConcern.getBDocument().contains("jpeg")) {
-
                     Glide.with(BottomUpConcernDetailActivity.this).load(RetrofitClient2.bottomup_img + bottomUpConcern.getBDocument()).apply(new RequestOptions()
                             .diskCacheStrategy(DiskCacheStrategy.ALL)
                             .dontAnimate()
@@ -218,17 +248,58 @@ public class BottomUpConcernDetailActivity extends BaseActivity {
                 }
 
             }
+            else{
+                docView3.setVisibility(View.GONE);
+            }
         }
         registerReceiver();
 
 
+            msm_reference_value.setMovementMethod(new ScrollingMovementMethod());
         existing_system_value.setMovementMethod(new ScrollingMovementMethod());
         proposed_system_value.setMovementMethod(new ScrollingMovementMethod());
         benefit_value.setMovementMethod(new ScrollingMovementMethod());
-
-        existing_system_value.setMovementMethod(new ScrollingMovementMethod());
+        action_suggestion_assigned_value.setMovementMethod(new ScrollingMovementMethod());
+        remarked_value.setMovementMethod(new ScrollingMovementMethod());
         ScrollingMovementMethod.getInstance();
+        remarked_value.setOnTouchListener(new View.OnTouchListener() {
 
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+
+                remarked_value.getParent().requestDisallowInterceptTouchEvent(true);
+
+                return false;
+            }
+
+
+        });
+
+        action_suggestion_assigned_value.setOnTouchListener(new View.OnTouchListener() {
+
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+
+                action_suggestion_assigned_value.getParent().requestDisallowInterceptTouchEvent(true);
+
+                return false;
+            }
+
+
+        });
+
+        msm_reference_value.setOnTouchListener(new View.OnTouchListener() {
+
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+
+                msm_reference_value.getParent().requestDisallowInterceptTouchEvent(true);
+
+                return false;
+            }
+
+
+        });
 
         existing_system_value.setOnTouchListener(new View.OnTouchListener() {
 
@@ -271,6 +342,10 @@ public class BottomUpConcernDetailActivity extends BaseActivity {
 
     }
 
+    @OnClick(R.id.target_date_value)
+    public void onClickDateValue(){
+        observationDatePicker.show();
+    }
 
     @OnClick(R.id.attachtext1)
     public void onClickAttach1(){
@@ -330,12 +405,32 @@ public class BottomUpConcernDetailActivity extends BaseActivity {
             assignDetailLayout.setVisibility(View.VISIBLE);
             btnComplete.setVisibility(View.GONE);
         }
+        else {
+            if (target_date_value.getText().toString() != null && target_date_value.getText().toString().length() > 0) {
+                if (Utility.isOnline(BottomUpConcernDetailActivity.this)) {
+                    assignConcern(bottomUpConcern.getConcernNo(), empCode, target_date_value.getText().toString());
+                }
+
+                else {
+                    Toast.makeText(BottomUpConcernDetailActivity.this, "Please Check Your Network Connection", Toast.LENGTH_LONG).show();
+                }
+            }
+            else{
+                Toast.makeText(BottomUpConcernDetailActivity.this, "Target Date should be set", Toast.LENGTH_LONG).show();
+            }
+        }
 
     }
 
     @OnClick(R.id.btn_complete)
     public void onClickBtnComplete(){
 
+        if(Utility.isOnline(BottomUpConcernDetailActivity.this)) {
+            completeConcern(bottomUpConcern.getConcernNo());
+        }
+        else{
+            Toast.makeText(BottomUpConcernDetailActivity.this, "Please Check Your Network Connection", Toast.LENGTH_LONG).show();
+        }
     }
 
     @OnClick(R.id.btn_cancel)
@@ -412,4 +507,112 @@ public class BottomUpConcernDetailActivity extends BaseActivity {
         ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, PERMISSION_REQUEST_CODE);
 
     }
+    public String getlogDate(long milliseconds) {
+        Calendar cal = Calendar.getInstance();
+        cal.setTimeInMillis(milliseconds);
+        int day = cal.get(Calendar.DAY_OF_MONTH);
+        int month = cal.get(Calendar.MONTH);
+        int year = cal.get(Calendar.YEAR);
+        month = month + 1;
+        String monthNo;
+        if (month < 10) {
+            monthNo = "0" + month;
+        } else {
+            monthNo = "" + month;
+        }
+        String dayOfMonthStr;
+        if (day < 10) {
+            dayOfMonthStr = "0" + day;
+        } else {
+            dayOfMonthStr = "" + day;
+        }
+
+        return dayOfMonthStr + "/" + monthNo + "/" + year;
+    }
+
+
+    public void initObservationDatePicker() {
+        cal = Calendar.getInstance();
+        cal.setTimeInMillis(System.currentTimeMillis());
+        millisecondsdailyfrom = cal.getTime();
+    //    target_date_value.setText("" + getlogDate(cal.getTimeInMillis()));
+        observationDatePicker = new DatePickerDialog(BottomUpConcernDetailActivity.this, new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+                int mMonth = month + 1;
+                String monthNo;
+                if (mMonth < 10) {
+                    monthNo = "0" + mMonth;
+                } else {
+                    monthNo = "" + mMonth;
+                }
+                String dayOfMonthStr;
+                if (dayOfMonth < 10) {
+                    dayOfMonthStr = "0" + dayOfMonth;
+                } else {
+                    dayOfMonthStr = "" + dayOfMonth;
+                }
+                cal.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+                cal.set(Calendar.MONTH, month);
+                cal.set(Calendar.YEAR, year);
+                millisecondsdailyfrom = cal.getTime();
+
+                target_date_value.setText("" + dayOfMonthStr + "/" + monthNo + "/" + year);
+
+            }
+        }, cal.get(Calendar.YEAR), cal.get(Calendar.MONTH), cal.get(Calendar.DAY_OF_MONTH));
+
+        try {
+
+          //  observationDatePicker.getDatePicker().setMaxDate(Calendar.getInstance().getTimeInMillis() - 10000);
+            long previoustime = Calendar.getInstance().getTimeInMillis() - 1000;
+            observationDatePicker.getDatePicker().setMinDate((previoustime));
+
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+    }
+
+
+    public void assignConcern(String concernNo,String empcode, String targetDate){
+        BottomUpConcernServices bottomUpConcernServices = new BottomUpConcernServices();
+        bottomUpConcernServices.assignConcern(new OnTaskComplete() {
+            @Override
+            public void onTaskComplte(CarotResponse carotResponse) {
+                if(carotResponse.getStatuscode()== HttpsURLConnection.HTTP_OK) {
+                    Toast.makeText(BottomUpConcernDetailActivity.this, "Successfully submitted", Toast.LENGTH_LONG).show();
+                    onBackPressed();
+                }
+                else {
+                    Toast.makeText(BottomUpConcernDetailActivity.this, "Something went wrong!", Toast.LENGTH_LONG).show();
+
+                }
+            }
+        },concernNo,empcode,targetDate);
+
+    }
+
+
+    public void completeConcern(String concernNo){
+
+        BottomUpConcernServices bottomUpConcernServices = new BottomUpConcernServices();
+        bottomUpConcernServices.completeConcern(new OnTaskComplete() {
+            @Override
+            public void onTaskComplte(CarotResponse carotResponse) {
+                if(carotResponse.getStatuscode()== HttpsURLConnection.HTTP_OK) {
+                    Toast.makeText(BottomUpConcernDetailActivity.this, "Successfully submitted", Toast.LENGTH_LONG).show();
+                    onBackPressed();
+                }
+                else {
+                    Toast.makeText(BottomUpConcernDetailActivity.this, "Something went wrong!", Toast.LENGTH_LONG).show();
+
+                }
+            }
+        },concernNo);
+
+    }
+
+
 }

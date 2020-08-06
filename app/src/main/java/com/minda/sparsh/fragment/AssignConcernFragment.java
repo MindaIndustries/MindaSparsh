@@ -10,12 +10,21 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.minda.sparsh.Adapter.BottomUpConcernAdapter;
+import com.minda.sparsh.BottomUpConcernDetailActivity;
 import com.minda.sparsh.R;
+import com.minda.sparsh.listener.CarotResponse;
+import com.minda.sparsh.listener.OnTaskComplete;
 import com.minda.sparsh.model.BottomUpConcern;
+import com.minda.sparsh.services.BottomUpConcernServices;
+import com.minda.sparsh.util.Utility;
 
 import java.util.ArrayList;
+import java.util.List;
+
+import javax.net.ssl.HttpsURLConnection;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -46,7 +55,34 @@ public class AssignConcernFragment extends Fragment {
         bottomupRv.setLayoutManager(mLayoutManager);
         bottomupRv.setAdapter(bottomUpConcernAdapter);
         bottomUpConcernAdapter.notifyDataSetChanged();
+        if(Utility.isOnline(getActivity())) {
+            getAssignedConcern();
+        }
+        else{
+            Toast.makeText(getActivity(), "Please Check Your Network Connection", Toast.LENGTH_LONG).show();
+
+        }
 
         return viewConcern;
+    }
+
+    public void getAssignedConcern(){
+        concerns.clear();
+        bottomupRv.getRecycledViewPool().clear();
+        bottomUpConcernAdapter.notifyDataSetChanged();
+
+        BottomUpConcernServices bottomUpConcernServices = new BottomUpConcernServices();
+        bottomUpConcernServices.getAssignedConcerns(new OnTaskComplete() {
+            @Override
+            public void onTaskComplte(CarotResponse carotResponse) {
+                if(carotResponse.getStatuscode()== HttpsURLConnection.HTTP_OK){
+                            List<BottomUpConcern> list = (List<BottomUpConcern>) carotResponse.getData();
+                            if(list!=null && list.size()>0){
+                                concerns.addAll(list);
+                            }
+                        }
+                        bottomUpConcernAdapter.notifyDataSetChanged();
+            }
+        },empCode);
     }
 }

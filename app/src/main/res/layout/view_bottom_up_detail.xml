@@ -15,6 +15,11 @@
             android:src="@drawable/birds"
             android:scaleType="centerCrop"
             />
+        <LinearLayout
+            android:background="@color/translucent"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+
     </RelativeLayout>
 
     <ScrollView
@@ -44,7 +49,7 @@
                 android:layout_marginTop="30dp"
                 android:id="@+id/concern_no"
                 android:text="Concern No :"
-                android:textSize="16sp"
+                android:textSize="14sp"
                 android:textColor="@color/black"
                 android:fontFamily="@font/museosans_300"
                 android:layout_below="@+id/heading"
@@ -61,7 +66,8 @@
                 android:layout_toRightOf="@+id/view"
                 android:layout_height="wrap_content"
                 android:padding="5dp"
-                android:textSize="16sp"
+                android:textSize="12sp"
+                android:textColor="@color/black"
                 android:fontFamily="@font/museosans_300"
                 android:gravity="center"
                 >
@@ -81,7 +87,7 @@
                 android:layout_marginTop="30dp"
                 android:id="@+id/concern_date"
                 android:text="Raised Date :"
-                android:textSize="16sp"
+                android:textSize="14sp"
                 android:textColor="@color/black"
                 android:fontFamily="@font/museosans_300"
                 android:layout_below="@+id/ll9"
@@ -98,7 +104,8 @@
                 android:layout_toRightOf="@+id/view"
                 android:layout_height="wrap_content"
                 android:padding="5dp"
-                android:textSize="16sp"
+                android:textSize="12sp"
+                android:textColor="@color/black"
                 android:fontFamily="@font/museosans_300"
                 android:gravity="center"
                 >
@@ -118,7 +125,7 @@
                 android:layout_marginTop="30dp"
                 android:id="@+id/unit"
                 android:text="Unit :"
-                android:textSize="16sp"
+                android:textSize="14sp"
                 android:textColor="@color/black"
                 android:fontFamily="@font/museosans_300"
                 android:layout_below="@+id/ll1"
@@ -137,7 +144,8 @@
                 android:padding="5dp"
                 android:fontFamily="@font/museosans_300"
                 android:gravity="center"
-                android:textSize="16sp"
+                android:textColor="@color/black"
+                android:textSize="12sp"
                 ></TextView>
 
             <LinearLayout
@@ -153,7 +161,7 @@
                 android:layout_marginTop="30dp"
                 android:id="@+id/responsible"
                 android:text="Department :"
-                android:textSize="16sp"
+                android:textSize="14sp"
                 android:textColor="@color/black"
                 android:fontFamily="@font/museosans_300"
                 android:layout_below="@+id/ll2"
@@ -171,7 +179,8 @@
                 android:padding="5dp"
                 android:fontFamily="@font/museosans_300"
                 android:gravity="center"
-                android:textSize="14sp"
+                android:textColor="@color/black"
+                android:textSize="12sp"
                 ></TextView>
 
             <LinearLayout
@@ -189,7 +198,7 @@
                 android:layout_marginTop="30dp"
                 android:id="@+id/raisedby"
                 android:text="Raised By :"
-                android:textSize="16sp"
+                android:textSize="14sp"
                 android:textColor="@color/black"
                 android:fontFamily="@font/museosans_300"
                 android:layout_below="@+id/ll3"
@@ -206,7 +215,8 @@
                 android:layout_toRightOf="@+id/view"
                 android:layout_height="wrap_content"
                 android:padding="5dp"
-                android:textSize="16sp"
+                android:textSize="12sp"
+                android:textColor="@color/black"
                 android:fontFamily="@font/museosans_300"
                 android:gravity="center"
                 ></TextView>
@@ -225,7 +235,7 @@
                 android:layout_marginTop="30dp"
                 android:id="@+id/status"
                 android:text="Status :"
-                android:textSize="16sp"
+                android:textSize="14sp"
                 android:textColor="@color/black"
                 android:fontFamily="@font/museosans_300"
                 android:layout_below="@+id/ll7"
@@ -242,8 +252,9 @@
                 android:layout_toRightOf="@+id/view"
                 android:layout_height="wrap_content"
                 android:padding="5dp"
-                android:textSize="16sp"
+                android:textSize="12sp"
                 android:gravity="center"
+                android:textColor="@color/black"
                 android:fontFamily="@font/museosans_300"
 
                 ></TextView>
@@ -263,7 +274,7 @@
                 android:layout_marginTop="30dp"
                 android:id="@+id/msm_reference"
                 android:text="MSM/Reference :"
-                android:textSize="16sp"
+                android:textSize="14sp"
                 android:textColor="@color/black"
                 android:fontFamily="@font/museosans_300"
                 android:layout_below="@+id/ll8"
@@ -276,29 +287,29 @@
                 android:layout_below="@+id/msm_reference"
                 android:layout_alignParentRight="true"
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:textSize="16sp"
+                android:layout_height="wrap_content"
+                android:textSize="12sp"
                 android:background="@drawable/cardview_bg"
                 android:singleLine="false"
                 android:overScrollMode="always"
                 android:scrollbarStyle="insideInset"
                 android:scrollbars="vertical"
                 android:padding="5dp"
-                android:fontFamily="@font/museosans_300"
-
-                ></TextView>
+                android:maxLines="4"
+                android:textColor="@color/black"
+                android:fontFamily="@font/museosans_300"/>
 
 
             <TextView
-                android:layout_marginTop="10dp"
                 android:id="@+id/existing_system"
-                android:text="Existing System :"
-                android:textSize="16sp"
-                android:textColor="@color/black"
-                android:fontFamily="@font/museosans_300"
-                android:layout_below="@+id/msm_reference_value"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/msm_reference_value"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/museosans_300"
+                android:text="Existing System :"
+                android:textColor="@color/black"
+                android:textSize="14sp" />
 
             <TextView
                 android:layout_marginTop="10dp"
@@ -306,15 +317,18 @@
                 android:layout_below="@+id/existing_system"
                 android:layout_alignParentRight="true"
                 android:layout_width="match_parent"
-                android:layout_height="100dp"
+                android:layout_height="wrap_content"
                 android:padding="5dp"
-                android:textSize="16sp"
+                android:textSize="12sp"
                 android:singleLine="false"
+                android:inputType="textMultiLine"
                 android:fontFamily="@font/museosans_300"
                 android:overScrollMode="always"
                 android:scrollbarStyle="insideInset"
                 android:scrollbars="vertical"
+                android:maxLines="5"
                 android:background="@drawable/cardview_bg"
+                android:textColor="@color/black"
                 ></TextView>
 
             <TextView
@@ -323,9 +337,9 @@
                 android:layout_below="@+id/existing_system_value"
                 android:id="@+id/attachtext1"
                 android:layout_width="wrap_content"
-                android:textSize="16sp"
+                android:textSize="14sp"
                 android:layout_height="wrap_content"
-                android:text="Attach related file"
+                android:text=""
                 android:layout_alignParentRight="true"
                 />
 
@@ -335,7 +349,7 @@
                 android:layout_below="@+id/existing_system_value"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:visibility="visible"
+                android:visibility="gone"
                 android:layout_margin="5dp"
                 />
 
@@ -344,7 +358,7 @@
                 android:layout_marginTop="10dp"
                 android:id="@+id/proposed_system"
                 android:text="Proposed System"
-                android:textSize="16sp"
+                android:textSize="12sp"
                 android:textColor="@color/black"
                 android:fontFamily="@font/museosans_300"
                 android:layout_below="@+id/doc_view1"
@@ -357,14 +371,17 @@
                 android:layout_below="@+id/proposed_system"
                 android:layout_alignParentRight="true"
                 android:layout_width="match_parent"
-                android:layout_height="100dp"
+                android:layout_height="wrap_content"
                 android:padding="5dp"
-                android:textSize="16sp"
+                android:textColor="@color/black"
+                android:maxLines="5"
+                android:textSize="12sp"
                 android:fontFamily="@font/museosans_300"
                 android:singleLine="false"
                 android:overScrollMode="always"
                 android:scrollbarStyle="insideInset"
                 android:scrollbars="vertical"
+                android:inputType="textMultiLine"
                 android:background="@drawable/cardview_bg"
                 ></TextView>
 
@@ -373,11 +390,11 @@
                 android:layout_marginRight="10dp"
                 android:layout_below="@+id/proposed_system_value"
                 android:id="@+id/attachtext2"
-                android:textSize="16sp"
+                android:textSize="12sp"
                 android:fontFamily="@font/museosans_300"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Attach related file"
+                android:text=""
                 android:layout_alignParentRight="true"
                 />
 
@@ -387,7 +404,7 @@
                 android:layout_below="@+id/proposed_system_value"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:visibility="visible"
+                android:visibility="gone"
                 android:layout_margin="5dp"
                 />
 
@@ -396,7 +413,7 @@
                 android:layout_marginTop="10dp"
                 android:id="@+id/benefit"
                 android:text="Benefit :"
-                android:textSize="16sp"
+                android:textSize="14sp"
                 android:textColor="@color/black"
                 android:fontFamily="@font/museosans_300"
                 android:layout_below="@+id/doc_view2"
@@ -404,16 +421,19 @@
                 android:layout_height="wrap_content" />
 
             <TextView
-                android:textSize="16sp"
+                android:textSize="12sp"
                 android:layout_marginTop="10dp"
                 android:id="@+id/benefit_value"
                 android:layout_below="@+id/benefit"
                 android:layout_alignParentRight="true"
                 android:layout_width="match_parent"
-                android:layout_height="100dp"
+                android:layout_height="wrap_content"
                 android:padding="5dp"
+                android:inputType="textMultiLine"
                 android:singleLine="false"
+                android:maxLines="5"
                 android:overScrollMode="always"
+                android:textColor="@color/black"
                 android:scrollbarStyle="insideInset"
                 android:scrollbars="vertical"
                 android:background="@drawable/cardview_bg"
@@ -423,14 +443,14 @@
 
 
             <TextView
-                android:textSize="16sp"
+                android:textSize="12sp"
                 android:layout_marginTop="10dp"
                 android:layout_marginRight="10dp"
                 android:layout_below="@+id/benefit_value"
                 android:id="@+id/attachtext3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Attach related file"
+                android:text=""
                 android:layout_alignParentRight="true"
                 android:fontFamily="@font/museosans_300"
                 />
@@ -441,7 +461,7 @@
                 android:layout_below="@+id/benefit_value"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:visibility="visible"
+                android:visibility="gone"
                 android:layout_margin="5dp"
                 />
             <RelativeLayout
@@ -455,21 +475,24 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Action Suggestion:"
-                    android:textSize="16sp"
+                    android:textSize="14sp"
                     android:textColor="@color/black"
                     android:fontFamily="@font/museosans_300"/>
                 <TextView
                     android:id="@+id/action_suggestion_assigned_value"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textSize="16sp"
+                    android:textSize="12sp"
                     android:layout_marginTop="10dp"
                     android:padding="5dp"
                     android:singleLine="false"
+                    android:textColor="@color/black"
+                    android:inputType="textMultiLine"
                     android:layout_below="@+id/action_suggestion_assigned"
                     android:overScrollMode="always"
                     android:scrollbarStyle="insideInset"
                     android:scrollbars="vertical"
+                    android:maxLines="5"
                     android:background="@drawable/cardview_bg"
                     android:fontFamily="@font/museosans_300"
                     />
@@ -480,7 +503,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Assigned To:"
-                    android:textSize="16sp"
+                    android:textSize="14sp"
                     android:layout_marginTop="10dp"
                     android:textColor="@color/black"
                     android:fontFamily="@font/museosans_300"/>
@@ -489,9 +512,11 @@
                     android:id="@+id/assigned_to_value"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textSize="16sp"
+                    android:textSize="12sp"
                     android:layout_marginTop="10dp"
                     android:padding="5dp"
+                    android:textColor="@color/black"
+                    android:inputType="textMultiLine"
                     android:singleLine="false"
                     android:overScrollMode="always"
                     android:scrollbarStyle="insideInset"
@@ -506,7 +531,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Target Date:"
-                    android:textSize="16sp"
+                    android:textSize="14sp"
                     android:textColor="@color/black"
                     android:fontFamily="@font/museosans_300"/>
                 <TextView
@@ -514,10 +539,12 @@
                     android:id="@+id/target_dated_value"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textSize="16sp"
+                    android:textSize="12sp"
+                    android:inputType="textMultiLine"
                     android:layout_marginTop="10dp"
                     android:padding="5dp"
                     android:singleLine="false"
+                    android:textColor="@color/black"
                     android:overScrollMode="always"
                     android:scrollbarStyle="insideInset"
                     android:scrollbars="vertical"
@@ -531,7 +558,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Remarks:"
-                    android:textSize="16sp"
+                    android:textSize="14sp"
                     android:textColor="@color/black"
                     android:fontFamily="@font/museosans_300"/>
                 <TextView
@@ -539,9 +566,12 @@
                     android:id="@+id/remarked_value"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textSize="16sp"
+                    android:textSize="12sp"
                     android:layout_marginTop="10dp"
                     android:padding="5dp"
+                    android:maxLines="5"
+                    android:inputType="textMultiLine"
+                    android:textColor="@color/black"
                     android:singleLine="false"
                     android:overScrollMode="always"
                     android:scrollbarStyle="insideInset"
@@ -576,9 +606,9 @@
                 android:layout_height="wrap_content"
                 android:text="Assign To:"
                 android:layout_below="@+id/assign_details"
-                android:textSize="16sp"
+                android:textSize="14sp"
                 android:fontFamily="@font/museosans_300"
-
+                android:textColor="@color/black"
                 />
 
             <EditText
@@ -589,9 +619,12 @@
                 android:layout_height="wrap_content"
                 android:background="@drawable/cardview_bg"
                 android:padding="5dp"
-                android:textSize="16sp"
+                android:textSize="12sp"
                 android:imeOptions="actionNext"
-                android:inputType="text"
+                android:inputType="textMultiLine"
+                android:textColor="@color/black"
+
+
                 ></EditText>
                 <TextView
                     android:id="@+id/target_date"
@@ -599,11 +632,12 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/assign_to_value"
                     android:text="Target Date:"
-                    android:textSize="16sp"
+                    android:textSize="14sp"
+                    android:textColor="@color/black"
                     android:layout_marginTop="10dp"
                     android:fontFamily="@font/museosans_300"
                     />
-                <EditText
+                <TextView
                     android:layout_marginTop="10dp"
                     android:id="@+id/target_date_value"
                     android:layout_below="@+id/target_date"
@@ -611,10 +645,11 @@
                     android:layout_height="wrap_content"
                     android:background="@drawable/cardview_bg"
                     android:padding="5dp"
-                    android:textSize="16sp"
+                    android:textColor="@color/black"
+                    android:textSize="12sp"
                     android:imeOptions="actionNext"
                     android:inputType="text"
-                    ></EditText>
+                    ></TextView>
                 <TextView
                     android:layout_marginTop="10dp"
                     android:layout_below="@+id/target_date_value"
@@ -623,20 +658,23 @@
                     android:text="Action Suggestion:"
                     android:id="@+id/action_suggestion"
                     android:fontFamily="@font/museosans_300"
-                    android:textSize="16sp"
+                    android:textColor="@color/black"
+                    android:textSize="14sp"
                     />
                 <EditText
                     android:layout_marginTop="10dp"
                     android:id="@+id/action_suggestion_value"
                     android:layout_below="@+id/action_suggestion"
                     android:layout_width="match_parent"
-                    android:layout_height="80dp"
+                    android:layout_height="wrap_content"
                     android:scrollbars="vertical"
                     android:background="@drawable/cardview_bg"
                     android:padding="5dp"
+                    android:textColor="@color/black"
                     android:imeOptions="actionNext"
                     android:inputType="text"
-                    android:textSize="16sp"
+                    android:textSize="12sp"
+                    android:maxLines="5"
                     ></EditText>
                 <TextView
                     android:layout_below="@+id/action_suggestion_value"
@@ -645,7 +683,8 @@
                     android:text="Remarks:"
                     android:fontFamily="@font/museosans_300"
                     android:id="@+id/remarks"
-                    android:textSize="16sp"
+                    android:textColor="@color/black"
+                    android:textSize="14sp"
                     android:layout_marginTop="10dp"
                     />
                 <EditText
@@ -653,13 +692,15 @@
                     android:id="@+id/remarks_value"
                     android:layout_below="@+id/remarks"
                     android:layout_width="match_parent"
-                    android:layout_height="80dp"
+                    android:layout_height="wrap_content"
                     android:scrollbars="vertical"
                     android:background="@drawable/cardview_bg"
                     android:padding="5dp"
                     android:imeOptions="actionNext"
+                    android:textColor="@color/black"
                     android:inputType="text"
-                    android:textSize="16sp"
+                    android:textSize="12sp"
+                    android:maxLines="5"
                     ></EditText>
 
             </RelativeLayout>
@@ -682,7 +723,7 @@
                         android:layout_weight="1"
                         android:background="@drawable/roundcornerbutton"
                         android:text="Cancel"
-                        android:textSize="16sp"
+                        android:textSize="14sp"
                         android:textColor="@color/white" />
 
                     <View
@@ -696,7 +737,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="5dp"
                         android:layout_weight="1"
-                        android:textSize="16sp"
+                        android:textSize="14sp"
                         android:background="@drawable/roundcornerbutton"
                         android:text="Complete"
                         android:textColor="@color/white" />
@@ -717,7 +758,7 @@
                         android:text="Assign"
                         android:textColor="@color/white"
                         android:layout_weight="1"
-                        android:textSize="16sp"
+                        android:textSize="14sp"
                         />
 
 

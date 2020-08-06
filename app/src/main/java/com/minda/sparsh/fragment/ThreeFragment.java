@@ -10,11 +10,13 @@ import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import com.minda.sparsh.BottomUpConcernActivity;
 import com.minda.sparsh.DashBoardActivity;
 import com.minda.sparsh.MainActivity;
 import com.minda.sparsh.R;
+import com.minda.sparsh.SuggestionBox;
 import com.minda.sparsh.VisitorManagementActivity;
 import com.minda.sparsh.util.Constant;
 
@@ -54,6 +56,9 @@ public class ThreeFragment extends Fragment {
         ImageView im_left = (ImageView) convertView.findViewById(R.id.im_left);
         ImageButton Ib_visitor = convertView.findViewById(R.id.Ib_visitor);
         ImageButton bottom_up = (ImageButton) convertView.findViewById(R.id.bottom_up);
+        ImageButton suggestion_box =(ImageButton) convertView.findViewById(R.id.suggestion_box);
+
+        ImageButton meetings = convertView.findViewById(R.id.meetings);
 
         final DashBoardActivity contaxt = (DashBoardActivity) getActivity();
         im_right.setOnClickListener(new View.OnClickListener() {
@@ -80,6 +85,13 @@ public class ThreeFragment extends Fragment {
             }
         });
 
+        meetings.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getActivity(),"Coming Soon!",Toast.LENGTH_LONG).show();
+            }
+        });
+
         bottom_up.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -88,6 +100,16 @@ public class ThreeFragment extends Fragment {
                 startActivity(in);
             }
         });
+
+        suggestion_box.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent in = new Intent(getActivity(), SuggestionBox.class);
+                startActivity(in);
+
+            }
+        });
+
         return convertView;
         // Inflate the layout for this fragment
 

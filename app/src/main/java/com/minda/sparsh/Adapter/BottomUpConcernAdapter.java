@@ -106,21 +106,5 @@ public class BottomUpConcernAdapter extends RecyclerView.Adapter<BottomUpConcern
     }
 
 
-    public void getSixMList(){
-        BottomUpConcernServices bottomUpConcernServices = new BottomUpConcernServices();
-        bottomUpConcernServices.getSixM(new OnTaskComplete() {
-            @Override
-            public void onTaskComplte(CarotResponse carotResponse) {
-                sixMs.clear();
-                if(carotResponse.getStatuscode() == HttpsURLConnection.HTTP_OK){
-                    List<SixMModel> list = (List<SixMModel>) carotResponse.getData();
-                    if(list!=null && list.size()>0){
-                        sixMs.addAll(list);
-                    }
-
-                }
-            }
-        });
-    }
 
 }

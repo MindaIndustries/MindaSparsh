@@ -8,7 +8,6 @@
     tools:context="com.minda.sparsh.DWMActivity">
 
     <RelativeLayout
-        android:background="#cbe5fc"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
         <RelativeLayout
@@ -22,6 +21,11 @@
                 android:src="@drawable/birds"
                 android:scaleType="centerCrop"
                 />
+            <LinearLayout
+                android:background="@color/translucent"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
+
         </RelativeLayout>
 
     <LinearLayout
@@ -33,9 +37,10 @@
         tools:layout_editor_absoluteY="0dp">
 
         <LinearLayout
-
+            android:background="@color/translucent"
             android:layout_width="1060dp"
             android:layout_height="wrap_content">
+
 
             <ImageView
                 android:layout_width="90dp"

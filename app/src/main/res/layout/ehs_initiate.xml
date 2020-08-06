@@ -341,6 +341,7 @@
             android:imeOptions="actionDone"
             android:scrollbars="vertical"
             android:gravity="left|top"
+            android:hint="Enter Description here"
             android:overScrollMode="always"
             android:padding="2dp"
             />
@@ -363,7 +364,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_toLeftOf="@+id/attachment"
-            android:text="Attach related file"
+            android:text="Add attachment"
             android:gravity="center"
             />
 

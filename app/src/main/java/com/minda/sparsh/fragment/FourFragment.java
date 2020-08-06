@@ -71,9 +71,9 @@ public class FourFragment extends Fragment {
         im_change_request_from.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //Toast.makeText(contaxt, "Coming Soon..", Toast.LENGTH_SHORT).show();
+                Toast.makeText(contaxt, "Coming Soon..", Toast.LENGTH_SHORT).show();
 
-                startActivity(new Intent(getActivity(), IdentityAccessManagementActivity1.class));
+               // startActivity(new Intent(getActivity(), IdentityAccessManagementActivity1.class));
 
             }
         });

@@ -52,6 +52,9 @@
                         android:layout_height="match_parent"
                         android:drawableRight="@drawable/white_bell"
                         android:maxLines="1"
+                        android:textColor="#ffffff"
+                        android:singleLine="true"
+                        android:textSize="12sp"
                         android:gravity="center"/>
                         <TextView
                             android:id="@+id/tv_unread"

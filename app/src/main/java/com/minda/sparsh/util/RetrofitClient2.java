@@ -31,6 +31,7 @@ public class RetrofitClient2 {
     public static final String bottomup_img = "http://dev.mindasparsh.com/bottomup/files/";
 
     public static final String BottomUpBaseUrl = "http://dev.mindasparsh.com/BottomUpApi.asmx/";
+    public static final String suggestionBaseUrl = "http://dev.mindasparsh.com/SuggestionAPI.asmx/";
 
     //prod
    /*   public static final String BASE_URL = "https://app.mindasparsh.com/Service.asmx/";
@@ -167,6 +168,44 @@ public class RetrofitClient2 {
 
         return retrofit.create(serviceClass);
     }
+
+    public static <S> S createServiceSuggestionBox(Class<S> serviceClass) {
+        OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
+        httpClient.addInterceptor(new Interceptor() {
+            @Override
+            public Response intercept(Interceptor.Chain chain) throws IOException {
+                Request original = chain.request();
+
+                Request request = original.newBuilder()
+                        .addHeader("User", "MindaBtm56$#45#@")
+                        .addHeader("Password", "985Btm56$#AtadniM")
+                        .method(original.method(), original.body())
+                        .build();
+                Response response = chain.proceed(request);
+                return response;
+            }
+        });
+
+        dispatcher1.setMaxRequests(3000);
+        httpClient.dispatcher(dispatcher1);
+
+        Gson gson = new GsonBuilder()
+                .setLenient()
+                .create();
+
+        OkHttpClient client = httpClient.readTimeout(60, TimeUnit.SECONDS)
+                .connectTimeout(60, TimeUnit.SECONDS).build();
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(suggestionBaseUrl)
+                .addConverterFactory(ScalarsConverterFactory.create())
+                .addConverterFactory(GsonConverterFactory.create(gson))
+                .client(client)
+                .build();
+
+        return retrofit.create(serviceClass);
+    }
+
+
 
 
     public static <S> S createServiceEHSUpload(Class<S> serviceClass) {

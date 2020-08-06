@@ -3,7 +3,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#cbe5fc"
     >
 
 
@@ -19,6 +18,12 @@
             android:src="@drawable/birds"
             android:scaleType="centerCrop"
             />
+        <LinearLayout
+            android:background="@color/translucent"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+
+
     </RelativeLayout>
 
 

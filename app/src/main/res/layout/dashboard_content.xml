@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="#cbe5fc">
+    android:background="#ffffff">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -15,6 +15,12 @@
         android:src="@drawable/birds"
         android:scaleType="centerCrop"
         />
+        <LinearLayout
+            android:background="@color/translucent"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+
+
     </RelativeLayout>
 <RelativeLayout
     android:layout_width="match_parent"

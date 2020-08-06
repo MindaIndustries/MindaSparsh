@@ -9,6 +9,7 @@
         android:layout_height="match_parent"
         android:descendantFocusability="beforeDescendants"
         android:focusableInTouchMode="true">
+        <include layout="@layout/progressbar_layout"/>
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -151,12 +152,15 @@
                     android:layout_below="@+id/msm_reference"
                     android:layout_alignParentRight="true"
                     android:layout_width="match_parent"
-                    android:layout_height="50dp"
+                    android:layout_height="wrap_content"
                     android:background="@drawable/cardview_bg"
                     android:padding="5dp"
                     android:imeOptions="actionNext"
-                    android:inputType="text"
+                    android:inputType="textMultiLine"
                     android:gravity="left|top|center"
+                    android:maxLines="4"
+                    android:hint="Type MSM/Reference"
+                    android:scrollbars="vertical"
                     ></EditText>
 
 
@@ -177,10 +181,13 @@
                     android:layout_below="@+id/existing_system"
                     android:layout_alignParentRight="true"
                     android:layout_width="match_parent"
-                    android:layout_height="100dp"
+                    android:layout_height="wrap_content"
                     android:padding="5dp"
                     android:imeOptions="actionNext"
-                    android:inputType="text"
+                    android:inputType="textMultiLine"
+                    android:maxLines="5"
+                    android:hint="Type Existing system"
+                    android:scrollbars="vertical"
                     android:gravity="left|top|center"
                     android:background="@drawable/cardview_bg">
 
@@ -205,7 +212,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_toLeftOf="@+id/attachment1"
-                    android:text="Attach related file"
+                    android:text="Add attachment"
                     />
 
                 <ImageView
@@ -213,14 +220,14 @@
                     android:layout_below="@+id/existing_system_value"
                     android:layout_width="100dp"
                     android:layout_height="100dp"
-                    android:visibility="visible"
+                    android:visibility="gone"
                     android:layout_margin="5dp"
                     />
 
 
 
                 <TextView
-                    android:layout_marginTop="10dp"
+                    android:layout_marginTop="30dp"
                     android:id="@+id/proposed_system"
                     android:text="Proposed System"
                     android:textSize="16sp"
@@ -236,12 +243,15 @@
                     android:layout_below="@+id/proposed_system"
                     android:layout_alignParentRight="true"
                     android:layout_width="match_parent"
-                    android:layout_height="100dp"
+                    android:layout_height="wrap_content"
                     android:padding="5dp"
                     android:imeOptions="actionNext"
-                    android:inputType="text"
+                    android:inputType="textMultiLine"
                     android:background="@drawable/cardview_bg"
                     android:gravity="left|top|center"
+                    android:maxLines="5"
+                    android:hint="Type Proposed System"
+                    android:scrollbars="vertical"
                     ></EditText>
 
                 <ImageView
@@ -263,20 +273,20 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_toLeftOf="@+id/attachment2"
-                    android:text="Attach related file"
+                    android:text="Addattachment"
                     />
                 <ImageView
                     android:id="@+id/doc_view2"
                     android:layout_below="@+id/proposed_system_value"
                     android:layout_width="100dp"
                     android:layout_height="100dp"
-                    android:visibility="visible"
+                    android:visibility="gone"
                     android:layout_margin="5dp"
                     />
 
 
                 <TextView
-                    android:layout_marginTop="10dp"
+                    android:layout_marginTop="30dp"
                     android:id="@+id/benefit"
                     android:text="Benefit :"
                     android:textSize="16sp"
@@ -292,12 +302,15 @@
                     android:layout_below="@+id/benefit"
                     android:layout_alignParentRight="true"
                     android:layout_width="match_parent"
-                    android:layout_height="100dp"
+                    android:layout_height="wrap_content"
                     android:padding="5dp"
-                    android:inputType="text"
+                    android:inputType="textMultiLine"
                     android:imeOptions="actionDone"
                     android:gravity="left|top|center"
                     android:background="@drawable/cardview_bg"
+                    android:maxLines="5"
+                    android:hint="Type Benefit"
+                    android:scrollbars="vertical"
                     ></EditText>
                 <ImageView
                     android:layout_marginTop="10dp"
@@ -319,7 +332,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_toLeftOf="@+id/attachment3"
-                    android:text="Attach related file"
+                    android:text="Add attachment"
                     />
 
 
@@ -328,19 +341,41 @@
                     android:layout_below="@+id/benefit_value"
                     android:layout_width="100dp"
                     android:layout_height="100dp"
-                    android:visibility="visible"
+                    android:visibility="gone"
                     android:layout_margin="5dp"
                     />
 
                 <Button
                     android:layout_below="@+id/doc_view3"
-                    android:layout_marginTop="30dp"
+                    android:layout_marginTop="40dp"
                     android:id="@+id/save"
                     android:text="Save"
+                    android:layout_marginLeft="10dp"
+                    android:layout_toRightOf="@+id/view1"
                     android:textColor="@color/white"
                     android:background="@drawable/btn_bg"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
+
+
+                <Button
+                    android:layout_below="@+id/doc_view3"
+                    android:layout_marginTop="40dp"
+                    android:id="@+id/reset"
+                    android:text="Reset"
+                    android:layout_marginRight="10dp"
+                    android:layout_toLeftOf="@+id/view1"
+                    android:textColor="@color/white"
+                    android:background="@drawable/btn_bg"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+                <View
+                    android:id="@+id/view1"
+                    android:layout_centerHorizontal="true"
+                    android:layout_width="1dp"
+                    android:layout_height="1dp"/>
+
 
             </RelativeLayout>
 

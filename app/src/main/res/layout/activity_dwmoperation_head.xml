@@ -4,7 +4,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:focusable="true"
-    android:background="#cbe5fc"
     android:focusableInTouchMode="true">
 
     <RelativeLayout
@@ -17,6 +16,11 @@
             android:src="@drawable/birds"
             android:scaleType="centerCrop"
             />
+        <LinearLayout
+            android:background="@color/translucent"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+
     </RelativeLayout>
 
 
