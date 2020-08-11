@@ -14,11 +14,13 @@ import android.widget.Toast;
 
 import com.minda.sparsh.BottomUpConcernActivity;
 import com.minda.sparsh.DashBoardActivity;
+import com.minda.sparsh.EHS_Home;
 import com.minda.sparsh.MainActivity;
 import com.minda.sparsh.R;
 import com.minda.sparsh.SuggestionBox;
 import com.minda.sparsh.VisitorManagementActivity;
 import com.minda.sparsh.util.Constant;
+import com.minda.sparsh.util.Utility;
 
 
 public class ThreeFragment extends Fragment {
@@ -56,7 +58,7 @@ public class ThreeFragment extends Fragment {
         ImageView im_left = (ImageView) convertView.findViewById(R.id.im_left);
         ImageButton Ib_visitor = convertView.findViewById(R.id.Ib_visitor);
         ImageButton bottom_up = (ImageButton) convertView.findViewById(R.id.bottom_up);
-        ImageButton suggestion_box =(ImageButton) convertView.findViewById(R.id.suggestion_box);
+        ImageButton suggestion_box = (ImageButton) convertView.findViewById(R.id.suggestion_box);
 
         ImageButton meetings = convertView.findViewById(R.id.meetings);
 
@@ -88,16 +90,19 @@ public class ThreeFragment extends Fragment {
         meetings.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getActivity(),"Coming Soon!",Toast.LENGTH_LONG).show();
+                Toast.makeText(getActivity(), "Coming Soon!", Toast.LENGTH_LONG).show();
             }
         });
 
         bottom_up.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                Intent in = new Intent(getActivity(), BottomUpConcernActivity.class);
-                startActivity(in);
+                if(Utility.isOnline(getActivity())) {
+                    Intent in = new Intent(getActivity(), BottomUpConcernActivity.class);
+                    startActivity(in);
+                }else{
+                    Toast.makeText(getActivity(), "Please Check Your Network Connection", Toast.LENGTH_LONG).show();
+                }
             }
         });
 

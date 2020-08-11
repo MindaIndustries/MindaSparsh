@@ -80,7 +80,7 @@
                         android:gravity="center"
                         android:text="ID &amp; Access Management"
                         android:textColor="#000000"
-                        android:textSize="12sp" />
+                        android:textSize="14sp" />
 
                 </LinearLayout>
 
@@ -117,7 +117,7 @@
                         android:gravity="center"
                         android:text="Change Request Form"
                         android:textColor="#000000"
-                        android:textSize="12sp" />
+                        android:textSize="14sp" />
                 </LinearLayout>
 
             </LinearLayout>
@@ -129,6 +129,7 @@
             android:id="@+id/im_right"
             android:layout_width="35dp"
             android:layout_height="35dp"
+            android:visibility="gone"
             android:layout_alignParentRight="true"
             android:layout_marginTop="20dp"
             android:src="@drawable/right_arrow" />

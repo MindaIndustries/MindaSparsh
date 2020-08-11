@@ -151,11 +151,11 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
 
         int id = item.getItemId();
         if (id == R.id.profile) {
-
-        }
+         /*   Intent intent = new Intent(BaseActivity.this,ProfileActivity.class);
+            startActivity(intent);
+       */ }
         if (id == R.id.nav_aboutus) {
             viewPager.setCurrentItem(0, true);
-
         }
         if (id == R.id.nav_newsletter) {
             viewPager.setCurrentItem(1, true);

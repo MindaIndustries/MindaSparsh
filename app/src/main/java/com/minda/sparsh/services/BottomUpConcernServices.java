@@ -9,6 +9,7 @@ import com.minda.sparsh.client.BottomUpClient;
 import com.minda.sparsh.listener.CarotResponse;
 import com.minda.sparsh.listener.OnTaskComplete;
 import com.minda.sparsh.model.AssignedConcernModel;
+import com.minda.sparsh.model.AutoSuggestModel;
 import com.minda.sparsh.model.BottomUpConcern;
 import com.minda.sparsh.model.EHSUnitModel;
 import com.minda.sparsh.model.SixMModel;
@@ -268,6 +269,35 @@ public class BottomUpConcernServices {
                     carotResponse.setMessage("Please hold on a moment, the internet connectivity seems to be slow");
                 }
                 onTaskComplete.onTaskComplte(carotResponse);
+            }
+        });
+
+    }
+
+    public void getAutoSuggestion(final OnTaskComplete onTaskComplete, String prefixText){
+
+        BottomUpClient bottomUpClient = RetrofitClient2.createServiceBottomUponcern(BottomUpClient.class);
+        Call<List<AutoSuggestModel>> call = bottomUpClient.getAutoSuggestion(prefixText);
+        call.enqueue(new Callback<List<AutoSuggestModel>>() {
+            @Override
+            public void onResponse(Call<List<AutoSuggestModel>> call, Response<List<AutoSuggestModel>> response) {
+                CarotResponse carotResponse = new CarotResponse();
+                carotResponse.setStatuscode(response.code());
+                if (response.code() == HttpsURLConnection.HTTP_OK) {
+                    carotResponse.setData(response.body());
+                }
+                onTaskComplete.onTaskComplte(carotResponse);
+
+            }
+
+            @Override
+            public void onFailure(Call<List<AutoSuggestModel>> call, Throwable t) {
+                CarotResponse carotResponse = new CarotResponse();
+                if (t instanceof IOException) {
+                    carotResponse.setMessage("Please hold on a moment, the internet connectivity seems to be slow");
+                }
+                onTaskComplete.onTaskComplte(carotResponse);
+
             }
         });
 

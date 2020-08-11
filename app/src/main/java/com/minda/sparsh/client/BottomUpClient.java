@@ -1,6 +1,7 @@
 package com.minda.sparsh.client;
 
 import com.minda.sparsh.model.AssignedConcernModel;
+import com.minda.sparsh.model.AutoSuggestModel;
 import com.minda.sparsh.model.BottomUpConcern;
 import com.minda.sparsh.model.SixMModel;
 
@@ -40,7 +41,10 @@ public interface BottomUpClient {
     Call<String> markCompleteConcern(@Query("ConcernNo") String ConcernNo);
 
     @FormUrlEncoded
-    @POST("SuggestionAPI.asmx/SaveData")
+    @POST("SaveData")
     Call<String> submitSuggestion(@Field("Suggestion") String Suggestion, @Field("EmpCode") String EmpCode,@Field("CostAmount") String CostAmount, @Field("Other") String Other,@Field("FileName") String FileName, @Field("FileType") String FileType, @Field("FileByte") String FileByte);
+
+    @GET("GetAutoName")
+    Call<List<AutoSuggestModel>> getAutoSuggestion(@Query("prefixText") String prefixText);
 
 }

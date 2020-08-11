@@ -112,8 +112,7 @@ public class NewConcernFragment extends Fragment {
     ProgressBar progressBar;
 
 
-
-    String unitcode,empCode,username;
+    String unitcode, empCode, username;
     SharedPreferences myPref;
     ArrayList<String> unitsName = new ArrayList<String>();
     ArrayList<String> sixMNames = new ArrayList<String>();
@@ -134,8 +133,7 @@ public class NewConcernFragment extends Fragment {
     Bitmap bmp;
     String attachmentName = "", attachmentType = "";
     TextView attachtext;
-    String esFilename="",esFilebyte="",psfilename="",psfilebyte="",benFilename="",benfilebyte="";
-
+    String esFilename = "", esFilebyte = "", psfilename = "", psfilebyte = "", benFilename = "", benfilebyte = "";
 
 
     @Nullable
@@ -147,7 +145,7 @@ public class NewConcernFragment extends Fragment {
         myPref = getActivity().getSharedPreferences("MyPref", MODE_PRIVATE);
         unitcode = myPref.getString("Um_div_code", "");
         empCode = myPref.getString("Id", "Id");
-        username = myPref.getString("username","");
+        username = myPref.getString("username", "");
 
         msmReferenceValue.setMovementMethod(new ScrollingMovementMethod());
         existingSystemValue.setMovementMethod(new ScrollingMovementMethod());
@@ -197,13 +195,10 @@ public class NewConcernFragment extends Fragment {
         });
 
 
-
-
         initUnitSpinner();
         getUnits();
         initSixMSpinner();
         getSixMList();
-
 
 
         unitSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -211,9 +206,8 @@ public class NewConcernFragment extends Fragment {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 if (position == 0) {
                     return;
-                }
-                else{
-                  //  unitcode = unitsName.get(position);
+                } else {
+                    //  unitcode = unitsName.get(position);
                 }
 
             }
@@ -229,9 +223,8 @@ public class NewConcernFragment extends Fragment {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 if (position == 0) {
                     return;
-                }
-                else{
-                    department = sixMs.get(position-1).getID();
+                } else {
+                    department = sixMs.get(position - 1).getID();
                 }
             }
 
@@ -265,14 +258,13 @@ public class NewConcernFragment extends Fragment {
         }
         if (Utility.isOnline(getActivity())) {
             saveConcern(empCode, concernDateText.getText().toString(), unitcode, department, msmReferenceValue.getText().toString(), existingSystemValue.getText().toString(), proposedSystemValue.getText().toString(), benefitValue.getText().toString(), esFilename, esFilebyte, psfilename, psfilebyte, benFilename, benfilebyte, username);
-        }
-        else{
+        } else {
             Toast.makeText(getActivity(), "Please Check Your Network Connection", Toast.LENGTH_LONG).show();
         }
     }
 
     @OnClick(R.id.reset)
-    public void onClickReset(){
+    public void onClickReset() {
         Intent in = new Intent(getActivity(), BottomUpConcernActivity.class);
         in.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(in);
@@ -280,41 +272,41 @@ public class NewConcernFragment extends Fragment {
     }
 
     @OnClick(R.id.attachtext1)
-    public void onClickattach1(){
+    public void onClickattach1() {
         attachtext = attachtext1;
         selectFile();
 
     }
 
     @OnClick(R.id.attachment1)
-    public void onClickattacmnt1(){
+    public void onClickattacmnt1() {
         attachtext = attachtext1;
         selectFile();
 
     }
 
     @OnClick(R.id.attachtext2)
-    public void onClickattach2(){
+    public void onClickattach2() {
         attachtext = attachtext2;
         selectFile();
 
     }
 
     @OnClick(R.id.attachment2)
-    public void onClickattcmnt2(){
+    public void onClickattcmnt2() {
         attachtext = attachtext2;
         selectFile();
     }
 
 
     @OnClick(R.id.attachtext3)
-    public void onClickattach3(){
+    public void onClickattach3() {
         attachtext = attachtext3;
         selectFile();
     }
 
     @OnClick(R.id.attachment3)
-    public void onClickattcmnt3(){
+    public void onClickattcmnt3() {
         attachtext = attachtext3;
         selectFile();
 
@@ -376,23 +368,23 @@ public class NewConcernFragment extends Fragment {
 
     }
 
-    public void getSixMList(){
+    public void getSixMList() {
         BottomUpConcernServices bottomUpConcernServices = new BottomUpConcernServices();
         bottomUpConcernServices.getSixM(new OnTaskComplete() {
             @Override
             public void onTaskComplte(CarotResponse carotResponse) {
                 sixMs.clear();
-                if(carotResponse.getStatuscode() == HttpsURLConnection.HTTP_OK){
+                if (carotResponse.getStatuscode() == HttpsURLConnection.HTTP_OK) {
                     List<SixMModel> list = (List<SixMModel>) carotResponse.getData();
-                    if(list!=null && list.size()>0){
+                    if (list != null && list.size() > 0) {
                         sixMs.addAll(list);
                         for (SixMModel sixM : sixMs) {
-                            if(sixM.getName().equalsIgnoreCase("Others")||sixM.getName().equalsIgnoreCase("Strategy")){
+                            if (sixM.getName().equalsIgnoreCase("Others") || sixM.getName().equalsIgnoreCase("Strategy")) {
 
+                            } else {
+                                sixMNames.add(sixM.getName());
                             }
-                            else{
-                            sixMNames.add(sixM.getName());
-                        }}
+                        }
                         adapterResponsible6M.notifyDataSetChanged();
 
                     }
@@ -440,10 +432,10 @@ public class NewConcernFragment extends Fragment {
 
     }
 
-    public void initSixMSpinner(){
+    public void initSixMSpinner() {
         sixMNames.clear();
         sixMNames.add("Select");
-        adapterResponsible6M = new ArrayAdapter<String>(getActivity(),R.layout.spinner_row, sixMNames){
+        adapterResponsible6M = new ArrayAdapter<String>(getActivity(), R.layout.spinner_row, sixMNames) {
             @Override
             public boolean isEnabled(int position) {
                 if (position == 0) {
@@ -476,13 +468,13 @@ public class NewConcernFragment extends Fragment {
         responsibleSpinner.setSelection(0);
     }
 
-    public void saveConcern(String RaisedBy, String RaisedOn, String Unit, String Department, String ReferenceNo, String ExistingSystem, String ProposedSystem, String Benefit, String ESFile, String ESFileByte, String PSFile, String PSFileByte, String BenFile, String BenFileByte, String FirstName){
+    public void saveConcern(String RaisedBy, String RaisedOn, String Unit, String Department, String ReferenceNo, String ExistingSystem, String ProposedSystem, String Benefit, String ESFile, String ESFileByte, String PSFile, String PSFileByte, String BenFile, String BenFileByte, String FirstName) {
         progressBar.setVisibility(View.VISIBLE);
         BottomUpConcernServices bottomUpConcernServices = new BottomUpConcernServices();
         bottomUpConcernServices.saveConcern(new OnTaskComplete() {
             @Override
             public void onTaskComplte(CarotResponse carotResponse) {
-                if(carotResponse.getStatuscode()==HttpsURLConnection.HTTP_OK){
+                if (carotResponse.getStatuscode() == HttpsURLConnection.HTTP_OK) {
 
                 }
                 progressBar.setVisibility(View.GONE);
@@ -490,7 +482,7 @@ public class NewConcernFragment extends Fragment {
                     @Override
                     public void run() {
 
-                        if(getActivity()!=null && isAdded()) {
+                        if (getActivity() != null && isAdded()) {
                             Toast.makeText(getActivity(), "Successfully submitted", Toast.LENGTH_LONG).show();
                             Intent in = new Intent(getActivity(), BottomUpConcernActivity.class);
                             in.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
@@ -502,12 +494,14 @@ public class NewConcernFragment extends Fragment {
 
             }
 
-        },RaisedBy,RaisedOn,Unit,Department,ReferenceNo,ExistingSystem,ProposedSystem,Benefit,ESFile,ESFileByte,PSFile,PSFileByte,BenFile,BenFileByte,FirstName);
+        }, RaisedBy, RaisedOn, Unit, Department, ReferenceNo, ExistingSystem, ProposedSystem, Benefit, ESFile, ESFileByte, PSFile, PSFileByte, BenFile, BenFileByte, FirstName);
 
     }
+
     public void selectFile() {
         requestAppPermissions();
     }
+
     private void requestAppPermissions() {
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP) {
             selectImage();
@@ -547,7 +541,7 @@ public class NewConcernFragment extends Fragment {
     }
 
     private void selectImage() {
-        final CharSequence[] items = {"Take Photo", "Choose from Gallery","Choose Document",
+        final CharSequence[] items = {"Take Photo", "Choose from Gallery", "Choose Document",
                 "Cancel"};
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         builder.setTitle("Add Photo!");
@@ -568,15 +562,13 @@ public class NewConcernFragment extends Fragment {
                         galleryIntent();
                     }
 
-                }
-                else if(items[item].equals("Choose Document")){
+                } else if (items[item].equals("Choose Document")) {
                     mUserChoosenTask = "Choose Document";
-                    if(result){
+                    if (result) {
                         fileIntent();
                     }
 
-                }
-                else if (items[item].equals("Cancel")) {
+                } else if (items[item].equals("Cancel")) {
                     dialog.dismiss();
                 }
             }
@@ -584,9 +576,9 @@ public class NewConcernFragment extends Fragment {
         builder.show();
     }
 
-    public void fileIntent(){
+    public void fileIntent() {
         String[] mimeTypes =
-                {"application/pdf","application/msword","application/vnd.ms-powerpoint","application/vnd.ms-excel","text/plain","application/vnd.openxmlformats-officedocument.spreadsheetml.sheet","application/vnd.openxmlformats-officedocument.wordprocessingml.document"};
+                {"application/pdf", "application/msword", "application/vnd.ms-powerpoint", "application/vnd.ms-excel", "text/plain", "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", "application/vnd.openxmlformats-officedocument.wordprocessingml.document"};
 
         Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
         intent.addCategory(Intent.CATEGORY_OPENABLE);
@@ -601,10 +593,11 @@ public class NewConcernFragment extends Fragment {
             for (String mimeType : mimeTypes) {
                 mimeTypesStr += mimeType + "|";
             }
-            intent.setType(mimeTypesStr.substring(0,mimeTypesStr.length() - 1));
+            intent.setType(mimeTypesStr.substring(0, mimeTypesStr.length() - 1));
         }
-        startActivityForResult(Intent.createChooser(intent,"ChooseFile"), SELECT_FILE);
+        startActivityForResult(Intent.createChooser(intent, "ChooseFile"), SELECT_FILE);
     }
+
     private void onCaptureImageResult(Intent data) {
 
       /*  docView.setImageURI(FilePickerUriHelper.getUri(data));
@@ -623,7 +616,7 @@ public class NewConcernFragment extends Fragment {
         attachmentType = ".jpg";
         bmp = thumbnail;
 
-        if(attachtext== attachtext1) {
+        if (attachtext == attachtext1) {
             attachtext1.setText(attachmentName);
             esFilename = attachmentName;
             esFilebyte = Base64.encodeToString(bytes, Base64.NO_WRAP);
@@ -631,8 +624,7 @@ public class NewConcernFragment extends Fragment {
             docView1.setImageBitmap(thumbnail);
 
 
-        }
-        else if (attachtext == attachtext2){
+        } else if (attachtext == attachtext2) {
             attachtext2.setText(attachmentName);
             psfilename = attachmentName;
             psfilebyte = Base64.encodeToString(bytes, Base64.NO_WRAP);
@@ -640,8 +632,7 @@ public class NewConcernFragment extends Fragment {
             docView2.setImageBitmap(thumbnail);
 
 
-        }
-        else{
+        } else {
             benFilename = attachmentName;
             attachtext3.setText(attachmentName);
             benfilebyte = Base64.encodeToString(bytes, Base64.NO_WRAP);
@@ -653,11 +644,13 @@ public class NewConcernFragment extends Fragment {
 
 
     }
+
     public byte[] getBytesFromBitmap(Bitmap bitmap) {
         ByteArrayOutputStream stream = new ByteArrayOutputStream();
         bitmap.compress(Bitmap.CompressFormat.JPEG, 70, stream);
         return stream.toByteArray();
     }
+
     private static Bitmap rotateImageIfRequired(Context context, Bitmap img, Uri selectedImage) {
 
         // Detect rotation
@@ -711,7 +704,7 @@ public class NewConcernFragment extends Fragment {
 
 
         bm = rotateImageIfRequired(getActivity(), bm, Uri.parse(mDestinationFile.toString()));
-      //  docView.setImageBitmap(bm);
+        //  docView.setImageBitmap(bm);
         Utility.saveFileToSdCard(mDestinationFile, bm);
         String fileName = mDestinationFile.getName();
         System.out.println("fileName" + fileName);
@@ -721,21 +714,19 @@ public class NewConcernFragment extends Fragment {
         bmp = bm;
 
 
-        if(attachtext== attachtext1) {
+        if (attachtext == attachtext1) {
             attachtext1.setText(attachmentName);
             esFilename = attachmentName;
             esFilebyte = Base64.encodeToString(bytes, Base64.NO_WRAP);
             docView1.setVisibility(View.VISIBLE);
             docView1.setImageBitmap(bm);
-        }
-        else if (attachtext == attachtext2){
+        } else if (attachtext == attachtext2) {
             attachtext2.setText(attachmentName);
             psfilename = attachmentName;
             psfilebyte = Base64.encodeToString(bytes, Base64.NO_WRAP);
             docView2.setVisibility(View.VISIBLE);
             docView2.setImageBitmap(bm);
-        }
-        else{
+        } else {
             benFilename = attachmentName;
             attachtext3.setText(attachmentName);
             benfilebyte = Base64.encodeToString(bytes, Base64.NO_WRAP);
@@ -765,7 +756,7 @@ public class NewConcernFragment extends Fragment {
         Uri fileUri = data.getData();
         String mimeType = getActivity().getContentResolver().getType(fileUri);
 
-        String fullFilePath = UriUtils.getPathFromUri(getActivity(),fileUri);
+        String fullFilePath = UriUtils.getPathFromUri(getActivity(), fileUri);
         File file = new File(fullFilePath);
         attachmentName = file.getName();
         attachmentType = mimeType;
@@ -782,28 +773,26 @@ public class NewConcernFragment extends Fragment {
             e.printStackTrace();
         }
 
-        if(attachtext== attachtext1) {
+        if (attachtext == attachtext1) {
             attachtext1.setText(attachmentName);
             esFilename = attachmentName;
             esFilebyte = Base64.encodeToString(bytes, Base64.NO_WRAP);
 
 
-        }
-        else if (attachtext == attachtext2){
+        } else if (attachtext == attachtext2) {
             attachtext2.setText(attachmentName);
             psfilename = attachmentName;
             psfilebyte = Base64.encodeToString(bytes, Base64.NO_WRAP);
 
 
-        }
-        else{
+        } else {
             benFilename = attachmentName;
             attachtext3.setText(attachmentName);
             benfilebyte = Base64.encodeToString(bytes, Base64.NO_WRAP);
 
 
         }
-     //   return getStringFile(file);
+        //   return getStringFile(file);
     }
 
 

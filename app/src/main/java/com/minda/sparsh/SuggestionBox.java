@@ -92,7 +92,7 @@ public class SuggestionBox extends BaseActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setHomeAsUpIndicator(R.drawable.back);
-        title.setText("Cost Cutting Suggestion Box");
+        title.setText("Cost Saving Ideas");
         myPref = getSharedPreferences("MyPref", MODE_PRIVATE);
         empCode = myPref.getString("Id", "Id");
 

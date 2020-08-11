@@ -34,24 +34,27 @@
                     android:gravity="left"
                     >
                     <TextView
+                        android:fontFamily="@font/museosans_300"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:text="Minda Sparsh"
                         android:gravity="center"
                         android:textColor="#ffffff"
-                        android:textSize="20dp"
+                        android:textStyle="bold"
+                        android:textSize="18sp"
                         android:layout_marginRight="20dp"/>
                     <RelativeLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:gravity="center"
-                        android:layout_marginLeft="15dp">
+                        android:layout_marginRight="15dp">
                     <TextView
                         android:id="@+id/tv_user_name"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:drawableRight="@drawable/white_bell"
                         android:maxLines="1"
+                        android:fontFamily="@font/museosans_300"
                         android:textColor="#ffffff"
                         android:singleLine="true"
                         android:textSize="12sp"
@@ -91,6 +94,7 @@
         app:headerLayout="@layout/nav_header_base"
         app:menu="@menu/activity_base_drawer"
         android:background="#ffffff"
+        app:itemTextAppearance="@style/NavigationDrawerStyle"
         app:itemTextColor="@color/colorPrimary"/>
 
 </android.support.v4.widget.DrawerLayout>

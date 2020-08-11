@@ -77,7 +77,7 @@ public class DashBoardActivity extends BaseActivity implements View.OnClickListe
         viewPager = (ViewPager) findViewById(R.id.pager);
         myPref = getSharedPreferences("MyPref", Context.MODE_PRIVATE);
         User = myPref.getString("username", "");
-        tv_user_name.setText(User);
+        //tv_user_name.setText(User);
 //        im_left.setOnClickListener(this);
 //        im_right.setOnClickListener(this);
         viewPager.setOffscreenPageLimit(0);

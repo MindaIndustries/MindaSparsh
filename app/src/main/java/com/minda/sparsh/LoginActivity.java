@@ -379,7 +379,7 @@ public class LoginActivity extends AppCompatActivity {
 
     }
 
-    public void hitGetLoginApi(String userName, String password, String key) {
+    public void hitGetLoginApi(String userName, final String password, String key) {
         if (Utility.isOnline(LoginActivity.this)) {
             showProgress(true);
             Interface promotingMyinterface = RetrofitClient2.getClient().create(Interface.class);
@@ -401,6 +401,14 @@ public class LoginActivity extends AppCompatActivity {
                             mEditor.putString("AuthFor", loginResponse.get(0).getAuthFor());
                             mEditor.putString("Um_div_code", loginResponse.get(0).getUMDIVCODE());
                             mEditor.putString("UM_DESIG_CODE", loginResponse.get(0).getUMDESIGCODE());
+                            mEditor.putString("DESIGNATION",loginResponse.get(0).getUMEMPDESIG());
+                            mEditor.putString("DOJ",loginResponse.get(0).getDOJ());
+                            mEditor.putString("UM_DEPT_NAME",loginResponse.get(0).getUMDEPTNAME());
+                            mEditor.putString("UM_REPORTING_TO_NAME",loginResponse.get(0).getUMREPORTINGTONAME());
+                            mEditor.putString("UM_MASCOM_CODE",loginResponse.get(0).getUMMASCOMCODE());
+                            mEditor.putString("Depu_UnitName", (String) loginResponse.get(0).getDepuUnitName());
+                            mEditor.putString("pass",password);
+
 
                             arrayList.clear();
                             String currentString = loginResponse.get(0).getAuthFor();

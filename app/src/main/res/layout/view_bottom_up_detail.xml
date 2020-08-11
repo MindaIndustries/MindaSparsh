@@ -357,7 +357,7 @@
             <TextView
                 android:layout_marginTop="10dp"
                 android:id="@+id/proposed_system"
-                android:text="Proposed System"
+                android:text="Proposed System :"
                 android:textSize="12sp"
                 android:textColor="@color/black"
                 android:fontFamily="@font/museosans_300"
@@ -611,22 +611,23 @@
                 android:textColor="@color/black"
                 />
 
-            <EditText
-                android:layout_marginTop="10dp"
-                android:id="@+id/assign_to_value"
-                android:layout_below="@+id/assign_to"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@drawable/cardview_bg"
-                android:padding="5dp"
-                android:textSize="12sp"
-                android:imeOptions="actionNext"
-                android:inputType="textMultiLine"
-                android:textColor="@color/black"
+                <AutoCompleteTextView
+                    android:id="@+id/assign_to_value"
+                    android:layout_below="@+id/assign_to"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:maxLines="1"
+                    android:singleLine="true"
+                    android:padding="5dp"
+                    android:textSize="12sp"
+                    android:imeOptions="actionNext"
+                    android:textColor="@color/black"
+                    android:inputType="text|textNoSuggestions"
+                    android:digits=" ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890"
+                    android:background="@drawable/cardview_bg"/>
 
 
-                ></EditText>
-                <TextView
+            <TextView
                     android:id="@+id/target_date"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"

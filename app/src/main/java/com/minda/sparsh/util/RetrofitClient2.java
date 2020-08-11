@@ -177,8 +177,8 @@ public class RetrofitClient2 {
                 Request original = chain.request();
 
                 Request request = original.newBuilder()
-                        .addHeader("User", "MindaBtm56$#45#@")
-                        .addHeader("Password", "985Btm56$#AtadniM")
+                        .addHeader("User", "MindaSugg56$#45#@")
+                        .addHeader("Password", "985Sugg656$#AtadniM")
                         .method(original.method(), original.body())
                         .build();
                 Response response = chain.proceed(request);
