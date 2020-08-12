@@ -272,6 +272,7 @@ public class BottomUpConcernDetailActivity extends BaseActivity {
         } else {
             docView2.setVisibility(View.GONE);
 
+        }
             if (bottomUpConcern.getBDocument() != null && bottomUpConcern.getBDocument().length() > 0) {
                 attachtext3.setText(bottomUpConcern.getBDocument());
                 docView3.setVisibility(View.VISIBLE);
@@ -287,7 +288,7 @@ public class BottomUpConcernDetailActivity extends BaseActivity {
             } else {
                 docView3.setVisibility(View.GONE);
             }
-        }
+
         registerReceiver();
 
 

@@ -1189,7 +1189,7 @@ public class EHSInitiateFragment extends Fragment {
                 Base64.NO_WRAP);
         attachmentName = fileName;
         attachtext.setText(attachmentName);
-        attachmentType = ".jpg";
+        attachmentType = "jpg";
         bmp = thumbnail;
         docView.setImageBitmap(thumbnail);
 
@@ -1220,7 +1220,7 @@ public class EHSInitiateFragment extends Fragment {
         String fileName = mDestinationFile.getName();
         System.out.println("fileName" + fileName);
         attachmentName = fileName;
-        attachmentType = ".jpg";
+        attachmentType = "jpg";
         attachtext.setText(attachmentName);
         bytes = getBytesFromBitmap(bm);
         imgString = Base64.encodeToString(bytes, Base64.NO_WRAP);

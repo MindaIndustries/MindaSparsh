@@ -259,7 +259,7 @@ public class SuggestionBox extends BaseActivity {
         String fileName = mDestinationFile.getName();
         System.out.println("fileName" + fileName);
         bytes = getBytesFromBitmap(thumbnail);
-        fileType = ".jpg";
+        fileType = "jpg";
         bmp = thumbnail;
         addAttach.setText(fileName);
         this.fileName = fileName;
@@ -332,7 +332,7 @@ public class SuggestionBox extends BaseActivity {
         String fileName = mDestinationFile.getName();
         this.fileName = fileName;
         System.out.println("fileName" + fileName);
-        fileType = ".jpg";
+        fileType = "jpg";
         bytes = getBytesFromBitmap(bm);
         bmp = bm;
         addAttach.setText(fileName);
@@ -363,7 +363,7 @@ public class SuggestionBox extends BaseActivity {
         String fullFilePath = UriUtils.getPathFromUri(SuggestionBox.this, fileUri);
         File file = new File(fullFilePath);
         fileName = file.getName();
-        fileType = mimeType;
+        fileType = mimeType.replace("application/","");
         addAttach.setText(fileName);
         bytes = new byte[(int) file.length()];
 

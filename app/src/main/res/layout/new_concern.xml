@@ -213,6 +213,7 @@
                     android:layout_height="wrap_content"
                     android:layout_toLeftOf="@+id/attachment1"
                     android:text="Add attachment"
+                    android:singleLine="true"
                     android:fontFamily="@font/museosans_500"
                     />
 
@@ -275,6 +276,7 @@
                     android:layout_height="wrap_content"
                     android:layout_toLeftOf="@+id/attachment2"
                     android:text="Add attachment"
+                    android:singleLine="true"
                     android:fontFamily="@font/museosans_500"
                     />
                 <ImageView
@@ -336,7 +338,7 @@
                     android:layout_toLeftOf="@+id/attachment3"
                     android:text="Add attachment"
                     android:fontFamily="@font/museosans_500"
-
+                    android:singleLine="true"
                     />
 
 

@@ -239,6 +239,11 @@ public class NewConcernFragment extends Fragment {
 
     @OnClick(R.id.save)
     public void onClickSave() {
+
+        if(department.length()==0){
+            Toast.makeText(getActivity(), "Select Responsible 6M", Toast.LENGTH_LONG).show();
+            return;
+        }
         if (msmReferenceValue.getText().toString().length() == 0) {
             Toast.makeText(getActivity(), "MSM/ Reference needs to be filled", Toast.LENGTH_LONG).show();
             return;
@@ -613,7 +618,7 @@ public class NewConcernFragment extends Fragment {
         System.out.println("fileName" + fileName);
         bytes = getBytesFromBitmap(thumbnail);
         attachmentName = fileName;
-        attachmentType = ".jpg";
+        attachmentType = "jpg";
         bmp = thumbnail;
 
         if (attachtext == attachtext1) {
@@ -709,7 +714,7 @@ public class NewConcernFragment extends Fragment {
         String fileName = mDestinationFile.getName();
         System.out.println("fileName" + fileName);
         attachmentName = fileName;
-        attachmentType = ".jpg";
+        attachmentType = "jpg";
         bytes = getBytesFromBitmap(bm);
         bmp = bm;
 
@@ -759,7 +764,7 @@ public class NewConcernFragment extends Fragment {
         String fullFilePath = UriUtils.getPathFromUri(getActivity(), fileUri);
         File file = new File(fullFilePath);
         attachmentName = file.getName();
-        attachmentType = mimeType;
+        attachmentType = mimeType.replace("application/","");
         attachtext.setText(attachmentName);
         bytes = new byte[(int) file.length()];
 
