@@ -60,9 +60,7 @@ public class AssignConcernFragment extends Fragment {
         }
         else{
             Toast.makeText(getActivity(), "Please Check Your Network Connection", Toast.LENGTH_LONG).show();
-
         }
-
         return viewConcern;
     }
 

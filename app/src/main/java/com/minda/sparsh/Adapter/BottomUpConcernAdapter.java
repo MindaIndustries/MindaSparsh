@@ -13,18 +13,11 @@ import android.widget.Toast;
 
 import com.minda.sparsh.BottomUpConcernDetailActivity;
 import com.minda.sparsh.R;
-import com.minda.sparsh.listener.CarotResponse;
-import com.minda.sparsh.listener.OnTaskComplete;
 import com.minda.sparsh.model.BottomUpConcern;
-import com.minda.sparsh.model.SixMModel;
-import com.minda.sparsh.services.BottomUpConcernServices;
 import com.minda.sparsh.util.Utility;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.List;
-
-import javax.net.ssl.HttpsURLConnection;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -33,7 +26,6 @@ public class BottomUpConcernAdapter extends RecyclerView.Adapter<BottomUpConcern
 
     Context mContext;
     ArrayList<BottomUpConcern> concerns;
-    List<SixMModel> sixMs = new ArrayList<SixMModel>();
 
 
     public BottomUpConcernAdapter(Context mContext, ArrayList<BottomUpConcern> concerns) {
@@ -53,10 +45,9 @@ public class BottomUpConcernAdapter extends RecyclerView.Adapter<BottomUpConcern
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, final int i) {
-        if(concerns.get(i).getStatus().equalsIgnoreCase("True")) {
+        if (concerns.get(i).getStatus().equalsIgnoreCase("True")) {
             viewHolder.status.setText("Closed");
-        }
-        else {
+        } else {
             if (concerns.get(i).getFlag().equalsIgnoreCase("True")) {
                 viewHolder.status.setText("Assigned");
 
@@ -74,12 +65,11 @@ public class BottomUpConcernAdapter extends RecyclerView.Adapter<BottomUpConcern
         viewHolder.viewDetails.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(Utility.isOnline(mContext)) {
+                if (Utility.isOnline(mContext)) {
                     Intent in = new Intent(mContext, BottomUpConcernDetailActivity.class);
                     in.putExtra("concernModel", (Serializable) concerns.get(i));
                     mContext.startActivity(in);
-                }
-                else{
+                } else {
                     Toast.makeText(mContext, "Please Check Your Network Connection", Toast.LENGTH_LONG).show();
                 }
             }
@@ -111,7 +101,6 @@ public class BottomUpConcernAdapter extends RecyclerView.Adapter<BottomUpConcern
 
         }
     }
-
 
 
 }

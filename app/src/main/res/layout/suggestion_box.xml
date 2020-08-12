@@ -41,8 +41,8 @@
             />
 
 
-        <TextViewt
-            android:fontFamily="@font/museosans_300"
+        <TextView
+            android:fontFamily="@font/museosans_500"
             android:id="@+id/drop_ur_suggestion"
             android:text="Drop Your Suggestion :"
             android:layout_width="wrap_content"
@@ -102,7 +102,7 @@
             android:layout_height="wrap_content"/>
 
         <TextView
-            android:fontFamily="@font/museosans_300"
+            android:fontFamily="@font/museosans_500"
             android:layout_marginTop="50dp"
             android:layout_below="@+id/doc_view"
             android:textColor="@color/black"
@@ -126,7 +126,7 @@
             />
         <TextView
             android:textColor="@color/black"
-            android:fontFamily="@font/museosans_300"
+            android:fontFamily="@font/museosans_500"
             android:layout_marginTop="10dp"
             android:layout_below="@+id/expected_cost_saving"
             android:layout_width="wrap_content"
@@ -152,7 +152,7 @@
             android:layout_marginTop="20dp"
             android:layout_centerHorizontal="true"
             android:id="@+id/submit"
-            android:fontFamily="@font/museosans_300"
+            android:fontFamily="@font/museosans_500"
             android:text="Submit"
             android:textColor="#ffffff"
             android:background="@drawable/btn_bg"

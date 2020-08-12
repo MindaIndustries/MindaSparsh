@@ -37,7 +37,7 @@
                     android:text="Concern Date :"
                     android:textSize="16sp"
                     android:textColor="@color/black"
-                    android:fontFamily="@font/museosans_300"
+                    android:fontFamily="@font/museosans_500"
                     android:layout_below="@+id/heading"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
@@ -70,7 +70,7 @@
                     android:text="Unit :"
                     android:textSize="16sp"
                     android:textColor="@color/black"
-                    android:fontFamily="@font/museosans_300"
+                    android:fontFamily="@font/museosans_500"
                     android:layout_below="@+id/ll1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
@@ -106,7 +106,7 @@
                     android:text="Responsible 6M :"
                     android:textSize="16sp"
                     android:textColor="@color/black"
-                    android:fontFamily="@font/museosans_300"
+                    android:fontFamily="@font/museosans_500"
                     android:layout_below="@+id/ll2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
@@ -141,7 +141,7 @@
                     android:text="MSM/Reference :"
                     android:textSize="16sp"
                     android:textColor="@color/black"
-                    android:fontFamily="@font/museosans_300"
+                    android:fontFamily="@font/museosans_500"
                     android:layout_below="@+id/ll3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
@@ -170,7 +170,7 @@
                     android:text="Existing System :"
                     android:textSize="16sp"
                     android:textColor="@color/black"
-                    android:fontFamily="@font/museosans_300"
+                    android:fontFamily="@font/museosans_500"
                     android:layout_below="@+id/msm_reference_value"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
@@ -233,7 +233,7 @@
                     android:text="Proposed System :"
                     android:textSize="16sp"
                     android:textColor="@color/black"
-                    android:fontFamily="@font/museosans_300"
+                    android:fontFamily="@font/museosans_500"
                     android:layout_below="@+id/doc_view1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
@@ -293,7 +293,7 @@
                     android:text="Benefit :"
                     android:textSize="16sp"
                     android:textColor="@color/black"
-                    android:fontFamily="@font/museosans_300"
+                    android:fontFamily="@font/museosans_500"
                     android:layout_below="@+id/doc_view2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
@@ -354,6 +354,7 @@
                     android:layout_marginTop="40dp"
                     android:id="@+id/save"
                     android:text="Save"
+                    android:fontFamily="@font/museosans_500"
                     android:layout_marginLeft="10dp"
                     android:layout_toRightOf="@+id/view1"
                     android:textColor="@color/white"
@@ -363,6 +364,7 @@
 
 
                 <Button
+                    android:fontFamily="@font/museosans_500"
                     android:layout_below="@+id/doc_view3"
                     android:layout_marginTop="40dp"
                     android:id="@+id/reset"

@@ -51,7 +51,7 @@
                 android:text="Concern No :"
                 android:textSize="14sp"
                 android:textColor="@color/black"
-                android:fontFamily="@font/museosans_300"
+                android:fontFamily="@font/museosans_500"
                 android:layout_below="@+id/heading"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
@@ -89,7 +89,7 @@
                 android:text="Raised Date :"
                 android:textSize="14sp"
                 android:textColor="@color/black"
-                android:fontFamily="@font/museosans_300"
+                android:fontFamily="@font/museosans_500"
                 android:layout_below="@+id/ll9"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
@@ -127,7 +127,7 @@
                 android:text="Unit :"
                 android:textSize="14sp"
                 android:textColor="@color/black"
-                android:fontFamily="@font/museosans_300"
+                android:fontFamily="@font/museosans_500"
                 android:layout_below="@+id/ll1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
@@ -163,7 +163,7 @@
                 android:text="Department :"
                 android:textSize="14sp"
                 android:textColor="@color/black"
-                android:fontFamily="@font/museosans_300"
+                android:fontFamily="@font/museosans_500"
                 android:layout_below="@+id/ll2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
@@ -200,7 +200,7 @@
                 android:text="Raised By :"
                 android:textSize="14sp"
                 android:textColor="@color/black"
-                android:fontFamily="@font/museosans_300"
+                android:fontFamily="@font/museosans_500"
                 android:layout_below="@+id/ll3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
@@ -237,7 +237,7 @@
                 android:text="Status :"
                 android:textSize="14sp"
                 android:textColor="@color/black"
-                android:fontFamily="@font/museosans_300"
+                android:fontFamily="@font/museosans_500"
                 android:layout_below="@+id/ll7"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
@@ -276,7 +276,7 @@
                 android:text="MSM/Reference :"
                 android:textSize="14sp"
                 android:textColor="@color/black"
-                android:fontFamily="@font/museosans_300"
+                android:fontFamily="@font/museosans_500"
                 android:layout_below="@+id/ll8"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
@@ -306,7 +306,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/msm_reference_value"
                 android:layout_marginTop="10dp"
-                android:fontFamily="@font/museosans_300"
+                android:fontFamily="@font/museosans_500"
                 android:text="Existing System :"
                 android:textColor="@color/black"
                 android:textSize="14sp" />
@@ -360,7 +360,7 @@
                 android:text="Proposed System :"
                 android:textSize="12sp"
                 android:textColor="@color/black"
-                android:fontFamily="@font/museosans_300"
+                android:fontFamily="@font/museosans_500"
                 android:layout_below="@+id/doc_view1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
@@ -415,7 +415,7 @@
                 android:text="Benefit :"
                 android:textSize="14sp"
                 android:textColor="@color/black"
-                android:fontFamily="@font/museosans_300"
+                android:fontFamily="@font/museosans_500"
                 android:layout_below="@+id/doc_view2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
@@ -474,10 +474,10 @@
                     android:id="@+id/action_suggestion_assigned"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Action Suggestion:"
+                    android:text="Action Suggestion :"
                     android:textSize="14sp"
                     android:textColor="@color/black"
-                    android:fontFamily="@font/museosans_300"/>
+                    android:fontFamily="@font/museosans_500"/>
                 <TextView
                     android:id="@+id/action_suggestion_assigned_value"
                     android:layout_width="match_parent"
@@ -502,11 +502,11 @@
                     android:id="@+id/assigned_to"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Assigned To:"
+                    android:text="Assigned To :"
                     android:textSize="14sp"
                     android:layout_marginTop="10dp"
                     android:textColor="@color/black"
-                    android:fontFamily="@font/museosans_300"/>
+                    android:fontFamily="@font/museosans_500"/>
                 <TextView
                     android:layout_below="@+id/assigned_to"
                     android:id="@+id/assigned_to_value"
@@ -530,10 +530,10 @@
                     android:layout_marginTop="10dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Target Date:"
+                    android:text="Target Date :"
                     android:textSize="14sp"
                     android:textColor="@color/black"
-                    android:fontFamily="@font/museosans_300"/>
+                    android:fontFamily="@font/museosans_500"/>
                 <TextView
                     android:layout_below="@+id/target_dated"
                     android:id="@+id/target_dated_value"
@@ -557,10 +557,10 @@
                     android:layout_marginTop="10dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Remarks:"
+                    android:text="Remarks :"
                     android:textSize="14sp"
                     android:textColor="@color/black"
-                    android:fontFamily="@font/museosans_300"/>
+                    android:fontFamily="@font/museosans_500"/>
                 <TextView
                     android:layout_below="@+id/remarked"
                     android:id="@+id/remarked_value"
@@ -604,10 +604,10 @@
                 android:id="@+id/assign_to"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Assign To:"
+                android:text="Assign To :"
                 android:layout_below="@+id/assign_details"
                 android:textSize="14sp"
-                android:fontFamily="@font/museosans_300"
+                android:fontFamily="@font/museosans_500"
                 android:textColor="@color/black"
                 />
 
@@ -620,6 +620,7 @@
                     android:singleLine="true"
                     android:padding="5dp"
                     android:textSize="12sp"
+                    android:fontFamily="@font/museosans_300"
                     android:imeOptions="actionNext"
                     android:textColor="@color/black"
                     android:inputType="text|textNoSuggestions"
@@ -632,11 +633,11 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/assign_to_value"
-                    android:text="Target Date:"
+                    android:text="Target Date :"
                     android:textSize="14sp"
                     android:textColor="@color/black"
                     android:layout_marginTop="10dp"
-                    android:fontFamily="@font/museosans_300"
+                    android:fontFamily="@font/museosans_500"
                     />
                 <TextView
                     android:layout_marginTop="10dp"
@@ -656,9 +657,9 @@
                     android:layout_below="@+id/target_date_value"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Action Suggestion:"
+                    android:text="Action Suggestion :"
                     android:id="@+id/action_suggestion"
-                    android:fontFamily="@font/museosans_300"
+                    android:fontFamily="@font/museosans_500"
                     android:textColor="@color/black"
                     android:textSize="14sp"
                     />
@@ -681,8 +682,8 @@
                     android:layout_below="@+id/action_suggestion_value"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Remarks:"
-                    android:fontFamily="@font/museosans_300"
+                    android:text="Remarks :"
+                    android:fontFamily="@font/museosans_500"
                     android:id="@+id/remarks"
                     android:textColor="@color/black"
                     android:textSize="14sp"
@@ -721,6 +722,7 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginRight="5dp"
+                        android:fontFamily="@font/museosans_500"
                         android:layout_weight="1"
                         android:background="@drawable/roundcornerbutton"
                         android:text="Cancel"
@@ -733,6 +735,7 @@
                          />
 
                     <Button
+                        android:fontFamily="@font/museosans_500"
                         android:id="@+id/btn_complete"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
@@ -751,6 +754,7 @@
 
 
                     <Button
+                        android:fontFamily="@font/museosans_500"
                         android:id="@+id/btn_assign"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
