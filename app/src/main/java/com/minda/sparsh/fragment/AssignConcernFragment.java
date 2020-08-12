@@ -55,16 +55,15 @@ public class AssignConcernFragment extends Fragment {
         bottomupRv.setLayoutManager(mLayoutManager);
         bottomupRv.setAdapter(bottomUpConcernAdapter);
         bottomUpConcernAdapter.notifyDataSetChanged();
-        if(Utility.isOnline(getActivity())) {
+        if (Utility.isOnline(getActivity())) {
             getAssignedConcern();
-        }
-        else{
+        } else {
             Toast.makeText(getActivity(), "Please Check Your Network Connection", Toast.LENGTH_LONG).show();
         }
         return viewConcern;
     }
 
-    public void getAssignedConcern(){
+    public void getAssignedConcern() {
         concerns.clear();
         bottomupRv.getRecycledViewPool().clear();
         bottomUpConcernAdapter.notifyDataSetChanged();
@@ -73,14 +72,14 @@ public class AssignConcernFragment extends Fragment {
         bottomUpConcernServices.getAssignedConcerns(new OnTaskComplete() {
             @Override
             public void onTaskComplte(CarotResponse carotResponse) {
-                if(carotResponse.getStatuscode()== HttpsURLConnection.HTTP_OK){
-                            List<BottomUpConcern> list = (List<BottomUpConcern>) carotResponse.getData();
-                            if(list!=null && list.size()>0){
-                                concerns.addAll(list);
-                            }
-                        }
-                        bottomUpConcernAdapter.notifyDataSetChanged();
+                if (carotResponse.getStatuscode() == HttpsURLConnection.HTTP_OK) {
+                    List<BottomUpConcern> list = (List<BottomUpConcern>) carotResponse.getData();
+                    if (list != null && list.size() > 0) {
+                        concerns.addAll(list);
+                    }
+                }
+                bottomUpConcernAdapter.notifyDataSetChanged();
             }
-        },empCode);
+        }, empCode);
     }
 }

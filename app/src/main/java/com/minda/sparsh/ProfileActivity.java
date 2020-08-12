@@ -82,7 +82,6 @@ public class ProfileActivity extends BaseActivity {
         }
         else{
             Toast.makeText(ProfileActivity.this, "Please Check Your Network Connection", Toast.LENGTH_LONG).show();
-
         }
     }
 
@@ -186,7 +185,7 @@ public class ProfileActivity extends BaseActivity {
             dayOfMonthStr = "" + day;
         }
 
-        return dayOfMonthStr + "-" + monthNo + "-" + year;
+        return dayOfMonthStr + "/" + monthNo + "/" + year;
     }
 
 }
