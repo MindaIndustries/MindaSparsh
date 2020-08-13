@@ -386,8 +386,6 @@ public class SuggestionBox extends BaseActivity {
 
         ActivityCompat.requestPermissions(SuggestionBox.this,
                 new String[]{android.Manifest.permission.CAMERA}, MY_PERMISSIONS_REQUEST_CAMERA); // your request code
-
-
     }
 
 

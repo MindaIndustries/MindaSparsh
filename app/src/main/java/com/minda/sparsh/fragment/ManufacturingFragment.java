@@ -99,15 +99,19 @@ public class ManufacturingFragment extends Fragment {
             @Override
             public void onClick(View v) {
 
-                if (loginAccess.contains("dwm") || loginAccess.contains("DWM") ||
-                        loginAccess.contains("odwm") || loginAccess.contains("ODWM") ||
-                        loginAccess.contains("mdwm") || loginAccess.contains("MDWM")) {
-                    Intent intent = new Intent(getActivity(), SheedActivity.class);
-                    startActivity(intent);
-                } else {
-                    Toast.makeText(getContext(), "You Are Not Authorized", Toast.LENGTH_LONG).show();
+                try {
+                    if (loginAccess.contains("dwm") || loginAccess.contains("DWM") ||
+                            loginAccess.contains("odwm") || loginAccess.contains("ODWM") ||
+                            loginAccess.contains("mdwm") || loginAccess.contains("MDWM")) {
+                        Intent intent = new Intent(getActivity(), SheedActivity.class);
+                        startActivity(intent);
+                    } else {
+                        Toast.makeText(getContext(), "You Are Not Authorized", Toast.LENGTH_LONG).show();
+                    }
                 }
+                catch (Exception e){
 
+                }
 
             }
         });

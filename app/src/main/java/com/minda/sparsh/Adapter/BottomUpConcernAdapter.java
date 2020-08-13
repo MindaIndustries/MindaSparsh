@@ -27,10 +27,12 @@ public class BottomUpConcernAdapter extends RecyclerView.Adapter<BottomUpConcern
     Context mContext;
     ArrayList<BottomUpConcern> concerns;
 
+
     public BottomUpConcernAdapter(Context mContext, ArrayList<BottomUpConcern> concerns) {
         this.mContext = mContext;
         this.concerns = concerns;
     }
+
 
     @NonNull
     @Override
@@ -53,10 +55,12 @@ public class BottomUpConcernAdapter extends RecyclerView.Adapter<BottomUpConcern
                 viewHolder.status.setText("Pending");
             }
         }
+
         viewHolder.concernNovalue.setText(concerns.get(i).getConcernNo());
         viewHolder.raisedOnvalue.setText(concerns.get(i).getRaisedOn());
         viewHolder.responsible6MValue.setText(concerns.get(i).getDeptName());
-        viewHolder.unitValue.setText(concerns.get(i).getUnitName());
+        viewHolder.unitValue.setText(concerns.get(i).getUnit()+":"+concerns.get(i).getUnitName());
+
 
         viewHolder.viewDetails.setOnClickListener(new View.OnClickListener() {
             @Override
