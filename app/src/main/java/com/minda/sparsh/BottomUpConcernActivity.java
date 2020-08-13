@@ -7,9 +7,11 @@ import android.support.design.widget.TabLayout;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.widget.TextView;
+
 import com.minda.sparsh.fragment.AssignConcernFragment;
 import com.minda.sparsh.fragment.NewConcernFragment;
 import com.minda.sparsh.fragment.ViewConcernFragment;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
@@ -38,13 +40,9 @@ public class BottomUpConcernActivity extends BaseActivity {
             public void onTabSelected(TabLayout.Tab tab) {
                 if (tab.getPosition() == 0) {
                     getSupportFragmentManager().beginTransaction().replace(R.id.framelayout, new NewConcernFragment()).commitAllowingStateLoss();
-                }
-
-                else if(tab.getPosition()==1){
+                } else if (tab.getPosition() == 1) {
                     getSupportFragmentManager().beginTransaction().replace(R.id.framelayout, new ViewConcernFragment()).commitAllowingStateLoss();
-                }
-
-                else{
+                } else {
                     getSupportFragmentManager().beginTransaction().replace(R.id.framelayout, new AssignConcernFragment()).commitAllowingStateLoss();
                 }
             }

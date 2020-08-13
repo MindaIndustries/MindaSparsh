@@ -122,7 +122,6 @@ public class SuggestionBox extends BaseActivity {
         if (Utility.isOnline(SuggestionBox.this)) {
             submitSuggestion(dropSuggestion.getText().toString(), empCode, expectedCostSaving.getText().toString(), otherBenefit.getText().toString(), fileName, fileType, fileByte);
         }
-
     }
 
     @Override
@@ -363,7 +362,7 @@ public class SuggestionBox extends BaseActivity {
         String fullFilePath = UriUtils.getPathFromUri(SuggestionBox.this, fileUri);
         File file = new File(fullFilePath);
         fileName = file.getName();
-        fileType = mimeType.replace("application/","");
+        fileType = mimeType.replace("application/", "");
         addAttach.setText(fileName);
         bytes = new byte[(int) file.length()];
 

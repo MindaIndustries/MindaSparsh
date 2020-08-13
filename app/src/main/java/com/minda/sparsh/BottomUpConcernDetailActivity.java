@@ -175,7 +175,7 @@ public class BottomUpConcernDetailActivity extends BaseActivity {
                 concern_date_spinner.setText(bottomUpConcern.getRaisedOn());
             }
             if (bottomUpConcern.getUnitName() != null) {
-                unit_spinner.setText(bottomUpConcern.getUnit()+":"+bottomUpConcern.getUnitName());
+                unit_spinner.setText(bottomUpConcern.getUnit() + ":" + bottomUpConcern.getUnitName());
             }
             responsible_spinner.setText(bottomUpConcern.getDeptName());
             raisedbyvalue.setText(bottomUpConcern.getRaisedBy());
@@ -273,21 +273,21 @@ public class BottomUpConcernDetailActivity extends BaseActivity {
             docView2.setVisibility(View.GONE);
 
         }
-            if (bottomUpConcern.getBDocument() != null && bottomUpConcern.getBDocument().length() > 0) {
-                attachtext3.setText(bottomUpConcern.getBDocument());
-                docView3.setVisibility(View.VISIBLE);
-                if (bottomUpConcern.getBDocument().contains("png") || bottomUpConcern.getBDocument().contains("jpg") || bottomUpConcern.getBDocument().contains("jpeg")) {
-                    Glide.with(BottomUpConcernDetailActivity.this).load(RetrofitClient2.bottomup_img + bottomUpConcern.getBDocument()).apply(new RequestOptions()
-                            .diskCacheStrategy(DiskCacheStrategy.ALL)
-                            .dontAnimate()
-                            .fitCenter()
-                            .dontTransform())
-                            .into(docView3);
-                }
-
-            } else {
-                docView3.setVisibility(View.GONE);
+        if (bottomUpConcern.getBDocument() != null && bottomUpConcern.getBDocument().length() > 0) {
+            attachtext3.setText(bottomUpConcern.getBDocument());
+            docView3.setVisibility(View.VISIBLE);
+            if (bottomUpConcern.getBDocument().contains("png") || bottomUpConcern.getBDocument().contains("jpg") || bottomUpConcern.getBDocument().contains("jpeg")) {
+                Glide.with(BottomUpConcernDetailActivity.this).load(RetrofitClient2.bottomup_img + bottomUpConcern.getBDocument()).apply(new RequestOptions()
+                        .diskCacheStrategy(DiskCacheStrategy.ALL)
+                        .dontAnimate()
+                        .fitCenter()
+                        .dontTransform())
+                        .into(docView3);
             }
+
+        } else {
+            docView3.setVisibility(View.GONE);
+        }
 
         registerReceiver();
 
@@ -648,12 +648,12 @@ public class BottomUpConcernDetailActivity extends BaseActivity {
         bottomUpConcernServices.getAutoSuggestion(new OnTaskComplete() {
             @Override
             public void onTaskComplte(CarotResponse carotResponse) {
-                if(carotResponse.getStatuscode() == HttpsURLConnection.HTTP_OK) {
+                if (carotResponse.getStatuscode() == HttpsURLConnection.HTTP_OK) {
                     if (carotResponse.getData() != null) {
                         List<AutoSuggestModel> list = (List<AutoSuggestModel>) carotResponse.getData();
                         if (list != null) {
                             for (int i = 0; i < list.size(); i++) {
-                                    suggestions.add(list.get(i).getEmpName()+"-"+list.get(i).getEmpCode()+"-"+list.get(i).getUnitCode());
+                                suggestions.add(list.get(i).getEmpName() + "-" + list.get(i).getEmpCode() + "-" + list.get(i).getUnitCode());
                             }
                             if (suggestions != null && suggestions.size() > 0)
                                 autoSuggestAdapter.setData(suggestions);
@@ -663,6 +663,6 @@ public class BottomUpConcernDetailActivity extends BaseActivity {
                     }
                 }
             }
-        },text);
+        }, text);
     }
 }

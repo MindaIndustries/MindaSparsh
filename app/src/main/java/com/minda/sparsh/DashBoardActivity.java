@@ -87,9 +87,9 @@ public class DashBoardActivity extends BaseActivity implements View.OnClickListe
         } catch (PackageManager.NameNotFoundException e) {
             e.printStackTrace();
         }
-        GetVersionCode getVersionCode = new GetVersionCode();
+      /*  GetVersionCode getVersionCode = new GetVersionCode();
         getVersionCode.execute();
-
+*/
 
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
         adapter.addFragment(new TwoFragment(), "About Us");
