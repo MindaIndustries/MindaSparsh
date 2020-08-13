@@ -153,7 +153,8 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
         if (id == R.id.profile) {
          /*   Intent intent = new Intent(BaseActivity.this,ProfileActivity.class);
             startActivity(intent);
-       */ }
+       */
+        }
         if (id == R.id.nav_aboutus) {
             viewPager.setCurrentItem(0, true);
         }

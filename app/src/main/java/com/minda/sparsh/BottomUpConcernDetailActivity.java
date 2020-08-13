@@ -174,8 +174,8 @@ public class BottomUpConcernDetailActivity extends BaseActivity {
             if (bottomUpConcern.getRaisedOn() != null) {
                 concern_date_spinner.setText(bottomUpConcern.getRaisedOn());
             }
-            if (bottomUpConcern.getUnit() != null) {
-                unit_spinner.setText(bottomUpConcern.getUnit());
+            if (bottomUpConcern.getUnitName() != null) {
+                unit_spinner.setText(bottomUpConcern.getUnitName());
             }
             responsible_spinner.setText(bottomUpConcern.getDeptName());
             raisedbyvalue.setText(bottomUpConcern.getRaisedBy());

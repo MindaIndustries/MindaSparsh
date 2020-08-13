@@ -11,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 
 import com.minda.sparsh.Adapter.BottomUpConcernAdapter;
 import com.minda.sparsh.R;
@@ -38,6 +39,8 @@ public class ViewConcernFragment extends Fragment {
     ArrayList<BottomUpConcern> concerns = new ArrayList<BottomUpConcern>();
     SharedPreferences myPref;
     String empCode;
+    @BindView(R.id.no_list)
+    TextView no_list;
 
     @Nullable
     @Override
@@ -45,9 +48,7 @@ public class ViewConcernFragment extends Fragment {
         View viewConcern = inflater.inflate(R.layout.view_concern, container, false);
         ButterKnife.bind(this, viewConcern);
         myPref = getActivity().getSharedPreferences("MyPref", MODE_PRIVATE);
-
         empCode = myPref.getString("Id", "Id");
-
         bottomUpConcernAdapter = new BottomUpConcernAdapter(getActivity(), concerns);
         LinearLayoutManager mLayoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false);
         bottomupRv.setLayoutManager(mLayoutManager);
@@ -74,7 +75,15 @@ public class ViewConcernFragment extends Fragment {
                     List<BottomUpConcern> list = (List<BottomUpConcern>) carotResponse.getData();
                     if(list!=null && list.size()>0){
                         concerns.addAll(list);
+                        no_list.setVisibility(View.GONE);
+
                     }
+                    else{
+                        no_list.setVisibility(View.VISIBLE);
+                    }
+                }
+                else {
+                    no_list.setVisibility(View.VISIBLE);
                 }
                 bottomUpConcernAdapter.notifyDataSetChanged();
                 progressBar.setVisibility(View.GONE);

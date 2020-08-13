@@ -59,10 +59,6 @@ import com.minda.sparsh.util.Utility;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.InputStream;
-import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
@@ -240,7 +236,7 @@ public class NewConcernFragment extends Fragment {
     @OnClick(R.id.save)
     public void onClickSave() {
 
-        if(department.length()==0){
+        if (department.length() == 0) {
             Toast.makeText(getActivity(), "Select Responsible 6M", Toast.LENGTH_LONG).show();
             return;
         }
@@ -764,7 +760,7 @@ public class NewConcernFragment extends Fragment {
         String fullFilePath = UriUtils.getPathFromUri(getActivity(), fileUri);
         File file = new File(fullFilePath);
         attachmentName = file.getName();
-        attachmentType = mimeType.replace("application/","");
+        attachmentType = mimeType.replace("application/", "");
         attachtext.setText(attachmentName);
         bytes = new byte[(int) file.length()];
 

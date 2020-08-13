@@ -14,6 +14,17 @@
             android:id="@+id/bottomup_rv"
             android:layout_width="match_parent"
             android:layout_height="match_parent"/>
-    </RelativeLayout>
+        <TextView
+            android:id="@+id/no_list"
+            android:text="No Concerns"
+            android:layout_marginTop="20dp"
+            android:layout_centerHorizontal="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:fontFamily="@font/museosans_500"
+            />
 
+    </RelativeLayout>
+/
 </RelativeLayout>

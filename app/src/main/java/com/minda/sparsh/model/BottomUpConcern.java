@@ -9,6 +9,8 @@ public class BottomUpConcern implements Serializable {
     String DeptName;
     @SerializedName("Id")
     String Id;
+    @SerializedName("UnitName")
+    String UnitName;
     @SerializedName("Unit")
     String Unit;
     @SerializedName("RaisedOn")
@@ -334,5 +336,13 @@ public class BottomUpConcern implements Serializable {
 
     public void setAssignedName(String assignedName) {
         AssignedName = assignedName;
+    }
+
+    public String getUnitName() {
+        return UnitName;
+    }
+
+    public void setUnitName(String unitName) {
+        UnitName = unitName;
     }
 }
