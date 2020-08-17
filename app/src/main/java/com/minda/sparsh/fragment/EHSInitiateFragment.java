@@ -319,8 +319,7 @@ public class EHSInitiateFragment extends Fragment {
                             categorySpinner.setVisibility(View.VISIBLE);
                             ll6.setVisibility(View.VISIBLE);
 
-                        }
-                        else if(observationID.equals("3")){
+                        } else if (observationID.equals("3")) {
                             categoryText.setVisibility(View.GONE);
                             categorySpinner.setVisibility(View.GONE);
                             ll6.setVisibility(View.GONE);
@@ -328,8 +327,7 @@ public class EHSInitiateFragment extends Fragment {
                             subCategorytext.setVisibility(View.GONE);
                             ll7.setVisibility(View.GONE);
 
-                        }
-                        else {
+                        } else {
                             categories.clear();
                             ehsCategories.clear();
                             categories.add("Select");
@@ -411,15 +409,15 @@ public class EHSInitiateFragment extends Fragment {
             Toast.makeText(getActivity(), "Type of Observation not selected", Toast.LENGTH_LONG).show();
             return;
         }
-        if (category != null && category.equals("Select") || category == null ) {
-            if(!obstype.equals("Near Miss Reporting")) {
+        if (category != null && category.equals("Select") || category == null) {
+            if (!obstype.equals("Near Miss Reporting")) {
                 Toast.makeText(getActivity(), "Category not selected", Toast.LENGTH_LONG).show();
                 return;
             }
 
         }
         if (subcategory != null && subcategory.equals("Select")) {
-            if(!obstype.equals("Near Miss Reporting")) {
+            if (!obstype.equals("Near Miss Reporting")) {
                 Toast.makeText(getActivity(), "Sub Category not selected", Toast.LENGTH_LONG).show();
                 return;
             }
@@ -437,9 +435,9 @@ public class EHSInitiateFragment extends Fragment {
             incidencemin = min_am[0];
             incidencezone = min_am[1];
         }
-        if(observationID.equals("3")){
-            subCategoryID ="0";
-            catId="0";
+        if (observationID.equals("3")) {
+            subCategoryID = "0";
+            catId = "0";
         }
 
         if (submit.getText().equals("Submit")) {
@@ -469,16 +467,13 @@ public class EHSInitiateFragment extends Fragment {
     public void onClickViewDoc() {
 
         if (getArguments() != null && getArguments().getString("attachment") != null) {
-
             Intent in = new Intent(getActivity(), ViewEHSImage.class);
             in.putExtra("attachment", attachmentName);
             getActivity().startActivity(in);
         } else if (bmp != null) {
-
             ByteArrayOutputStream stream = new ByteArrayOutputStream();
             bmp.compress(Bitmap.CompressFormat.PNG, 100, stream);
             byte[] byteArray = stream.toByteArray();
-
             Intent in = new Intent(getActivity(), ViewEHSImage.class);
             in.putExtra("bitmap", byteArray);
             getActivity().startActivity(in);
@@ -739,10 +734,7 @@ public class EHSInitiateFragment extends Fragment {
                         if (getArguments() != null && getArguments().getString("typeOfObs") != null) {
                             int i = observationtypeNames.indexOf(getArguments().getString("typeOfObs"));
                             typeOfObservationSpinner.setSelection(i);
-
                         }
-
-
                     }
                 }
             }
@@ -1115,14 +1107,10 @@ public class EHSInitiateFragment extends Fragment {
             @Override
             public void onTaskComplte(CarotResponse carotResponse) {
                 if (carotResponse.getStatuscode() == HttpsURLConnection.HTTP_OK) {
-                        if (carotResponse.getData() != null) {
-                            uploadFile(carotResponse.getData().toString(), imgString);
-                            sendMail(EmpCode, obstype, identifiedLocation, Description, ActNo, unitcode);
-
-                        }
-
-
-
+                    if (carotResponse.getData() != null) {
+                        uploadFile(carotResponse.getData().toString(), imgString);
+                        sendMail(EmpCode, obstype, identifiedLocation, Description, ActNo, unitcode);
+                    }
                 }
                 progressBar.setVisibility(View.GONE);
 
@@ -1474,14 +1462,14 @@ public class EHSInitiateFragment extends Fragment {
                     @Override
                     public void run() {
 
-                       if(getActivity()!=null && isAdded()) {
-                           progressBar.setVisibility(View.GONE);
-                           Toast.makeText(getActivity(), "Successfully submitted", Toast.LENGTH_LONG).show();
-                           Intent in = new Intent(getActivity(), EHS_Home.class);
-                           in.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                           startActivity(in);
-                           getActivity().finish();
-                       }
+                        if (getActivity() != null && isAdded()) {
+                            progressBar.setVisibility(View.GONE);
+                            Toast.makeText(getActivity(), "Successfully submitted", Toast.LENGTH_LONG).show();
+                            Intent in = new Intent(getActivity(), EHS_Home.class);
+                            in.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                            startActivity(in);
+                            getActivity().finish();
+                        }
                     }
                 }, 1000);
 

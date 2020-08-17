@@ -407,7 +407,7 @@ public class LoginActivity extends AppCompatActivity {
                             mEditor.putString("UM_REPORTING_TO_NAME",loginResponse.get(0).getUMREPORTINGTONAME());
                             mEditor.putString("UM_MASCOM_CODE",loginResponse.get(0).getUMMASCOMCODE());
                             mEditor.putString("Depu_UnitName", (String) loginResponse.get(0).getDepuUnitName());
-                            mEditor.putString("pass",password);
+                            mEditor.putString("pass", loginResponse.get(0).getUMUSERPWD());
 
 
                             arrayList.clear();
