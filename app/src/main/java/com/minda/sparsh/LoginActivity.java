@@ -198,6 +198,7 @@ public class LoginActivity extends AppCompatActivity {
                     mEditor.putString("Id", Id);
                     mEditor.putString("username", UserName);
                     mEditor.putBoolean("IsLogin", true);
+                    mEditor.putBoolean("IsLoginNew",true);
                     mEditor.putString("EmainId", EmailID);
                     mEditor.putString("AuthFor", loginModel.AuthFor);
                     mEditor.putString("Um_div_code", loginModel.UM_DIV_CODE);
@@ -215,6 +216,7 @@ public class LoginActivity extends AppCompatActivity {
                     mEditor.putStringSet("key", set);
                     if (!cbTerms.isChecked()) {
                         mEditor.putBoolean("IsLogin", false);
+                        mEditor.putBoolean("IsLoginNew", false);
                     }
                     refreshedToken = FirebaseInstanceId.getInstance().getToken();
                     HitMyorder(Id, refreshedToken);
@@ -397,16 +399,18 @@ public class LoginActivity extends AppCompatActivity {
                             mEditor.putString("Id", loginResponse.get(0).getUMUSERID());
                             mEditor.putString("username", loginResponse.get(0).getUMUSERDESC());
                             mEditor.putBoolean("IsLogin", true);
+                            mEditor.putBoolean("IsLoginNew",true);
                             mEditor.putString("EmainId", loginResponse.get(0).getUMEMAILID());
                             mEditor.putString("AuthFor", loginResponse.get(0).getAuthFor());
                             mEditor.putString("Um_div_code", loginResponse.get(0).getUMDIVCODE());
                             mEditor.putString("UM_DESIG_CODE", loginResponse.get(0).getUMDESIGCODE());
-                            mEditor.putString("DESIGNATION",loginResponse.get(0).getUMEMPDESIG());
-                            mEditor.putString("DOJ",loginResponse.get(0).getDOJ());
-                            mEditor.putString("UM_DEPT_NAME",loginResponse.get(0).getUMDEPTNAME());
-                            mEditor.putString("UM_REPORTING_TO_NAME",loginResponse.get(0).getUMREPORTINGTONAME());
-                            mEditor.putString("UM_MASCOM_CODE",loginResponse.get(0).getUMMASCOMCODE());
+                            mEditor.putString("DESIGNATION", loginResponse.get(0).getUMEMPDESIG());
+                            mEditor.putString("DOJ", loginResponse.get(0).getDOJ());
+                            mEditor.putString("UM_DEPT_NAME", loginResponse.get(0).getUMDEPTNAME());
+                            mEditor.putString("UM_REPORTING_TO_NAME", loginResponse.get(0).getUMREPORTINGTONAME());
+                            mEditor.putString("UM_MASCOM_CODE", loginResponse.get(0).getUMMASCOMCODE());
                             mEditor.putString("Depu_UnitName", (String) loginResponse.get(0).getDepuUnitName());
+                            mEditor.putString("Depu_UnitCode", (String) loginResponse.get(0).getDepuUnitCode());
                             mEditor.putString("pass", loginResponse.get(0).getUMUSERPWD());
 
 
@@ -427,6 +431,8 @@ public class LoginActivity extends AppCompatActivity {
 
                             if (!cbTerms.isChecked()) {
                                 mEditor.putBoolean("IsLogin", false);
+                                mEditor.putBoolean("IsLoginNew",false);
+
                             }
                             refreshedToken = FirebaseInstanceId.getInstance().getToken();
                             HitMyorder(Id, refreshedToken);

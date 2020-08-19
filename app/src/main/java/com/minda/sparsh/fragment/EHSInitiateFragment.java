@@ -157,7 +157,7 @@ public class EHSInitiateFragment extends Fragment {
     TimePickerDialog observationTimePicker;
     Calendar cal;
     SharedPreferences myPref;
-    String unitcode;
+    String unitcode,depucode;
     String empCode, actId, actNo;
     String safetyOfficer, obstype, identifiedLocation, category, subcategory, locationID, subCategoryID, observationID;
 
@@ -188,6 +188,10 @@ public class EHSInitiateFragment extends Fragment {
     public void initUI() {
         myPref = getActivity().getSharedPreferences("MyPref", MODE_PRIVATE);
         unitcode = myPref.getString("Um_div_code", "");
+        depucode = myPref.getString("Depu_UnitCode","");
+        if(depucode!=null && depucode.length()>0){
+            unitcode= depucode;
+        }
         empCode = myPref.getString("Id", "Id");
 
         initObservationDatePicker();

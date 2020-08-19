@@ -204,6 +204,7 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
                 SharedPreferences myPref = getSharedPreferences("MyPref", Context.MODE_PRIVATE);
                 SharedPreferences.Editor mEditor = myPref.edit();
                 mEditor.putBoolean("IsLogin", false);
+                mEditor.putBoolean("IsLoginNew",false);
                 mEditor.commit();
 
                 arg0.dismiss();

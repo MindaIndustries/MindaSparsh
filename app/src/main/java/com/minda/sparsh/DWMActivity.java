@@ -695,6 +695,8 @@ public class DWMActivity extends AppCompatActivity {
                 SharedPreferences myPref = getSharedPreferences("MyPref", Context.MODE_PRIVATE);
                 SharedPreferences.Editor mEditor = myPref.edit();
                 mEditor.putBoolean("IsLogin", false);
+                mEditor.putBoolean("IsLoginNew",false);
+
                 mEditor.commit();
                 Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);

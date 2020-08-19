@@ -94,6 +94,7 @@ public class ProfileActivity extends BaseActivity {
                             mEditor.putString("Id", loginResponse.get(0).getUMUSERID());
                             mEditor.putString("username", loginResponse.get(0).getUMUSERDESC());
                             mEditor.putBoolean("IsLogin", true);
+                            mEditor.putBoolean("IsLoginNew",true);
                             mEditor.putString("EmainId", loginResponse.get(0).getUMEMAILID());
                             mEditor.putString("AuthFor", loginResponse.get(0).getAuthFor());
                             mEditor.putString("Um_div_code", loginResponse.get(0).getUMDIVCODE());
@@ -104,6 +105,7 @@ public class ProfileActivity extends BaseActivity {
                             mEditor.putString("UM_REPORTING_TO_NAME", loginResponse.get(0).getUMREPORTINGTONAME());
                             mEditor.putString("UM_MASCOM_CODE", loginResponse.get(0).getUMMASCOMCODE());
                             mEditor.putString("Depu_UnitName", (String) loginResponse.get(0).getDepuUnitName());
+                            mEditor.putString("Depu_UnitCode", (String) loginResponse.get(0).getDepuUnitCode());
                             mEditor.putString("pass", loginResponse.get(0).getUMUSERPWD());
                             mEditor.commit();
                             empCode_str = myPref.getString("Id", "Id");

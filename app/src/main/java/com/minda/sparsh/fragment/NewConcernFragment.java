@@ -108,7 +108,7 @@ public class NewConcernFragment extends Fragment {
     ProgressBar progressBar;
 
 
-    String unitcode, empCode, username;
+    String unitcode,depucode, empCode, username;
     SharedPreferences myPref;
     ArrayList<String> unitsName = new ArrayList<String>();
     ArrayList<String> sixMNames = new ArrayList<String>();
@@ -140,6 +140,10 @@ public class NewConcernFragment extends Fragment {
         concernDateText.setText(getlogDate(System.currentTimeMillis()));
         myPref = getActivity().getSharedPreferences("MyPref", MODE_PRIVATE);
         unitcode = myPref.getString("Um_div_code", "");
+        depucode = myPref.getString("Depu_UnitCode","");
+        if(depucode!=null && depucode.length()>0){
+            unitcode= depucode;
+        }
         empCode = myPref.getString("Id", "Id");
         username = myPref.getString("username", "");
 

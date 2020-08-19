@@ -29,7 +29,7 @@ public class SplashActivity extends Activity {
                 SharedPreferences myPref = getSharedPreferences("MyPref", Context.MODE_PRIVATE);
 
                 Intent i = null;
-                if (myPref.getBoolean("IsLogin", false))
+                if (myPref.getBoolean("IsLoginNew", false))
                     i = new Intent(SplashActivity.this, DashBoardActivity.class);
                 else
                     i = new Intent(SplashActivity.this, LoginActivity.class);

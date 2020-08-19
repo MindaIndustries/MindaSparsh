@@ -48,11 +48,8 @@ public class EHS_Home extends BaseActivity {
             public void onTabSelected(TabLayout.Tab tab) {
                 if (tab.getPosition() == 0) {
                     getSupportFragmentManager().beginTransaction().replace(R.id.framelayout, new EHSInitiateFragment()).commitAllowingStateLoss();
-
-
                 } else {
                     getSupportFragmentManager().beginTransaction().replace(R.id.framelayout, new EHSObservationsFragment()).commitAllowingStateLoss();
-
                 }
             }
 
