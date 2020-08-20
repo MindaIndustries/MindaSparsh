@@ -120,7 +120,7 @@ public class ApproveListActivity extends AppCompatActivity {
                         List<ApproveList> approveLists1 = response.body();
 
                         try {
-                            if (approveLists1 != null) {
+                            if (approveLists1 != null && approveLists1.size()>0) {
                                 if (approveLists1.get(0).getApprovalId() != null) {
                                     approveLists.addAll(approveLists1);
                                 } else {

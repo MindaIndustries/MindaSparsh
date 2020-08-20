@@ -133,7 +133,7 @@ public class MainActivity extends AppCompatActivity {
                     showProgress(false);
                     List<AddAbnormality_Model> pdfResponse = response.body();
 
-                    if (pdfResponse != null && !pdfResponse.get(0).getColumn1().equalsIgnoreCase("")) {
+                    if (pdfResponse != null && pdfResponse.size()>0 &&!pdfResponse.get(0).getColumn1().equalsIgnoreCase("")) {
                         String url = pdfResponse.get(0).getColumn1();
                         webView(url);
                     } else {

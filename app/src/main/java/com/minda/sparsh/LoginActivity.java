@@ -332,7 +332,7 @@ public class LoginActivity extends AppCompatActivity {
                     IMAGES.clear();
 
 
-                    if (BannarModel != null) {
+                    if (BannarModel != null && BannarModel.size()>0) {
                         if (BannarModel.get(0).getIMAGE().length() != 0) {
                             IMAGES.add(BannarModel.get(0).getIMAGE());
                         }

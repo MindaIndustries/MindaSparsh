@@ -69,7 +69,7 @@ public class NotificationActivity extends AppCompatActivity {
 
                     List<NotificationModel> responseItem = response.body();
                     response.message();
-                    if (responseItem != null) {
+                    if (responseItem != null && responseItem.size()>0) {
                         setadapter(responseItem);
 
 

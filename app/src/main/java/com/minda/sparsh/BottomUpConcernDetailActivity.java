@@ -651,7 +651,7 @@ public class BottomUpConcernDetailActivity extends BaseActivity {
                 if (carotResponse.getStatuscode() == HttpsURLConnection.HTTP_OK) {
                     if (carotResponse.getData() != null) {
                         List<AutoSuggestModel> list = (List<AutoSuggestModel>) carotResponse.getData();
-                        if (list != null) {
+                        if (list != null && list.size()>0) {
                             for (int i = 0; i < list.size(); i++) {
                                 suggestions.add(list.get(i).getEmpName() + "-" + list.get(i).getEmpCode() + "-" + list.get(i).getUnitCode());
                             }

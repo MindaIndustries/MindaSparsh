@@ -202,7 +202,7 @@ public class DashBoardActivity extends BaseActivity implements View.OnClickListe
 
                     List<NotificationModel> responseItem = response.body();
                     response.message();
-                    if (responseItem != null) {
+                    if (responseItem != null && responseItem.size()>0) {
 
                         for (int i = 0; i < responseItem.size(); i++) {
                             if (!responseItem.get(i).getIsRead()) {

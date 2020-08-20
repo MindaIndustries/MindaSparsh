@@ -469,7 +469,7 @@ public class AbnormalityAddressing2Activity extends AppCompatActivity {
                     showProgress(false);
                     List<AddAbnormality_Model> Departmentresponse = response.body();
 
-                    if (Departmentresponse != null) {
+                    if (Departmentresponse != null && Departmentresponse.size()>0) {
                         if (Departmentresponse.get(0).getColumn1().equalsIgnoreCase("success")) {
                             Toast.makeText(AbnormalityAddressing2Activity.this, "Date Save Successfully", Toast.LENGTH_LONG).show();
 

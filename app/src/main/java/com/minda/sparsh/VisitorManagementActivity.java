@@ -602,7 +602,7 @@ public class VisitorManagementActivity extends AppCompatActivity implements View
                     dismissProgress();
                     List<AddAbnormality_Model> visitorResponse = response.body();
 
-                    if (visitorResponse != null) {
+                    if (visitorResponse != null &&visitorResponse.size()>0) {
                         if (visitorResponse.get(0).getColumn1().equalsIgnoreCase("Success")) {
                             Toast.makeText(VisitorManagementActivity.this, "Entry Saved Successfully", Toast.LENGTH_LONG).show();
                             finish();
@@ -751,7 +751,7 @@ public class VisitorManagementActivity extends AppCompatActivity implements View
                     List<VisitorDetailModel> visitorDetailModels = response.body();
 
                     try {
-                        if (visitorDetailModels != null) {
+                        if (visitorDetailModels != null && visitorDetailModels.size()>0) {
 
                             et_visitor_mobile_no.setText(visitorDetailModels.get(0).getMobile());
                             et_first_name.setText(visitorDetailModels.get(0).getFirstName());
