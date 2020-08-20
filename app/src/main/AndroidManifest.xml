@@ -25,19 +25,17 @@
         android:largeHeap="true"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
-        android:usesCleartextTraffic="true"
+        android:usesCleartextTraffic="true">
 
-        >
-
-        <activity android:name=".ApproveListActivity1"
+        <activity
+            android:name=".ApproveListActivity1"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar"
-            ></activity>
+            android:theme="@style/AppTheme.NoActionBar"></activity>
 
-        <activity android:name=".IdentityAccessManagementActivity1"
+        <activity
+            android:name=".IdentityAccessManagementActivity1"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar"
-            />
+            android:theme="@style/AppTheme.NoActionBar" />
 
         <activity
             android:name=".RequestForAccessActivity"
@@ -65,8 +63,7 @@
         <activity
             android:name=".MainActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar"
-            />
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".SplashActivity"
             android:screenOrientation="portrait">
@@ -152,22 +149,24 @@
             android:name=".BottomUpConcernDetailActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".BottomUpConcernActivity"
+        <activity
+            android:name=".BottomUpConcernActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar"/>
+            android:theme="@style/AppTheme.NoActionBar" />
 
 
-        <activity android:name=".ViewEHSImage"
+        <activity
+            android:name=".ViewEHSImage"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar"
-            />
-        <activity android:name=".SuggestionBox"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".SuggestionBox"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar"/>
-        <activity android:name=".ProfileActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".ProfileActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar"/>
-
+            android:theme="@style/AppTheme.NoActionBar" />
 
 
         <meta-data
@@ -194,7 +193,7 @@
                 <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
             </intent-filter>
         </service>
-        <service android:name=".util.BackgroundNotificationService"/>
+        <service android:name=".util.BackgroundNotificationService" />
     </application>
 
 </manifest>
