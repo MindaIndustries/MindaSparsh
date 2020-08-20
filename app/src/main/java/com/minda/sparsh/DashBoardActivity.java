@@ -18,6 +18,7 @@ import android.support.v7.app.ActionBar;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -51,7 +52,7 @@ public class DashBoardActivity extends BaseActivity implements View.OnClickListe
     public TextView tv_user_name;
     SharedPreferences myPref;
     String User, currentVersion;
-    LinearLayout lay_logout;
+    RelativeLayout lay_logout;
     int count = 0;
     public static TextView tv_unread;
     public ImageView im_right, im_left, im_logo;
@@ -73,7 +74,7 @@ public class DashBoardActivity extends BaseActivity implements View.OnClickListe
 //        im_left= (ImageView) findViewById(R.id.im_left);
 //        im_logo=(ImageView) findViewById(R.id.im_logo);
         tv_user_name = (TextView) findViewById(R.id.tv_user_name);
-        lay_logout = (LinearLayout) findViewById(R.id.lay_logout);
+        lay_logout = (RelativeLayout) findViewById(R.id.lay_logout);
         viewPager = (ViewPager) findViewById(R.id.pager);
         myPref = getSharedPreferences("MyPref", Context.MODE_PRIVATE);
         User = myPref.getString("username", "");
@@ -202,7 +203,7 @@ public class DashBoardActivity extends BaseActivity implements View.OnClickListe
 
                     List<NotificationModel> responseItem = response.body();
                     response.message();
-                    if (responseItem != null && responseItem.size()>0) {
+                    if (responseItem != null && responseItem.size() > 0) {
 
                         for (int i = 0; i < responseItem.size(); i++) {
                             if (!responseItem.get(i).getIsRead()) {
