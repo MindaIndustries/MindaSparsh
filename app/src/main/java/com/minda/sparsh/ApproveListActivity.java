@@ -8,8 +8,11 @@ import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.minda.sparsh.Adapter.ApproveListAdapter;
@@ -34,10 +37,21 @@ public class ApproveListActivity extends AppCompatActivity {
     SwipeRefreshLayout mSwipeRefreshLayout;
     ApproveListAdapter mAdapter;
     List<ApproveList> approveLists = new ArrayList<>();
+
+    Toolbar toolbar;
+    TextView title;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_approve_list);
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        title = (TextView) findViewById(R.id.title);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        getSupportActionBar().setHomeAsUpIndicator(R.drawable.back);
+        title.setText("Approve Request");
 
         myPref = getSharedPreferences("MyPref", MODE_PRIVATE);
 
@@ -73,6 +87,19 @@ public class ApproveListActivity extends AppCompatActivity {
        // hitGetApprovalListApi(RetrofitClient2.CKEY, myPref.getString("Id", "Id"));
 
     }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                onBackPressed();
+                return true;
+
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+
 
 
     public void hitGetApprovalListApi(String key, String EmpCode) {

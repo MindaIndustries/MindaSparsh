@@ -1,23 +1,32 @@
 package com.minda.sparsh;
 
 import android.content.Intent;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
-
-import com.minda.sparsh.fragment.IAMMenuFragment;
+import android.widget.TextView;
 
 public class IdentityAccessManagementActivity extends AppCompatActivity implements View.OnClickListener {
     ImageView im_back, iv_approve_request, iv_view_access_request, iv_access_request;
+
+    Toolbar toolbar;
+    TextView title;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_identity_access_management);
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        title = (TextView) findViewById(R.id.title);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        getSupportActionBar().setHomeAsUpIndicator(R.drawable.back);
+        title.setText("Identity & Access Management");
+
         im_back = (ImageView) findViewById(R.id.im_back);
         iv_approve_request = (ImageView) findViewById(R.id.iv_approve_request);
         iv_approve_request.setOnClickListener(this);
@@ -33,6 +42,18 @@ public class IdentityAccessManagementActivity extends AppCompatActivity implemen
 
 //        intiUiSetup();
     }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                onBackPressed();
+                return true;
+
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+
 
     private void intiUiSetup() {
 //        replaceFragment(new IAMMenuFragment(), false, false);

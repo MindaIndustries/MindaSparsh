@@ -25,8 +25,10 @@ import android.support.v4.content.FileProvider;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.util.Base64;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -109,12 +111,22 @@ public class AbnormalityAddressingActivity extends AppCompatActivity {
     List<Plant_Model> Plantresponse;
     List<Department_Model> Departmentresponse;
     List<Sub_Department_Model> Subdepartmentresponse;
+    Toolbar toolbar;
+    TextView title;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_abnormality_addressing);
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        title = (TextView) findViewById(R.id.title);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        getSupportActionBar().setHomeAsUpIndicator(R.drawable.back);
+        title.setText("Abnormality");
+
         lay_two = (LinearLayout) findViewById(R.id.lay_two);
         lay_one = (LinearLayout) findViewById(R.id.lay_one);
         lay_out = (LinearLayout) findViewById(R.id.lay_out);
@@ -569,6 +581,18 @@ public class AbnormalityAddressingActivity extends AppCompatActivity {
         }
 
     }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                onBackPressed();
+                return true;
+
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+
 
     public String getStringImage(Bitmap bmp) {
         ByteArrayOutputStream baos = new ByteArrayOutputStream();

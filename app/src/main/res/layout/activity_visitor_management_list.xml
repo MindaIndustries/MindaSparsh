@@ -37,7 +37,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight=".5"
-            android:src="@drawable/back_arrow" />
+            android:src="@drawable/back" />
 
         <TextView
             android:layout_width="0dp"
@@ -47,7 +47,8 @@
             android:text="Visitor Management"
             android:textColor="@color/white"
             android:textSize="20dp"
-            android:textStyle="bold" />
+            android:fontFamily="@font/museosans_300"
+            />
 
         <Button
             android:id="@+id/btn_create"
@@ -58,6 +59,7 @@
             android:background="@drawable/rec_button"
             android:gravity="center"
             android:text="Create"
+            android:fontFamily="@font/museosans_300"
             android:textColor="@color/white"
             android:textSize="12sp" />
     </LinearLayout>

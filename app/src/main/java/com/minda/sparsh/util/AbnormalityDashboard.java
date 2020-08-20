@@ -4,6 +4,8 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -26,11 +28,21 @@ public class AbnormalityDashboard extends AppCompatActivity implements View.OnCl
     TextView tv_continue, tv_delayed, tv_closing, tv_total;
     ImageView im_back;
     private ProgressDialog progress = null;
+    Toolbar toolbar;
+    TextView title;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_abnormality_dashboard);
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        title = (TextView) findViewById(R.id.title);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        getSupportActionBar().setHomeAsUpIndicator(R.drawable.back);
+        title.setText("Abnormality");
+
         im_back = (ImageView) findViewById(R.id.im_back);
         tv_continue = (TextView) findViewById(R.id.tv_continue);
         tv_delayed = (TextView) findViewById(R.id.tv_delayed);
@@ -48,6 +60,19 @@ public class AbnormalityDashboard extends AppCompatActivity implements View.OnCl
         }
 
     }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                onBackPressed();
+                return true;
+
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+
 
     @Override
     public void onClick(View view) {

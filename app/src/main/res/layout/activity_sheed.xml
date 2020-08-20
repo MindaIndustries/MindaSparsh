@@ -4,9 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.minda.sparsh.SheedActivity"
-    android:orientation="vertical"
-    >
+    tools:context="com.minda.sparsh.SheedActivity">
+    <include layout="@layout/toolbar" />
+
     <RelativeLayout
         android:layout_marginTop="?android:attr/actionBarSize"
         android:layout_width="match_parent"
@@ -27,6 +27,7 @@
 
 
     <LinearLayout
+        android:visibility="gone"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         android:background="@color/colorPrimary"
@@ -35,7 +36,7 @@
             android:id="@+id/im_back"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/back_arrow"
+            android:src="@drawable/back"
             android:layout_marginLeft="20dp"/>
         <TextView
             android:layout_width="wrap_content"
@@ -52,6 +53,7 @@
 
 
     <LinearLayout
+        android:layout_marginTop="?android:attr/actionBarSize"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"

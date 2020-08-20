@@ -4,9 +4,12 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.minda.sparsh.Adapter.NotificationAdapter;
@@ -25,12 +28,23 @@ public class NotificationActivity extends AppCompatActivity {
     java.util.List<String> List = new ArrayList<>();
     SharedPreferences myPref;
     ImageView im_back;
+    Toolbar toolbar;
+    TextView title;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_notification);
-        getSupportActionBar().hide();
+     //   getSupportActionBar().hide();
+
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        title = (TextView) findViewById(R.id.title);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        getSupportActionBar().setHomeAsUpIndicator(R.drawable.back);
+        title.setText("Notifications");
+
         im_back = (ImageView) findViewById(R.id.im_back);
         list_notification = (ListView) findViewById(R.id.list_notification);
         myPref = getSharedPreferences("MyPref", Context.MODE_PRIVATE);
@@ -80,4 +94,16 @@ public class NotificationActivity extends AppCompatActivity {
         NotificationAdapter notificationAdapter = new NotificationAdapter(NotificationActivity.this, list);
         list_notification.setAdapter(notificationAdapter);
     }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                onBackPressed();
+                return true;
+
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+
 }

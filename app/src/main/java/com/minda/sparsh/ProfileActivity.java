@@ -5,6 +5,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -44,6 +45,8 @@ public class ProfileActivity extends BaseActivity {
     Toolbar toolbar;
     @BindView(R.id.title)
     TextView title;
+    @BindView(R.id.deputedunit)
+    TextView deputedunit;
     String empCode_str, pass;
     SharedPreferences myPref;
 
@@ -62,22 +65,37 @@ public class ProfileActivity extends BaseActivity {
         pass = myPref.getString("pass", "");
 
         empCode_str = myPref.getString("Id", "Id");
-        empCode.setText(empCode_str);
+        if(empCode_str.length()>0) {
+            empCode.setText(empCode_str);
+        }
+        if(myPref.getString("username", "").length()>0)
         userNametext.setText("" + myPref.getString("username", ""));
+        if(myPref.getString("EmainId", "").length()>0)
         emailValue.setText("" + myPref.getString("EmainId", ""));
-        String doj = myPref.getString("DOJ", "").replaceAll("/", "").replace("Date", "").replaceAll("\\(", "").replaceAll("\\)", "   ").replaceAll(" ", "");
-        dojvalue.setText("" + getlogDate(Long.parseLong(doj)));
+        if(myPref.getString("DOJ", "").length()>0) {
+            String doj = myPref.getString("DOJ", "").replaceAll("/", "").replace("Date", "").replaceAll("\\(", "").replaceAll("\\)", "   ").replaceAll(" ", "");
+            dojvalue.setText("" + getlogDate(Long.parseLong(doj)));
+        }
+
+        if(myPref.getString("UM_DEPT_NAME", "").length()>0)
         deptName.setText("" + myPref.getString("UM_DEPT_NAME", ""));
+        if(myPref.getString("UM_REPORTING_TO_NAME", "").length()>0)
         reportOfcrName.setText(myPref.getString("UM_REPORTING_TO_NAME", ""));
+        if(myPref.getString("DESIGNATION", "").length()>0)
         designationName.setText("" + myPref.getString("DESIGNATION", ""));
+        if(myPref.getString("UM_MASCOM_CODE", "").length()>0)
         unitValue.setText("" + myPref.getString("UM_MASCOM_CODE", ""));
-        deputedunitValue.setText("" + myPref.getString("Depu_UnitName", ""));
-        if (Utility.isOnline(ProfileActivity.this)) {
+        if(myPref.getString("Depu_UnitName", "").length()>0) {
+            deputedunitValue.setVisibility(View.VISIBLE);
+            deputedunit.setVisibility(View.VISIBLE);
+            deputedunitValue.setText("" + myPref.getString("Depu_UnitName", ""));
+        }
+      /*  if (Utility.isOnline(ProfileActivity.this)) {
             hitGetLoginApi(empCode_str, pass, RetrofitClient2.CKEY);
         } else {
             Toast.makeText(ProfileActivity.this, "Please Check Your Network Connection", Toast.LENGTH_LONG).show();
         }
-    }
+    */}
 
 
     public void hitGetLoginApi(String userName, String password, String key) {

@@ -41,17 +41,18 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight=".5"
-                android:src="@drawable/back_arrow" />
+                android:src="@drawable/back" />
 
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
                 android:layout_weight="2"
+                android:fontFamily="@font/museosans_300"
                 android:text="Visitor Management"
                 android:textColor="@color/white"
                 android:textSize="20dp"
-                android:textStyle="bold" />
+                 />
 
             <Button
                 android:id="@+id/btn_view"
@@ -62,6 +63,7 @@
                 android:background="@drawable/rec_button"
                 android:gravity="center"
                 android:text="View"
+                android:fontFamily="@font/museosans_300"
                 android:textColor="@color/white"
                 android:textSize="12sp" />
         </LinearLayout>
@@ -76,14 +78,14 @@
                 android:orientation="vertical"
                 android:padding="10dp">
 
-                <android.support.v7.widget.CardView
+               <!-- <android.support.v7.widget.CardView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:elevation="5dp"
                     card_view:cardBackgroundColor="@android:color/transparent"
                     card_view:cardCornerRadius="5dp">
-
+-->
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content">
@@ -120,7 +122,9 @@
 
 
                     </LinearLayout>
+<!--
                 </android.support.v7.widget.CardView>
+-->
 
                 <LinearLayout
                     android:id="@+id/lay_rest_content"
@@ -135,13 +139,13 @@
                         android:text="Visitor Details"
                         android:textStyle="bold" />
 
-                    <android.support.v7.widget.CardView
+                   <!-- <android.support.v7.widget.CardView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:elevation="5dp"
                         card_view:cardBackgroundColor="@android:color/transparent"
-                        card_view:cardCornerRadius="5dp">
+                        card_view:cardCornerRadius="5dp">-->
 
                         <LinearLayout
                             android:layout_width="match_parent"
@@ -176,7 +180,9 @@
                                     android:inputType="textPersonName" />
                             </android.support.design.widget.TextInputLayout>
                         </LinearLayout>
+<!--
                     </android.support.v7.widget.CardView>
+-->
 
                     <TextView
                         android:layout_width="match_parent"
@@ -186,7 +192,7 @@
                         android:textColor="@color/gray_dark"
                         android:textStyle="bold" />
 
-                    <android.support.v7.widget.CardView
+                   <!-- <android.support.v7.widget.CardView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
@@ -194,7 +200,7 @@
                         android:elevation="5dp"
                         card_view:cardBackgroundColor="@android:color/transparent"
                         card_view:cardCornerRadius="5dp">
-
+-->
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -222,16 +228,18 @@
                                     android:text="Female" />
                             </RadioGroup>
                         </LinearLayout>
+<!--
                     </android.support.v7.widget.CardView>
+-->
 
-                    <android.support.v7.widget.CardView
+                   <!-- <android.support.v7.widget.CardView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:layout_marginTop="20dp"
                         android:elevation="5dp"
                         card_view:cardBackgroundColor="@android:color/transparent"
-                        card_view:cardCornerRadius="5dp">
+                        card_view:cardCornerRadius="5dp">-->
 
                         <LinearLayout
                             android:layout_width="match_parent"
@@ -322,7 +330,9 @@
                                     android:inputType="number" />
                             </android.support.design.widget.TextInputLayout>
                         </LinearLayout>
+<!--
                     </android.support.v7.widget.CardView>
+-->
 
                     <TextView
                         android:layout_width="match_parent"
@@ -331,7 +341,7 @@
                         android:text="Appointment Details"
                         android:textStyle="bold" />
 
-                    <android.support.v7.widget.CardView
+                    <!--<android.support.v7.widget.CardView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
@@ -339,7 +349,7 @@
                         android:elevation="5dp"
                         card_view:cardBackgroundColor="@android:color/transparent"
                         card_view:cardCornerRadius="5dp">
-
+-->
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -531,7 +541,9 @@
                             <!--</android.support.design.widget.TextInputLayout>-->
 
                         </LinearLayout>
+<!--
                     </android.support.v7.widget.CardView>
+-->
 
                     <LinearLayout
                         android:layout_width="match_parent"

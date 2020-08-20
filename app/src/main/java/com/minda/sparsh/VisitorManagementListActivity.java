@@ -69,7 +69,7 @@ public class VisitorManagementListActivity extends AppCompatActivity implements 
                     dismissProgress();
                     List<ViewAppointmentModel> visitorResponse = response.body();
 
-                    if (visitorResponse != null) {
+                    if (visitorResponse != null && visitorResponse.size()>0) {
                         if (!visitorResponse.get(0).getFirstName().equalsIgnoreCase("")) {
                             ViewAppointmentAdapter mAdapter = new ViewAppointmentAdapter(response.body(), VisitorManagementListActivity.this);
                             RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(VisitorManagementListActivity.this);

@@ -4,6 +4,8 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
 import android.view.View;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
@@ -35,12 +37,22 @@ public class MainActivity extends AppCompatActivity {
     WebView wv_jagriti;
     private ProgressDialog progress = null;
     String pdfType = "";
+    Toolbar toolbar;
+    TextView title;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        getSupportActionBar().hide();
+     //   getSupportActionBar().hide();
+
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        title = (TextView) findViewById(R.id.title);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        getSupportActionBar().setHomeAsUpIndicator(R.drawable.back);
 
         progress = new ProgressDialog(this);
         progress.setMessage("Please wait...");
@@ -52,6 +64,7 @@ public class MainActivity extends AppCompatActivity {
         pdfType = intent.getStringExtra("pdfType");
         try {
             tv_title.setText(pdfType);
+            title.setText(pdfType);
             if (pdfType.equalsIgnoreCase("Jagriti")) {
 
                 hitGetPdfApi("Jagriti");
@@ -171,6 +184,17 @@ public class MainActivity extends AppCompatActivity {
 
         } else {
             wv_jagriti.loadUrl("http://drive.google.com/viewerng/viewer?embedded=true&url=" + url);
+        }
+    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                onBackPressed();
+                return true;
+
+            default:
+                return super.onOptionsItemSelected(item);
         }
     }
 

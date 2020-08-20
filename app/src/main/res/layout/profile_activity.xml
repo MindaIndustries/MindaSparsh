@@ -63,6 +63,7 @@
                 android:textColor="@color/black"
                 android:layout_marginTop="8dp"
                 android:textSize="13sp"
+                android:text="--"
                 android:layout_alignParentLeft="true"
                 android:gravity="left|center"
                 android:fontFamily="@font/museosans_300"
@@ -87,7 +88,7 @@
                 android:layout_below="@+id/email"
                 android:textColor="@color/black"
                 android:layout_marginTop="8dp"
-                android:text=""
+                android:text="--"
                 android:textSize="13sp"
                 android:layout_alignParentLeft="true"
                 android:gravity="left|center"
@@ -116,7 +117,7 @@
                 android:layout_below="@+id/emp"
                 android:textColor="@color/black"
                 android:layout_marginTop="8dp"
-                android:text=""
+                android:text="--"
                 android:textSize="13sp"
                 android:layout_toLeftOf="@+id/view"
                 android:layout_alignParentLeft="true"
@@ -146,7 +147,7 @@
                 android:layout_below="@+id/doj"
                 android:textColor="@color/black"
                 android:layout_marginTop="8dp"
-                android:text=""
+                android:text="--"
                 android:textSize="13sp"
                 android:layout_toRightOf="@+id/view"
                 android:gravity="left|center"
@@ -155,91 +156,6 @@
 
             <TextView
                 android:layout_below="@+id/emp_code"
-                android:textColor="@color/black"
-                android:id="@+id/dept"
-                android:layout_marginTop="15dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Department Name :"
-                android:textSize="15sp"
-                android:fontFamily="@font/museosans_500"
-                />
-
-
-            <TextView
-                android:id="@+id/deptName"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/dept"
-                android:textColor="@color/black"
-                android:layout_marginTop="8dp"
-                android:text=""
-                android:textSize="13sp"
-                android:layout_toRightOf="@+id/view"
-                android:layout_alignParentLeft="true"
-                android:gravity="left|center"
-                android:fontFamily="@font/museosans_300"
-                />
-
-            <TextView
-                android:layout_below="@+id/deptName"
-                android:textColor="@color/black"
-                android:id="@+id/report"
-                android:layout_marginTop="15dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="15sp"
-                android:text="Reporting Officer Name :"
-                android:fontFamily="@font/museosans_500"
-                />
-
-
-            <TextView
-                android:id="@+id/reportOfcrName"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/report"
-                android:textColor="@color/black"
-                android:layout_marginTop="8dp"
-                android:text=""
-                android:textSize="13sp"
-                android:layout_toRightOf="@+id/view"
-                android:layout_alignParentLeft="true"
-                android:gravity="left|center"
-                android:fontFamily="@font/museosans_300"
-                />
-
-
-            <TextView
-                android:layout_below="@+id/reportOfcrName"
-                android:textColor="@color/black"
-                android:id="@+id/designation"
-                android:layout_marginTop="15dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Designation :"
-                android:textSize="15sp"
-                android:fontFamily="@font/museosans_500"
-                />
-
-
-            <TextView
-                android:id="@+id/designation_name"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/designation"
-                android:textColor="@color/black"
-                android:layout_marginTop="8dp"
-                android:text=""
-                android:textSize="13sp"
-                android:layout_toRightOf="@+id/view"
-                android:layout_alignParentLeft="true"
-                android:gravity="left|center"
-                android:fontFamily="@font/museosans_300"
-                />
-
-            <TextView
-                android:layout_below="@+id/designation_name"
                 android:textColor="@color/black"
                 android:id="@+id/unit"
                 android:layout_marginTop="15dp"
@@ -258,7 +174,7 @@
                 android:layout_below="@+id/unit"
                 android:textColor="@color/black"
                 android:layout_marginTop="8dp"
-                android:text=""
+                android:text="--"
                 android:textSize="13sp"
                 android:layout_toRightOf="@+id/view"
                 android:layout_alignParentLeft="true"
@@ -266,8 +182,98 @@
                 android:fontFamily="@font/museosans_300"
                 />
 
+
             <TextView
                 android:layout_below="@+id/unit_value"
+                android:textColor="@color/black"
+                android:id="@+id/dept"
+                android:layout_marginTop="15dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Department Name :"
+                android:textSize="15sp"
+                android:fontFamily="@font/museosans_500"
+                />
+
+
+            <TextView
+                android:id="@+id/deptName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/dept"
+                android:textColor="@color/black"
+                android:layout_marginTop="8dp"
+                android:text="--"
+                android:textSize="13sp"
+                android:layout_toRightOf="@+id/view"
+                android:layout_alignParentLeft="true"
+                android:gravity="left|center"
+                android:fontFamily="@font/museosans_300"
+                />
+
+
+            <TextView
+                android:layout_below="@+id/deptName"
+                android:textColor="@color/black"
+                android:id="@+id/designation"
+                android:layout_marginTop="15dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Designation :"
+                android:textSize="15sp"
+                android:fontFamily="@font/museosans_500"
+                />
+
+
+            <TextView
+                android:id="@+id/designation_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/designation"
+                android:textColor="@color/black"
+                android:layout_marginTop="8dp"
+                android:text="--"
+                android:textSize="13sp"
+                android:layout_toRightOf="@+id/view"
+                android:layout_alignParentLeft="true"
+                android:gravity="left|center"
+                android:fontFamily="@font/museosans_300"
+                />
+
+
+            <TextView
+                android:layout_below="@+id/designation_name"
+                android:textColor="@color/black"
+                android:id="@+id/report"
+                android:layout_marginTop="15dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="15sp"
+                android:text="Reporting Officer Name :"
+                android:fontFamily="@font/museosans_500"
+                />
+
+
+            <TextView
+                android:id="@+id/reportOfcrName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/report"
+                android:textColor="@color/black"
+                android:layout_marginTop="8dp"
+                android:text="--"
+                android:textSize="13sp"
+                android:layout_toRightOf="@+id/view"
+                android:layout_alignParentLeft="true"
+                android:gravity="left|center"
+                android:fontFamily="@font/museosans_300"
+                />
+
+
+
+
+            <TextView
+                android:layout_below="@+id/reportOfcrName"
                 android:textColor="@color/black"
                 android:id="@+id/deputedunit"
                 android:layout_marginTop="15dp"
@@ -275,18 +281,20 @@
                 android:layout_height="wrap_content"
                 android:text="Deputed Unit :"
                 android:textSize="15sp"
+                android:visibility="gone"
                 android:fontFamily="@font/museosans_500"
                 />
 
 
             <TextView
+                android:visibility="gone"
                 android:id="@+id/deputedunit_value"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/deputedunit"
                 android:textColor="@color/black"
                 android:layout_marginTop="8dp"
-                android:text=""
+                android:text="--"
                 android:textSize="13sp"
                 android:layout_toRightOf="@+id/view"
                 android:layout_alignParentLeft="true"

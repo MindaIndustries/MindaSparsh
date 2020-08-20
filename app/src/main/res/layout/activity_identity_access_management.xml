@@ -4,7 +4,10 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     >
+    <include layout="@layout/toolbar" />
+
     <RelativeLayout
+        android:layout_marginTop="?android:attr/actionBarSize"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
         <ImageView
@@ -26,6 +29,7 @@
         android:orientation="vertical"
         >
     <LinearLayout
+        android:visibility="gone"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         android:background="@drawable/toolbar_gradient"
@@ -36,7 +40,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight=".2"
-            android:src="@drawable/back_arrow" />
+            android:src="@drawable/back" />
 
         <TextView
             android:layout_width="0dp"
