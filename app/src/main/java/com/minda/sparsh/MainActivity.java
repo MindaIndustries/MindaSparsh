@@ -45,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-     //   getSupportActionBar().hide();
+        //   getSupportActionBar().hide();
 
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         title = (TextView) findViewById(R.id.title);
@@ -66,16 +66,13 @@ public class MainActivity extends AppCompatActivity {
             tv_title.setText(pdfType);
             title.setText(pdfType);
             if (pdfType.equalsIgnoreCase("Jagriti")) {
-
                 hitGetPdfApi("Jagriti");
-
             } else if (pdfType.equalsIgnoreCase("Samwad")) {
                 hitGetPdfApi("Samwad");
             } else if (pdfType.equalsIgnoreCase("Engineering")) {
                 hitGetPdfApi("Engineering");
             } else {
                 hitGetPdfApi("Manufacturing");
-
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -132,8 +129,7 @@ public class MainActivity extends AppCompatActivity {
                 public void onResponse(Call<List<AddAbnormality_Model>> call, Response<List<AddAbnormality_Model>> response) {
                     showProgress(false);
                     List<AddAbnormality_Model> pdfResponse = response.body();
-
-                    if (pdfResponse != null && pdfResponse.size()>0 &&!pdfResponse.get(0).getColumn1().equalsIgnoreCase("")) {
+                    if (pdfResponse != null && pdfResponse.size() > 0 && !pdfResponse.get(0).getColumn1().equalsIgnoreCase("")) {
                         String url = pdfResponse.get(0).getColumn1();
                         webView(url);
                     } else {
@@ -161,7 +157,6 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public boolean shouldOverrideUrlLoading(WebView view, String url) {
-
                 view.loadUrl(url);
                 return true;
             }
@@ -169,23 +164,20 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onLoadResource(WebView view, String url) {
                 super.onLoadResource(view, url);
-
-
             }
 
             @Override
             public void onPageFinished(WebView view, final String url) {
                 showProgress(false);
-
             }
         });
         if (pdfType.equalsIgnoreCase("Jagriti")) {
             wv_jagriti.loadUrl(url);
-
         } else {
             wv_jagriti.loadUrl("http://drive.google.com/viewerng/viewer?embedded=true&url=" + url);
         }
     }
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
