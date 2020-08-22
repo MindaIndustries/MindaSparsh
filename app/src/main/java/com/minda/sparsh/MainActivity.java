@@ -136,7 +136,6 @@ public class MainActivity extends AppCompatActivity {
                         Toast.makeText(MainActivity.this, "Coming Soon...", Toast.LENGTH_SHORT).show();
                     }
                 }
-
                 @Override
                 public void onFailure(Call<List<AddAbnormality_Model>> call, Throwable t) {
                     showProgress(false);

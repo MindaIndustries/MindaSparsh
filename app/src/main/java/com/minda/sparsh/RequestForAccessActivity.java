@@ -154,6 +154,7 @@ public class RequestForAccessActivity extends AppCompatActivity implements View.
 
         selectionListener();
     }
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
@@ -181,7 +182,7 @@ public class RequestForAccessActivity extends AppCompatActivity implements View.
                         hiIAMGetCategoryApi(selectedItem.getRequestTypeId().toString(), "3");
                     } else {
                         sp_request_type_id = selectedItem.getRequestTypeId().toString();
-                            layAccessCategory.setVisibility(View.VISIBLE);
+                        layAccessCategory.setVisibility(View.VISIBLE);
                         layMultiAccessCategory.setVisibility(View.GONE);
                         hiIAMGetCategoryApi(selectedItem.getRequestTypeId().toString(), "1");
                     }
@@ -323,7 +324,6 @@ public class RequestForAccessActivity extends AppCompatActivity implements View.
                     et_empCode.setVisibility(View.GONE);
 
                 }
-
                 if (i == 2) {
                     layNameOrgPur.setVisibility(View.VISIBLE);
 
@@ -582,7 +582,6 @@ public class RequestForAccessActivity extends AppCompatActivity implements View.
                         iam.setCategoryId(0);
                         iam.setProfileName("Please Select User Authorization Profile");
                         responseList.add(0, iam);
-
 
                         IAMGetAuthorizationProfileAdapter mAdapter = new IAMGetAuthorizationProfileAdapter(RequestForAccessActivity.this, responseList);
                         sp_user_authorization_profile.setAdapter(mAdapter);
