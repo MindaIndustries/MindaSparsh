@@ -20,7 +20,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
-import com.minda.sparsh.R;
 
 public class BaseActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -151,7 +150,7 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
 
         int id = item.getItemId();
         if (id == R.id.profile) {
-            Intent intent = new Intent(BaseActivity.this,ProfileActivity.class);
+            Intent intent = new Intent(BaseActivity.this, ProfileActivity.class);
             startActivity(intent);
         }
         if (id == R.id.nav_aboutus) {
@@ -203,7 +202,7 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
                 SharedPreferences myPref = getSharedPreferences("MyPref", Context.MODE_PRIVATE);
                 SharedPreferences.Editor mEditor = myPref.edit();
                 mEditor.putBoolean("IsLogin", false);
-                mEditor.putBoolean("IsLoginNew",false);
+                mEditor.putBoolean("IsLoginNew", false);
                 mEditor.commit();
 
                 arg0.dismiss();

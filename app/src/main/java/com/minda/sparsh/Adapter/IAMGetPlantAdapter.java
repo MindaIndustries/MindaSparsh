@@ -9,7 +9,6 @@ import android.widget.CheckBox;
 import android.widget.RadioButton;
 
 import com.minda.sparsh.R;
-import com.minda.sparsh.RequestForAccessActivity;
 import com.minda.sparsh.model.IAMGetPlantModel;
 import com.minda.sparsh.util.PlantInterface;
 

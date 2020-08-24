@@ -14,7 +14,6 @@ import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.content.res.Configuration;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.graphics.Matrix;
 import android.media.ExifInterface;
 import android.net.Uri;
@@ -27,12 +26,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.util.Base64;
-import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -51,7 +48,6 @@ import com.minda.sparsh.Adapter.GroupSpinnerAdapter;
 import com.minda.sparsh.Adapter.PlantSpinnerAdapter;
 import com.minda.sparsh.model.AbnormalityView_Model;
 import com.minda.sparsh.model.AddAbnormality_Model;
-import com.minda.sparsh.model.BannarModel;
 import com.minda.sparsh.model.Business_Model;
 import com.minda.sparsh.model.Department_Model;
 import com.minda.sparsh.model.Domain_Model;
@@ -63,12 +59,9 @@ import com.minda.sparsh.util.AbnormalityDashboard;
 import com.minda.sparsh.util.RetrofitClient2;
 import com.minda.sparsh.util.Utility;
 
-import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
-import java.io.Serializable;
-import java.security.acl.Group;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -81,8 +74,6 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 import static android.Manifest.permission.CAMERA;
-import static android.Manifest.permission.READ_EXTERNAL_STORAGE;
-import static java.lang.System.out;
 
 public class AbnormalityAddressingActivity extends AppCompatActivity {
     ListView list_abnormalty;
@@ -581,6 +572,7 @@ public class AbnormalityAddressingActivity extends AppCompatActivity {
         }
 
     }
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {

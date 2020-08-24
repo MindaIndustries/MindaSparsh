@@ -8,10 +8,8 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
-import android.content.res.Configuration;
 import android.graphics.Bitmap;
 import android.graphics.Matrix;
 import android.media.ExifInterface;
@@ -24,27 +22,14 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Base64;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
-import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.minda.sparsh.Adapter.BusinessSpinnerAdapter;
-import com.minda.sparsh.Adapter.DepartmentSpinnerAdapter;
-import com.minda.sparsh.Adapter.DomainSpinnerAdapter;
-import com.minda.sparsh.Adapter.GroupSpinnerAdapter;
-import com.minda.sparsh.Adapter.PlantSpinnerAdapter;
 import com.minda.sparsh.model.AddAbnormality_Model;
-import com.minda.sparsh.model.Business_Model;
-import com.minda.sparsh.model.Department_Model;
-import com.minda.sparsh.model.Domain_Model;
-import com.minda.sparsh.model.Group_Model;
-import com.minda.sparsh.model.Plant_Model;
-import com.minda.sparsh.util.AbnormalityDashboard;
 import com.minda.sparsh.util.RetrofitClient2;
 import com.minda.sparsh.util.Utility;
 
@@ -469,7 +454,7 @@ public class AbnormalityAddressing2Activity extends AppCompatActivity {
                     showProgress(false);
                     List<AddAbnormality_Model> Departmentresponse = response.body();
 
-                    if (Departmentresponse != null && Departmentresponse.size()>0) {
+                    if (Departmentresponse != null && Departmentresponse.size() > 0) {
                         if (Departmentresponse.get(0).getColumn1().equalsIgnoreCase("success")) {
                             Toast.makeText(AbnormalityAddressing2Activity.this, "Date Save Successfully", Toast.LENGTH_LONG).show();
 

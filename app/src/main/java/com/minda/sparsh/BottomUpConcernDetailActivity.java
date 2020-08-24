@@ -2,28 +2,20 @@ package com.minda.sparsh;
 
 import android.Manifest;
 import android.app.DatePickerDialog;
-import android.app.IntentService;
-import android.app.NotificationChannel;
-import android.app.NotificationManager;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
-import android.graphics.Color;
-import android.os.Build;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
-import android.support.v4.app.NotificationCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.content.LocalBroadcastManager;
 import android.support.v7.widget.Toolbar;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.text.method.ScrollingMovementMethod;
-import android.util.Log;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
@@ -31,7 +23,6 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.DatePicker;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
@@ -51,11 +42,6 @@ import com.minda.sparsh.util.BackgroundNotificationService;
 import com.minda.sparsh.util.RetrofitClient2;
 import com.minda.sparsh.util.Utility;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -66,7 +52,6 @@ import javax.net.ssl.HttpsURLConnection;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
-import okhttp3.ResponseBody;
 
 public class BottomUpConcernDetailActivity extends BaseActivity {
     @BindView(R.id.toolbar)
@@ -161,7 +146,7 @@ public class BottomUpConcernDetailActivity extends BaseActivity {
         initObservationDatePicker();
 
         autoSuggestAdapter = new AutoSuggestAdapter(this, android.R.layout.simple_dropdown_item_1line);
-     //   assignToValue.setThreshold(3);
+        //   assignToValue.setThreshold(3);
         assignToValue.setAdapter(autoSuggestAdapter);
 
         if (getIntent() != null && getIntent().getSerializableExtra("concernModel") != null) {
@@ -651,7 +636,7 @@ public class BottomUpConcernDetailActivity extends BaseActivity {
                 if (carotResponse.getStatuscode() == HttpsURLConnection.HTTP_OK) {
                     if (carotResponse.getData() != null) {
                         List<AutoSuggestModel> list = (List<AutoSuggestModel>) carotResponse.getData();
-                        if (list != null && list.size()>0) {
+                        if (list != null && list.size() > 0) {
                             for (int i = 0; i < list.size(); i++) {
                                 suggestions.add(list.get(i).getEmpName() + "-" + list.get(i).getEmpCode() + "-" + list.get(i).getUnitCode());
                             }
