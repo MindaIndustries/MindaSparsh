@@ -395,7 +395,7 @@ public class LoginActivity extends AppCompatActivity {
                 public void onResponse(Call<List<LoginResponse>> call, Response<List<LoginResponse>> response) {
                     showProgress(false);
                     List<LoginResponse> loginResponse = response.body();
-                    if (loginResponse != null) {
+                    if (loginResponse != null && loginResponse.size()>0) {
 
                         try {
                             Intent intent = new Intent(getApplicationContext(), DashBoardActivity.class);
