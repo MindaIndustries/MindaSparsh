@@ -57,38 +57,89 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
 public class RequestForAccessActivity extends AppCompatActivity implements View.OnClickListener, PlantInterface {
     private ProgressDialog progress = null;
-    RecyclerView recyclerViewDomain, recyclerViewBusiness, recyclerViewPlant;
-    Spinner sp_request_type, sp_access_type, sp_access_category, sp_access_sub_category, sp_access_sub_type,
-            sp_user_authorization_profile, sp_access_for, sp_source;
-    LinearLayout layAccessSubCategory, layUserAuthorisationProfile, laySource, layNameOrgPur, layBusiness, layAccessSubType, layAccessCategory,
-            layMultiAccessCategory, layPlant;
+    @BindView(R.id.recyclerViewDomain)
+    RecyclerView recyclerViewDomain;
+    @BindView(R.id.recyclerViewBusiness)
+    RecyclerView recyclerViewBusiness;
+    @BindView(R.id.recyclerViewPlant)
+    RecyclerView recyclerViewPlant;
+    @BindView(R.id.sp_request_type)
+    Spinner sp_request_type;
+    @BindView(R.id.sp_access_type)
+    Spinner sp_access_type;
+    @BindView(R.id.sp_access_category)
+    Spinner sp_access_category;
+    @BindView(R.id.sp_access_sub_category)
+    Spinner sp_access_sub_category;
+    @BindView(R.id.sp_access_sub_type)
+    Spinner sp_access_sub_type;
+    @BindView(R.id.sp_user_authorization_profile)
+    Spinner sp_user_authorization_profile;
+    @BindView(R.id.sp_access_for)
+    Spinner sp_access_for;
+    @BindView(R.id.sp_source)
+    Spinner sp_source;
+    @BindView(R.id.layAccessSubCategory)
+    LinearLayout layAccessSubCategory;
+    @BindView(R.id.layUserAuthorisationProfile)
+    LinearLayout layUserAuthorisationProfile;
+    @BindView(R.id.laySource)
+    LinearLayout laySource;
+    @BindView(R.id.layNameOrgPur)
+    LinearLayout layNameOrgPur;
+    @BindView(R.id.layBusiness)
+    LinearLayout layBusiness;
+    @BindView(R.id.layAccessSubType)
+    LinearLayout layAccessSubType;
+    @BindView(R.id.layAccessCategory)
+    LinearLayout layAccessCategory;
+    @BindView(R.id.layMultiAccessCategory)
+    LinearLayout layMultiAccessCategory;
+    @BindView(R.id.layPlant)
+    LinearLayout layPlant;
+    @BindView(R.id.et_empCode)
     AutoCompleteTextView et_empCode;
+    @BindView(R.id.simpleMultiSpinner)
     MultiSpinnerSearch simpleSpinner;
     private SharedPreferences myPref = null;
-    Button btn_submit, btn_cancel;
+    @BindView(R.id.btn_submit)
+    Button btn_submit;
+    @BindView(R.id.btn_cancel)
+    Button btn_cancel;
     String sp_request_type_id, sp_access_type_id, sp_access_category_id, sp_access_sub_category_id = "0", sp_access_sub_type_id,
             sp_user_authorization_profile_id = "0", sp_access_for_id, sp_source_id, sp_access_category_value, sp_access_sub_category_value = "",
             sp_user_authorization_profile_value = "", catListValue = "", unitCheckId = "";
 
-    EditText et_name, et_organisation, et_purpose, et_accessRequirementDetail;
+    @BindView(R.id.et_name)
+    EditText et_name;
+    @BindView(R.id.et_organisation)
+    EditText et_organisation;
+    @BindView(R.id.et_purpose)
+    EditText et_purpose;
+    @BindView(R.id.et_accessRequirementDetail)
+    EditText et_accessRequirementDetail;
+    @BindView(R.id.im_back)
     ImageView im_back;
 
     HashSet<String> set = new HashSet<String>();
+    @BindView(R.id.toolbar)
     Toolbar toolbar;
+    @BindView(R.id.title)
     TextView title;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_request_for_access);
-        toolbar = (Toolbar) findViewById(R.id.toolbar);
-        title = (TextView) findViewById(R.id.title);
+        ButterKnife.bind(this);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
@@ -102,11 +153,6 @@ public class RequestForAccessActivity extends AppCompatActivity implements View.
         progress.setIndeterminate(true);
         myPref = getSharedPreferences("MyPref", MODE_PRIVATE);
 
-        btn_submit = (Button) findViewById(R.id.btn_submit);
-        btn_cancel = (Button) findViewById(R.id.btn_cancel);
-
-        et_empCode = (AutoCompleteTextView) findViewById(R.id.et_empCode);
-        im_back = (ImageView) findViewById(R.id.im_back);
         im_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -114,37 +160,6 @@ public class RequestForAccessActivity extends AppCompatActivity implements View.
             }
         });
 
-        et_name = (EditText) findViewById(R.id.et_name);
-        et_organisation = (EditText) findViewById(R.id.et_organisation);
-        et_purpose = (EditText) findViewById(R.id.et_purpose);
-        et_accessRequirementDetail = (EditText) findViewById(R.id.et_accessRequirementDetail);
-
-
-        layAccessSubCategory = (LinearLayout) findViewById(R.id.layAccessSubCategory);
-        layUserAuthorisationProfile = (LinearLayout) findViewById(R.id.layUserAuthorisationProfile);
-        laySource = (LinearLayout) findViewById(R.id.laySource);
-        layNameOrgPur = (LinearLayout) findViewById(R.id.layNameOrgPur);
-        layBusiness = (LinearLayout) findViewById(R.id.layBusiness);
-        layAccessSubType = (LinearLayout) findViewById(R.id.layAccessSubType);
-        layAccessCategory = (LinearLayout) findViewById(R.id.layAccessCategory);
-        layMultiAccessCategory = (LinearLayout) findViewById(R.id.layMultiAccessCategory);
-        layPlant = (LinearLayout) findViewById(R.id.layPlant);
-
-
-        recyclerViewDomain = (RecyclerView) findViewById(R.id.recyclerViewDomain);
-        recyclerViewBusiness = (RecyclerView) findViewById(R.id.recyclerViewBusiness);
-        recyclerViewPlant = (RecyclerView) findViewById(R.id.recyclerViewPlant);
-
-        simpleSpinner = (MultiSpinnerSearch) findViewById(R.id.simpleMultiSpinner);
-
-        sp_request_type = (Spinner) findViewById(R.id.sp_request_type);
-        sp_access_type = (Spinner) findViewById(R.id.sp_access_type);
-        sp_access_category = (Spinner) findViewById(R.id.sp_access_category);
-        sp_access_sub_category = (Spinner) findViewById(R.id.sp_access_sub_category);
-        sp_access_sub_type = (Spinner) findViewById(R.id.sp_access_sub_type);
-        sp_user_authorization_profile = (Spinner) findViewById(R.id.sp_user_authorization_profile);
-        sp_access_for = (Spinner) findViewById(R.id.sp_access_for);
-        sp_source = (Spinner) findViewById(R.id.sp_source);
 
         hitIAMGetRequestTypeApi();
         hitIAMGetAccessTypeApi();
