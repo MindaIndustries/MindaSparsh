@@ -15,13 +15,12 @@
             android:layout_height="match_parent"
             android:adjustViewBounds="true"
             android:src="@drawable/birds"
-            android:scaleType="centerCrop"
-            />
+            android:scaleType="centerCrop"/>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/translucent" />
+            android:background="@color/translucent"/>
 
     </RelativeLayout>
 

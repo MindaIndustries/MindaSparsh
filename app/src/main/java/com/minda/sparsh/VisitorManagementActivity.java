@@ -23,8 +23,12 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
+import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
+import android.view.Gravity;
+import android.view.MotionEvent;
 import android.view.View;
+import android.view.Window;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -269,13 +273,20 @@ public class VisitorManagementActivity extends AppCompatActivity implements View
         lay_contact.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (!checkPermission() && Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                    requestPermission();
-                } else {
-                    Intent intent = new Intent(Intent.ACTION_PICK, ContactsContract.Contacts.CONTENT_URI);
-                    startActivityForResult(intent, PICK_CONTACT);
+
+                if(myPref.getString("privacy_policy","").length()==0) {
+                    showTermsPolicyDialog();
                 }
-            }
+                else{
+                    if (!checkPermission() && Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                        requestPermission();
+                    } else {
+                        Intent intent = new Intent(Intent.ACTION_PICK, ContactsContract.Contacts.CONTENT_URI);
+                        startActivityForResult(intent, PICK_CONTACT);
+                    }
+                }
+
+                     }
         });
 
 
@@ -706,7 +717,7 @@ public class VisitorManagementActivity extends AppCompatActivity implements View
 
                         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
                             if (shouldShowRequestPermissionRationale(READ_CONTACTS)) {
-                                showMessageOKCancel("You need to allow access  the permissions",
+                                showMessageOKCancel("You need to allow access to the permissions",
                                         new DialogInterface.OnClickListener() {
                                             @Override
                                             public void onClick(DialogInterface dialog, int which) {
@@ -984,6 +995,54 @@ public class VisitorManagementActivity extends AppCompatActivity implements View
             e1.printStackTrace();
         }
         return false;
+    }
+    public void showTermsPolicyDialog(){
+        final Dialog termspolicydialog = new Dialog(VisitorManagementActivity.this,R.style.TermsDialogStyle);
+        termspolicydialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        termspolicydialog.setContentView(R.layout.privacy_policy);
+        termspolicydialog.getWindow().setGravity(Gravity.CENTER);
+        termspolicydialog.setCancelable(false);
+        TextView heading = termspolicydialog.findViewById(R.id.heading);
+        final TextView content = termspolicydialog.findViewById(R.id.content);
+        final Button ok = termspolicydialog.findViewById(R.id.ok);
+        content.setMovementMethod(new ScrollingMovementMethod());
+        ScrollingMovementMethod.getInstance();
+        content.setOnTouchListener(new View.OnTouchListener() {
+
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+
+                content.getParent().requestDisallowInterceptTouchEvent(true);
+
+                return false;
+            }
+
+
+        });
+
+
+
+        ok.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                myPref.edit().putString("privacy_policy","Yes").commit();
+                termspolicydialog.dismiss();
+                ok.setEnabled(false);
+                termspolicydialog.dismiss();
+                if (!checkPermission() && Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                    requestPermission();
+                } else {
+                    Intent intent = new Intent(Intent.ACTION_PICK, ContactsContract.Contacts.CONTENT_URI);
+                    startActivityForResult(intent, PICK_CONTACT);
+                }
+
+            }
+        });
+        if(!termspolicydialog.isShowing()) {
+            termspolicydialog.show();
+        }
+
+
     }
 
 

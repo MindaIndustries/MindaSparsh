@@ -37,9 +37,9 @@ public class RetrofitClient2 {
       public static final String BASE_URL = "https://app.mindasparsh.com/Service.asmx/";
       public static final String ehs_img = "https://app.mindasparsh.com/ehs/files/";
       public static final String EHS_BASE_URL = "https://app.mindasparsh.com/ServiceEHS.asmx/";
-          public static final String BottomUpBaseUrl = "https://app.mindasparsh.com/BottomUpApi.asmx/";
-    public static final String bottomup_img = "https://app.mindasparsh.com/bottomup/files/";
-    public static final String suggestionBaseUrl = "https://app.mindasparsh.com/SuggestionAPI.asmx/";
+      public static final String BottomUpBaseUrl = "https://app.mindasparsh.com/BottomUpApi.asmx/";
+      public static final String bottomup_img = "https://app.mindasparsh.com/bottomup/files/";
+      public static final String suggestionBaseUrl = "https://app.mindasparsh.com/SuggestionAPI.asmx/";
 
     // public static final String CKEY = "bWRhQHNQciRyWiNHISE=";
     public static final String CKEY = "mda@sPr$rZ#G!!";
