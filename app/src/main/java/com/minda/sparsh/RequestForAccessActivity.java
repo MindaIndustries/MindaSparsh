@@ -403,12 +403,11 @@ public class RequestForAccessActivity extends AppCompatActivity implements View.
                 public void onResponse(Call<List<IAMGetRequestTypeSpinnerModel>> call, Response<List<IAMGetRequestTypeSpinnerModel>> response) {
                     showProgress(false);
                     List<IAMGetRequestTypeSpinnerModel> responseList = response.body();
-                    if (responseList != null) {
+                    if (responseList != null && responseList.size()>0) {
                         IAMGetRequestTypeSpinnerModel iamGetRequestTypeSpinnerModel = new IAMGetRequestTypeSpinnerModel();
                         iamGetRequestTypeSpinnerModel.setRequestTypeId(0);
                         iamGetRequestTypeSpinnerModel.setRequestType("Please Select Request Type");
                         responseList.add(0, iamGetRequestTypeSpinnerModel);
-
 
                         IAMGetRequestTypeAdapter departmentSpinnerAdapter = new IAMGetRequestTypeAdapter(RequestForAccessActivity.this, responseList);
                         sp_request_type.setAdapter(departmentSpinnerAdapter);
@@ -435,11 +434,12 @@ public class RequestForAccessActivity extends AppCompatActivity implements View.
                 public void onResponse(Call<List<IAMGetAccessTypeSpinnerModel>> call, Response<List<IAMGetAccessTypeSpinnerModel>> response) {
                     showProgress(false);
                     List<IAMGetAccessTypeSpinnerModel> responseList = response.body();
+
                     IAMGetAccessTypeSpinnerModel iam = new IAMGetAccessTypeSpinnerModel();
                     iam.setAccessTypeId(0);
                     iam.setAccessType("Please Select Access Type");
 
-                    if (responseList != null) {
+                    if (responseList != null && responseList.size()>0) {
                         responseList.add(0, iam);
                         IAMIAMGetAccessTypeAdapter mAdapter = new IAMIAMGetAccessTypeAdapter(RequestForAccessActivity.this, responseList);
                         sp_access_type.setAdapter(mAdapter);
@@ -471,7 +471,7 @@ public class RequestForAccessActivity extends AppCompatActivity implements View.
                     iam.setAccessSubType("Please Select Access Sub Type");
                     responseList.add(0, iam);
 
-                    if (responseList != null) {
+                    if (responseList != null && responseList.size()>0) {
                         IAMGetAccessSubTypeAdapter mAdapter = new IAMGetAccessSubTypeAdapter(RequestForAccessActivity.this, responseList);
                         sp_access_sub_type.setAdapter(mAdapter);
                     }
@@ -496,7 +496,7 @@ public class RequestForAccessActivity extends AppCompatActivity implements View.
                 @Override
                 public void onResponse(Call<List<IAMGetCategorySpinnerModel>> call, Response<List<IAMGetCategorySpinnerModel>> response) {
                     showProgress(false);
-                    if (response.body().size() != 0) {
+                    if (response.body()!=null && response.body().size() != 0) {
                         List<IAMGetCategorySpinnerModel> responseList = null;
                         responseList = response.body();
                         if (!type.equalsIgnoreCase("3")) {
@@ -554,7 +554,7 @@ public class RequestForAccessActivity extends AppCompatActivity implements View.
                 @Override
                 public void onResponse(Call<List<IAMGetSubCategoryModel>> call, Response<List<IAMGetSubCategoryModel>> response) {
                     showProgress(false);
-                    if (response.body().size() != 0) {
+                    if (response.body()!=null && response.body().size() != 0) {
                         List<IAMGetSubCategoryModel> responseList = response.body();
                         IAMGetSubCategoryModel iam = new IAMGetSubCategoryModel();
                         iam.setCategoryId(0);
@@ -590,7 +590,7 @@ public class RequestForAccessActivity extends AppCompatActivity implements View.
                 @Override
                 public void onResponse(Call<List<IAMGetAuthorizationProfileModel>> call, Response<List<IAMGetAuthorizationProfileModel>> response) {
                     showProgress(false);
-                    if (response.body().size() != 0) {
+                    if (response.body()!=null && response.body().size() != 0) {
                         List<IAMGetAuthorizationProfileModel> responseList = response.body();
                         IAMGetAuthorizationProfileModel iam = new IAMGetAuthorizationProfileModel();
                         iam.setCategoryId(0);
@@ -626,7 +626,7 @@ public class RequestForAccessActivity extends AppCompatActivity implements View.
                 public void onResponse(Call<List<IAMGetDomainModel>> call, Response<List<IAMGetDomainModel>> response) {
                     showProgress(false);
                     List<IAMGetDomainModel> responseList = response.body();
-                    if (responseList != null) {
+                    if (responseList != null && responseList.size()>0) {
                         IAMGetDomainAdapter mAdapter = new IAMGetDomainAdapter(responseList, RequestForAccessActivity.this, myPref.getString("UM_DESIG_CODE", "0"));
                         GridLayoutManager gridLayoutManager = new GridLayoutManager(getApplicationContext(), 2);
                         recyclerViewDomain.setLayoutManager(gridLayoutManager);
@@ -656,7 +656,7 @@ public class RequestForAccessActivity extends AppCompatActivity implements View.
                 public void onResponse(Call<List<IAMGetBusinessModel>> call, Response<List<IAMGetBusinessModel>> response) {
                     showProgress(false);
                     List<IAMGetBusinessModel> responseList = response.body();
-                    if (responseList != null) {
+                    if (responseList != null && responseList.size()>0) {
                         if (callFrom.equalsIgnoreCase("checkBox")) {
                             combineList.addAll(responseList);
                         } else {
@@ -696,7 +696,7 @@ public class RequestForAccessActivity extends AppCompatActivity implements View.
                 public void onResponse(Call<List<IAMGetPlantModel>> call, Response<List<IAMGetPlantModel>> response) {
                     showProgress(false);
                     List<IAMGetPlantModel> responseList = response.body();
-                    if (responseList != null) {
+                    if (responseList != null && responseList.size()>0) {
 
                         if (callType.equalsIgnoreCase("checkBox")) {
                             combineListPlant.addAll(responseList);
@@ -733,10 +733,8 @@ public class RequestForAccessActivity extends AppCompatActivity implements View.
                 public void onResponse(Call<List<IAMGetListOfNames>> call, Response<List<IAMGetListOfNames>> response) {
                     showProgress(false);
                     List<IAMGetListOfNames> responseList = response.body();
-                    if (responseList != null) {
-
+                    if (responseList != null && responseList.size()>0) {
                         call(responseList);
-
                     }
                 }
 
@@ -761,10 +759,9 @@ public class RequestForAccessActivity extends AppCompatActivity implements View.
                 public void onResponse(Call<List<IAMCreateRequestModel>> call, Response<List<IAMCreateRequestModel>> response) {
                     showProgress(false);
                     List<IAMCreateRequestModel> responseList = response.body();
-                    if (responseList != null) {
+                    if (responseList != null && responseList.size()>0) {
                         Toast.makeText(RequestForAccessActivity.this, "Saved Successfully", Toast.LENGTH_SHORT).show();
                         finish();
-
                     }
                 }
 

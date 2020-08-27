@@ -19,8 +19,6 @@
             android:background="@color/translucent"
             android:layout_width="match_parent"
             android:layout_height="match_parent"/>
-
-
     </RelativeLayout>
 <RelativeLayout
     android:layout_width="match_parent"
