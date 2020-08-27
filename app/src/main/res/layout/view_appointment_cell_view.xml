@@ -33,12 +33,14 @@
                     android:layout_marginLeft="16dp"
                     android:layout_marginTop="8dp"
                     android:text="Appointment Date"
+                    android:fontFamily="@font/museosans_500"
                     android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
                     android:id="@+id/time"
+                    android:fontFamily="@font/museosans_500"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
@@ -56,6 +58,7 @@
                     android:layout_marginTop="8dp"
                     android:text="Visitor Details"
                     android:textStyle="bold"
+                    android:fontFamily="@font/museosans_500"
                     app:layout_constraintStart_toStartOf="@+id/time"
                     app:layout_constraintTop_toBottomOf="@+id/time" />
 
@@ -66,6 +69,7 @@
                     android:layout_marginTop="10dp"
                     android:layout_marginBottom="8dp"
                     android:text="Purpose"
+                    android:fontFamily="@font/museosans_500"
                     android:textStyle="bold"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="@+id/detail"
@@ -81,13 +85,15 @@
                     android:layout_marginLeft="15dp"
                     android:layout_marginEnd="5dp"
                     android:text="26-12-18"
+                    android:fontFamily="@font/museosans_500"
                     app:layout_constraintBottom_toBottomOf="@+id/appointment"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.149"
                     app:layout_constraintStart_toEndOf="@+id/appointment"
                     app:layout_constraintTop_toTopOf="@+id/appointment"
                     app:layout_constraintVertical_bias="1.0"
-                    tools:text="@tools:sample/date/ddmmyy" />
+                    tools:text="@tools:sample/date/ddmmyy"
+                    android:layout_marginRight="5dp" />
 
                 <TextView
                     android:id="@+id/tv_time"
@@ -95,6 +101,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
                     android:text="01-51-58"
+                    android:fontFamily="@font/museosans_500"
                     app:layout_constraintEnd_toEndOf="@+id/tv_appointment_date"
                     app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toStartOf="@+id/tv_appointment_date"
@@ -107,6 +114,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
                     android:text="Jacob"
+                    android:fontFamily="@font/museosans_500"
                     android:textColor="@color/colorAccent"
                     app:layout_constraintEnd_toEndOf="@+id/tv_time"
                     app:layout_constraintHorizontal_bias="0.0"
@@ -119,6 +127,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
+                    android:fontFamily="@font/museosans_500"
                     android:text="Smith Co. Ltd."
                     app:layout_constraintEnd_toEndOf="@+id/tv_name"
                     app:layout_constraintHorizontal_bias="0.0"
@@ -131,6 +140,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
+                    android:fontFamily="@font/museosans_500"
                     android:text="(800)-555-1689"
                     app:layout_constraintEnd_toEndOf="@+id/tv_compname"
                     app:layout_constraintHorizontal_bias="0.0"
@@ -143,6 +153,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Meeting"
+                    android:fontFamily="@font/museosans_500"
                     app:layout_constraintBottom_toBottomOf="@+id/purpose"
                     app:layout_constraintEnd_toEndOf="@+id/tv_mob"
                     app:layout_constraintHorizontal_bias="0.0"
@@ -165,11 +176,13 @@
                     android:layout_marginLeft="5dp"
                     android:layout_weight="1"
                     android:text="Appointment No."
+                    android:fontFamily="@font/museosans_500"
                     android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/tv_visitor_id"
                     android:layout_width="0dp"
+                    android:fontFamily="@font/museosans_500"
                     android:layout_height="wrap_content"
                     android:layout_weight="1.2"
                     android:text="visitor Id" />
@@ -186,12 +199,14 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="5dp"
                     android:layout_weight="1"
+                    android:fontFamily="@font/museosans_500"
                     android:text="Additional Person"
                     android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/tv_additional_person"
                     android:layout_width="0dp"
+                    android:fontFamily="@font/museosans_500"
                     android:layout_height="wrap_content"
                     android:layout_weight="1.2"
                     android:text="Additional Person" />
@@ -209,6 +224,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="5dp"
                     android:layout_weight="1"
+                    android:fontFamily="@font/museosans_500"
                     android:text="Check In"
                     android:textStyle="bold" />
 
@@ -216,6 +232,7 @@
                     android:id="@+id/tv_check_in"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/museosans_500"
                     android:layout_weight="1.2"
                     android:text="" />
             </LinearLayout>
@@ -232,6 +249,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="5dp"
                     android:layout_weight="1"
+                    android:fontFamily="@font/museosans_500"
                     android:text="Check Out"
                     android:textStyle="bold" />
 
@@ -240,6 +258,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1.2"
+                    android:fontFamily="@font/museosans_500"
                     android:text="" />
             </LinearLayout>
 
@@ -259,6 +278,7 @@
                     android:background="@drawable/rec_button"
                     android:gravity="center"
                     android:padding="10dp"
+                    android:fontFamily="@font/museosans_500"
                     android:text="Edit"
                     android:textColor="@color/white" />
 
@@ -269,6 +289,7 @@
                     android:layout_weight="1"
                     android:background="@drawable/rec_button"
                     android:gravity="center"
+                    android:fontFamily="@font/museosans_500"
                     android:padding="10dp"
                     android:text="Cancel"
                     android:textColor="@color/white" />
@@ -291,6 +312,7 @@
                     android:background="@drawable/rec_button_red"
                     android:gravity="center"
                     android:padding="10dp"
+                    android:fontFamily="@font/museosans_500"
                     android:text="Visit Canceled"
                     android:textColor="@color/white" />
             </LinearLayout>

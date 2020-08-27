@@ -97,6 +97,7 @@
                             android:layout_weight="4">
 
                             <EditText
+                                android:fontFamily="@font/museosans_300"
                                 android:id="@+id/et_visitor_mobile_no"
                                 style="@style/editTextStyleVisitor"
                                 android:layout_width="match_parent"
@@ -133,6 +134,7 @@
                     android:orientation="vertical">
                     <!--android:visibility=""-->
                     <TextView
+                        android:fontFamily="@font/museosans_500"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
@@ -157,6 +159,7 @@
                                 android:layout_height="wrap_content">
 
                                 <EditText
+                                    android:fontFamily="@font/museosans_300"
                                     android:id="@+id/et_first_name"
                                     style="@style/editTextStyleVisitor"
                                     android:layout_width="match_parent"
@@ -171,6 +174,7 @@
                                 android:layout_height="wrap_content">
 
                                 <EditText
+                                    android:fontFamily="@font/museosans_300"
                                     android:id="@+id/et_last_name"
                                     style="@style/editTextStyleVisitor"
                                     android:layout_width="match_parent"
@@ -189,6 +193,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
                         android:text="Gender*"
+                        android:fontFamily="@font/museosans_500"
                         android:textColor="@color/gray_dark"
                         android:textStyle="bold" />
 
@@ -213,6 +218,7 @@
                                 android:orientation="horizontal">
 
                                 <RadioButton
+                                    android:fontFamily="@font/museosans_300"
                                     android:id="@+id/rb_male"
                                     android:layout_width="0dp"
                                     android:layout_height="wrap_content"
@@ -221,6 +227,7 @@
                                     android:text="Male" />
 
                                 <RadioButton
+                                    android:fontFamily="@font/museosans_300"
                                     android:id="@+id/rb_female"
                                     android:layout_width="0dp"
                                     android:layout_height="wrap_content"
@@ -251,6 +258,7 @@
                                 android:layout_height="wrap_content">
 
                                 <EditText
+                                    android:fontFamily="@font/museosans_300"
                                     android:id="@+id/et_email"
                                     style="@style/editTextStyleVisitor"
                                     android:layout_width="match_parent"
@@ -270,6 +278,7 @@
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:hint="Mobile*"
+                                    android:fontFamily="@font/museosans_300"
                                     android:imeOptions="actionNext"
                                     android:inputType="number"
                                     android:maxLength="13" />
@@ -285,6 +294,7 @@
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:hint="Company Name*"
+                                    android:fontFamily="@font/museosans_300"
                                     android:inputType="textCapSentences" />
                             </android.support.design.widget.TextInputLayout>
 
@@ -298,6 +308,7 @@
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:hint="Address"
+                                    android:fontFamily="@font/museosans_300"
                                     android:imeOptions="actionNext"
                                     android:inputType="textCapSentences" />
                             </android.support.design.widget.TextInputLayout>
@@ -312,6 +323,7 @@
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:hint="City"
+                                    android:fontFamily="@font/museosans_300"
                                     android:imeOptions="actionNext"
                                     android:inputType="textCapSentences" />
                             </android.support.design.widget.TextInputLayout>
@@ -326,6 +338,7 @@
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:hint="PinCode"
+                                    android:fontFamily="@font/museosans_300"
                                     android:imeOptions="actionNext"
                                     android:inputType="number" />
                             </android.support.design.widget.TextInputLayout>
@@ -338,6 +351,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
+                        android:fontFamily="@font/museosans_500"
                         android:text="Appointment Details"
                         android:textStyle="bold" />
 
@@ -365,6 +379,7 @@
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:hint="Purpose *"
+                                    android:fontFamily="@font/museosans_300"
                                     android:imeOptions="actionNext"
                                     android:inputType="textCapSentences" />
                             </android.support.design.widget.TextInputLayout>
@@ -376,6 +391,7 @@
                                 android:layout_marginTop="10dp"
                                 android:text="Appointment Date "
                                 android:textColor="@color/gray_dark"
+                                android:fontFamily="@font/museosans_500"
                                 android:textSize="12dp" />
 
                             <LinearLayout
@@ -393,6 +409,7 @@
                                     android:layout_weight="1"
                                     android:background="@drawable/textfield_multiline_default_holo_light"
                                     android:hint="From "
+                                    android:fontFamily="@font/museosans_300"
                                     android:maxLines="1"
                                     android:singleLine="true" />
 
@@ -405,6 +422,7 @@
                                     android:layout_weight="1"
                                     android:background="@drawable/textfield_multiline_default_holo_light"
                                     android:hint="To"
+                                    android:fontFamily="@font/museosans_300"
                                     android:maxLines="1"
                                     android:singleLine="true" />
 
@@ -416,6 +434,7 @@
                                 android:layout_marginLeft="5dp"
                                 android:layout_marginTop="10dp"
                                 android:text="Time "
+                                android:fontFamily="@font/museosans_500"
                                 android:textColor="@color/gray_dark"
                                 android:textSize="12dp" />
 
@@ -473,6 +492,7 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_marginLeft="5dp"
+                                android:fontFamily="@font/museosans_500"
                                 android:layout_marginTop="10dp"
                                 android:text="Additional No. of Persons"
                                 android:textStyle="bold" />
@@ -503,6 +523,7 @@
                                         android:background="@drawable/left_rec_corner"
                                         android:gravity="center"
                                         android:text="-"
+                                        android:fontFamily="@font/museosans_300"
                                         android:textColor="@color/white" />
 
                                     <TextView
@@ -511,9 +532,11 @@
                                         android:layout_height="wrap_content"
                                         android:layout_weight="1.4"
                                         android:gravity="center"
+                                        android:fontFamily="@font/museosans_300"
                                         android:text="0" />
 
                                     <TextView
+                                        android:fontFamily="@font/museosans_300"
                                         android:id="@+id/tv_increment"
                                         android:layout_width="0dp"
                                         android:layout_height="match_parent"
@@ -557,6 +580,7 @@
                             android:layout_margin="15dp"
                             android:background="@drawable/roundcornerbutton"
                             android:text="Submit"
+                            android:fontFamily="@font/museosans_500"
                             android:textColor="@color/white" />
 
                     </LinearLayout>
