@@ -13,7 +13,6 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.minda.sparsh.Adapter.BottomUpConcernAdapter;
-import com.minda.sparsh.BottomUpConcernDetailActivity;
 import com.minda.sparsh.R;
 import com.minda.sparsh.listener.CarotResponse;
 import com.minda.sparsh.listener.OnTaskComplete;

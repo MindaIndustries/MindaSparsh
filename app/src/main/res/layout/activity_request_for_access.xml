@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:focusable="true"
@@ -245,14 +246,14 @@
                             android:layout_marginLeft="5dp"
                             android:text="Access Category" />
 
-                        <com.androidbuts.multispinnerfilter.MultiSpinnerSearch
+                       <!-- <com.androidbuts.multispinnerfilter.MultiSpinnerSearch
                             android:id="@+id/simpleMultiSpinner"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_horizontal"
                             android:layout_marginTop="10dp"
                             app:hintText="Please Select Access Category " />
-                    </LinearLayout>
+                  -->  </LinearLayout>
 
                     <LinearLayout
                         android:id="@+id/layAccessSubCategory"
@@ -560,11 +561,11 @@
                     android:elevation="5dp"
                     card_view:cardCornerRadius="5dp">
 -->
-               <!-- <android.support.design.widget.TextInputLayout
+                <android.support.design.widget.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp">
-               --> <EditText
+                <EditText
                     android:id="@+id/et_accessRequirementDetail"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -580,11 +581,10 @@
                     android:scrollbarStyle="insideInset"
                     android:scrollbars="vertical"
                     android:singleLine="false"
+                    android:textColorHint="@color/black"
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:hint="Access Requirement Detail"/>
-<!--
                 </android.support.design.widget.TextInputLayout>
--->
 
 <!--
                 </android.support.v7.widget.CardView>

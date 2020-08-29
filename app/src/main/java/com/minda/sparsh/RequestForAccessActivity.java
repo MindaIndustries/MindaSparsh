@@ -22,9 +22,11 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+/*
 import com.androidbuts.multispinnerfilter.KeyPairBoolData;
 import com.androidbuts.multispinnerfilter.MultiSpinnerSearch;
 import com.androidbuts.multispinnerfilter.SpinnerListener;
+*/
 import com.minda.sparsh.Adapter.IAMGetAccessSubTypeAdapter;
 import com.minda.sparsh.Adapter.IAMGetAuthorizationProfileAdapter;
 import com.minda.sparsh.Adapter.IAMGetBusinessAdapter;
@@ -107,9 +109,9 @@ public class RequestForAccessActivity extends AppCompatActivity implements View.
     LinearLayout layPlant;
     @BindView(R.id.et_empCode)
     AutoCompleteTextView et_empCode;
-    @BindView(R.id.simpleMultiSpinner)
+   /* @BindView(R.id.simpleMultiSpinner)
     MultiSpinnerSearch simpleSpinner;
-    private SharedPreferences myPref = null;
+   */ private SharedPreferences myPref = null;
     @BindView(R.id.btn_submit)
     Button btn_submit;
     @BindView(R.id.btn_cancel)
@@ -145,7 +147,6 @@ public class RequestForAccessActivity extends AppCompatActivity implements View.
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setHomeAsUpIndicator(R.drawable.back);
         title.setText("Access Request");
-
 
         progress = new ProgressDialog(this);
         progress.setMessage("Please wait...");
@@ -247,7 +248,6 @@ public class RequestForAccessActivity extends AppCompatActivity implements View.
                     sp_access_category_id = selectedItem.getCategoryId().toString();
                     sp_access_category_value = selectedItem.getCategory();
                 }
-
             }
 
             @Override
@@ -465,15 +465,17 @@ public class RequestForAccessActivity extends AppCompatActivity implements View.
                 @Override
                 public void onResponse(Call<List<IAMGetAccessSubTypeModel>> call, Response<List<IAMGetAccessSubTypeModel>> response) {
                     showProgress(false);
-                    List<IAMGetAccessSubTypeModel> responseList = response.body();
-                    IAMGetAccessSubTypeModel iam = new IAMGetAccessSubTypeModel();
-                    iam.setAccessSubTypeId(0);
-                    iam.setAccessSubType("Please Select Access Sub Type");
-                    responseList.add(0, iam);
+                    if(response.body()!=null && response.body().size()>0) {
+                        List<IAMGetAccessSubTypeModel> responseList = response.body();
+                        IAMGetAccessSubTypeModel iam = new IAMGetAccessSubTypeModel();
+                        iam.setAccessSubTypeId(0);
+                        iam.setAccessSubType("Please Select Access Sub Type");
+                        responseList.add(0, iam);
 
-                    if (responseList != null && responseList.size()>0) {
-                        IAMGetAccessSubTypeAdapter mAdapter = new IAMGetAccessSubTypeAdapter(RequestForAccessActivity.this, responseList);
-                        sp_access_sub_type.setAdapter(mAdapter);
+                        if (responseList != null && responseList.size() > 0) {
+                            IAMGetAccessSubTypeAdapter mAdapter = new IAMGetAccessSubTypeAdapter(RequestForAccessActivity.this, responseList);
+                            sp_access_sub_type.setAdapter(mAdapter);
+                        }
                     }
                 }
 
@@ -508,7 +510,7 @@ public class RequestForAccessActivity extends AppCompatActivity implements View.
                             IAMGetCategoryAdapter mAdapter = new IAMGetCategoryAdapter(RequestForAccessActivity.this, responseList);
                             sp_access_category.setAdapter(mAdapter);
                         } else {
-                            final List<KeyPairBoolData> listArray = new ArrayList<KeyPairBoolData>();
+                           /* final List<KeyPairBoolData> listArray = new ArrayList<KeyPairBoolData>();
 
                             for (int i = 0; i < responseList.size(); i++) {
                                 KeyPairBoolData h = new KeyPairBoolData();
@@ -531,7 +533,7 @@ public class RequestForAccessActivity extends AppCompatActivity implements View.
                                     }
                                 }
                             });
-                        }
+                        */}
                     }
                 }
 
