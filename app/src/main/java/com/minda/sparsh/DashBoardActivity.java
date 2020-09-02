@@ -8,37 +8,29 @@ import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.provider.ContactsContract;
-import android.support.design.widget.TabLayout;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
-import android.support.v4.view.ViewPager;
-import android.support.v7.app.ActionBar;
+
+import com.google.android.material.tabs.TabLayout;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentPagerAdapter;
+import androidx.viewpager.widget.ViewPager;
+import androidx.appcompat.app.ActionBar;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.minda.sparsh.Adapter.NotificationAdapter;
-import com.minda.sparsh.fragment.EightFragment;
-import com.minda.sparsh.fragment.FiveFragment;
 import com.minda.sparsh.fragment.FourFragment;
 import com.minda.sparsh.fragment.ManufacturingFragment;
 import com.minda.sparsh.fragment.OneFragment;
-import com.minda.sparsh.fragment.SevenFragment;
-import com.minda.sparsh.fragment.SixFragment;
 import com.minda.sparsh.fragment.ThreeFragment;
 import com.minda.sparsh.fragment.TwoFragment;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Timer;
-import java.util.TimerTask;
 
-import com.minda.sparsh.R;
 import com.minda.sparsh.model.NotificationModel;
 import com.minda.sparsh.util.Utility;
 

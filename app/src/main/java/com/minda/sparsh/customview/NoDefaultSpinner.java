@@ -17,7 +17,7 @@ import java.lang.reflect.Method;
 /**
  * Created by sachin on 28/8/15.
  */
-public class NoDefaultSpinner extends android.support.v7.widget.AppCompatSpinner {
+public class NoDefaultSpinner extends androidx.appcompat.widget.AppCompatSpinner {
 
     public NoDefaultSpinner(Context context) {
         super(context);

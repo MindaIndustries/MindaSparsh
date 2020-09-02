@@ -5,8 +5,8 @@ import android.app.DatePickerDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
-import android.support.design.widget.Snackbar;
-import android.text.format.Time;
+import com.google.android.material.snackbar.Snackbar;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,8 +24,6 @@ import com.minda.sparsh.R;
 import com.minda.sparsh.ViewImageActivity;
 import com.minda.sparsh.model.AbnormalityView_Model;
 import com.minda.sparsh.model.AddTargetDate_Model;
-import com.minda.sparsh.model.BannarModel;
-import com.minda.sparsh.model.Sub_Department_Model;
 import com.minda.sparsh.util.RetrofitClient2;
 import com.minda.sparsh.util.Utility;
 
@@ -34,7 +32,6 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
-import java.util.Locale;
 
 import retrofit2.Call;
 import retrofit2.Callback;

@@ -3,7 +3,7 @@ package com.minda.sparsh;
 import android.app.ProgressDialog;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Base64;
 import android.view.View;
@@ -12,9 +12,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.minda.sparsh.Adapter.PlantSpinnerAdapter;
 import com.minda.sparsh.model.GetAbnormalityImage_Model;
-import com.minda.sparsh.model.Plant_Model;
 import com.minda.sparsh.util.RetrofitClient2;
 import com.minda.sparsh.util.Utility;
 

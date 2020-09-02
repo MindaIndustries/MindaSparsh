@@ -1,7 +1,7 @@
 package com.minda.sparsh.Adapter;
 
 import android.content.Context;
-import android.support.v7.widget.RecyclerView;
+import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,7 +11,6 @@ import android.widget.RadioButton;
 import com.minda.sparsh.R;
 import com.minda.sparsh.RequestForAccessActivity;
 import com.minda.sparsh.model.IAMGetBusinessModel;
-import com.minda.sparsh.model.IAMGetDomainModel;
 
 import java.util.List;
 

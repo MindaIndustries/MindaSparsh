@@ -1,8 +1,8 @@
 package com.minda.sparsh;
 
 import android.app.Activity;
-import android.graphics.Bitmap;
-import android.support.v7.app.AppCompatActivity;
+
+import androidx.appcompat.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,8 +12,6 @@ import android.widget.TextView;
 import com.minda.sparsh.util.TouchImageView;
 
 import java.util.List;
-
-import com.minda.sparsh.R;
 
 public class FlipperAdapter extends BaseAdapter {
 

@@ -5,7 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
+import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,16 +14,13 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.minda.sparsh.AbnormalityAddressingActivity;
-import com.minda.sparsh.DWMActivity;
 
 import com.minda.sparsh.DashBoardActivity;
 import com.minda.sparsh.EHS_Home;
 import com.minda.sparsh.Interface;
-import com.minda.sparsh.LoginActivity;
 import com.minda.sparsh.R;
 import com.minda.sparsh.SheedActivity;
 import com.minda.sparsh.model.UserDetail_Model;
-import com.minda.sparsh.util.AbnormalityDashboard;
 import com.minda.sparsh.util.RetrofitClient2;
 import com.minda.sparsh.util.Utility;
 

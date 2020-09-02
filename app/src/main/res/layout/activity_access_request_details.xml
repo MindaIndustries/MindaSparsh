@@ -539,7 +539,7 @@
 
                     </TableRow>
 
-                    <android.support.v7.widget.RecyclerView
+                    <androidx.recyclerview.widget.RecyclerView
                         android:id="@+id/rv_plant_details"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content" />
@@ -641,7 +641,7 @@
 
                         </TableRow>
 
-                        <android.support.v7.widget.RecyclerView
+                        <androidx.recyclerview.widget.RecyclerView
                             android:id="@+id/rv_approval_details"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content" />
@@ -753,7 +753,7 @@
 
                         </TableRow>
 
-                        <android.support.v7.widget.RecyclerView
+                        <androidx.recyclerview.widget.RecyclerView
                             android:id="@+id/rv_processor_details"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content" />

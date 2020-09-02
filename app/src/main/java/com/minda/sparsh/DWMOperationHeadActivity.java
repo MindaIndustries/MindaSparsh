@@ -4,7 +4,7 @@ import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.SharedPreferences;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -14,7 +14,6 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.minda.sparsh.model.DWMDetailResponse;
 import com.minda.sparsh.model.DWMOprationDetailResponse;
 import com.minda.sparsh.model.DwmResponse;
 import com.minda.sparsh.util.RetrofitClient2;

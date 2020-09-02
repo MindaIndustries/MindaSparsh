@@ -29,7 +29,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <android.support.design.widget.TabLayout
+        <com.google.android.material.tabs.TabLayout
             android:id="@+id/tablayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -43,13 +43,13 @@
             app:tabIndicatorHeight="2dp"
             app:tabSelectedTextColor="#ffffff">
 
-            <android.support.design.widget.TabItem
+            <com.google.android.material.tabs.TabItem
                 android:id="@+id/new_concern"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="New Concern"
                 />
-            <android.support.design.widget.TabItem
+            <com.google.android.material.tabs.TabItem
                 android:id="@+id/view_concern"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -61,7 +61,7 @@
                 android:layout_height="wrap_content"
                 android:text="Assigned Concern"
                 />
--->        </android.support.design.widget.TabLayout>
+-->        </com.google.android.material.tabs.TabLayout>
 
         <FrameLayout
             android:id="@+id/framelayout"

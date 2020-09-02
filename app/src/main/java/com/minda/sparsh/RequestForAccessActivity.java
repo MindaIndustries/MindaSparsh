@@ -2,13 +2,12 @@ package com.minda.sparsh;
 
 import android.app.ProgressDialog;
 import android.content.SharedPreferences;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.Toolbar;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.appcompat.widget.Toolbar;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
@@ -166,7 +165,6 @@ public class RequestForAccessActivity extends AppCompatActivity implements View.
         hitIAMGetAccessTypeApi();
         hitIAMGetDomainApi();
         hitIAMGetListOfNamesApi();
-
         selectionListener();
     }
 
@@ -343,7 +341,6 @@ public class RequestForAccessActivity extends AppCompatActivity implements View.
 
                 } else {
                     layNameOrgPur.setVisibility(View.GONE);
-
                 }
 
 
@@ -706,8 +703,6 @@ public class RequestForAccessActivity extends AppCompatActivity implements View.
                             combineListPlant.clear();
                             combineListPlant.addAll(responseList);
                         }
-
-
                         layPlant.setVisibility(View.VISIBLE);
                         IAMGetPlantAdapter mAdapter = new IAMGetPlantAdapter(responseList, RequestForAccessActivity.this, RequestForAccessActivity.this);
                         GridLayoutManager gridLayoutManager = new GridLayoutManager(getApplicationContext(), 2);

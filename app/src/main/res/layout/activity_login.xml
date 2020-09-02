@@ -46,7 +46,7 @@
 
 
                     <!--  Email Label -->
-                    <android.support.design.widget.TextInputLayout
+                    <com.google.android.material.textfield.TextInputLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         >
@@ -58,10 +58,10 @@
                             android:hint="User Id"
                             android:inputType="textEmailAddress"
                             />
-                    </android.support.design.widget.TextInputLayout>
+                    </com.google.android.material.textfield.TextInputLayout>
 
                     <!--  Password Label -->
-                    <android.support.design.widget.TextInputLayout
+                    <com.google.android.material.textfield.TextInputLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="8dp">
@@ -74,7 +74,7 @@
                             android:inputType="textPassword"
 
                             />
-                    </android.support.design.widget.TextInputLayout>
+                    </com.google.android.material.textfield.TextInputLayout>
 
                     <CheckBox
                         android:id="@+id/cb_terms"
@@ -219,7 +219,7 @@
                 </LinearLayout>
 
 
-                <android.support.v4.view.ViewPager
+                <androidx.viewpager.widget.ViewPager
                     android:id="@+id/showpager"
                     android:layout_width="match_parent"
                     android:layout_height="500dp"
@@ -231,7 +231,7 @@
                     >
 
 
-                </android.support.v4.view.ViewPager>
+                </androidx.viewpager.widget.ViewPager>
 
             </RelativeLayout>
 

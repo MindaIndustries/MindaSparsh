@@ -2,15 +2,14 @@ package com.minda.sparsh;
 
 import android.app.ProgressDialog;
 import android.content.SharedPreferences;
-import android.support.v4.widget.SwipeRefreshLayout;
-import android.support.v7.app.AppCompatActivity;
+
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.RecyclerView;
+import androidx.recyclerview.widget.RecyclerView;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import com.minda.sparsh.R;
 import com.minda.sparsh.model.AddAbnormality_Model;
 import com.minda.sparsh.util.RetrofitClient2;
 import com.minda.sparsh.util.Utility;

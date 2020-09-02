@@ -9,7 +9,7 @@
 
     >
 
-    <android.support.v7.widget.CardView
+    <androidx.cardview.widget.CardView
         app:cardElevation="20dp"
         app:cardCornerRadius="2dp"
         app:cardBackgroundColor="@android:color/white"
@@ -154,5 +154,5 @@ If you have any questions or suggestions about our Privacy Policy, do not hesita
                     android:layout_height="wrap_content" />
             </RelativeLayout>
         </RelativeLayout>
-    </android.support.v7.widget.CardView>
+    </androidx.cardview.widget.CardView>
 </RelativeLayout>

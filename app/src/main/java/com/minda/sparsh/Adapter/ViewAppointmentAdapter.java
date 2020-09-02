@@ -3,7 +3,7 @@ package com.minda.sparsh.Adapter;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
-import android.support.v7.widget.RecyclerView;
+import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,7 +13,6 @@ import android.widget.Toast;
 
 import com.minda.sparsh.Interface;
 import com.minda.sparsh.R;
-import com.minda.sparsh.UpdateVisitorDetailsActivity;
 import com.minda.sparsh.VisitorManagementActivity;
 import com.minda.sparsh.VisitorManagementListActivity;
 import com.minda.sparsh.model.AddAbnormality_Model;
