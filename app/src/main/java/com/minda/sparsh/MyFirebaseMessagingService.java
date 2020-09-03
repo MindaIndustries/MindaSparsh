@@ -18,6 +18,8 @@ import android.util.Log;
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
 
+import java.util.Date;
+
 /**
  * Created by dmin on 2/23/2018.
  */
@@ -25,6 +27,7 @@ import com.google.firebase.messaging.RemoteMessage;
 public class MyFirebaseMessagingService extends FirebaseMessagingService {
     String TAG = "test";
     SharedPreferences myPref;
+    int count;
 
     @Override
     public void onNewToken(@NonNull String s) {
@@ -110,6 +113,8 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
 
 
     private void sendNotification(RemoteMessage messageBody) {
+        count = (int) ((new Date().getTime() / 1000L) % Integer.MAX_VALUE);
+
         if(messageBody.getData().get("body")!=null && messageBody.getData().get("title")!=null) {
             myPref = getApplicationContext().getSharedPreferences("MyPref", Context.MODE_PRIVATE);
             Intent intent;
@@ -146,7 +151,7 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
                 notificationManager.createNotificationChannel(channel);
             }
 
-            notificationManager.notify(0 /* ID of notification */, notificationBuilder.build());
+            notificationManager.notify(count /* ID of notification */, notificationBuilder.build());
         }
     }
 private void handleNow() {
