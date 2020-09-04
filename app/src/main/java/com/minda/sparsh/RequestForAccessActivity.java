@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.appcompat.widget.Toolbar;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
@@ -21,11 +22,9 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-/*
 import com.androidbuts.multispinnerfilter.KeyPairBoolData;
+import com.androidbuts.multispinnerfilter.MultiSpinnerListener;
 import com.androidbuts.multispinnerfilter.MultiSpinnerSearch;
-import com.androidbuts.multispinnerfilter.SpinnerListener;
-*/
 import com.minda.sparsh.Adapter.IAMGetAccessSubTypeAdapter;
 import com.minda.sparsh.Adapter.IAMGetAuthorizationProfileAdapter;
 import com.minda.sparsh.Adapter.IAMGetBusinessAdapter;
@@ -108,9 +107,9 @@ public class RequestForAccessActivity extends AppCompatActivity implements View.
     LinearLayout layPlant;
     @BindView(R.id.et_empCode)
     AutoCompleteTextView et_empCode;
-   /* @BindView(R.id.simpleMultiSpinner)
+    @BindView(R.id.simpleMultiSpinner)
     MultiSpinnerSearch simpleSpinner;
-   */ private SharedPreferences myPref = null;
+    private SharedPreferences myPref = null;
     @BindView(R.id.btn_submit)
     Button btn_submit;
     @BindView(R.id.btn_cancel)
@@ -200,8 +199,6 @@ public class RequestForAccessActivity extends AppCompatActivity implements View.
                         hiIAMGetCategoryApi(selectedItem.getRequestTypeId().toString(), "1");
                     }
                 }
-
-
             }
 
             @Override
@@ -219,7 +216,6 @@ public class RequestForAccessActivity extends AppCompatActivity implements View.
                     hitIAMGetAccessSubTypeApi(selectedItem.getAccessTypeId().toString());
                     sp_access_type_id = selectedItem.getAccessTypeId().toString();
                 }
-
                 if (selectedItem.getAccessTypeId().equals(3)) {
                     layAccessSubType.setVisibility(View.GONE);
                 } else {
@@ -355,6 +351,9 @@ public class RequestForAccessActivity extends AppCompatActivity implements View.
             @Override
             public void onClick(View view) {
                 if (validateField()) {
+                    if(sp_source_id==null){
+                        sp_source_id = "";
+                    }
                     hitIAMCreateRequestApi(sp_request_type_id, sp_access_type_id, sp_access_for_id, myPref.getString("Id", "0"),
                             sp_source_id, et_empCode.getText().toString(), et_organisation.getText().toString(), et_purpose.getText().toString(),
                             et_name.getText().toString(), sp_access_sub_type_id, sp_access_category_id, sp_access_sub_category_id, sp_access_category_value,
@@ -507,7 +506,7 @@ public class RequestForAccessActivity extends AppCompatActivity implements View.
                             IAMGetCategoryAdapter mAdapter = new IAMGetCategoryAdapter(RequestForAccessActivity.this, responseList);
                             sp_access_category.setAdapter(mAdapter);
                         } else {
-                           /* final List<KeyPairBoolData> listArray = new ArrayList<KeyPairBoolData>();
+                            final List<KeyPairBoolData> listArray = new ArrayList<KeyPairBoolData>();
 
                             for (int i = 0; i < responseList.size(); i++) {
                                 KeyPairBoolData h = new KeyPairBoolData();
@@ -517,7 +516,7 @@ public class RequestForAccessActivity extends AppCompatActivity implements View.
                                 listArray.add(h);
                             }
 
-                            simpleSpinner.setItems(listArray, -1, new SpinnerListener() {
+                         /*   simpleSpinner.setItems(listArray, -1, new MultiSpinnerListener() {
 
                                 @Override
                                 public void onItemsSelected(List<KeyPairBoolData> items) {
@@ -530,7 +529,7 @@ public class RequestForAccessActivity extends AppCompatActivity implements View.
                                     }
                                 }
                             });
-                        */}
+   */                     }
                     }
                 }
 

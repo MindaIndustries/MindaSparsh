@@ -246,14 +246,14 @@
                             android:layout_marginLeft="5dp"
                             android:text="Access Category" />
 
-                       <!-- <com.androidbuts.multispinnerfilter.MultiSpinnerSearch
+                        <com.androidbuts.multispinnerfilter.MultiSpinnerSearch
                             android:id="@+id/simpleMultiSpinner"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_horizontal"
                             android:layout_marginTop="10dp"
                             app:hintText="Please Select Access Category " />
-                  -->  </LinearLayout>
+                    </LinearLayout>
 
                     <LinearLayout
                         android:id="@+id/layAccessSubCategory"

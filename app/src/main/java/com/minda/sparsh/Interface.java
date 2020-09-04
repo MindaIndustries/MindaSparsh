@@ -456,6 +456,7 @@ public interface Interface {
     Call<List<IAMGetListOfNames>> IAMGetListofNames(@Query("PrefixText") String PrefixText, @Query("CKey") String CKey);
 
 
+/*
     @GET("IAMCreateRequest")
     Call<List<IAMCreateRequestModel>> IAMCreateRequest(@Query("RequestTypeId") String RequestTypeId, @Query("AccessTypeId") String AccessTypeId,
                                                        @Query("AccessForTypeId") String AccessForTypeId, @Query("EmpCode") String EmpCode,
@@ -467,6 +468,20 @@ public interface Interface {
                                                        @Query("ProfileId") String ProfileId, @Query("ProfileName") String ProfileName,
                                                        @Query("RequirementDetail") String RequirementDetail, @Query("CategoryList") String CategoryList,
                                                        @Query("UnitList") String UnitList, @Query("CKey") String CKey);
+
+*/
+@FormUrlEncoded
+@POST("IAMCreateRequest")
+Call<List<IAMCreateRequestModel>> IAMCreateRequest(@Field("RequestTypeId") String RequestTypeId, @Field("AccessTypeId") String AccessTypeId,
+                                                   @Field("AccessForTypeId") String AccessForTypeId, @Field("EmpCode") String EmpCode,
+                                                   @Field("SourceTypeId") String SourceTypeId, @Field("SourceEmpCode") String SourceEmpCode,
+                                                   @Field("Organization") String Organization, @Field("Purpose") String Purpose,
+                                                   @Field("SourceName") String SourceName, @Field("AccessSubTypeId") String AccessSubTypeId,
+                                                   @Field("CategoryId") String CategoryId, @Field("SubCategoryId") String SubCategoryId,
+                                                   @Field("CategoryName") String CategoryName, @Field("SubCategoryName") String SubCategoryName,
+                                                   @Field("ProfileId") String ProfileId, @Field("ProfileName") String ProfileName,
+                                                   @Field("RequirementDetail") String RequirementDetail, @Field("CategoryList") String CategoryList,
+                                                   @Field("UnitList") String UnitList, @Field("CKey") String CKey);
 
 
 }
