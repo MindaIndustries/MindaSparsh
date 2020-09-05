@@ -185,7 +185,6 @@ public class RequestForAccessActivity extends AppCompatActivity implements View.
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 IAMGetRequestTypeSpinnerModel selectedItem = (IAMGetRequestTypeSpinnerModel) adapterView.getSelectedItem();
                 if (!selectedItem.getRequestType().equalsIgnoreCase("Please Select Request Type")) {
-
                     if (selectedItem.getRequestTypeId().equals(3)) {
                         sp_request_type_id = selectedItem.getRequestTypeId().toString();
                         layAccessCategory.setVisibility(View.GONE);
