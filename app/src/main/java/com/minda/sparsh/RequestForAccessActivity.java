@@ -159,7 +159,6 @@ public class RequestForAccessActivity extends AppCompatActivity implements View.
             }
         });
 
-
         hitIAMGetRequestTypeApi();
         hitIAMGetAccessTypeApi();
         hitIAMGetDomainApi();
