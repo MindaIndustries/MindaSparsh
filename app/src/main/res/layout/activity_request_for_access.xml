@@ -6,31 +6,34 @@
     android:layout_height="match_parent"
     android:focusable="true"
     android:focusableInTouchMode="true">
+
     <include layout="@layout/toolbar" />
+
     <RelativeLayout
-        android:layout_marginTop="?android:attr/actionBarSize"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_marginTop="?android:attr/actionBarSize">
+
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:adjustViewBounds="true"
-            android:src="@drawable/birds"
-            android:scaleType="centerCrop"/>
+            android:scaleType="centerCrop"
+            android:src="@drawable/birds" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/translucent"/>
+            android:background="@color/translucent" />
 
     </RelativeLayout>
 
     <LinearLayout
-        android:visibility="gone"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:background="@color/colorPrimary"
-        android:gravity="center_vertical">
+        android:gravity="center_vertical"
+        android:visibility="gone">
 
         <ImageView
             android:id="@+id/im_back"
@@ -61,9 +64,9 @@
     </LinearLayout>
 
     <androidx.core.widget.NestedScrollView
-        android:layout_marginTop="?android:attr/actionBarSize"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_marginTop="?android:attr/actionBarSize">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -76,25 +79,28 @@
                 android:id="@+id/lay_rest_content"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                    android:orientation="vertical">
+                android:orientation="vertical">
 
-               <!-- <android.support.v7.widget.CardView
+                <!-- <android.support.v7.widget.CardView
+                     android:layout_width="match_parent"
+                     android:layout_height="wrap_content"
+                     android:layout_gravity="center"
+                     android:elevation="5dp"
+                     card_view:cardCornerRadius="5dp">
+                -->
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:elevation="5dp"
-                    card_view:cardCornerRadius="5dp">
-               -->     <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical">
+                    android:orientation="vertical">
+
                     <TextView
-                        android:fontFamily="@font/museosans_500"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
                         android:layout_marginLeft="5dp"
+                        android:layout_marginTop="10dp"
+                        android:fontFamily="@font/museosans_500"
                         android:text="Request Type" />
+
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -120,50 +126,53 @@
                     </LinearLayout>
 
 
-                        <TextView
-                            android:fontFamily="@font/museosans_500"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="10dp"
-                            android:layout_marginLeft="5dp"
-                            android:text="Access Type" />
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginTop="10dp"
+                        android:fontFamily="@font/museosans_500"
+                        android:text="Access Type" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:gravity="center">
+
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="10dp"
-                            android:gravity="center">
+                            android:orientation="vertical">
 
-                            <LinearLayout
+                            <Spinner
+                                android:id="@+id/sp_access_type"
                                 android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:orientation="vertical">
+                                android:layout_height="wrap_content" />
 
-                                <Spinner
-                                    android:id="@+id/sp_access_type"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content" />
-
-                                <View
-                                    android:layout_width="match_parent"
-                                    android:layout_height="1dp"
-                                    android:background="#000000" />
-                            </LinearLayout>
-
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="1dp"
+                                android:background="#000000" />
                         </LinearLayout>
+
+                    </LinearLayout>
 
                     <LinearLayout
                         android:id="@+id/layAccessSubType"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:gravity="center">
+                        android:gravity="center"
+                        android:orientation="vertical">
+
                         <TextView
-                            android:fontFamily="@font/museosans_500"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="10dp"
                             android:layout_marginLeft="5dp"
+                            android:layout_marginTop="10dp"
+                            android:fontFamily="@font/museosans_500"
                             android:text="Access Sub-Type" />
+
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -194,16 +203,17 @@
                         android:id="@+id/layAccessCategory"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:gravity="center">
+                        android:gravity="center"
+                        android:orientation="vertical">
 
                         <TextView
-                            android:fontFamily="@font/museosans_500"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="10dp"
                             android:layout_marginLeft="5dp"
+                            android:layout_marginTop="10dp"
+                            android:fontFamily="@font/museosans_500"
                             android:text="Access Category" />
+
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -231,19 +241,19 @@
                     </LinearLayout>
 
                     <LinearLayout
-                        android:visibility="gone"
                         android:id="@+id/layMultiAccessCategory"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:gravity="center"
                         android:orientation="vertical"
-                        android:gravity="center">
+                        android:visibility="gone">
 
 
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="10dp"
                             android:layout_marginLeft="5dp"
+                            android:layout_marginTop="10dp"
                             android:text="Access Category" />
 
                         <com.androidbuts.multispinnerfilter.MultiSpinnerSearch
@@ -259,15 +269,17 @@
                         android:id="@+id/layAccessSubCategory"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical"
                         android:gravity="center"
+                        android:orientation="vertical"
                         android:visibility="gone">
-                    <TextView
+
+                        <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="10dp"
                             android:layout_marginLeft="5dp"
+                            android:layout_marginTop="10dp"
                             android:text="Access Sub Category" />
+
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -298,16 +310,17 @@
                         android:id="@+id/layUserAuthorisationProfile"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical"
                         android:gravity="center"
+                        android:orientation="vertical"
                         android:visibility="gone">
 
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="10dp"
                             android:layout_marginLeft="5dp"
+                            android:layout_marginTop="10dp"
                             android:text="User Authorization Profile" />
+
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -332,55 +345,57 @@
 
                         </LinearLayout>
 
-</LinearLayout>
+                    </LinearLayout>
 
-                        <TextView
-                            android:fontFamily="@font/museosans_500"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="10dp"
-                            android:layout_marginLeft="5dp"
-                            android:text="Access For" />
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginTop="10dp"
+                        android:fontFamily="@font/museosans_500"
+                        android:text="Access For" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:gravity="center">
+
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="10dp"
-                            android:gravity="center">
+                            android:orientation="vertical">
 
-                            <LinearLayout
+                            <Spinner
+                                android:id="@+id/sp_access_for"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:orientation="vertical">
+                                android:entries="@array/access_for" />
 
-                                <Spinner
-                                    android:id="@+id/sp_access_for"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:entries="@array/access_for"/>
-
-                                <View
-                                    android:layout_width="match_parent"
-                                    android:layout_height="1dp"
-                                    android:background="#000000" />
-                            </LinearLayout>
-
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="1dp"
+                                android:background="#000000" />
                         </LinearLayout>
+
+                    </LinearLayout>
 
 
                     <LinearLayout
                         android:id="@+id/laySource"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical"
                         android:gravity="center"
+                        android:orientation="vertical"
                         android:visibility="gone">
 
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="10dp"
                             android:layout_marginLeft="5dp"
+                            android:layout_marginTop="10dp"
                             android:text="Source" />
+
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -396,7 +411,7 @@
                                     android:id="@+id/sp_source"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:entries="@array/array_source"/>
+                                    android:entries="@array/array_source" />
 
                                 <View
                                     android:layout_width="match_parent"
@@ -407,28 +422,28 @@
                         </LinearLayout>
                     </LinearLayout>
 
-                        <com.google.android.material.textfield.TextInputLayout
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp">
+
+                        <AutoCompleteTextView
+                            android:id="@+id/et_empCode"
+                            style="@style/editTextStyleVisitor"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="10dp">
-
-                            <AutoCompleteTextView
-                                android:id="@+id/et_empCode"
-                                style="@style/editTextStyleVisitor"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:hint="Employee Code"
-                                android:imeOptions="actionNext"
-                                android:inputType="textPersonName"
-                                android:visibility="gone"/>
-                        </com.google.android.material.textfield.TextInputLayout>
+                            android:hint="Employee Code"
+                            android:imeOptions="actionNext"
+                            android:inputType="textPersonName"
+                            android:visibility="gone" />
+                    </com.google.android.material.textfield.TextInputLayout>
 
                     <LinearLayout
                         android:id="@+id/layNameOrgPur"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical"
                         android:gravity="center"
+                        android:orientation="vertical"
                         android:visibility="gone">
 
                         <com.google.android.material.textfield.TextInputLayout
@@ -478,146 +493,150 @@
                     </LinearLayout>
 
 
-                        <TextView
-                            android:fontFamily="@font/museosans_500"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="10dp"
-                            android:layout_marginLeft="5dp"
-                            android:text="Domain" />
-                        <androidx.recyclerview.widget.RecyclerView
-                            android:id="@+id/recyclerViewDomain"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_margin="5dp"
-                            android:scrollbars="vertical"
-                            android:nestedScrollingEnabled="false"
-                            app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginTop="10dp"
+                        android:fontFamily="@font/museosans_500"
+                        android:text="Domain" />
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/recyclerViewDomain"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
+                        android:nestedScrollingEnabled="false"
+                        android:scrollbars="vertical"
+                        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 
                     <LinearLayout
                         android:id="@+id/layBusiness"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical"
                         android:gravity="center"
+                        android:orientation="vertical"
                         android:visibility="gone">
 
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="10dp"
                             android:layout_marginLeft="5dp"
+                            android:layout_marginTop="10dp"
                             android:text="Business" />
+
                         <androidx.recyclerview.widget.RecyclerView
                             android:id="@+id/recyclerViewBusiness"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_margin="5dp"
-                            android:scrollbars="vertical"
                             android:nestedScrollingEnabled="false"
+                            android:scrollbars="vertical"
                             app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 
                     </LinearLayout>
 
 
+                    <LinearLayout
+                        android:id="@+id/layPlant"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        android:visibility="gone">
 
-                        <LinearLayout
-                            android:id="@+id/layPlant"
+                        <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:orientation="vertical"
-                            android:gravity="center"
-                            android:visibility="gone">
+                            android:layout_marginLeft="5dp"
+                            android:layout_marginTop="10dp"
+                            android:text="Plant" />
 
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="10dp"
-                                android:layout_marginLeft="5dp"
-                                android:text="Plant" />
-                            <androidx.recyclerview.widget.RecyclerView
-                                android:id="@+id/recyclerViewPlant"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_margin="5dp"
-                                android:scrollbars="vertical"
-                                android:nestedScrollingEnabled="false"
-                                app:layout_behavior="@string/appbar_scrolling_view_behavior" />
-
-                        </LinearLayout>
-
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/recyclerViewPlant"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="5dp"
+                            android:nestedScrollingEnabled="false"
+                            android:scrollbars="vertical"
+                            app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 
                     </LinearLayout>
 
-<!--
-                </android.support.v7.widget.CardView>
--->
 
-               <!-- <android.support.v7.widget.CardView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
-                    android:layout_gravity="center"
-                    android:elevation="5dp"
-                    card_view:cardCornerRadius="5dp">
--->
+                </LinearLayout>
+
+                <!--
+                                </android.support.v7.widget.CardView>
+                -->
+
+                <!-- <android.support.v7.widget.CardView
+                     android:layout_width="match_parent"
+                     android:layout_height="wrap_content"
+                     android:layout_marginTop="5dp"
+                     android:layout_gravity="center"
+                     android:elevation="5dp"
+                     card_view:cardCornerRadius="5dp">
+ -->
                 <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp">
-                <EditText
-                    android:id="@+id/et_accessRequirementDetail"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:gravity="left|top"
-                    android:imeOptions="actionDone"
-                    android:inputType="textMultiLine"
-                    android:lines="8"
-                    android:textColor="@color/black"
-                    android:fontFamily="@font/museosans_300"
-                    android:maxLines="5"
-                    android:minLines="6"
-                    android:overScrollMode="always"
-                    android:scrollbarStyle="insideInset"
-                    android:scrollbars="vertical"
-                    android:singleLine="false"
-                    android:textColorHint="@color/black"
-                    android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:hint="Access Requirement Detail"/>
+
+                    <EditText
+                        android:id="@+id/et_accessRequirementDetail"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:fontFamily="@font/museosans_300"
+                        android:gravity="left|top"
+                        android:hint="Access Requirement Detail"
+                        android:imeOptions="actionDone"
+                        android:inputType="textMultiLine"
+                        android:lines="8"
+                        android:maxLines="5"
+                        android:minLines="6"
+                        android:overScrollMode="always"
+                        android:scrollbarStyle="insideInset"
+                        android:scrollbars="vertical"
+                        android:singleLine="false"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:textColor="@color/black"
+                        android:textColorHint="@color/black" />
                 </com.google.android.material.textfield.TextInputLayout>
 
-<!--
-                </android.support.v7.widget.CardView>
--->
+                <!--
+                                </android.support.v7.widget.CardView>
+                -->
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center">
 
                     <Button
-                        android:fontFamily="@font/museosans_500"
                         android:id="@+id/btn_submit"
                         android:layout_width="0dp"
                         android:layout_height="50dp"
                         android:layout_margin="15dp"
+                        android:layout_weight="1"
                         android:background="@drawable/roundcornerbutton"
-                        android:text="Submit"
-                        android:textColor="@color/white"
-                        android:layout_weight="1"/>
-                    <Button
                         android:fontFamily="@font/museosans_500"
+                        android:text="Submit"
+                        android:textColor="@color/white" />
+
+                    <Button
                         android:id="@+id/btn_cancel"
                         android:layout_width="0dp"
                         android:layout_height="50dp"
                         android:layout_margin="15dp"
+                        android:layout_weight="1"
                         android:background="@drawable/roundcornerbutton"
+                        android:fontFamily="@font/museosans_500"
                         android:text="Cancel"
-                        android:textColor="@color/white"
-                        android:layout_weight="1"/>
+                        android:textColor="@color/white" />
 
                 </LinearLayout>
 
-        </LinearLayout>
+            </LinearLayout>
 
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>

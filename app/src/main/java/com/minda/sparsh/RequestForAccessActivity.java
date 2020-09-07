@@ -116,7 +116,7 @@ public class RequestForAccessActivity extends AppCompatActivity implements View.
     Button btn_cancel;
     String sp_request_type_id, sp_access_type_id, sp_access_category_id, sp_access_sub_category_id = "0", sp_access_sub_type_id,
             sp_user_authorization_profile_id = "0", sp_access_for_id, sp_source_id, sp_access_category_value, sp_access_sub_category_value = "",
-            sp_user_authorization_profile_value = "", catListValue = "", unitCheckId = "";
+            sp_user_authorization_profile_value = "", catListValue = "", unitCheckId = "",FileName,FileByte;
 
     @BindView(R.id.et_name)
     EditText et_name;
@@ -747,7 +747,7 @@ public class RequestForAccessActivity extends AppCompatActivity implements View.
         if (Utility.isOnline(RequestForAccessActivity.this)) {
             showProgress(true);
             Interface anInterface = RetrofitClient2.getClient().create(Interface.class);
-            Call<List<IAMCreateRequestModel>> response = anInterface.IAMCreateRequest(RequestTypeId, AccessTypeId, AccessForTypeId, EmpCode, SourceTypeId, SourceEmpCode, Organization, Purpose, SourceName, AccessSubTypeId, CategoryId, SubCategoryId, CategoryName, SubCategoryName, ProfileId, ProfileName, RequirementDetail, CategoryList, UnitList, RetrofitClient2.CKEY);
+            Call<List<IAMCreateRequestModel>> response = anInterface.IAMCreateRequest(RequestTypeId, AccessTypeId, AccessForTypeId, EmpCode, SourceTypeId, SourceEmpCode, Organization, Purpose, SourceName, AccessSubTypeId, CategoryId, SubCategoryId, CategoryName, SubCategoryName, ProfileId, ProfileName, RequirementDetail, CategoryList, UnitList, RetrofitClient2.CKEY,FileName, FileByte);
             response.enqueue(new Callback<List<IAMCreateRequestModel>>() {
                 @Override
                 public void onResponse(Call<List<IAMCreateRequestModel>> call, Response<List<IAMCreateRequestModel>> response) {
