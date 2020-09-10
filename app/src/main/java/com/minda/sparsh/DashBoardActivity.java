@@ -10,6 +10,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.tabs.TabLayout;
 
@@ -39,7 +40,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Timer;
 
+import com.minda.sparsh.listener.CarotResponse;
+import com.minda.sparsh.listener.OnTaskComplete;
 import com.minda.sparsh.model.NotificationModel;
+import com.minda.sparsh.services.FirebaseService;
 import com.minda.sparsh.util.Utility;
 
 import org.jsoup.Jsoup;
@@ -57,6 +61,7 @@ public class DashBoardActivity extends BaseActivity implements View.OnClickListe
     public static TextView tv_unread;
     public ImageView im_right, im_left, im_logo;
     Timer timer;
+    String empCode;
     public static Integer time = 0;
 
 
@@ -77,9 +82,11 @@ public class DashBoardActivity extends BaseActivity implements View.OnClickListe
         lay_logout = (RelativeLayout) findViewById(R.id.lay_logout);
         viewPager = (ViewPager) findViewById(R.id.pager);
         myPref = getSharedPreferences("MyPref", Context.MODE_PRIVATE);
+        empCode = myPref.getString("Id", "Id");
         User = myPref.getString("username", "");
+   //     saveFirebaseToken(empCode);
 
-        FirebaseInstanceId.getInstance().getInstanceId()
+      /*  FirebaseInstanceId.getInstance().getInstanceId()
                 .addOnCompleteListener(new OnCompleteListener<InstanceIdResult>() {
                     @Override
                     public void onComplete(@NonNull Task<InstanceIdResult> task) {
@@ -91,7 +98,7 @@ public class DashBoardActivity extends BaseActivity implements View.OnClickListe
                         String token = task.getResult().getToken();
                     }
                 });
-        //tv_user_name.setText(User);
+      */  //tv_user_name.setText(User);
 //        im_left.setOnClickListener(this);
 //        im_right.setOnClickListener(this);
         viewPager.setOffscreenPageLimit(0);
@@ -332,4 +339,26 @@ public class DashBoardActivity extends BaseActivity implements View.OnClickListe
 
 
     }
+
+
+    public void saveFirebaseToken(String empCode){
+
+        FirebaseInstanceId.getInstance().getInstanceId().addOnSuccessListener( new OnSuccessListener<InstanceIdResult>() {
+            @Override
+            public void onSuccess(InstanceIdResult instanceIdResult) {
+
+                String deviceTokenFcm = instanceIdResult.getToken();
+                if(Utility.isOnline(DashBoardActivity.this)){
+                FirebaseService firebaseService = new FirebaseService();
+                firebaseService.saveFirebaseID(new OnTaskComplete() {
+                    @Override
+                    public void onTaskComplte(CarotResponse carotResponse) {
+
+                    }
+                }, empCode, deviceTokenFcm);
+            }
+            }
+            });
+
+        }
 }

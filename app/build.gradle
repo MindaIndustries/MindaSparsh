@@ -29,7 +29,7 @@ android {
         applicationId "com.minda.sparsh"
         minSdkVersion 19
         targetSdkVersion 28
-        versionCode 43
+        versionCode 44
         versionName "1.27"
         multiDexEnabled true
     }

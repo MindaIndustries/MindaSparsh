@@ -36,6 +36,7 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
         sendRegistrationToServer(s);
 
     }
+
     private void scheduleJob() {
         // [START dispatch_job]
         /*OneTimeWorkRequest work = new OneTimeWorkRequest.Builder(MyWorker.class)
@@ -57,7 +58,7 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
             Log.d(TAG, "Message data payload: " + remoteMessage.getData());
             sendNotification(remoteMessage);
 
-           /* if (*//* Check if data needs to be processed by long running job *//* true) {
+            /* if (*//* Check if data needs to be processed by long running job *//* true) {
                 // For long-running tasks (10 seconds or more) use WorkManager.
                 scheduleJob();
             } else {
@@ -115,7 +116,7 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
     private void sendNotification(RemoteMessage messageBody) {
         count = (int) ((new Date().getTime() / 1000L) % Integer.MAX_VALUE);
 
-        if(messageBody.getData().get("body")!=null && messageBody.getData().get("title")!=null) {
+        if (messageBody.getData().get("body") != null && messageBody.getData().get("title") != null) {
             myPref = getApplicationContext().getSharedPreferences("MyPref", Context.MODE_PRIVATE);
             Intent intent;
 
@@ -153,9 +154,11 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
             notificationManager.notify(count /* ID of notification */, notificationBuilder.build());
         }
     }
-private void handleNow() {
-    Log.d(TAG, "Short lived task is done.");
-}
+
+    private void handleNow() {
+        Log.d(TAG, "Short lived task is done.");
+    }
+
     private void sendRegistrationToServer(String token) {
         // TODO: Implement this method to send token to your app server.
         //register token here

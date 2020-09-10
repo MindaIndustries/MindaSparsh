@@ -432,7 +432,7 @@
                             style="@style/editTextStyleVisitor"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:hint="Employee Code"
+                            android:hint="Employee"
                             android:imeOptions="actionNext"
                             android:inputType="textPersonName"
                             android:visibility="gone" />
@@ -603,6 +603,43 @@
                         android:textColor="@color/black"
                         android:textColorHint="@color/black" />
                 </com.google.android.material.textfield.TextInputLayout>
+
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:layout_marginTop="10dp"
+                        android:layout_alignParentRight="true"
+                        android:src="@drawable/attach"
+                        android:id="@+id/attachment1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
+                    <TextView
+                        android:layout_marginTop="10dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_alignBottom="@+id/attachment"
+                        android:layout_alignTop="@+id/attachment"
+                        android:id="@+id/attachtext1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_toLeftOf="@+id/attachment1"
+                        android:text="Add attachment"
+                        android:singleLine="true"
+                        android:fontFamily="@font/museosans_500"
+                        />
+
+                    <ImageView
+                        android:id="@+id/doc_view"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:visibility="gone"
+                        android:layout_margin="5dp"
+                        />
+
+                </RelativeLayout>
 
                 <!--
                                 </android.support.v7.widget.CardView>

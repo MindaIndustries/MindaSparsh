@@ -1,13 +1,36 @@
 package com.minda.sparsh;
 
+import android.Manifest;
+import android.app.Activity;
 import android.app.ProgressDialog;
+import android.content.ContentResolver;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.SharedPreferences;
+
+import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.pm.PackageManager;
+import android.database.Cursor;
+import android.graphics.Bitmap;
+import android.graphics.Matrix;
+import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
+
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.appcompat.widget.Toolbar;
+
+import android.os.Environment;
+import android.provider.MediaStore;
 import android.text.TextUtils;
+import android.util.Base64;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
@@ -49,16 +72,21 @@ import com.minda.sparsh.model.IAMGetListOfNames;
 import com.minda.sparsh.model.IAMGetSubCategoryModel;
 import com.minda.sparsh.util.PlantInterface;
 import com.minda.sparsh.util.RetrofitClient2;
+import com.minda.sparsh.util.UriUtils;
 import com.minda.sparsh.util.Utility;
 
 import org.jsoup.helper.StringUtil;
 
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileInputStream;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -116,7 +144,7 @@ public class RequestForAccessActivity extends AppCompatActivity implements View.
     Button btn_cancel;
     String sp_request_type_id, sp_access_type_id, sp_access_category_id, sp_access_sub_category_id = "0", sp_access_sub_type_id,
             sp_user_authorization_profile_id = "0", sp_access_for_id, sp_source_id, sp_access_category_value, sp_access_sub_category_value = "",
-            sp_user_authorization_profile_value = "", catListValue = "", unitCheckId = "",FileName,FileByte;
+            sp_user_authorization_profile_value = "", catListValue = "", unitCheckId = "";
 
     @BindView(R.id.et_name)
     EditText et_name;
@@ -134,6 +162,26 @@ public class RequestForAccessActivity extends AppCompatActivity implements View.
     Toolbar toolbar;
     @BindView(R.id.title)
     TextView title;
+    @BindView(R.id.attachment1)
+    ImageView attachment;
+    @BindView(R.id.attachtext1)
+    TextView attachtext;
+    @BindView(R.id.doc_view)
+    ImageView docView;
+
+
+    String fileName="", fileType, fileByte="";
+
+    public static final int MY_PERMISSIONS_REQUEST_READ_EXTERNAL_STORAGE = 123;
+    private String mUserChoosenTask = "";
+    public static final int MY_PERMISSIONS_REQUEST_CAMERA = 1234;
+    private static final int CAPTURE_FROM_CAMERA = 1;
+    private static final int SELECT_FROM_GALLERY = 2;
+    private static final int SELECT_FILE = 3;
+
+    private File mDestinationFile;
+    byte[] bytes;
+    Bitmap bmp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -164,6 +212,18 @@ public class RequestForAccessActivity extends AppCompatActivity implements View.
         hitIAMGetDomainApi();
         hitIAMGetListOfNamesApi();
         selectionListener();
+
+    }
+
+    @OnClick(R.id.attachtext1)
+    public void onClickAttachText() {
+        selectFile();
+
+    }
+
+    @OnClick(R.id.attachment1)
+    public void onClickAttachment() {
+        selectFile();
     }
 
     @Override
@@ -349,7 +409,7 @@ public class RequestForAccessActivity extends AppCompatActivity implements View.
             @Override
             public void onClick(View view) {
                 if (validateField()) {
-                    if(sp_source_id==null){
+                    if (sp_source_id == null) {
                         sp_source_id = "";
                     }
                     hitIAMCreateRequestApi(sp_request_type_id, sp_access_type_id, sp_access_for_id, myPref.getString("Id", "0"),
@@ -365,7 +425,8 @@ public class RequestForAccessActivity extends AppCompatActivity implements View.
         btn_cancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                onBackPressed();
+                finish();
             }
         });
     }
@@ -397,7 +458,7 @@ public class RequestForAccessActivity extends AppCompatActivity implements View.
                 public void onResponse(Call<List<IAMGetRequestTypeSpinnerModel>> call, Response<List<IAMGetRequestTypeSpinnerModel>> response) {
                     showProgress(false);
                     List<IAMGetRequestTypeSpinnerModel> responseList = response.body();
-                    if (responseList != null && responseList.size()>0) {
+                    if (responseList != null && responseList.size() > 0) {
                         IAMGetRequestTypeSpinnerModel iamGetRequestTypeSpinnerModel = new IAMGetRequestTypeSpinnerModel();
                         iamGetRequestTypeSpinnerModel.setRequestTypeId(0);
                         iamGetRequestTypeSpinnerModel.setRequestType("Please Select Request Type");
@@ -433,7 +494,7 @@ public class RequestForAccessActivity extends AppCompatActivity implements View.
                     iam.setAccessTypeId(0);
                     iam.setAccessType("Please Select Access Type");
 
-                    if (responseList != null && responseList.size()>0) {
+                    if (responseList != null && responseList.size() > 0) {
                         responseList.add(0, iam);
                         IAMIAMGetAccessTypeAdapter mAdapter = new IAMIAMGetAccessTypeAdapter(RequestForAccessActivity.this, responseList);
                         sp_access_type.setAdapter(mAdapter);
@@ -459,7 +520,7 @@ public class RequestForAccessActivity extends AppCompatActivity implements View.
                 @Override
                 public void onResponse(Call<List<IAMGetAccessSubTypeModel>> call, Response<List<IAMGetAccessSubTypeModel>> response) {
                     showProgress(false);
-                    if(response.body()!=null && response.body().size()>0) {
+                    if (response.body() != null && response.body().size() > 0) {
                         List<IAMGetAccessSubTypeModel> responseList = response.body();
                         IAMGetAccessSubTypeModel iam = new IAMGetAccessSubTypeModel();
                         iam.setAccessSubTypeId(0);
@@ -492,7 +553,7 @@ public class RequestForAccessActivity extends AppCompatActivity implements View.
                 @Override
                 public void onResponse(Call<List<IAMGetCategorySpinnerModel>> call, Response<List<IAMGetCategorySpinnerModel>> response) {
                     showProgress(false);
-                    if (response.body()!=null && response.body().size() != 0) {
+                    if (response.body() != null && response.body().size() != 0) {
                         List<IAMGetCategorySpinnerModel> responseList = null;
                         responseList = response.body();
                         if (!type.equalsIgnoreCase("3")) {
@@ -527,7 +588,8 @@ public class RequestForAccessActivity extends AppCompatActivity implements View.
                                     }
                                 }
                             });
-   */                     }
+   */
+                        }
                     }
                 }
 
@@ -550,7 +612,7 @@ public class RequestForAccessActivity extends AppCompatActivity implements View.
                 @Override
                 public void onResponse(Call<List<IAMGetSubCategoryModel>> call, Response<List<IAMGetSubCategoryModel>> response) {
                     showProgress(false);
-                    if (response.body()!=null && response.body().size() != 0) {
+                    if (response.body() != null && response.body().size() != 0) {
                         List<IAMGetSubCategoryModel> responseList = response.body();
                         IAMGetSubCategoryModel iam = new IAMGetSubCategoryModel();
                         iam.setCategoryId(0);
@@ -586,7 +648,7 @@ public class RequestForAccessActivity extends AppCompatActivity implements View.
                 @Override
                 public void onResponse(Call<List<IAMGetAuthorizationProfileModel>> call, Response<List<IAMGetAuthorizationProfileModel>> response) {
                     showProgress(false);
-                    if (response.body()!=null && response.body().size() != 0) {
+                    if (response.body() != null && response.body().size() != 0) {
                         List<IAMGetAuthorizationProfileModel> responseList = response.body();
                         IAMGetAuthorizationProfileModel iam = new IAMGetAuthorizationProfileModel();
                         iam.setCategoryId(0);
@@ -622,7 +684,7 @@ public class RequestForAccessActivity extends AppCompatActivity implements View.
                 public void onResponse(Call<List<IAMGetDomainModel>> call, Response<List<IAMGetDomainModel>> response) {
                     showProgress(false);
                     List<IAMGetDomainModel> responseList = response.body();
-                    if (responseList != null && responseList.size()>0) {
+                    if (responseList != null && responseList.size() > 0) {
                         IAMGetDomainAdapter mAdapter = new IAMGetDomainAdapter(responseList, RequestForAccessActivity.this, myPref.getString("UM_DESIG_CODE", "0"));
                         GridLayoutManager gridLayoutManager = new GridLayoutManager(getApplicationContext(), 2);
                         recyclerViewDomain.setLayoutManager(gridLayoutManager);
@@ -652,7 +714,7 @@ public class RequestForAccessActivity extends AppCompatActivity implements View.
                 public void onResponse(Call<List<IAMGetBusinessModel>> call, Response<List<IAMGetBusinessModel>> response) {
                     showProgress(false);
                     List<IAMGetBusinessModel> responseList = response.body();
-                    if (responseList != null && responseList.size()>0) {
+                    if (responseList != null && responseList.size() > 0) {
                         if (callFrom.equalsIgnoreCase("checkBox")) {
                             combineList.addAll(responseList);
                         } else {
@@ -692,7 +754,7 @@ public class RequestForAccessActivity extends AppCompatActivity implements View.
                 public void onResponse(Call<List<IAMGetPlantModel>> call, Response<List<IAMGetPlantModel>> response) {
                     showProgress(false);
                     List<IAMGetPlantModel> responseList = response.body();
-                    if (responseList != null && responseList.size()>0) {
+                    if (responseList != null && responseList.size() > 0) {
 
                         if (callType.equalsIgnoreCase("checkBox")) {
                             combineListPlant.addAll(responseList);
@@ -727,7 +789,7 @@ public class RequestForAccessActivity extends AppCompatActivity implements View.
                 public void onResponse(Call<List<IAMGetListOfNames>> call, Response<List<IAMGetListOfNames>> response) {
                     showProgress(false);
                     List<IAMGetListOfNames> responseList = response.body();
-                    if (responseList != null && responseList.size()>0) {
+                    if (responseList != null && responseList.size() > 0) {
                         call(responseList);
                     }
                 }
@@ -747,13 +809,13 @@ public class RequestForAccessActivity extends AppCompatActivity implements View.
         if (Utility.isOnline(RequestForAccessActivity.this)) {
             showProgress(true);
             Interface anInterface = RetrofitClient2.getClient().create(Interface.class);
-            Call<List<IAMCreateRequestModel>> response = anInterface.IAMCreateRequest(RequestTypeId, AccessTypeId, AccessForTypeId, EmpCode, SourceTypeId, SourceEmpCode, Organization, Purpose, SourceName, AccessSubTypeId, CategoryId, SubCategoryId, CategoryName, SubCategoryName, ProfileId, ProfileName, RequirementDetail, CategoryList, UnitList, RetrofitClient2.CKEY,FileName, FileByte);
+            Call<List<IAMCreateRequestModel>> response = anInterface.IAMCreateRequest(RequestTypeId, AccessTypeId, AccessForTypeId, EmpCode, SourceTypeId, SourceEmpCode, Organization, Purpose, SourceName, AccessSubTypeId, CategoryId, SubCategoryId, CategoryName, SubCategoryName, ProfileId, ProfileName, RequirementDetail, CategoryList, UnitList, RetrofitClient2.CKEY, fileName, fileByte);
             response.enqueue(new Callback<List<IAMCreateRequestModel>>() {
                 @Override
                 public void onResponse(Call<List<IAMCreateRequestModel>> call, Response<List<IAMCreateRequestModel>> response) {
                     showProgress(false);
                     List<IAMCreateRequestModel> responseList = response.body();
-                    if (responseList != null && responseList.size()>0) {
+                    if (responseList != null && responseList.size() > 0) {
                         Toast.makeText(RequestForAccessActivity.this, "Saved Successfully", Toast.LENGTH_SHORT).show();
                         finish();
                     }
@@ -851,4 +913,248 @@ public class RequestForAccessActivity extends AppCompatActivity implements View.
         }
 
     }
+
+    public void selectFile() {
+        requestAppPermissions();
+    }
+
+    private void requestAppPermissions() {
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP) {
+            selectImage();
+            return;
+        }
+
+        if (hasReadPermissions() && hasWritePermissions()) {
+            selectImage();
+            return;
+        }
+
+        ActivityCompat.requestPermissions(RequestForAccessActivity.this,
+                new String[]{
+                        android.Manifest.permission.READ_EXTERNAL_STORAGE,
+                        android.Manifest.permission.WRITE_EXTERNAL_STORAGE
+                }, MY_PERMISSIONS_REQUEST_READ_EXTERNAL_STORAGE); // your request code
+    }
+
+    private void cameraIntent() {
+        Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        startActivityForResult(intent, CAPTURE_FROM_CAMERA);
+    }
+
+    private void galleryIntent() {
+        Intent pickPhoto = new Intent(Intent.ACTION_PICK,
+                MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+        startActivityForResult(pickPhoto, SELECT_FROM_GALLERY);
+    }
+
+    private void selectImage() {
+        final CharSequence[] items = {"Take Photo", "Choose from Gallery", "Choose Document",
+                "Cancel"};
+        AlertDialog.Builder builder = new AlertDialog.Builder(RequestForAccessActivity.this);
+        builder.setTitle("Add Photo!");
+        builder.setItems(items, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int item) {
+                boolean result = Utility.checkPermission(RequestForAccessActivity.this);
+                if (items[item].equals("Take Photo")) {
+                    mUserChoosenTask = "Take Photo";
+                    if (result) {
+                        requestCameraPermission();
+                        if (hasCameraPermission())
+                            cameraIntent();
+                    }
+                } else if (items[item].equals("Choose from Gallery")) {
+                    mUserChoosenTask = "Choose from Gallery";
+                    if (result) {
+                        galleryIntent();
+                    }
+
+                } else if (items[item].equals("Choose Document")) {
+                    mUserChoosenTask = "Choose Document";
+                    if (result) {
+                        fileIntent();
+                    }
+
+                } else if (items[item].equals("Cancel")) {
+                    dialog.dismiss();
+                }
+            }
+        });
+        builder.show();
+    }
+
+    public void fileIntent() {
+        String[] mimeTypes =
+                {"application/pdf", "application/msword", "application/vnd.ms-powerpoint", "application/vnd.ms-excel", "text/plain", "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", "application/vnd.openxmlformats-officedocument.wordprocessingml.document"};
+
+        Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
+        intent.addCategory(Intent.CATEGORY_OPENABLE);
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+            intent.setType(mimeTypes.length == 1 ? mimeTypes[0] : "*/*");
+            if (mimeTypes.length > 0) {
+                intent.putExtra(Intent.EXTRA_MIME_TYPES, mimeTypes);
+            }
+        } else {
+            String mimeTypesStr = "";
+            for (String mimeType : mimeTypes) {
+                mimeTypesStr += mimeType + "|";
+            }
+            intent.setType(mimeTypesStr.substring(0, mimeTypesStr.length() - 1));
+        }
+        startActivityForResult(Intent.createChooser(intent, "ChooseFile"), SELECT_FILE);
+    }
+
+    private void onCaptureImageResult(Intent data) {
+
+        Bitmap thumbnail = (Bitmap) data.getExtras().get("data");
+        mDestinationFile = new File(Environment.getExternalStorageDirectory(),
+                System.currentTimeMillis() + ".jpg");
+        Utility.saveFileToSdCard(mDestinationFile, thumbnail);
+        String fileName = mDestinationFile.getName();
+        System.out.println("fileName" + fileName);
+        bytes = getBytesFromBitmap(thumbnail);
+        fileType = "jpg";
+        bmp = thumbnail;
+        attachtext.setText(fileName);
+        this.fileName = fileName;
+        fileByte = Base64.encodeToString(bytes, Base64.NO_WRAP);
+        docView.setVisibility(View.VISIBLE);
+        docView.setImageBitmap(thumbnail);
+    }
+
+    public byte[] getBytesFromBitmap(Bitmap bitmap) {
+        ByteArrayOutputStream stream = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.JPEG, 70, stream);
+        return stream.toByteArray();
+    }
+
+    private static Bitmap rotateImageIfRequired(Context context, Bitmap img, Uri selectedImage) {
+
+        // Detect rotation
+        int rotation = getRotation(context, selectedImage);
+        if (rotation != 0) {
+            Matrix matrix = new Matrix();
+            matrix.postRotate(rotation);
+            Bitmap rotatedImg = Bitmap.createBitmap(img, 0, 0, img.getWidth(), img.getHeight(), matrix, true);
+            img.recycle();
+            return rotatedImg;
+        } else {
+            return img;
+        }
+    }
+
+    private static int getRotation(Context context, Uri selectedImage) {
+
+        int rotation = 0;
+        ContentResolver content = context.getContentResolver();
+
+        Cursor mediaCursor = content.query(MediaStore.Images.Media.EXTERNAL_CONTENT_URI,
+                new String[]{"orientation", "date_added"},
+                null, null, "date_added desc");
+
+        if (mediaCursor != null && mediaCursor.getCount() != 0) {
+            while (mediaCursor.moveToNext()) {
+                rotation = mediaCursor.getInt(0);
+                break;
+            }
+        }
+        mediaCursor.close();
+        return rotation;
+    }
+
+
+    private void onSelectFromGalleryResult(Intent data) {
+        Bitmap bm = null;
+
+        if (mDestinationFile != null) {
+            mDestinationFile.delete();
+        }
+        if (data != null) {
+            try {
+                bm = MediaStore.Images.Media.getBitmap(getContentResolver(), data.getData());
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        mDestinationFile = new File(Environment.getExternalStorageDirectory(),
+                System.currentTimeMillis() + ".jpg");
+
+
+        bm = rotateImageIfRequired(RequestForAccessActivity.this, bm, Uri.parse(mDestinationFile.toString()));
+        //  docView.setImageBitmap(bm);
+        Utility.saveFileToSdCard(mDestinationFile, bm);
+        String fileName = mDestinationFile.getName();
+        this.fileName = fileName;
+        System.out.println("fileName" + fileName);
+        fileType = "jpg";
+        bytes = getBytesFromBitmap(bm);
+        bmp = bm;
+        attachtext.setText(fileName);
+        fileByte = Base64.encodeToString(bytes, Base64.NO_WRAP);
+        docView.setVisibility(View.VISIBLE);
+        docView.setImageBitmap(bm);
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode == Activity.RESULT_OK) {
+            if (requestCode == SELECT_FROM_GALLERY)
+                onSelectFromGalleryResult(data);
+            else if (requestCode == CAPTURE_FROM_CAMERA)
+                onCaptureImageResult(data);
+            else if (requestCode == SELECT_FILE)
+                onSelectFile(data);
+        }
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.O)
+    private void onSelectFile(Intent data) {
+
+        Uri fileUri = data.getData();
+        String mimeType = getContentResolver().getType(fileUri);
+
+        String fullFilePath = UriUtils.getPathFromUri(RequestForAccessActivity.this, fileUri);
+        File file = new File(fullFilePath);
+        fileName = file.getName();
+        fileType = mimeType.replace("application/", "");
+        attachtext.setText(fileName);
+        bytes = new byte[(int) file.length()];
+
+        FileInputStream fis = null;
+        try {
+            fis = new FileInputStream(file);
+            fis.read(bytes); //read file into bytes[]
+            fis.close();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        fileByte = Base64.encodeToString(bytes, Base64.NO_WRAP);
+
+    }
+
+
+    private void requestCameraPermission() {
+
+        ActivityCompat.requestPermissions(RequestForAccessActivity.this,
+                new String[]{android.Manifest.permission.CAMERA}, MY_PERMISSIONS_REQUEST_CAMERA); // your request code
+    }
+
+
+    private boolean hasReadPermissions() {
+        return (ContextCompat.checkSelfPermission(RequestForAccessActivity.this, android.Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED);
+    }
+
+    private boolean hasWritePermissions() {
+        return (ContextCompat.checkSelfPermission(RequestForAccessActivity.this, android.Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED);
+    }
+
+    private boolean hasCameraPermission() {
+        return (ContextCompat.checkSelfPermission(RequestForAccessActivity.this, Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED);
+
+    }
+
 }
