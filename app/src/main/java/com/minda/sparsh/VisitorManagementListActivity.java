@@ -66,7 +66,10 @@ public class VisitorManagementListActivity extends AppCompatActivity implements 
                 @Override
                 public void onResponse(Call<List<ViewAppointmentModel>> call, Response<List<ViewAppointmentModel>> response) {
                     dismissProgress();
-                    List<ViewAppointmentModel> visitorResponse = response.body();
+
+
+
+                     List<ViewAppointmentModel> visitorResponse = response.body();
 
                     if (visitorResponse != null && visitorResponse.size()>0) {
                         if (!visitorResponse.get(0).getFirstName().equalsIgnoreCase("")) {

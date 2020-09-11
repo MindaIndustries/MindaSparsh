@@ -1,9 +1,13 @@
 package com.minda.sparsh;
 
 import android.content.Intent;
+
 import androidx.appcompat.app.AppCompatActivity;
+
 import android.os.Bundle;
+
 import androidx.appcompat.widget.Toolbar;
+
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
@@ -42,6 +46,7 @@ public class IdentityAccessManagementActivity extends AppCompatActivity implemen
 
 //        intiUiSetup();
     }
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {

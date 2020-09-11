@@ -8,11 +8,6 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
-
-import androidx.annotation.RequiresApi;
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.graphics.Bitmap;
@@ -20,18 +15,10 @@ import android.graphics.Matrix;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
-
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
-import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-import androidx.appcompat.widget.Toolbar;
-
 import android.os.Environment;
 import android.provider.MediaStore;
 import android.text.TextUtils;
 import android.util.Base64;
-import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
@@ -46,7 +33,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.androidbuts.multispinnerfilter.KeyPairBoolData;
-import com.androidbuts.multispinnerfilter.MultiSpinnerListener;
 import com.androidbuts.multispinnerfilter.MultiSpinnerSearch;
 import com.minda.sparsh.Adapter.IAMGetAccessSubTypeAdapter;
 import com.minda.sparsh.Adapter.IAMGetAuthorizationProfileAdapter;
@@ -64,11 +50,9 @@ import com.minda.sparsh.model.IAMGetAuthorizationProfileModel;
 import com.minda.sparsh.model.IAMGetBusinessModel;
 import com.minda.sparsh.model.IAMGetCategorySpinnerModel;
 import com.minda.sparsh.model.IAMGetDomainModel;
+import com.minda.sparsh.model.IAMGetListOfNames;
 import com.minda.sparsh.model.IAMGetPlantModel;
 import com.minda.sparsh.model.IAMGetRequestTypeSpinnerModel;
-
-import com.minda.sparsh.model.IAMGetListOfNames;
-
 import com.minda.sparsh.model.IAMGetSubCategoryModel;
 import com.minda.sparsh.util.PlantInterface;
 import com.minda.sparsh.util.RetrofitClient2;
@@ -84,6 +68,14 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 
+import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -92,7 +84,11 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class RequestForAccessActivity extends AppCompatActivity implements View.OnClickListener, PlantInterface {
-    private ProgressDialog progress = null;
+    public static final int MY_PERMISSIONS_REQUEST_READ_EXTERNAL_STORAGE = 123;
+    public static final int MY_PERMISSIONS_REQUEST_CAMERA = 1234;
+    private static final int CAPTURE_FROM_CAMERA = 1;
+    private static final int SELECT_FROM_GALLERY = 2;
+    private static final int SELECT_FILE = 3;
     @BindView(R.id.recyclerViewDomain)
     RecyclerView recyclerViewDomain;
     @BindView(R.id.recyclerViewBusiness)
@@ -137,7 +133,6 @@ public class RequestForAccessActivity extends AppCompatActivity implements View.
     AutoCompleteTextView et_empCode;
     @BindView(R.id.simpleMultiSpinner)
     MultiSpinnerSearch simpleSpinner;
-    private SharedPreferences myPref = null;
     @BindView(R.id.btn_submit)
     Button btn_submit;
     @BindView(R.id.btn_cancel)
@@ -145,7 +140,6 @@ public class RequestForAccessActivity extends AppCompatActivity implements View.
     String sp_request_type_id, sp_access_type_id, sp_access_category_id, sp_access_sub_category_id = "0", sp_access_sub_type_id,
             sp_user_authorization_profile_id = "0", sp_access_for_id, sp_source_id, sp_access_category_value, sp_access_sub_category_value = "",
             sp_user_authorization_profile_value = "", catListValue = "", unitCheckId = "";
-
     @BindView(R.id.et_name)
     EditText et_name;
     @BindView(R.id.et_organisation)
@@ -156,7 +150,6 @@ public class RequestForAccessActivity extends AppCompatActivity implements View.
     EditText et_accessRequirementDetail;
     @BindView(R.id.im_back)
     ImageView im_back;
-
     HashSet<String> set = new HashSet<String>();
     @BindView(R.id.toolbar)
     Toolbar toolbar;
@@ -168,20 +161,49 @@ public class RequestForAccessActivity extends AppCompatActivity implements View.
     TextView attachtext;
     @BindView(R.id.doc_view)
     ImageView docView;
-
-
-    String fileName="", fileType, fileByte="";
-
-    public static final int MY_PERMISSIONS_REQUEST_READ_EXTERNAL_STORAGE = 123;
-    private String mUserChoosenTask = "";
-    public static final int MY_PERMISSIONS_REQUEST_CAMERA = 1234;
-    private static final int CAPTURE_FROM_CAMERA = 1;
-    private static final int SELECT_FROM_GALLERY = 2;
-    private static final int SELECT_FILE = 3;
-
-    private File mDestinationFile;
+    String fileName = "", fileType, fileByte = "";
     byte[] bytes;
     Bitmap bmp;
+    List<IAMGetBusinessModel> combineList = new ArrayList<>();
+    List<IAMGetPlantModel> combineListPlant = new ArrayList<>();
+    private ProgressDialog progress = null;
+    private SharedPreferences myPref = null;
+    private String mUserChoosenTask = "";
+    private File mDestinationFile;
+
+    private static Bitmap rotateImageIfRequired(Context context, Bitmap img, Uri selectedImage) {
+
+        // Detect rotation
+        int rotation = getRotation(context, selectedImage);
+        if (rotation != 0) {
+            Matrix matrix = new Matrix();
+            matrix.postRotate(rotation);
+            Bitmap rotatedImg = Bitmap.createBitmap(img, 0, 0, img.getWidth(), img.getHeight(), matrix, true);
+            img.recycle();
+            return rotatedImg;
+        } else {
+            return img;
+        }
+    }
+
+    private static int getRotation(Context context, Uri selectedImage) {
+
+        int rotation = 0;
+        ContentResolver content = context.getContentResolver();
+
+        Cursor mediaCursor = content.query(MediaStore.Images.Media.EXTERNAL_CONTENT_URI,
+                new String[]{"orientation", "date_added"},
+                null, null, "date_added desc");
+
+        if (mediaCursor != null && mediaCursor.getCount() != 0) {
+            while (mediaCursor.moveToNext()) {
+                rotation = mediaCursor.getInt(0);
+                break;
+            }
+        }
+        mediaCursor.close();
+        return rotation;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -238,7 +260,6 @@ public class RequestForAccessActivity extends AppCompatActivity implements View.
         }
     }
 
-
     private void selectionListener() {
         sp_request_type.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -280,7 +301,6 @@ public class RequestForAccessActivity extends AppCompatActivity implements View.
                     layAccessSubType.setVisibility(View.VISIBLE);
 
                 }
-
             }
 
             @Override
@@ -447,7 +467,6 @@ public class RequestForAccessActivity extends AppCompatActivity implements View.
         }
     }
 
-
     public void hitIAMGetRequestTypeApi() {
         if (Utility.isOnline(RequestForAccessActivity.this)) {
             showProgress(true);
@@ -477,7 +496,6 @@ public class RequestForAccessActivity extends AppCompatActivity implements View.
         } else
             Toast.makeText(RequestForAccessActivity.this, "Please Check Your Network Connection", Toast.LENGTH_LONG).show();
     }
-
 
     public void hitIAMGetAccessTypeApi() {
         if (Utility.isOnline(RequestForAccessActivity.this)) {
@@ -510,7 +528,6 @@ public class RequestForAccessActivity extends AppCompatActivity implements View.
             Toast.makeText(RequestForAccessActivity.this, "Please Check Your Network Connection", Toast.LENGTH_LONG).show();
     }
 
-
     public void hitIAMGetAccessSubTypeApi(String accessType) {
         if (Utility.isOnline(RequestForAccessActivity.this)) {
             showProgress(true);
@@ -542,7 +559,6 @@ public class RequestForAccessActivity extends AppCompatActivity implements View.
         } else
             Toast.makeText(RequestForAccessActivity.this, "Please Check Your Network Connection", Toast.LENGTH_LONG).show();
     }
-
 
     public void hiIAMGetCategoryApi(String requestType, final String type) {
         if (Utility.isOnline(RequestForAccessActivity.this)) {
@@ -602,7 +618,6 @@ public class RequestForAccessActivity extends AppCompatActivity implements View.
             Toast.makeText(RequestForAccessActivity.this, "Please Check Your Network Connection", Toast.LENGTH_LONG).show();
     }
 
-
     public void hitIAMGetSubCategoryApi(String categoryId) {
         if (Utility.isOnline(RequestForAccessActivity.this)) {
             showProgress(true);
@@ -638,7 +653,6 @@ public class RequestForAccessActivity extends AppCompatActivity implements View.
             Toast.makeText(RequestForAccessActivity.this, "Please Check Your Network Connection", Toast.LENGTH_LONG).show();
     }
 
-
     public void hitIAMGetAuthorizationProfileApi(String categoryId) {
         if (Utility.isOnline(RequestForAccessActivity.this)) {
             showProgress(true);
@@ -673,7 +687,6 @@ public class RequestForAccessActivity extends AppCompatActivity implements View.
             Toast.makeText(RequestForAccessActivity.this, "Please Check Your Network Connection", Toast.LENGTH_LONG).show();
     }
 
-
     public void hitIAMGetDomainApi() {
         if (Utility.isOnline(RequestForAccessActivity.this)) {
             showProgress(true);
@@ -701,8 +714,6 @@ public class RequestForAccessActivity extends AppCompatActivity implements View.
         } else
             Toast.makeText(RequestForAccessActivity.this, "Please Check Your Network Connection", Toast.LENGTH_LONG).show();
     }
-
-    List<IAMGetBusinessModel> combineList = new ArrayList<>();
 
     public void hitIAMGetBusinessApi(String domainId, final String callFrom) {
         if (Utility.isOnline(RequestForAccessActivity.this)) {
@@ -742,8 +753,6 @@ public class RequestForAccessActivity extends AppCompatActivity implements View.
             Toast.makeText(RequestForAccessActivity.this, "Please Check Your Network Connection", Toast.LENGTH_LONG).show();
     }
 
-    List<IAMGetPlantModel> combineListPlant = new ArrayList<>();
-
     public void hitIAMGetPlantApi(String businessId, final String callType) {
         if (Utility.isOnline(RequestForAccessActivity.this)) {
             showProgress(true);
@@ -755,7 +764,6 @@ public class RequestForAccessActivity extends AppCompatActivity implements View.
                     showProgress(false);
                     List<IAMGetPlantModel> responseList = response.body();
                     if (responseList != null && responseList.size() > 0) {
-
                         if (callType.equalsIgnoreCase("checkBox")) {
                             combineListPlant.addAll(responseList);
                         } else {
@@ -804,7 +812,6 @@ public class RequestForAccessActivity extends AppCompatActivity implements View.
             Toast.makeText(RequestForAccessActivity.this, "Please Check Your Network Connection", Toast.LENGTH_LONG).show();
     }
 
-
     public void hitIAMCreateRequestApi(String RequestTypeId, String AccessTypeId, String AccessForTypeId, String EmpCode, String SourceTypeId, String SourceEmpCode, String Organization, String Purpose, String SourceName, String AccessSubTypeId, String CategoryId, String SubCategoryId, String CategoryName, String SubCategoryName, String ProfileId, String ProfileName, String RequirementDetail, String CategoryList, String UnitList) {
         if (Utility.isOnline(RequestForAccessActivity.this)) {
             showProgress(true);
@@ -830,7 +837,6 @@ public class RequestForAccessActivity extends AppCompatActivity implements View.
             Toast.makeText(RequestForAccessActivity.this, "Please Check Your Network Connection", Toast.LENGTH_LONG).show();
     }
 
-
     private void call(List<IAMGetListOfNames> responseList) {
         String[] values = new String[responseList.size()];
         for (int i = 0; i < responseList.size(); i++) {
@@ -842,7 +848,6 @@ public class RequestForAccessActivity extends AppCompatActivity implements View.
         et_empCode.setThreshold(1);//will start working from first character
         et_empCode.setAdapter(adapter);//setting the adapter data into the AutoCompleteTextView
     }
-
 
     boolean validateField() {
         if (sp_request_type.getSelectedItemPosition() == 0 && sp_request_type.getVisibility() == View.VISIBLE) {
@@ -1028,41 +1033,6 @@ public class RequestForAccessActivity extends AppCompatActivity implements View.
         bitmap.compress(Bitmap.CompressFormat.JPEG, 70, stream);
         return stream.toByteArray();
     }
-
-    private static Bitmap rotateImageIfRequired(Context context, Bitmap img, Uri selectedImage) {
-
-        // Detect rotation
-        int rotation = getRotation(context, selectedImage);
-        if (rotation != 0) {
-            Matrix matrix = new Matrix();
-            matrix.postRotate(rotation);
-            Bitmap rotatedImg = Bitmap.createBitmap(img, 0, 0, img.getWidth(), img.getHeight(), matrix, true);
-            img.recycle();
-            return rotatedImg;
-        } else {
-            return img;
-        }
-    }
-
-    private static int getRotation(Context context, Uri selectedImage) {
-
-        int rotation = 0;
-        ContentResolver content = context.getContentResolver();
-
-        Cursor mediaCursor = content.query(MediaStore.Images.Media.EXTERNAL_CONTENT_URI,
-                new String[]{"orientation", "date_added"},
-                null, null, "date_added desc");
-
-        if (mediaCursor != null && mediaCursor.getCount() != 0) {
-            while (mediaCursor.moveToNext()) {
-                rotation = mediaCursor.getInt(0);
-                break;
-            }
-        }
-        mediaCursor.close();
-        return rotation;
-    }
-
 
     private void onSelectFromGalleryResult(Intent data) {
         Bitmap bm = null;

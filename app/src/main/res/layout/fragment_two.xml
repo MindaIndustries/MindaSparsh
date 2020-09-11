@@ -2,13 +2,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.minda.sparsh.fragment.TwoFragment">
+    >
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-
-        >
+        android:layout_height="match_parent">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -219,10 +217,9 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:adjustViewBounds="false"
-                        android:scaleType="fitXY"
-                        android:src="@drawable/car1"
-                        android:textColor="@color/colorPrimary" />
-
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/car2"
+                        />
 
 
                 </LinearLayout>
@@ -255,6 +252,14 @@
             android:src="@drawable/iconiclogo"
             android:layout_width="80dp"
             android:layout_height="80dp"/>
+        <TextView
+            android:padding="5dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentBottom="true"
+            android:text="Since 1958"
+            android:textColor="@color/colorPrimary"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
 
     </RelativeLayout>
 
