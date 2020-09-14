@@ -48,6 +48,8 @@ import com.minda.sparsh.util.Utility;
 
 import org.jsoup.Jsoup;
 
+import javax.net.ssl.HttpsURLConnection;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -353,7 +355,9 @@ public class DashBoardActivity extends BaseActivity implements View.OnClickListe
                 firebaseService.saveFirebaseID(new OnTaskComplete() {
                     @Override
                     public void onTaskComplte(CarotResponse carotResponse) {
+                        if(carotResponse.getStatuscode()== HttpsURLConnection.HTTP_OK){
 
+                        }
                     }
                 }, empCode, deviceTokenFcm);
             }

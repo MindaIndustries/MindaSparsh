@@ -773,7 +773,8 @@ public class RequestForAccessActivity extends AppCompatActivity implements View.
                         layPlant.setVisibility(View.VISIBLE);
                         IAMGetPlantAdapter mAdapter = new IAMGetPlantAdapter(responseList, RequestForAccessActivity.this, RequestForAccessActivity.this);
                         GridLayoutManager gridLayoutManager = new GridLayoutManager(getApplicationContext(), 2);
-                        recyclerViewPlant.setLayoutManager(gridLayoutManager);
+                        recyclerViewPlant.setLayoutManager
+                                (gridLayoutManager);
                         recyclerViewPlant.setAdapter(mAdapter);
                     }
                 }
@@ -1108,7 +1109,6 @@ public class RequestForAccessActivity extends AppCompatActivity implements View.
 
 
     private void requestCameraPermission() {
-
         ActivityCompat.requestPermissions(RequestForAccessActivity.this,
                 new String[]{android.Manifest.permission.CAMERA}, MY_PERMISSIONS_REQUEST_CAMERA); // your request code
     }
