@@ -19,6 +19,7 @@ import android.os.Environment;
 import android.provider.MediaStore;
 import android.text.TextUtils;
 import android.util.Base64;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
@@ -33,6 +34,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.androidbuts.multispinnerfilter.KeyPairBoolData;
+import com.androidbuts.multispinnerfilter.MultiSpinnerListener;
 import com.androidbuts.multispinnerfilter.MultiSpinnerSearch;
 import com.minda.sparsh.Adapter.IAMGetAccessSubTypeAdapter;
 import com.minda.sparsh.Adapter.IAMGetAuthorizationProfileAdapter;
@@ -590,21 +592,20 @@ public class RequestForAccessActivity extends AppCompatActivity implements View.
                                 h.setSelected(false);
                                 listArray.add(h);
                             }
-
-                         /*   simpleSpinner.setItems(listArray, -1, new MultiSpinnerListener() {
-
+                            simpleSpinner.setItems(listArray, new MultiSpinnerListener() {
                                 @Override
-                                public void onItemsSelected(List<KeyPairBoolData> items) {
+                                public void onItemsSelected(List<KeyPairBoolData> selectedItems) {
                                     catListValue = "";
-                                    for (int i = 0; i < items.size(); i++) {
-                                        if (items.get(i).isSelected()) {
-                                            catListValue = catListValue + "," + items.get(i).getId();
-                                            Log.i("TAG", i + " : " + items.get(i).getName() + " : " + items.get(i).isSelected());
+                                    for (int i = 0; i < selectedItems.size(); i++) {
+                                        if (selectedItems.get(i).isSelected()) {
+                                            catListValue = catListValue + "," + selectedItems.get(i).getId();
+                                            Log.i("TAG", i + " : " + selectedItems.get(i).getName() + " : " + selectedItems.get(i).isSelected());
                                         }
+
                                     }
                                 }
                             });
-   */
+
                         }
                     }
                 }
@@ -716,6 +717,7 @@ public class RequestForAccessActivity extends AppCompatActivity implements View.
     }
 
     public void hitIAMGetBusinessApi(String domainId, final String callFrom) {
+        layPlant.setVisibility(View.GONE);
         if (Utility.isOnline(RequestForAccessActivity.this)) {
             showProgress(true);
             Interface anInterface = RetrofitClient2.getClient().create(Interface.class);
@@ -776,6 +778,9 @@ public class RequestForAccessActivity extends AppCompatActivity implements View.
                         recyclerViewPlant.setLayoutManager
                                 (gridLayoutManager);
                         recyclerViewPlant.setAdapter(mAdapter);
+                    }
+                    else{
+                        layPlant.setVisibility(View.GONE);
                     }
                 }
 
@@ -1112,7 +1117,6 @@ public class RequestForAccessActivity extends AppCompatActivity implements View.
         ActivityCompat.requestPermissions(RequestForAccessActivity.this,
                 new String[]{android.Manifest.permission.CAMERA}, MY_PERMISSIONS_REQUEST_CAMERA); // your request code
     }
-
 
     private boolean hasReadPermissions() {
         return (ContextCompat.checkSelfPermission(RequestForAccessActivity.this, android.Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED);

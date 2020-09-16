@@ -71,7 +71,7 @@ public class IAMGetBusinessAdapter extends RecyclerView.Adapter<IAMGetBusinessAd
             public void onClick(View view) {
                 resetData(iamGetDomainModel.getBUSINESS());
                 if (context instanceof RequestForAccessActivity) {
-                    ((RequestForAccessActivity) context).hitIAMGetPlantApi(String.valueOf(iamGetDomainModel.getDOMAINID()),"radioButton");
+                    ((RequestForAccessActivity) context).hitIAMGetPlantApi(String.valueOf(iamGetDomainModel.getID()),"radioButton");
                 }
             }
         });
@@ -86,7 +86,7 @@ public class IAMGetBusinessAdapter extends RecyclerView.Adapter<IAMGetBusinessAd
             @Override
             public void onClick(View view) {
                 if (context instanceof RequestForAccessActivity) {
-                    ((RequestForAccessActivity) context).hitIAMGetPlantApi(String.valueOf(iamGetDomainModel.getDOMAINID()),"checkBox");
+                    ((RequestForAccessActivity) context).hitIAMGetPlantApi(String.valueOf(iamGetDomainModel.getID()),"checkBox");
                 }
             }
         });

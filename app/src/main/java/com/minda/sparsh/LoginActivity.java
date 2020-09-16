@@ -410,8 +410,6 @@ public class LoginActivity extends AppCompatActivity {
                             mEditor.putString("Depu_UnitName", (String) loginResponse.get(0).getDepuUnitName());
                             mEditor.putString("Depu_UnitCode", (String) loginResponse.get(0).getDepuUnitCode());
                             mEditor.putString("pass", loginResponse.get(0).getUMUSERPWD());
-
-
                             arrayList.clear();
                             String currentString = loginResponse.get(0).getAuthFor();
 
@@ -450,9 +448,7 @@ public class LoginActivity extends AppCompatActivity {
 
                 @Override
                 public void onFailure(Call<List<LoginResponse>> call, Throwable t) {
-
                     showProgress(false);
-
                 }
             });
         } else
