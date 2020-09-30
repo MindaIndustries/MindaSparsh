@@ -1112,7 +1112,6 @@ public class RequestForAccessActivity extends AppCompatActivity implements View.
 
     }
 
-
     private void requestCameraPermission() {
         ActivityCompat.requestPermissions(RequestForAccessActivity.this,
                 new String[]{android.Manifest.permission.CAMERA}, MY_PERMISSIONS_REQUEST_CAMERA); // your request code

@@ -31,7 +31,7 @@ public class RetrofitClient2 {
     public static final String bottomup_img = "http://dev.mindasparsh.com/bottomup/files/";
     public static final String BottomUpBaseUrl = "http://dev.mindasparsh.com/BottomUpApi.asmx/";
     public static final String suggestionBaseUrl = "http://dev.mindasparsh.com/SuggestionAPI.asmx/";
-    public static final String firebaseIDsaveUrl = "http://dev.mindasparsh.com/MindaFirePushService.asmx/";
+    public static final String firebaseIDsaveUrl = "http://dev.mindasparsh.com/MindaFirePushServi./adb ce.asmx/";
     //prod
    /*   public static final String BASE_URL = "https://app.mindasparsh.com/Service.asmx/";
       public static final String ehs_img = "https://app.mindasparsh.com/ehs/files/";
