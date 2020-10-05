@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <include layout="@layout/toolbar" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="?attr/actionBarSize">
+
+        <RelativeLayout
+            android:padding="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <View
+                android:id="@+id/view"
+                android:layout_centerInParent="true"
+                android:layout_width="10dp"
+                android:layout_height="1dp"/>
+            <Button
+                android:background="@drawable/btn_bg_grey"
+                android:layout_toLeftOf="@+id/view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Working From Office"
+                android:textColor="@color/white"
+                android:textSize="12sp"
+                android:inputType="textCapWords"
+                android:textStyle="bold"
+                />
+            <Button
+                android:textColor="@color/white"
+                android:background="@drawable/btn_bg"
+                android:layout_toRightOf="@+id/view"
+                android:layout_width="match_parent"
+                android:textSize="12sp"
+                android:layout_height="wrap_content"
+                android:text="Working From Home"
+                android:inputType="textCapWords"
+                android:textStyle="bold"
+                />
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+
+</RelativeLayout>
