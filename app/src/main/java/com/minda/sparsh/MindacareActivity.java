@@ -52,11 +52,8 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class MindacareActivity extends AppCompatActivity implements
-        GoogleMap.OnMyLocationButtonClickListener,
-        GoogleMap.OnMyLocationClickListener,
-        OnMapReadyCallback,
-        ActivityCompat.OnRequestPermissionsResultCallback {
+public class MindacareActivity extends AppCompatActivity implements GoogleMap.OnMyLocationButtonClickListener, GoogleMap.OnMyLocationClickListener, OnMapReadyCallback, ActivityCompat.OnRequestPermissionsResultCallback {
+
     @BindView(R.id.wfo)
     Button wfo;
     @BindView(R.id.wfh)
@@ -92,7 +89,6 @@ public class MindacareActivity extends AppCompatActivity implements
                 (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
-
 
     }
 
@@ -171,6 +167,7 @@ public class MindacareActivity extends AppCompatActivity implements
 
     @Override
     public boolean onMyLocationButtonClick() {
+        checkGPS();
 
         return false;
     }
@@ -225,18 +222,16 @@ public class MindacareActivity extends AppCompatActivity implements
                             public void onSuccess(Location location) {
                                 // Got last known location. In some rare situations this can be null.
                                 if (location != null) {
-
                                     LatLng latLng = new LatLng(location.getLatitude(), location.getLongitude());
                                     map.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 15));
                                     MarkerOptions markerOptions = new MarkerOptions();
                                     markerOptions.position(latLng);
-                                    markerOptions.title(latLng.latitude + " : " + latLng.longitude);
+                                    markerOptions.title(latLng.latitude + " :: " + latLng.longitude);
                                     map.clear();
                                     map.addMarker(markerOptions);
                                 }
                             }
                         });
-
                 // GPS is ON
             }
         });
@@ -288,6 +283,8 @@ public class MindacareActivity extends AppCompatActivity implements
 
                     break;
                 case Activity.RESULT_CANCELED:
+
+                    Toast.makeText(MindacareActivity.this, "You won't be able to submit your Declaration if you Deny this Setting", Toast.LENGTH_LONG).show();
                     // User rejected turning on the GPS
                     break;
                 default:
