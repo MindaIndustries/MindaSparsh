@@ -34,7 +34,7 @@ public class ViewEHSImage extends BaseActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setHomeAsUpIndicator(R.drawable.back);
-        title.setText("Environment Health & Safety");
+        title.setText(getResources().getString(R.string.environment_healthnSafety));
 
         if (getIntent().getStringExtra("attachment") != null) {
             String attachment = getIntent().getStringExtra("attachment");

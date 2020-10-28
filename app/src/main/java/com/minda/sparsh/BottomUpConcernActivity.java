@@ -32,7 +32,7 @@ public class BottomUpConcernActivity extends BaseActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setHomeAsUpIndicator(R.drawable.back);
-        title.setText("Bottom Up Concern");
+        title.setText(getResources().getString(R.string.bottom_up_concern));
         getSupportFragmentManager().beginTransaction().replace(R.id.framelayout, new NewConcernFragment()).commitAllowingStateLoss();
 
         tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {

@@ -10,6 +10,13 @@
             android:title="Profile"
             android:textColor="#000000"/>
     </group>
+
+
+    <group android:checkableBehavior="single">
+        <item android:title="MindaCare"
+            android:id="@+id/mindacare"
+            android:textColor="#000000"/>
+    </group>
     <group android:checkableBehavior="single">
         <item android:title="About Us"
             android:id="@+id/nav_aboutus"

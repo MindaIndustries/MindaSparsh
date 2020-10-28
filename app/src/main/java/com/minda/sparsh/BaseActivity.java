@@ -153,6 +153,12 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
             Intent intent = new Intent(BaseActivity.this, ProfileActivity.class);
             startActivity(intent);
         }
+
+        if (id == R.id.mindacare) {
+            Intent in  = new Intent(this,MindacareActivity.class);
+            startActivity(in);
+        }
+
         if (id == R.id.nav_aboutus) {
             viewPager.setCurrentItem(0, true);
         }

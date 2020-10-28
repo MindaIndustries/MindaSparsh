@@ -9,6 +9,7 @@
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="default_notification_channel_id">fcm_channel</string>
+<string name="google_maps_key">AIzaSyD7cfEDfFajuzzgpXS_t9kwqkvMkYDI8Uw</string>
 
     <string name="fcm_message">FCM</string>
     <!-- TODO: Remove or change this placeholder text -->
@@ -114,5 +115,12 @@ This policy is effective as of 2020-08-25
         \n\n<b><font size="20">Contact Us</font></b>
 
 \n\nIf you have any questions or suggestions about our Privacy Policy, do not hesitate to contact us at rmanchanda@mindagroup.com.</string>
+    <string name="mindacare_selfDeclaration"><![CDATA[Attendance & Self Declaration]]></string>
+    <string name="bottom_up_concern">Bottom Up Concern</string>
+    <string name="environment_healthnSafety"><![CDATA[Environment Health & Safety]]></string>
+    <string name="notifications">Notifications</string>
+    <string name="my_profile">My Profile</string>
+    <string name="access_req">Access Request</string>
+    <string name="cost_saving_ideas">Cost Saving Ideas</string>
 
 </resources>

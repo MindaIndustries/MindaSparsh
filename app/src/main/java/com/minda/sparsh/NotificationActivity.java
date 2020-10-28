@@ -43,7 +43,7 @@ public class NotificationActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setHomeAsUpIndicator(R.drawable.back);
-        title.setText("Notifications");
+        title.setText(getResources().getString(R.string.notifications));
 
         im_back = (ImageView) findViewById(R.id.im_back);
         list_notification = (ListView) findViewById(R.id.list_notification);

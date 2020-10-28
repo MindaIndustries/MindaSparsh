@@ -4,12 +4,16 @@
     android:layout_height="match_parent">
     <include layout="@layout/toolbar" />
 
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="?attr/actionBarSize">
 
         <RelativeLayout
+            android:id="@+id/buttons_rl"
             android:padding="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
@@ -20,13 +24,14 @@
                 android:layout_width="10dp"
                 android:layout_height="1dp"/>
             <Button
-                android:background="@drawable/btn_bg_grey"
+                android:background="@drawable/btn_bg_orange"
                 android:layout_toLeftOf="@+id/view"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Working From Office"
                 android:textColor="@color/white"
                 android:textSize="12sp"
+                android:id="@+id/wfo"
                 android:inputType="textCapWords"
                 android:textStyle="bold"
                 />
@@ -36,6 +41,7 @@
                 android:layout_toRightOf="@+id/view"
                 android:layout_width="match_parent"
                 android:textSize="12sp"
+                android:id="@+id/wfh"
                 android:layout_height="wrap_content"
                 android:text="Working From Home"
                 android:inputType="textCapWords"
@@ -43,8 +49,58 @@
                 />
 
         </RelativeLayout>
+        <RelativeLayout
+            android:id="@+id/map_layout"
+            android:layout_below="@+id/buttons_rl"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:visibility="gone"
+            >
+
+
+            <fragment xmlns:android="http://schemas.android.com/apk/res/android"
+                android:id="@+id/map"
+                android:name="com.google.android.gms.maps.SupportMapFragment"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                />
+
+            <Button
+                android:layout_marginBottom="10dp"
+                android:layout_centerHorizontal="true"
+                android:id="@+id/clock"
+                android:text="CLOCK IN"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                android:textColor="@color/white"
+                android:background="@drawable/btn_bg"
+                android:layout_alignParentBottom="true"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"/>
+        </RelativeLayout>
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_below="@+id/map_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/questions"
+            />
+
+        <Button
+            android:layout_margin="10dp"
+            android:layout_below="@+id/questions"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:text="Submit"
+            android:background="@drawable/btn_bg_sbmt"
+            android:inputType="textCapWords"
+            android:textStyle="bold"
+            android:textColor="@color/white"
+            />
 
     </RelativeLayout>
 
-
+    </ScrollView>
 </RelativeLayout>

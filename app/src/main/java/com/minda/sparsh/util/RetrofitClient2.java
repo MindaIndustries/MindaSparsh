@@ -32,6 +32,7 @@ public class RetrofitClient2 {
     public static final String BottomUpBaseUrl = "http://dev.mindasparsh.com/BottomUpApi.asmx/";
     public static final String suggestionBaseUrl = "http://dev.mindasparsh.com/SuggestionAPI.asmx/";
     public static final String firebaseIDsaveUrl = "http://dev.mindasparsh.com/MindaFirePushServi./adb ce.asmx/";
+    public static final String mindacareUrl = "http://dev.mindasparsh.com/MindaCare.asmx/";
     //prod
    /*   public static final String BASE_URL = "https://app.mindasparsh.com/Service.asmx/";
       public static final String ehs_img = "https://app.mindasparsh.com/ehs/files/";
@@ -241,6 +242,41 @@ public class RetrofitClient2 {
         return retrofit.create(serviceClass);
     }
 
+    public static <S> S createServiceMindacare(Class<S> serviceClass) {
+        OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
+        httpClient.addInterceptor(new Interceptor() {
+            @Override
+            public Response intercept(Interceptor.Chain chain) throws IOException {
+                Request original = chain.request();
+
+                Request request = original.newBuilder()
+                        .addHeader("User", "MindaSugg56$#45#@")
+                        .addHeader("Password", "985Sugg656$#AtadniM")
+                        .method(original.method(), original.body())
+                        .build();
+                Response response = chain.proceed(request);
+                return response;
+            }
+        });
+
+        dispatcher1.setMaxRequests(3000);
+        httpClient.dispatcher(dispatcher1);
+
+        Gson gson = new GsonBuilder()
+                .setLenient()
+                .create();
+
+        OkHttpClient client = httpClient.readTimeout(60, TimeUnit.SECONDS)
+                .connectTimeout(60, TimeUnit.SECONDS).build();
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(mindacareUrl)
+                .addConverterFactory(ScalarsConverterFactory.create())
+                .addConverterFactory(GsonConverterFactory.create(gson))
+                .client(client)
+                .build();
+
+        return retrofit.create(serviceClass);
+    }
 
 
     public static <S> S createServiceEHSUpload(Class<S> serviceClass) {

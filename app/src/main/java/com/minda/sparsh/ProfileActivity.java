@@ -59,7 +59,7 @@ public class ProfileActivity extends BaseActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setHomeAsUpIndicator(R.drawable.back);
-        title.setText("My Profile");
+        title.setText(getResources().getString(R.string.my_profile));
         myPref = getSharedPreferences("MyPref", MODE_PRIVATE);
         pass = myPref.getString("pass", "");
 

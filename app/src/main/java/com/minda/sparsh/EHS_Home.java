@@ -38,7 +38,7 @@ public class EHS_Home extends BaseActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setHomeAsUpIndicator(R.drawable.back);
-        title.setText("Environment Health & Safety");
+        title.setText(getResources().getString(R.string.environment_healthnSafety));
 
         getSupportFragmentManager().beginTransaction().replace(R.id.framelayout, new EHSInitiateFragment()).commitAllowingStateLoss();
 

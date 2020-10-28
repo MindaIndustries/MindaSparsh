@@ -26,6 +26,12 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
 
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="@string/google_maps_key" />
         <activity
             android:name=".ApproveListActivity1"
             android:screenOrientation="portrait"
@@ -166,6 +172,9 @@
             android:name=".ProfileActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".MindacareActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"/>
 
 
         <meta-data
@@ -193,6 +202,7 @@
             </intent-filter>
         </service>
         <service android:name=".util.BackgroundNotificationService" />
+
     </application>
 
 </manifest>

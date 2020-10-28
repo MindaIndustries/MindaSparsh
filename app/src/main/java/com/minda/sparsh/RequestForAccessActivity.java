@@ -216,7 +216,7 @@ public class RequestForAccessActivity extends AppCompatActivity implements View.
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setHomeAsUpIndicator(R.drawable.back);
-        title.setText("Access Request");
+        title.setText(getResources().getString(R.string.access_req));
 
         progress = new ProgressDialog(this);
         progress.setMessage("Please wait...");
@@ -829,8 +829,10 @@ public class RequestForAccessActivity extends AppCompatActivity implements View.
                     showProgress(false);
                     List<IAMCreateRequestModel> responseList = response.body();
                     if (responseList != null && responseList.size() > 0) {
-                        Toast.makeText(RequestForAccessActivity.this, "Saved Successfully", Toast.LENGTH_SHORT).show();
-                        finish();
+
+                        if (responseList.get(0).getColumn2() != null) {
+                            showMsg(responseList.get(0).getColumn2());
+                        }
                     }
                 }
 
@@ -1128,6 +1130,34 @@ public class RequestForAccessActivity extends AppCompatActivity implements View.
     private boolean hasCameraPermission() {
         return (ContextCompat.checkSelfPermission(RequestForAccessActivity.this, Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED);
 
+    }
+
+    public void showMsg(String reqno) {
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
+        alertDialogBuilder.setMessage("Request raised successfully.\n" +
+                "Access Request No. is "+reqno);
+
+
+        alertDialogBuilder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface arg0, int arg1) {
+                arg0.dismiss();
+
+                finish();
+
+            }
+        });
+
+        alertDialogBuilder.setNegativeButton("CANCEL", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+                finish();
+            }
+        });
+
+        AlertDialog alertDialog = alertDialogBuilder.create();
+        alertDialog.show();
     }
 
 }
