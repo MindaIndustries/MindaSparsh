@@ -1,9 +1,11 @@
 package com.minda.sparsh.services;
 
+import com.minda.sparsh.RetrofitClient;
 import com.minda.sparsh.client.MindacareClient;
 import com.minda.sparsh.listener.CarotResponse;
 import com.minda.sparsh.listener.OnTaskComplete;
 import com.minda.sparsh.model.CheckinDetailsResponse;
+import com.minda.sparsh.model.QuesResponse;
 import com.minda.sparsh.util.RetrofitClient2;
 
 import java.io.IOException;
@@ -33,6 +35,60 @@ public class MindacareServices {
 
             @Override
             public void onFailure(Call<List<CheckinDetailsResponse>> call, Throwable t) {
+                CarotResponse carotResponse = new CarotResponse();
+                if (t instanceof IOException) {
+                    carotResponse.setMessage("Please hold on a moment, the internet connectivity seems to be slow");
+                }
+                onTaskComplete.onTaskComplte(carotResponse);
+
+            }
+        });
+
+    }
+
+    public void clockInclockOut(OnTaskComplete onTaskComplete, String empCode, String message,String InLattitiude,String InLongitude,String OutLattitude, String OutLongitude){
+        MindacareClient mindacareClient = RetrofitClient2.createServiceMindacare(MindacareClient.class);
+        Call<String> call = mindacareClient.clockInclockOut(empCode,message,InLattitiude,InLongitude,OutLattitude,OutLongitude);
+        call.enqueue(new Callback<String>() {
+            @Override
+            public void onResponse(Call<String> call, Response<String> response) {
+                CarotResponse carotResponse = new CarotResponse();
+                carotResponse.setStatuscode(response.code());
+                if (response.code() == HttpsURLConnection.HTTP_OK) {
+                    carotResponse.setData(response.body());
+                }
+                onTaskComplete.onTaskComplte(carotResponse);
+
+            }
+
+            @Override
+            public void onFailure(Call<String> call, Throwable t) {
+                CarotResponse carotResponse = new CarotResponse();
+                if (t instanceof IOException) {
+                    carotResponse.setMessage("Please hold on a moment, the internet connectivity seems to be slow");
+                }
+                onTaskComplete.onTaskComplte(carotResponse);
+
+            }
+        });
+    }
+
+    public void mindacarequestions(OnTaskComplete onTaskComplete){
+        MindacareClient mindacareClient = RetrofitClient2.createServiceMindacare(MindacareClient.class);
+        Call<List<QuesResponse>> call = mindacareClient.mindacareQuestions();
+        call.enqueue(new Callback<List<QuesResponse>>() {
+            @Override
+            public void onResponse(Call<List<QuesResponse>> call, Response<List<QuesResponse>> response) {
+                CarotResponse carotResponse = new CarotResponse();
+                carotResponse.setStatuscode(response.code());
+                if (response.code() == HttpsURLConnection.HTTP_OK) {
+                    carotResponse.setData(response.body());
+                }
+                onTaskComplete.onTaskComplte(carotResponse);
+            }
+
+            @Override
+            public void onFailure(Call<List<QuesResponse>> call, Throwable t) {
                 CarotResponse carotResponse = new CarotResponse();
                 if (t instanceof IOException) {
                     carotResponse.setMessage("Please hold on a moment, the internet connectivity seems to be slow");

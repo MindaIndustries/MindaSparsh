@@ -48,6 +48,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
+import androidx.recyclerview.widget.RecyclerView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -66,6 +67,11 @@ public class MindacareActivity extends AppCompatActivity implements GoogleMap.On
     TextView title;
     @BindView(R.id.map_layout)
     RelativeLayout mapLayout;
+    @BindView(R.id.clock)
+    Button clock;
+    @BindView(R.id.questions)
+    RecyclerView recyclerView;
+
 
     private boolean permissionDenied = false;
     private GoogleMap map;
@@ -89,6 +95,11 @@ public class MindacareActivity extends AppCompatActivity implements GoogleMap.On
                 (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
+
+    }
+
+    @OnClick(R.id.clock)
+    public void onclickClockInClockOut(){
 
     }
 
@@ -150,7 +161,7 @@ public class MindacareActivity extends AppCompatActivity implements GoogleMap.On
                         List<CheckinDetailsResponse> list = (List<CheckinDetailsResponse>) carotResponse.getData();
                         if (list != null && list.size() > 0) {
                             if (list.get(0).getStatus().equals("H")) {
-
+                          //      wfo.setEnabled(false);
                             } else {
 
                             }
@@ -292,4 +303,32 @@ public class MindacareActivity extends AppCompatActivity implements GoogleMap.On
             }
         }
     }
+
+
+
+    public void clockInclockOut( String empCode, String message,String InLattitiude,String InLongitude,String OutLattitude, String OutLongitude){
+        MindacareServices mindacareServices = new MindacareServices();
+        mindacareServices.clockInclockOut(new OnTaskComplete() {
+            @Override
+            public void onTaskComplte(CarotResponse carotResponse) {
+                if(carotResponse.getStatuscode() == HttpURLConnection.HTTP_OK){
+
+                }
+            }
+        },empCode,message,InLattitiude,InLongitude,OutLattitude,OutLongitude);
+    }
+
+    public void mindacarequestions(){
+        MindacareServices mindacareServices = new MindacareServices();
+        mindacareServices.mindacarequestions(new OnTaskComplete() {
+            @Override
+            public void onTaskComplte(CarotResponse carotResponse) {
+                if(carotResponse.getStatuscode() == HttpURLConnection.HTTP_OK){
+
+                }
+            }
+        });
+
+    }
+
 }
