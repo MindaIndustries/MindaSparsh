@@ -11,6 +11,8 @@ public class QuesResponse {
     String Active;
     @SerializedName("Types")
     String Types;
+    @SerializedName("Opts")
+    String Opts;
 
     public String getID() {
         return ID;

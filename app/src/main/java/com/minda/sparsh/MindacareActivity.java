@@ -17,6 +17,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.github.dkharrat.nexusdialog.controllers.FormSectionController;
 import com.google.android.gms.common.api.ResolvableApiException;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationRequest;
@@ -228,8 +229,7 @@ public class MindacareActivity extends AppCompatActivity implements GoogleMap.On
                                 timeLayout.setVisibility(View.VISIBLE);
                                 clockintime.setText("Clock In: " + list.get(0).getRIntime());
                                 clockouttime.setText("Clock Out: " + list.get(0).getOutTime().split(" ")[1].split(":")[0] + ":" + list.get(0).getOutTime().split(" ")[1].split(":")[1] + list.get(0).getOutTime().split(" ")[2]);
-                               totalhr.setText("Total Working Hour: "+convertDate(list.get(0).getInTime(), list.get(0).getOutTime()));
-                                // totalhr.setText("Total Working Hour: "+ list. );
+                                totalhr.setText("Total Working Hour: " + convertDate(list.get(0).getInTime(), list.get(0).getOutTime()));
                                 Toast.makeText(MindacareActivity.this, "Today’s Clock In and Clock Out is completed.", Toast.LENGTH_LONG).show();
                             }
                         }
@@ -424,12 +424,10 @@ public class MindacareActivity extends AppCompatActivity implements GoogleMap.On
 
             diff = hours + ":" + mins;
 
-            if(hours==0){
-                diff = mins+"m";
-            }
-
-            else{
-                diff = hours+" hr "+mins+" m";
+            if (hours == 0) {
+                diff = mins + "m";
+            } else {
+                diff = hours + " hr " + mins + " m";
             }
 
         } catch (ParseException e) {

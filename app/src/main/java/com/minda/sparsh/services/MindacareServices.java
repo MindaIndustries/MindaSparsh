@@ -19,7 +19,7 @@ import retrofit2.Response;
 
 public class MindacareServices {
 
-    public void getCheckinDetails(OnTaskComplete onTaskComplete, String empCode){
+    public void getCheckinDetails(OnTaskComplete onTaskComplete, String empCode) {
         MindacareClient mindacareClient = RetrofitClient2.createServiceMindacare(MindacareClient.class);
         Call<List<CheckinDetailsResponse>> call = mindacareClient.getCheckinDetails(empCode);
         call.enqueue(new Callback<List<CheckinDetailsResponse>>() {
@@ -46,9 +46,9 @@ public class MindacareServices {
 
     }
 
-    public void clockInclockOut(OnTaskComplete onTaskComplete, String empCode, String message,String InLattitiude,String InLongitude,String OutLattitude, String OutLongitude){
+    public void clockInclockOut(OnTaskComplete onTaskComplete, String empCode, String message, String InLattitiude, String InLongitude, String OutLattitude, String OutLongitude) {
         MindacareClient mindacareClient = RetrofitClient2.createServiceMindacare(MindacareClient.class);
-        Call<String> call = mindacareClient.clockInclockOut(empCode,message,InLattitiude,InLongitude,OutLattitude,OutLongitude);
+        Call<String> call = mindacareClient.clockInclockOut(empCode, message, InLattitiude, InLongitude, OutLattitude, OutLongitude);
         call.enqueue(new Callback<String>() {
             @Override
             public void onResponse(Call<String> call, Response<String> response) {
@@ -73,7 +73,7 @@ public class MindacareServices {
         });
     }
 
-    public void mindacarequestions(OnTaskComplete onTaskComplete){
+    public void mindacarequestions(OnTaskComplete onTaskComplete) {
         MindacareClient mindacareClient = RetrofitClient2.createServiceMindacare(MindacareClient.class);
         Call<List<QuesResponse>> call = mindacareClient.mindacareQuestions();
         call.enqueue(new Callback<List<QuesResponse>>() {
