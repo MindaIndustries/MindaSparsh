@@ -36,10 +36,16 @@ import com.google.android.gms.tasks.Task;
 import com.minda.sparsh.listener.CarotResponse;
 import com.minda.sparsh.listener.OnTaskComplete;
 import com.minda.sparsh.model.CheckinDetailsResponse;
+import com.minda.sparsh.model.QuesResponse;
 import com.minda.sparsh.services.MindacareServices;
 import com.minda.sparsh.util.Utility;
 
 import java.net.HttpURLConnection;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import androidx.annotation.NonNull;
@@ -71,6 +77,18 @@ public class MindacareActivity extends AppCompatActivity implements GoogleMap.On
     Button clock;
     @BindView(R.id.questions)
     RecyclerView recyclerView;
+    @BindView(R.id.time_layout)
+    RelativeLayout timeLayout;
+    @BindView(R.id.clockintime)
+    TextView clockintime;
+    @BindView(R.id.totalhr)
+    TextView totalhr;
+    @BindView(R.id.clockouttime)
+    TextView clockouttime;
+
+    LatLng LATLNG;
+    String selected = "0";
+    List<QuesResponse> quesResponseList = new ArrayList<QuesResponse>();
 
 
     private boolean permissionDenied = false;
@@ -78,6 +96,8 @@ public class MindacareActivity extends AppCompatActivity implements GoogleMap.On
     private static final int LOCATION_PERMISSION_REQUEST_CODE = 1;
     private FusedLocationProviderClient fusedLocationClient;
 
+
+    String selection = "0";
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -96,18 +116,34 @@ public class MindacareActivity extends AppCompatActivity implements GoogleMap.On
         mapFragment.getMapAsync(this);
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
 
+        getCheckInDetails();
+        mindacarequestions();
     }
 
     @OnClick(R.id.clock)
-    public void onclickClockInClockOut(){
+    public void onclickClockInClockOut() {
 
+        if (Utility.isOnline(MindacareActivity.this)) {
+            if (clock.getText().toString().equalsIgnoreCase("CLOCK IN")) {
+                clockInclockOut(empCode, "", "" + LATLNG.latitude, "" + LATLNG.longitude, "", "");
+                //clock.setText("CLOCK OUT");
+            } else {
+                clockInclockOut(empCode, "", "", "", "" + LATLNG.latitude, "" + LATLNG.longitude);
+                //  clock.setText("CLOCK IN");
+            }
+        } else {
+            Toast.makeText(MindacareActivity.this, "Please Check Your Network Connection", Toast.LENGTH_LONG).show();
+        }
     }
 
     @OnClick(R.id.wfh)
     public void onClickWfh() {
-        mapLayout.setVisibility(View.VISIBLE);
+        selection = "Home";
+
         if (Utility.isOnline(MindacareActivity.this)) {
             getCheckInDetails();
+        } else {
+            Toast.makeText(MindacareActivity.this, "Please Check Your Network Connection", Toast.LENGTH_LONG).show();
         }
     }
 
@@ -115,8 +151,15 @@ public class MindacareActivity extends AppCompatActivity implements GoogleMap.On
     @OnClick(R.id.wfo)
     public void onClickWfo() {
         mapLayout.setVisibility(View.GONE);
+        selection = "Office";
         if (Utility.isOnline(MindacareActivity.this)) {
+            if (selected.equalsIgnoreCase("H")) {
+                Toast.makeText(MindacareActivity.this, "You have already selected working from Home.", Toast.LENGTH_LONG).show();
+                return;
+            }
             getCheckInDetails();
+        } else {
+            Toast.makeText(MindacareActivity.this, "Please Check Your Network Connection", Toast.LENGTH_LONG).show();
         }
     }
 
@@ -161,12 +204,34 @@ public class MindacareActivity extends AppCompatActivity implements GoogleMap.On
                         List<CheckinDetailsResponse> list = (List<CheckinDetailsResponse>) carotResponse.getData();
                         if (list != null && list.size() > 0) {
                             if (list.get(0).getStatus().equals("H")) {
-                          //      wfo.setEnabled(false);
+                                selected = "H";
+                                mapLayout.setVisibility(View.VISIBLE);
+                                wfo.setBackgroundColor(getResources().getColor(R.color.disableBtn));
+                            } else if (list.get(0).getStatus().equals("O")) {
+                                selected = "O";
+                                mapLayout.setVisibility(View.GONE);
+                                wfh.setBackgroundColor(getResources().getColor(R.color.disableBtn));
                             } else {
-
+                                if (selection.equals("Home")) {
+                                    mapLayout.setVisibility(View.VISIBLE);
+                                }
+                            }
+                            if (list.get(0).getInTime() != null && list.get(0).getInTime().length() > 0) {
+                                clock.setText("Clock Out");
+                                timeLayout.setVisibility(View.VISIBLE);
+                                clockintime.setText("Clock In: " + list.get(0).getRIntime());
                             }
 
-
+                            if (list.get(0).getOutTime() != null && list.get(0).getOutTime().length() > 0) {
+                                clock.setVisibility(View.GONE);
+                                mapLayout.setVisibility(View.GONE);
+                                timeLayout.setVisibility(View.VISIBLE);
+                                clockintime.setText("Clock In: " + list.get(0).getRIntime());
+                                clockouttime.setText("Clock Out: " + list.get(0).getOutTime().split(" ")[1].split(":")[0] + ":" + list.get(0).getOutTime().split(" ")[1].split(":")[1] + list.get(0).getOutTime().split(" ")[2]);
+                               totalhr.setText("Total Working Hour: "+convertDate(list.get(0).getInTime(), list.get(0).getOutTime()));
+                                // totalhr.setText("Total Working Hour: "+ list. );
+                                Toast.makeText(MindacareActivity.this, "Today’s Clock In and Clock Out is completed.", Toast.LENGTH_LONG).show();
+                            }
                         }
                     }
                 }
@@ -237,7 +302,8 @@ public class MindacareActivity extends AppCompatActivity implements GoogleMap.On
                                     map.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 15));
                                     MarkerOptions markerOptions = new MarkerOptions();
                                     markerOptions.position(latLng);
-                                    markerOptions.title(latLng.latitude + " :: " + latLng.longitude);
+                                    markerOptions.title(latLng.latitude + " : " + latLng.longitude);
+                                    LATLNG = latLng;
                                     map.clear();
                                     map.addMarker(markerOptions);
                                 }
@@ -294,7 +360,6 @@ public class MindacareActivity extends AppCompatActivity implements GoogleMap.On
 
                     break;
                 case Activity.RESULT_CANCELED:
-
                     Toast.makeText(MindacareActivity.this, "You won't be able to submit your Declaration if you Deny this Setting", Toast.LENGTH_LONG).show();
                     // User rejected turning on the GPS
                     break;
@@ -305,30 +370,71 @@ public class MindacareActivity extends AppCompatActivity implements GoogleMap.On
     }
 
 
-
-    public void clockInclockOut( String empCode, String message,String InLattitiude,String InLongitude,String OutLattitude, String OutLongitude){
+    public void clockInclockOut(String empCode, String message, String InLattitiude, String InLongitude, String OutLattitude, String OutLongitude) {
         MindacareServices mindacareServices = new MindacareServices();
         mindacareServices.clockInclockOut(new OnTaskComplete() {
             @Override
             public void onTaskComplte(CarotResponse carotResponse) {
-                if(carotResponse.getStatuscode() == HttpURLConnection.HTTP_OK){
-
+                if (carotResponse.getData() != null && carotResponse.getData().toString().length() > 0) {
+                    if (carotResponse.getStatuscode() == HttpURLConnection.HTTP_OK) {
+                        if (clock.getText().toString().equalsIgnoreCase("CLOCK IN")) {
+                            clock.setText("CLOCK OUT");
+                            Toast.makeText(MindacareActivity.this, "Thank you for starting your day with Clock in, Fill Self declaration form.", Toast.LENGTH_LONG).show();
+                        } else {
+                            clock.setText("CLOCK IN");
+                        }
+                    }
                 }
             }
-        },empCode,message,InLattitiude,InLongitude,OutLattitude,OutLongitude);
+        }, empCode, message, InLattitiude, InLongitude, OutLattitude, OutLongitude);
     }
 
-    public void mindacarequestions(){
+    public void mindacarequestions() {
+        quesResponseList.clear();
+        //  recyclerView.getRecycledViewPool().clear();
+        //  ehsObsAdapter.notifyDataSetChanged();
+
         MindacareServices mindacareServices = new MindacareServices();
         mindacareServices.mindacarequestions(new OnTaskComplete() {
             @Override
             public void onTaskComplte(CarotResponse carotResponse) {
-                if(carotResponse.getStatuscode() == HttpURLConnection.HTTP_OK){
-
+                if (carotResponse.getStatuscode() == HttpURLConnection.HTTP_OK) {
+                    List<QuesResponse> list = (List<QuesResponse>) carotResponse.getData();
+                    if (list != null && list.size() > 0) {
+                        quesResponseList.addAll(list);
+                    }
                 }
             }
         });
 
     }
 
+
+    public String convertDate(String dateString1, String dateString2) {
+
+        String diff = "";
+        SimpleDateFormat format = new SimpleDateFormat("MM/dd/yyyy hh:mm:ss aa");
+
+        try {
+            Date date1 = format.parse(dateString1);
+            Date date2 = format.parse(dateString2);
+            long mills = date2.getTime() - date1.getTime();
+            int hours = (int) (mills / (1000 * 60 * 60));
+            int mins = (int) (mills / (1000 * 60)) % 60;
+
+            diff = hours + ":" + mins;
+
+            if(hours==0){
+                diff = mins+"m";
+            }
+
+            else{
+                diff = hours+" hr "+mins+" m";
+            }
+
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return diff;
+    }
 }

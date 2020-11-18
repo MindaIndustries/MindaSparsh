@@ -19,7 +19,7 @@ import retrofit2.Response;
 
 public class MindacareServices {
 
-    public  void getCheckinDetails(OnTaskComplete onTaskComplete, String empCode){
+    public void getCheckinDetails(OnTaskComplete onTaskComplete, String empCode){
         MindacareClient mindacareClient = RetrofitClient2.createServiceMindacare(MindacareClient.class);
         Call<List<CheckinDetailsResponse>> call = mindacareClient.getCheckinDetails(empCode);
         call.enqueue(new Callback<List<CheckinDetailsResponse>>() {

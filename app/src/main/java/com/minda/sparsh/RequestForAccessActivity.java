@@ -139,8 +139,8 @@ public class RequestForAccessActivity extends AppCompatActivity implements View.
     Button btn_submit;
     @BindView(R.id.btn_cancel)
     Button btn_cancel;
-    String sp_request_type_id, sp_access_type_id, sp_access_category_id, sp_access_sub_category_id = "0", sp_access_sub_type_id,
-            sp_user_authorization_profile_id = "0", sp_access_for_id, sp_source_id, sp_access_category_value, sp_access_sub_category_value = "",
+    String sp_request_type_id, sp_access_type_id, sp_access_category_id ="0", sp_access_sub_category_id = "0", sp_access_sub_type_id,
+            sp_user_authorization_profile_id = "0", sp_access_for_id, sp_source_id, sp_access_category_value="0", sp_access_sub_category_value = "",
             sp_user_authorization_profile_value = "", catListValue = "", unitCheckId = "";
     @BindView(R.id.et_name)
     EditText et_name;
@@ -172,6 +172,8 @@ public class RequestForAccessActivity extends AppCompatActivity implements View.
     private SharedPreferences myPref = null;
     private String mUserChoosenTask = "";
     private File mDestinationFile;
+
+    String TYPE ;
 
     private static Bitmap rotateImageIfRequired(Context context, Bitmap img, Uri selectedImage) {
 
@@ -206,6 +208,7 @@ public class RequestForAccessActivity extends AppCompatActivity implements View.
         mediaCursor.close();
         return rotation;
     }
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -563,6 +566,7 @@ public class RequestForAccessActivity extends AppCompatActivity implements View.
     }
 
     public void hiIAMGetCategoryApi(String requestType, final String type) {
+       TYPE = type;
         if (Utility.isOnline(RequestForAccessActivity.this)) {
             showProgress(true);
             Interface anInterface = RetrofitClient2.getClient().create(Interface.class);
@@ -581,7 +585,7 @@ public class RequestForAccessActivity extends AppCompatActivity implements View.
                             responseList.add(0, iam);
 
                             IAMGetCategoryAdapter mAdapter = new IAMGetCategoryAdapter(RequestForAccessActivity.this, responseList);
-                            sp_access_category.setAdapter(mAdapter);
+                          sp_access_category.setAdapter(mAdapter);
                         } else {
                             final List<KeyPairBoolData> listArray = new ArrayList<KeyPairBoolData>();
 
@@ -598,7 +602,7 @@ public class RequestForAccessActivity extends AppCompatActivity implements View.
                                     catListValue = "";
                                     for (int i = 0; i < selectedItems.size(); i++) {
                                         if (selectedItems.get(i).isSelected()) {
-                                            catListValue = catListValue + "," + selectedItems.get(i).getId();
+                                            catListValue =  selectedItems.get(i).getId()+"";
                                             Log.i("TAG", i + " : " + selectedItems.get(i).getName() + " : " + selectedItems.get(i).isSelected());
                                         }
 
@@ -864,7 +868,9 @@ public class RequestForAccessActivity extends AppCompatActivity implements View.
         } else if (sp_access_type.getSelectedItemPosition() == 0 && sp_access_type.getVisibility() == View.VISIBLE) {
             Toast.makeText(RequestForAccessActivity.this, "Please Select Access Type", Toast.LENGTH_SHORT).show();
             return false;
-        } else if (sp_access_category.getSelectedItemPosition() == 0 && sp_access_category.getVisibility() == View.VISIBLE) {
+        }
+
+        else if ( TYPE!=null && TYPE!="3" && sp_access_category.getSelectedItemPosition() == 0 && sp_access_category.getVisibility() == View.VISIBLE) {
             Toast.makeText(RequestForAccessActivity.this, "Please Select Category", Toast.LENGTH_SHORT).show();
             return false;
         } else if (sp_access_sub_category.getSelectedItemPosition() == 0 && sp_access_sub_category.getVisibility() == View.VISIBLE) {
@@ -1142,7 +1148,6 @@ public class RequestForAccessActivity extends AppCompatActivity implements View.
             @Override
             public void onClick(DialogInterface arg0, int arg1) {
                 arg0.dismiss();
-
                 finish();
 
             }

@@ -16,5 +16,6 @@
     <color name="black">#090808</color>
     <color name="red_text">#d8241c</color>
     <color name="translucent">#99ffffff</color>
+    <color name="disableBtn">#8F8782</color>
 
 </resources>

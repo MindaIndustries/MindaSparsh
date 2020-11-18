@@ -49,7 +49,7 @@ public class IAMGetPlantAdapter extends RecyclerView.Adapter<IAMGetPlantAdapter.
     public void onBindViewHolder(final MyViewHolder holder, int position) {
         final IAMGetPlantModel iamGetPlantModel = list.get(position);
         holder.cb.setVisibility(View.VISIBLE);
-        holder.cb.setText(iamGetPlantModel.getUnitName()+" ("+ iamGetPlantModel.getUnitCode()+")");
+        holder.cb.setText(iamGetPlantModel.getUnitName()+" ("+ iamGetPlantModel.getPlantCode()+")");
         holder.cb.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
