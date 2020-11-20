@@ -45,6 +45,7 @@ import com.minda.sparsh.Adapter.IAMGetPlantAdapter;
 import com.minda.sparsh.Adapter.IAMGetRequestTypeAdapter;
 import com.minda.sparsh.Adapter.IAMGetSubCategoryAdapter;
 import com.minda.sparsh.Adapter.IAMIAMGetAccessTypeAdapter;
+import com.minda.sparsh.model.CategoryAbnormality;
 import com.minda.sparsh.model.IAMCreateRequestModel;
 import com.minda.sparsh.model.IAMGetAccessSubTypeModel;
 import com.minda.sparsh.model.IAMGetAccessTypeSpinnerModel;
@@ -139,6 +140,8 @@ public class RequestForAccessActivity extends AppCompatActivity implements View.
     Button btn_submit;
     @BindView(R.id.btn_cancel)
     Button btn_cancel;
+
+    ArrayList<String> catlistarray = new ArrayList<String>();
     String sp_request_type_id, sp_access_type_id, sp_access_category_id ="0", sp_access_sub_category_id = "0", sp_access_sub_type_id,
             sp_user_authorization_profile_id = "0", sp_access_for_id, sp_source_id, sp_access_category_value="0", sp_access_sub_category_value = "",
             sp_user_authorization_profile_value = "", catListValue = "", unitCheckId = "";
@@ -441,7 +444,7 @@ public class RequestForAccessActivity extends AppCompatActivity implements View.
                             sp_source_id, et_empCode.getText().toString(), et_organisation.getText().toString(), et_purpose.getText().toString(),
                             et_name.getText().toString(), sp_access_sub_type_id, sp_access_category_id, sp_access_sub_category_id, sp_access_category_value,
                             sp_access_sub_category_value, sp_user_authorization_profile_id, sp_user_authorization_profile_value,
-                            et_accessRequirementDetail.getText().toString(), catListValue, unitCheckId);
+                            et_accessRequirementDetail.getText().toString(), catlistarray.toString(), unitCheckId);
                 }
             }
         });
@@ -600,9 +603,11 @@ public class RequestForAccessActivity extends AppCompatActivity implements View.
                                 @Override
                                 public void onItemsSelected(List<KeyPairBoolData> selectedItems) {
                                     catListValue = "";
+                                    catlistarray.clear();
                                     for (int i = 0; i < selectedItems.size(); i++) {
                                         if (selectedItems.get(i).isSelected()) {
-                                            catListValue =  selectedItems.get(i).getId()+"";
+                                            catlistarray.add(String.valueOf(selectedItems.get(i).getId()));
+                                            catListValue +=  selectedItems.get(i).getId()+", ";
                                             Log.i("TAG", i + " : " + selectedItems.get(i).getName() + " : " + selectedItems.get(i).isSelected());
                                         }
 
@@ -848,6 +853,10 @@ public class RequestForAccessActivity extends AppCompatActivity implements View.
         } else
             Toast.makeText(RequestForAccessActivity.this, "Please Check Your Network Connection", Toast.LENGTH_LONG).show();
     }
+
+
+
+
 
     private void call(List<IAMGetListOfNames> responseList) {
         String[] values = new String[responseList.size()];

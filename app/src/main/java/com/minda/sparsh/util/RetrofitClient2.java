@@ -305,4 +305,6 @@ public class RetrofitClient2 {
         return retrofit.create(serviceClass);
     }
 
+
+
 } 

@@ -13,6 +13,7 @@ import com.minda.sparsh.model.ApproveList;
 import com.minda.sparsh.model.AutoFillMobileModel;
 import com.minda.sparsh.model.BannarModel;
 import com.minda.sparsh.model.Business_Model;
+import com.minda.sparsh.model.CategoryAbnormality;
 import com.minda.sparsh.model.DDModel;
 import com.minda.sparsh.model.DWMDetailResponse;
 import com.minda.sparsh.model.DWMOprationDetailResponse;
@@ -83,7 +84,7 @@ public interface Interface {
 
 
     @GET("GetPlant1")
-    Call<List<Plant_Model>> GetPlant(@Query("CKey") String CKey, @Query("Business") String Business);
+    Call<List<Plant_Model>> GetPlant(@Query("CKey") String CKey, @Query("Empcode") String Business);
 
 
     @GET("GetPlantByUser")
@@ -102,7 +103,7 @@ public interface Interface {
     Call<List<AddAbnormality_Model>> AddAbnormality(@Field("CKey") String CKey, @Field("group") String group, @Field("domain") String domain,
                                                     @Field("business") String business, @Field("plant") String plant, @Field("department") String department,
                                                     @Field("imagepath") String imagepath, @Field("description") String description, @Field("benefits") String benefits,
-                                                    @Field("abnormalitydate") String abnormalitydate, @Field("UploadedBy") String UploadedBy);
+                                                    @Field("abnormalitydate") String abnormalitydate, @Field("UploadedBy") String UploadedBy, @Field("Category")int Categeory);
 
     @FormUrlEncoded
     @POST("UpdateAbnormalityNew")
@@ -131,7 +132,7 @@ public interface Interface {
     @GET("GetAbnormality")
     Call<List<AbnormalityView_Model>> GetAbnormalityDetail(@Query("CKey") String CKey, @Query("plant") String plant,
                                                            @Query("department") String department, @Query("Domain") String Domain,
-                                                           @Query("Business") String Business);
+                                                           @Query("Business") String Business,@Query("Category") int Category);
 
 
     @GET("GetDashboard")
@@ -484,4 +485,7 @@ Call<List<IAMCreateRequestModel>> IAMCreateRequest(@Field("RequestTypeId") Strin
                                                    @Field("UnitList") String UnitList, @Field("CKey") String CKey,@Field("FileName") String FileName,@Field("FileByte") String FileByte);
 
 
+
+@GET("GetCategorys")
+    Call<List<CategoryAbnormality>> getCategory(@Query("CKey") String CKey);
 }

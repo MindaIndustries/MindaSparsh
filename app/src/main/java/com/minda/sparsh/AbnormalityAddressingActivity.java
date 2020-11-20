@@ -20,11 +20,15 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Parcelable;
 import android.provider.MediaStore;
+
 import androidx.core.content.FileProvider;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+
 import android.os.Bundle;
+
 import androidx.appcompat.widget.Toolbar;
+
 import android.util.Base64;
 import android.view.MenuItem;
 import android.view.View;
@@ -41,6 +45,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.minda.sparsh.Adapter.AbnormalityAdapter;
+import com.minda.sparsh.Adapter.AbnormalityCategoryAdapter;
 import com.minda.sparsh.Adapter.BusinessSpinnerAdapter;
 import com.minda.sparsh.Adapter.DepartmentSpinnerAdapter;
 import com.minda.sparsh.Adapter.DomainSpinnerAdapter;
@@ -49,6 +54,7 @@ import com.minda.sparsh.Adapter.PlantSpinnerAdapter;
 import com.minda.sparsh.model.AbnormalityView_Model;
 import com.minda.sparsh.model.AddAbnormality_Model;
 import com.minda.sparsh.model.Business_Model;
+import com.minda.sparsh.model.CategoryAbnormality;
 import com.minda.sparsh.model.Department_Model;
 import com.minda.sparsh.model.Domain_Model;
 import com.minda.sparsh.model.Group_Model;
@@ -65,6 +71,8 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
@@ -90,7 +98,7 @@ public class AbnormalityAddressingActivity extends AppCompatActivity {
     private final static int ALL_PERMISSIONS_RESULT = 107;
     boolean pic_uploaded = false;
     private ProgressDialog progress = null;
-    Spinner sp_department, sp_domain, sp_group, sp_business, sp_plant, sp_sdepartment;
+    Spinner sp_department, sp_domain, sp_group, sp_business, sp_plant, sp_sdepartment, sp_category;
     EditText et_descripton;
     SharedPreferences myPref;
     String group = "UNO Minda Group", domain = "Select Domain", business, plant = "", department = "Select Department", imagepath, description, benefits, abnormalitydate, domainid = "", businessid = "";
@@ -100,11 +108,13 @@ public class AbnormalityAddressingActivity extends AppCompatActivity {
     List<Domain_Model> Domainresponse;
     List<Business_Model> Businessresponse;
     List<Plant_Model> Plantresponse;
-    List<Department_Model> Departmentresponse;
-    List<Sub_Department_Model> Subdepartmentresponse;
+    List<Department_Model> Departmentresponse = new ArrayList<Department_Model>();
+    List<Sub_Department_Model> Subdepartmentresponse = new ArrayList<Sub_Department_Model>();
     Toolbar toolbar;
     TextView title;
+    String empCode;
 
+    int category_id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -131,6 +141,7 @@ public class AbnormalityAddressingActivity extends AppCompatActivity {
 //        sp_group = (Spinner) findViewById(R.id.sp_group);
         sp_business = (Spinner) findViewById(R.id.sp_business);
         sp_sdepartment = (Spinner) findViewById(R.id.sp_sdepartment);
+        sp_category = (Spinner) findViewById(R.id.sp_category);
         sp_plant = (Spinner) findViewById(R.id.sp_plant);
         et_finddate = (TextView) findViewById(R.id.et_finddate);
         et_descripton = (EditText) findViewById(R.id.et_descripton);
@@ -141,6 +152,9 @@ public class AbnormalityAddressingActivity extends AppCompatActivity {
         progress.setProgressStyle(ProgressDialog.STYLE_SPINNER);
         progress.setIndeterminate(true);
         myPref = getSharedPreferences("MyPref", Context.MODE_PRIVATE);
+        empCode = myPref.getString("Id", "Id");
+        hitCategoryApi();
+        hitPlantApi(empCode);
 
 
         im_back.setOnClickListener(new View.OnClickListener() {
@@ -196,6 +210,20 @@ public class AbnormalityAddressingActivity extends AppCompatActivity {
 
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+
+        sp_category.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+                CategoryAbnormality categoryAbnormality = (CategoryAbnormality) parent.getSelectedItem();
+                category_id = categoryAbnormality.getId();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
 
             }
         });
@@ -413,8 +441,7 @@ public class AbnormalityAddressingActivity extends AppCompatActivity {
                 benefits = "";
                 if (isvalid()) {
 
-
-                    hitAddAbnormalityApi(group, domainid, businessid, plantid, String.valueOf(sub_department), sImage, description, benefits, abnormalitydate, myPref.getString("Id", ""));
+                    hitAddAbnormalityApi(group, domainid, businessid, plantid, String.valueOf(sub_department), sImage, description, benefits, abnormalitydate, myPref.getString("Id", ""), category_id);
                 }
 
             }
@@ -598,6 +625,7 @@ public class AbnormalityAddressingActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 
+        super.onActivityResult(requestCode, resultCode, data);
         Bitmap bitmap;
         if (resultCode == Activity.RESULT_OK) {
             Im_capture.setVisibility(View.VISIBLE);
@@ -749,7 +777,7 @@ public class AbnormalityAddressingActivity extends AppCompatActivity {
     }
 
     private void showProgress(boolean b) {
-        try {
+     /*   try {
             if (b)
                 progress.show();
             else
@@ -757,6 +785,7 @@ public class AbnormalityAddressingActivity extends AppCompatActivity {
         } catch (Exception e) {
             e.printStackTrace();
         }
+   */
     }
 
     public void hitDomainApi() {
@@ -854,7 +883,7 @@ public class AbnormalityAddressingActivity extends AppCompatActivity {
         if (Utility.isOnline(AbnormalityAddressingActivity.this)) {
             showProgress(true);
             Interface promotingMyinterface = RetrofitClient2.getClient().create(Interface.class);
-            Call<List<Plant_Model>> response = promotingMyinterface.GetPlant(RetrofitClient2.CKEY, Business);
+            Call<List<Plant_Model>> response = promotingMyinterface.GetPlant(RetrofitClient2.CKEY, empCode);
             response.enqueue(new Callback<List<Plant_Model>>() {
                 @Override
                 public void onResponse(Call<List<Plant_Model>> call, Response<List<Plant_Model>> response) {
@@ -906,7 +935,12 @@ public class AbnormalityAddressingActivity extends AppCompatActivity {
                 @Override
                 public void onResponse(Call<List<Department_Model>> call, Response<List<Department_Model>> response) {
                     showProgress(false);
-                    Departmentresponse = response.body();
+                    Departmentresponse.clear();
+                    Department_Model department_model = new Department_Model();
+                    department_model.setID("0");
+                    department_model.setDEPARTMENT("Select Department");
+                    Departmentresponse.add(0, department_model);
+                    Departmentresponse.addAll(response.body());
 //                    Department_Model department_model=new Department_Model();
 //                    department_model.setDEPARTMENT("Select Department");
 //                    Departmentresponse.add(0,department_model);
@@ -915,7 +949,6 @@ public class AbnormalityAddressingActivity extends AppCompatActivity {
                     if (Departmentresponse != null) {
                         DepartmentSpinnerAdapter departmentSpinnerAdapter = new DepartmentSpinnerAdapter(AbnormalityAddressingActivity.this, Departmentresponse);
                         sp_department.setAdapter(departmentSpinnerAdapter);
-
 
                     }
 
@@ -933,11 +966,11 @@ public class AbnormalityAddressingActivity extends AppCompatActivity {
     }
 
 
-    public void hitAddAbnormalityApi(String group, String domain, String business, String plant, String department, String imagepath, String description, String benefits, String abnormalitydate, String UploadedBy) {
+    public void hitAddAbnormalityApi(String group, String domain, String business, String plant, String department, String imagepath, String description, String benefits, String abnormalitydate, String UploadedBy, int category) {
         if (Utility.isOnline(AbnormalityAddressingActivity.this)) {
             showProgress(true);
             Interface promotingMyinterface = RetrofitClient2.getClient().create(Interface.class);
-            Call<List<AddAbnormality_Model>> response = promotingMyinterface.AddAbnormality(RetrofitClient2.CKEY, group, domain, business, plant, department, imagepath, description, benefits, abnormalitydate, UploadedBy);
+            Call<List<AddAbnormality_Model>> response = promotingMyinterface.AddAbnormality(RetrofitClient2.CKEY, group, domain, business, plant, department, imagepath, description, benefits, abnormalitydate, UploadedBy, category);
             response.enqueue(new Callback<List<AddAbnormality_Model>>() {
                 @Override
                 public void onResponse(Call<List<AddAbnormality_Model>> call, Response<List<AddAbnormality_Model>> response) {
@@ -973,11 +1006,57 @@ public class AbnormalityAddressingActivity extends AppCompatActivity {
             Toast.makeText(AbnormalityAddressingActivity.this, "Please Check Your Network Connection", Toast.LENGTH_LONG).show();
     }
 
+    public void hitCategoryApi() {
+        showProgress(true);
+
+        Interface anInterface = RetrofitClient2.getClient().create(Interface.class);
+        Call<List<CategoryAbnormality>> call = anInterface.getCategory(RetrofitClient2.CKEY);
+        call.enqueue(new Callback<List<CategoryAbnormality>>() {
+            @Override
+            public void onResponse(Call<List<CategoryAbnormality>> call, Response<List<CategoryAbnormality>> response) {
+                showProgress(false);
+                List<CategoryAbnormality> list1 = response.body();
+                if (list1 != null && list1.size() > 0) {
+                    List<CategoryAbnormality> list = new ArrayList<>();
+                    list.add(new CategoryAbnormality(0, "Select Category"));
+                    list.addAll(list1);
+
+                    Collections.sort(list, new Comparator<CategoryAbnormality>() {
+
+                        @Override
+                        public int compare(CategoryAbnormality o1, CategoryAbnormality o2) {
+                            if (o2.getId() < o1.getId()) {
+                                return 1;
+                            } else if (o2.getId() > o1.getId()) {
+                                return -1;
+                            } else {
+                                return 0;
+                            }
+
+                        }
+                    });
+                    AbnormalityCategoryAdapter departmentSpinnerAdapter = new AbnormalityCategoryAdapter(AbnormalityAddressingActivity.this, list);
+                    sp_category.setAdapter(departmentSpinnerAdapter);
+
+
+                }
+
+            }
+
+            @Override
+            public void onFailure(Call<List<CategoryAbnormality>> call, Throwable t) {
+                showProgress(false);
+            }
+        });
+
+    }
+
+
     public void hitGetAbnormalityDetailApi(String plant, String department, String domain, String business) {
         if (Utility.isOnline(AbnormalityAddressingActivity.this)) {
             showProgress(true);
             Interface promotingMyinterface = RetrofitClient2.getClient().create(Interface.class);
-            Call<List<AbnormalityView_Model>> response = promotingMyinterface.GetAbnormalityDetail(RetrofitClient2.CKEY, plant, department, domain, business);
+            Call<List<AbnormalityView_Model>> response = promotingMyinterface.GetAbnormalityDetail(RetrofitClient2.CKEY, plant, department, domain, business, category_id);
             response.enqueue(new Callback<List<AbnormalityView_Model>>() {
                 @Override
                 public void onResponse(Call<List<AbnormalityView_Model>> call, Response<List<AbnormalityView_Model>> response) {
@@ -1012,10 +1091,11 @@ public class AbnormalityAddressingActivity extends AppCompatActivity {
             Toast.makeText(AbnormalityAddressingActivity.this, "Please Select Group", Toast.LENGTH_LONG).show();
             return false;
         }
-        if (domain.equalsIgnoreCase("Select Domain")) {
+        /*if (domain.equalsIgnoreCase("Select Domain")) {
             Toast.makeText(AbnormalityAddressingActivity.this, "Please Select Domain", Toast.LENGTH_LONG).show();
             return false;
         }
+*/
         if (department.equalsIgnoreCase("Select Department")) {
             Toast.makeText(AbnormalityAddressingActivity.this, "Please Select Department", Toast.LENGTH_LONG).show();
             return false;
@@ -1113,7 +1193,7 @@ public class AbnormalityAddressingActivity extends AppCompatActivity {
                         BUSINESS = userDetail_models.get(0).getBUSINESS();
                         DOMAIN = userDetail_models.get(0).getDOMAIN();
                         UNITCODE = userDetail_models.get(0).getUNITCODE();
-                        hitDomainApi();
+                        //    hitDomainApi();
 
 
                     } else {

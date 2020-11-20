@@ -45,4 +45,12 @@ public class QuesResponse {
     public void setTypes(String types) {
         Types = types;
     }
+
+    public String getOpts() {
+        return Opts;
+    }
+
+    public void setOpts(String opts) {
+        Opts = opts;
+    }
 }
