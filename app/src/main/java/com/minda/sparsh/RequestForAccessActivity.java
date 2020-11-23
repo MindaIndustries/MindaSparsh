@@ -444,7 +444,7 @@ public class RequestForAccessActivity extends AppCompatActivity implements View.
                             sp_source_id, et_empCode.getText().toString(), et_organisation.getText().toString(), et_purpose.getText().toString(),
                             et_name.getText().toString(), sp_access_sub_type_id, sp_access_category_id, sp_access_sub_category_id, sp_access_category_value,
                             sp_access_sub_category_value, sp_user_authorization_profile_id, sp_user_authorization_profile_value,
-                            et_accessRequirementDetail.getText().toString(), catlistarray.toString(), unitCheckId);
+                            et_accessRequirementDetail.getText().toString(), catlistarray.toString().replace("[","").replace("]",""), unitCheckId);
                 }
             }
         });
