@@ -2820,6 +2820,7 @@
                                         android:layout_height="50dp"
                                         android:background="@drawable/darkline"
                                         android:gravity="center"
+                                        android:visibility="gone"
                                         android:imeOptions="actionDone"
                                         android:inputType="number"
                                         android:textSize="10dp"></EditText>
@@ -2829,7 +2830,7 @@
                                         style="@style/editTextStyle"
                                         android:layout_width="match_parent"
                                         android:layout_height="50dp"
-                                        android:background="@drawable/light_line"
+                                        android:background="@null"
                                         android:gravity="center"
                                         android:imeOptions="actionDone"
                                         android:inputType="number"
@@ -2911,7 +2912,6 @@
                                     <LinearLayout
                                         android:layout_width="20dp"
                                         android:layout_height="wrap_content"
-                                        android:background="@drawable/darkline"
                                         android:orientation="vertical">
 
                                         <TextView
@@ -2925,6 +2925,7 @@
                                     </LinearLayout>
 
                                     <LinearLayout
+                                        android:visibility="gone"
                                         android:layout_width="20dp"
                                         android:layout_height="wrap_content"
                                         android:background="@drawable/darkline"
@@ -3039,7 +3040,7 @@
                                         android:textColor="#b1aeae"
                                         android:textSize="10dp"></EditText>
 
-                                    <EditText
+                                   <!-- <EditText
                                         android:id="@+id/cmt6_1_5"
                                         android:layout_width="100dp"
                                         android:layout_height="50dp"
@@ -3058,7 +3059,7 @@
                                         android:textAppearance="?android:attr/textAppearanceMedium"
                                         android:textColor="#b1aeae"
                                         android:textSize="10dp"></EditText>
-
+-->
                                     <EditText
                                         android:id="@+id/cmt6_1_6"
                                         android:layout_width="100dp"
@@ -3147,6 +3148,7 @@
                                         android:layout_height="50dp"
                                         android:background="@drawable/darkline"
                                         android:gravity="center"
+                                        android:visibility="gone"
                                         android:imeOptions="actionDone"
                                         android:inputType="number"
                                         android:textSize="10dp"></EditText>
@@ -3156,7 +3158,7 @@
                                         style="@style/editTextStyle"
                                         android:layout_width="match_parent"
                                         android:layout_height="50dp"
-                                        android:background="@drawable/light_line"
+                                        android:background="@null"
                                         android:gravity="center"
                                         android:imeOptions="actionDone"
                                         android:inputType="number"
@@ -3235,7 +3237,7 @@
                                             android:textSize="10dp"></TextView>
                                     </LinearLayout>
 
-                                    <LinearLayout
+                               <!--     <LinearLayout
                                         android:layout_width="20dp"
                                         android:layout_height="wrap_content"
                                         android:background="@drawable/darkline"
@@ -3250,11 +3252,10 @@
                                             android:onClick="onClick"
                                             android:textSize="10dp"></TextView>
                                     </LinearLayout>
-
+-->
                                     <LinearLayout
                                         android:layout_width="20dp"
                                         android:layout_height="wrap_content"
-                                        android:background="@drawable/darkline"
                                         android:orientation="vertical">
 
                                         <TextView
@@ -3368,7 +3369,7 @@
                                         android:textColor="#b1aeae"
                                         android:textSize="10dp"></EditText>
 
-                                    <EditText
+                                   <!-- <EditText
                                         android:id="@+id/cmt6_2_5"
                                         android:layout_width="100dp"
                                         android:layout_height="50dp"
@@ -3388,7 +3389,7 @@
                                         android:textAppearance="?android:attr/textAppearanceMedium"
                                         android:textColor="#b1aeae"
                                         android:textSize="10dp"></EditText>
-
+-->
                                     <EditText
                                         android:id="@+id/cmt6_2_6"
                                         android:layout_width="100dp"
@@ -3478,14 +3479,15 @@
                                         android:gravity="center"
                                         android:imeOptions="actionDone"
                                         android:inputType="number"
+                                        android:visibility="gone"
                                         android:textSize="10dp"></EditText>
 
                                     <EditText
                                         android:id="@+id/et_6_3_6"
+                                        android:background="@null"
                                         style="@style/editTextStyle"
                                         android:layout_width="match_parent"
                                         android:layout_height="50dp"
-                                        android:background="@drawable/light_line"
                                         android:gravity="center"
                                         android:imeOptions="actionDone"
                                         android:inputType="number"
@@ -3565,7 +3567,6 @@
                                     <LinearLayout
                                         android:layout_width="20dp"
                                         android:layout_height="wrap_content"
-                                        android:background="@drawable/darkline"
                                         android:orientation="vertical">
 
                                         <TextView
@@ -3579,6 +3580,7 @@
                                     </LinearLayout>
 
                                     <LinearLayout
+                                        android:visibility="gone"
                                         android:layout_width="20dp"
                                         android:layout_height="wrap_content"
                                         android:background="@drawable/darkline"
@@ -3692,7 +3694,7 @@
                                         android:textColor="#b1aeae"
                                         android:textSize="10dp"></EditText>
 
-                                    <EditText
+                                   <!-- <EditText
                                         android:id="@+id/cmt6_3_5"
                                         android:layout_width="100dp"
                                         android:layout_height="50dp"
@@ -3712,7 +3714,7 @@
                                         android:textAppearance="?android:attr/textAppearanceMedium"
                                         android:textColor="#b1aeae"
                                         android:textSize="10dp"></EditText>
-
+-->
                                     <EditText
                                         android:id="@+id/cmt6_3_6"
                                         android:layout_width="100dp"
@@ -4071,6 +4073,7 @@
                                         android:textSize="10dp"></EditText>
 
                                     <EditText
+                                        android:visibility="gone"
                                         style="@style/editTextStyle"
                                         android:id="@+id/et_7_1_3"
                                         android:layout_width="match_parent"
@@ -4086,7 +4089,7 @@
                                         style="@style/editTextStyle"
                                         android:layout_width="match_parent"
                                         android:layout_height="50dp"
-                                        android:background="@drawable/light_line"
+                                        android:background="@null"
                                         android:gravity="center"
                                         android:imeOptions="actionDone"
                                         android:inputType="number"
@@ -4137,7 +4140,6 @@
                                     <LinearLayout
                                         android:layout_width="20dp"
                                         android:layout_height="wrap_content"
-                                        android:background="@drawable/darkline"
                                         android:orientation="vertical">
 
                                         <TextView
@@ -4150,7 +4152,7 @@
                                             android:textSize="10dp"></TextView>
                                     </LinearLayout>
 
-                                    <LinearLayout
+                                  <!--  <LinearLayout
                                         android:layout_width="20dp"
                                         android:layout_height="wrap_content"
                                         android:background="@drawable/darkline"
@@ -4164,7 +4166,7 @@
                                             android:drawableTop="@drawable/comment"
                                             android:onClick="onClick"
                                             android:textSize="10dp"></TextView>
-                                    </LinearLayout>
+                                    </LinearLayout>-->
 
                                 </LinearLayout>
 
@@ -4186,7 +4188,6 @@
                                         android:id="@+id/cmt7_1_1"
                                         android:layout_width="100dp"
                                         android:layout_height="50dp"
-
                                         android:background="@drawable/commentoutlineview"
                                         android:gravity="center"
                                         android:hint="Comment"
@@ -4224,7 +4225,7 @@
                                         android:textColor="#b1aeae"
                                         android:textSize="10dp"></EditText>
 
-                                    <EditText
+                                   <!-- <EditText
                                         android:id="@+id/cmt7_1_3"
                                         android:layout_width="100dp"
                                         android:layout_height="50dp"
@@ -4244,12 +4245,11 @@
                                         android:textAppearance="?android:attr/textAppearanceMedium"
                                         android:textColor="#b1aeae"
                                         android:textSize="10dp"></EditText>
-
+-->
                                     <EditText
                                         android:id="@+id/cmt7_1_4"
                                         android:layout_width="100dp"
                                         android:layout_height="50dp"
-
                                         android:background="@drawable/commentoutlineview"
                                         android:gravity="center"
                                         android:hint="Comment"
@@ -4304,6 +4304,7 @@
                                         android:inputType="number"
                                         android:textSize="10dp"></EditText>
 
+<!--
                                     <EditText
                                         style="@style/editTextStyle"
                                         android:id="@+id/et_7_2_3"
@@ -4314,13 +4315,14 @@
                                         android:imeOptions="actionDone"
                                         android:inputType="number"
                                         android:textSize="10dp"></EditText>
+-->
 
                                     <EditText
                                         android:id="@+id/et_7_2_4"
+                                        android:background="@null"
                                         style="@style/editTextStyle"
                                         android:layout_width="match_parent"
                                         android:layout_height="50dp"
-                                        android:background="@drawable/light_line"
                                         android:gravity="center"
                                         android:imeOptions="actionDone"
                                         android:inputType="number"
@@ -4368,7 +4370,7 @@
                                             android:textSize="10dp"></TextView>
                                     </LinearLayout>
 
-                                    <LinearLayout
+                                 <!--   <LinearLayout
                                         android:layout_width="20dp"
                                         android:layout_height="wrap_content"
                                         android:background="@drawable/darkline"
@@ -4383,11 +4385,10 @@
                                             android:onClick="onClick"
                                             android:textSize="10dp"></TextView>
                                     </LinearLayout>
-
+-->
                                     <LinearLayout
                                         android:layout_width="20dp"
                                         android:layout_height="wrap_content"
-                                        android:background="@drawable/darkline"
                                         android:orientation="vertical">
 
                                         <TextView
@@ -4458,7 +4459,7 @@
                                         android:textColor="#b1aeae"
                                         android:textSize="10dp"></EditText>
 
-                                    <EditText
+                                 <!--   <EditText
                                         android:id="@+id/cmt7_2_3"
                                         android:layout_width="100dp"
                                         android:layout_height="50dp"
@@ -4477,7 +4478,7 @@
                                         android:singleLine="false"
                                         android:textAppearance="?android:attr/textAppearanceMedium"
                                         android:textColor="#b1aeae"
-                                        android:textSize="10dp"></EditText>
+                                        android:textSize="10dp"></EditText>-->
 
                                     <EditText
                                         android:id="@+id/cmt7_2_4"
@@ -4542,13 +4543,14 @@
                                         android:id="@+id/et_7_3_3"
                                         android:layout_width="match_parent"
                                         android:layout_height="50dp"
-                                        android:background="@drawable/darkline"
+                                        android:background="@null"
                                         android:gravity="center"
                                         android:imeOptions="actionDone"
                                         android:inputType="number"
                                         android:textSize="10dp"></EditText>
 
                                     <EditText
+                                        android:visibility="gone"
                                         android:id="@+id/et_7_3_4"
                                         style="@style/editTextStyle"
                                         android:layout_width="match_parent"
@@ -4602,8 +4604,7 @@
                                     <LinearLayout
                                         android:layout_width="20dp"
                                         android:layout_height="wrap_content"
-                                        android:background="@drawable/darkline"
-                                        android:orientation="vertical">
+                                        android:orientation="vertical">//
 
                                         <TextView
                                             android:id="@+id/tv_7_c3"
@@ -4616,6 +4617,7 @@
                                     </LinearLayout>
 
                                     <LinearLayout
+                                        android:visibility="gone"
                                         android:layout_width="20dp"
                                         android:layout_height="wrap_content"
                                         android:background="@drawable/darkline"
@@ -4712,7 +4714,7 @@
                                         android:id="@+id/cmt7_3_4"
                                         android:layout_width="100dp"
                                         android:layout_height="50dp"
-
+                                        android:visibility="gone"
                                         android:background="@drawable/commentoutlineview"
                                         android:gravity="center"
                                         android:hint="Comment"

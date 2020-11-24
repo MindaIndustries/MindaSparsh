@@ -63,7 +63,7 @@ public class AbnormalityAdapter extends BaseAdapter {
     }
 
     public class ViewHolder {
-        public TextView tv_result, tv_status, tv_Actual_date, tv_test_date, tv_action, tv_plant, tv_business, tv_domain, tv_date, tv_abnormality, tv_sn, tv_update, tv_view, tv_uplodedBy, tv_department, tv_updatedby;
+        public TextView tv_result, tv_status, tv_Actual_date, tv_test_date, tv_action, tv_plant, tv_business, tv_domain,tv_category, tv_date, tv_abnormality, tv_sn, tv_update, tv_view, tv_uplodedBy, tv_department, tv_updatedby;
         public LinearLayout laycellview;
 
 
@@ -104,6 +104,7 @@ public class AbnormalityAdapter extends BaseAdapter {
             holder.tv_plant = (TextView) convertView.findViewById(R.id.tv_plant);
             holder.tv_business = (TextView) convertView.findViewById(R.id.tv_business);
             holder.tv_domain = (TextView) convertView.findViewById(R.id.tv_domain);
+            holder.tv_category =(TextView) convertView.findViewById(R.id.tv_category);
             holder.tv_date = (TextView) convertView.findViewById(R.id.tv_date);
             holder.tv_abnormality = (TextView) convertView.findViewById(R.id.tv_abnormality);
             holder.tv_sn = (TextView) convertView.findViewById(R.id.tv_sn);
@@ -205,6 +206,7 @@ public class AbnormalityAdapter extends BaseAdapter {
             holder.tv_department.setText(homeData.get(position).getDepartmentName());
             holder.tv_plant.setText(homeData.get(position).getPlantName());
             holder.tv_business.setText(homeData.get(position).getBusinessName());
+            holder.tv_category.setText(homeData.get(position).getCategory());
             holder.tv_domain.setText(homeData.get(position).getDomain());
             holder.tv_date.setText(homeData.get(position).getAbnormalityDate());
             holder.tv_abnormality.setText(homeData.get(position).getDescription());

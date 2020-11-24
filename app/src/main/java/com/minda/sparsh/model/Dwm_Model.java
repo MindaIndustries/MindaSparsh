@@ -128,6 +128,7 @@ public class Dwm_Model {
     private String RegularMMCRemark;
     private String RegularSystemRemark;
     private Integer Lpa;
+    private Integer LPA;
     private Integer Covid;
     private Integer LpaCovid;
     private String LapRemark;
@@ -828,5 +829,13 @@ public class Dwm_Model {
 
     public void setCovidRemark(String covidRemark) {
         CovidRemark = covidRemark;
+    }
+
+    public Integer getLPA() {
+        return LPA;
+    }
+
+    public void setLPA(Integer LPA) {
+        this.LPA = LPA;
     }
 }

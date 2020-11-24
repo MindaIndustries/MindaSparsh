@@ -220,6 +220,8 @@ public class AbnormalityAddressingActivity extends AppCompatActivity {
 
                 CategoryAbnormality categoryAbnormality = (CategoryAbnormality) parent.getSelectedItem();
                 category_id = categoryAbnormality.getId();
+                hitGetAbnormalityDetailApi(plantid, String.valueOf(sub_department), domainid, businessid);
+
             }
 
             @Override
@@ -267,7 +269,6 @@ public class AbnormalityAddressingActivity extends AppCompatActivity {
                 sub_department = selectedItem.getID();
 //                if (!selectedItem.getDEPARTMENTDETAIL().equalsIgnoreCase("Select SubDepartment")) {
 //                    hitDepartmentApi(sub_department);
-                hitGetAbnormalityDetailApi(plantid, String.valueOf(sub_department), domainid, businessid);
 
 //                }
 // else {

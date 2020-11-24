@@ -370,19 +370,19 @@ public class DWMActivity extends AppCompatActivity {
         cmt6_1_2 = (EditText) findViewById(R.id.cmt6_1_2);
         cmt6_1_3 = (EditText) findViewById(R.id.cmt6_1_3);
         cmt6_1_4 = (EditText) findViewById(R.id.cmt6_1_4);
-        cmt6_1_5 = (EditText) findViewById(R.id.cmt6_1_5);
+       // cmt6_1_5 = (EditText) findViewById(R.id.cmt6_1_5);
         cmt6_1_6 = (EditText) findViewById(R.id.cmt6_1_6);
         cmt6_2_1 = (EditText) findViewById(R.id.cmt6_2_1);
         cmt6_2_2 = (EditText) findViewById(R.id.cmt6_2_2);
         cmt6_2_3 = (EditText) findViewById(R.id.cmt6_2_3);
         cmt6_2_4 = (EditText) findViewById(R.id.cmt6_2_4);
-        cmt6_2_5 = (EditText) findViewById(R.id.cmt6_2_5);
+        //cmt6_2_5 = (EditText) findViewById(R.id.cmt6_2_5);
         cmt6_2_6 = (EditText) findViewById(R.id.cmt6_2_6);
         cmt6_3_1 = (EditText) findViewById(R.id.cmt6_3_1);
         cmt6_3_2 = (EditText) findViewById(R.id.cmt6_3_2);
         cmt6_3_3 = (EditText) findViewById(R.id.cmt6_3_3);
         cmt6_3_4 = (EditText) findViewById(R.id.cmt6_3_4);
-        cmt6_3_5 = (EditText) findViewById(R.id.cmt6_3_5);
+      //  cmt6_3_5 = (EditText) findViewById(R.id.cmt6_3_5);
         cmt8_3_1_bestReview = (EditText) findViewById(R.id.cmt8_3_1_bestReview);
         cmt6_3_6 = (EditText) findViewById(R.id.cmt6_3_6);
 
@@ -425,7 +425,7 @@ public class DWMActivity extends AppCompatActivity {
 
         et_7_2_1 = (EditText) findViewById(R.id.et_7_2_1);
         et_7_2_2 = (EditText) findViewById(R.id.et_7_2_2);
-        et_7_2_3 = (EditText) findViewById(R.id.et_7_2_3);
+    //    et_7_2_3 = (EditText) findViewById(R.id.et_7_2_3);
         et_8_2_2_unitReview = (EditText) findViewById(R.id.et_8_2_2_unitReview);
         et_7_2_4 = (EditText) findViewById(R.id.et_7_2_4);
 
@@ -436,12 +436,12 @@ public class DWMActivity extends AppCompatActivity {
         et_7_3_4 = (EditText) findViewById(R.id.et_7_3_4);
         cmt7_1_1 = (EditText) findViewById(R.id.cmt7_1_1);
         cmt7_1_2 = (EditText) findViewById(R.id.cmt7_1_2);
-        cmt7_1_3 = (EditText) findViewById(R.id.cmt7_1_3);
+      //  cmt7_1_3 = (EditText) findViewById(R.id.cmt7_1_3);
         cmt8_1_2_unitReview = findViewById(R.id.cmt8_1_2_unitReview);
         cmt7_1_4 = (EditText) findViewById(R.id.cmt7_1_4);
         cmt7_2_1 = (EditText) findViewById(R.id.cmt7_2_1);
         cmt7_2_2 = (EditText) findViewById(R.id.cmt7_2_2);
-        cmt7_2_3 = (EditText) findViewById(R.id.cmt7_2_3);
+        //cmt7_2_3 = (EditText) findViewById(R.id.cmt7_2_3);
         cmt8_2_2_unitReview = (EditText) findViewById(R.id.cmt8_2_2_unitReview);
         cmt7_2_4 = (EditText) findViewById(R.id.cmt7_2_4);
         cmt7_3_1 = (EditText) findViewById(R.id.cmt7_3_1);
@@ -1093,7 +1093,7 @@ public class DWMActivity extends AppCompatActivity {
                 cmt6_3_2_String = cmt6_3_2.getText().toString();
                 cmt6_3_3_String = cmt6_3_3.getText().toString();
                 cmt6_3_4_String = cmt6_3_4.getText().toString();
-                cmt6_3_5_String = cmt6_3_5.getText().toString();
+             //   cmt6_3_5_String = cmt6_3_5.getText().toString();
                 cmt8_3_1_bestReview_String = cmt8_3_1_bestReview.getText().toString();
                 cmt6_3_6_String = cmt6_3_6.getText().toString();
 
@@ -1231,12 +1231,12 @@ public class DWMActivity extends AppCompatActivity {
                 } else {
                     int_et_7_2_2 = 0;
                 }
-                if ((et_7_2_3.getText().toString() != null) && (!et_7_2_3.getText().toString().isEmpty()) && !et_7_2_3.getText().toString().contains("nul")) {
+              /*  if ((et_7_2_3.getText().toString() != null) && (!et_7_2_3.getText().toString().isEmpty()) && !et_7_2_3.getText().toString().contains("nul")) {
                     int_et_7_2_3 = Integer.parseInt(et_7_2_3.getText().toString());
                 } else {
                     int_et_7_2_3 = 0;
                 }
-
+*/
                 if ((et_8_2_2_unitReview.getText().toString() != null) && (!et_8_2_2_unitReview.getText().toString().isEmpty()) && !et_8_2_2_unitReview.getText().toString().contains("nul")) {
                     int_et_8_2_2_unitReview = Integer.parseInt(et_8_2_2_unitReview.getText().toString());
                 } else {
@@ -1348,13 +1348,13 @@ public class DWMActivity extends AppCompatActivity {
                 cmt6_2_2_String = cmt6_2_2.getText().toString();
                 cmt6_2_3_String = cmt6_2_3.getText().toString();
                 cmt6_2_4_String = cmt6_2_4.getText().toString();
-                cmt6_2_5_String = cmt6_2_5.getText().toString();
+               // cmt6_2_5_String = cmt6_2_5.getText().toString();
                 cmt8_2_1_bestReview_String = cmt8_2_1_bestReview.getText().toString();
                 cmt6_2_6_String = cmt6_2_6.getText().toString();
 
                 cmt7_2_1_String = cmt7_2_1.getText().toString();
                 cmt7_2_2_String = cmt7_2_2.getText().toString();
-                cmt7_2_3_String = cmt7_2_3.getText().toString();
+              //  cmt7_2_3_String = cmt7_2_3.getText().toString();
                 cmt8_2_2_unitReview_String = cmt8_2_2_unitReview.getText().toString();
                 cmt7_2_4_String = cmt7_2_4.getText().toString();
 
@@ -1610,12 +1610,12 @@ public class DWMActivity extends AppCompatActivity {
                 cmt6_1_2_String = cmt6_1_2.getText().toString();
                 cmt6_1_3_String = cmt6_1_3.getText().toString();
                 cmt6_1_4_String = cmt6_1_4.getText().toString();
-                cmt6_1_5_String = cmt6_1_5.getText().toString();
+            //    cmt6_1_5_String = cmt6_1_5.getText().toString();
                 cmt8_1_1_bestReview_String = cmt8_1_1_bestReview.getText().toString();
                 cmt6_1_6_String = cmt6_1_6.getText().toString();
                 cmt7_1_1_String = cmt7_1_1.getText().toString();
                 cmt7_1_2_String = cmt7_1_2.getText().toString();
-                cmt7_1_3_String = cmt7_1_3.getText().toString();
+             //   cmt7_1_3_String = cmt7_1_3.getText().toString();
                 cmt8_1_2_unitReview_String = cmt8_1_2_unitReview.getText().toString();
                 cmt7_1_4_String = cmt7_1_4.getText().toString();
                 cmt8_1_1_String = cmt8_1_1.getText().toString();
@@ -2053,6 +2053,7 @@ public class DWMActivity extends AppCompatActivity {
             return false;
         }
 
+
         @Override
         protected void onPostExecute(Boolean aBoolean) {
             getyesterdayTimeSheetTask = null;
@@ -2074,9 +2075,9 @@ public class DWMActivity extends AppCompatActivity {
                 et_7_3_1.setText(String.valueOf(dwmData.get(0).getManagementCorp()));
                 et_7_3_2.setText(String.valueOf(dwmData.get(0).getManagementProtivity()));
                 et_7_3_3.setText(String.valueOf(dwmData.get(0).getManagementUnit()));
-                et_8_3_2_unitReview.setText(String.valueOf(dwmData.get(0).getManagementUnit()));
-                et_7_3_4.setText(String.valueOf(dwmData.get(0).getManagementMeeting()));
-                et_8_3_1.setText(String.valueOf(dwmData.get(0).getRegularMMC()));
+                et_8_3_2_unitReview.setText(String.valueOf(dwmData.get(0).getManagementMeeting()));
+                et_7_3_4.setText(String.valueOf(dwmData.get(0).getManagementUnit()));
+               et_8_3_1.setText(String.valueOf(dwmData.get(0).getRegularMMC()));
                 et_8_3_2.setText(String.valueOf(dwmData.get(0).getRegularSystem()));
                 et_8_3_3.setText(String.valueOf(dwmData.get(0).getRegularIndent()));
                 et_8_3_4.setText(String.valueOf(dwmData.get(0).getRegularDevelopment()));
@@ -2103,14 +2104,14 @@ public class DWMActivity extends AppCompatActivity {
                 cmt6_3_2.setText(dwmData.get(0).getPeopleBMRemark());
                 cmt6_3_3.setText(dwmData.get(0).getPeopleLLLGRemark());
                 cmt6_3_4.setText(dwmData.get(0).getPeopleTrainingRemark());
-                cmt6_3_5.setText(dwmData.get(0).getPeopleBestRemark());
-                cmt8_3_1_bestReview.setText(dwmData.get(0).getPeopleBestRemark());
+                //cmt6_3_5.setText(dwmData.get(0).getPeopleBestRemark());
+              //  cmt8_3_1_bestReview.setText(dwmData.get(0).getPeopleBestRemark());
                 cmt6_3_6.setText(dwmData.get(0).getPeopleCDPRemark());
                 cmt7_3_1.setText(dwmData.get(0).getManagementCorpRemark());
                 cmt7_3_2.setText(dwmData.get(0).getManagementProtivityRemark());
                 cmt7_3_3.setText(dwmData.get(0).getManagementUnitRemark());
-                cmt8_3_2_unitReview.setText(dwmData.get(0).getManagementUnitRemark());
-                cmt7_3_4.setText(dwmData.get(0).getManagementMeetingRemark());
+                cmt8_3_2_unitReview.setText(dwmData.get(0).getManagementMeetingRemark());
+                cmt7_3_4.setText(dwmData.get(0).getManagementUnitRemark());
                 cmt8_3_1.setText(dwmData.get(0).getRegularMMCRemark());
                 cmt8_3_2.setText(dwmData.get(0).getRegularSystemRemark());
                 cmt8_3_3.setText(dwmData.get(0).getRegularIndentRemark());
@@ -2133,7 +2134,7 @@ public class DWMActivity extends AppCompatActivity {
                 tv_check_6.setText(dwmData.get(0).getCheckoncheckrmk());
                 tv_1_3_a.setText("" + dwmData.get(0).getCovid());
                 tv_1_6a.setText("" + dwmData.get(0).getCovidRemark());
-                tv_2_3b.setText("" + dwmData.get(0).getLpa());
+                tv_2_3b.setText("" + dwmData.get(0).getLpa()/*+""+dwmData.get(0).getLPA()*/);
                 tv_2_6b.setText("" + dwmData.get(0).getLapRemark());
                 tv_2_3c.setText("" + dwmData.get(0).getLpaCovid());
                 tv_2_6c.setText("" + dwmData.get(0).getLpaCovidremark());
@@ -2183,7 +2184,7 @@ public class DWMActivity extends AppCompatActivity {
                 et_6_2_6.setText(String.valueOf(dwmData.get(0).getPeopleCDP()));
                 et_7_2_1.setText(String.valueOf(dwmData.get(0).getManagementCorp()));
                 et_7_2_2.setText(String.valueOf(dwmData.get(0).getManagementProtivity()));
-                et_7_2_3.setText(String.valueOf(dwmData.get(0).getManagementUnit()));
+            //    et_7_2_3.setText(String.valueOf(dwmData.get(0).getManagementUnit()));
                 et_8_2_2_unitReview.setText(String.valueOf(dwmData.get(0).getManagementUnit()));
                 et_7_2_4.setText(String.valueOf(dwmData.get(0).getManagementMeeting()));
                 et_8_2_1.setText(String.valueOf(dwmData.get(0).getRegularMMC()));
@@ -2213,11 +2214,11 @@ public class DWMActivity extends AppCompatActivity {
                 cmt6_2_2.setText(dwmData.get(0).getPeopleBMRemark());
                 cmt6_2_3.setText(dwmData.get(0).getPeopleLLLGRemark());
                 cmt6_2_4.setText(dwmData.get(0).getPeopleTrainingRemark());
-                cmt6_2_5.setText(dwmData.get(0).getPeopleBestRemark());
+                cmt8_2_1_bestReview.setText(dwmData.get(0).getPeopleBestRemark());
                 cmt6_2_6.setText(dwmData.get(0).getPeopleCDPRemark());
                 cmt7_2_1.setText(dwmData.get(0).getManagementCorpRemark());
                 cmt7_2_2.setText(dwmData.get(0).getManagementProtivityRemark());
-                cmt7_2_3.setText(dwmData.get(0).getManagementUnitRemark());
+              //  cmt7_2_3.setText(dwmData.get(0).getManagementUnitRemark());
                 cmt8_2_2_unitReview.setText(dwmData.get(0).getManagementUnitRemark());
                 cmt7_2_4.setText(dwmData.get(0).getManagementMeetingRemark());
                 cmt8_2_1.setText(dwmData.get(0).getRegularMMCRemark());
@@ -2398,7 +2399,8 @@ public class DWMActivity extends AppCompatActivity {
                     cmt6_1_4.setText(dwmData.get(0).getPeopleTrainingRemark());
                 }
                 if (dwmData.get(0).getPeopleBestRemark() != null) {
-                    cmt6_1_5.setText(dwmData.get(0).getPeopleBestRemark());
+                    cmt8_1_1_bestReview.setText(dwmData.get(0).getPeopleBestRemark());
+               //     cmt6_1_5.setText(dwmData.get(0).getPeopleBestRemark());
                 }
                 if (dwmData.get(0).getPeopleCDPRemark() != null) {
                     cmt6_1_6.setText(dwmData.get(0).getPeopleCDPRemark());
@@ -2410,7 +2412,7 @@ public class DWMActivity extends AppCompatActivity {
                     cmt7_1_2.setText(dwmData.get(0).getManagementProtivityRemark());
                 }
                 if (dwmData.get(0).getManagementUnitRemark() != null) {
-                    cmt7_1_3.setText(dwmData.get(0).getManagementUnitRemark());
+                 //   cmt7_1_3.setText(dwmData.get(0).getManagementUnitRemark());
                 }
                 if (dwmData.get(0).getManagementUnitRemark() != null) {
                     cmt8_1_2_unitReview.setText(dwmData.get(0).getManagementUnitRemark());
@@ -3495,7 +3497,7 @@ public class DWMActivity extends AppCompatActivity {
 
             }
         });
-        et_7_2_3.addTextChangedListener(new TextWatcher() {
+      /*  et_7_2_3.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
@@ -3513,7 +3515,7 @@ public class DWMActivity extends AppCompatActivity {
 
             }
         });
-
+*/
         et_8_2_2_unitReview.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -4871,11 +4873,11 @@ public class DWMActivity extends AppCompatActivity {
         } else {
             int_et_7_2_2 = 0;
         }
-        if ((et_7_2_3.getText().toString() != null) && (!et_7_2_3.getText().toString().isEmpty()) && !et_7_2_3.getText().toString().contains("nul")) {
+       /* if ((et_7_2_3.getText().toString() != null) && (!et_7_2_3.getText().toString().isEmpty()) && !et_7_2_3.getText().toString().contains("nul")) {
             int_et_7_2_3 = Integer.parseInt(et_7_2_3.getText().toString());
         } else {
             int_et_7_2_3 = 0;
-        }
+        }*/
 
         if ((et_8_2_2_unitReview.getText().toString() != null) && (!et_8_2_2_unitReview.getText().toString().isEmpty()) && !et_8_2_2_unitReview.getText().toString().contains("nul")) {
             int_et_8_2_2_unitReview = Integer.parseInt(et_8_2_2_unitReview.getText().toString());

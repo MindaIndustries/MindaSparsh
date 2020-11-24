@@ -114,6 +114,8 @@ public class ParseData {
                 value.setCheckoncheck(jo.optString("checkoncheck"));
                 value.setCheckoncheckrmk(jo.optString("checkoncheckrmk"));
                 value.setLpa(jo.optInt("Lpa"));
+                value.setLPA(jo.optInt("LPA"));
+
                 value.setCovid(jo.optInt("Covid"));
                 value.setLpaCovid(jo.optInt("LpaCovid"));
                 value.setLapRemark(jo.optString("LapRemark"));

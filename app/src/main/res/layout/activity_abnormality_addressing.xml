@@ -614,6 +614,15 @@
                             android:layout_weight="2"
                             android:background="@drawable/cell_views"
                             android:gravity="center"
+                            android:text="Category"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="100dp"
+                            android:layout_height="30dp"
+                            android:layout_weight="2"
+                            android:background="@drawable/cell_views"
+                            android:gravity="center"
                             android:text="Plant"
                             android:textStyle="bold" />
 
