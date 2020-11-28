@@ -73,9 +73,9 @@ public class MindacareServices {
         });
     }
 
-    public void mindacarequestions(OnTaskComplete onTaskComplete) {
+    public void mindacarequestions(OnTaskComplete onTaskComplete,String EmpCode) {
         MindacareClient mindacareClient = RetrofitClient2.createServiceMindacare(MindacareClient.class);
-        Call<List<QuesResponse>> call = mindacareClient.mindacareQuestions();
+        Call<List<QuesResponse>> call = mindacareClient.mindacareQuestions(EmpCode);
         call.enqueue(new Callback<List<QuesResponse>>() {
             @Override
             public void onResponse(Call<List<QuesResponse>> call, Response<List<QuesResponse>> response) {

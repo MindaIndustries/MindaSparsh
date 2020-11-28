@@ -2077,7 +2077,7 @@ public class DWMActivity extends AppCompatActivity {
                 et_7_3_3.setText(String.valueOf(dwmData.get(0).getManagementUnit()));
                 et_8_3_2_unitReview.setText(String.valueOf(dwmData.get(0).getManagementMeeting()));
                 et_7_3_4.setText(String.valueOf(dwmData.get(0).getManagementUnit()));
-               et_8_3_1.setText(String.valueOf(dwmData.get(0).getRegularMMC()));
+                et_8_3_1.setText(String.valueOf(dwmData.get(0).getRegularMMC()));
                 et_8_3_2.setText(String.valueOf(dwmData.get(0).getRegularSystem()));
                 et_8_3_3.setText(String.valueOf(dwmData.get(0).getRegularIndent()));
                 et_8_3_4.setText(String.valueOf(dwmData.get(0).getRegularDevelopment()));

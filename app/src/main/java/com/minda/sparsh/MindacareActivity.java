@@ -12,12 +12,11 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.FrameLayout;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.github.dkharrat.nexusdialog.controllers.FormSectionController;
 import com.google.android.gms.common.api.ResolvableApiException;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationRequest;
@@ -34,19 +33,26 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.minda.sparsh.Adapter.MindaCareQuesAdapter;
 import com.minda.sparsh.listener.CarotResponse;
 import com.minda.sparsh.listener.OnTaskComplete;
 import com.minda.sparsh.model.CheckinDetailsResponse;
 import com.minda.sparsh.model.QuesResponse;
 import com.minda.sparsh.services.MindacareServices;
 import com.minda.sparsh.util.Utility;
+import com.paperplay.myformbuilder.MyCheckbox;
+import com.paperplay.myformbuilder.MyEdittext;
+import com.paperplay.myformbuilder.MyRadioButton;
+import com.paperplay.myformbuilder.MySpinner;
 
 import java.net.HttpURLConnection;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 
 import androidx.annotation.NonNull;
@@ -55,6 +61,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -91,16 +98,20 @@ public class MindacareActivity extends AppCompatActivity implements GoogleMap.On
     String selected = "0";
     List<QuesResponse> quesResponseList = new ArrayList<QuesResponse>();
 
-
     private boolean permissionDenied = false;
     private GoogleMap map;
     private static final int LOCATION_PERMISSION_REQUEST_CODE = 1;
     private FusedLocationProviderClient fusedLocationClient;
 
-
     String selection = "0";
+    MindaCareQuesAdapter mindaCareQuesAdapter;
+    HashMap<String,List<String>> options = new HashMap<String,List<String>>();
+    @BindView(R.id.rootLayout)
+    LinearLayout rootLayout;
 
-    @Override
+    /*  FormBuilder formBuilder;
+    ArrayList<FormObject> formElementMutableList;
+  */  @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.minda_care);
@@ -116,8 +127,13 @@ public class MindacareActivity extends AppCompatActivity implements GoogleMap.On
                 (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
-
-        getCheckInDetails();
+        mindaCareQuesAdapter = new MindaCareQuesAdapter(MindacareActivity.this,quesResponseList,options);
+        final LinearLayoutManager mLayoutManager = new LinearLayoutManager(MindacareActivity.this, LinearLayoutManager.VERTICAL, false);
+        recyclerView.setLayoutManager(mLayoutManager);
+        recyclerView.setAdapter(mindaCareQuesAdapter);
+       /* formBuilder = new FormBuilder(MindacareActivity.this,rootLayout);
+        formElementMutableList = new ArrayList<FormObject>();
+       */ getCheckInDetails();
         mindacarequestions();
     }
 
@@ -147,7 +163,6 @@ public class MindacareActivity extends AppCompatActivity implements GoogleMap.On
             Toast.makeText(MindacareActivity.this, "Please Check Your Network Connection", Toast.LENGTH_LONG).show();
         }
     }
-
 
     @OnClick(R.id.wfo)
     public void onClickWfo() {
@@ -193,7 +208,6 @@ public class MindacareActivity extends AppCompatActivity implements GoogleMap.On
 
         }
     }
-
 
     public void getCheckInDetails() {
         MindacareServices mindacareServices = new MindacareServices();
@@ -262,7 +276,6 @@ public class MindacareActivity extends AppCompatActivity implements GoogleMap.On
         enableMyLocation();
     }
 
-
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         if (requestCode != LOCATION_PERMISSION_REQUEST_CODE) {
@@ -278,7 +291,6 @@ public class MindacareActivity extends AppCompatActivity implements GoogleMap.On
             permissionDenied = true;
         }
     }
-
 
     public void checkGPS() {
         LocationRequest locationRequest = LocationRequest.create();
@@ -369,7 +381,6 @@ public class MindacareActivity extends AppCompatActivity implements GoogleMap.On
         }
     }
 
-
     public void clockInclockOut(String empCode, String message, String InLattitiude, String InLongitude, String OutLattitude, String OutLongitude) {
         MindacareServices mindacareServices = new MindacareServices();
         mindacareServices.clockInclockOut(new OnTaskComplete() {
@@ -390,10 +401,10 @@ public class MindacareActivity extends AppCompatActivity implements GoogleMap.On
     }
 
     public void mindacarequestions() {
-        quesResponseList.clear();
-        //  recyclerView.getRecycledViewPool().clear();
-        //  ehsObsAdapter.notifyDataSetChanged();
-
+      /*  quesResponseList.clear();
+        options.clear();
+        recyclerView.getRecycledViewPool().clear();
+      */    mindaCareQuesAdapter.notifyDataSetChanged();
         MindacareServices mindacareServices = new MindacareServices();
         mindacareServices.mindacarequestions(new OnTaskComplete() {
             @Override
@@ -402,13 +413,101 @@ public class MindacareActivity extends AppCompatActivity implements GoogleMap.On
                     List<QuesResponse> list = (List<QuesResponse>) carotResponse.getData();
                     if (list != null && list.size() > 0) {
                         quesResponseList.addAll(list);
+
+                        for(int i=0;i<quesResponseList.size();i++){
+                            options.put(quesResponseList.get(i).getID(),convertStringtoArrayList(quesResponseList.get(i).getOpts()));
+                            switch(quesResponseList.get(i).getTypes()){
+                                case "TextBox":
+                                    MyEdittext.Builder edtBuilder = new MyEdittext.Builder(MindacareActivity.this).setFormLayout(rootLayout);
+                                    try {
+                                        MyEdittext edittext = edtBuilder.clone().setTitle(quesResponseList.get(i).getQues()).create();
+                                        edittext.setTag(quesResponseList.get(i).getID());
+                                    } catch (CloneNotSupportedException e) {
+                                        e.printStackTrace();
+                                    }
+                                    // formElementMutableList.add(new FormElement().setTag(quesResponseList.get(i).getID()).setTitle(quesResponseList.get(i).getQues()).setType(FormElement.Type.TEXT).setHint(quesResponseList.get(i).getQues()));
+                                    break;
+                                case "CheckBox":
+                                    ArrayList<String> optionsArr = new ArrayList<>();
+                                        optionsArr.addAll(options.get(quesResponseList.get(i).getID()));
+
+
+                                    MyCheckbox myCheckboxView = new MyCheckbox.Builder(MindacareActivity.this)
+                                            .setTitle(quesResponseList.get(i).getQues()).setCheckBoxItem(optionsArr).setOnCheckedListener(new MyCheckbox.OnCheckedListener() {
+                                                @Override
+                                                public void onchecked(String checkboxName) {
+                                                    if(checkboxName.equalsIgnoreCase("None of the above")){
+                                                    }
+
+                                                }
+                                            })
+                                            .setFormLayout(rootLayout).create();
+                                    myCheckboxView.setTag(quesResponseList.get(i).getID());
+
+
+                                  //  formElementMutableList.add(new FormElement().setTag(quesResponseList.get(i).getID()).setTitle(quesResponseList.get(i).getQues()).setType(FormElement.Type.MULTIPLE_SELECTION).setOptions(options.get(quesResponseList.get(i).getID())).setHint(quesResponseList.get(i).getQues()));
+                                    break;
+                                case "RadioButton":
+                                    String[] optionRadio = new String[options.get(quesResponseList.get(i).getID()).size()];
+                                    for(int k=0;k<options.get(quesResponseList.get(i).getID()).size();k++){
+                                        optionRadio[k] = options.get(quesResponseList.get(i).getID()).get(k);
+                                    }
+
+                                    MyRadioButton rdbGender = new MyRadioButton.Builder(MindacareActivity.this)
+                                            .setTitle(quesResponseList.get(i).getQues()).setOptionList(optionRadio)
+                                            .setFormLayout(rootLayout).create();
+                                    rdbGender.setTag(quesResponseList.get(i).getID());
+                                   // formElementMutableList.add(new FormElement().setTag(quesResponseList.get(i).getID()).setTitle(quesResponseList.get(i).getQues()).setType(FormElement.Type.SELECTION).setOptions(options.get(quesResponseList.get(i).getID())).setHint(quesResponseList.get(i).getQues()));
+                                    break;
+                                case "DropDown":
+                                  /*  if(quesResponseList.get(i).getQues().contains("What is your current Body Temperature ?")){
+                                        ArrayList<String> tempArr = new ArrayList<>();
+                                        for(double l=92.0;l<107.0;l++){
+                                            tempArr.add(""+l);
+                                        }
+                                    }
+                                    ArrayList<String> cityList = new ArrayList<>();
+                                    cityList.add("Test");
+                                    cityList.add("Test1");
+                                    MySpinner spinCity = new MySpinner.Builder(MindacareActivity.this)
+                                            .setTitle(quesResponseList.get(i).getQues()).setItem(cityList).setFormLayout(rootLayout).create();
+
+                                    spinCity.setTag(quesResponseList.get(i).getID());
+*/
+
+
+                                    ArrayList<String> cityList = new ArrayList<>();
+                                    cityList.add("Test");
+                                    cityList.add("Test1");
+                                    MySpinner spinCity = new MySpinner.Builder(MindacareActivity.this)
+                                            .setTitle(quesResponseList.get(i).getQues()).setItem(cityList).setFormLayout(rootLayout).create();
+
+                                    spinCity.setTag(quesResponseList.get(i).getID());
+                                     // formElementMutableList.add(new FormElement().setTag(quesResponseList.get(i).getID()).setTitle(quesResponseList.get(i).getQues()).setType(FormElement.Type.SPINNER).setHint(quesResponseList.get(i).getQues()));
+                                    break;
+
+                            }
+                        }
+/*
+                        formBuilder.build(formElementMutableList);
+*/
+
+
+
                     }
                 }
+                mindaCareQuesAdapter.notifyDataSetChanged();
             }
-        });
+        },empCode);
 
     }
 
+    public List<String> convertStringtoArrayList(String opts){
+        String[] optsarray = opts.split(",");
+        List<String> fixedLenghtList = Arrays.asList(optsarray);
+        return fixedLenghtList;
+
+    }
 
     public String convertDate(String dateString1, String dateString2) {
 

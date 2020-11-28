@@ -242,7 +242,7 @@ public class AbnormalityAdapter extends BaseAdapter {
                 @Override
                 public void onClick(View view) {
                     if (AbnormalityAddressingActivity.Role.equalsIgnoreCase("C")) {
-                        if (homeData.get(position).getTargetDate() != null) {
+                        if (holder.tv_test_date.getText().toString()!=null && holder.tv_test_date.getText().toString().length()>0 && !holder.tv_test_date.getText().toString().equalsIgnoreCase("Add Date")/*get(position).getTargetDate() != null*/) {
                             Intent intent = new Intent(mContext, AbnormalityAddressing2Activity.class);
                             intent.putExtra("ID", homeData.get(position).getID());
                             intent.putExtra("domain", homeData.get(position).getDomain());
@@ -275,7 +275,7 @@ public class AbnormalityAdapter extends BaseAdapter {
 
                     if (AbnormalityAddressingActivity.Role.equalsIgnoreCase("C")) {
                         if (holder.tv_test_date.getText().toString().equalsIgnoreCase("Add Date")) {
-                            setdate(homeData.get(position).getID(),position);
+                            setdate(homeData.get(position).getID(),position,holder.tv_test_date);
 
                         } else {
                             Snackbar.make(view, "You have Already set Target Date", Snackbar.LENGTH_LONG).show();
@@ -305,7 +305,7 @@ public class AbnormalityAdapter extends BaseAdapter {
         alert.show();
     }
 
-    public void setdate(final int id, final int position) {
+    public void setdate(final int id, final int position,TextView textView) {
 
         final Calendar c = Calendar.getInstance();
         int mYear = c.get(Calendar.YEAR);
@@ -330,8 +330,9 @@ public class AbnormalityAdapter extends BaseAdapter {
                             date = String.valueOf(dayOfMonth) + "-" + month + "-" + String.valueOf(year);
                         }
 
+                        textView.setText(date);
 
-                        hitSetTargetDateApi(id, date, homeData.get(position).getDepartment());
+                        hitSetTargetDateApi(id, date, homeData.get(position).getDepartment(),holder.tv_test_date);
 
 
                     }
@@ -340,7 +341,7 @@ public class AbnormalityAdapter extends BaseAdapter {
         datePickerDialog.show();
     }
 
-    public void hitSetTargetDateApi(int id, String date, final String department) {
+    public void hitSetTargetDateApi(int id, String date, final String department,TextView textView) {
         if (Utility.isOnline(mContext)) {
             showProgress(true);
             Interface promotingMyinterface = RetrofitClient2.getClient().create(Interface.class);
@@ -350,13 +351,14 @@ public class AbnormalityAdapter extends BaseAdapter {
                 public void onResponse(Call<List<AddTargetDate_Model>> call, Response<List<AddTargetDate_Model>> response) {
                     showProgress(false);
                     List<AddTargetDate_Model> AddDateresponse = response.body();
+                    textView.setText(date);
+                    notifyDataSetChanged();
 
                     if (AddDateresponse != null) {
 
                         Toast.makeText(mContext, AddDateresponse.get(0).getColumn1(), Toast.LENGTH_LONG).show();
                         AbnormalityAddressingActivity contxt = (AbnormalityAddressingActivity) mContext;
                         contxt.hitSubdepartmentApi(department);
-
                     }
 
                 }

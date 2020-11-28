@@ -888,32 +888,36 @@ public class AbnormalityAddressingActivity extends AppCompatActivity {
             response.enqueue(new Callback<List<Plant_Model>>() {
                 @Override
                 public void onResponse(Call<List<Plant_Model>> call, Response<List<Plant_Model>> response) {
-                    showProgress(false);
-                    Plantresponse = response.body();
-                    Plant_Model plant_model = new Plant_Model();
-                    plant_model.setUnitCode("0");
-                    plant_model.setUnitName("Select Plant");
-                    Plantresponse.add(0, plant_model);
+                  try {
+                      showProgress(false);
+                      Plantresponse = response.body();
+                      Plant_Model plant_model = new Plant_Model();
+                      plant_model.setUnitCode("0");
+                      plant_model.setUnitName("Select Plant");
+                      Plantresponse.add(0, plant_model);
 
-                    if (Plantresponse != null) {
-                        PlantSpinnerAdapter departmentSpinnerAdapter = new PlantSpinnerAdapter(AbnormalityAddressingActivity.this, Plantresponse);
-                        sp_plant.setAdapter(departmentSpinnerAdapter);
+                      if (Plantresponse != null) {
+                          PlantSpinnerAdapter departmentSpinnerAdapter = new PlantSpinnerAdapter(AbnormalityAddressingActivity.this, Plantresponse);
+                          sp_plant.setAdapter(departmentSpinnerAdapter);
 
-                        for (int i = 0; i < Plantresponse.size(); i++) {
-                            if (UNITCODE.equalsIgnoreCase(Plantresponse.get(i).getUnitCode())) {
-                                sp_plant.setSelection(i);
-                                if (PLANTROLE.equalsIgnoreCase("Best Coordinator") || PLANTROLE.equalsIgnoreCase("Plant Head")) {
-                                    sp_plant.setEnabled(false);
-                                } else {
-                                    sp_plant.setEnabled(true);
-                                }
-                                break;
-                            }
-                        }
+                          for (int i = 0; i < Plantresponse.size(); i++) {
+                              if (UNITCODE.equalsIgnoreCase(Plantresponse.get(i).getUnitCode())) {
+                                  sp_plant.setSelection(i);
+                                  if (PLANTROLE.equalsIgnoreCase("Best Coordinator") || PLANTROLE.equalsIgnoreCase("Plant Head")) {
+                                      sp_plant.setEnabled(false);
+                                  } else {
+                                      sp_plant.setEnabled(true);
+                                  }
+                                  break;
+                              }
+                          }
 
 
-                    }
+                      }
+                  }
+                  catch (Exception e){
 
+                  }
                 }
 
                 @Override

@@ -7,11 +7,15 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_above="@+id/submit"
+        android:fillViewport="true"
+
+        >
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginTop="?attr/actionBarSize">
 
             <RelativeLayout
@@ -157,27 +161,47 @@
                     android:textSize="12sp"
                     android:textStyle="bold" />
             </RelativeLayout>
+            
+            
+            <LinearLayout
+                android:layout_below="@+id/map_layout"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:id="@+id/rootLayout"
+                android:padding="10dp"
+                android:layout_marginBottom="80dp"
+                android:scrollbars="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                tools:context=".MindacareActivity"/>
 
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/questions"
+                android:visibility="gone"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/map_layout" />
 
-            <Button
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/questions"
-                android:layout_centerHorizontal="true"
-                android:layout_margin="10dp"
-                android:background="@drawable/btn_bg_sbmt"
-                android:inputType="textCapWords"
-                android:text="Submit"
-                android:textColor="@color/white"
-                android:textStyle="bold" />
+
 
         </RelativeLayout>
 
     </ScrollView>
+    <Button
+        android:id="@+id/submit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/btn_bg_sbmt"
+        android:inputType="textCapWords"
+        android:text="Submit"
+        android:textColor="@color/white"
+        android:layout_alignParentBottom="true"
+        android:textStyle="bold" />
+
+
 </RelativeLayout>
