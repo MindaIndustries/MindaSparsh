@@ -5,7 +5,9 @@ import com.minda.sparsh.client.MindacareClient;
 import com.minda.sparsh.listener.CarotResponse;
 import com.minda.sparsh.listener.OnTaskComplete;
 import com.minda.sparsh.model.CheckinDetailsResponse;
+import com.minda.sparsh.model.CityResponse;
 import com.minda.sparsh.model.QuesResponse;
+import com.minda.sparsh.model.StateResponse;
 import com.minda.sparsh.util.RetrofitClient2;
 
 import java.io.IOException;
@@ -97,6 +99,59 @@ public class MindacareServices {
 
             }
         });
+    }
+
+    public void getState(OnTaskComplete onTaskComplete){
+        MindacareClient mindacareClient = RetrofitClient2.createServiceMindacare(MindacareClient.class);
+        Call<List<StateResponse>> call = mindacareClient.getState();
+        call.enqueue(new Callback<List<StateResponse>>() {
+            @Override
+            public void onResponse(Call<List<StateResponse>> call, Response<List<StateResponse>> response) {
+                CarotResponse carotResponse = new CarotResponse();
+                carotResponse.setStatuscode(response.code());
+                if (response.code() == HttpsURLConnection.HTTP_OK) {
+                    carotResponse.setData(response.body());
+                }
+                onTaskComplete.onTaskComplte(carotResponse);
+            }
+
+            @Override
+            public void onFailure(Call<List<StateResponse>> call, Throwable t) {
+                CarotResponse carotResponse = new CarotResponse();
+                if (t instanceof IOException) {
+                    carotResponse.setMessage("Please hold on a moment, the internet connectivity seems to be slow");
+                }
+                onTaskComplete.onTaskComplte(carotResponse);
+
+            }
+        });
 
     }
+
+    public void getCity(OnTaskComplete onTaskComplete,String stateId){
+        MindacareClient mindacareClient = RetrofitClient2.createServiceMindacare(MindacareClient.class);
+        Call<List<CityResponse>> call = mindacareClient.getCity(stateId);
+        call.enqueue(new Callback<List<CityResponse>>() {
+            @Override
+            public void onResponse(Call<List<CityResponse>> call, Response<List<CityResponse>> response) {
+                CarotResponse carotResponse = new CarotResponse();
+                carotResponse.setStatuscode(response.code());
+                if (response.code() == HttpsURLConnection.HTTP_OK) {
+                    carotResponse.setData(response.body());
+                }
+                onTaskComplete.onTaskComplte(carotResponse);
+            }
+
+            @Override
+            public void onFailure(Call<List<CityResponse>> call, Throwable t) {
+                CarotResponse carotResponse = new CarotResponse();
+                if (t instanceof IOException) {
+                    carotResponse.setMessage("Please hold on a moment, the internet connectivity seems to be slow");
+                }
+                onTaskComplete.onTaskComplte(carotResponse);
+            }
+        });
+    }
+
+
 }

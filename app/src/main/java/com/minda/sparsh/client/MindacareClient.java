@@ -1,7 +1,9 @@
 package com.minda.sparsh.client;
 
 import com.minda.sparsh.model.CheckinDetailsResponse;
+import com.minda.sparsh.model.CityResponse;
 import com.minda.sparsh.model.QuesResponse;
+import com.minda.sparsh.model.StateResponse;
 
 import java.util.List;
 
@@ -20,6 +22,11 @@ public interface MindacareClient {
     @GET("MindaCareQuestions")
     Call<List<QuesResponse>>  mindacareQuestions(@Query("EmpCode") String EmpCode);
 
+    @GET("MindaCareState")
+    Call<List<StateResponse>> getState();
+
+    @GET("MindaCareCity")
+    Call<List<CityResponse>> getCity(@Query("StateID") String StateID);
 
 
 }
