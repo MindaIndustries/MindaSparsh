@@ -8,6 +8,7 @@ import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.os.Bundle;
+import android.text.InputType;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
@@ -425,6 +426,7 @@ public class MindacareActivity extends AppCompatActivity implements GoogleMap.On
                             Toast.makeText(MindacareActivity.this, "Thank you for starting your day with Clock in, Fill Self declaration form.", Toast.LENGTH_LONG).show();
                         } else {
                             clock.setText("CLOCK IN");
+                            getCheckInDetails();
                         }
                     }
                 }
@@ -433,10 +435,6 @@ public class MindacareActivity extends AppCompatActivity implements GoogleMap.On
     }
 
     public void mindacarequestions() {
-      /*  quesResponseList.clear();
-        options.clear();
-        recyclerView.getRecycledViewPool().clear();
-      */
         mindaCareQuesAdapter.notifyDataSetChanged();
         MindacareServices mindacareServices = new MindacareServices();
         mindacareServices.mindacarequestions(new OnTaskComplete() {
@@ -453,7 +451,7 @@ public class MindacareActivity extends AppCompatActivity implements GoogleMap.On
                                 case "TextBox":
                                     MyEdittext.Builder edtBuilder = new MyEdittext.Builder(MindacareActivity.this).setFormLayout(rootLayout);
                                     try {
-                                        MyEdittext edittext = edtBuilder.clone().setTitle(quesResponseList.get(i).getQues()).create();
+                                        MyEdittext edittext = edtBuilder.clone().setTitle(quesResponseList.get(i).getQues()).setInputType(InputType.TYPE_TEXT_FLAG_NO_SUGGESTIONS).create();
                                         edittext.setTag(quesResponseList.get(i).getID());
                                         if (quesResponseList.get(i).getQues().contains("Input Your Employee Code")) {
                                             edittext.setValue(empCode);
@@ -745,10 +743,14 @@ public class MindacareActivity extends AppCompatActivity implements GoogleMap.On
                         adapter.notifyDataSetChanged();
                     }
 
-                    if(quesResponseList.get(i).getCity()!=null && quesResponseList.get(i).getCity().length()>0){
-                        spinCity.setValue(""+quesResponseList.get(i).getCity());
+                    try {
+                        if (quesResponseList.get(i).getCity() != null && quesResponseList.get(i).getCity().length() > 0) {
+                            spinCity.setValue("" + quesResponseList.get(i).getCity());
+                        }
                     }
+                    catch (Exception e){
 
+                    }
                 }
 
             }
