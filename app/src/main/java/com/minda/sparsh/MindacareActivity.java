@@ -487,9 +487,9 @@ public class MindacareActivity extends AppCompatActivity implements GoogleMap.On
                                     optionsArr.addAll(options.get(quesResponseList.get(i).getID()));
                                     TextView textView = new TextView(MindacareActivity.this);
                                     textView.setText(quesResponseList.get(i).getQues());
-                                    Typeface tf = Typeface.createFromAsset(getResources().getAssets(),"font/museosans_700.otf");
-                               //     textView.setTypeface(tf);
-                                 //   textView.setTextColor(Color.BLACK);
+                                    // Typeface tf = Typeface.createFromAsset(getResources().getAssets(),"font/museosans_700.otf");
+                                    //     textView.setTypeface(tf);
+                                    //   textView.setTextColor(Color.BLACK);
                                     rootLayout.addView(textView);
                                     HashMap<String, CheckBox> checkBoxItemSelected = new HashMap<String, CheckBox>();
 
