@@ -506,7 +506,7 @@ public class MindacareActivity extends AppCompatActivity implements GoogleMap.On
                                         checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
                                             @Override
                                             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                                                if(!optionsArr.contains("None of the above")){
+                                                if (!optionsArr.contains("None of the above")) {
                                                     return;
                                                 }
                                                 if (checkBoxItemSelected.get("None of the above").isChecked()) {
@@ -591,7 +591,7 @@ public class MindacareActivity extends AppCompatActivity implements GoogleMap.On
                                         MySpinner spinState = new MySpinner.Builder(MindacareActivity.this)
                                                 .setTitle(quesResponseList.get(i).getQues()).setItem(state).setFormLayout(rootLayout).create();
                                         spinState.setTag(quesResponseList.get(i).getID());
-                                        spinState.setValue(""+quesResponseList.get(i).getState());
+                                        spinState.setValue("" + quesResponseList.get(i).getState());
 
                                         spinState.setSpinnerOnSelectedListener(new MySpinner.OnSelectedListener() {
                                             @Override
@@ -629,7 +629,6 @@ public class MindacareActivity extends AppCompatActivity implements GoogleMap.On
                                         spinCity = new MySpinner.Builder(MindacareActivity.this)
                                                 .setTitle("City").setItem(city).setFormLayout(rootLayout).create();
                                         spinCity.setTag(quesResponseList.get(i).getID());
-
 
 
                                     }
@@ -747,8 +746,7 @@ public class MindacareActivity extends AppCompatActivity implements GoogleMap.On
                         if (quesResponseList.get(i).getCity() != null && quesResponseList.get(i).getCity().length() > 0) {
                             spinCity.setValue("" + quesResponseList.get(i).getCity());
                         }
-                    }
-                    catch (Exception e){
+                    } catch (Exception e) {
 
                     }
                 }

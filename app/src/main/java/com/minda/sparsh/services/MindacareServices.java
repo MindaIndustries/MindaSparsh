@@ -1,6 +1,5 @@
 package com.minda.sparsh.services;
 
-import com.minda.sparsh.RetrofitClient;
 import com.minda.sparsh.client.MindacareClient;
 import com.minda.sparsh.listener.CarotResponse;
 import com.minda.sparsh.listener.OnTaskComplete;
@@ -75,7 +74,7 @@ public class MindacareServices {
         });
     }
 
-    public void mindacarequestions(OnTaskComplete onTaskComplete,String EmpCode) {
+    public void mindacarequestions(OnTaskComplete onTaskComplete, String EmpCode) {
         MindacareClient mindacareClient = RetrofitClient2.createServiceMindacare(MindacareClient.class);
         Call<List<QuesResponse>> call = mindacareClient.mindacareQuestions(EmpCode);
         call.enqueue(new Callback<List<QuesResponse>>() {
@@ -101,7 +100,7 @@ public class MindacareServices {
         });
     }
 
-    public void getState(OnTaskComplete onTaskComplete){
+    public void getState(OnTaskComplete onTaskComplete) {
         MindacareClient mindacareClient = RetrofitClient2.createServiceMindacare(MindacareClient.class);
         Call<List<StateResponse>> call = mindacareClient.getState();
         call.enqueue(new Callback<List<StateResponse>>() {
@@ -128,7 +127,7 @@ public class MindacareServices {
 
     }
 
-    public void getCity(OnTaskComplete onTaskComplete,String stateId){
+    public void getCity(OnTaskComplete onTaskComplete, String stateId) {
         MindacareClient mindacareClient = RetrofitClient2.createServiceMindacare(MindacareClient.class);
         Call<List<CityResponse>> call = mindacareClient.getCity(stateId);
         call.enqueue(new Callback<List<CityResponse>>() {
