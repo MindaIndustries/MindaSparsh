@@ -6,6 +6,8 @@ import android.content.Intent;
 import android.content.IntentSender;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
+import android.graphics.Color;
+import android.graphics.Typeface;
 import android.location.Location;
 import android.os.Bundle;
 import android.text.InputType;
@@ -232,13 +234,7 @@ public class MindacareActivity extends AppCompatActivity implements GoogleMap.On
                 checkGPS();
             }
         } else {
-            // Permission to access the location is missing. Show rationale and request permission
-            /*PermissionUtils.requestPermission(this, LOCATION_PERMISSION_REQUEST_CODE,
-                    android.Manifest.permission.ACCESS_FINE_LOCATION, true);
-     */
-
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, LOCATION_PERMISSION_REQUEST_CODE);
-
         }
     }
 
@@ -269,7 +265,6 @@ public class MindacareActivity extends AppCompatActivity implements GoogleMap.On
                                 timeLayout.setVisibility(View.VISIBLE);
                                 clockintime.setText("Clock In: " + list.get(0).getRIntime());
                             }
-
                             if (list.get(0).getOutTime() != null && list.get(0).getOutTime().length() > 0) {
                                 clock.setVisibility(View.GONE);
                                 mapLayout.setVisibility(View.GONE);
@@ -291,7 +286,6 @@ public class MindacareActivity extends AppCompatActivity implements GoogleMap.On
     @Override
     public boolean onMyLocationButtonClick() {
         checkGPS();
-
         return false;
     }
 
@@ -493,6 +487,9 @@ public class MindacareActivity extends AppCompatActivity implements GoogleMap.On
                                     optionsArr.addAll(options.get(quesResponseList.get(i).getID()));
                                     TextView textView = new TextView(MindacareActivity.this);
                                     textView.setText(quesResponseList.get(i).getQues());
+                                    Typeface tf = Typeface.createFromAsset(getResources().getAssets(),"font/museosans_700.otf");
+                               //     textView.setTypeface(tf);
+                                 //   textView.setTextColor(Color.BLACK);
                                     rootLayout.addView(textView);
                                     HashMap<String, CheckBox> checkBoxItemSelected = new HashMap<String, CheckBox>();
 
