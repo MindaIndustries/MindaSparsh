@@ -20,6 +20,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
+import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.Spinner;
@@ -107,6 +108,8 @@ public class MindacareActivity extends AppCompatActivity implements GoogleMap.On
     TextView totalhr;
     @BindView(R.id.clockouttime)
     TextView clockouttime;
+    @BindView(R.id.submit)
+            Button submit;
 
     LatLng LATLNG;
     String selected = "0";
@@ -124,7 +127,7 @@ public class MindacareActivity extends AppCompatActivity implements GoogleMap.On
     LinearLayout rootLayout;
     ArrayList<String> unitsName = new ArrayList<String>();
     List<EHSUnitModel> units = new ArrayList<EHSUnitModel>();
-    String empCode, unitcode, User, DOB, Mobile;
+    String empCode, unitcode, User, DOB, Mobile, gender, Address, stateValue, cityValue, tempValue;
     ArrayList<String> city = new ArrayList<String>();
     ArrayList<String> state = new ArrayList<String>();
     ArrayList<StateResponse> stateObject = new ArrayList<>();
@@ -132,6 +135,9 @@ public class MindacareActivity extends AppCompatActivity implements GoogleMap.On
     MySpinner spinCity;
     ArrayAdapter adapter;
     MyCheckbox myCheckboxView = null;
+    HashMap<Integer, String> answers = new HashMap<>();
+    String ans1,ans2,ans3,ans4,ans5,ans6,ans7,ans8,ans9,ans10,ans11, ans12,ans13,ans14;
+    ArrayList<View> viewArrayList = new ArrayList<>();
 
 
     /*  FormBuilder formBuilder;
@@ -446,9 +452,11 @@ public class MindacareActivity extends AppCompatActivity implements GoogleMap.On
                                     MyEdittext.Builder edtBuilder = new MyEdittext.Builder(MindacareActivity.this).setFormLayout(rootLayout);
                                     try {
                                         MyEdittext edittext = edtBuilder.clone().setTitle(quesResponseList.get(i).getQues()).setInputType(InputType.TYPE_TEXT_FLAG_NO_SUGGESTIONS).create();
-                                        edittext.setTag(quesResponseList.get(i).getID());
+                                        edittext.setId(Integer.parseInt(quesResponseList.get(i).getID()));
+                                        viewArrayList.add(edittext);
                                         if (quesResponseList.get(i).getQues().contains("Input Your Employee Code")) {
                                             edittext.setValue(empCode);
+
                                             edittext.setEnabled(false);
                                         } else if (quesResponseList.get(i).getQues().contains("Input Your Name")) {
                                             edittext.setValue(User);
@@ -555,11 +563,13 @@ public class MindacareActivity extends AppCompatActivity implements GoogleMap.On
                                     MyRadioButton rdbGender = new MyRadioButton.Builder(MindacareActivity.this)
                                             .setTitle(quesResponseList.get(i).getQues()).setOptionList(optionRadio)
                                             .setFormLayout(rootLayout).create();
-                                    rdbGender.setTag(quesResponseList.get(i).getID());
+                                    rdbGender.setId(Integer.parseInt(quesResponseList.get(i).getID()));
+                                    viewArrayList.add(rdbGender);
 
                                     if (quesResponseList.get(i).getQues().contains("What is your Gender")) {
                                         rdbGender.setValue(quesResponseList.get(i).getGender());
                                     }
+
                                     // formElementMutableList.add(new FormElement().setTag(quesResponseList.get(i).getID()).setTitle(quesResponseList.get(i).getQues()).setType(FormElement.Type.SELECTION).setOptions(options.get(quesResponseList.get(i).getID())).setHint(quesResponseList.get(i).getQues()));
                                     break;
                                 case "DropDown":
@@ -571,13 +581,16 @@ public class MindacareActivity extends AppCompatActivity implements GoogleMap.On
                                         MySpinner spinCity = new MySpinner.Builder(MindacareActivity.this)
                                                 .setTitle(quesResponseList.get(i).getQues()).setItem(tempArr).setFormLayout(rootLayout).create();
 
-                                        spinCity.setTag(quesResponseList.get(i).getID());
+                                        spinCity.setId(Integer.parseInt(quesResponseList.get(i).getID()));
+                                        viewArrayList.add(spinCity);
 
                                     } else if (quesResponseList.get(i).getQues().contains("Select Your Unit")) {
                                         MySpinner spinCity = new MySpinner.Builder(MindacareActivity.this)
                                                 .setTitle(quesResponseList.get(i).getQues()).setItem(unitsName).setFormLayout(rootLayout).create();
 
-                                        spinCity.setTag(quesResponseList.get(i).getID());
+                                        spinCity.setId(Integer.parseInt(quesResponseList.get(i).getID()));
+                                        unitcode = spinCity.getValue();
+                                        viewArrayList.add(spinCity);
 
                                     } else if (quesResponseList.get(i).getQues().contains("What is your current residence State and City/District ?")) {
                                         state.clear();
@@ -587,13 +600,15 @@ public class MindacareActivity extends AppCompatActivity implements GoogleMap.On
 
                                         MySpinner spinState = new MySpinner.Builder(MindacareActivity.this)
                                                 .setTitle(quesResponseList.get(i).getQues()).setItem(state).setFormLayout(rootLayout).create();
-                                        spinState.setTag(quesResponseList.get(i).getID());
+                                        spinState.setId(Integer.parseInt(quesResponseList.get(i).getID()));
                                         spinState.setValue("" + quesResponseList.get(i).getState());
+                                        viewArrayList.add(spinState);
 
                                         spinState.setSpinnerOnSelectedListener(new MySpinner.OnSelectedListener() {
                                             @Override
                                             public void onSelected(String value) {
                                                 city.clear();
+
                                                 if (spinCity != null) {
                                                     synchronized (((LinearLayout) spinCity.getView()).getChildAt(1)) {
                                                         ((LinearLayout) spinCity.getView()).getChildAt(1);
@@ -617,15 +632,25 @@ public class MindacareActivity extends AppCompatActivity implements GoogleMap.On
 
                                                 StateResponse stateResponse = new StateResponse();
                                                 stateResponse.setState(value);
+                                                stateValue = value;
                                                 int i = stateObject.indexOf(stateResponse);
                                                 getCity(stateObject.get(i).getId(), i);
+
                                             }
                                         });
                                         city.add("Select City");
 
                                         spinCity = new MySpinner.Builder(MindacareActivity.this)
                                                 .setTitle("City").setItem(city).setFormLayout(rootLayout).create();
-                                        spinCity.setTag(quesResponseList.get(i).getID());
+                                        spinCity.setId(Integer.parseInt(quesResponseList.get(i).getID()));
+                                        spinCity.setSpinnerOnSelectedListener(new MySpinner.OnSelectedListener() {
+                                            @Override
+                                            public void onSelected(String value) {
+                                                cityValue = value;
+                                            }
+                                        });
+                                        viewArrayList.add(spinCity);
+
 
 
                                     }
@@ -754,4 +779,35 @@ public class MindacareActivity extends AppCompatActivity implements GoogleMap.On
 
     }
 
+    @OnClick(R.id.submit)
+    public void onclickSubmit(){
+        submit();
+    }
+
+
+    public void submit() {
+
+        if (unitcode == null || unitcode.length() == 0) {
+            return;
+        }
+        Log.d("temp",""+tempValue);
+
+        answers.clear();
+        for(int i =0;i< viewArrayList.size();i++) {
+            if(viewArrayList.get(i) instanceof  MyEdittext){
+            answers.put(viewArrayList.get(i).getId(),((MyEdittext)viewArrayList.get(i)).getValue());
+        }
+            else if(viewArrayList.get(i) instanceof MySpinner){
+                answers.put(viewArrayList.get(i).getId(),((MySpinner)viewArrayList.get(i)).getValue());
+            }
+            else if(viewArrayList.get(i) instanceof MyRadioButton){
+                answers.put(viewArrayList.get(i).getId(),((MyRadioButton)viewArrayList.get(i)).getValue());
+            }
+
+        }
+
+         }
 }
+
+
+
