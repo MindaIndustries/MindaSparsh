@@ -6,8 +6,6 @@ import android.content.Intent;
 import android.content.IntentSender;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
-import android.graphics.Color;
-import android.graphics.Typeface;
 import android.location.Location;
 import android.os.Bundle;
 import android.text.InputType;
@@ -15,12 +13,10 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Adapter;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
-import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.Spinner;
@@ -109,7 +105,7 @@ public class MindacareActivity extends AppCompatActivity implements GoogleMap.On
     @BindView(R.id.clockouttime)
     TextView clockouttime;
     @BindView(R.id.submit)
-            Button submit;
+    Button submit;
 
     LatLng LATLNG;
     String selected = "0";
@@ -136,7 +132,7 @@ public class MindacareActivity extends AppCompatActivity implements GoogleMap.On
     ArrayAdapter adapter;
     MyCheckbox myCheckboxView = null;
     HashMap<Integer, String> answers = new HashMap<>();
-    String ans1,ans2,ans3,ans4,ans5,ans6,ans7,ans8,ans9,ans10,ans11, ans12,ans13,ans14;
+    String ans1, ans2, ans3, ans4, ans5, ans6, ans7, ans8, ans9, ans10, ans11, ans12, ans13, ans14;
     ArrayList<View> viewArrayList = new ArrayList<>();
 
 
@@ -456,7 +452,6 @@ public class MindacareActivity extends AppCompatActivity implements GoogleMap.On
                                         viewArrayList.add(edittext);
                                         if (quesResponseList.get(i).getQues().contains("Input Your Employee Code")) {
                                             edittext.setValue(empCode);
-
                                             edittext.setEnabled(false);
                                         } else if (quesResponseList.get(i).getQues().contains("Input Your Name")) {
                                             edittext.setValue(User);
@@ -652,7 +647,6 @@ public class MindacareActivity extends AppCompatActivity implements GoogleMap.On
                                         viewArrayList.add(spinCity);
 
 
-
                                     }
                                     // formElementMutableList.add(new FormElement().setTag(quesResponseList.get(i).getID()).setTitle(quesResponseList.get(i).getQues()).setType(FormElement.Type.SPINNER).setHint(quesResponseList.get(i).getQues()));
                                     break;
@@ -705,7 +699,6 @@ public class MindacareActivity extends AppCompatActivity implements GoogleMap.On
         return diff;
     }
 
-
     public void getUnits() {
 
         EHSServices ehsServices = new EHSServices();
@@ -743,7 +736,6 @@ public class MindacareActivity extends AppCompatActivity implements GoogleMap.On
         });
     }
 
-
     public void getCity(String StateID, int i) {
         cityObject.clear();
         MindacareServices mindacareServices = new MindacareServices();
@@ -780,33 +772,28 @@ public class MindacareActivity extends AppCompatActivity implements GoogleMap.On
     }
 
     @OnClick(R.id.submit)
-    public void onclickSubmit(){
+    public void onclickSubmit() {
         submit();
     }
-
 
     public void submit() {
 
         if (unitcode == null || unitcode.length() == 0) {
             return;
         }
-        Log.d("temp",""+tempValue);
+        Log.d("temp", "" + tempValue);
 
         answers.clear();
-        for(int i =0;i< viewArrayList.size();i++) {
-            if(viewArrayList.get(i) instanceof  MyEdittext){
-            answers.put(viewArrayList.get(i).getId(),((MyEdittext)viewArrayList.get(i)).getValue());
-        }
-            else if(viewArrayList.get(i) instanceof MySpinner){
-                answers.put(viewArrayList.get(i).getId(),((MySpinner)viewArrayList.get(i)).getValue());
+        for (int i = 0; i < viewArrayList.size(); i++) {
+            if (viewArrayList.get(i) instanceof MyEdittext) {
+                answers.put(viewArrayList.get(i).getId(), ((MyEdittext) viewArrayList.get(i)).getValue());
+            } else if (viewArrayList.get(i) instanceof MySpinner) {
+                answers.put(viewArrayList.get(i).getId(), ((MySpinner) viewArrayList.get(i)).getValue());
+            } else if (viewArrayList.get(i) instanceof MyRadioButton) {
+                answers.put(viewArrayList.get(i).getId(), ((MyRadioButton) viewArrayList.get(i)).getValue());
             }
-            else if(viewArrayList.get(i) instanceof MyRadioButton){
-                answers.put(viewArrayList.get(i).getId(),((MyRadioButton)viewArrayList.get(i)).getValue());
-            }
-
         }
-
-         }
+    }
 }
 
 
