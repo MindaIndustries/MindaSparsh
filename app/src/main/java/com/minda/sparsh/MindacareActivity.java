@@ -63,6 +63,7 @@ import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 
 import javax.net.ssl.HttpsURLConnection;
@@ -490,10 +491,12 @@ public class MindacareActivity extends AppCompatActivity implements GoogleMap.On
                                     optionsArr.addAll(options.get(quesResponseList.get(i).getID()));
                                     TextView textView = new TextView(MindacareActivity.this);
                                     textView.setText(quesResponseList.get(i).getQues());
+                                    textView.setId(Integer.parseInt(quesResponseList.get(i).getID()));
                                     // Typeface tf = Typeface.createFromAsset(getResources().getAssets(),"font/museosans_700.otf");
                                     //     textView.setTypeface(tf);
                                     //   textView.setTextColor(Color.BLACK);
                                     rootLayout.addView(textView);
+                                    viewArrayList.add(textView);
                                     HashMap<String, CheckBox> checkBoxItemSelected = new HashMap<String, CheckBox>();
 
 
@@ -507,15 +510,17 @@ public class MindacareActivity extends AppCompatActivity implements GoogleMap.On
                                             @Override
                                             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                                                 if (!optionsArr.contains("None of the above")) {
-                                                    return;
+                                                  //  return;
                                                 }
-                                                if (checkBoxItemSelected.get("None of the above").isChecked()) {
+                                               else if (checkBoxItemSelected.get("None of the above").isChecked()) {
                                                     for (String key : checkBoxItemSelected.keySet()) {
                                                         if (!key.equalsIgnoreCase("None of the above")) {
                                                             checkBoxItemSelected.get(key).setChecked(false);
                                                         }
                                                     }
                                                 }
+                                                System.out.println("TEST"+ getAllChecked(checkBoxItemSelected).toString());
+                                                answers.put(textView.getId(), getAllChecked(checkBoxItemSelected).toString());
 
                                             }
                                         });
@@ -781,9 +786,7 @@ public class MindacareActivity extends AppCompatActivity implements GoogleMap.On
         if (unitcode == null || unitcode.length() == 0) {
             return;
         }
-        Log.d("temp", "" + tempValue);
 
-        answers.clear();
         for (int i = 0; i < viewArrayList.size(); i++) {
             if (viewArrayList.get(i) instanceof MyEdittext) {
                 answers.put(viewArrayList.get(i).getId(), ((MyEdittext) viewArrayList.get(i)).getValue());
@@ -792,8 +795,26 @@ public class MindacareActivity extends AppCompatActivity implements GoogleMap.On
             } else if (viewArrayList.get(i) instanceof MyRadioButton) {
                 answers.put(viewArrayList.get(i).getId(), ((MyRadioButton) viewArrayList.get(i)).getValue());
             }
+          //  else if(viewArrayList.get(i))
         }
     }
+
+
+
+    public ArrayList<String> getAllChecked(HashMap<String, CheckBox> checkBoxItemSelected) {
+        ArrayList<String> checkedList = new ArrayList();
+        Iterator var2 = checkBoxItemSelected.keySet().iterator();
+
+        while(var2.hasNext()) {
+            String key = (String)var2.next();
+            if (((CheckBox)checkBoxItemSelected.get(key)).isChecked()) {
+                checkedList.add(key);
+            }
+        }
+
+        return checkedList;
+    }
+
 }
 
 
