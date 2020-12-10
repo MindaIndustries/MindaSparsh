@@ -7,6 +7,8 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.TextView;
 
+import com.minda.sparsh.connection.HttpConnection;
+
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -32,7 +34,7 @@ public class MindacareWeb extends AppCompatActivity {
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setHomeAsUpIndicator(R.drawable.back);
         title.setText(getResources().getString(R.string.mindacare_selfDeclaration));
-        mindacareWebView.loadUrl("https://app.mindasparsh.com/mindacare/default.aspx");
+        mindacareWebView.loadUrl(HttpConnection.mindacareUrl);
         WebSettings webSettings = mindacareWebView.getSettings();
         webSettings.setJavaScriptEnabled(true);
 
