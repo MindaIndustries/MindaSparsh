@@ -172,7 +172,7 @@
             android:name=".ProfileActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".MindacareActivity"
+        <activity android:name=".MindacareWeb"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar"/>
 

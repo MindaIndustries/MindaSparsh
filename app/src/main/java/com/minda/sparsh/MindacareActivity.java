@@ -280,8 +280,6 @@ public class MindacareActivity extends AppCompatActivity implements GoogleMap.On
                         }
                     }
                 }
-
-
             }
         }, empCode);
     }
@@ -497,6 +495,7 @@ public class MindacareActivity extends AppCompatActivity implements GoogleMap.On
                                     //   textView.setTextColor(Color.BLACK);
                                     rootLayout.addView(textView);
                                     viewArrayList.add(textView);
+                                    answers.put(textView.getId(),"");
                                     HashMap<String, CheckBox> checkBoxItemSelected = new HashMap<String, CheckBox>();
 
 
@@ -510,16 +509,15 @@ public class MindacareActivity extends AppCompatActivity implements GoogleMap.On
                                             @Override
                                             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                                                 if (!optionsArr.contains("None of the above")) {
-                                                  //  return;
-                                                }
-                                               else if (checkBoxItemSelected.get("None of the above").isChecked()) {
+                                                    //  return;
+                                                } else if (checkBoxItemSelected.get("None of the above").isChecked()) {
                                                     for (String key : checkBoxItemSelected.keySet()) {
                                                         if (!key.equalsIgnoreCase("None of the above")) {
                                                             checkBoxItemSelected.get(key).setChecked(false);
                                                         }
                                                     }
                                                 }
-                                                System.out.println("TEST"+ getAllChecked(checkBoxItemSelected).toString());
+                                                System.out.println("TEST" + getAllChecked(checkBoxItemSelected).toString());
                                                 answers.put(textView.getId(), getAllChecked(checkBoxItemSelected).toString());
 
                                             }
@@ -783,31 +781,45 @@ public class MindacareActivity extends AppCompatActivity implements GoogleMap.On
 
     public void submit() {
 
-        if (unitcode == null || unitcode.length() == 0) {
-            return;
-        }
 
         for (int i = 0; i < viewArrayList.size(); i++) {
+
             if (viewArrayList.get(i) instanceof MyEdittext) {
-                answers.put(viewArrayList.get(i).getId(), ((MyEdittext) viewArrayList.get(i)).getValue());
+                if (!((MyEdittext) viewArrayList.get(i)).isFilled()) {
+                    Toast.makeText(MindacareActivity.this, "Please fill the complete form", Toast.LENGTH_SHORT).show();
+                } else {
+                    answers.put(viewArrayList.get(i).getId(), ((MyEdittext) viewArrayList.get(i)).getValue());
+                }
             } else if (viewArrayList.get(i) instanceof MySpinner) {
                 answers.put(viewArrayList.get(i).getId(), ((MySpinner) viewArrayList.get(i)).getValue());
             } else if (viewArrayList.get(i) instanceof MyRadioButton) {
-                answers.put(viewArrayList.get(i).getId(), ((MyRadioButton) viewArrayList.get(i)).getValue());
+                if (!((MyRadioButton) viewArrayList.get(i)).isFilled()) {
+                    Toast.makeText(MindacareActivity.this, "Please fill the complete form", Toast.LENGTH_SHORT).show();
+                } else {
+                    answers.put(viewArrayList.get(i).getId(), ((MyRadioButton) viewArrayList.get(i)).getValue());
+                }
             }
-          //  else if(viewArrayList.get(i))
         }
     }
 
+    public void submitApi(String answersList){
+        MindacareServices mindacareServices = new MindacareServices();
+        mindacareServices.submitDeclaration(new OnTaskComplete() {
+            @Override
+            public void onTaskComplte(CarotResponse carotResponse) {
+
+            }
+        },answersList);
+    }
 
 
     public ArrayList<String> getAllChecked(HashMap<String, CheckBox> checkBoxItemSelected) {
         ArrayList<String> checkedList = new ArrayList();
         Iterator var2 = checkBoxItemSelected.keySet().iterator();
 
-        while(var2.hasNext()) {
-            String key = (String)var2.next();
-            if (((CheckBox)checkBoxItemSelected.get(key)).isChecked()) {
+        while (var2.hasNext()) {
+            String key = (String) var2.next();
+            if (((CheckBox) checkBoxItemSelected.get(key)).isChecked()) {
                 checkedList.add(key);
             }
         }

@@ -152,5 +152,29 @@ public class MindacareServices {
         });
     }
 
+    public void submitDeclaration(OnTaskComplete onTaskComplete, String selectedAnswers){
+        MindacareClient mindacareClient = RetrofitClient2.createServiceMindacare(MindacareClient.class);
+        Call<String> call = mindacareClient.submitDeclaration(selectedAnswers);
+        call.enqueue(new Callback<String>() {
+            @Override
+            public void onResponse(Call<String> call, Response<String> response) {
+                CarotResponse carotResponse = new CarotResponse();
+                carotResponse.setStatuscode(response.code());
+                if (response.code() == HttpsURLConnection.HTTP_OK) {
+                    carotResponse.setData(response.body());
+                }
+                onTaskComplete.onTaskComplte(carotResponse);
+            }
+
+            @Override
+            public void onFailure(Call<String> call, Throwable t) {
+                CarotResponse carotResponse = new CarotResponse();
+                if (t instanceof IOException) {
+                    carotResponse.setMessage("Please hold on a moment, the internet connectivity seems to be slow");
+                }
+                onTaskComplete.onTaskComplte(carotResponse);
+            }
+        });
+    }
 
 }

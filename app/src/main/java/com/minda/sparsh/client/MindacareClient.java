@@ -28,5 +28,9 @@ public interface MindacareClient {
     @GET("MindaCareCity")
     Call<List<CityResponse>> getCity(@Query("StateID") String StateID);
 
+    @GET("MindaCareSubmission")
+    Call<String> submitDeclaration(@Query("response") String response);
+
+
 
 }

@@ -155,7 +155,7 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
         }
 
         if (id == R.id.mindacare) {
-            Intent in  = new Intent(this,MindacareActivity.class);
+            Intent in  = new Intent(this,MindacareWeb.class);
             startActivity(in);
         }
         if (id == R.id.nav_aboutus) {
