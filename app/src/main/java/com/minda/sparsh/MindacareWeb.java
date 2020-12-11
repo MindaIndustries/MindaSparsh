@@ -1,5 +1,6 @@
 package com.minda.sparsh;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.webkit.WebSettings;
@@ -8,6 +9,8 @@ import android.webkit.WebViewClient;
 import android.widget.TextView;
 
 import com.minda.sparsh.connection.HttpConnection;
+
+import java.util.Calendar;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -23,6 +26,9 @@ public class MindacareWeb extends AppCompatActivity {
     Toolbar toolbar;
     @BindView(R.id.title)
     TextView title;
+    String empcode,DOB;
+    SharedPreferences myPref;
+
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -34,7 +40,29 @@ public class MindacareWeb extends AppCompatActivity {
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setHomeAsUpIndicator(R.drawable.back);
         title.setText(getResources().getString(R.string.mindacare_selfDeclaration));
-        mindacareWebView.loadUrl(HttpConnection.mindacareUrl);
+        myPref = getSharedPreferences("MyPref", MODE_PRIVATE);
+        empcode = myPref.getString("Id", "Id");
+        DOB = myPref.getString("DOB", "");
+        long dob = Long.parseLong(DOB.replace("/Date", "").replace("/", "").replace("(", "").replace(")", ""));
+
+        Calendar dob1 = Calendar.getInstance();
+        dob1.setTimeInMillis(dob);
+        String day,month;
+        if(dob1.get(Calendar.DAY_OF_MONTH)<10){
+            day = "0"+dob1.get(Calendar.DAY_OF_MONTH);
+        }
+        else{
+            day ="" +dob1.get(Calendar.DAY_OF_MONTH);
+        }
+        if((dob1.get(Calendar.MONTH)+1)<10){
+            month = "0"+(dob1.get(Calendar.MONTH)+1);
+        }
+        else{
+            month =""+(dob1.get(Calendar.MONTH)+1);
+        }
+
+        String age =  ""+day+month+dob1.get(Calendar.YEAR);
+        mindacareWebView.loadUrl(HttpConnection.mindacareUrl+"EmpCode="+empcode+"&Dob="+age);
         WebSettings webSettings = mindacareWebView.getSettings();
         webSettings.setJavaScriptEnabled(true);
 

@@ -22,7 +22,7 @@ public class HttpConnection {
  //  prod environment
   //  public static String BASE_URL = "https://app.mindasparsh.com/service.asmx/";
 
-    public static final String mindacareUrl = "https://app.mindasparsh.com/mindacare/default.aspx";
+    public static final String mindacareUrl = "http://dev.mindasparsh.com/mindacare/login.aspx?";
 
 
 
