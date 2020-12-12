@@ -392,7 +392,6 @@ public class AbnormalityAddressingActivity extends AppCompatActivity {
             public void onClick(View view) {
 
 //                setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
-
                 if (getResources().getConfiguration().orientation != Configuration.ORIENTATION_LANDSCAPE) {
                     finish();
                     Intent intent = new Intent(AbnormalityAddressingActivity.this, AbnormalityDashboard.class);
@@ -402,8 +401,6 @@ public class AbnormalityAddressingActivity extends AppCompatActivity {
                     intent.putExtra("EPLANT", getIntent().getStringExtra("EPLANT"));
                     startActivity(intent);
                 }
-
-
             }
         });
         Im_capture.setOnClickListener(new View.OnClickListener() {
@@ -415,11 +412,7 @@ public class AbnormalityAddressingActivity extends AppCompatActivity {
                     permissionsToRequest = findUnAskedPermissions(permissions);
                     //get the permissions we have asked for before but are not granted..
                     //we will store this in a global list to access later.
-
-
                     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-
-
                         if (permissionsToRequest.size() > 0)
                             requestPermissions(permissionsToRequest.toArray(new String[permissionsToRequest.size()]), ALL_PERMISSIONS_RESULT);
                     }
