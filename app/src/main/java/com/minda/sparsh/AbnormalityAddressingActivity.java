@@ -127,7 +127,6 @@ public class AbnormalityAddressingActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setHomeAsUpIndicator(R.drawable.back);
         title.setText("Abnormality");
-
         lay_two = (LinearLayout) findViewById(R.id.lay_two);
         lay_one = (LinearLayout) findViewById(R.id.lay_one);
         lay_out = (LinearLayout) findViewById(R.id.lay_out);
@@ -426,10 +425,8 @@ public class AbnormalityAddressingActivity extends AppCompatActivity {
                 abnormalitydate = et_finddate.getText().toString();
                 benefits = "";
                 if (isvalid()) {
-
                     hitAddAbnormalityApi(group, domainid, businessid, plantid, String.valueOf(sub_department), sImage, description, benefits, abnormalitydate, myPref.getString("Id", ""), category_id);
                 }
-
             }
         });
 
@@ -1218,16 +1215,12 @@ public class AbnormalityAddressingActivity extends AppCompatActivity {
                         GroupSpinnerAdapter departmentSpinnerAdapter = new GroupSpinnerAdapter(AbnormalityAddressingActivity.this, Subdepartmentresponse);
                         sp_sdepartment.setAdapter(departmentSpinnerAdapter);
 
-
                     }
-
                 }
 
                 @Override
                 public void onFailure(Call<List<Sub_Department_Model>> call, Throwable t) {
-
                     showProgress(false);
-
                 }
             });
         } else
