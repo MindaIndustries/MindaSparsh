@@ -409,7 +409,7 @@ public class AbnormalityAddressingActivity extends AppCompatActivity {
                     permissions.add(CAMERA);
                     permissionsToRequest = findUnAskedPermissions(permissions);
                     //get the permissions we have asked for before but are not granted..
-                    //we will store this in a global list to access later.
+                    //we will store this in a global AbnormalityAddressingActivitylist to access later.
                     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
                         if (permissionsToRequest.size() > 0)
                             requestPermissions(permissionsToRequest.toArray(new String[permissionsToRequest.size()]), ALL_PERMISSIONS_RESULT);
