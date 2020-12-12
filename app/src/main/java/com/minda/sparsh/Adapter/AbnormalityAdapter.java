@@ -5,6 +5,7 @@ import android.app.DatePickerDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
+
 import com.google.android.material.snackbar.Snackbar;
 
 import android.view.LayoutInflater;
@@ -63,7 +64,7 @@ public class AbnormalityAdapter extends BaseAdapter {
     }
 
     public class ViewHolder {
-        public TextView tv_result, tv_status, tv_Actual_date, tv_test_date, tv_action, tv_plant, tv_business, tv_domain,tv_category, tv_date, tv_abnormality, tv_sn, tv_update, tv_view, tv_uplodedBy, tv_department, tv_updatedby;
+        public TextView tv_result, tv_status, tv_Actual_date, tv_test_date, tv_action, tv_plant, tv_business, tv_domain, tv_category, tv_date, tv_abnormality, tv_sn, tv_update, tv_view, tv_uplodedBy, tv_department, tv_updatedby;
         public LinearLayout laycellview;
     }
 
@@ -97,12 +98,11 @@ public class AbnormalityAdapter extends BaseAdapter {
             holder.tv_action = (TextView) convertView.findViewById(R.id.tv_action);
             holder.tv_updatedby = (TextView) convertView.findViewById(R.id.tv_updatedby);
 
-
             holder.tv_department = (TextView) convertView.findViewById(R.id.tv_department);
             holder.tv_plant = (TextView) convertView.findViewById(R.id.tv_plant);
             holder.tv_business = (TextView) convertView.findViewById(R.id.tv_business);
             holder.tv_domain = (TextView) convertView.findViewById(R.id.tv_domain);
-            holder.tv_category =(TextView) convertView.findViewById(R.id.tv_category);
+            holder.tv_category = (TextView) convertView.findViewById(R.id.tv_category);
             holder.tv_date = (TextView) convertView.findViewById(R.id.tv_date);
             holder.tv_abnormality = (TextView) convertView.findViewById(R.id.tv_abnormality);
             holder.tv_sn = (TextView) convertView.findViewById(R.id.tv_sn);
@@ -141,21 +141,23 @@ public class AbnormalityAdapter extends BaseAdapter {
 
                     if (homeData.get(position).getStatus()) {
                         holder.tv_status.setBackgroundResource(R.color.red);
-                        if(time_update!=0)
-                        {holder.tv_status.setText(String.valueOf((time_update-time_target)/oneday)+" D Late");}
-                        else {holder.tv_status.setText(String.valueOf((time-time_target)/oneday)+" D Late");}
+                        if (time_update != 0) {
+                            holder.tv_status.setText(String.valueOf((time_update - time_target) / oneday) + " D Late");
+                        } else {
+                            holder.tv_status.setText(String.valueOf((time - time_target) / oneday) + " D Late");
+                        }
 
                     } else {
                         if (time_update > time_target) {
                             holder.tv_status.setBackgroundResource(R.color.orange);
-                            if(time_update!=0)
-                            {holder.tv_status.setText(String.valueOf((time_update-time_target)/oneday)+" D Late");}
-                            else {holder.tv_status.setText(String.valueOf((time-time_target)/oneday)+" D Late");}
+                            if (time_update != 0) {
+                                holder.tv_status.setText(String.valueOf((time_update - time_target) / oneday) + " D Late");
+                            } else {
+                                holder.tv_status.setText(String.valueOf((time - time_target) / oneday) + " D Late");
+                            }
                         } else {
                             holder.tv_status.setBackgroundResource(R.color.green);
                         }
-
-
                     }
                 } else {
                     if (homeData.get(position).getStatus()) {
@@ -163,9 +165,11 @@ public class AbnormalityAdapter extends BaseAdapter {
                     } else {
                         if (time_update > time_target) {
                             holder.tv_status.setBackgroundResource(R.color.orange);
-                            if(time_update!=0)
-                            {holder.tv_status.setText(String.valueOf((time_update-time_target)/oneday)+" D Late");}
-                            else {holder.tv_status.setText(String.valueOf((time-time_target)/oneday)+" D Late");}
+                            if (time_update != 0) {
+                                holder.tv_status.setText(String.valueOf((time_update - time_target) / oneday) + " D Late");
+                            } else {
+                                holder.tv_status.setText(String.valueOf((time - time_target) / oneday) + " D Late");
+                            }
                         } else {
                             holder.tv_status.setBackgroundResource(R.color.green);
                         }
@@ -240,7 +244,7 @@ public class AbnormalityAdapter extends BaseAdapter {
                 @Override
                 public void onClick(View view) {
                     if (AbnormalityAddressingActivity.Role.equalsIgnoreCase("C")) {
-                        if (holder.tv_test_date.getText().toString()!=null && holder.tv_test_date.getText().toString().length()>0 && !holder.tv_test_date.getText().toString().equalsIgnoreCase("Add Date")/*get(position).getTargetDate() != null*/) {
+                        if (holder.tv_test_date.getText().toString() != null && holder.tv_test_date.getText().toString().length() > 0 && !holder.tv_test_date.getText().toString().equalsIgnoreCase("Add Date")/*get(position).getTargetDate() != null*/) {
                             Intent intent = new Intent(mContext, AbnormalityAddressing2Activity.class);
                             intent.putExtra("ID", homeData.get(position).getID());
                             intent.putExtra("domain", homeData.get(position).getDomain());
@@ -273,7 +277,7 @@ public class AbnormalityAdapter extends BaseAdapter {
 
                     if (AbnormalityAddressingActivity.Role.equalsIgnoreCase("C")) {
                         if (holder.tv_test_date.getText().toString().equalsIgnoreCase("Add Date")) {
-                            setdate(homeData.get(position).getID(),position,holder.tv_test_date);
+                            setdate(homeData.get(position).getID(), position, holder.tv_test_date);
 
                         } else {
                             Snackbar.make(view, "You have Already set Target Date", Snackbar.LENGTH_LONG).show();
@@ -303,7 +307,7 @@ public class AbnormalityAdapter extends BaseAdapter {
         alert.show();
     }
 
-    public void setdate(final int id, final int position,TextView textView) {
+    public void setdate(final int id, final int position, TextView textView) {
 
         final Calendar c = Calendar.getInstance();
         int mYear = c.get(Calendar.YEAR);
@@ -330,7 +334,7 @@ public class AbnormalityAdapter extends BaseAdapter {
 
                         textView.setText(date);
 
-                        hitSetTargetDateApi(id, date, homeData.get(position).getDepartment(),holder.tv_test_date);
+                        hitSetTargetDateApi(id, date, homeData.get(position).getDepartment(), holder.tv_test_date);
 
 
                     }
@@ -339,7 +343,7 @@ public class AbnormalityAdapter extends BaseAdapter {
         datePickerDialog.show();
     }
 
-    public void hitSetTargetDateApi(int id, String date, final String department,TextView textView) {
+    public void hitSetTargetDateApi(int id, String date, final String department, TextView textView) {
         if (Utility.isOnline(mContext)) {
             showProgress(true);
             Interface promotingMyinterface = RetrofitClient2.getClient().create(Interface.class);

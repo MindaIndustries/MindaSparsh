@@ -168,7 +168,6 @@ public class AbnormalityAddressingActivity extends AppCompatActivity {
             } else {
                 setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
                 checkorentation();
-
             }
         }
 
@@ -1045,7 +1044,6 @@ public class AbnormalityAddressingActivity extends AppCompatActivity {
                     showProgress(false);
                     List<AbnormalityView_Model> AbnormalityDetail = response.body();
 
-
                     if (AbnormalityDetail != null) {
                         AbnormalityAdapter abnormalityAdapter = new AbnormalityAdapter(AbnormalityAddressingActivity.this, AbnormalityDetail);
                         list_abnormalty.setAdapter(abnormalityAdapter);
@@ -1166,7 +1164,6 @@ public class AbnormalityAddressingActivity extends AppCompatActivity {
                 public void onResponse(Call<List<UserDetail_Model>> call, Response<List<UserDetail_Model>> response) {
                     showProgress(false);
                     List<UserDetail_Model> userDetail_models = response.body();
-
 
                     if (userDetail_models != null && userDetail_models.size() != 0) {
 
