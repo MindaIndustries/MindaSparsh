@@ -156,7 +156,6 @@ public class AbnormalityAddressingActivity extends AppCompatActivity {
         hitCategoryApi();
         hitPlantApi(empCode);
 
-
         im_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -187,7 +186,6 @@ public class AbnormalityAddressingActivity extends AppCompatActivity {
         sp_domain.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-
                 Domain_Model selectedItem = (Domain_Model) adapterView.getSelectedItem();
                 domain = selectedItem.getDomainName();
                 domainid = String.valueOf(selectedItem.getDomainID());
@@ -313,14 +311,8 @@ public class AbnormalityAddressingActivity extends AppCompatActivity {
                     list.add(0, sub_department_model);
                     GroupSpinnerAdapter departmentSpinnerAdapter = new GroupSpinnerAdapter(AbnormalityAddressingActivity.this, list);
                     sp_sdepartment.setAdapter(departmentSpinnerAdapter);
-
-
                 }
-
-
 //
-
-
             }
 
             @Override
@@ -514,7 +506,6 @@ public class AbnormalityAddressingActivity extends AppCompatActivity {
         return outputFileUri;
     }
 
-
     private ArrayList<String> findUnAskedPermissions(ArrayList<String> wanted) {
         ArrayList<String> result = new ArrayList<String>();
 
@@ -612,7 +603,6 @@ public class AbnormalityAddressingActivity extends AppCompatActivity {
                 return super.onOptionsItemSelected(item);
         }
     }
-
 
     public String getStringImage(Bitmap bmp) {
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
@@ -969,7 +959,6 @@ public class AbnormalityAddressingActivity extends AppCompatActivity {
             Toast.makeText(AbnormalityAddressingActivity.this, "Please Check Your Network Connection", Toast.LENGTH_LONG).show();
     }
 
-
     public void hitAddAbnormalityApi(String group, String domain, String business, String plant, String department, String imagepath, String description, String benefits, String abnormalitydate, String UploadedBy, int category) {
         if (Utility.isOnline(AbnormalityAddressingActivity.this)) {
             showProgress(true);
@@ -1054,7 +1043,6 @@ public class AbnormalityAddressingActivity extends AppCompatActivity {
         });
 
     }
-
 
     public void hitGetAbnormalityDetailApi(String plant, String department, String domain, String business) {
         if (Utility.isOnline(AbnormalityAddressingActivity.this)) {

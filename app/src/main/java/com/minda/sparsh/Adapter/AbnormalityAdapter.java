@@ -65,8 +65,6 @@ public class AbnormalityAdapter extends BaseAdapter {
     public class ViewHolder {
         public TextView tv_result, tv_status, tv_Actual_date, tv_test_date, tv_action, tv_plant, tv_business, tv_domain,tv_category, tv_date, tv_abnormality, tv_sn, tv_update, tv_view, tv_uplodedBy, tv_department, tv_updatedby;
         public LinearLayout laycellview;
-
-
     }
 
     @Override
