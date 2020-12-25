@@ -890,8 +890,6 @@ public class AbnormalityAddressingActivity extends AppCompatActivity {
                                     break;
                                 }
                             }
-
-
                         }
                     } catch (Exception e) {
 
