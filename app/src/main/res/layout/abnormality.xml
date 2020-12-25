@@ -90,7 +90,6 @@
                 android:gravity="center"
                 android:background="@drawable/cell_view"
                 android:layout_weight="6"/>
-
             <TextView
                 android:id="@+id/tv_Actual_date"
                 android:layout_width="150dp"
@@ -160,8 +159,6 @@
                     android:layout_height="1dp"
                     android:background="@color/colorPrimary"/>
             </LinearLayout>
-
-
             <LinearLayout
                 android:layout_width="100dp"
                 android:layout_height="match_parent"
@@ -179,10 +176,6 @@
                     android:textColor="@color/colorPrimary"/>
 
             </LinearLayout>
-
-
-
-
         </LinearLayout>
     </HorizontalScrollView>
 
