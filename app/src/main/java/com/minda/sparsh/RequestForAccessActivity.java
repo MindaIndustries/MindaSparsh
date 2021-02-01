@@ -45,7 +45,6 @@ import com.minda.sparsh.Adapter.IAMGetPlantAdapter;
 import com.minda.sparsh.Adapter.IAMGetRequestTypeAdapter;
 import com.minda.sparsh.Adapter.IAMGetSubCategoryAdapter;
 import com.minda.sparsh.Adapter.IAMIAMGetAccessTypeAdapter;
-import com.minda.sparsh.model.CategoryAbnormality;
 import com.minda.sparsh.model.IAMCreateRequestModel;
 import com.minda.sparsh.model.IAMGetAccessSubTypeModel;
 import com.minda.sparsh.model.IAMGetAccessTypeSpinnerModel;

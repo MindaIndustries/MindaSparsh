@@ -7,7 +7,10 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
+
 import com.google.android.material.navigation.NavigationView;
+import com.whiteelephant.monthpicker.MonthPickerDialog;
+
 import androidx.core.app.TaskStackBuilder;
 import androidx.core.view.GravityCompat;
 import androidx.viewpager.widget.ViewPager;
@@ -16,9 +19,12 @@ import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
+
+import java.util.Calendar;
 
 
 public class BaseActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
@@ -155,7 +161,42 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
         }
 
         if (id == R.id.mindacare) {
-            Intent in  = new Intent(this,MindacareWeb.class);
+
+
+          /*  Calendar today = Calendar.getInstance();
+
+
+            MonthPickerDialog.Builder builder = new MonthPickerDialog.Builder(BaseActivity.this, new MonthPickerDialog.OnDateSetListener() {
+                @Override
+                public void onDateSet(int selectedMonth, int selectedYear) {
+
+                }
+            }, today.get(Calendar.YEAR), today.get(Calendar.MONTH));
+
+            builder.setActivatedMonth(Calendar.JANUARY)
+                    .setMinYear(1990)
+                    .setActivatedYear(2021)
+                    .setMaxYear(2021)
+                    .setMinMonth(Calendar.JANUARY)
+                    .setTitle("Select month")
+                    .setMonthRange(Calendar.JANUARY, Calendar.DECEMBER)
+                    // .setMaxMonth(Calendar.OCTOBER)
+                    // .setYearRange(1890, 1890)
+                    // .setMonthAndYearRange(Calendar.FEBRUARY, Calendar.OCTOBER, 1890, 1890)
+                    //.showMonthOnly()
+                    // .showYearOnly()
+                    .setOnMonthChangedListener(new MonthPickerDialog.OnMonthChangedListener() {
+                        @Override
+                        public void onMonthChanged(int selectedMonth) { // on month selected
+                        }
+                    }).setOnYearChangedListener(new MonthPickerDialog.OnYearChangedListener() {
+                @Override
+                public void onYearChanged(int selectedYear) { // on year selected
+                }
+            })
+                    .build().show();
+*/
+            Intent in = new Intent(this, MindacareWeb.class);
             startActivity(in);
         }
         if (id == R.id.nav_aboutus) {

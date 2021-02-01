@@ -436,9 +436,12 @@ public class EHSInitiateFragment extends Fragment {
             String[] incidencetime = timeSelector.getText().toString().split(":");
             incidencehr = incidencetime[0];
             String[] min_am = incidencetime[1].split(" ");
-            incidencemin = min_am[0];
+            if(min_am.length!=0) {
+                incidencemin = min_am[0];
+            }
+            if(min_am.length==2){
             incidencezone = min_am[1];
-        }
+        }}
         if (observationID.equals("3")) {
             subCategoryID = "0";
             catId = "0";
