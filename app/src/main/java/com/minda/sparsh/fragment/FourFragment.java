@@ -9,9 +9,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.minda.sparsh.DashBoardActivity;
+import com.minda.sparsh.ITHelpDeskHome;
 import com.minda.sparsh.IdentityAccessManagementActivity;
 import com.minda.sparsh.R;
 
@@ -40,6 +42,7 @@ public class FourFragment extends Fragment {
         ImageView im_left = (ImageView) view.findViewById(R.id.im_left);
         ImageButton im_identity_access_management = (ImageButton) view.findViewById(R.id.im_identity_access_management);
         ImageButton im_change_request_from = (ImageButton) view.findViewById(R.id.im_change_request_from);
+        ImageButton it_help_desk = view.findViewById(R.id.it_help_desk);
         final DashBoardActivity contaxt = (DashBoardActivity) getActivity();
         im_right.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -72,6 +75,16 @@ public class FourFragment extends Fragment {
                 Toast.makeText(contaxt, "Coming Soon!", Toast.LENGTH_SHORT).show();
 
                // startActivity(new Intent(getActivity(), IdentityAccessManagementActivity1.class));
+
+            }
+        });
+
+        it_help_desk.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent intent = new Intent(getActivity(), ITHelpDeskHome.class);
+                contaxt.startActivity(intent);
 
             }
         });

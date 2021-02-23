@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <LinearLayout
+        android:id="@+id/header"
+        android:orientation="horizontal"
+        android:weightSum="5"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/border"
+        >
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text=""
+            android:textSize="10sp"
+            android:id="@+id/tkt_no"
+            android:background="@drawable/border"
+            android:textColor="@color/disableBtn"
+            android:padding="2dp"
+
+            />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text=""
+            android:textSize="10sp"
+            android:id="@+id/emp_name"
+            android:gravity="center"
+            android:background="@drawable/border"
+            android:padding="2dp"
+
+            />
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:textColor="@color/disableBtn"
+            android:text=""
+            android:textSize="10sp"
+            android:id="@+id/remarks"
+            android:background="@drawable/border"
+            android:padding="2dp"
+
+            />
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text=""
+            android:textSize="10sp"
+            android:textColor="@color/disableBtn"
+            android:id="@+id/status"
+            android:background="@drawable/border"
+            android:padding="2dp"
+
+
+            />
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:textColor="@color/disableBtn"
+            android:gravity="center"
+            android:text=""
+            android:id="@+id/created_on"
+            android:background="@drawable/border"
+            android:padding="2dp"
+            android:textSize="10sp"
+            />
+
+
+
+
+    </LinearLayout>
+
+
+</RelativeLayout>

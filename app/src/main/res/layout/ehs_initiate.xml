@@ -344,6 +344,7 @@
             android:hint="Enter Description here"
             android:overScrollMode="always"
             android:padding="2dp"
+
             />
 
         <ImageView

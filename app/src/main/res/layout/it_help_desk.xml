@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <include layout="@layout/toolbar1"/>
+    <RelativeLayout
+        android:layout_marginTop="?attr/actionBarSize"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:adjustViewBounds="true"
+            android:src="@drawable/birds"
+            android:scaleType="centerCrop"
+            />
+        <LinearLayout
+            android:background="@color/translucent"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_marginTop="?attr/actionBarSize"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/tablayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:background="@drawable/toolbar_gradient"
+            android:visibility="visible"
+            app:tabTextColor="@android:color/white"
+            app:tabIndicatorColor="@android:color/white"
+            app:tabIndicatorHeight="2dp"
+            app:tabSelectedTextColor="#ffffff">
+
+            <com.google.android.material.tabs.TabItem
+                android:id="@+id/create_ticket"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Create Ticket"
+                />
+
+            <com.google.android.material.tabs.TabItem
+                android:id="@+id/my_tickets"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="My Tickets"
+                />
+            <com.google.android.material.tabs.TabItem
+                android:id="@+id/my_tasks"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="My Tasks"
+                />
+
+        </com.google.android.material.tabs.TabLayout>
+        <FrameLayout
+            android:id="@+id/framelayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/tablayout">
+        </FrameLayout>
+    </RelativeLayout>
+    </RelativeLayout>
