@@ -370,7 +370,7 @@
             <TextView
                 android:layout_marginTop="20dp"
                 android:id="@+id/reported_date"
-                android:text="Reprted Date :"
+                android:text="Reported Date :"
                 android:textSize="16sp"
                 android:textColor="@color/black"
                 android:fontFamily="@font/museosans_300"
@@ -472,7 +472,7 @@
             <TextView
                 android:layout_marginTop="20dp"
                 android:id="@+id/cc"
-                android:text="Files :"
+                android:text="Requestor Files :"
                 android:textSize="16sp"
                 android:visibility="visible"
                 android:textColor="@color/black"
@@ -560,6 +560,105 @@
                 android:padding="5dp"
                 />
 
+
+            <RelativeLayout
+                android:layout_marginTop="10dp"
+                android:id="@+id/header_history"
+                android:layout_below="@+id/remarks_et"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:textSize="16sp"
+                    android:fontFamily="@font/museosans_500"
+                    android:id="@+id/ticket_history"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+                <LinearLayout
+                    android:layout_marginTop="5dp"
+                    android:layout_below="@+id/ticket_history"
+                    android:id="@+id/header"
+                    android:orientation="horizontal"
+                    android:weightSum="5"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:background="@drawable/border"
+                    >
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:textSize="12sp"
+                        android:text="Ticket No."
+                        android:background="@drawable/border"
+
+                        />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:text="Emp Name"
+                        android:gravity="center"
+                        android:background="@drawable/border"
+                        android:textSize="12sp"
+
+                        />
+                    <TextView
+                        android:textSize="12sp"
+
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="Remark"
+                        android:background="@drawable/border"
+
+                        />
+                    <TextView
+                        android:textSize="12sp"
+
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="Status"
+                        android:background="@drawable/border"
+
+                        />
+                    <TextView
+                        android:textSize="12sp"
+
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="Created On."
+                        android:background="@drawable/border"
+
+                        />
+
+
+
+
+                </LinearLayout>
+
+
+
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:layout_below="@+id/header"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:id="@+id/tkt_history"
+                    />
+
+            </RelativeLayout>
+
+
+
             <Button
 
                 android:textColor="@color/white"
@@ -570,7 +669,7 @@
                 android:layout_toLeftOf="@+id/view"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/remarks_et"
+                android:layout_below="@+id/header_history"
                 android:text="Cancel"
                 android:fontFamily="@font/museosans_500"
                 />
@@ -583,7 +682,7 @@
                 android:layout_toRightOf="@+id/view"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/remarks_et"
+                android:layout_below="@+id/header_history"
                 android:text="Update"
                 android:fontFamily="@font/museosans_500"
                 />

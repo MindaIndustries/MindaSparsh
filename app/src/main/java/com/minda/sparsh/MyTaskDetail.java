@@ -32,10 +32,12 @@ import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.minda.sparsh.Adapter.CCListAdapter;
+import com.minda.sparsh.Adapter.TicketHistoryAdapter;
 import com.minda.sparsh.customview.NoDefaultSpinner;
 import com.minda.sparsh.listener.CarotResponse;
 import com.minda.sparsh.listener.OnTaskComplete;
@@ -43,6 +45,7 @@ import com.minda.sparsh.model.AssetLocResponse;
 import com.minda.sparsh.model.BindGroupResponse;
 import com.minda.sparsh.model.GroupAssigneeResponse;
 import com.minda.sparsh.model.MyTicketsResponse;
+import com.minda.sparsh.model.TicketHistoryResponse;
 import com.minda.sparsh.services.ITHelpDeskServices;
 import com.minda.sparsh.util.UriUtils;
 import com.minda.sparsh.util.Utility;
@@ -129,6 +132,8 @@ public class MyTaskDetail extends BaseActivity {
     NoDefaultSpinner ticket_type_spinner_sub_cat3;
     @BindView(R.id.ll11)
     LinearLayout ll11;
+    @BindView(R.id.ticket_history)
+    TextView ticketHistory;
 
 
     @BindView(R.id.isclosed)
@@ -137,8 +142,8 @@ public class MyTaskDetail extends BaseActivity {
     CheckBox isHold;
     @BindView(R.id.resumed)
     CheckBox resumed;
-
-
+    @BindView(R.id.header_history)
+    RelativeLayout headerHistory;
     private static final int CAPTURE_FROM_CAMERA = 1;
     public static final int MY_PERMISSIONS_REQUEST_READ_EXTERNAL_STORAGE = 123;
     private static final int SELECT_FROM_GALLERY = 2;
@@ -185,6 +190,15 @@ public class MyTaskDetail extends BaseActivity {
     String subcat = "0", subcat2 = "0", subcat3 = "0";
 
     String statusStr = "Update";
+
+
+
+
+    @BindView(R.id.tkt_history)
+    RecyclerView tktHistoryRv;
+    TicketHistoryAdapter ticketsAdapter;
+    ArrayList<TicketHistoryResponse> tktHistoryList = new ArrayList<>();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -242,6 +256,16 @@ public class MyTaskDetail extends BaseActivity {
             }
 
         }
+
+        ticketsAdapter = new TicketHistoryAdapter(MyTaskDetail.this,tktHistoryList);
+        final LinearLayoutManager mLayoutManager = new LinearLayoutManager(MyTaskDetail.this, LinearLayoutManager.VERTICAL, false);
+        tktHistoryRv.setLayoutManager(mLayoutManager);
+        tktHistoryRv.setAdapter(ticketsAdapter);
+        if(myTicket!=null && myTicket.getTicketNo()!=null) {
+            ticketHistory.setText("Ticket: " +myTicket.getTicketNo());
+            getTicketHistory(myTicket.getTicketNo());
+        }
+
 
         resumed.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
@@ -304,8 +328,8 @@ public class MyTaskDetail extends BaseActivity {
         getPriority();
         getReportedBy();
         ccListAdapter = new CCListAdapter(MyTaskDetail.this, recyclerview_list);
-        final LinearLayoutManager mLayoutManager = new LinearLayoutManager(MyTaskDetail.this, LinearLayoutManager.VERTICAL, false);
-        cclist.setLayoutManager(mLayoutManager);
+        final LinearLayoutManager mLayoutManager1 = new LinearLayoutManager(MyTaskDetail.this, LinearLayoutManager.VERTICAL, false);
+        cclist.setLayoutManager(mLayoutManager1);
         cclist.setAdapter(ccListAdapter);
 
         if (myTicket != null && myTicket.getFiles() != null) {
@@ -557,6 +581,11 @@ public class MyTaskDetail extends BaseActivity {
             }
         });
 
+    }
+
+    @OnClick(R.id.reset)
+    public void onClickReset(){
+        finish();
     }
 
     @OnClick(R.id.submit)
@@ -1028,7 +1057,7 @@ public class MyTaskDetail extends BaseActivity {
                 }
 
             }
-        }, ticketType, unitcode);
+        }, ticketType, unitcode,subcat,subcat2,subcat3);
     }
 
     public void getGroupAssignee(String ticketType, String unitcode) {
@@ -1571,5 +1600,34 @@ public class MyTaskDetail extends BaseActivity {
         }, myTicket.getTicketNo(), empcode, remarks_et.getText().toString(), statusStr, location, tickettypeid, subcat, subcat2, subcat3, tickettypegroupid, assigneegroup, asigneGroupCode, DefaultAssigne, reportedby, priority, attachmentNames.toString().replace("[", "").replace("]", ""), attachmentFiles.toString().replace("[", "").replace("]", ""), "", "");
     }
 
+    public void getTicketHistory(String ticketNo){
+        tktHistoryList.clear();
+        tktHistoryRv.getRecycledViewPool().clear();
+        ticketsAdapter.notifyDataSetChanged();
+        ITHelpDeskServices itHelpDeskServices = new ITHelpDeskServices();
+        itHelpDeskServices.getTicketHistory(new OnTaskComplete() {
+            @Override
+            public void onTaskComplte(CarotResponse carotResponse) {
+                if(carotResponse.getStatuscode() == HttpsURLConnection.HTTP_OK){
+
+                    List<TicketHistoryResponse> list = (List<TicketHistoryResponse>) carotResponse.getData();
+                    if(list!=null && list.size()>0){
+                        tktHistoryList.addAll(list);
+                    }
+                    if(tktHistoryList.size()>0){
+                        headerHistory.setVisibility(View.VISIBLE);
+                    }
+                    else{
+                        headerHistory.setVisibility(View.GONE);
+                    }
+                }
+                else{
+                    headerHistory.setVisibility(View.GONE);
+
+                }
+                ticketsAdapter.notifyDataSetChanged();
+            }
+        },ticketNo);
+    }
 
 }

@@ -45,6 +45,8 @@ public class EHSObsModel {
     String IncidenceTime;
     @SerializedName("IncidentceAction")
     String IncidentceAction;
+    @SerializedName("Assigned")
+    String Assigned;
 
 
     public String getID() {
@@ -214,5 +216,13 @@ public class EHSObsModel {
 
     public void setIncidentceAction(String incidentceAction) {
         IncidentceAction = incidentceAction;
+    }
+
+    public String getAssigned() {
+        return Assigned;
+    }
+
+    public void setAssigned(String assigned) {
+        Assigned = assigned;
     }
 }

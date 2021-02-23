@@ -248,7 +248,7 @@ public class EHSInitiateFragment extends Fragment {
             }
 
             if (getArguments().getString("status") != null) {
-                if (getArguments().getString("status").equals("1")) {
+                if (getArguments().getString("status").equals("1") ) {
                     submit.setVisibility(View.VISIBLE);
                     unitSpinner.setEnabled(true);
                     safetyOfficerSpinner.setEnabled(true);
@@ -260,7 +260,25 @@ public class EHSInitiateFragment extends Fragment {
                     attachtext.setEnabled(true);
                     attachment.setEnabled(true);
                     timeSelector.setEnabled(true);
-                } else {
+
+                      if(getArguments().getString("assigned").equalsIgnoreCase("True")){
+                        submit.setVisibility(View.GONE);
+                        unitSpinner.setEnabled(false);
+                        safetyOfficerSpinner.setEnabled(false);
+                        typeOfObservationSpinner.setEnabled(false);
+                        identifiedLocationSpinner.setEnabled(false);
+                        categorySpinner.setEnabled(false);
+                        subCategorySpinner.setEnabled(false);
+                        descriptionEdit.setEnabled(false);
+                        attachtext.setEnabled(false);
+                        attachment.setEnabled(false);
+                        timeSelector.setEnabled(false);
+
+                    }
+
+                }
+
+                else {
                     submit.setVisibility(View.GONE);
                     unitSpinner.setEnabled(false);
                     safetyOfficerSpinner.setEnabled(false);

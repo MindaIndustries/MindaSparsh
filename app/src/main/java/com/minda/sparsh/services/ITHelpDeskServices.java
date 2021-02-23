@@ -75,9 +75,9 @@ public void  getTicketType(OnTaskComplete onTaskComplete){
     });
 }
 
-public void getTicketGroup(OnTaskComplete onTaskComplete,String ticketType, String unitCode){
+public void getTicketGroup(OnTaskComplete onTaskComplete,String ticketType, String unitCode,String subcat,String subcat2, String subcat3){
     IThelpdeskClient iThelpdeskClient = RetrofitClient2.createServiceitHelpDesk(IThelpdeskClient.class);
-    Call<List<BindGroupResponse>> call = iThelpdeskClient.getBindGroup("0","","",ticketType,unitCode);
+    Call<List<BindGroupResponse>> call = iThelpdeskClient.getBindGroup(subcat,subcat2,subcat3,ticketType,unitCode);
     call.enqueue(new Callback<List<BindGroupResponse>>() {
         @Override
         public void onResponse(Call<List<BindGroupResponse>> call, Response<List<BindGroupResponse>> response) {

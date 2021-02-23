@@ -346,10 +346,10 @@ public class CreateTicketFragment extends Fragment {
                         ticket_type_sub_cat3.setVisibility(View.GONE);
                         ticket_type_spinner_sub_cat3.setVisibility(View.GONE);
                         ll11.setVisibility(View.GONE);
-                        ticket_type_sub_cat2.setVisibility(View.GONE);
+                       /* ticket_type_sub_cat2.setVisibility(View.GONE);
                         ticket_type_spinner_sub_cat2.setVisibility(View.GONE);
                         ll10.setVisibility(View.GONE);
-
+*/
                         initTicketGroupSpinner();
                         getTicketGroup(ticketTypeList.get(i - 1).getId(), unitcode);
                         groupAssignee.clear();
@@ -930,7 +930,7 @@ public class CreateTicketFragment extends Fragment {
                 }
 
             }
-        },ticketType,unitcode);
+        },ticketType,unitcode,subcat,subcat2,subcat3);
     }
 
     public void getGroupAssignee(String ticketType, String unitcode){
@@ -1100,8 +1100,12 @@ public class CreateTicketFragment extends Fragment {
 
                     }
                     for (AssetLocResponse assetLocResponse : subcat2List) {
-                        subcats2.add(assetLocResponse.getName());
+                        if (assetLocResponse.getName() != null) {
+                            subcats2.add(assetLocResponse.getName());
+                        } else if (assetLocResponse.getNamecat3() != null) {
+                            subcats2.add(assetLocResponse.getNamecat3());
 
+                        }
                     }
                     subcat2Adapter.notifyDataSetChanged();
                 }

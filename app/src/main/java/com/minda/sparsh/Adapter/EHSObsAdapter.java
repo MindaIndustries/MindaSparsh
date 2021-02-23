@@ -66,6 +66,11 @@ public class EHSObsAdapter extends RecyclerView.Adapter<EHSObsAdapter.ViewHolder
 
             if (myObservations.get(i).getStatus().equals("1")) {
                 viewHolder.edit.setVisibility(View.VISIBLE);
+                if(myObservations.get(i).getAssigned().equalsIgnoreCase("True")){
+                    viewHolder.edit.setVisibility(View.GONE);
+                    viewHolder.statusValue.setText("Assigned");
+
+                }
             } else {
                 viewHolder.edit.setVisibility(View.GONE);
             }
@@ -90,14 +95,13 @@ public class EHSObsAdapter extends RecyclerView.Adapter<EHSObsAdapter.ViewHolder
                     bundle.putString("incidenceAction", myObservations.get(i).getIncidentceAction());
                     bundle.putString("attachment", myObservations.get(i).getAttachment());
                     bundle.putString("status", myObservations.get(i).getStatus());
+                    bundle.putString("assigned", myObservations.get(i).getAssigned());
                     EHSInitiateFragment ehsInitiateFragment = new EHSInitiateFragment();
                     ehsInitiateFragment.setArguments(bundle);
                     ((AppCompatActivity) mContext).getSupportFragmentManager().beginTransaction()
                             .replace(R.id.framelayout, ehsInitiateFragment)
                             .addToBackStack(null)
                             .commit();
-
-
                 }
             });
 
@@ -121,6 +125,7 @@ public class EHSObsAdapter extends RecyclerView.Adapter<EHSObsAdapter.ViewHolder
                     bundle.putString("incidenceAction", myObservations.get(i).getIncidentceAction());
                     bundle.putString("attachment", myObservations.get(i).getAttachment());
                     bundle.putString("status", myObservations.get(i).getStatus());
+                    bundle.putString("assigned", myObservations.get(i).getAssigned());
                     EHSInitiateFragment ehsInitiateFragment = new EHSInitiateFragment();
                     ehsInitiateFragment.setArguments(bundle);
                     ((AppCompatActivity) mContext).getSupportFragmentManager().beginTransaction()
