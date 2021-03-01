@@ -294,7 +294,7 @@ public class CreateTicketFragment extends Fragment {
                 if(i>0 && subcatList.size()>0) {
                     subcat = subcatList.get(i-1).getId();
 
-                    if (subcatList.get(i - 1).getNext() != null && subcatList.get(i - 1).getNext().equals("C")) {
+                    if (subcatList.get(i - 1).getNextlevel() != null && subcatList.get(i - 1).getNextlevel().equals("C")) {
                         initSubcat2Spinner();
                         getSubCat2(subcatList.get(i - 1).getId(), "", tickettypeid, unitcode);
                         initSubCatSpinner3();
@@ -335,7 +335,7 @@ public class CreateTicketFragment extends Fragment {
                 if(i>0 && subcat2List.size()>0){
                     subcat2 = subcat2List.get(i-1).getId();
 
-                    if(subcat2List.get(i-1).getNext() !=null && subcat2List.get(i-1).getNext().equals("C")){
+                    if(subcat2List.get(i-1).getNextlevel() !=null && subcat2List.get(i-1).getNextlevel().equals("C")){
                         initSubCatSpinner3();
                         getSubCat3(subcat2List.get(i-1).getId(),"",tickettypeid,unitcode);
                         ticket_type_sub_cat3.setVisibility(View.VISIBLE);
@@ -716,6 +716,9 @@ public class CreateTicketFragment extends Fragment {
     }
 
     public void initGroupAssigneeSpinner(){
+        groupAssignee.clear();
+        groupAssignee.add("Select");
+
         groupAssigneeAdapter = new ArrayAdapter<String>(getActivity(),R.layout.spinner_row, groupAssignee){
             @Override
             public boolean isEnabled(int position) {
@@ -969,7 +972,6 @@ public class CreateTicketFragment extends Fragment {
                     List<String> names = (List<String>) carotResponse.getData();
                     ArrayAdapter<String> adapter = new ArrayAdapter<String>
                             (getActivity(), android.R.layout.select_dialog_item, names);
-
                     ccEt.setThreshold(3);
                     ccEt.setAdapter(adapter);
                     ccEt.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -1002,7 +1004,6 @@ public class CreateTicketFragment extends Fragment {
                     in.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     startActivity(in);
                     getActivity().finish();
-
                 }
                 }
         },location,tickettypeid,subcat,subcat2,subcat3,tickettypegroupid,assigneegroup,asigneGroupCode,DefaultAssigne,reportedby,priority,attachedfiles,attFileBytes,description,cc,empcode);
@@ -1097,14 +1098,12 @@ public class CreateTicketFragment extends Fragment {
                     List<AssetLocResponse> list = (List<AssetLocResponse>) carotResponse.getData();
                     if(list!=null && list.size()>0){
                         subcat2List.addAll(list);
-
                     }
                     for (AssetLocResponse assetLocResponse : subcat2List) {
                         if (assetLocResponse.getName() != null) {
                             subcats2.add(assetLocResponse.getName());
                         } else if (assetLocResponse.getNamecat3() != null) {
                             subcats2.add(assetLocResponse.getNamecat3());
-
                         }
                     }
                     subcat2Adapter.notifyDataSetChanged();

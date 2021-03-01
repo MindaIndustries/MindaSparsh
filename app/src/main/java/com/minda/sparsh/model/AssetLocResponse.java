@@ -16,6 +16,8 @@ public class AssetLocResponse {
     String Next;
     @SerializedName("Name")
     String Namecat3;
+    @SerializedName("nextlevel")
+    String nextlevel;
 
     public String getId() {
         return id;
@@ -68,4 +70,12 @@ public class AssetLocResponse {
 
 
         return true;    }
+
+    public String getNextlevel() {
+        return nextlevel;
+    }
+
+    public void setNextlevel(String nextlevel) {
+        this.nextlevel = nextlevel;
+    }
 }

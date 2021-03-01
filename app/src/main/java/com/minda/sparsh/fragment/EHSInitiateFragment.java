@@ -865,8 +865,6 @@ public class EHSInitiateFragment extends Fragment {
                             int i = ehsSubCategories.indexOf(ehsSubCategoryModel);
                             subCategorySpinner.setSelection(i + 1);
                         }
-
-
                     }
 
                 }
