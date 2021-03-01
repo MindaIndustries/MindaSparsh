@@ -108,7 +108,10 @@ public class MyTaskDetail extends BaseActivity {
     AutoCompleteTextView ccEt;
     @BindView(R.id.cclist)
     RecyclerView cclist;
+    @BindView(R.id.resolver_file_list)
+    RecyclerView resolver_file_list;
     ArrayList<String> recyclerview_list = new ArrayList<>();
+    ArrayList<String> resolver_files_list = new ArrayList<>();
     @BindView(R.id.reset)
     Button cancel;
     @BindView(R.id.submit)
@@ -176,7 +179,7 @@ public class MyTaskDetail extends BaseActivity {
     ArrayList<String> reportedbylist = new ArrayList<>();
     ArrayList<AssetLocResponse> reportedByListResponse = new ArrayList<>();
     String location, tickettypeid, tickettypegroupid, assigneegroup, asigneGroupCode, DefaultAssigne, reportedby, priority;
-    CCListAdapter ccListAdapter;
+    CCListAdapter ccListAdapter, resolverListAdapter;
 
 
     ArrayList<AssetLocResponse> subcatList = new ArrayList<>();
@@ -331,6 +334,10 @@ public class MyTaskDetail extends BaseActivity {
         final LinearLayoutManager mLayoutManager1 = new LinearLayoutManager(MyTaskDetail.this, LinearLayoutManager.VERTICAL, false);
         cclist.setLayoutManager(mLayoutManager1);
         cclist.setAdapter(ccListAdapter);
+        resolverListAdapter = new CCListAdapter(MyTaskDetail.this,resolver_files_list);
+        final LinearLayoutManager mLayoutManager2 = new LinearLayoutManager(MyTaskDetail.this, LinearLayoutManager.VERTICAL, false);
+        resolver_file_list.setLayoutManager(mLayoutManager2);
+        resolver_file_list.setAdapter(resolverListAdapter);
 
         if (myTicket != null && myTicket.getFiles() != null) {
             recyclerview_list.clear();
@@ -341,6 +348,14 @@ public class MyTaskDetail extends BaseActivity {
             ccListAdapter.notifyDataSetChanged();
 
 
+        }
+        if(myTicket!= null && myTicket.getFiles2()!=null){
+            resolver_files_list.clear();
+            String [] files2 = myTicket.getFiles2().split(",");
+            for (String s : files2) {
+                resolver_files_list.add(s);
+            }
+            resolverListAdapter.notifyDataSetChanged();
         }
 
 

@@ -450,13 +450,32 @@
                 android:gravity="center"
                 />
 
+            <TextView
+                android:layout_marginTop="20dp"
+                android:id="@+id/resolver_files"
+                android:text="Resolver Files :"
+                android:textSize="16sp"
+                android:visibility="visible"
+                android:textColor="@color/black"
+                android:fontFamily="@font/museosans_300"
+                android:layout_below="@+id/attachtext"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/resolver_file_list"
+                android:visibility="visible"
+                android:layout_marginTop="1dp"
+                android:layout_below="@+id/resolver_files"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
 
             <ImageView
                 android:id="@+id/doc_view"
                 android:layout_below="@+id/attachment"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:visibility="visible"
+                android:visibility="gone"
                 />
             <LinearLayout
                 android:visibility="gone"
@@ -477,7 +496,7 @@
                 android:visibility="visible"
                 android:textColor="@color/black"
                 android:fontFamily="@font/museosans_300"
-                android:layout_below="@+id/ll8"
+                android:layout_below="@+id/resolver_file_list"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
             <AutoCompleteTextView
