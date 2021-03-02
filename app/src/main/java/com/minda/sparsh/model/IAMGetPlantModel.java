@@ -3,7 +3,11 @@ package com.minda.sparsh.model;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class IAMGetPlantModel {
+import java.io.Serializable;
+
+import androidx.annotation.Nullable;
+
+public class IAMGetPlantModel implements Serializable {
 
     @SerializedName("UnitsID")
     @Expose
@@ -952,4 +956,16 @@ public class IAMGetPlantModel {
         this.strategyAssociateNo = strategyAssociateNo;
     }
 
+    @Override
+    public boolean equals(@Nullable Object obj) {
+        if (this == obj) return true;
+        if (!(obj instanceof IAMGetPlantModel)) return false;
+
+        IAMGetPlantModel that = (IAMGetPlantModel) obj;
+
+        if ((unitCode!="0" && !unitCode.equals(that.unitCode)))
+            return false;
+
+
+        return true;       }
 }

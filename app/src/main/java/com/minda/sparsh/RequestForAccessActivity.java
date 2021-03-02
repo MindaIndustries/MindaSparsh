@@ -11,6 +11,7 @@ import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.graphics.Bitmap;
+import android.graphics.Color;
 import android.graphics.Matrix;
 import android.net.Uri;
 import android.os.Build;
@@ -22,6 +23,7 @@ import android.util.Base64;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
@@ -70,6 +72,8 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -141,7 +145,7 @@ public class RequestForAccessActivity extends AppCompatActivity implements View.
     Button btn_cancel;
 
     ArrayList<String> catlistarray = new ArrayList<String>();
-    String sp_request_type_id, sp_access_type_id, sp_access_category_id ="0", sp_access_sub_category_id = "0", sp_access_sub_type_id,
+    String sp_request_type_id, sp_access_type_id, sp_access_category_id ="0", sp_access_sub_category_id = "0", sp_access_sub_type_id="0",
             sp_user_authorization_profile_id = "0", sp_access_for_id, sp_source_id, sp_access_category_value="0", sp_access_sub_category_value = "",
             sp_user_authorization_profile_value = "", catListValue = "", unitCheckId = "";
     @BindView(R.id.et_name)
@@ -174,6 +178,9 @@ public class RequestForAccessActivity extends AppCompatActivity implements View.
     private SharedPreferences myPref = null;
     private String mUserChoosenTask = "";
     private File mDestinationFile;
+    ArrayList<String> sp_source_data = new ArrayList<>();
+    ArrayAdapter<String> sp_source_adapter;
+    ArrayList<IAMGetAccessTypeSpinnerModel> accesstypelist = new ArrayList<>();
 
     String TYPE ;
 
@@ -236,8 +243,41 @@ public class RequestForAccessActivity extends AppCompatActivity implements View.
             }
         });
 
+        sp_source_adapter = new ArrayAdapter<String>(RequestForAccessActivity.this,android.R.layout.simple_spinner_item,sp_source_data){
+            @Override
+            public boolean isEnabled(int position) {
+                if (position == 0) {
+                    return false;
+                } else {
+                    return true;
+                }
+            }
+            @Override
+            public View getDropDownView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
+                View view = super.getDropDownView(position, convertView, parent);
+                TextView itemTv = (TextView) view;
+                itemTv.setSingleLine(true);
+                itemTv.setPadding(10, 10, 10, 10);
+            /*    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+                    itemTv.setBackground(getResources().getDrawable(R.drawable.darkline));
+                }
+            */    if (position == 0) {
+                    itemTv.setTextColor(Color.parseColor("#999999"));
+                } else {
+                    itemTv.setTextColor(Color.BLACK);
+                }
+                return view;
+            }
+        };
+        sp_source_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        sp_source.setAdapter(sp_source_adapter);
+        sp_source_adapter.notifyDataSetChanged();
+
+
+
+
         hitIAMGetRequestTypeApi();
-        hitIAMGetAccessTypeApi();
+       // hitIAMGetAccessTypeApi();
         hitIAMGetDomainApi();
         hitIAMGetListOfNamesApi();
         selectionListener();
@@ -277,12 +317,25 @@ public class RequestForAccessActivity extends AppCompatActivity implements View.
                         sp_request_type_id = selectedItem.getRequestTypeId().toString();
                         layAccessCategory.setVisibility(View.GONE);
                         layMultiAccessCategory.setVisibility(View.VISIBLE);
+                        sp_source_data.clear();
+                        sp_source_data.add("Select Source");
+                        sp_source_data.add("Internal");
+                        sp_source_adapter.notifyDataSetChanged();
+                        hitIAMGetAccessTypeApi(selectedItem.getRequestTypeId());
                         hiIAMGetCategoryApi(selectedItem.getRequestTypeId().toString(), "3");
+
                     } else {
                         sp_request_type_id = selectedItem.getRequestTypeId().toString();
                         layAccessCategory.setVisibility(View.VISIBLE);
                         layMultiAccessCategory.setVisibility(View.GONE);
+                        hitIAMGetAccessTypeApi(selectedItem.getRequestTypeId());
                         hiIAMGetCategoryApi(selectedItem.getRequestTypeId().toString(), "1");
+                        sp_source_data.clear();
+                        sp_source_data.add("Select Source");
+                        sp_source_data.add("Internal");
+                        sp_source_data.add("External");
+
+                        sp_source_adapter.notifyDataSetChanged();
                     }
                 }
             }
@@ -504,7 +557,8 @@ public class RequestForAccessActivity extends AppCompatActivity implements View.
             Toast.makeText(RequestForAccessActivity.this, "Please Check Your Network Connection", Toast.LENGTH_LONG).show();
     }
 
-    public void hitIAMGetAccessTypeApi() {
+    public void hitIAMGetAccessTypeApi(Integer id) {
+        accesstypelist.clear();
         if (Utility.isOnline(RequestForAccessActivity.this)) {
             showProgress(true);
             Interface anInterface = RetrofitClient2.getClient().create(Interface.class);
@@ -521,10 +575,18 @@ public class RequestForAccessActivity extends AppCompatActivity implements View.
 
                     if (responseList != null && responseList.size() > 0) {
                         responseList.add(0, iam);
-                        IAMIAMGetAccessTypeAdapter mAdapter = new IAMIAMGetAccessTypeAdapter(RequestForAccessActivity.this, responseList);
+                        accesstypelist.addAll(responseList);
+                        IAMIAMGetAccessTypeAdapter mAdapter = new IAMIAMGetAccessTypeAdapter(RequestForAccessActivity.this, accesstypelist);
                         sp_access_type.setAdapter(mAdapter);
+                        if(id==3){
+                            accesstypelist.remove(accesstypelist.size()-1);
+                        }
+                        synchronized(mAdapter){
+                            mAdapter.notify();
+                        }
+
                     }
-                }
+                    }
 
                 @Override
                 public void onFailure(Call<List<IAMGetAccessTypeSpinnerModel>> call, Throwable t) {
@@ -585,7 +647,6 @@ public class RequestForAccessActivity extends AppCompatActivity implements View.
                             iam.setCategoryId(0);
                             iam.setCategory("Please Select Category");
                             responseList.add(0, iam);
-
                             IAMGetCategoryAdapter mAdapter = new IAMGetCategoryAdapter(RequestForAccessActivity.this, responseList);
                           sp_access_category.setAdapter(mAdapter);
                         } else {
@@ -763,7 +824,7 @@ public class RequestForAccessActivity extends AppCompatActivity implements View.
             Toast.makeText(RequestForAccessActivity.this, "Please Check Your Network Connection", Toast.LENGTH_LONG).show();
     }
 
-    public void hitIAMGetPlantApi(String businessId, final String callType) {
+    public void hitIAMGetPlantApi(String businessId, final String callType,boolean b) {
         if (Utility.isOnline(RequestForAccessActivity.this)) {
             showProgress(true);
             Interface anInterface = RetrofitClient2.getClient().create(Interface.class);
@@ -774,18 +835,27 @@ public class RequestForAccessActivity extends AppCompatActivity implements View.
                     showProgress(false);
                     List<IAMGetPlantModel> responseList = response.body();
                     if (responseList != null && responseList.size() > 0) {
-                        if (callType.equalsIgnoreCase("checkBox")) {
+
+                        if(b){
+                            combineListPlant.addAll(responseList);
+                        }
+
+                        else{
+                            combineListPlant.removeAll(responseList);
+                        }
+                       /* if (callType.equalsIgnoreCase("checkBox")) {
                             combineListPlant.addAll(responseList);
                         } else {
                             combineListPlant.clear();
                             combineListPlant.addAll(responseList);
                         }
-                        layPlant.setVisibility(View.VISIBLE);
-                        IAMGetPlantAdapter mAdapter = new IAMGetPlantAdapter(responseList, RequestForAccessActivity.this, RequestForAccessActivity.this);
+                       */ layPlant.setVisibility(View.VISIBLE);
+                        IAMGetPlantAdapter mAdapter = new IAMGetPlantAdapter(combineListPlant, RequestForAccessActivity.this, RequestForAccessActivity.this);
                         GridLayoutManager gridLayoutManager = new GridLayoutManager(getApplicationContext(), 2);
                         recyclerViewPlant.setLayoutManager
                                 (gridLayoutManager);
                         recyclerViewPlant.setAdapter(mAdapter);
+                        mAdapter.notifyDataSetChanged();
                     }
                     else{
                         layPlant.setVisibility(View.GONE);

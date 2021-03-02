@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.RadioButton;
 
 import com.minda.sparsh.R;
@@ -53,9 +54,12 @@ public class IAMGetBusinessAdapter extends RecyclerView.Adapter<IAMGetBusinessAd
         final IAMGetBusinessModel iamGetDomainModel = list.get(position);
         holder.rb.setVisibility(View.VISIBLE);
         holder.rb.setText(iamGetDomainModel.getBUSINESS());
+        holder.rb.setVisibility(View.GONE);
+        holder.checkBox.setVisibility(View.VISIBLE);
+        holder.checkBox.setText(iamGetDomainModel.getBUSINESS());
 
 
-        if (checkCondition.equalsIgnoreCase("7") || checkCondition.equalsIgnoreCase("8") || checkCondition.equalsIgnoreCase("48")) {
+      /*  if (checkCondition.equalsIgnoreCase("7") || checkCondition.equalsIgnoreCase("8") || checkCondition.equalsIgnoreCase("48")) {
             holder.rb.setVisibility(View.GONE);
             holder.checkBox.setVisibility(View.VISIBLE);
             holder.checkBox.setText(iamGetDomainModel.getBUSINESS());
@@ -65,8 +69,8 @@ public class IAMGetBusinessAdapter extends RecyclerView.Adapter<IAMGetBusinessAd
             holder.rb.setVisibility(View.VISIBLE);
             holder.rb.setText(iamGetDomainModel.getBUSINESS());
         }
-
-        holder.rb.setOnClickListener(new View.OnClickListener() {
+*/
+        /*holder.rb.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 resetData(iamGetDomainModel.getBUSINESS());
@@ -75,22 +79,33 @@ public class IAMGetBusinessAdapter extends RecyclerView.Adapter<IAMGetBusinessAd
                 }
             }
         });
-
+*/
         if (iamGetDomainModel.isChecked()) {
-            holder.rb.setChecked(true);
+            holder.checkBox.setChecked(true);
         } else {
-            holder.rb.setChecked(false);
+            holder.checkBox.setChecked(false);
         }
 
-        holder.checkBox.setOnClickListener(new View.OnClickListener() {
+
+
+        holder.checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
-            public void onClick(View view) {
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
                 if (context instanceof RequestForAccessActivity) {
-                    ((RequestForAccessActivity) context).hitIAMGetPlantApi(String.valueOf(iamGetDomainModel.getID()),"checkBox");
+                    ((RequestForAccessActivity) context).hitIAMGetPlantApi(String.valueOf(iamGetDomainModel.getID()),"checkBox",b);
                 }
             }
         });
 
+       /* holder.checkBox.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (context instanceof RequestForAccessActivity) {
+                    ((RequestForAccessActivity) context).hitIAMGetPlantApi(String.valueOf(iamGetDomainModel.getID()),"checkBox",b);
+                }
+            }
+        });
+*/
     }
 
     @Override
