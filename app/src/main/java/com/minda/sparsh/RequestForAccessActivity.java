@@ -645,7 +645,7 @@ public class RequestForAccessActivity extends AppCompatActivity implements View.
                         if (!type.equalsIgnoreCase("3")) {
                             IAMGetCategorySpinnerModel iam = new IAMGetCategorySpinnerModel();
                             iam.setCategoryId(0);
-                            iam.setCategory("Please Select Category");
+                            iam.setCategory("Please   Category");
                             responseList.add(0, iam);
                             IAMGetCategoryAdapter mAdapter = new IAMGetCategoryAdapter(RequestForAccessActivity.this, responseList);
                           sp_access_category.setAdapter(mAdapter);

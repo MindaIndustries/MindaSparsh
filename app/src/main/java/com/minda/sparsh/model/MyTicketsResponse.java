@@ -196,11 +196,12 @@ public class MyTicketsResponse implements Serializable {
 
         MyTicketsResponse that = (MyTicketsResponse) obj;
 
-        if ((location!="0" && !location.equals(that.location)))
+        if ((location != "0" && !location.equals(that.location)))
             return false;
 
 
-        return true;    }
+        return true;
+    }
 
     public String getTicketGroup() {
         return TicketGroup;
