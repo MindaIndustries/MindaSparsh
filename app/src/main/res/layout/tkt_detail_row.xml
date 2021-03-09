@@ -22,7 +22,6 @@
             android:textSize="10sp"
             android:id="@+id/tkt_no"
             android:background="@drawable/border"
-            android:textColor="@color/disableBtn"
             android:padding="2dp"
 
             />
@@ -44,7 +43,6 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="center"
-            android:textColor="@color/disableBtn"
             android:text=""
             android:textSize="10sp"
             android:id="@+id/remarks"
@@ -59,7 +57,6 @@
             android:gravity="center"
             android:text=""
             android:textSize="10sp"
-            android:textColor="@color/disableBtn"
             android:id="@+id/status"
             android:background="@drawable/border"
             android:padding="2dp"
@@ -70,7 +67,6 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:textColor="@color/disableBtn"
             android:gravity="center"
             android:text=""
             android:id="@+id/created_on"
