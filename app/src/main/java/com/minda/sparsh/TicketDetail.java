@@ -8,9 +8,11 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.minda.sparsh.Adapter.CCListAdapter;
 import com.minda.sparsh.Adapter.TicketHistoryAdapter;
 import com.minda.sparsh.listener.CarotResponse;
 import com.minda.sparsh.listener.OnTaskComplete;
+import com.minda.sparsh.model.MyTicketsResponse;
 import com.minda.sparsh.model.TicketHistoryResponse;
 import com.minda.sparsh.services.ITHelpDeskServices;
 import com.minda.sparsh.util.Utility;
@@ -38,11 +40,17 @@ public class TicketDetail extends BaseActivity {
     Button update;
     @BindView(R.id.tkt_history)
     RecyclerView tktHistoryRv;
+    @BindView(R.id.cclist)
+    RecyclerView cclist;
     TicketHistoryAdapter ticketsAdapter;
     ArrayList<TicketHistoryResponse> tktHistoryList = new ArrayList<>();
+    ArrayList<String> recyclerview_list = new ArrayList<>();
 
     SharedPreferences myPref;
     String empCode,ticketNo,Remarks;
+    CCListAdapter ccListAdapter;
+    MyTicketsResponse myTicket;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -59,10 +67,33 @@ public class TicketDetail extends BaseActivity {
         final LinearLayoutManager mLayoutManager = new LinearLayoutManager(TicketDetail.this, LinearLayoutManager.VERTICAL, false);
         tktHistoryRv.setLayoutManager(mLayoutManager);
         tktHistoryRv.setAdapter(ticketsAdapter);
+        ccListAdapter = new CCListAdapter(TicketDetail.this, recyclerview_list);
+        final LinearLayoutManager mLayoutManager1 = new LinearLayoutManager(TicketDetail.this, LinearLayoutManager.VERTICAL, false);
+        cclist.setLayoutManager(mLayoutManager1);
+        cclist.setAdapter(ccListAdapter);
 
-        if(getIntent()!=null && getIntent().getStringExtra("ticketno")!=null){
-            ticketNo = getIntent().getStringExtra("ticketno");
-            getTicketHistory();
+        if (getIntent() != null && getIntent().getSerializableExtra("ticketno") != null) {
+            myTicket = (MyTicketsResponse) getIntent().getSerializableExtra("ticketno");
+
+
+            if (myTicket != null && myTicket.getFiles() != null) {
+                recyclerview_list.clear();
+                String[] files = myTicket.getFiles().split(",");
+                for (String file : files) {
+                    recyclerview_list.add(file);
+                }
+                ccListAdapter.notifyDataSetChanged();
+
+            }
+        }
+
+        if(getIntent()!=null && getIntent().getStringExtra("ticketno")!=null) {
+            if (myTicket != null && myTicket.getFiles() != null) {
+
+                ticketNo = myTicket.getTicketNo();
+
+                getTicketHistory();
+            }
         }
 
     }

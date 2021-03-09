@@ -64,7 +64,7 @@ public class TicketsAdapter extends RecyclerView.Adapter<TicketsAdapter.ViewHold
                 if(fragment instanceof MyTickets) {
                     if (myTickets.get(position).getStatus().equals("Open")) {
                         Intent in = new Intent(mContext, TicketDetail.class);
-                        in.putExtra("ticketno", myTickets.get(position).getTicketNo());
+                        in.putExtra("ticketno",(Serializable) myTickets.get(position));
                         mContext.startActivity(in);
                     }
                 }

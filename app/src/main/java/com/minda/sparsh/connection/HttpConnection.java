@@ -19,10 +19,12 @@ public class HttpConnection {
   //  public static String BASE_URL = "http://176.9.28.166/MindaSparshTest/service.asmx/";
     //dev environment
       public static String BASE_URL = "http://dev.mindasparsh.com/service.asmx/";
- //  prod environment
-   //  public static String BASE_URL = "https://app.mindasparsh.com/service.asmx/";
+      public static final String mindacareUrl = "https://dev.mindasparsh.com/mindacare/login.aspx?";
 
-    public static final String mindacareUrl = "https://dev.mindasparsh.com/mindacare/login.aspx?";
+    //  prod environment
+   //  public static String BASE_URL = "https://app.mindasparsh.com/service.asmx/";
+//    public static final String mindacareUrl = "https://app.mindasparsh.com/mindacare/login.aspx?";
+
 
 
 
