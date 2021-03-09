@@ -3,8 +3,11 @@ package com.minda.sparsh;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -47,9 +50,11 @@ public class TicketDetail extends BaseActivity {
     ArrayList<String> recyclerview_list = new ArrayList<>();
 
     SharedPreferences myPref;
-    String empCode,ticketNo,Remarks;
+    String empCode, ticketNo, Remarks;
     CCListAdapter ccListAdapter;
     MyTicketsResponse myTicket;
+    @BindView(R.id.header)
+    LinearLayout headerHistory;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,8 +67,8 @@ public class TicketDetail extends BaseActivity {
         getSupportActionBar().setHomeAsUpIndicator(R.drawable.back);
         title.setText("Ticket History");
         myPref = getSharedPreferences("MyPref", MODE_PRIVATE);
-        empCode = myPref.getString("Id","");
-        ticketsAdapter = new TicketHistoryAdapter(TicketDetail.this,tktHistoryList);
+        empCode = myPref.getString("Id", "");
+        ticketsAdapter = new TicketHistoryAdapter(TicketDetail.this, tktHistoryList);
         final LinearLayoutManager mLayoutManager = new LinearLayoutManager(TicketDetail.this, LinearLayoutManager.VERTICAL, false);
         tktHistoryRv.setLayoutManager(mLayoutManager);
         tktHistoryRv.setAdapter(ticketsAdapter);
@@ -87,11 +92,9 @@ public class TicketDetail extends BaseActivity {
             }
         }
 
-        if(getIntent()!=null && getIntent().getStringExtra("ticketno")!=null) {
+        if (getIntent() != null && getIntent().getSerializableExtra("ticketno") != null) {
             if (myTicket != null && myTicket.getFiles() != null) {
-
                 ticketNo = myTicket.getTicketNo();
-
                 getTicketHistory();
             }
         }
@@ -99,12 +102,11 @@ public class TicketDetail extends BaseActivity {
     }
 
     @OnClick(R.id.update)
-    public void onClickupdateRemark(){
-        if(Utility.isOnline(TicketDetail.this)) {
-            if (remark_et.getText().toString().length()> 0){
+    public void onClickupdateRemark() {
+        if (Utility.isOnline(TicketDetail.this)) {
+            if (remark_et.getText().toString().length() > 0) {
                 updateRemark();
-        }
-            else{
+            } else {
                 Toast.makeText(this, "Please enter remarks", Toast.LENGTH_SHORT).show();
             }
         }
@@ -123,26 +125,26 @@ public class TicketDetail extends BaseActivity {
     }
 
 
-    public void updateRemark(){
+    public void updateRemark() {
 
         ITHelpDeskServices itHelpDeskServices = new ITHelpDeskServices();
         itHelpDeskServices.updateRemark(new OnTaskComplete() {
             @Override
             public void onTaskComplte(CarotResponse carotResponse) {
 
-                if(carotResponse.getStatuscode() == HttpsURLConnection.HTTP_OK){
+                if (carotResponse.getStatuscode() == HttpsURLConnection.HTTP_OK) {
                     Toast.makeText(TicketDetail.this, "Remarks Updated", Toast.LENGTH_LONG).show();
                     remark_et.setText("");
                     getTicketHistory();
                 }
             }
-        },remark_et.getText().toString(),empCode,ticketNo);
+        }, remark_et.getText().toString(), empCode, ticketNo);
 
 
     }
 
 
-    public void getTicketHistory(){
+    public void getTicketHistory() {
         tktHistoryList.clear();
         tktHistoryRv.getRecycledViewPool().clear();
         ticketsAdapter.notifyDataSetChanged();
@@ -150,15 +152,24 @@ public class TicketDetail extends BaseActivity {
         itHelpDeskServices.getTicketHistory(new OnTaskComplete() {
             @Override
             public void onTaskComplte(CarotResponse carotResponse) {
-                if(carotResponse.getStatuscode() == HttpsURLConnection.HTTP_OK){
+                if (carotResponse.getStatuscode() == HttpsURLConnection.HTTP_OK) {
 
                     List<TicketHistoryResponse> list = (List<TicketHistoryResponse>) carotResponse.getData();
-                    if(list!=null && list.size()>0){
+                    if (list != null && list.size() > 0) {
                         tktHistoryList.addAll(list);
-                         }
+                    }
+                    if (tktHistoryList.size() > 0) {
+                        headerHistory.setVisibility(View.VISIBLE);
+                    } else {
+                        headerHistory.setVisibility(View.GONE);
+                    }
+                } else {
+                    headerHistory.setVisibility(View.GONE);
+
+
                 }
                 ticketsAdapter.notifyDataSetChanged();
             }
-        },ticketNo);
+        }, ticketNo);
     }
 }
