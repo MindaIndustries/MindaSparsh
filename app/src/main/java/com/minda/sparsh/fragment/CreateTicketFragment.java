@@ -1052,6 +1052,17 @@ public class CreateTicketFragment extends Fragment {
                     for (AssetLocResponse assetLocResponse : reportedByListResponse) {
                         reportedbylist.add(assetLocResponse.getName());
                     }
+
+
+                    if(empcode!=null){
+                        AssetLocResponse assetLocResponse = new AssetLocResponse();
+                        assetLocResponse.setId(empcode);
+                        int i = reportedByListResponse.indexOf(assetLocResponse);
+                        if(i>=0){
+                            reportedBySpinner.setSelection(i+1);
+                        }
+                    }
+
                     reportedbyAdapter.notifyDataSetChanged();
                 }
 

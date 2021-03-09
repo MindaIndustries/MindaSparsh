@@ -69,8 +69,13 @@ public class TicketDetail extends BaseActivity {
 
     @OnClick(R.id.update)
     public void onClickupdateRemark(){
-        if(Utility.isOnline(TicketDetail.this)){
-            updateRemark();
+        if(Utility.isOnline(TicketDetail.this)) {
+            if (remark_et.getText().toString().length()> 0){
+                updateRemark();
+        }
+            else{
+                Toast.makeText(this, "Please enter remarks", Toast.LENGTH_SHORT).show();
+            }
         }
     }
 

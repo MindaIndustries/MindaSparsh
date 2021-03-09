@@ -268,6 +268,12 @@ public class MyTaskDetail extends BaseActivity {
             ticketHistory.setText("Ticket: " +myTicket.getTicketNo());
             getTicketHistory(myTicket.getTicketNo());
         }
+        if(myTicket!=null && myTicket.getTicketGroup()!=null){
+            tickettypegroupid = myTicket.getTicketGroup();
+        }
+        if(myTicket!=null && myTicket.getAssigne()!=null){
+            assigneegroup = myTicket.getAssigne();
+        }
 
 
         resumed.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
@@ -412,7 +418,7 @@ public class MyTaskDetail extends BaseActivity {
                 if (i > 0 && subcatList.size() > 0) {
                     subcat = subcatList.get(i - 1).getId();
 
-                    if (subcatList.get(i - 1).getNext() != null && subcatList.get(i - 1).getNext().equals("C")) {
+                    if (subcatList.get(i - 1).getNextlevel() != null && subcatList.get(i - 1).getNextlevel().equals("C")) {
                         initSubcat2Spinner();
                         getSubCat2(subcatList.get(i - 1).getId(), "", tickettypeid, unitcode);
                         initSubCatSpinner3();
@@ -452,7 +458,7 @@ public class MyTaskDetail extends BaseActivity {
                 if (i > 0 && subcat2List.size() > 0) {
                     subcat2 = subcat2List.get(i - 1).getId();
 
-                    if (subcat2List.get(i - 1).getNext() != null && subcat2List.get(i - 1).getNext().equals("C")) {
+                    if (subcat2List.get(i - 1).getNextlevel() != null && subcat2List.get(i - 1).getNextlevel().equals("C")) {
                         initSubCatSpinner3();
                         getSubCat3(subcat2List.get(i - 1).getId(), "", tickettypeid, unitcode);
                         ticket_type_sub_cat3.setVisibility(View.VISIBLE);
@@ -642,7 +648,13 @@ public class MyTaskDetail extends BaseActivity {
         }
 
         if (Utility.isOnline(MyTaskDetail.this)) {
-            updateTicket();
+            if(remarks_et.getText().toString().length()>0) {
+                updateTicket();
+            }
+            else {
+                Toast.makeText(MyTaskDetail.this, "Enter Remarks ", Toast.LENGTH_LONG).show();
+
+            }
         } else {
             Toast.makeText(MyTaskDetail.this, "Please Check Your Network Connection", Toast.LENGTH_LONG).show();
         }
@@ -1237,6 +1249,16 @@ public class MyTaskDetail extends BaseActivity {
                     for (AssetLocResponse assetLocResponse : subcatList) {
                         subcats.add(assetLocResponse.getName());
                     }
+
+                    if(myTicket!=null && myTicket.getSubCat()!= null){
+                        AssetLocResponse assetLocResponse = new AssetLocResponse();
+                        assetLocResponse.setId(myTicket.getSubCat());
+                        int i = subcatList.indexOf(assetLocResponse);
+
+                        if(i>=0) {
+                            ticket_type_spinner_sub_cat.setSelection(i + 1);
+                        }
+                    }
                     subcatAdapter.notifyDataSetChanged();
 
                 }
@@ -1264,6 +1286,15 @@ public class MyTaskDetail extends BaseActivity {
                         subcats2.add(assetLocResponse.getName());
 
                     }
+
+                    if(myTicket!=null && myTicket.getSubCat2()!=null){
+                        AssetLocResponse assetLocResponse = new AssetLocResponse();
+                        assetLocResponse.setId(myTicket.getSubCat2());
+                        int  i = subcat2List.indexOf(assetLocResponse);
+                        if(i>=0){
+                            ticket_type_spinner_sub_cat2.setSelection(i+1);
+                        }
+                    }
                     subcat2Adapter.notifyDataSetChanged();
                 }
             }
@@ -1290,6 +1321,15 @@ public class MyTaskDetail extends BaseActivity {
                             subcats3.add(assetLocResponse.getName());
                         } else {
                             subcats3.add(assetLocResponse.getNamecat3());
+                        }
+                    }
+
+                    if(myTicket!=null && myTicket.getSubCat3()!=null){
+                        AssetLocResponse assetLocResponse = new AssetLocResponse();
+                        assetLocResponse.setId(myTicket.getSubCat3());
+                        int i = subcat3List.indexOf(assetLocResponse);
+                        if(i>=0){
+                            ticket_type_spinner_sub_cat3.setSelection(i+1);
                         }
                     }
                     subcat3Adapter.notifyDataSetChanged();
