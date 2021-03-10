@@ -16,6 +16,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.android.material.tabs.TabLayout;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
@@ -68,6 +69,7 @@ public class DashBoardActivity extends BaseActivity implements View.OnClickListe
     Timer timer;
     String empCode;
     public static Integer time = 0;
+
 
 
     @Override
@@ -387,10 +389,10 @@ public class DashBoardActivity extends BaseActivity implements View.OnClickListe
                     if(list!=null && list.size()>0){
                         if(list.get(0)!=null && list.get(0).getAndriodVersion()!=null) {
                             String androidVersion = list.get(0).getAndriodVersion();
+                          //  showMsg();
                         }
                     }
                 }
-
             }
 
             @Override
@@ -399,5 +401,30 @@ public class DashBoardActivity extends BaseActivity implements View.OnClickListe
 
             }
         });
+    }
+    public void showMsg() {
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this,R.style.AlertDialogCustom);
+        alertDialogBuilder.setMessage("A new Version of Minda Sparsh has been launched. Please Update.");
+        alertDialogBuilder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface arg0, int arg1) {
+                arg0.dismiss();
+                finish();
+                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(RetrofitClient2.playstoreURL));
+                startActivity(browserIntent);
+
+            }
+        });
+
+        alertDialogBuilder.setNegativeButton("CANCEL", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+                finish();
+            }
+        });
+
+        AlertDialog alertDialog = alertDialogBuilder.create();
+        alertDialog.show();
     }
 }

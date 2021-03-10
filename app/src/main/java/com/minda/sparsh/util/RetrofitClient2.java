@@ -20,6 +20,10 @@ import retrofit2.converter.scalars.ScalarsConverterFactory;
 
 
 public class RetrofitClient2 {
+    public static final String playstoreURL = "https://play.google.com/store/apps/details?id=com.minda.sparsh";
+
+
+
     //        public static final String BASE_URL = "http://52.172.191.61/testminda.com/Service.asmx/ ";
     //public static final String BASE_URL = "https://app.mindasparsh.com/service.asmx/";
     //master public static final String BASE_URL = "http://176.9.28.166/MindaSparshTest/Service.asmx/";

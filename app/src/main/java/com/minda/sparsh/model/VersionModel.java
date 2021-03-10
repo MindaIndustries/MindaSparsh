@@ -9,6 +9,8 @@ public class VersionModel {
     String AndriodVersion;
     @SerializedName("Status")
     String Status;
+    @SerializedName("IOSVersion")
+    String IOSVersion;
 
     public Integer getVersionId() {
         return VersionId;
@@ -32,5 +34,13 @@ public class VersionModel {
 
     public void setStatus(String status) {
         Status = status;
+    }
+
+    public String getIOSVersion() {
+        return IOSVersion;
+    }
+
+    public void setIOSVersion(String IOSVersion) {
+        this.IOSVersion = IOSVersion;
     }
 }
