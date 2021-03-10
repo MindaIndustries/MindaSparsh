@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
+
 import androidx.viewpager.widget.ViewPager;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -196,7 +197,7 @@ public class LoginActivity extends AppCompatActivity {
                     mEditor.putString("Id", Id);
                     mEditor.putString("username", UserName);
                     mEditor.putBoolean("IsLogin", true);
-                    mEditor.putBoolean("IsLoginNew",true);
+                    mEditor.putBoolean("IsLoginNew", true);
                     mEditor.putString("EmainId", EmailID);
                     mEditor.putString("AuthFor", loginModel.AuthFor);
                     mEditor.putString("Um_div_code", loginModel.UM_DIV_CODE);
@@ -330,7 +331,7 @@ public class LoginActivity extends AppCompatActivity {
                     IMAGES.clear();
 
 
-                    if (BannarModel != null && BannarModel.size()>0) {
+                    if (BannarModel != null && BannarModel.size() > 0) {
                         if (BannarModel.get(0).getIMAGE().length() != 0) {
                             IMAGES.add(BannarModel.get(0).getIMAGE());
                         }
@@ -389,7 +390,7 @@ public class LoginActivity extends AppCompatActivity {
                 public void onResponse(Call<List<LoginResponse>> call, Response<List<LoginResponse>> response) {
                     showProgress(false);
                     List<LoginResponse> loginResponse = response.body();
-                    if (loginResponse != null && loginResponse.size()>0) {
+                    if (loginResponse != null && loginResponse.size() > 0) {
 
                         try {
                             Intent intent = new Intent(getApplicationContext(), DashBoardActivity.class);
@@ -397,7 +398,7 @@ public class LoginActivity extends AppCompatActivity {
                             mEditor.putString("Id", loginResponse.get(0).getUMUSERID());
                             mEditor.putString("username", loginResponse.get(0).getUMUSERDESC());
                             mEditor.putBoolean("IsLogin", true);
-                            mEditor.putBoolean("IsLoginNew",true);
+                            mEditor.putBoolean("IsLoginNew", true);
                             mEditor.putString("EmainId", loginResponse.get(0).getUMEMAILID());
                             mEditor.putString("AuthFor", loginResponse.get(0).getAuthFor());
                             mEditor.putString("Um_div_code", loginResponse.get(0).getUMDIVCODE());
@@ -410,8 +411,8 @@ public class LoginActivity extends AppCompatActivity {
                             mEditor.putString("Depu_UnitName", (String) loginResponse.get(0).getDepuUnitName());
                             mEditor.putString("Depu_UnitCode", (String) loginResponse.get(0).getDepuUnitCode());
                             mEditor.putString("pass", loginResponse.get(0).getUMUSERPWD());
-                            mEditor.putString("DOB",loginResponse.get(0).getDOB());
-                            mEditor.putString("Mobile",loginResponse.get(0).getMobile());
+                            mEditor.putString("DOB", loginResponse.get(0).getDOB());
+                            mEditor.putString("Mobile", loginResponse.get(0).getMobile());
                             arrayList.clear();
                             String currentString = loginResponse.get(0).getAuthFor();
 
@@ -429,7 +430,7 @@ public class LoginActivity extends AppCompatActivity {
 
                             if (!cbTerms.isChecked()) {
                                 mEditor.putBoolean("IsLogin", false);
-                                mEditor.putBoolean("IsLoginNew",false);
+                                mEditor.putBoolean("IsLoginNew", false);
 
                             }
                             refreshedToken = FirebaseInstanceId.getInstance().getToken();

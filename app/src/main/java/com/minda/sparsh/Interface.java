@@ -38,6 +38,7 @@ import com.minda.sparsh.model.NotificationModel;
 import com.minda.sparsh.model.Plant_Model;
 import com.minda.sparsh.model.Sub_Department_Model;
 import com.minda.sparsh.model.UserDetail_Model;
+import com.minda.sparsh.model.VersionModel;
 import com.minda.sparsh.model.ViewAppointmentModel;
 import com.minda.sparsh.model.VisitorDetailModel;
 
@@ -52,6 +53,9 @@ import retrofit2.http.Query;
 
 public interface Interface {
 
+
+    @GET("GetAppVersion")
+    Call<List<VersionModel>> getAppVersion();
 
     // @FormUrlEncoded
     @GET("GetLogin")
