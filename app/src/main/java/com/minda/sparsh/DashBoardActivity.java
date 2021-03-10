@@ -70,6 +70,7 @@ public class DashBoardActivity extends BaseActivity implements View.OnClickListe
     String empCode;
     public static Integer time = 0;
 
+    String version = "";
 
 
     @Override
@@ -374,7 +375,7 @@ public class DashBoardActivity extends BaseActivity implements View.OnClickListe
     public void getAppVersion(){
         try {
             PackageInfo pInfo = getPackageManager().getPackageInfo(getPackageName(), 0);
-            String version = pInfo.versionName;
+             version = pInfo.versionName;
         } catch (PackageManager.NameNotFoundException e) {
             e.printStackTrace();
         }
@@ -389,7 +390,9 @@ public class DashBoardActivity extends BaseActivity implements View.OnClickListe
                     if(list!=null && list.size()>0){
                         if(list.get(0)!=null && list.get(0).getAndriodVersion()!=null) {
                             String androidVersion = list.get(0).getAndriodVersion();
-                          //  showMsg();
+                            if(version!=androidVersion){
+                                  showMsg();
+                            }
                         }
                     }
                 }
@@ -404,15 +407,15 @@ public class DashBoardActivity extends BaseActivity implements View.OnClickListe
     }
     public void showMsg() {
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this,R.style.AlertDialogCustom);
-        alertDialogBuilder.setMessage("A new Version of Minda Sparsh has been launched. Please Update.");
+        alertDialogBuilder.setMessage("A new Version of Minda Sparsh is available on Play Store. Please Update.");
+        alertDialogBuilder.setCancelable(false);
         alertDialogBuilder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface arg0, int arg1) {
                 arg0.dismiss();
-                finish();
+              //  finish();
                 Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(RetrofitClient2.playstoreURL));
                 startActivity(browserIntent);
-
             }
         });
 
@@ -420,7 +423,7 @@ public class DashBoardActivity extends BaseActivity implements View.OnClickListe
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 dialog.dismiss();
-                finish();
+               // finish();
             }
         });
 
