@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.AsyncTask;
@@ -43,7 +44,9 @@ import java.util.Timer;
 import com.minda.sparsh.listener.CarotResponse;
 import com.minda.sparsh.listener.OnTaskComplete;
 import com.minda.sparsh.model.NotificationModel;
+import com.minda.sparsh.model.VersionModel;
 import com.minda.sparsh.services.FirebaseService;
+import com.minda.sparsh.util.RetrofitClient2;
 import com.minda.sparsh.util.Utility;
 
 import org.jsoup.Jsoup;
@@ -87,7 +90,7 @@ public class DashBoardActivity extends BaseActivity implements View.OnClickListe
         empCode = myPref.getString("Id", "Id");
         User = myPref.getString("username", "");
         saveFirebaseToken(empCode);
-
+        getAppVersion();
       /*  FirebaseInstanceId.getInstance().getInstanceId()
                 .addOnCompleteListener(new OnCompleteListener<InstanceIdResult>() {
                     @Override
@@ -365,4 +368,36 @@ public class DashBoardActivity extends BaseActivity implements View.OnClickListe
             });
 
         }
+
+    public void getAppVersion(){
+        try {
+            PackageInfo pInfo = getPackageManager().getPackageInfo(getPackageName(), 0);
+            String version = pInfo.versionName;
+        } catch (PackageManager.NameNotFoundException e) {
+            e.printStackTrace();
+        }
+
+        Interface anInterface = RetrofitClient2.getClient().create(Interface.class);
+        Call<List<VersionModel>> call = anInterface.getAppVersion();
+        call.enqueue(new Callback<List<VersionModel>>() {
+            @Override
+            public void onResponse(Call<List<VersionModel>> call, Response<List<VersionModel>> response) {
+                if(response.code()== HttpsURLConnection.HTTP_OK) {
+                    List<VersionModel> list = response.body();
+                    if(list!=null && list.size()>0){
+                        if(list.get(0)!=null && list.get(0).getAndriodVersion()!=null) {
+                            String androidVersion = list.get(0).getAndriodVersion();
+                        }
+                    }
+                }
+
+            }
+
+            @Override
+            public void onFailure(Call<List<VersionModel>> call, Throwable t) {
+                System.out.println("Api failed");
+
+            }
+        });
+    }
 }
