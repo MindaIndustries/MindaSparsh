@@ -62,10 +62,9 @@ public class TicketHistoryAdapter extends RecyclerView.Adapter<TicketHistoryAdap
         TextView created_on;
 
 
-
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            ButterKnife.bind(this,itemView);
+            ButterKnife.bind(this, itemView);
 
         }
     }

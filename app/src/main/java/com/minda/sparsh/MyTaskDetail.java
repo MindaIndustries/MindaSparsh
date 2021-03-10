@@ -195,8 +195,6 @@ public class MyTaskDetail extends BaseActivity {
     String statusStr = "Update";
 
 
-
-
     @BindView(R.id.tkt_history)
     RecyclerView tktHistoryRv;
     TicketHistoryAdapter ticketsAdapter;
@@ -260,18 +258,18 @@ public class MyTaskDetail extends BaseActivity {
 
         }
 
-        ticketsAdapter = new TicketHistoryAdapter(MyTaskDetail.this,tktHistoryList);
+        ticketsAdapter = new TicketHistoryAdapter(MyTaskDetail.this, tktHistoryList);
         final LinearLayoutManager mLayoutManager = new LinearLayoutManager(MyTaskDetail.this, LinearLayoutManager.VERTICAL, false);
         tktHistoryRv.setLayoutManager(mLayoutManager);
         tktHistoryRv.setAdapter(ticketsAdapter);
-        if(myTicket!=null && myTicket.getTicketNo()!=null) {
-            ticketHistory.setText("Ticket: " +myTicket.getTicketNo());
+        if (myTicket != null && myTicket.getTicketNo() != null) {
+            ticketHistory.setText("Ticket: " + myTicket.getTicketNo());
             getTicketHistory(myTicket.getTicketNo());
         }
-        if(myTicket!=null && myTicket.getTicketGroup()!=null){
+        if (myTicket != null && myTicket.getTicketGroup() != null) {
             tickettypegroupid = myTicket.getTicketGroup();
         }
-        if(myTicket!=null && myTicket.getAssigne()!=null){
+        if (myTicket != null && myTicket.getAssigne() != null) {
             assigneegroup = myTicket.getAssigne();
         }
 
@@ -340,7 +338,7 @@ public class MyTaskDetail extends BaseActivity {
         final LinearLayoutManager mLayoutManager1 = new LinearLayoutManager(MyTaskDetail.this, LinearLayoutManager.VERTICAL, false);
         cclist.setLayoutManager(mLayoutManager1);
         cclist.setAdapter(ccListAdapter);
-        resolverListAdapter = new CCListAdapter(MyTaskDetail.this,resolver_files_list);
+        resolverListAdapter = new CCListAdapter(MyTaskDetail.this, resolver_files_list);
         final LinearLayoutManager mLayoutManager2 = new LinearLayoutManager(MyTaskDetail.this, LinearLayoutManager.VERTICAL, false);
         resolver_file_list.setLayoutManager(mLayoutManager2);
         resolver_file_list.setAdapter(resolverListAdapter);
@@ -355,9 +353,9 @@ public class MyTaskDetail extends BaseActivity {
 
 
         }
-        if(myTicket!= null && myTicket.getFiles2()!=null){
+        if (myTicket != null && myTicket.getFiles2() != null) {
             resolver_files_list.clear();
-            String [] files2 = myTicket.getFiles2().split(",");
+            String[] files2 = myTicket.getFiles2().split(",");
             for (String s : files2) {
                 resolver_files_list.add(s);
             }
@@ -605,7 +603,7 @@ public class MyTaskDetail extends BaseActivity {
     }
 
     @OnClick(R.id.reset)
-    public void onClickReset(){
+    public void onClickReset() {
         finish();
     }
 
@@ -648,10 +646,9 @@ public class MyTaskDetail extends BaseActivity {
         }
 
         if (Utility.isOnline(MyTaskDetail.this)) {
-            if(remarks_et.getText().toString().length()>0) {
+            if (remarks_et.getText().toString().length() > 0) {
                 updateTicket();
-            }
-            else {
+            } else {
                 Toast.makeText(MyTaskDetail.this, "Enter Remarks ", Toast.LENGTH_LONG).show();
 
             }
@@ -1084,7 +1081,7 @@ public class MyTaskDetail extends BaseActivity {
                 }
 
             }
-        }, ticketType, unitcode,subcat,subcat2,subcat3);
+        }, ticketType, unitcode, subcat, subcat2, subcat3);
     }
 
     public void getGroupAssignee(String ticketType, String unitcode) {
@@ -1250,12 +1247,12 @@ public class MyTaskDetail extends BaseActivity {
                         subcats.add(assetLocResponse.getName());
                     }
 
-                    if(myTicket!=null && myTicket.getSubCat()!= null){
+                    if (myTicket != null && myTicket.getSubCat() != null) {
                         AssetLocResponse assetLocResponse = new AssetLocResponse();
                         assetLocResponse.setId(myTicket.getSubCat());
                         int i = subcatList.indexOf(assetLocResponse);
 
-                        if(i>=0) {
+                        if (i >= 0) {
                             ticket_type_spinner_sub_cat.setSelection(i + 1);
                         }
                     }
@@ -1287,12 +1284,12 @@ public class MyTaskDetail extends BaseActivity {
 
                     }
 
-                    if(myTicket!=null && myTicket.getSubCat2()!=null){
+                    if (myTicket != null && myTicket.getSubCat2() != null) {
                         AssetLocResponse assetLocResponse = new AssetLocResponse();
                         assetLocResponse.setId(myTicket.getSubCat2());
-                        int  i = subcat2List.indexOf(assetLocResponse);
-                        if(i>=0){
-                            ticket_type_spinner_sub_cat2.setSelection(i+1);
+                        int i = subcat2List.indexOf(assetLocResponse);
+                        if (i >= 0) {
+                            ticket_type_spinner_sub_cat2.setSelection(i + 1);
                         }
                     }
                     subcat2Adapter.notifyDataSetChanged();
@@ -1324,12 +1321,12 @@ public class MyTaskDetail extends BaseActivity {
                         }
                     }
 
-                    if(myTicket!=null && myTicket.getSubCat3()!=null){
+                    if (myTicket != null && myTicket.getSubCat3() != null) {
                         AssetLocResponse assetLocResponse = new AssetLocResponse();
                         assetLocResponse.setId(myTicket.getSubCat3());
                         int i = subcat3List.indexOf(assetLocResponse);
-                        if(i>=0){
-                            ticket_type_spinner_sub_cat3.setSelection(i+1);
+                        if (i >= 0) {
+                            ticket_type_spinner_sub_cat3.setSelection(i + 1);
                         }
                     }
                     subcat3Adapter.notifyDataSetChanged();
@@ -1642,7 +1639,7 @@ public class MyTaskDetail extends BaseActivity {
         itHelpDeskServices.updateMyTaskTicket(new OnTaskComplete() {
             @Override
             public void onTaskComplte(CarotResponse carotResponse) {
-                if(carotResponse.getStatuscode() == HttpsURLConnection.HTTP_OK){
+                if (carotResponse.getStatuscode() == HttpsURLConnection.HTTP_OK) {
                     Toast.makeText(MyTaskDetail.this, "Ticket Updated successfully", Toast.LENGTH_LONG).show();
                     Intent in = new Intent(MyTaskDetail.this, ITHelpDeskHome.class);
                     in.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
@@ -1655,7 +1652,7 @@ public class MyTaskDetail extends BaseActivity {
         }, myTicket.getTicketNo(), empcode, remarks_et.getText().toString(), statusStr, location, tickettypeid, subcat, subcat2, subcat3, tickettypegroupid, assigneegroup, asigneGroupCode, DefaultAssigne, reportedby, priority, attachmentNames.toString().replace("[", "").replace("]", ""), attachmentFiles.toString().replace("[", "").replace("]", ""), "", "");
     }
 
-    public void getTicketHistory(String ticketNo){
+    public void getTicketHistory(String ticketNo) {
         tktHistoryList.clear();
         tktHistoryRv.getRecycledViewPool().clear();
         ticketsAdapter.notifyDataSetChanged();
@@ -1663,26 +1660,24 @@ public class MyTaskDetail extends BaseActivity {
         itHelpDeskServices.getTicketHistory(new OnTaskComplete() {
             @Override
             public void onTaskComplte(CarotResponse carotResponse) {
-                if(carotResponse.getStatuscode() == HttpsURLConnection.HTTP_OK){
+                if (carotResponse.getStatuscode() == HttpsURLConnection.HTTP_OK) {
 
                     List<TicketHistoryResponse> list = (List<TicketHistoryResponse>) carotResponse.getData();
-                    if(list!=null && list.size()>0){
+                    if (list != null && list.size() > 0) {
                         tktHistoryList.addAll(list);
                     }
-                    if(tktHistoryList.size()>0){
+                    if (tktHistoryList.size() > 0) {
                         headerHistory.setVisibility(View.VISIBLE);
-                    }
-                    else{
+                    } else {
                         headerHistory.setVisibility(View.GONE);
                     }
-                }
-                else{
+                } else {
                     headerHistory.setVisibility(View.GONE);
 
                 }
                 ticketsAdapter.notifyDataSetChanged();
             }
-        },ticketNo);
+        }, ticketNo);
     }
 
 }

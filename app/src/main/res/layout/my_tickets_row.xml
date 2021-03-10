@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
@@ -17,172 +17,172 @@
             android:id="@+id/row"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="5dp"
-            >
+            android:padding="5dp">
 
             <TextView
-                android:layout_toRightOf="@+id/icon"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text=""
-                android:layout_marginLeft="10dp"
-                android:textColor="@color/black"
                 android:id="@+id/status"
-                android:gravity="center"
-                android:textSize="16sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_toRightOf="@+id/icon"
                 android:fontFamily="@font/museosans_700"
-                />
-        <RelativeLayout
-            android:padding="20dp"
-            android:layout_below="@+id/status"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+                android:gravity="center"
+                android:text=""
+                android:textColor="@color/black"
+                android:textSize="16sp" />
 
-            <View
-                android:id="@+id/view"
-                android:layout_width="2dp"
-                android:layout_height="1dp"
-                android:layout_centerHorizontal="true"/>
-
-            <TextView
-                android:id="@+id/tkt_type"
-                android:layout_width="wrap_content"
+            <RelativeLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/museosans_500"
-                android:text="Ticket Type :" />
+                android:layout_below="@+id/status"
+                android:padding="20dp">
 
-            <TextView
-                android:id="@+id/tkt_type_value"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_toRightOf="@+id/view"
-                android:fontFamily="@font/museosans_300"
-                android:text="" />
+                <View
+                    android:id="@+id/view"
+                    android:layout_width="2dp"
+                    android:layout_height="1dp"
+                    android:layout_centerHorizontal="true" />
 
-            <TextView
-                android:layout_marginTop="10dp"
-                android:layout_below="@+id/tkt_type_value"
-                android:id="@+id/tkt_no"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/museosans_500"
-                android:text="Ticket No. :" />
+                <TextView
+                    android:id="@+id/tkt_type"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/museosans_500"
+                    android:text="Ticket Type :" />
 
-            <TextView
-                android:id="@+id/tkt_no_value"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="10dp"
-                android:layout_toRightOf="@+id/view"
-                android:fontFamily="@font/museosans_300"
-                android:layout_below="@+id/tkt_type_value"
-                android:text="" />
+                <TextView
+                    android:id="@+id/tkt_type_value"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_toRightOf="@+id/view"
+                    android:fontFamily="@font/museosans_300"
+                    android:text="" />
 
-            <TextView
-                android:layout_marginTop="10dp"
-                android:layout_below="@+id/tkt_no_value"
-                android:id="@+id/reported_dt_time"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/museosans_500"
-                android:text="Reported Date Time :" />
+                <TextView
+                    android:id="@+id/tkt_no"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tkt_type_value"
+                    android:layout_marginTop="10dp"
+                    android:fontFamily="@font/museosans_500"
+                    android:text="Ticket No. :" />
 
-            <TextView
-                android:id="@+id/reported_dt_time_value"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="10dp"
-                android:layout_toRightOf="@+id/view"
-                android:fontFamily="@font/museosans_300"
-                android:layout_below="@+id/tkt_no_value"
-                android:text="" />
+                <TextView
+                    android:id="@+id/tkt_no_value"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tkt_type_value"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_toRightOf="@+id/view"
+                    android:fontFamily="@font/museosans_300"
+                    android:text="" />
 
-            <TextView
-                android:layout_marginTop="10dp"
-                android:layout_below="@+id/reported_dt_time_value"
-                android:id="@+id/assignee"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/museosans_500"
-                android:text="Assignee :" />
+                <TextView
+                    android:id="@+id/reported_dt_time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tkt_no_value"
+                    android:layout_marginTop="10dp"
+                    android:fontFamily="@font/museosans_500"
+                    android:text="Reported Date Time :" />
 
-            <TextView
-                android:id="@+id/assignee_value"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="10dp"
-                android:layout_toRightOf="@+id/view"
-                android:fontFamily="@font/museosans_300"
-                android:layout_below="@+id/reported_dt_time_value"
-                android:text="" />
+                <TextView
+                    android:id="@+id/reported_dt_time_value"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tkt_no_value"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_toRightOf="@+id/view"
+                    android:fontFamily="@font/museosans_300"
+                    android:text="" />
 
-            <TextView
-                android:layout_marginTop="10dp"
-                android:layout_below="@+id/assignee_value"
-                android:id="@+id/cc"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/museosans_500"
-                android:text="CC :"
-                android:visibility="gone"/>
+                <TextView
+                    android:id="@+id/assignee"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/reported_dt_time_value"
+                    android:layout_marginTop="10dp"
+                    android:fontFamily="@font/museosans_500"
+                    android:text="Assignee :" />
 
-            <TextView
-                android:id="@+id/cc_value"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="10dp"
-                android:layout_toRightOf="@+id/view"
-                android:fontFamily="@font/museosans_300"
-                android:layout_below="@+id/assignee_value"
-                android:visibility="gone"
-                android:text="" />
+                <TextView
+                    android:id="@+id/assignee_value"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/reported_dt_time_value"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_toRightOf="@+id/view"
+                    android:fontFamily="@font/museosans_300"
+                    android:text="" />
 
-            <TextView
-                android:layout_marginTop="10dp"
-                android:layout_below="@+id/cc_value"
-                android:id="@+id/assign_loc"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/museosans_500"
-                android:text="Assign Location :" />
+                <TextView
+                    android:id="@+id/cc"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/assignee_value"
+                    android:layout_marginTop="10dp"
+                    android:fontFamily="@font/museosans_500"
+                    android:text="CC :"
+                    android:visibility="gone" />
 
-            <TextView
-                android:id="@+id/assign_loc_value"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="10dp"
-                android:layout_toRightOf="@+id/view"
-                android:fontFamily="@font/museosans_300"
-                android:layout_below="@+id/cc_value"
-                android:text="" />
-            <TextView
-                android:layout_marginTop="10dp"
-                android:layout_below="@+id/assign_loc_value"
-                android:id="@+id/reported_by"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/museosans_500"
-                android:text="Reported By :" />
+                <TextView
+                    android:id="@+id/cc_value"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/assignee_value"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_toRightOf="@+id/view"
+                    android:fontFamily="@font/museosans_300"
+                    android:text=""
+                    android:visibility="gone" />
 
-            <TextView
-                android:id="@+id/reported_by_value"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="10dp"
-                android:layout_toRightOf="@+id/view"
-                android:fontFamily="@font/museosans_300"
-                android:layout_below="@+id/assign_loc_value"
-                android:text="" />
+                <TextView
+                    android:id="@+id/assign_loc"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/cc_value"
+                    android:layout_marginTop="10dp"
+                    android:fontFamily="@font/museosans_500"
+                    android:text="Assign Location :" />
+
+                <TextView
+                    android:id="@+id/assign_loc_value"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/cc_value"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_toRightOf="@+id/view"
+                    android:fontFamily="@font/museosans_300"
+                    android:text="" />
+
+                <TextView
+                    android:id="@+id/reported_by"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/assign_loc_value"
+                    android:layout_marginTop="10dp"
+                    android:fontFamily="@font/museosans_500"
+                    android:text="Reported By :" />
+
+                <TextView
+                    android:id="@+id/reported_by_value"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/assign_loc_value"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_toRightOf="@+id/view"
+                    android:fontFamily="@font/museosans_300"
+                    android:text="" />
 
 
-        </RelativeLayout>
+            </RelativeLayout>
 
         </RelativeLayout>
     </androidx.cardview.widget.CardView>

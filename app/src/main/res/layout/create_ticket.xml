@@ -1,539 +1,531 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:descendantFocusability="beforeDescendants"
-    android:focusableInTouchMode="true">
+    android:focusableInTouchMode="true"
+    android:orientation="vertical">
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:fillViewport="true"
-        >
+        android:fillViewport="true">
+
         <RelativeLayout
-            android:padding="20dp"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:padding="20dp">
 
             <View
                 android:id="@+id/view"
-                android:layout_centerInParent="true"
                 android:layout_width="0dp"
-                android:layout_height="1dp"/>
+                android:layout_height="1dp"
+                android:layout_centerInParent="true" />
+
             <TextView
-                android:fontFamily="@font/museosans_500"
                 android:id="@+id/heading"
-                android:textSize="18sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/museosans_500"
                 android:text="Raise Ticket"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+                android:textSize="18sp" />
 
             <TextView
-                android:layout_marginTop="30dp"
                 android:id="@+id/asset_loc"
-                android:text="Asset Location :"
-                android:textSize="16sp"
-                android:textColor="@color/black"
-                android:fontFamily="@font/museosans_300"
-                android:layout_below="@+id/heading"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-
-            <com.minda.sparsh.customview.NoDefaultSpinner
-                style="@style/lipstick_spinner_header_style"
-                android:id="@+id/asset_loc_spinner"
-                android:spinnerMode="dropdown"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/heading"
                 android:layout_marginTop="30dp"
-                android:popupElevation="6dp"
+                android:fontFamily="@font/museosans_300"
+                android:text="Asset Location :"
+                android:textColor="@color/black"
+                android:textSize="16sp" />
+
+            <com.minda.sparsh.customview.NoDefaultSpinner
+                android:id="@+id/asset_loc_spinner"
+                style="@style/lipstick_spinner_header_style"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_below="@+id/heading"
+                android:layout_marginTop="30dp"
                 android:layout_toRightOf="@+id/view"
                 android:dropDownVerticalOffset="20dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
                 android:padding="5dp"
-                ></com.minda.sparsh.customview.NoDefaultSpinner>
+                android:popupElevation="6dp"
+                android:spinnerMode="dropdown"></com.minda.sparsh.customview.NoDefaultSpinner>
 
             <LinearLayout
-                android:layout_marginTop="5dp"
+                android:id="@+id/ll1"
                 android:layout_width="match_parent"
                 android:layout_height="2dp"
-                android:background="#414042"
                 android:layout_below="@+id/asset_loc"
-                android:orientation="horizontal"
-                android:id="@+id/ll1"></LinearLayout>
+                android:layout_marginTop="5dp"
+                android:background="#414042"
+                android:orientation="horizontal"></LinearLayout>
 
             <TextView
-                android:layout_marginTop="20dp"
                 android:id="@+id/ticket_type"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/ll1"
+                android:layout_marginTop="20dp"
+                android:fontFamily="@font/museosans_300"
                 android:text="Ticket Type :"
-                android:textSize="16sp"
                 android:textColor="@color/black"
-                android:fontFamily="@font/museosans_300"
-                android:layout_below="@+id/ll1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:textSize="16sp" />
 
             <com.minda.sparsh.customview.NoDefaultSpinner
-                style="@style/lipstick_spinner_header_style"
                 android:id="@+id/ticket_type_spinner"
-                android:spinnerMode="dropdown"
-                android:layout_marginTop="20dp"
-                android:popupElevation="6dp"
+                style="@style/lipstick_spinner_header_style"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_below="@+id/ll1"
+                android:layout_marginTop="20dp"
                 android:layout_toRightOf="@+id/view"
                 android:dropDownVerticalOffset="20dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
                 android:padding="5dp"
-                ></com.minda.sparsh.customview.NoDefaultSpinner>
+                android:popupElevation="6dp"
+                android:spinnerMode="dropdown"></com.minda.sparsh.customview.NoDefaultSpinner>
 
             <LinearLayout
-                android:layout_marginTop="5dp"
+                android:id="@+id/ll2"
                 android:layout_width="match_parent"
                 android:layout_height="2dp"
-                android:background="#414042"
                 android:layout_below="@+id/ticket_type"
-                android:orientation="horizontal"
-                android:id="@+id/ll2"></LinearLayout>
+                android:layout_marginTop="5dp"
+                android:background="#414042"
+                android:orientation="horizontal"></LinearLayout>
 
             <TextView
-                android:visibility="gone"
-                android:layout_marginTop="20dp"
                 android:id="@+id/ticket_type_sub_cat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/ll2"
+                android:layout_marginTop="20dp"
+                android:fontFamily="@font/museosans_300"
                 android:text="Ticket Type Sub Cat :"
-                android:textSize="16sp"
                 android:textColor="@color/black"
-                android:fontFamily="@font/museosans_300"
-                android:layout_below="@+id/ll2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:textSize="16sp"
+                android:visibility="gone" />
 
             <com.minda.sparsh.customview.NoDefaultSpinner
-                android:visibility="gone"
-                style="@style/lipstick_spinner_header_style"
                 android:id="@+id/ticket_type_spinner_sub_cat"
-                android:spinnerMode="dropdown"
-                android:layout_marginTop="20dp"
-                android:popupElevation="6dp"
+                style="@style/lipstick_spinner_header_style"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_below="@+id/ll2"
+                android:layout_marginTop="20dp"
                 android:layout_toRightOf="@+id/view"
                 android:dropDownVerticalOffset="20dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
                 android:padding="5dp"
-                ></com.minda.sparsh.customview.NoDefaultSpinner>
+                android:popupElevation="6dp"
+                android:spinnerMode="dropdown"
+                android:visibility="gone"></com.minda.sparsh.customview.NoDefaultSpinner>
 
             <LinearLayout
-                android:visibility="gone"
-                android:layout_marginTop="5dp"
+                android:id="@+id/ll9"
                 android:layout_width="match_parent"
                 android:layout_height="2dp"
-                android:background="#414042"
                 android:layout_below="@+id/ticket_type_spinner_sub_cat"
+                android:layout_marginTop="5dp"
+                android:background="#414042"
                 android:orientation="horizontal"
-                android:id="@+id/ll9"></LinearLayout>
+                android:visibility="gone"></LinearLayout>
 
 
             <TextView
-                android:visibility="gone"
-                android:layout_marginTop="20dp"
                 android:id="@+id/ticket_type_sub_cat2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/ll9"
+                android:layout_marginTop="20dp"
+                android:fontFamily="@font/museosans_300"
                 android:text="Ticket Type Sub Cat 2 :"
-                android:textSize="16sp"
                 android:textColor="@color/black"
-                android:fontFamily="@font/museosans_300"
-                android:layout_below="@+id/ll9"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:textSize="16sp"
+                android:visibility="gone" />
 
             <com.minda.sparsh.customview.NoDefaultSpinner
-                android:visibility="gone"
-                style="@style/lipstick_spinner_header_style"
                 android:id="@+id/ticket_type_spinner_sub_cat2"
-                android:spinnerMode="dropdown"
-                android:layout_marginTop="20dp"
-                android:popupElevation="6dp"
+                style="@style/lipstick_spinner_header_style"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_below="@+id/ll9"
+                android:layout_marginTop="20dp"
                 android:layout_toRightOf="@+id/view"
                 android:dropDownVerticalOffset="20dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
                 android:padding="5dp"
-                ></com.minda.sparsh.customview.NoDefaultSpinner>
+                android:popupElevation="6dp"
+                android:spinnerMode="dropdown"
+                android:visibility="gone"></com.minda.sparsh.customview.NoDefaultSpinner>
 
             <LinearLayout
-                android:visibility="gone"
-                android:layout_marginTop="5dp"
+                android:id="@+id/ll10"
                 android:layout_width="match_parent"
                 android:layout_height="2dp"
-                android:background="#414042"
                 android:layout_below="@+id/ticket_type_sub_cat2"
+                android:layout_marginTop="5dp"
+                android:background="#414042"
                 android:orientation="horizontal"
-                android:id="@+id/ll10"></LinearLayout>
+                android:visibility="gone"></LinearLayout>
 
             <TextView
-                android:visibility="gone"
-                android:layout_marginTop="20dp"
                 android:id="@+id/ticket_type_sub_cat3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/ll10"
+                android:layout_marginTop="20dp"
+                android:fontFamily="@font/museosans_300"
                 android:text="Ticket Type Sub Cat 3 :"
-                android:textSize="16sp"
                 android:textColor="@color/black"
-                android:fontFamily="@font/museosans_300"
-                android:layout_below="@+id/ll10"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:textSize="16sp"
+                android:visibility="gone" />
 
             <com.minda.sparsh.customview.NoDefaultSpinner
-                android:visibility="gone"
-                style="@style/lipstick_spinner_header_style"
                 android:id="@+id/ticket_type_spinner_sub_cat3"
-                android:spinnerMode="dropdown"
-                android:layout_marginTop="20dp"
-                android:popupElevation="6dp"
+                style="@style/lipstick_spinner_header_style"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_below="@+id/ll10"
+                android:layout_marginTop="20dp"
                 android:layout_toRightOf="@+id/view"
                 android:dropDownVerticalOffset="20dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
                 android:padding="5dp"
-                ></com.minda.sparsh.customview.NoDefaultSpinner>
+                android:popupElevation="6dp"
+                android:spinnerMode="dropdown"
+                android:visibility="gone"></com.minda.sparsh.customview.NoDefaultSpinner>
 
             <LinearLayout
-                android:visibility="gone"
-                android:layout_marginTop="5dp"
+                android:id="@+id/ll11"
                 android:layout_width="match_parent"
                 android:layout_height="2dp"
-                android:background="#414042"
                 android:layout_below="@+id/ticket_type_spinner_sub_cat3"
+                android:layout_marginTop="5dp"
+                android:background="#414042"
                 android:orientation="horizontal"
-                android:id="@+id/ll11"></LinearLayout>
+                android:visibility="gone"></LinearLayout>
 
             <TextView
-                android:layout_marginTop="20dp"
                 android:id="@+id/ticket_group"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/ll11"
+                android:layout_marginTop="20dp"
+                android:fontFamily="@font/museosans_300"
                 android:text="Ticket Group :"
-                android:textSize="16sp"
                 android:textColor="@color/black"
-                android:fontFamily="@font/museosans_300"
-                android:layout_below="@+id/ll11"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:textSize="16sp" />
 
             <com.minda.sparsh.customview.NoDefaultSpinner
-                style="@style/lipstick_spinner_header_style"
                 android:id="@+id/ticket_group_spinner"
-                android:spinnerMode="dropdown"
-                android:layout_marginTop="20dp"
-                android:popupElevation="6dp"
-                android:layout_toRightOf="@+id/view"
+                style="@style/lipstick_spinner_header_style"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_below="@+id/ll11"
+                android:layout_marginTop="20dp"
+                android:layout_toRightOf="@+id/view"
                 android:dropDownVerticalOffset="20dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
                 android:padding="5dp"
-                ></com.minda.sparsh.customview.NoDefaultSpinner>
+                android:popupElevation="6dp"
+                android:spinnerMode="dropdown"></com.minda.sparsh.customview.NoDefaultSpinner>
 
             <LinearLayout
-                android:layout_marginTop="5dp"
+                android:id="@+id/ll3"
                 android:layout_width="match_parent"
                 android:layout_height="2dp"
-                android:background="#414042"
                 android:layout_below="@+id/ticket_group"
-                android:orientation="horizontal"
-                android:id="@+id/ll3"></LinearLayout>
+                android:layout_marginTop="5dp"
+                android:background="#414042"
+                android:orientation="horizontal"></LinearLayout>
+
             <TextView
-                android:layout_marginTop="20dp"
                 android:id="@+id/assignee"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/ll3"
+                android:layout_marginTop="20dp"
+                android:fontFamily="@font/museosans_300"
                 android:text="Assignee :"
-                android:textSize="16sp"
                 android:textColor="@color/black"
-                android:fontFamily="@font/museosans_300"
-                android:layout_below="@+id/ll3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:textSize="16sp" />
 
             <com.minda.sparsh.customview.NoDefaultSpinner
-                style="@style/lipstick_spinner_header_style"
                 android:id="@+id/assignee_spinner"
-                android:spinnerMode="dropdown"
-                android:layout_marginTop="20dp"
-                android:popupElevation="6dp"
-                android:layout_toRightOf="@+id/view"
+                style="@style/lipstick_spinner_header_style"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_below="@+id/ll3"
+                android:layout_marginTop="20dp"
+                android:layout_toRightOf="@+id/view"
                 android:dropDownVerticalOffset="20dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
                 android:padding="5dp"
-                ></com.minda.sparsh.customview.NoDefaultSpinner>
+                android:popupElevation="6dp"
+                android:spinnerMode="dropdown"></com.minda.sparsh.customview.NoDefaultSpinner>
 
             <LinearLayout
-                android:layout_marginTop="5dp"
+                android:id="@+id/ll4"
                 android:layout_width="match_parent"
                 android:layout_height="2dp"
-                android:background="#414042"
                 android:layout_below="@+id/assignee"
-                android:orientation="horizontal"
-                android:id="@+id/ll4"></LinearLayout>
+                android:layout_marginTop="5dp"
+                android:background="#414042"
+                android:orientation="horizontal"></LinearLayout>
 
             <TextView
-                android:layout_marginTop="20dp"
                 android:id="@+id/reportedby"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/ll4"
+                android:layout_marginTop="20dp"
+                android:fontFamily="@font/museosans_300"
                 android:text="Reported By :"
-                android:textSize="16sp"
                 android:textColor="@color/black"
-                android:fontFamily="@font/museosans_300"
-                android:layout_below="@+id/ll4"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:textSize="16sp" />
 
             <com.minda.sparsh.customview.NoDefaultSpinner
-                style="@style/lipstick_spinner_header_style"
                 android:id="@+id/reportedby_spinner"
-                android:spinnerMode="dropdown"
-                android:layout_marginTop="20dp"
-                android:popupElevation="6dp"
-                android:layout_below="@+id/ll4"
-                android:dropDownVerticalOffset="20dp"
+                style="@style/lipstick_spinner_header_style"
                 android:layout_width="match_parent"
-                android:layout_toRightOf="@+id/view"
                 android:layout_height="wrap_content"
+                android:layout_below="@+id/ll4"
+                android:layout_marginTop="20dp"
+                android:layout_toRightOf="@+id/view"
+                android:dropDownVerticalOffset="20dp"
                 android:padding="5dp"
-                ></com.minda.sparsh.customview.NoDefaultSpinner>
+                android:popupElevation="6dp"
+                android:spinnerMode="dropdown"></com.minda.sparsh.customview.NoDefaultSpinner>
 
             <LinearLayout
-                android:layout_marginTop="5dp"
+                android:id="@+id/ll5"
                 android:layout_width="match_parent"
                 android:layout_height="2dp"
-                android:background="#414042"
                 android:layout_below="@+id/reportedby_spinner"
-                android:orientation="horizontal"
-                android:id="@+id/ll5"></LinearLayout>
+                android:layout_marginTop="5dp"
+                android:background="#414042"
+                android:orientation="horizontal"></LinearLayout>
+
             <TextView
-                android:layout_marginTop="20dp"
                 android:id="@+id/priority"
-                android:text="Priority :"
-                android:textSize="16sp"
-                android:textColor="@color/black"
-                android:fontFamily="@font/museosans_300"
-                android:layout_below="@+id/ll5"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/ll5"
+                android:layout_marginTop="20dp"
+                android:fontFamily="@font/museosans_300"
+                android:text="Priority :"
+                android:textColor="@color/black"
+                android:textSize="16sp" />
 
             <com.minda.sparsh.customview.NoDefaultSpinner
-                style="@style/lipstick_spinner_header_style"
                 android:id="@+id/priority_spinner"
-                android:spinnerMode="dropdown"
-                android:layout_marginTop="20dp"
-                android:popupElevation="6dp"
-                android:layout_below="@+id/ll5"
-                android:layout_toRightOf="@+id/view"
-                android:dropDownVerticalOffset="20dp"
+                style="@style/lipstick_spinner_header_style"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="5dp"
-                ></com.minda.sparsh.customview.NoDefaultSpinner>
-
-            <LinearLayout
-                android:layout_marginTop="5dp"
-                android:layout_width="match_parent"
-                android:layout_height="2dp"
-                android:background="#414042"
-                android:layout_below="@+id/priority"
-                android:orientation="horizontal"
-                android:id="@+id/ll6"></LinearLayout>
-
-            <TextView
+                android:layout_below="@+id/ll5"
                 android:layout_marginTop="20dp"
-                android:id="@+id/reported_date"
-                android:text="Reported Date :"
-                android:textSize="16sp"
-                android:textColor="@color/black"
-                android:fontFamily="@font/museosans_300"
-                android:layout_below="@+id/ll6"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-            <TextView
-                android:layout_marginTop="20dp"
-                android:id="@+id/reported_date_value"
-                android:text=""
-                android:textSize="16sp"
-                android:padding="5dp"
-                android:gravity="center"
-                android:background="@drawable/cardview_bg"
-                android:textColor="@color/black"
-                android:fontFamily="@font/museosans_300"
-                android:layout_below="@+id/ll6"
                 android:layout_toRightOf="@+id/view"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:dropDownVerticalOffset="20dp"
+                android:padding="5dp"
+                android:popupElevation="6dp"
+                android:spinnerMode="dropdown"></com.minda.sparsh.customview.NoDefaultSpinner>
 
             <LinearLayout
-                android:layout_marginTop="5dp"
+                android:id="@+id/ll6"
                 android:layout_width="match_parent"
                 android:layout_height="2dp"
+                android:layout_below="@+id/priority"
+                android:layout_marginTop="5dp"
                 android:background="#414042"
-                android:visibility="gone"
-                android:layout_below="@+id/reported_date"
-                android:orientation="horizontal"
-                android:id="@+id/ll7"></LinearLayout>
+                android:orientation="horizontal"></LinearLayout>
 
             <TextView
-                android:layout_marginTop="20dp"
-                android:id="@+id/description"
-                android:text="Description :"
-                android:textSize="16sp"
-                android:textColor="@color/black"
-                android:fontFamily="@font/museosans_300"
-                android:layout_below="@+id/ll7"
+                android:id="@+id/reported_date"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/ll6"
+                android:layout_marginTop="20dp"
+                android:fontFamily="@font/museosans_300"
+                android:text="Reported Date :"
+                android:textColor="@color/black"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/reported_date_value"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/ll6"
+                android:layout_marginTop="20dp"
+                android:layout_toRightOf="@+id/view"
+                android:background="@drawable/cardview_bg"
+                android:fontFamily="@font/museosans_300"
+                android:gravity="center"
+                android:padding="5dp"
+                android:text=""
+                android:textColor="@color/black"
+                android:textSize="16sp" />
+
+            <LinearLayout
+                android:id="@+id/ll7"
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_below="@+id/reported_date"
+                android:layout_marginTop="5dp"
+                android:background="#414042"
+                android:orientation="horizontal"
+                android:visibility="gone"></LinearLayout>
+
+            <TextView
+                android:id="@+id/description"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/ll7"
+                android:layout_marginTop="20dp"
+                android:fontFamily="@font/museosans_300"
+                android:text="Description :"
+                android:textColor="@color/black"
+                android:textSize="16sp" />
+
             <EditText
-                android:layout_marginTop="10dp"
-                android:layout_below="@+id/description"
                 android:id="@+id/description_et"
                 android:layout_width="match_parent"
                 android:layout_height="100dp"
+                android:layout_below="@+id/description"
+                android:layout_marginTop="10dp"
                 android:background="@drawable/cardview_bg"
-                android:inputType="textMultiLine"
-                android:imeOptions="actionDone"
-                android:scrollbars="vertical"
                 android:gravity="left|top"
                 android:hint="Enter Description here"
+                android:imeOptions="actionDone"
+                android:inputType="textMultiLine"
                 android:overScrollMode="always"
                 android:padding="5dp"
-                />
+                android:scrollbars="vertical" />
 
             <ImageView
-                android:layout_marginTop="10dp"
-                android:layout_alignParentRight="true"
-                android:layout_below="@+id/description_et"
-                android:src="@drawable/attach"
                 android:id="@+id/attachment"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/description_et"
+                android:layout_alignParentRight="true"
+                android:layout_marginTop="10dp"
+                android:src="@drawable/attach" />
 
             <TextView
-                android:layout_marginRight="10dp"
-                android:layout_alignBottom="@+id/attachment"
-                android:layout_alignTop="@+id/attachment"
-                android:layout_below="@+id/description_et"
                 android:id="@+id/attachtext"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_below="@+id/description_et"
+                android:layout_alignTop="@+id/attachment"
+                android:layout_alignBottom="@+id/attachment"
+                android:layout_marginRight="10dp"
                 android:layout_toLeftOf="@+id/attachment"
-                android:text="Add attachment"
                 android:gravity="center"
-                />
+                android:text="Add attachment" />
 
 
             <ImageView
                 android:id="@+id/doc_view"
-                android:layout_below="@+id/attachment"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:visibility="visible"
-                />
+                android:layout_below="@+id/attachment"
+                android:visibility="visible" />
+
             <LinearLayout
-                android:visibility="gone"
-                android:layout_marginTop="5dp"
+                android:id="@+id/ll8"
                 android:layout_width="match_parent"
                 android:layout_height="2dp"
-                android:background="#414042"
                 android:layout_below="@+id/doc_view"
+                android:layout_marginTop="5dp"
+                android:background="#414042"
                 android:orientation="horizontal"
-                android:id="@+id/ll8"></LinearLayout>
+                android:visibility="gone"></LinearLayout>
 
 
             <TextView
-                android:layout_marginTop="20dp"
                 android:id="@+id/cc"
-                android:text="CC :"
-                android:textSize="16sp"
-                android:textColor="@color/black"
-                android:fontFamily="@font/museosans_300"
-                android:layout_below="@+id/ll8"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/ll8"
+                android:layout_marginTop="20dp"
+                android:fontFamily="@font/museosans_300"
+                android:text="CC :"
+                android:textColor="@color/black"
+                android:textSize="16sp" />
+
             <AutoCompleteTextView
-                android:layout_marginTop="10dp"
-                android:layout_below="@+id/cc"
                 android:id="@+id/cc_et"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_below="@+id/cc"
+                android:layout_marginTop="10dp"
                 android:background="@drawable/cardview_bg"
-                android:imeOptions="actionDone"
                 android:gravity="left|top"
                 android:hint="Search Employees"
+                android:imeOptions="actionDone"
                 android:overScrollMode="always"
                 android:padding="10dp"
-                android:singleLine="true"
-                />
+                android:singleLine="true" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/cclist"
-                android:layout_marginTop="1dp"
-                android:layout_below="@+id/cc_et"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
-
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/cc_et"
+                android:layout_marginTop="1dp" />
 
 
             <CheckBox
-                android:layout_marginTop="10dp"
-                android:layout_below="@+id/cclist"
-                android:text="Is Closed"
                 android:id="@+id/isclosed"
-                android:visibility="gone"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/cclist"
+                android:layout_marginTop="10dp"
+                android:text="Is Closed"
+                android:visibility="gone" />
 
             <CheckBox
                 android:id="@+id/ishold"
-                android:text="Is Hold"
-                android:layout_marginTop="10dp"
-                android:visibility="gone"
-                android:layout_toRightOf="@+id/view"
-                android:layout_below="@+id/cclist"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/cclist"
+                android:layout_marginTop="10dp"
+                android:layout_toRightOf="@+id/view"
+                android:text="Is Hold"
+                android:visibility="gone" />
 
             <CheckBox
-                android:layout_marginTop="10dp"
-                android:layout_below="@+id/cclist"
-                android:text="Resume"
-                android:visibility="gone"
                 android:id="@+id/resumed"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/cclist"
+                android:layout_marginTop="10dp"
+                android:text="Resume"
+                android:visibility="gone" />
 
             <Button
 
-                android:textColor="@color/white"
-                android:layout_marginTop="10dp"
                 android:id="@+id/reset"
-                android:layout_marginRight="10dp"
-                android:background="@drawable/btn_bg"
-                android:layout_toLeftOf="@+id/view"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/isclosed"
-                android:text="Cancel"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_toLeftOf="@+id/view"
+                android:background="@drawable/btn_bg"
                 android:fontFamily="@font/museosans_500"
-                />
+                android:text="Cancel"
+                android:textColor="@color/white" />
+
             <Button
-                android:textColor="@color/white"
+                android:id="@+id/submit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/isclosed"
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="10dp"
-                android:id="@+id/submit"
-                android:background="@drawable/btn_bg"
                 android:layout_toRightOf="@+id/view"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/isclosed"
-                android:text="Submit"
+                android:background="@drawable/btn_bg"
                 android:fontFamily="@font/museosans_500"
-                />
+                android:text="Submit"
+                android:textColor="@color/white" />
 
 
         </RelativeLayout>

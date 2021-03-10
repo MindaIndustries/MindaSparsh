@@ -47,43 +47,29 @@ public class TicketsAdapter extends RecyclerView.Adapter<TicketsAdapter.ViewHold
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        holder.status.setText(""+myTickets.get(position).getStatus());
-        holder.tkt_type_value.setText(""+myTickets.get(position).getTicketType());
-        holder.tkt_no_value.setText(""+myTickets.get(position).getTicketNo());
-        holder.reported_dt_time_value.setText(""+myTickets.get(position).getReporteddate());
-        holder.assignee_value.setText(""+myTickets.get(position).getAssigne());
-        holder.cc_value.setText(""+myTickets.get(position).getCC());
-        holder.assign_loc_value.setText(""+ myTickets.get(position).getLocation());
-        holder.reported_by_value.setText(""+myTickets.get(position).getReportedby());
+        holder.status.setText("" + myTickets.get(position).getStatus());
+        holder.tkt_type_value.setText("" + myTickets.get(position).getTicketType());
+        holder.tkt_no_value.setText("" + myTickets.get(position).getTicketNo());
+        holder.reported_dt_time_value.setText("" + myTickets.get(position).getReporteddate());
+        holder.assignee_value.setText("" + myTickets.get(position).getAssigne());
+        holder.cc_value.setText("" + myTickets.get(position).getCC());
+        holder.assign_loc_value.setText("" + myTickets.get(position).getLocation());
+        holder.reported_by_value.setText("" + myTickets.get(position).getReportedby());
         holder.row.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
                 Fragment fragment = ((AppCompatActivity) mContext).getSupportFragmentManager().findFragmentById(R.id.framelayout);
-
-                if(fragment instanceof MyTickets) {
+                if (fragment instanceof MyTickets) {
                     if (myTickets.get(position).getStatus().equals("Open")) {
                         Intent in = new Intent(mContext, TicketDetail.class);
-                        in.putExtra("ticketno",(Serializable) myTickets.get(position));
+                        in.putExtra("ticketno", (Serializable) myTickets.get(position));
                         mContext.startActivity(in);
                     }
-                }
-                else{
-
+                } else {
                     Intent in = new Intent(mContext, MyTaskDetail.class);
-                    in.putExtra("ticketno",(Serializable) myTickets.get(position));
+                    in.putExtra("ticketno", (Serializable) myTickets.get(position));
                     mContext.startActivity(in);
-
-
-                 /*   Bundle bundle = new Bundle();
-                    bundle.putSerializable("TicketData", (Serializable) myTickets.get(position));
-                    CreateTicketFragment createTicketFragment = new CreateTicketFragment();
-                    createTicketFragment.setArguments(bundle);
-                    ((AppCompatActivity) mContext).getSupportFragmentManager().beginTransaction()
-                            .replace(R.id.framelayout, createTicketFragment)
-                            .addToBackStack(null)
-                            .commit();
-*/
                 }
 
             }
@@ -96,7 +82,7 @@ public class TicketsAdapter extends RecyclerView.Adapter<TicketsAdapter.ViewHold
         return myTickets.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder{
+    public class ViewHolder extends RecyclerView.ViewHolder {
         @BindView(R.id.status)
         TextView status;
         @BindView(R.id.tkt_type_value)
@@ -118,7 +104,7 @@ public class TicketsAdapter extends RecyclerView.Adapter<TicketsAdapter.ViewHold
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            ButterKnife.bind(this,itemView);
+            ButterKnife.bind(this, itemView);
         }
     }
 }

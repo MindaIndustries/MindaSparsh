@@ -20,193 +20,166 @@ import javax.net.ssl.HttpsURLConnection;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-import retrofit2.http.Field;
 
 public class ITHelpDeskServices {
 
-public void getAssetLoc(OnTaskComplete onTaskComplete, String EmpCode){
-    IThelpdeskClient iThelpdeskClient = RetrofitClient2.createServiceitHelpDesk(IThelpdeskClient.class);
-    Call<List<AssetLocResponse>> call = iThelpdeskClient.getAssetLoc(EmpCode);
-    call.enqueue(new Callback<List<AssetLocResponse>>() {
-        @Override
-        public void onResponse(Call<List<AssetLocResponse>> call, Response<List<AssetLocResponse>> response) {
-            CarotResponse carotResponse = new CarotResponse();
-            carotResponse.setStatuscode(response.code());
-            if (response.code() == HttpsURLConnection.HTTP_OK) {
-                carotResponse.setData(response.body());
-            }
-            onTaskComplete.onTaskComplte(carotResponse);
-        }
-
-        @Override
-        public void onFailure(Call<List<AssetLocResponse>> call, Throwable t) {
-            CarotResponse carotResponse = new CarotResponse();
-            if (t instanceof IOException) {
-                carotResponse.setMessage("Please hold on a moment, the internet connectivity seems to be slow");
-            }
-            onTaskComplete.onTaskComplte(carotResponse);
-        }
-    });
-
-}
-
-public void  getTicketType(OnTaskComplete onTaskComplete){
-    IThelpdeskClient iThelpdeskClient = RetrofitClient2.createServiceitHelpDesk(IThelpdeskClient.class);
-    Call<List<AssetLocResponse>> call = iThelpdeskClient.getTicketType();
-    call.enqueue(new Callback<List<AssetLocResponse>>() {
-        @Override
-        public void onResponse(Call<List<AssetLocResponse>> call, Response<List<AssetLocResponse>> response) {
-            CarotResponse carotResponse = new CarotResponse();
-            carotResponse.setStatuscode(response.code());
-            if (response.code() == HttpsURLConnection.HTTP_OK) {
-                carotResponse.setData(response.body());
-            }
-            onTaskComplete.onTaskComplte(carotResponse);
-        }
-
-        @Override
-        public void onFailure(Call<List<AssetLocResponse>> call, Throwable t) {
-            CarotResponse carotResponse = new CarotResponse();
-            if (t instanceof IOException) {
-                carotResponse.setMessage("Please hold on a moment, the internet connectivity seems to be slow");
-            }
-            onTaskComplete.onTaskComplte(carotResponse);
-        }
-    });
-}
-
-public void getTicketGroup(OnTaskComplete onTaskComplete,String ticketType, String unitCode,String subcat,String subcat2, String subcat3){
-    IThelpdeskClient iThelpdeskClient = RetrofitClient2.createServiceitHelpDesk(IThelpdeskClient.class);
-    Call<List<BindGroupResponse>> call = iThelpdeskClient.getBindGroup(subcat,subcat2,subcat3,ticketType,unitCode);
-    call.enqueue(new Callback<List<BindGroupResponse>>() {
-        @Override
-        public void onResponse(Call<List<BindGroupResponse>> call, Response<List<BindGroupResponse>> response) {
-            CarotResponse carotResponse = new CarotResponse();
-            carotResponse.setStatuscode(response.code());
-            if (response.code() == HttpsURLConnection.HTTP_OK) {
-                carotResponse.setData(response.body());
-            }
-            onTaskComplete.onTaskComplte(carotResponse);
-        }
-
-        @Override
-        public void onFailure(Call<List<BindGroupResponse>> call, Throwable t) {
-            CarotResponse carotResponse = new CarotResponse();
-            if (t instanceof IOException) {
-                carotResponse.setMessage("Please hold on a moment, the internet connectivity seems to be slow");
-            }
-            onTaskComplete.onTaskComplte(carotResponse);
-        }
-    });
-}
-
-public void getGroupAssignee(OnTaskComplete onTaskComplete,String ticketType, String unitcode){
-    IThelpdeskClient iThelpdeskClient = RetrofitClient2.createServiceitHelpDesk(IThelpdeskClient.class);
-    Call<List<GroupAssigneeResponse>> call = iThelpdeskClient.getGroupAssignee(ticketType, unitcode);
-    call.enqueue(new Callback<List<GroupAssigneeResponse>>() {
-        @Override
-        public void onResponse(Call<List<GroupAssigneeResponse>> call, Response<List<GroupAssigneeResponse>> response) {
-            CarotResponse carotResponse = new CarotResponse();
-            carotResponse.setStatuscode(response.code());
-            if (response.code() == HttpsURLConnection.HTTP_OK) {
-                carotResponse.setData(response.body());
-            }
-            onTaskComplete.onTaskComplte(carotResponse);
-        }
-
-        @Override
-        public void onFailure(Call<List<GroupAssigneeResponse>> call, Throwable t) {
-            CarotResponse carotResponse = new CarotResponse();
-            if (t instanceof IOException) {
-                carotResponse.setMessage("Please hold on a moment, the internet connectivity seems to be slow");
-            }
-            onTaskComplete.onTaskComplte(carotResponse);
-        }
-    });
-}
-
-public void getAutoName(OnTaskComplete onTaskComplete, String prefixText){
-    IThelpdeskClient iThelpdeskClient = RetrofitClient2.createServiceitHelpDesk(IThelpdeskClient.class);
-    Call<List<String>> call = iThelpdeskClient.getAutoName(prefixText);
-    call.enqueue(new Callback<List<String>>() {
-        @Override
-        public void onResponse(Call<List<String>> call, Response<List<String>> response) {
-            CarotResponse carotResponse = new CarotResponse();
-            carotResponse.setStatuscode(response.code());
-            if (response.code() == HttpsURLConnection.HTTP_OK) {
-                carotResponse.setData(response.body());
-            }
-            onTaskComplete.onTaskComplte(carotResponse);
-        }
-
-        @Override
-        public void onFailure(Call<List<String>> call, Throwable t) {
-            CarotResponse carotResponse = new CarotResponse();
-            if (t instanceof IOException) {
-                carotResponse.setMessage("Please hold on a moment, the internet connectivity seems to be slow");
-            }
-            onTaskComplete.onTaskComplte(carotResponse);
-        }
-    });
-
-}
-
-
-public void submitRequest(OnTaskComplete onTaskComplete,String location,String tickettypeId,String subcat,String subcat2,String subcat3,String ticketGroupId,String assignGroup,String AssigneGroupCode, String DefaultAssigne,String reportedby, String priority,String attachedfiles,String attFileBytes, String description,String cc, String empcode ){
-    IThelpdeskClient iThelpdeskClient = RetrofitClient2.createServiceitHelpDesk(IThelpdeskClient.class);
-    Call<TicketSubmitResponse> call = iThelpdeskClient.submitRequest(location,tickettypeId,subcat,subcat2,subcat3,ticketGroupId, assignGroup,AssigneGroupCode,DefaultAssigne,reportedby,priority,attachedfiles,attFileBytes,description,cc,empcode);
-    call.enqueue(new Callback<TicketSubmitResponse>() {
-        @Override
-        public void onResponse(Call<TicketSubmitResponse> call, Response<TicketSubmitResponse> response) {
-            CarotResponse carotResponse = new CarotResponse();
-            carotResponse.setStatuscode(response.code());
-            if (response.code() == HttpsURLConnection.HTTP_OK) {
-                carotResponse.setData(response.body());
-            }
-            onTaskComplete.onTaskComplte(carotResponse);
-
-        }
-
-        @Override
-        public void onFailure(Call<TicketSubmitResponse> call, Throwable t) {
-            CarotResponse carotResponse = new CarotResponse();
-            if (t instanceof IOException) {
-                carotResponse.setMessage("Please hold on a moment, the internet connectivity seems to be slow");
-            }
-            onTaskComplete.onTaskComplte(carotResponse);
-        }
-    });
-}
-
-public void getMyTickets(OnTaskComplete onTaskComplete, String EmpCode, String Location, String TicketTypeId, String Priority, String TicketGroupID, String StatusID, String SubCat, String SubCat2, String SubCat3, String ReportedDate, String CloserDate){
-    IThelpdeskClient iThelpdeskClient = RetrofitClient2.createServiceitHelpDesk(IThelpdeskClient.class);
-    Call<List<MyTicketsResponse>> call = iThelpdeskClient.getMyTickets(EmpCode,Location,TicketTypeId,Priority,TicketGroupID,StatusID,SubCat,SubCat2,SubCat3,ReportedDate,CloserDate);
-    call.enqueue(new Callback<List<MyTicketsResponse>>() {
-        @Override
-        public void onResponse(Call<List<MyTicketsResponse>> call, Response<List<MyTicketsResponse>> response) {
-            CarotResponse carotResponse = new CarotResponse();
-            carotResponse.setStatuscode(response.code());
-            if (response.code() == HttpsURLConnection.HTTP_OK) {
-                carotResponse.setData(response.body());
-            }
-            onTaskComplete.onTaskComplte(carotResponse);
-        }
-
-        @Override
-        public void onFailure(Call<List<MyTicketsResponse>> call, Throwable t) {
-            CarotResponse carotResponse = new CarotResponse();
-            if (t instanceof IOException) {
-                carotResponse.setMessage("Please hold on a moment, the internet connectivity seems to be slow");
-            }
-            onTaskComplete.onTaskComplte(carotResponse);
-        }
-    });
-}
-
-
-    public void getMyTaskTickets(OnTaskComplete onTaskComplete, String EmpCode, String Location, String TicketTypeId, String Priority, String TicketGroupID, String StatusID, String SubCat, String SubCat2, String SubCat3, String ReportedDate, String CloserDate){
+    public void getAssetLoc(OnTaskComplete onTaskComplete, String EmpCode) {
         IThelpdeskClient iThelpdeskClient = RetrofitClient2.createServiceitHelpDesk(IThelpdeskClient.class);
-        Call<List<MyTicketsResponse>> call = iThelpdeskClient.getMyTaskTickets(EmpCode,Location,TicketTypeId,Priority,TicketGroupID,StatusID,SubCat,SubCat2,SubCat3,ReportedDate,CloserDate);
+        Call<List<AssetLocResponse>> call = iThelpdeskClient.getAssetLoc(EmpCode);
+        call.enqueue(new Callback<List<AssetLocResponse>>() {
+            @Override
+            public void onResponse(Call<List<AssetLocResponse>> call, Response<List<AssetLocResponse>> response) {
+                CarotResponse carotResponse = new CarotResponse();
+                carotResponse.setStatuscode(response.code());
+                if (response.code() == HttpsURLConnection.HTTP_OK) {
+                    carotResponse.setData(response.body());
+                }
+                onTaskComplete.onTaskComplte(carotResponse);
+            }
+
+            @Override
+            public void onFailure(Call<List<AssetLocResponse>> call, Throwable t) {
+                CarotResponse carotResponse = new CarotResponse();
+                if (t instanceof IOException) {
+                    carotResponse.setMessage("Please hold on a moment, the internet connectivity seems to be slow");
+                }
+                onTaskComplete.onTaskComplte(carotResponse);
+            }
+        });
+
+    }
+
+    public void getTicketType(OnTaskComplete onTaskComplete) {
+        IThelpdeskClient iThelpdeskClient = RetrofitClient2.createServiceitHelpDesk(IThelpdeskClient.class);
+        Call<List<AssetLocResponse>> call = iThelpdeskClient.getTicketType();
+        call.enqueue(new Callback<List<AssetLocResponse>>() {
+            @Override
+            public void onResponse(Call<List<AssetLocResponse>> call, Response<List<AssetLocResponse>> response) {
+                CarotResponse carotResponse = new CarotResponse();
+                carotResponse.setStatuscode(response.code());
+                if (response.code() == HttpsURLConnection.HTTP_OK) {
+                    carotResponse.setData(response.body());
+                }
+                onTaskComplete.onTaskComplte(carotResponse);
+            }
+
+            @Override
+            public void onFailure(Call<List<AssetLocResponse>> call, Throwable t) {
+                CarotResponse carotResponse = new CarotResponse();
+                if (t instanceof IOException) {
+                    carotResponse.setMessage("Please hold on a moment, the internet connectivity seems to be slow");
+                }
+                onTaskComplete.onTaskComplte(carotResponse);
+            }
+        });
+    }
+
+    public void getTicketGroup(OnTaskComplete onTaskComplete, String ticketType, String unitCode, String subcat, String subcat2, String subcat3) {
+        IThelpdeskClient iThelpdeskClient = RetrofitClient2.createServiceitHelpDesk(IThelpdeskClient.class);
+        Call<List<BindGroupResponse>> call = iThelpdeskClient.getBindGroup(subcat, subcat2, subcat3, ticketType, unitCode);
+        call.enqueue(new Callback<List<BindGroupResponse>>() {
+            @Override
+            public void onResponse(Call<List<BindGroupResponse>> call, Response<List<BindGroupResponse>> response) {
+                CarotResponse carotResponse = new CarotResponse();
+                carotResponse.setStatuscode(response.code());
+                if (response.code() == HttpsURLConnection.HTTP_OK) {
+                    carotResponse.setData(response.body());
+                }
+                onTaskComplete.onTaskComplte(carotResponse);
+            }
+
+            @Override
+            public void onFailure(Call<List<BindGroupResponse>> call, Throwable t) {
+                CarotResponse carotResponse = new CarotResponse();
+                if (t instanceof IOException) {
+                    carotResponse.setMessage("Please hold on a moment, the internet connectivity seems to be slow");
+                }
+                onTaskComplete.onTaskComplte(carotResponse);
+            }
+        });
+    }
+
+    public void getGroupAssignee(OnTaskComplete onTaskComplete, String ticketType, String unitcode) {
+        IThelpdeskClient iThelpdeskClient = RetrofitClient2.createServiceitHelpDesk(IThelpdeskClient.class);
+        Call<List<GroupAssigneeResponse>> call = iThelpdeskClient.getGroupAssignee(ticketType, unitcode);
+        call.enqueue(new Callback<List<GroupAssigneeResponse>>() {
+            @Override
+            public void onResponse(Call<List<GroupAssigneeResponse>> call, Response<List<GroupAssigneeResponse>> response) {
+                CarotResponse carotResponse = new CarotResponse();
+                carotResponse.setStatuscode(response.code());
+                if (response.code() == HttpsURLConnection.HTTP_OK) {
+                    carotResponse.setData(response.body());
+                }
+                onTaskComplete.onTaskComplte(carotResponse);
+            }
+
+            @Override
+            public void onFailure(Call<List<GroupAssigneeResponse>> call, Throwable t) {
+                CarotResponse carotResponse = new CarotResponse();
+                if (t instanceof IOException) {
+                    carotResponse.setMessage("Please hold on a moment, the internet connectivity seems to be slow");
+                }
+                onTaskComplete.onTaskComplte(carotResponse);
+            }
+        });
+    }
+
+    public void getAutoName(OnTaskComplete onTaskComplete, String prefixText) {
+        IThelpdeskClient iThelpdeskClient = RetrofitClient2.createServiceitHelpDesk(IThelpdeskClient.class);
+        Call<List<String>> call = iThelpdeskClient.getAutoName(prefixText);
+        call.enqueue(new Callback<List<String>>() {
+            @Override
+            public void onResponse(Call<List<String>> call, Response<List<String>> response) {
+                CarotResponse carotResponse = new CarotResponse();
+                carotResponse.setStatuscode(response.code());
+                if (response.code() == HttpsURLConnection.HTTP_OK) {
+                    carotResponse.setData(response.body());
+                }
+                onTaskComplete.onTaskComplte(carotResponse);
+            }
+
+            @Override
+            public void onFailure(Call<List<String>> call, Throwable t) {
+                CarotResponse carotResponse = new CarotResponse();
+                if (t instanceof IOException) {
+                    carotResponse.setMessage("Please hold on a moment, the internet connectivity seems to be slow");
+                }
+                onTaskComplete.onTaskComplte(carotResponse);
+            }
+        });
+
+    }
+
+
+    public void submitRequest(OnTaskComplete onTaskComplete, String location, String tickettypeId, String subcat, String subcat2, String subcat3, String ticketGroupId, String assignGroup, String AssigneGroupCode, String DefaultAssigne, String reportedby, String priority, String attachedfiles, String attFileBytes, String description, String cc, String empcode) {
+        IThelpdeskClient iThelpdeskClient = RetrofitClient2.createServiceitHelpDesk(IThelpdeskClient.class);
+        Call<TicketSubmitResponse> call = iThelpdeskClient.submitRequest(location, tickettypeId, subcat, subcat2, subcat3, ticketGroupId, assignGroup, AssigneGroupCode, DefaultAssigne, reportedby, priority, attachedfiles, attFileBytes, description, cc, empcode);
+        call.enqueue(new Callback<TicketSubmitResponse>() {
+            @Override
+            public void onResponse(Call<TicketSubmitResponse> call, Response<TicketSubmitResponse> response) {
+                CarotResponse carotResponse = new CarotResponse();
+                carotResponse.setStatuscode(response.code());
+                if (response.code() == HttpsURLConnection.HTTP_OK) {
+                    carotResponse.setData(response.body());
+                }
+                onTaskComplete.onTaskComplte(carotResponse);
+
+            }
+
+            @Override
+            public void onFailure(Call<TicketSubmitResponse> call, Throwable t) {
+                CarotResponse carotResponse = new CarotResponse();
+                if (t instanceof IOException) {
+                    carotResponse.setMessage("Please hold on a moment, the internet connectivity seems to be slow");
+                }
+                onTaskComplete.onTaskComplte(carotResponse);
+            }
+        });
+    }
+
+    public void getMyTickets(OnTaskComplete onTaskComplete, String EmpCode, String Location, String TicketTypeId, String Priority, String TicketGroupID, String StatusID, String SubCat, String SubCat2, String SubCat3, String ReportedDate, String CloserDate) {
+        IThelpdeskClient iThelpdeskClient = RetrofitClient2.createServiceitHelpDesk(IThelpdeskClient.class);
+        Call<List<MyTicketsResponse>> call = iThelpdeskClient.getMyTickets(EmpCode, Location, TicketTypeId, Priority, TicketGroupID, StatusID, SubCat, SubCat2, SubCat3, ReportedDate, CloserDate);
         call.enqueue(new Callback<List<MyTicketsResponse>>() {
             @Override
             public void onResponse(Call<List<MyTicketsResponse>> call, Response<List<MyTicketsResponse>> response) {
@@ -230,86 +203,60 @@ public void getMyTickets(OnTaskComplete onTaskComplete, String EmpCode, String L
     }
 
 
-    public void getPriority(OnTaskComplete onTaskComplete){
-    IThelpdeskClient iThelpdeskClient = RetrofitClient2.createServiceitHelpDesk(IThelpdeskClient.class);
-    Call<List<AssetLocResponse>> call = iThelpdeskClient.getPriority();
-    call.enqueue(new Callback<List<AssetLocResponse>>() {
-        @Override
-        public void onResponse(Call<List<AssetLocResponse>> call, Response<List<AssetLocResponse>> response) {
-            CarotResponse carotResponse = new CarotResponse();
-            carotResponse.setStatuscode(response.code());
-            if (response.code() == HttpsURLConnection.HTTP_OK) {
-                carotResponse.setData(response.body());
-            }
-            onTaskComplete.onTaskComplte(carotResponse);
-        }
-
-        @Override
-        public void onFailure(Call<List<AssetLocResponse>> call, Throwable t) {
-            CarotResponse carotResponse = new CarotResponse();
-            if (t instanceof IOException) {
-                carotResponse.setMessage("Please hold on a moment, the internet connectivity seems to be slow");
-            }
-            onTaskComplete.onTaskComplte(carotResponse);
-        }
-    });
-    }
-
-    public void getReportedBy(OnTaskComplete onTaskComplete, String EmpCode){
-    IThelpdeskClient iThelpdeskClient = RetrofitClient2.createServiceitHelpDesk(IThelpdeskClient.class);
-    Call<List<AssetLocResponse>> call = iThelpdeskClient.getReportedBy(EmpCode);
-    call.enqueue(new Callback<List<AssetLocResponse>>() {
-        @Override
-        public void onResponse(Call<List<AssetLocResponse>> call, Response<List<AssetLocResponse>> response) {
-            CarotResponse carotResponse = new CarotResponse();
-            carotResponse.setStatuscode(response.code());
-            if (response.code() == HttpsURLConnection.HTTP_OK) {
-                carotResponse.setData(response.body());
-            }
-            onTaskComplete.onTaskComplte(carotResponse);
-        }
-
-        @Override
-        public void onFailure(Call<List<AssetLocResponse>> call, Throwable t) {
-            CarotResponse carotResponse = new CarotResponse();
-            if (t instanceof IOException) {
-                carotResponse.setMessage("Please hold on a moment, the internet connectivity seems to be slow");
-            }
-            onTaskComplete.onTaskComplte(carotResponse);
-        }
-    });
-
-    }
-
-    public void getSubCat(OnTaskComplete onTaskComplete, String SubCat, String TicketType, String UnitCode){
-    IThelpdeskClient iThelpdeskClient = RetrofitClient2.createServiceitHelpDesk(IThelpdeskClient.class);
-    Call<List<AssetLocResponse>> call = iThelpdeskClient.getSubCat(SubCat,TicketType,UnitCode);
-    call.enqueue(new Callback<List<AssetLocResponse>>() {
-        @Override
-        public void onResponse(Call<List<AssetLocResponse>> call, Response<List<AssetLocResponse>> response) {
-            CarotResponse carotResponse = new CarotResponse();
-            carotResponse.setStatuscode(response.code());
-            if (response.code() == HttpsURLConnection.HTTP_OK) {
-                carotResponse.setData(response.body());
-            }
-            onTaskComplete.onTaskComplte(carotResponse);
-        }
-
-        @Override
-        public void onFailure(Call<List<AssetLocResponse>> call, Throwable t) {
-            CarotResponse carotResponse = new CarotResponse();
-            if (t instanceof IOException) {
-                carotResponse.setMessage("Please hold on a moment, the internet connectivity seems to be slow");
-            }
-            onTaskComplete.onTaskComplte(carotResponse);
-        }
-    });
-
-    }
-
-    public void getSubCat2(OnTaskComplete onTaskComplete, String SubCat,String SubCat2, String TicketType, String UnitCode){
+    public void getMyTaskTickets(OnTaskComplete onTaskComplete, String EmpCode, String Location, String TicketTypeId, String Priority, String TicketGroupID, String StatusID, String SubCat, String SubCat2, String SubCat3, String ReportedDate, String CloserDate) {
         IThelpdeskClient iThelpdeskClient = RetrofitClient2.createServiceitHelpDesk(IThelpdeskClient.class);
-        Call<List<AssetLocResponse>> call = iThelpdeskClient.getSubCat2(SubCat,SubCat2,TicketType,UnitCode);
+        Call<List<MyTicketsResponse>> call = iThelpdeskClient.getMyTaskTickets(EmpCode, Location, TicketTypeId, Priority, TicketGroupID, StatusID, SubCat, SubCat2, SubCat3, ReportedDate, CloserDate);
+        call.enqueue(new Callback<List<MyTicketsResponse>>() {
+            @Override
+            public void onResponse(Call<List<MyTicketsResponse>> call, Response<List<MyTicketsResponse>> response) {
+                CarotResponse carotResponse = new CarotResponse();
+                carotResponse.setStatuscode(response.code());
+                if (response.code() == HttpsURLConnection.HTTP_OK) {
+                    carotResponse.setData(response.body());
+                }
+                onTaskComplete.onTaskComplte(carotResponse);
+            }
+
+            @Override
+            public void onFailure(Call<List<MyTicketsResponse>> call, Throwable t) {
+                CarotResponse carotResponse = new CarotResponse();
+                if (t instanceof IOException) {
+                    carotResponse.setMessage("Please hold on a moment, the internet connectivity seems to be slow");
+                }
+                onTaskComplete.onTaskComplte(carotResponse);
+            }
+        });
+    }
+
+
+    public void getPriority(OnTaskComplete onTaskComplete) {
+        IThelpdeskClient iThelpdeskClient = RetrofitClient2.createServiceitHelpDesk(IThelpdeskClient.class);
+        Call<List<AssetLocResponse>> call = iThelpdeskClient.getPriority();
+        call.enqueue(new Callback<List<AssetLocResponse>>() {
+            @Override
+            public void onResponse(Call<List<AssetLocResponse>> call, Response<List<AssetLocResponse>> response) {
+                CarotResponse carotResponse = new CarotResponse();
+                carotResponse.setStatuscode(response.code());
+                if (response.code() == HttpsURLConnection.HTTP_OK) {
+                    carotResponse.setData(response.body());
+                }
+                onTaskComplete.onTaskComplte(carotResponse);
+            }
+
+            @Override
+            public void onFailure(Call<List<AssetLocResponse>> call, Throwable t) {
+                CarotResponse carotResponse = new CarotResponse();
+                if (t instanceof IOException) {
+                    carotResponse.setMessage("Please hold on a moment, the internet connectivity seems to be slow");
+                }
+                onTaskComplete.onTaskComplte(carotResponse);
+            }
+        });
+    }
+
+    public void getReportedBy(OnTaskComplete onTaskComplete, String EmpCode) {
+        IThelpdeskClient iThelpdeskClient = RetrofitClient2.createServiceitHelpDesk(IThelpdeskClient.class);
+        Call<List<AssetLocResponse>> call = iThelpdeskClient.getReportedBy(EmpCode);
         call.enqueue(new Callback<List<AssetLocResponse>>() {
             @Override
             public void onResponse(Call<List<AssetLocResponse>> call, Response<List<AssetLocResponse>> response) {
@@ -333,9 +280,9 @@ public void getMyTickets(OnTaskComplete onTaskComplete, String EmpCode, String L
 
     }
 
-    public void getSubCat3(OnTaskComplete onTaskComplete, String SubCat2,String SubCat3, String TicketType, String UnitCode){
+    public void getSubCat(OnTaskComplete onTaskComplete, String SubCat, String TicketType, String UnitCode) {
         IThelpdeskClient iThelpdeskClient = RetrofitClient2.createServiceitHelpDesk(IThelpdeskClient.class);
-        Call<List<AssetLocResponse>> call = iThelpdeskClient.getSubCat3(SubCat2,SubCat3,TicketType,UnitCode);
+        Call<List<AssetLocResponse>> call = iThelpdeskClient.getSubCat(SubCat, TicketType, UnitCode);
         call.enqueue(new Callback<List<AssetLocResponse>>() {
             @Override
             public void onResponse(Call<List<AssetLocResponse>> call, Response<List<AssetLocResponse>> response) {
@@ -359,33 +306,85 @@ public void getMyTickets(OnTaskComplete onTaskComplete, String EmpCode, String L
 
     }
 
-    public void updateRemark(OnTaskComplete onTaskComplete, String Remarks, String EmpCode, String TicketNo){
-    IThelpdeskClient iThelpdeskClient = RetrofitClient2.createServiceitHelpDesk(IThelpdeskClient.class);
-    Call<TicketSubmitResponse> call = iThelpdeskClient.updateRemark(Remarks,EmpCode,TicketNo);
-    call.enqueue(new Callback<TicketSubmitResponse>() {
-        @Override
-        public void onResponse(Call<TicketSubmitResponse> call, Response<TicketSubmitResponse> response) {
-            CarotResponse carotResponse = new CarotResponse();
-            carotResponse.setStatuscode(response.code());
-            if (response.code() == HttpsURLConnection.HTTP_OK) {
-                carotResponse.setData(response.body());
+    public void getSubCat2(OnTaskComplete onTaskComplete, String SubCat, String SubCat2, String TicketType, String UnitCode) {
+        IThelpdeskClient iThelpdeskClient = RetrofitClient2.createServiceitHelpDesk(IThelpdeskClient.class);
+        Call<List<AssetLocResponse>> call = iThelpdeskClient.getSubCat2(SubCat, SubCat2, TicketType, UnitCode);
+        call.enqueue(new Callback<List<AssetLocResponse>>() {
+            @Override
+            public void onResponse(Call<List<AssetLocResponse>> call, Response<List<AssetLocResponse>> response) {
+                CarotResponse carotResponse = new CarotResponse();
+                carotResponse.setStatuscode(response.code());
+                if (response.code() == HttpsURLConnection.HTTP_OK) {
+                    carotResponse.setData(response.body());
+                }
+                onTaskComplete.onTaskComplte(carotResponse);
             }
-            onTaskComplete.onTaskComplte(carotResponse);
-        }
 
-        @Override
-        public void onFailure(Call<TicketSubmitResponse> call, Throwable t) {
-            CarotResponse carotResponse = new CarotResponse();
-            if (t instanceof IOException) {
-                carotResponse.setMessage("Please hold on a moment, the internet connectivity seems to be slow");
+            @Override
+            public void onFailure(Call<List<AssetLocResponse>> call, Throwable t) {
+                CarotResponse carotResponse = new CarotResponse();
+                if (t instanceof IOException) {
+                    carotResponse.setMessage("Please hold on a moment, the internet connectivity seems to be slow");
+                }
+                onTaskComplete.onTaskComplte(carotResponse);
             }
-            onTaskComplete.onTaskComplte(carotResponse);
-        }
-    });
+        });
 
     }
 
-    public void getTicketHistory(OnTaskComplete onTaskComplete,String ticketNo ){
+    public void getSubCat3(OnTaskComplete onTaskComplete, String SubCat2, String SubCat3, String TicketType, String UnitCode) {
+        IThelpdeskClient iThelpdeskClient = RetrofitClient2.createServiceitHelpDesk(IThelpdeskClient.class);
+        Call<List<AssetLocResponse>> call = iThelpdeskClient.getSubCat3(SubCat2, SubCat3, TicketType, UnitCode);
+        call.enqueue(new Callback<List<AssetLocResponse>>() {
+            @Override
+            public void onResponse(Call<List<AssetLocResponse>> call, Response<List<AssetLocResponse>> response) {
+                CarotResponse carotResponse = new CarotResponse();
+                carotResponse.setStatuscode(response.code());
+                if (response.code() == HttpsURLConnection.HTTP_OK) {
+                    carotResponse.setData(response.body());
+                }
+                onTaskComplete.onTaskComplte(carotResponse);
+            }
+
+            @Override
+            public void onFailure(Call<List<AssetLocResponse>> call, Throwable t) {
+                CarotResponse carotResponse = new CarotResponse();
+                if (t instanceof IOException) {
+                    carotResponse.setMessage("Please hold on a moment, the internet connectivity seems to be slow");
+                }
+                onTaskComplete.onTaskComplte(carotResponse);
+            }
+        });
+
+    }
+
+    public void updateRemark(OnTaskComplete onTaskComplete, String Remarks, String EmpCode, String TicketNo) {
+        IThelpdeskClient iThelpdeskClient = RetrofitClient2.createServiceitHelpDesk(IThelpdeskClient.class);
+        Call<TicketSubmitResponse> call = iThelpdeskClient.updateRemark(Remarks, EmpCode, TicketNo);
+        call.enqueue(new Callback<TicketSubmitResponse>() {
+            @Override
+            public void onResponse(Call<TicketSubmitResponse> call, Response<TicketSubmitResponse> response) {
+                CarotResponse carotResponse = new CarotResponse();
+                carotResponse.setStatuscode(response.code());
+                if (response.code() == HttpsURLConnection.HTTP_OK) {
+                    carotResponse.setData(response.body());
+                }
+                onTaskComplete.onTaskComplte(carotResponse);
+            }
+
+            @Override
+            public void onFailure(Call<TicketSubmitResponse> call, Throwable t) {
+                CarotResponse carotResponse = new CarotResponse();
+                if (t instanceof IOException) {
+                    carotResponse.setMessage("Please hold on a moment, the internet connectivity seems to be slow");
+                }
+                onTaskComplete.onTaskComplte(carotResponse);
+            }
+        });
+
+    }
+
+    public void getTicketHistory(OnTaskComplete onTaskComplete, String ticketNo) {
         IThelpdeskClient iThelpdeskClient = RetrofitClient2.createServiceitHelpDesk(IThelpdeskClient.class);
         Call<List<TicketHistoryResponse>> call = iThelpdeskClient.getTicketHistory(ticketNo);
         call.enqueue(new Callback<List<TicketHistoryResponse>>() {
@@ -412,29 +411,29 @@ public void getMyTickets(OnTaskComplete onTaskComplete, String EmpCode, String L
     }
 
 
-    public void updateMyTaskTicket(OnTaskComplete onTaskComplete, String TicketNo, String EmpCode,  String Remark, String Status, String Location, String TicketTypeID, String SubCat,String SubCat2, String SubCat3, String TicketGroupID, String AssigneGroup, String AssigneGroupCode,  String DefaultAssigne, String ReportedBy, String Priority,String AttachedFiles, String AttFileBytes, String Description,String CC){
-    IThelpdeskClient iThelpdeskClient = RetrofitClient2.createServiceitHelpDesk(IThelpdeskClient.class);
-    Call<TicketSubmitResponse> call = iThelpdeskClient.updateMyTaskTicket(TicketNo,EmpCode,Remark,Status,Location,TicketTypeID,SubCat,SubCat2,SubCat3,TicketGroupID,AssigneGroup,AssigneGroupCode,DefaultAssigne,ReportedBy,Priority,AttachedFiles,AttFileBytes,Description,CC);
-    call.enqueue(new Callback<TicketSubmitResponse>() {
-        @Override
-        public void onResponse(Call<TicketSubmitResponse> call, Response<TicketSubmitResponse> response) {
-            CarotResponse carotResponse = new CarotResponse();
-            carotResponse.setStatuscode(response.code());
-            if (response.code() == HttpsURLConnection.HTTP_OK) {
-                carotResponse.setData(response.body());
-            }
-            onTaskComplete.onTaskComplte(carotResponse);
+    public void updateMyTaskTicket(OnTaskComplete onTaskComplete, String TicketNo, String EmpCode, String Remark, String Status, String Location, String TicketTypeID, String SubCat, String SubCat2, String SubCat3, String TicketGroupID, String AssigneGroup, String AssigneGroupCode, String DefaultAssigne, String ReportedBy, String Priority, String AttachedFiles, String AttFileBytes, String Description, String CC) {
+        IThelpdeskClient iThelpdeskClient = RetrofitClient2.createServiceitHelpDesk(IThelpdeskClient.class);
+        Call<TicketSubmitResponse> call = iThelpdeskClient.updateMyTaskTicket(TicketNo, EmpCode, Remark, Status, Location, TicketTypeID, SubCat, SubCat2, SubCat3, TicketGroupID, AssigneGroup, AssigneGroupCode, DefaultAssigne, ReportedBy, Priority, AttachedFiles, AttFileBytes, Description, CC);
+        call.enqueue(new Callback<TicketSubmitResponse>() {
+            @Override
+            public void onResponse(Call<TicketSubmitResponse> call, Response<TicketSubmitResponse> response) {
+                CarotResponse carotResponse = new CarotResponse();
+                carotResponse.setStatuscode(response.code());
+                if (response.code() == HttpsURLConnection.HTTP_OK) {
+                    carotResponse.setData(response.body());
+                }
+                onTaskComplete.onTaskComplte(carotResponse);
 
-        }
-
-        @Override
-        public void onFailure(Call<TicketSubmitResponse> call, Throwable t) {
-            CarotResponse carotResponse = new CarotResponse();
-            if (t instanceof IOException) {
-                carotResponse.setMessage("Please hold on a moment, the internet connectivity seems to be slow");
             }
-            onTaskComplete.onTaskComplte(carotResponse);
-        }
-    });
-}
+
+            @Override
+            public void onFailure(Call<TicketSubmitResponse> call, Throwable t) {
+                CarotResponse carotResponse = new CarotResponse();
+                if (t instanceof IOException) {
+                    carotResponse.setMessage("Please hold on a moment, the internet connectivity seems to be slow");
+                }
+                onTaskComplete.onTaskComplte(carotResponse);
+            }
+        });
+    }
 }

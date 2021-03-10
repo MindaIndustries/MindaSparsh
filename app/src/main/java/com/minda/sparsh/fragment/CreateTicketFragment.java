@@ -139,17 +139,12 @@ public class CreateTicketFragment extends Fragment {
     MyTicketsResponse myTicket;
 
 
-
-
-
-
-
     SharedPreferences myPref;
-    String unitcode,depucode,username,empcode;
+    String unitcode, depucode, username, empcode;
 
     ArrayList<String> assetloc = new ArrayList<String>();
     ArrayList<AssetLocResponse> assetList = new ArrayList<>();
-    ArrayAdapter<String> assetAdapter, ticketTypeAdapter, ticketGroupAdapter,groupAssigneeAdapter, priorityAdapter,reportedbyAdapter,subcatAdapter,subcat2Adapter,subcat3Adapter;
+    ArrayAdapter<String> assetAdapter, ticketTypeAdapter, ticketGroupAdapter, groupAssigneeAdapter, priorityAdapter, reportedbyAdapter, subcatAdapter, subcat2Adapter, subcat3Adapter;
     ArrayList<String> tickettypes = new ArrayList<String>();
     ArrayList<AssetLocResponse> ticketTypeList = new ArrayList<>();
     ArrayList<String> ticketGroups = new ArrayList<String>();
@@ -161,9 +156,8 @@ public class CreateTicketFragment extends Fragment {
 
     ArrayList<String> reportedbylist = new ArrayList<>();
     ArrayList<AssetLocResponse> reportedByListResponse = new ArrayList<>();
-    String location,tickettypeid,tickettypegroupid,assigneegroup,asigneGroupCode,DefaultAssigne,reportedby,priority;
+    String location, tickettypeid, tickettypegroupid, assigneegroup, asigneGroupCode, DefaultAssigne, reportedby, priority;
     CCListAdapter ccListAdapter;
-
 
 
     ArrayList<AssetLocResponse> subcatList = new ArrayList<>();
@@ -174,9 +168,7 @@ public class CreateTicketFragment extends Fragment {
     ArrayList<String> subcats3 = new ArrayList<>();
     ArrayList<String> attachmentNames = new ArrayList<>();
     ArrayList<String> attachmentFiles = new ArrayList<>();
-    String subcat="0",subcat2 ="0",subcat3="0";
-
-
+    String subcat = "0", subcat2 = "0", subcat3 = "0";
 
 
     @Nullable
@@ -188,40 +180,38 @@ public class CreateTicketFragment extends Fragment {
 
         return createTicket;
     }
-    public void initUI(){
+
+    public void initUI() {
         myPref = getActivity().getSharedPreferences("MyPref", MODE_PRIVATE);
         unitcode = myPref.getString("Um_div_code", "");
-        depucode = myPref.getString("Depu_UnitCode","");
-        username = myPref.getString("username","");
-        empcode = myPref.getString("Id","");
-       // reportedby = empcode;
+        depucode = myPref.getString("Depu_UnitCode", "");
+        username = myPref.getString("username", "");
+        empcode = myPref.getString("Id", "");
+        // reportedby = empcode;
 
 
-
-        if(getArguments()!=null && getArguments().get("TicketData")!=null){
+        if (getArguments() != null && getArguments().get("TicketData") != null) {
             myTicket = (MyTicketsResponse) getArguments().get("TicketData");
-            if(myTicket!=null){
+            if (myTicket != null) {
 
 
             }
         }
         Calendar calendar = Calendar.getInstance();
-        int month = calendar.get(Calendar.MONTH)+1;
-        String monthStr,dayStr;
-        if(month<10){
-            monthStr = "0"+month;
-        }
-        else{
-            monthStr = ""+month;
+        int month = calendar.get(Calendar.MONTH) + 1;
+        String monthStr, dayStr;
+        if (month < 10) {
+            monthStr = "0" + month;
+        } else {
+            monthStr = "" + month;
         }
         int day = calendar.get(Calendar.DAY_OF_MONTH);
-        if(day<10){
-            dayStr = "0"+day;
+        if (day < 10) {
+            dayStr = "0" + day;
+        } else {
+            dayStr = "" + day;
         }
-        else{
-            dayStr = ""+day;
-        }
-        reportedDate.setText(""+ dayStr+"/"+monthStr+"/"+calendar.get(Calendar.YEAR));
+        reportedDate.setText("" + dayStr + "/" + monthStr + "/" + calendar.get(Calendar.YEAR));
         initAssetLocSpinner();
         initTicketTypeSpinner();
         initTicketGroupSpinner();
@@ -232,20 +222,17 @@ public class CreateTicketFragment extends Fragment {
         initReportedBySpinner();
         getPriority();
         getReportedBy();
-         ccListAdapter = new CCListAdapter(getActivity(),recyclerview_list);
+        ccListAdapter = new CCListAdapter(getActivity(), recyclerview_list);
         final LinearLayoutManager mLayoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false);
         cclist.setLayoutManager(mLayoutManager);
         cclist.setAdapter(ccListAdapter);
 
 
-
-
-
         reportedBySpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                if(i>0){
-                    reportedby = reportedByListResponse.get(i-1).getId();
+                if (i > 0) {
+                    reportedby = reportedByListResponse.get(i - 1).getId();
                 }
             }
 
@@ -257,8 +244,8 @@ public class CreateTicketFragment extends Fragment {
         assetLocSPinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                if(i>0)
-                location = assetList.get(i-1).getId();
+                if (i > 0)
+                    location = assetList.get(i - 1).getId();
             }
 
             @Override
@@ -276,7 +263,7 @@ public class CreateTicketFragment extends Fragment {
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                if(Utility.isOnline(getActivity())) {
+                if (Utility.isOnline(getActivity())) {
                     getAutoName(ccEt.getText().toString());
                 }
             }
@@ -291,8 +278,8 @@ public class CreateTicketFragment extends Fragment {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
 
-                if(i>0 && subcatList.size()>0) {
-                    subcat = subcatList.get(i-1).getId();
+                if (i > 0 && subcatList.size() > 0) {
+                    subcat = subcatList.get(i - 1).getId();
 
                     if (subcatList.get(i - 1).getNextlevel() != null && subcatList.get(i - 1).getNextlevel().equals("C")) {
                         initSubcat2Spinner();
@@ -301,8 +288,7 @@ public class CreateTicketFragment extends Fragment {
                         ticket_type_sub_cat2.setVisibility(View.VISIBLE);
                         ticket_type_spinner_sub_cat2.setVisibility(View.VISIBLE);
                         ll10.setVisibility(View.VISIBLE);
-                    }
-                    else{
+                    } else {
                         ticket_type_sub_cat2.setVisibility(View.GONE);
                         ticket_type_spinner_sub_cat2.setVisibility(View.GONE);
                         ll10.setVisibility(View.GONE);
@@ -332,17 +318,16 @@ public class CreateTicketFragment extends Fragment {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
 
-                if(i>0 && subcat2List.size()>0){
-                    subcat2 = subcat2List.get(i-1).getId();
+                if (i > 0 && subcat2List.size() > 0) {
+                    subcat2 = subcat2List.get(i - 1).getId();
 
-                    if(subcat2List.get(i-1).getNextlevel() !=null && subcat2List.get(i-1).getNextlevel().equals("C")){
+                    if (subcat2List.get(i - 1).getNextlevel() != null && subcat2List.get(i - 1).getNextlevel().equals("C")) {
                         initSubCatSpinner3();
-                        getSubCat3(subcat2List.get(i-1).getId(),"",tickettypeid,unitcode);
+                        getSubCat3(subcat2List.get(i - 1).getId(), "", tickettypeid, unitcode);
                         ticket_type_sub_cat3.setVisibility(View.VISIBLE);
                         ticket_type_spinner_sub_cat3.setVisibility(View.VISIBLE);
                         ll11.setVisibility(View.VISIBLE);
-                    }
-                    else{
+                    } else {
                         ticket_type_sub_cat3.setVisibility(View.GONE);
                         ticket_type_spinner_sub_cat3.setVisibility(View.GONE);
                         ll11.setVisibility(View.GONE);
@@ -369,8 +354,8 @@ public class CreateTicketFragment extends Fragment {
         ticket_type_spinner_sub_cat3.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                if(i>0 && subcat3List.size()>0) {
-                    subcat3 = subcat3List.get(i-1).getId();
+                if (i > 0 && subcat3List.size() > 0) {
+                    subcat3 = subcat3List.get(i - 1).getId();
                     initTicketGroupSpinner();
                     getTicketGroup(ticketTypeList.get(i - 1).getId(), unitcode);
                     groupAssignee.clear();
@@ -390,8 +375,8 @@ public class CreateTicketFragment extends Fragment {
         ticketTypeSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                if( i>0 && ticketTypeList.size()>0) {
-                    if(ticketTypeList.get(i-1).getNextLevel()!=null && ticketTypeList.get(i-1).getNextLevel().equals("G")) {
+                if (i > 0 && ticketTypeList.size() > 0) {
+                    if (ticketTypeList.get(i - 1).getNextLevel() != null && ticketTypeList.get(i - 1).getNextLevel().equals("G")) {
                         ticket_type_sub_cat.setVisibility(View.GONE);
                         ticket_type_spinner_sub_cat.setVisibility(View.GONE);
                         ll9.setVisibility(View.GONE);
@@ -407,8 +392,7 @@ public class CreateTicketFragment extends Fragment {
                         groupAssignee.add("Select");
                         initGroupAssigneeSpinner();
                         tickettypeid = ticketTypeList.get(i - 1).getId();
-                    }
-                    else{
+                    } else {
                         ticket_type_sub_cat.setVisibility(View.VISIBLE);
                         ticket_type_spinner_sub_cat.setVisibility(View.VISIBLE);
                         ll9.setVisibility(View.VISIBLE);
@@ -416,7 +400,7 @@ public class CreateTicketFragment extends Fragment {
                         initGroupAssigneeSpinner();
                         initSubCatSpinner();
                         tickettypeid = ticketTypeList.get(i - 1).getId();
-                        getSubCat("",ticketTypeList.get(i - 1).getId(), unitcode);
+                        getSubCat("", ticketTypeList.get(i - 1).getId(), unitcode);
                         initSubcat2Spinner();
                         initSubCatSpinner3();
 
@@ -433,12 +417,12 @@ public class CreateTicketFragment extends Fragment {
         ticketgroupSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                if(i>0 && ticketGroupList.size()>0){
+                if (i > 0 && ticketGroupList.size() > 0) {
                     groupAssignee.clear();
                     groupAssignee.add("Select");
                     initGroupAssigneeSpinner();
-                    tickettypegroupid = ticketGroupList.get(i-1).getId();
-                    getGroupAssignee(ticketGroupList.get(i-1).getId(), unitcode);
+                    tickettypegroupid = ticketGroupList.get(i - 1).getId();
+                    getGroupAssignee(ticketGroupList.get(i - 1).getId(), unitcode);
 
                 }
             }
@@ -459,6 +443,7 @@ public class CreateTicketFragment extends Fragment {
                     DefaultAssigne = groupAssigneeList.get(i - 1).getDefault();
                 }
             }
+
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {
 
@@ -522,25 +507,25 @@ public class CreateTicketFragment extends Fragment {
 
         if (Utility.isOnline(getActivity())) {
             submitRequest(location, tickettypeid, subcat, subcat2, subcat3, tickettypegroupid, assigneegroup, asigneGroupCode, DefaultAssigne, reportedby, priority, attachmentNames.toString().replace("[", "").replace("]", ""), attachmentFiles.toString().replace("[", "").replace("]", ""), descriptionEditText.getText().toString(), recyclerview_list.toString().replace("[", "").replace("]", ""));
-        }
-        else{
+        } else {
             Toast.makeText(getActivity(), "Please Check Your Network Connection", Toast.LENGTH_LONG).show();
         }
     }
 
     @OnClick(R.id.attachment)
-    public void onClickAttachment(){
+    public void onClickAttachment() {
         selectFile();
     }
+
     @OnClick(R.id.attachtext)
-    public void onClickAttachText(){
+    public void onClickAttachText() {
         selectFile();
     }
 
 
-  public void initPrioritySpinner(){
+    public void initPrioritySpinner() {
         priorities.add("Select");
-        priorityAdapter = new ArrayAdapter<String>(getActivity(),R.layout.spinner_row,priorities){
+        priorityAdapter = new ArrayAdapter<String>(getActivity(), R.layout.spinner_row, priorities) {
             @Override
             public boolean isEnabled(int position) {
                 if (position == 0) {
@@ -571,18 +556,20 @@ public class CreateTicketFragment extends Fragment {
         priorityAdapter.setDropDownViewResource(R.layout.spinner_row);
         prioritySpinner.setAdapter(priorityAdapter);
         priorityAdapter.notifyDataSetChanged();
-  }
-    public void initReportedBySpinner(){
+    }
+
+    public void initReportedBySpinner() {
         reportedbylist.add("Select");
-       // reportedbylist.add(username+" ("+empcode+")");
-        reportedbyAdapter = new ArrayAdapter<String>(getActivity(),R.layout.spinner_row,reportedbylist){
+        // reportedbylist.add(username+" ("+empcode+")");
+        reportedbyAdapter = new ArrayAdapter<String>(getActivity(), R.layout.spinner_row, reportedbylist) {
             @Override
             public boolean isEnabled(int position) {
                 if (position == 0) {
                     return false;
                 } else {
                     return true;
-                }            }
+                }
+            }
 
             @Override
             public View getDropDownView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
@@ -605,22 +592,23 @@ public class CreateTicketFragment extends Fragment {
         reportedbyAdapter.setDropDownViewResource(R.layout.spinner_row);
         reportedBySpinner.setAdapter(reportedbyAdapter);
         reportedbyAdapter.notifyDataSetChanged();
-        if(reportedbylist.size()>0)
-        reportedBySpinner.setSelection(1);
+        if (reportedbylist.size() > 0)
+            reportedBySpinner.setSelection(1);
     }
 
 
-    public void initAssetLocSpinner(){
+    public void initAssetLocSpinner() {
         assetloc.clear();
         assetloc.add("Select");
-        assetAdapter = new ArrayAdapter<String>(getActivity(),R.layout.spinner_row, assetloc){
+        assetAdapter = new ArrayAdapter<String>(getActivity(), R.layout.spinner_row, assetloc) {
             @Override
             public boolean isEnabled(int position) {
                 if (position == 0) {
                     return false;
                 } else {
                     return true;
-                }            }
+                }
+            }
 
             @Override
             public View getDropDownView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
@@ -644,10 +632,10 @@ public class CreateTicketFragment extends Fragment {
         assetAdapter.notifyDataSetChanged();
     }
 
-    public void initTicketTypeSpinner(){
+    public void initTicketTypeSpinner() {
         tickettypes.clear();
         tickettypes.add("Select");
-        ticketTypeAdapter = new ArrayAdapter<String>(getActivity(),R.layout.spinner_row, tickettypes){
+        ticketTypeAdapter = new ArrayAdapter<String>(getActivity(), R.layout.spinner_row, tickettypes) {
             @Override
             public boolean isEnabled(int position) {
                 if (position == 0) {
@@ -680,10 +668,10 @@ public class CreateTicketFragment extends Fragment {
         ticketTypeAdapter.notifyDataSetChanged();
     }
 
-    public void initTicketGroupSpinner(){
+    public void initTicketGroupSpinner() {
         ticketGroups.clear();
         ticketGroups.add("Select");
-        ticketGroupAdapter = new ArrayAdapter<String>(getActivity(),R.layout.spinner_row, ticketGroups){
+        ticketGroupAdapter = new ArrayAdapter<String>(getActivity(), R.layout.spinner_row, ticketGroups) {
             @Override
             public boolean isEnabled(int position) {
                 if (position == 0) {
@@ -715,18 +703,19 @@ public class CreateTicketFragment extends Fragment {
         ticketGroupAdapter.notifyDataSetChanged();
     }
 
-    public void initGroupAssigneeSpinner(){
+    public void initGroupAssigneeSpinner() {
         groupAssignee.clear();
         groupAssignee.add("Select");
 
-        groupAssigneeAdapter = new ArrayAdapter<String>(getActivity(),R.layout.spinner_row, groupAssignee){
+        groupAssigneeAdapter = new ArrayAdapter<String>(getActivity(), R.layout.spinner_row, groupAssignee) {
             @Override
             public boolean isEnabled(int position) {
                 if (position == 0) {
                     return false;
                 } else {
                     return true;
-                }            }
+                }
+            }
 
             @Override
             public View getDropDownView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
@@ -751,10 +740,10 @@ public class CreateTicketFragment extends Fragment {
         groupAssigneeAdapter.notifyDataSetChanged();
     }
 
-    public void initSubcat2Spinner(){
+    public void initSubcat2Spinner() {
         subcats2.clear();
         subcats2.add("Select");
-        subcat2Adapter = new ArrayAdapter<String>(getActivity(), R.layout.spinner_row,subcats2){
+        subcat2Adapter = new ArrayAdapter<String>(getActivity(), R.layout.spinner_row, subcats2) {
 
             @Override
             public boolean isEnabled(int position) {
@@ -787,17 +776,18 @@ public class CreateTicketFragment extends Fragment {
         subcat2Adapter.notifyDataSetChanged();
     }
 
-    public void initSubCatSpinner3(){
+    public void initSubCatSpinner3() {
         subcats3.clear();
         subcats3.add("Select");
-        subcat3Adapter = new ArrayAdapter<String>(getActivity(), R.layout.spinner_row,subcats3){
+        subcat3Adapter = new ArrayAdapter<String>(getActivity(), R.layout.spinner_row, subcats3) {
             @Override
             public boolean isEnabled(int position) {
                 if (position == 0) {
                     return false;
                 } else {
                     return true;
-                }            }
+                }
+            }
 
             @Override
             public View getDropDownView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
@@ -813,16 +803,18 @@ public class CreateTicketFragment extends Fragment {
                 } else {
                     itemTv.setTextColor(Color.BLACK);
                 }
-                return view;                }
+                return view;
+            }
         };
         subcat3Adapter.setDropDownViewResource(R.layout.spinner_row);
         ticket_type_spinner_sub_cat3.setAdapter(subcat3Adapter);
         subcat3Adapter.notifyDataSetChanged();
     }
-    public void initSubCatSpinner(){
+
+    public void initSubCatSpinner() {
         subcats.clear();
         subcats.add("Select");
-        subcatAdapter = new ArrayAdapter<String>(getActivity(),R.layout.spinner_row,subcats){
+        subcatAdapter = new ArrayAdapter<String>(getActivity(), R.layout.spinner_row, subcats) {
             @Override
             public boolean isEnabled(int position) {
                 if (position == 0) {
@@ -831,6 +823,7 @@ public class CreateTicketFragment extends Fragment {
                     return true;
                 }
             }
+
             @Override
             public View getDropDownView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
                 View view = super.getDropDownView(position, convertView, parent);
@@ -845,7 +838,8 @@ public class CreateTicketFragment extends Fragment {
                 } else {
                     itemTv.setTextColor(Color.BLACK);
                 }
-                return view;            }
+                return view;
+            }
         };
 
         subcatAdapter.setDropDownViewResource(R.layout.spinner_row);
@@ -854,46 +848,46 @@ public class CreateTicketFragment extends Fragment {
     }
 
 
-    public void getAssetLoc(){
+    public void getAssetLoc() {
         assetList.clear();
         ITHelpDeskServices itHelpDeskServices = new ITHelpDeskServices();
         itHelpDeskServices.getAssetLoc(new OnTaskComplete() {
             @Override
             public void onTaskComplte(CarotResponse carotResponse) {
-                if(carotResponse.getStatuscode() == HttpsURLConnection.HTTP_OK){
+                if (carotResponse.getStatuscode() == HttpsURLConnection.HTTP_OK) {
                     List<AssetLocResponse> list = (List<AssetLocResponse>) carotResponse.getData();
-                 if(list!=null && list.size()>0) {
-                     assetList.addAll(list);
+                    if (list != null && list.size() > 0) {
+                        assetList.addAll(list);
 
-                     for (AssetLocResponse assetLocResponse : assetList) {
-                        // if (assetLocResponse.getId().equals(unitcode)) {
-                             assetloc.add(assetLocResponse.getName());
-                         //}
-                     }
-                     if (assetloc.size() > 0) {
-                         assetLocSPinner.setSelection(1);
-                     }
+                        for (AssetLocResponse assetLocResponse : assetList) {
+                            // if (assetLocResponse.getId().equals(unitcode)) {
+                            assetloc.add(assetLocResponse.getName());
+                            //}
+                        }
+                        if (assetloc.size() > 0) {
+                            assetLocSPinner.setSelection(1);
+                        }
 
-                     if(myTicket!=null && myTicket.getLocation()!=null){
-                         int  i = assetloc.indexOf(myTicket.getLocation());
-                         //loc pending
-                     }
-                     assetAdapter.notifyDataSetChanged();
-                 }
-                 }
+                        if (myTicket != null && myTicket.getLocation() != null) {
+                            int i = assetloc.indexOf(myTicket.getLocation());
+                            //loc pending
+                        }
+                        assetAdapter.notifyDataSetChanged();
+                    }
+                }
 
             }
-        },empcode);
+        }, empcode);
 
     }
 
-    public void getTicketType(){
+    public void getTicketType() {
         ticketTypeList.clear();
         ITHelpDeskServices itHelpDeskServices = new ITHelpDeskServices();
         itHelpDeskServices.getTicketType(new OnTaskComplete() {
             @Override
             public void onTaskComplte(CarotResponse carotResponse) {
-                if(carotResponse.getStatuscode()== HttpsURLConnection.HTTP_OK){
+                if (carotResponse.getStatuscode() == HttpsURLConnection.HTTP_OK) {
                     List<AssetLocResponse> list = (List<AssetLocResponse>) carotResponse.getData();
                     if (list != null && list.size() > 0) {
                         ticketTypeList.addAll(list);
@@ -901,9 +895,9 @@ public class CreateTicketFragment extends Fragment {
                             tickettypes.add(assetLocResponse.getName());
                         }
                     }
-                    }
+                }
 
-                if(myTicket!=null && myTicket.getTicketType()!=null){
+                if (myTicket != null && myTicket.getTicketType() != null) {
                     int i = tickettypes.indexOf(myTicket.getTicketType());
                     ticketTypeSpinner.setSelection(i);
                 }
@@ -912,7 +906,7 @@ public class CreateTicketFragment extends Fragment {
         });
     }
 
-    public void getTicketGroup(String ticketType, String unitcode){
+    public void getTicketGroup(String ticketType, String unitcode) {
         ticketGroups.clear();
         ticketGroups.add("Select");
         ticketGroupList.clear();
@@ -920,9 +914,9 @@ public class CreateTicketFragment extends Fragment {
         itHelpDeskServices.getTicketGroup(new OnTaskComplete() {
             @Override
             public void onTaskComplte(CarotResponse carotResponse) {
-                if(carotResponse.getStatuscode() == HttpsURLConnection.HTTP_OK){
+                if (carotResponse.getStatuscode() == HttpsURLConnection.HTTP_OK) {
                     List<BindGroupResponse> list = (List<BindGroupResponse>) carotResponse.getData();
-                    if(list!=null && list.size()>0){
+                    if (list != null && list.size() > 0) {
                         ticketGroupList.addAll(list);
                         for (BindGroupResponse bindGroupResponse : ticketGroupList) {
                             ticketGroups.add(bindGroupResponse.getName());
@@ -933,10 +927,10 @@ public class CreateTicketFragment extends Fragment {
                 }
 
             }
-        },ticketType,unitcode,subcat,subcat2,subcat3);
+        }, ticketType, unitcode, subcat, subcat2, subcat3);
     }
 
-    public void getGroupAssignee(String ticketType, String unitcode){
+    public void getGroupAssignee(String ticketType, String unitcode) {
         groupAssignee.clear();
         groupAssignee.add("Select");
         groupAssigneeList.clear();
@@ -944,9 +938,9 @@ public class CreateTicketFragment extends Fragment {
         itHelpDeskServices.getGroupAssignee(new OnTaskComplete() {
             @Override
             public void onTaskComplte(CarotResponse carotResponse) {
-                if(carotResponse.getStatuscode() == HttpsURLConnection.HTTP_OK){
+                if (carotResponse.getStatuscode() == HttpsURLConnection.HTTP_OK) {
                     List<GroupAssigneeResponse> list = (List<GroupAssigneeResponse>) carotResponse.getData();
-                    if(list!=null && list.size()>0){
+                    if (list != null && list.size() > 0) {
                         groupAssigneeList.addAll(list);
                         for (GroupAssigneeResponse groupAssigneeResponse : groupAssigneeList) {
                             groupAssignee.add(groupAssigneeResponse.getName());
@@ -956,19 +950,19 @@ public class CreateTicketFragment extends Fragment {
                 }
 
             }
-        },ticketType,unitcode);
+        }, ticketType, unitcode);
 
     }
 
 
-    public void getAutoName(String prefix){
+    public void getAutoName(String prefix) {
 
         ITHelpDeskServices itHelpDeskServices = new ITHelpDeskServices();
         itHelpDeskServices.getAutoName(new OnTaskComplete() {
             @Override
             public void onTaskComplte(CarotResponse carotResponse) {
 
-                if(carotResponse.getStatuscode()==HttpsURLConnection.HTTP_OK){
+                if (carotResponse.getStatuscode() == HttpsURLConnection.HTTP_OK) {
                     List<String> names = (List<String>) carotResponse.getData();
                     ArrayAdapter<String> adapter = new ArrayAdapter<String>
                             (getActivity(), android.R.layout.select_dialog_item, names);
@@ -977,12 +971,11 @@ public class CreateTicketFragment extends Fragment {
                     ccEt.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                         @Override
                         public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                            if(recyclerview_list.size()<6) {
+                            if (recyclerview_list.size() < 6) {
                                 recyclerview_list.add(names.get(i));
                                 ccListAdapter.notifyDataSetChanged();
-                            }
-                            else{
-                                Toast.makeText(getActivity(),"You can add upto 5 emails in CC",Toast.LENGTH_LONG).show();
+                            } else {
+                                Toast.makeText(getActivity(), "You can add upto 5 emails in CC", Toast.LENGTH_LONG).show();
                             }
                             ccEt.setText("");
                         }
@@ -990,29 +983,28 @@ public class CreateTicketFragment extends Fragment {
                     adapter.notifyDataSetChanged();
                 }
             }
-        },prefix);
+        }, prefix);
     }
 
-    public void submitRequest(String location,String tickettypeid,String subcat,String subcat2, String subcat3,String tickettypegroupid,String assigneegroup,String asigneGroupCode, String DefaultAssigne, String reportedby, String priority, String attachedfiles, String attFileBytes, String description, String cc){
+    public void submitRequest(String location, String tickettypeid, String subcat, String subcat2, String subcat3, String tickettypegroupid, String assigneegroup, String asigneGroupCode, String DefaultAssigne, String reportedby, String priority, String attachedfiles, String attFileBytes, String description, String cc) {
         ITHelpDeskServices itHelpDeskServices = new ITHelpDeskServices();
         itHelpDeskServices.submitRequest(new OnTaskComplete() {
             @Override
             public void onTaskComplte(CarotResponse carotResponse) {
-                if(carotResponse.getStatuscode()==HttpsURLConnection.HTTP_OK){
+                if (carotResponse.getStatuscode() == HttpsURLConnection.HTTP_OK) {
                     Toast.makeText(getActivity(), "Successfully submitted", Toast.LENGTH_LONG).show();
                     Intent in = new Intent(getActivity(), ITHelpDeskHome.class);
                     in.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     startActivity(in);
                     getActivity().finish();
                 }
-                }
-        },location,tickettypeid,subcat,subcat2,subcat3,tickettypegroupid,assigneegroup,asigneGroupCode,DefaultAssigne,reportedby,priority,attachedfiles,attFileBytes,description,cc,empcode);
+            }
+        }, location, tickettypeid, subcat, subcat2, subcat3, tickettypegroupid, assigneegroup, asigneGroupCode, DefaultAssigne, reportedby, priority, attachedfiles, attFileBytes, description, cc, empcode);
 
     }
 
 
-
-    public void getPriority(){
+    public void getPriority() {
         priorities.clear();
         priorities.add("Select");
         priorityList.clear();
@@ -1020,9 +1012,9 @@ public class CreateTicketFragment extends Fragment {
         itHelpDeskServices.getPriority(new OnTaskComplete() {
             @Override
             public void onTaskComplte(CarotResponse carotResponse) {
-                if(carotResponse.getStatuscode() == HttpsURLConnection.HTTP_OK){
+                if (carotResponse.getStatuscode() == HttpsURLConnection.HTTP_OK) {
                     List<AssetLocResponse> list = (List<AssetLocResponse>) carotResponse.getData();
-                    if(list!=null && list.size()>0){
+                    if (list != null && list.size() > 0) {
                         priorityList.addAll(list);
                     }
                     for (AssetLocResponse assetLocResponse : priorityList) {
@@ -1034,7 +1026,8 @@ public class CreateTicketFragment extends Fragment {
             }
         });
     }
-    public void getReportedBy(){
+
+    public void getReportedBy() {
         reportedbylist.clear();
         reportedbylist.add("Select");
         reportedByListResponse.clear();
@@ -1044,9 +1037,9 @@ public class CreateTicketFragment extends Fragment {
             @Override
             public void onTaskComplte(CarotResponse carotResponse) {
 
-                if(carotResponse.getStatuscode() == HttpsURLConnection.HTTP_OK){
+                if (carotResponse.getStatuscode() == HttpsURLConnection.HTTP_OK) {
                     List<AssetLocResponse> list = (List<AssetLocResponse>) carotResponse.getData();
-                    if(list!=null && list.size()>0){
+                    if (list != null && list.size() > 0) {
                         reportedByListResponse.addAll(list);
                     }
                     for (AssetLocResponse assetLocResponse : reportedByListResponse) {
@@ -1054,12 +1047,12 @@ public class CreateTicketFragment extends Fragment {
                     }
 
 
-                    if(empcode!=null){
+                    if (empcode != null) {
                         AssetLocResponse assetLocResponse = new AssetLocResponse();
                         assetLocResponse.setId(empcode);
                         int i = reportedByListResponse.indexOf(assetLocResponse);
-                        if(i>=0){
-                            reportedBySpinner.setSelection(i+1);
+                        if (i >= 0) {
+                            reportedBySpinner.setSelection(i + 1);
                         }
                     }
 
@@ -1067,12 +1060,11 @@ public class CreateTicketFragment extends Fragment {
                 }
 
 
-
             }
-        },empcode);
+        }, empcode);
     }
 
-    public void getSubCat(String SubCat, String TicketType, String UnitCode){
+    public void getSubCat(String SubCat, String TicketType, String UnitCode) {
         subcats.clear();
         subcats.add("Select");
         subcatList.clear();
@@ -1080,9 +1072,9 @@ public class CreateTicketFragment extends Fragment {
         itHelpDeskServices.getSubCat(new OnTaskComplete() {
             @Override
             public void onTaskComplte(CarotResponse carotResponse) {
-                if(carotResponse.getStatuscode() == HttpsURLConnection.HTTP_OK){
+                if (carotResponse.getStatuscode() == HttpsURLConnection.HTTP_OK) {
                     List<AssetLocResponse> list = (List<AssetLocResponse>) carotResponse.getData();
-                    if(list!=null && list.size()>0){
+                    if (list != null && list.size() > 0) {
                         subcatList.addAll(list);
 
                     }
@@ -1094,9 +1086,10 @@ public class CreateTicketFragment extends Fragment {
                 }
 
             }
-        },SubCat,TicketType,UnitCode);
+        }, SubCat, TicketType, UnitCode);
     }
-    public void getSubCat2(String SubCat,String SubCat2, String TicketType, String UnitCode){
+
+    public void getSubCat2(String SubCat, String SubCat2, String TicketType, String UnitCode) {
         subcats2.clear();
         subcats2.add("Select");
         subcat2List.clear();
@@ -1105,9 +1098,9 @@ public class CreateTicketFragment extends Fragment {
         itHelpDeskServices.getSubCat2(new OnTaskComplete() {
             @Override
             public void onTaskComplte(CarotResponse carotResponse) {
-                if(carotResponse.getStatuscode() == HttpsURLConnection.HTTP_OK){
+                if (carotResponse.getStatuscode() == HttpsURLConnection.HTTP_OK) {
                     List<AssetLocResponse> list = (List<AssetLocResponse>) carotResponse.getData();
-                    if(list!=null && list.size()>0){
+                    if (list != null && list.size() > 0) {
                         subcat2List.addAll(list);
                     }
                     for (AssetLocResponse assetLocResponse : subcat2List) {
@@ -1120,9 +1113,10 @@ public class CreateTicketFragment extends Fragment {
                     subcat2Adapter.notifyDataSetChanged();
                 }
             }
-        },SubCat,SubCat2,TicketType,UnitCode);
+        }, SubCat, SubCat2, TicketType, UnitCode);
     }
-    public void getSubCat3(String SubCat2,String SubCat3, String TicketType, String UnitCode){
+
+    public void getSubCat3(String SubCat2, String SubCat3, String TicketType, String UnitCode) {
         subcats3.clear();
         subcats3.add("Select");
         subcat3List.clear();
@@ -1131,17 +1125,16 @@ public class CreateTicketFragment extends Fragment {
         itHelpDeskServices.getSubCat3(new OnTaskComplete() {
             @Override
             public void onTaskComplte(CarotResponse carotResponse) {
-                if(carotResponse.getStatuscode() == HttpsURLConnection.HTTP_OK){
+                if (carotResponse.getStatuscode() == HttpsURLConnection.HTTP_OK) {
                     List<AssetLocResponse> list = (List<AssetLocResponse>) carotResponse.getData();
-                    if(list!=null && list.size()>0){
+                    if (list != null && list.size() > 0) {
                         subcat3List.addAll(list);
                     }
 
                     for (AssetLocResponse assetLocResponse : subcat3List) {
-                        if(assetLocResponse.getName()!=null) {
+                        if (assetLocResponse.getName() != null) {
                             subcats3.add(assetLocResponse.getName());
-                        }
-                        else{
+                        } else {
                             subcats3.add(assetLocResponse.getNamecat3());
                         }
                     }
@@ -1150,9 +1143,8 @@ public class CreateTicketFragment extends Fragment {
                 }
 
             }
-        },SubCat2,SubCat3,TicketType,UnitCode);
+        }, SubCat2, SubCat3, TicketType, UnitCode);
     }
-
 
 
     public void selectFile() {
@@ -1183,12 +1175,6 @@ public class CreateTicketFragment extends Fragment {
 
         Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         startActivityForResult(intent, CAPTURE_FROM_CAMERA);
-
-      /*  Intent in = new Intent(getActivity(), FilePickerActivity.class);
-        in.putExtra(FilePickerConstants.CAMERA, true);
-        startActivityForResult(in, CAPTURE_FROM_CAMERA);
-*/
-
     }
 
     private void galleryIntent() {
@@ -1257,11 +1243,6 @@ public class CreateTicketFragment extends Fragment {
 
     private void onCaptureImageResult(Intent data) {
 
-      /*  docView.setImageURI(FilePickerUriHelper.getUri(data));
-
-        Uri uri = FilePickerUriHelper.getUri(data);
-       Bitmap thumbnail=  uriToBitmap(uri);
-*/
         Bitmap thumbnail = (Bitmap) data.getExtras().get("data");
         mDestinationFile = new File(Environment.getExternalStorageDirectory(),
                 System.currentTimeMillis() + ".jpg");
@@ -1275,17 +1256,6 @@ public class CreateTicketFragment extends Fragment {
         attachmentNames.add(attachmentName);
         String fileByte = Base64.encodeToString(bytes, Base64.NO_WRAP);
         attachmentFiles.add(fileByte);
-
-
-       /* if (attachtext == attachtext1) {
-            attachtext1.setText(attachmentName);
-            esFilename = attachmentName;
-            esFilebyte = Base64.encodeToString(bytes, Base64.NO_WRAP);
-            docView1.setVisibility(View.VISIBLE);
-            docView1.setImageBitmap(thumbnail);
-        }
-*/
-
     }
 
     public byte[] getBytesFromBitmap(Bitmap bitmap) {
@@ -1295,7 +1265,6 @@ public class CreateTicketFragment extends Fragment {
     }
 
     private static Bitmap rotateImageIfRequired(Context context, Bitmap img, Uri selectedImage) {
-
         // Detect rotation
         int rotation = getRotation(context, selectedImage);
         if (rotation != 0) {
@@ -1347,7 +1316,6 @@ public class CreateTicketFragment extends Fragment {
 
 
         bm = rotateImageIfRequired(getActivity(), bm, Uri.parse(mDestinationFile.toString()));
-        //  docView.setImageBitmap(bm);
         Utility.saveFileToSdCard(mDestinationFile, bm);
         String fileName = mDestinationFile.getName();
         System.out.println("fileName" + fileName);
@@ -1359,18 +1327,6 @@ public class CreateTicketFragment extends Fragment {
         String fileByte = Base64.encodeToString(bytes, Base64.NO_WRAP);
         attachmentFiles.add(fileByte);
 
-
-/*
-
-        if (attachtext == attachtext1) {
-            attachtext1.setText(attachmentName);
-            esFilename = attachmentName;
-            esFilebyte = Base64.encodeToString(bytes, Base64.NO_WRAP);
-            docView1.setVisibility(View.VISIBLE);
-            docView1.setImageBitmap(bm);
-        }
-*/
-        //  addUserImage(fileName);
     }
 
     @Override
@@ -1385,7 +1341,7 @@ public class CreateTicketFragment extends Fragment {
             else if (requestCode == SELECT_FILE)
                 onSelectFile(data);
         }
-        attachtext.setText(attachmentFiles.size()+" files attached");
+        attachtext.setText(attachmentFiles.size() + " files attached");
     }
 
     @RequiresApi(api = Build.VERSION_CODES.O)
@@ -1414,17 +1370,6 @@ public class CreateTicketFragment extends Fragment {
         attachmentNames.add(attachmentName);
         String fileByte = Base64.encodeToString(bytes, Base64.NO_WRAP);
         attachmentFiles.add(fileByte);
-
-
-     /*   if (attachtext == attachtext1) {
-            attachtext1.setText(attachmentName);
-            esFilename = attachmentName;
-            esFilebyte = Base64.encodeToString(bytes, Base64.NO_WRAP);
-
-
-        }
-*/
-        //   return getStringFile(file);
     }
 
 
