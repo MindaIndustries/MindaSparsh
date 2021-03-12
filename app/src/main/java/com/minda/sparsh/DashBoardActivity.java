@@ -391,7 +391,7 @@ public class DashBoardActivity extends BaseActivity implements View.OnClickListe
                         if(list.get(0)!=null && list.get(0).getAndriodVersion()!=null) {
                             String androidVersion = list.get(0).getAndriodVersion();
                             if(version!=androidVersion){
-                                  showMsg();
+                                //  showMsg();
                             }
                         }
                     }

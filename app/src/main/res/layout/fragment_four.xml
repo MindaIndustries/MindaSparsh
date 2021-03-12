@@ -93,7 +93,38 @@
 
 
                 <!--second menu-->
+
                 <LinearLayout
+                    android:visibility="visible"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginTop="10dp"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <ImageButton
+                        android:id="@+id/it_help_desk"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:background="@drawable/ithelpdesk"
+                        android:layout_marginRight="5dp"
+                        />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginBottom="10dp"
+                        android:fontFamily="@font/museosans_300"
+                        android:gravity="center"
+                        android:text="IT Help Desk"
+                        android:textColor="#000000"
+                        android:textSize="14sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:visibility="gone"
                     android:id="@+id/lay_change_request_from"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -130,39 +161,12 @@
                 android:background="#d7d1d1" />
 
             <LinearLayout
+
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center_horizontal"
                 android:orientation="horizontal">
 
-                <LinearLayout
-                    android:visibility="visible"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:layout_marginTop="10dp"
-                    android:gravity="center"
-                    android:orientation="vertical">
-
-                    <ImageButton
-                        android:id="@+id/it_help_desk"
-                        android:layout_width="100dp"
-                        android:layout_height="100dp"
-                        android:background="@drawable/ithelpdesk"
-                        android:layout_marginRight="5dp"
-                         />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="5dp"
-                        android:layout_marginBottom="10dp"
-                        android:fontFamily="@font/museosans_300"
-                        android:gravity="center"
-                        android:text="IT Help Desk"
-                        android:textColor="#000000"
-                        android:textSize="14sp" />
-                </LinearLayout>
 
 
 
