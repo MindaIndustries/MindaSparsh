@@ -79,6 +79,7 @@ public class RetrofitClient2 {
 
     public static <S> S createServiceEHS(Class<S> serviceClass) {
         OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
+        httpClient.protocols(Util.immutableList(Protocol.HTTP_1_1));
         httpClient.addInterceptor(new Interceptor() {
             @Override
             public Response intercept(Interceptor.Chain chain) throws IOException {
@@ -114,6 +115,7 @@ public class RetrofitClient2 {
     }
     public static <S> S createServiceBottomUponcern(Class<S> serviceClass) {
         OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
+        httpClient.protocols(Util.immutableList(Protocol.HTTP_1_1));
         httpClient.addInterceptor(new Interceptor() {
             @Override
             public Response intercept(Interceptor.Chain chain) throws IOException {
@@ -149,6 +151,7 @@ public class RetrofitClient2 {
     }
     public static <S> S downloadService(Class<S> serviceClass) {
         OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
+        httpClient.protocols(Util.immutableList(Protocol.HTTP_1_1));
         httpClient.addInterceptor(new Interceptor() {
             @Override
             public Response intercept(Interceptor.Chain chain) throws IOException {
@@ -223,6 +226,7 @@ public class RetrofitClient2 {
 
     public static <S> S createServiceSaveFirebaseID(Class<S> serviceClass) {
         OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
+        httpClient.protocols(Util.immutableList(Protocol.HTTP_1_1));
         httpClient.addInterceptor(new Interceptor() {
             @Override
             public Response intercept(Interceptor.Chain chain) throws IOException {
@@ -259,6 +263,7 @@ public class RetrofitClient2 {
 
     public static <S> S createServiceMindacare(Class<S> serviceClass) {
         OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
+        httpClient.protocols(Util.immutableList(Protocol.HTTP_1_1));
         httpClient.addInterceptor(new Interceptor() {
             @Override
             public Response intercept(Interceptor.Chain chain) throws IOException {
@@ -296,6 +301,7 @@ public class RetrofitClient2 {
 
     public static <S> S createServiceEHSUpload(Class<S> serviceClass) {
         OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
+        httpClient.protocols(Util.immutableList(Protocol.HTTP_1_1));
         httpClient.addInterceptor(new Interceptor() {
             @Override
             public Response intercept(Interceptor.Chain chain) throws IOException {
@@ -322,6 +328,7 @@ public class RetrofitClient2 {
 
     public static <S> S createServiceitHelpDesk(Class<S> serviceClass) {
         OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
+        httpClient.protocols(Util.immutableList(Protocol.HTTP_1_1));
         httpClient.addInterceptor(new Interceptor() {
             @Override
             public Response intercept(Interceptor.Chain chain) throws IOException {
