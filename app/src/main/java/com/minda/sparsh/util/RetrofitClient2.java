@@ -12,8 +12,10 @@ import java.util.concurrent.TimeUnit;
 import okhttp3.Dispatcher;
 import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
+import okhttp3.Protocol;
 import okhttp3.Request;
 import okhttp3.Response;
+import okhttp3.internal.Util;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 import retrofit2.converter.scalars.ScalarsConverterFactory;
@@ -29,16 +31,16 @@ public class RetrofitClient2 {
     //master public static final String BASE_URL = "http://176.9.28.166/MindaSparshTest/Service.asmx/";
     // public static final String BASE_URL = "http://52.172.191.61/Test.mindasparsh.com/Service.asmx/";
     //dev
-    public static final String BASE_URL = "http://dev.mindasparsh.com/Service.asmx/";
-    public static final String EHS_BASE_URL = "http://dev.mindasparsh.com/ServiceEHS.asmx/";
-    public static final String ehs_img = "http://dev.mindasparsh.com/ehs/files/";
-    public static final String bottomup_img = "http://dev.mindasparsh.com/bottomup/files/";
-    public static final String itHelpAttachment = "http://dev.mindasparsh.com/ithelpdesk/Files/";
-    public static final String BottomUpBaseUrl = "http://dev.mindasparsh.com/BottomUpApi.asmx/";
-    public static final String suggestionBaseUrl = "http://dev.mindasparsh.com/SuggestionAPI.asmx/";
-    public static final String firebaseIDsaveUrl = "http://dev.mindasparsh.com/MindaFirePushServi./adb ce.asmx/";
-    public static final String mindacareUrl = "http://dev.mindasparsh.com/MindaCare.asmx/";
-    public static final String ithelpdeskBaseUrl = "http://dev.mindasparsh.com/ITHelpDeskM.asmx/";
+    public static final String BASE_URL = "https://dev.mindasparsh.com/Service.asmx/";
+    public static final String EHS_BASE_URL = "https://dev.mindasparsh.com/ServiceEHS.asmx/";
+    public static final String ehs_img = "https://dev.mindasparsh.com/ehs/files/";
+    public static final String bottomup_img = "https://dev.mindasparsh.com/bottomup/files/";
+    public static final String itHelpAttachment = "https://dev.mindasparsh.com/ithelpdesk/Files/";
+    public static final String BottomUpBaseUrl = "https://dev.mindasparsh.com/BottomUpApi.asmx/";
+    public static final String suggestionBaseUrl = "https://dev.mindasparsh.com/SuggestionAPI.asmx/";
+    public static final String firebaseIDsaveUrl = "https://dev.mindasparsh.com/MindaFirePushServi./adb ce.asmx/";
+    public static final String mindacareUrl = "https://dev.mindasparsh.com/MindaCare.asmx/";
+    public static final String ithelpdeskBaseUrl = "https://dev.mindasparsh.com/ITHelpDeskM.asmx/";
     //prod
       /*public static final String BASE_URL = "https://app.mindasparsh.com/Service.asmx/";
       public static final String ehs_img = "https://app.mindasparsh.com/ehs/files/";
@@ -64,6 +66,7 @@ public class RetrofitClient2 {
             final OkHttpClient okHttpClient = new OkHttpClient.Builder()
                     .readTimeout(60, TimeUnit.SECONDS)
                     .connectTimeout(60, TimeUnit.SECONDS)
+                    .protocols(Util.immutableList(Protocol.HTTP_1_1))
                     .build();
             retrofit = new Retrofit.Builder()
                     .baseUrl(BASE_URL)
@@ -182,6 +185,8 @@ public class RetrofitClient2 {
 
     public static <S> S createServiceSuggestionBox(Class<S> serviceClass) {
         OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
+        httpClient.protocols(Util.immutableList(Protocol.HTTP_1_1));
+
         httpClient.addInterceptor(new Interceptor() {
             @Override
             public Response intercept(Interceptor.Chain chain) throws IOException {

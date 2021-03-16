@@ -18,7 +18,7 @@ public class HttpConnection {
     //public static String BASE_URL = "http://52.172.191.61/TestMinda.com/service.asmx/";
   //  public static String BASE_URL = "http://176.9.28.166/MindaSparshTest/service.asmx/";
     //dev environment
-      public static String BASE_URL = "http://dev.mindasparsh.com/service.asmx/";
+      public static String BASE_URL = "https://dev.mindasparsh.com/service.asmx/";
       public static final String mindacareUrl = "https://dev.mindasparsh.com/mindacare/login.aspx?";
 
     //  prod environment

@@ -93,7 +93,7 @@ public class DashBoardActivity extends BaseActivity implements View.OnClickListe
         empCode = myPref.getString("Id", "Id");
         User = myPref.getString("username", "");
         saveFirebaseToken(empCode);
-        getAppVersion();
+     //   getAppVersion();
       /*  FirebaseInstanceId.getInstance().getInstanceId()
                 .addOnCompleteListener(new OnCompleteListener<InstanceIdResult>() {
                     @Override
@@ -405,6 +405,7 @@ public class DashBoardActivity extends BaseActivity implements View.OnClickListe
             }
         });
     }
+/*
     public void showMsg() {
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this,R.style.AlertDialogCustom);
         alertDialogBuilder.setMessage("A new Version of Minda Sparsh is available on Play Store. Please Update.");
@@ -413,6 +414,7 @@ public class DashBoardActivity extends BaseActivity implements View.OnClickListe
             @Override
             public void onClick(DialogInterface arg0, int arg1) {
                 arg0.dismiss();
+
               //  finish();
                 Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(RetrofitClient2.playstoreURL));
                 startActivity(browserIntent);
@@ -430,4 +432,5 @@ public class DashBoardActivity extends BaseActivity implements View.OnClickListe
         AlertDialog alertDialog = alertDialogBuilder.create();
         alertDialog.show();
     }
+*/
 }
