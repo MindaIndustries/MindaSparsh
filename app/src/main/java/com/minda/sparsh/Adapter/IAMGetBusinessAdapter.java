@@ -52,7 +52,6 @@ public class IAMGetBusinessAdapter extends RecyclerView.Adapter<IAMGetBusinessAd
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
         final IAMGetBusinessModel iamGetDomainModel = list.get(position);
-        holder.rb.setVisibility(View.VISIBLE);
         holder.rb.setText(iamGetDomainModel.getBUSINESS());
         holder.rb.setVisibility(View.GONE);
         holder.checkBox.setVisibility(View.VISIBLE);

@@ -54,16 +54,16 @@ public class IAMGetDomainAdapter extends RecyclerView.Adapter<IAMGetDomainAdapte
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
         final IAMGetDomainModel iamGetDomainModel = list.get(position);
-        if (checkCondition.equalsIgnoreCase("7") || checkCondition.equalsIgnoreCase("8") || checkCondition.equalsIgnoreCase("48")) {
+       /* if (checkCondition.equalsIgnoreCase("7") || checkCondition.equalsIgnoreCase("8") || checkCondition.equalsIgnoreCase("48")) {
             holder.rb.setVisibility(View.GONE);
             holder.checkBox.setVisibility(View.VISIBLE);
             holder.checkBox.setText(iamGetDomainModel.getDomainName());
 
         } else {
-            holder.checkBox.setVisibility(View.GONE);
+       */     holder.checkBox.setVisibility(View.GONE);
             holder.rb.setVisibility(View.VISIBLE);
             holder.rb.setText(iamGetDomainModel.getDomainName());
-        }
+      //  }
 
         holder.rb.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -645,7 +645,7 @@ public class RequestForAccessActivity extends AppCompatActivity implements View.
                         if (!type.equalsIgnoreCase("3")) {
                             IAMGetCategorySpinnerModel iam = new IAMGetCategorySpinnerModel();
                             iam.setCategoryId(0);
-                            iam.setCategory("Please   Category");
+                            iam.setCategory("Please Select Category");
                             responseList.add(0, iam);
                             IAMGetCategoryAdapter mAdapter = new IAMGetCategoryAdapter(RequestForAccessActivity.this, responseList);
                           sp_access_category.setAdapter(mAdapter);
@@ -858,7 +858,7 @@ public class RequestForAccessActivity extends AppCompatActivity implements View.
                         mAdapter.notifyDataSetChanged();
                     }
                     else{
-                        layPlant.setVisibility(View.GONE);
+                     //   layPlant.setVisibility(View.GONE);
                     }
                 }
 
@@ -907,7 +907,6 @@ public class RequestForAccessActivity extends AppCompatActivity implements View.
                     showProgress(false);
                     List<IAMCreateRequestModel> responseList = response.body();
                     if (responseList != null && responseList.size() > 0) {
-
                         if (responseList.get(0).getColumn2() != null) {
                             showMsg(responseList.get(0).getColumn2());
                         }
