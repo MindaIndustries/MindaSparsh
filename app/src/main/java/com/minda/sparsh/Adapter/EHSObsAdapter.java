@@ -137,6 +137,7 @@ public class EHSObsAdapter extends RecyclerView.Adapter<EHSObsAdapter.ViewHolder
             });
         }
         catch (Exception e){
+            e.printStackTrace();
 
         }
     }

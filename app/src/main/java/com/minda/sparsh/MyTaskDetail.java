@@ -575,7 +575,7 @@ public class MyTaskDetail extends BaseActivity {
                 if (i > 0) {
                     assigneegroup = groupAssigneeList.get(i - 1).getName();
                     asigneGroupCode = groupAssigneeList.get(i - 1).getData();
-                    DefaultAssigne = groupAssigneeList.get(i - 1).getDefault();
+                    DefaultAssigne = groupAssigneeList.get(i - 1).getData();
                 }
             }
 

@@ -574,7 +574,7 @@
                 android:imeOptions="actionDone"
                 android:scrollbars="vertical"
                 android:gravity="left|top"
-                android:hint="Enter Description here"
+                android:hint="Enter Remakrs here"
                 android:overScrollMode="always"
                 android:padding="5dp"
                 />

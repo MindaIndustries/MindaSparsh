@@ -188,6 +188,9 @@ public class CreateTicketFragment extends Fragment {
         username = myPref.getString("username", "");
         empcode = myPref.getString("Id", "");
         // reportedby = empcode;
+        if(depucode!=null && depucode.length()>0){
+            unitcode= depucode;
+        }
 
 
         if (getArguments() != null && getArguments().get("TicketData") != null) {
@@ -440,7 +443,7 @@ public class CreateTicketFragment extends Fragment {
                 if (i > 0) {
                     assigneegroup = groupAssigneeList.get(i - 1).getName();
                     asigneGroupCode = groupAssigneeList.get(i - 1).getData();
-                    DefaultAssigne = groupAssigneeList.get(i - 1).getDefault();
+                    DefaultAssigne = groupAssigneeList.get(i - 1).getData();
                 }
             }
 
@@ -864,13 +867,15 @@ public class CreateTicketFragment extends Fragment {
                             assetloc.add(assetLocResponse.getName());
                             //}
                         }
-                        if (assetloc.size() > 0) {
-                            assetLocSPinner.setSelection(1);
-                        }
 
-                        if (myTicket != null && myTicket.getLocation() != null) {
-                            int i = assetloc.indexOf(myTicket.getLocation());
-                            //loc pending
+                        if(unitcode!=null && unitcode.length()>0){
+                            AssetLocResponse assetLocResponse = new AssetLocResponse();
+                            assetLocResponse.setId(unitcode);
+                            int i = assetList.indexOf(assetLocResponse);
+                            if(i>=0){
+                                assetLocSPinner.setSelection(i+1);
+                            }
+
                         }
                         assetAdapter.notifyDataSetChanged();
                     }
