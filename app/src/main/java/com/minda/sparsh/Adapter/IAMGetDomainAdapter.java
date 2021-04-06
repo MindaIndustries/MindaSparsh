@@ -70,7 +70,7 @@ public class IAMGetDomainAdapter extends RecyclerView.Adapter<IAMGetDomainAdapte
             public void onClick(View view) {
                 resetData(iamGetDomainModel.getDomainName());
                 if (context instanceof RequestForAccessActivity) {
-                    ((RequestForAccessActivity) context).hitIAMGetBusinessApi(String.valueOf(iamGetDomainModel.getDomainID()),"radioButton");
+                    ((RequestForAccessActivity) context).hitIAMGetBusinessApi(String.valueOf(iamGetDomainModel.getDomainID()),iamGetDomainModel.getDomainName(),"radioButton");
                 }
             }
         });
@@ -81,7 +81,7 @@ public class IAMGetDomainAdapter extends RecyclerView.Adapter<IAMGetDomainAdapte
             holder.rb.setChecked(false);
         }
 
-        holder.checkBox.setOnClickListener(new View.OnClickListener() {
+      /*  holder.checkBox.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if (context instanceof RequestForAccessActivity) {
@@ -89,7 +89,7 @@ public class IAMGetDomainAdapter extends RecyclerView.Adapter<IAMGetDomainAdapte
                 }
             }
         });
-
+*/
     }
 
     @Override

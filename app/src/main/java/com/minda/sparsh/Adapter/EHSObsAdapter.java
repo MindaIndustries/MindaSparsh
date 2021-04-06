@@ -45,16 +45,6 @@ public class EHSObsAdapter extends RecyclerView.Adapter<EHSObsAdapter.ViewHolder
         try {
             viewHolder.obsType.setText(myObservations.get(i).getOBName());
             viewHolder.actNoValue.setText(myObservations.get(i).getActNo());
-            String[] actDate = myObservations.get(i).getActDate().split("/");
-            String actmonth = actDate[0];
-            String actday = actDate[1];
-            String actyear = actDate[2];
-            viewHolder.obsDateValue.setText(actday + "/" + actmonth + "/" + actyear);
-            String[] raisedDate = myObservations.get(i).getCreatedOn().split("/");
-            String raisedmonth = raisedDate[0];
-            String raisedday = raisedDate[1];
-            String raisedyear = raisedDate[2];
-            viewHolder.raisedOnValue.setText(raisedday + "/" + raisedmonth + "/" + raisedyear);
             viewHolder.unitValue.setText(myObservations.get(i).getUnitName());
             viewHolder.identifiedLocValue.setText(myObservations.get(i).getLocation());
             viewHolder.categoryValue.setText(myObservations.get(i).getCatName());
@@ -135,6 +125,18 @@ public class EHSObsAdapter extends RecyclerView.Adapter<EHSObsAdapter.ViewHolder
 
                 }
             });
+
+            String[] actDate = myObservations.get(i).getActDate().split("/");
+            String actmonth = actDate[0];
+            String actday = actDate[1];
+            String actyear = actDate[2];
+            viewHolder.obsDateValue.setText(actday + "/" + actmonth + "/" + actyear);
+            String[] raisedDate = myObservations.get(i).getCreatedOn().split("/");
+            String raisedmonth = raisedDate[0];
+            String raisedday = raisedDate[1];
+            String raisedyear = raisedDate[2];
+            viewHolder.raisedOnValue.setText(raisedday + "/" + raisedmonth + "/" + raisedyear);
+
         }
         catch (Exception e){
             e.printStackTrace();

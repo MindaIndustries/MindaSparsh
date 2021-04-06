@@ -291,7 +291,7 @@ public class AccessRequestDetailsActivity extends AppCompatActivity implements V
                     dismissProgress();
                     List<AccessRequestPlantDetailModel> accessRequestPlantDetailModels = response.body();
 
-                    if (accessRequestPlantDetailModels != null) {
+                    if (accessRequestPlantDetailModels != null && accessRequestPlantDetailModels.size()>0) {
                         if (accessRequestPlantDetailModels.get(0).getAccessRequestNo() != null) {
                             PlantDetailsAdapter mAdapter = new PlantDetailsAdapter(response.body(), AccessRequestDetailsActivity.this);
                             RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(AccessRequestDetailsActivity.this);

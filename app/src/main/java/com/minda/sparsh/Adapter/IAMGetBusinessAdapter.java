@@ -13,6 +13,7 @@ import com.minda.sparsh.R;
 import com.minda.sparsh.RequestForAccessActivity;
 import com.minda.sparsh.model.IAMGetBusinessModel;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -22,6 +23,7 @@ public class IAMGetBusinessAdapter extends RecyclerView.Adapter<IAMGetBusinessAd
     Context context;
     String checkCondition;
 
+    List<IAMGetBusinessModel> selectedBusines = new ArrayList<IAMGetBusinessModel>();
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
         public RadioButton rb;
@@ -35,7 +37,7 @@ public class IAMGetBusinessAdapter extends RecyclerView.Adapter<IAMGetBusinessAd
         }
     }
 
-    public IAMGetBusinessAdapter(List<IAMGetBusinessModel> viewAppointmentModelList, Context context1,String check) {
+    public IAMGetBusinessAdapter(List<IAMGetBusinessModel> viewAppointmentModelList, Context context1,String check ) {
         this.list = viewAppointmentModelList;
         this.context = context1;
         this.checkCondition = check;
@@ -91,7 +93,16 @@ public class IAMGetBusinessAdapter extends RecyclerView.Adapter<IAMGetBusinessAd
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
                 if (context instanceof RequestForAccessActivity) {
-                    ((RequestForAccessActivity) context).hitIAMGetPlantApi(String.valueOf(iamGetDomainModel.getID()),"checkBox",b);
+                    if(b){
+                        iamGetDomainModel.setSelected(true);
+                        selectedBusines.add(iamGetDomainModel);
+                    }
+                    else{
+                        selectedBusines.remove(iamGetDomainModel);
+                        iamGetDomainModel.setSelected(false);
+                    }
+                    ((RequestForAccessActivity) context).hitIAMGetPlantApi(String.valueOf(iamGetDomainModel.getID()),selectedBusines,"checkBox",b);
+
                 }
             }
         });

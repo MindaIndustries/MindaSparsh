@@ -21,6 +21,13 @@ public class IAMGetBusinessModel {
     @Expose
     private Boolean iSACTIVE;
 
+    public boolean isSelected() {
+        return isSelected;
+    }
+
+    public void setSelected(boolean selected) {
+        isSelected = selected;
+    }
 
     @SerializedName("isSelected")
     @Expose

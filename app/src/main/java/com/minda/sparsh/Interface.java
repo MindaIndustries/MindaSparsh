@@ -486,7 +486,7 @@ Call<List<IAMCreateRequestModel>> IAMCreateRequest(@Field("RequestTypeId") Strin
                                                    @Field("CategoryName") String CategoryName, @Field("SubCategoryName") String SubCategoryName,
                                                    @Field("ProfileId") String ProfileId, @Field("ProfileName") String ProfileName,
                                                    @Field("RequirementDetail") String RequirementDetail, @Field("CategoryList") String CategoryList,
-                                                   @Field("UnitList") String UnitList, @Field("CKey") String CKey,@Field("FileName") String FileName,@Field("FileByte") String FileByte);
+                                                   @Field("UnitList") String UnitList, @Field("CKey") String CKey,@Field("FileName") String FileName,@Field("FileByte") String FileByte, @Field("_Domains") String Domains, @Field("_BusinessID") String BusinessID, @Field("_DomainNames") String DomainNames, @Field("BusinessIdName") String BusinessIdName, @Field("_PlantName") String PlantName, @Field("_PlantCode") String PlantCode, @Field("_AccessSubTypeName") String AccessSubTypeName, @Field("_AccessTypeName")String AccessTypeName, @Field("_RequestTypeName") String RequestTypeName);
 
 
 

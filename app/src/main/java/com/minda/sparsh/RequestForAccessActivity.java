@@ -159,6 +159,8 @@ public class RequestForAccessActivity extends AppCompatActivity implements View.
     @BindView(R.id.im_back)
     ImageView im_back;
     HashSet<String> set = new HashSet<String>();
+    HashSet<String> set1 = new HashSet<String>();
+
     @BindView(R.id.toolbar)
     Toolbar toolbar;
     @BindView(R.id.title)
@@ -183,6 +185,7 @@ public class RequestForAccessActivity extends AppCompatActivity implements View.
     ArrayList<IAMGetAccessTypeSpinnerModel> accesstypelist = new ArrayList<>();
 
     String TYPE ;
+    String Domains="",BusinessID="",DomainNames="",BusinessIdName="",PlantName="",PlantCode="",AccessSubTypeName="",AccessTypeName="",RequestTypeName="";
 
     private static Bitmap rotateImageIfRequired(Context context, Bitmap img, Uri selectedImage) {
 
@@ -313,6 +316,8 @@ public class RequestForAccessActivity extends AppCompatActivity implements View.
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 IAMGetRequestTypeSpinnerModel selectedItem = (IAMGetRequestTypeSpinnerModel) adapterView.getSelectedItem();
                 if (!selectedItem.getRequestType().equalsIgnoreCase("Please Select Request Type")) {
+                    RequestTypeName = selectedItem.getRequestType();
+
                     if (selectedItem.getRequestTypeId().equals(3)) {
                         sp_request_type_id = selectedItem.getRequestTypeId().toString();
                         layAccessCategory.setVisibility(View.GONE);
@@ -354,6 +359,7 @@ public class RequestForAccessActivity extends AppCompatActivity implements View.
                 if (!selectedItem.getAccessType().equalsIgnoreCase("Please Select Access Type")) {
                     hitIAMGetAccessSubTypeApi(selectedItem.getAccessTypeId().toString());
                     sp_access_type_id = selectedItem.getAccessTypeId().toString();
+                    AccessTypeName = selectedItem.getAccessType();
                 }
                 if (selectedItem.getAccessTypeId().equals(3)) {
                     layAccessSubType.setVisibility(View.GONE);
@@ -410,6 +416,7 @@ public class RequestForAccessActivity extends AppCompatActivity implements View.
                 IAMGetAccessSubTypeModel selectedItem = (IAMGetAccessSubTypeModel) adapterView.getSelectedItem();
                 if (!selectedItem.getAccessSubType().equalsIgnoreCase("Please Select Access Sub Type")) {
                     sp_access_sub_type_id = selectedItem.getAccessSubTypeId().toString();
+                    AccessSubTypeName = selectedItem.getAccessSubType();
                 }
 
             }
@@ -785,8 +792,10 @@ public class RequestForAccessActivity extends AppCompatActivity implements View.
             Toast.makeText(RequestForAccessActivity.this, "Please Check Your Network Connection", Toast.LENGTH_LONG).show();
     }
 
-    public void hitIAMGetBusinessApi(String domainId, final String callFrom) {
+    public void hitIAMGetBusinessApi(String domainId,String domainNames, final String callFrom) {
         layPlant.setVisibility(View.GONE);
+        Domains = domainId;
+        DomainNames = domainNames;
         if (Utility.isOnline(RequestForAccessActivity.this)) {
             showProgress(true);
             Interface anInterface = RetrofitClient2.getClient().create(Interface.class);
@@ -824,8 +833,17 @@ public class RequestForAccessActivity extends AppCompatActivity implements View.
             Toast.makeText(RequestForAccessActivity.this, "Please Check Your Network Connection", Toast.LENGTH_LONG).show();
     }
 
-    public void hitIAMGetPlantApi(String businessId, final String callType,boolean b) {
+    public void hitIAMGetPlantApi(String businessId,List<IAMGetBusinessModel> selectedbusinesslist, final String callType,boolean b) {
         if (Utility.isOnline(RequestForAccessActivity.this)) {
+            BusinessID = "";
+            BusinessIdName = "";
+            for(int i=0;i<selectedbusinesslist.size();i++) {
+                if (selectedbusinesslist.get(i).isSelected()) {
+                    BusinessID += selectedbusinesslist.get(i).getID() + ", ";
+                    BusinessIdName += selectedbusinesslist.get(i).getBUSINESS() + ", ";
+                }
+            }
+
             showProgress(true);
             Interface anInterface = RetrofitClient2.getClient().create(Interface.class);
             Call<List<IAMGetPlantModel>> response = anInterface.IAMGetPlant(businessId, RetrofitClient2.CKEY);
@@ -900,7 +918,7 @@ public class RequestForAccessActivity extends AppCompatActivity implements View.
         if (Utility.isOnline(RequestForAccessActivity.this)) {
             showProgress(true);
             Interface anInterface = RetrofitClient2.getClient().create(Interface.class);
-            Call<List<IAMCreateRequestModel>> response = anInterface.IAMCreateRequest(RequestTypeId, AccessTypeId, AccessForTypeId, EmpCode, SourceTypeId, SourceEmpCode, Organization, Purpose, SourceName, AccessSubTypeId, CategoryId, SubCategoryId, CategoryName, SubCategoryName, ProfileId, ProfileName, RequirementDetail, CategoryList, UnitList, RetrofitClient2.CKEY, fileName, fileByte);
+            Call<List<IAMCreateRequestModel>> response = anInterface.IAMCreateRequest(RequestTypeId, AccessTypeId, AccessForTypeId, EmpCode, SourceTypeId, SourceEmpCode, Organization, Purpose, SourceName, AccessSubTypeId, CategoryId, SubCategoryId, CategoryName, SubCategoryName, ProfileId, ProfileName, RequirementDetail, CategoryList, UnitList, RetrofitClient2.CKEY, fileName, fileByte,Domains,BusinessID,DomainNames,BusinessIdName,PlantName,UnitList,AccessSubTypeName,AccessTypeName,RequestTypeName);
             response.enqueue(new Callback<List<IAMCreateRequestModel>>() {
                 @Override
                 public void onResponse(Call<List<IAMCreateRequestModel>> call, Response<List<IAMCreateRequestModel>> response) {
@@ -985,12 +1003,15 @@ public class RequestForAccessActivity extends AppCompatActivity implements View.
     }
 
     @Override
-    public void handleClick(String id, String clickCheck) {
+    public void handleClick(String id, String clickCheck, String plantName) {
         unitCheckId = "";
         if (clickCheck.equalsIgnoreCase("check")) {
             set.add(id);
+            set1.add(plantName);
         } else {
             set.remove(id);
+            set1.remove(plantName);
+
         }
 //        // allocate memory for string array
 //        String[] array = new String[set.size()];
@@ -1006,6 +1027,12 @@ public class RequestForAccessActivity extends AppCompatActivity implements View.
             unitCheckId = StringUtil.join(set, ", ");
         } catch (Exception e) {
             e.printStackTrace();
+        }
+        try{
+            PlantName = StringUtil.join(set1,",");
+        }
+        catch ( Exception e){
+
         }
 
     }

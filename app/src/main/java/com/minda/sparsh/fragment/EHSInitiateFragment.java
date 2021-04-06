@@ -580,30 +580,31 @@ public class EHSInitiateFragment extends Fragment {
         cal.setTimeInMillis(System.currentTimeMillis());
         millisecondsdailyfrom = cal.getTime();
         observationDateSpinner.setText("" + getlogDate(cal.getTimeInMillis()));
-        if (getArguments() != null) {
-            if (getArguments().getString("obsDate") != null) {
-                String givenDateString = getArguments().getString("obsDate").split(" ")[0];
-                String givenDate[] = givenDateString.split("/");
-                String monthgiven;
-                String daygiven;
+        try {
 
-                if (Integer.parseInt(givenDate[0].toString()) < 10) {
-                    monthgiven = "0" + givenDate[0];
-                } else {
-                    monthgiven = givenDate[0];
-                }
+            if (getArguments() != null) {
+                if (getArguments().getString("obsDate") != null) {
+                    String givenDateString = getArguments().getString("obsDate").split(" ")[0];
+                    String givenDate[] = givenDateString.split("/");
+                    String monthgiven;
+                    String daygiven;
+                    if (Integer.parseInt(givenDate[0].toString()) < 10) {
+                        monthgiven = "0" + givenDate[0];
+                    } else {
+                        monthgiven = givenDate[0];
+                    }
 
-                if (Integer.parseInt(givenDate[1].toString()) < 10) {
-                    daygiven = "0" + givenDate[1];
-                } else {
-                    daygiven = givenDate[1];
-                }
-                cal.set(Calendar.DAY_OF_MONTH, Integer.parseInt(daygiven));
-                cal.set(Calendar.MONTH, Integer.parseInt(monthgiven) - 1);
-                cal.set(Calendar.YEAR, Integer.parseInt(givenDate[2]));
-                millisecondsdailyfrom = cal.getTime();
+                    if (Integer.parseInt(givenDate[1].toString()) < 10) {
+                        daygiven = "0" + givenDate[1];
+                    } else {
+                        daygiven = givenDate[1];
+                    }
+                    cal.set(Calendar.DAY_OF_MONTH, Integer.parseInt(daygiven));
+                    cal.set(Calendar.MONTH, Integer.parseInt(monthgiven) - 1);
+                    cal.set(Calendar.YEAR, Integer.parseInt(givenDate[2]));
+                    millisecondsdailyfrom = cal.getTime();
 
-                observationDateSpinner.setText("" + getlogDate(cal.getTimeInMillis()));
+                    observationDateSpinner.setText("" + getlogDate(cal.getTimeInMillis()));
 
 
 
@@ -618,34 +619,38 @@ public class EHSInitiateFragment extends Fragment {
                 e.printStackTrace();
             }*/
 
+                }
             }
+        }catch (Exception e){
+
         }
+
         observationDatePicker = new DatePickerDialog(getActivity(), new DatePickerDialog.OnDateSetListener() {
-            @Override
-            public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-                int mMonth = month + 1;
-                String monthNo;
-                if (mMonth < 10) {
-                    monthNo = "0" + mMonth;
-                } else {
-                    monthNo = "" + mMonth;
-                }
-                String dayOfMonthStr;
-                if (dayOfMonth < 10) {
-                    dayOfMonthStr = "0" + dayOfMonth;
-                } else {
-                    dayOfMonthStr = "" + dayOfMonth;
-                }
-                cal.set(Calendar.DAY_OF_MONTH, dayOfMonth);
-                cal.set(Calendar.MONTH, month);
-                cal.set(Calendar.YEAR, year);
-                millisecondsdailyfrom = cal.getTime();
-                timeSelector.setText("");
+                @Override
+                public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+                    int mMonth = month + 1;
+                    String monthNo;
+                    if (mMonth < 10) {
+                        monthNo = "0" + mMonth;
+                    } else {
+                        monthNo = "" + mMonth;
+                    }
+                    String dayOfMonthStr;
+                    if (dayOfMonth < 10) {
+                        dayOfMonthStr = "0" + dayOfMonth;
+                    } else {
+                        dayOfMonthStr = "" + dayOfMonth;
+                    }
+                    cal.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+                    cal.set(Calendar.MONTH, month);
+                    cal.set(Calendar.YEAR, year);
+                    millisecondsdailyfrom = cal.getTime();
+                    timeSelector.setText("");
 
-                observationDateSpinner.setText("" + dayOfMonthStr + "/" + monthNo + "/" + year);
+                    observationDateSpinner.setText("" + dayOfMonthStr + "/" + monthNo + "/" + year);
 
-            }
-        }, cal.get(Calendar.YEAR), cal.get(Calendar.MONTH), cal.get(Calendar.DAY_OF_MONTH));
+                }
+            }, cal.get(Calendar.YEAR), cal.get(Calendar.MONTH), cal.get(Calendar.DAY_OF_MONTH));
 
         try {
 
