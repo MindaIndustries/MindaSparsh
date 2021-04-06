@@ -4,22 +4,24 @@
     android:layout_height="match_parent">
 
     <include layout="@layout/toolbar" />
+
     <RelativeLayout
         android:visibility="visible"
         android:layout_marginTop="?attr/actionBarSize"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:adjustViewBounds="true"
             android:src="@drawable/birds"
-            android:scaleType="centerCrop"
-            />
+            android:scaleType="centerCrop" />
+
         <LinearLayout
             android:background="@color/translucent"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
+            android:layout_height="match_parent" />
 
     </RelativeLayout>
 
@@ -81,6 +83,7 @@
                     android:id="@+id/time_layout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
+
                     <TextView
                         android:layout_alignParentRight="true"
                         android:layout_marginTop="3dp"
@@ -88,8 +91,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Clock In: "
-                        android:textSize="12sp"
-                        />
+                        android:textSize="12sp" />
+
                     <LinearLayout
                         android:layout_alignLeft="@+id/clockintime"
                         android:layout_alignParentRight="true"
@@ -99,8 +102,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="1dp"
                         android:id="@+id/ll1"
-                        android:background="@color/black"
-                        />
+                        android:background="@color/black" />
+
                     <TextView
                         android:layout_alignLeft="@+id/clockintime"
                         android:layout_alignParentRight="true"
@@ -110,8 +113,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Clock Out: "
-                        android:textSize="12sp"
-                        />
+                        android:textSize="12sp" />
+
                     <LinearLayout
                         android:layout_alignLeft="@+id/clockintime"
                         android:layout_alignParentRight="true"
@@ -121,8 +124,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="1dp"
                         android:id="@+id/ll2"
-                        android:background="@color/black"
-                        />
+                        android:background="@color/black" />
+
                     <TextView
                         android:layout_alignLeft="@+id/clockintime"
                         android:layout_alignParentRight="true"
@@ -132,8 +135,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Total Working Hour: "
-                        android:textSize="12sp"
-                        />
+                        android:textSize="12sp" />
+
                     <LinearLayout
                         android:layout_alignLeft="@+id/clockintime"
                         android:layout_alignParentRight="true"
@@ -143,8 +146,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="1dp"
                         android:id="@+id/ll3"
-                        android:background="@color/black"
-                        />
+                        android:background="@color/black" />
                 </RelativeLayout>
 
 
@@ -165,7 +167,6 @@
                     android:layout_height="match_parent" />
 
 
-
                 <Button
                     android:id="@+id/clock"
                     android:layout_width="wrap_content"
@@ -179,10 +180,9 @@
                     android:textSize="12sp"
                     android:textStyle="bold" />
             </RelativeLayout>
-            
-            
-            <LinearLayout
-                android:layout_below="@+id/map_layout"
+
+
+            <LinearLayout android:layout_below="@+id/map_layout"
                 xmlns:tools="http://schemas.android.com/tools"
                 android:id="@+id/rootLayout"
                 android:padding="10dp"
@@ -191,7 +191,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                tools:context=".MindacareActivity"/>
+                tools:context=".MindacareActivity" />
 
 
             <androidx.recyclerview.widget.RecyclerView
@@ -202,10 +202,10 @@
                 android:layout_below="@+id/map_layout" />
 
 
-
         </RelativeLayout>
 
     </ScrollView>
+
     <Button
         android:id="@+id/submit"
         android:layout_width="match_parent"

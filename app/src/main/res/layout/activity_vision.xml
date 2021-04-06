@@ -1,28 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.minda.sparsh.MissionActivity"
     android:orientation="vertical">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:background="@color/colorPrimary"
         android:gravity="center">
+
         <LinearLayout
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="match_parent"
             android:gravity="center">
+
             <ImageView
                 android:id="@+id/im_back"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/back"/>
+                android:src="@drawable/back" />
 
         </LinearLayout>
+
         <TextView
             android:layout_width="0dp"
             android:layout_weight="8"
@@ -30,48 +33,53 @@
             android:text="Vision"
             android:textColor="@color/white"
             android:textSize="20dp"
-            android:gravity="center"/>
+            android:gravity="center" />
+
         <ImageView
             android:layout_width="0dp"
             android:layout_weight="1"
-            android:layout_height="wrap_content"
-            />
+            android:layout_height="wrap_content" />
 
     </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:background="@color/white"
-        >
+        android:background="@color/white">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
             android:layout_margin="20dp">
+
             <ImageView
                 android:layout_width="200dp"
                 android:layout_height="200dp"
-                android:src="@drawable/vision"
-                />
+                android:src="@drawable/vision" />
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
             android:layout_margin="20dp">
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/colorPrimary"
                 android:textSize="25dp"
-                android:text="Our Vision"/>
+                android:text="Our Vision" />
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
             android:layout_margin="20dp">
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -79,7 +87,7 @@
                 android:textSize="16dp"
                 android:textStyle="italic"
                 android:gravity="center"
-                android:text="To be a sustainable global organization that enhance value for all its stakeholders, attains technology leadership and cares for its people like a family"/>
+                android:text="To be a sustainable global organization that enhance value for all its stakeholders, attains technology leadership and cares for its people like a family" />
         </LinearLayout>
 
     </LinearLayout>

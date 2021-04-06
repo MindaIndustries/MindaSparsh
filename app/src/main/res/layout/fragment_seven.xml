@@ -1,81 +1,85 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
     <!--<LinearLayout-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:layout_marginTop="10dp"-->
-        <!--android:gravity="center"-->
-        <!--android:layout_margin="10dp">-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_marginTop="10dp"-->
+    <!--android:gravity="center"-->
+    <!--android:layout_margin="10dp">-->
 
-        <!--<ImageView-->
-            <!--android:id="@+id/im_logo"-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:background="@drawable/minda_sparsh" />-->
+    <!--<ImageView-->
+    <!--android:id="@+id/im_logo"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:background="@drawable/minda_sparsh" />-->
     <!--</LinearLayout>-->
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:gravity="center">
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:layout_margin="20dp"
-            android:orientation="vertical">
-            <TextView
+            android:orientation="vertical"
+            android:gravity="center">
+
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="SURVEY"
                 android:gravity="center"
-                android:padding="5dp"
-                android:textSize="20dp"
-                android:textColor="#000000"/>
-            <View
-            android:layout_width="match_parent"
-            android:layout_height="1.5dp"
-            android:background="@drawable/gradientline"/>
+                android:layout_margin="20dp"
+                android:orientation="vertical">
 
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp">
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:orientation="vertical"
-                android:gravity="center">
-
-                <ImageButton
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
-                    android:layout_marginRight="5dp"
-                    android:background="@drawable/it_survey_icon" />
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Survey"
-                    android:textSize="14sp"
-                    android:fontFamily="@font/museosans_300"
-                    android:textColor="#000000"
-                    android:layout_marginTop="5dp"/>
+                    android:text="SURVEY"
+                    android:gravity="center"
+                    android:padding="5dp"
+                    android:textSize="20dp"
+                    android:textColor="#000000" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1.5dp"
+                    android:background="@drawable/gradientline" />
+
             </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:gravity="center">
+
+                    <ImageButton
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:layout_marginRight="5dp"
+                        android:background="@drawable/it_survey_icon" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Survey"
+                        android:textSize="14sp"
+                        android:fontFamily="@font/museosans_300"
+                        android:textColor="#000000"
+                        android:layout_marginTop="5dp" />
+                </LinearLayout>
+            </LinearLayout>
+
+
         </LinearLayout>
 
-
-
-
-    </LinearLayout>
         <ImageView
             android:id="@+id/im_right"
             android:layout_width="35dp"

@@ -28,16 +28,16 @@ public interface IThelpdeskClient {
     Call<List<AssetLocResponse>> getSubCat(@Query("SubCat") String SubCat, @Query("TicketType") String TicketType, @Query("UnitCode") String UnitCode);
 
     @GET("BindSubCat2")
-    Call<List<AssetLocResponse>> getSubCat2(@Query("SubCat") String SubCat,@Query("SubCat2") String SubCat2, @Query("TicketType") String TicketType, @Query("UnitCode") String UnitCode);
+    Call<List<AssetLocResponse>> getSubCat2(@Query("SubCat") String SubCat, @Query("SubCat2") String SubCat2, @Query("TicketType") String TicketType, @Query("UnitCode") String UnitCode);
 
     @GET("BindSubCat3")
-    Call<List<AssetLocResponse>> getSubCat3(@Query("SubCat2") String SubCat2,@Query("SubCat3") String SubCat3, @Query("TicketType") String TicketType, @Query("UnitCode") String UnitCode);
+    Call<List<AssetLocResponse>> getSubCat3(@Query("SubCat2") String SubCat2, @Query("SubCat3") String SubCat3, @Query("TicketType") String TicketType, @Query("UnitCode") String UnitCode);
 
     @GET("GetReportedBy")
     Call<List<AssetLocResponse>> getReportedBy(@Query("EmpCode") String EmpCode);
 
     @GET("BindGroup")
-    Call<List<BindGroupResponse>> getBindGroup(@Query("SubCat") String SubCat,@Query("SubCat2") String SubCat2,@Query("SubCat3") String SubCat3,@Query("TicketType")String TicketType,@Query("UnitCode") String UnitCode);
+    Call<List<BindGroupResponse>> getBindGroup(@Query("SubCat") String SubCat, @Query("SubCat2") String SubCat2, @Query("SubCat3") String SubCat3, @Query("TicketType") String TicketType, @Query("UnitCode") String UnitCode);
 
     @GET("GetGroupAssigne")
     Call<List<GroupAssigneeResponse>> getGroupAssignee(@Query("TicketType") String TicketType, @Query("UnitCode") String UnitCode);
@@ -46,14 +46,14 @@ public interface IThelpdeskClient {
     Call<List<String>> getAutoName(@Query("prefixText") String prefixText);
 
     @GET("GetMyTickets")
-    Call<List<MyTicketsResponse>> getMyTickets(@Query("EmpCode") String EmpCode,@Query("Location") String Location, @Query("TicketTypeID") String TicketTypeID,@Query("Priority") String Priority, @Query("TicketGroupID") String TicketGroupID, @Query("StatusID") String StatusID,@Query("SubCat") String SubCat,@Query("SubCat2")String SubCat2,@Query("SubCat3")String SubCat3, @Query("ReportedDate")String ReportedDate,@Query("CloserDate") String CloserDate );
+    Call<List<MyTicketsResponse>> getMyTickets(@Query("EmpCode") String EmpCode, @Query("Location") String Location, @Query("TicketTypeID") String TicketTypeID, @Query("Priority") String Priority, @Query("TicketGroupID") String TicketGroupID, @Query("StatusID") String StatusID, @Query("SubCat") String SubCat, @Query("SubCat2") String SubCat2, @Query("SubCat3") String SubCat3, @Query("ReportedDate") String ReportedDate, @Query("CloserDate") String CloserDate);
 
     @GET("GetMyTaskTickets")
-    Call<List<MyTicketsResponse>> getMyTaskTickets(@Query("EmpCode") String EmpCode,@Query("Location") String Location, @Query("TicketTypeID") String TicketTypeID,@Query("Priority") String Priority, @Query("TicketGroupID") String TicketGroupID, @Query("StatusID") String StatusID,@Query("SubCat") String SubCat,@Query("SubCat2")String SubCat2,@Query("SubCat3")String SubCat3, @Query("ReportedDate")String ReportedDate,@Query("CloserDate") String CloserDate);
+    Call<List<MyTicketsResponse>> getMyTaskTickets(@Query("EmpCode") String EmpCode, @Query("Location") String Location, @Query("TicketTypeID") String TicketTypeID, @Query("Priority") String Priority, @Query("TicketGroupID") String TicketGroupID, @Query("StatusID") String StatusID, @Query("SubCat") String SubCat, @Query("SubCat2") String SubCat2, @Query("SubCat3") String SubCat3, @Query("ReportedDate") String ReportedDate, @Query("CloserDate") String CloserDate);
 
     @FormUrlEncoded
     @POST("SubmitRequest")
-    Call<TicketSubmitResponse> submitRequest(@Field("Location") String Location, @Field("TicketTypeID") String TicketTypeID, @Field("SubCat") String SubCat, @Field("SubCat2") String SubCat2, @Field("SubCat3") String SubCat3, @Field("TicketGroupID") String TicketGroupID,@Field("AssigneGroup") String AssigneGroup, @Field("AssigneGroupCode") String AssigneGroupCode,@Field("DefaultAssigne") String DefaultAssigne,@Field("ReportedBy") String ReportedBy, @Field("Priority") String Priority, @Field("AttachedFiles") String AttachedFiles,@Field("AttFileBytes")String AttFileBytes, @Field("Description") String Description, @Field("CC") String CC, @Field("EmpCode") String EmpCode);
+    Call<TicketSubmitResponse> submitRequest(@Field("Location") String Location, @Field("TicketTypeID") String TicketTypeID, @Field("SubCat") String SubCat, @Field("SubCat2") String SubCat2, @Field("SubCat3") String SubCat3, @Field("TicketGroupID") String TicketGroupID, @Field("AssigneGroup") String AssigneGroup, @Field("AssigneGroupCode") String AssigneGroupCode, @Field("DefaultAssigne") String DefaultAssigne, @Field("ReportedBy") String ReportedBy, @Field("Priority") String Priority, @Field("AttachedFiles") String AttachedFiles, @Field("AttFileBytes") String AttFileBytes, @Field("Description") String Description, @Field("CC") String CC, @Field("EmpCode") String EmpCode);
 
     @GET("GetPriority")
     Call<List<AssetLocResponse>> getPriority();
@@ -66,7 +66,7 @@ public interface IThelpdeskClient {
 
     @FormUrlEncoded
     @POST("MyTaskTicketUpdate")
-    Call<TicketSubmitResponse> updateMyTaskTicket(@Field("TicketNo") String TicketNo, @Field("EmpCode") String EmpCode, @Field("Remark") String Remark, @Field("Status")String Status, @Field("Location") String Location, @Field("TicketTypeID") String TicketTypeID,@Field("SubCat") String SubCat, @Field("SubCat2") String SubCat2, @Field("SubCat3") String SubCat3, @Field("TicketGroupID") String TicketGroupID, @Field("AssigneGroup") String AssigneGroup, @Field("AssigneGroupCode") String AssigneGroupCode, @Field("DefaultAssigne") String DefaultAssigne, @Field("ReportedBy") String ReportedBy, @Field("Priority") String Priority, @Field("AttachedFiles") String AttachedFiles,@Field("AttFileBytes") String AttFileBytes, @Field("Description") String Description, @Field("CC") String CC);
+    Call<TicketSubmitResponse> updateMyTaskTicket(@Field("TicketNo") String TicketNo, @Field("EmpCode") String EmpCode, @Field("Remark") String Remark, @Field("Status") String Status, @Field("Location") String Location, @Field("TicketTypeID") String TicketTypeID, @Field("SubCat") String SubCat, @Field("SubCat2") String SubCat2, @Field("SubCat3") String SubCat3, @Field("TicketGroupID") String TicketGroupID, @Field("AssigneGroup") String AssigneGroup, @Field("AssigneGroupCode") String AssigneGroupCode, @Field("DefaultAssigne") String DefaultAssigne, @Field("ReportedBy") String ReportedBy, @Field("Priority") String Priority, @Field("AttachedFiles") String AttachedFiles, @Field("AttFileBytes") String AttFileBytes, @Field("Description") String Description, @Field("CC") String CC);
 
 
 }

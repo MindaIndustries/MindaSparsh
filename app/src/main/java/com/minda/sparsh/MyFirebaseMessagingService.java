@@ -8,10 +8,6 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.media.RingtoneManager;
 import android.net.Uri;
-
-import androidx.annotation.NonNull;
-import androidx.core.app.NotificationCompat;
-
 import android.os.Build;
 import android.util.Log;
 
@@ -19,6 +15,9 @@ import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
 
 import java.util.Date;
+
+import androidx.annotation.NonNull;
+import androidx.core.app.NotificationCompat;
 
 /**
  * Created by dmin on 2/23/2018.

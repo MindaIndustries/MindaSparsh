@@ -20,12 +20,6 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
 import android.provider.MediaStore;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.core.app.ActivityCompat;
-import androidx.fragment.app.Fragment;
-import androidx.core.content.ContextCompat;
-import androidx.appcompat.app.AlertDialog;
 import android.util.Base64;
 import android.util.Base64OutputStream;
 import android.util.Log;
@@ -74,6 +68,12 @@ import java.util.List;
 
 import javax.net.ssl.HttpsURLConnection;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
+import androidx.fragment.app.Fragment;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -157,7 +157,7 @@ public class EHSInitiateFragment extends Fragment {
     TimePickerDialog observationTimePicker;
     Calendar cal;
     SharedPreferences myPref;
-    String unitcode,depucode;
+    String unitcode, depucode;
     String empCode, actId, actNo;
     String safetyOfficer, obstype, identifiedLocation, category, subcategory, locationID, subCategoryID, observationID;
 
@@ -188,9 +188,9 @@ public class EHSInitiateFragment extends Fragment {
     public void initUI() {
         myPref = getActivity().getSharedPreferences("MyPref", MODE_PRIVATE);
         unitcode = myPref.getString("Um_div_code", "");
-        depucode = myPref.getString("Depu_UnitCode","");
-        if(depucode!=null && depucode.length()>0){
-            unitcode= depucode;
+        depucode = myPref.getString("Depu_UnitCode", "");
+        if (depucode != null && depucode.length() > 0) {
+            unitcode = depucode;
         }
         empCode = myPref.getString("Id", "Id");
 
@@ -248,7 +248,7 @@ public class EHSInitiateFragment extends Fragment {
             }
 
             if (getArguments().getString("status") != null) {
-                if (getArguments().getString("status").equals("1") ) {
+                if (getArguments().getString("status").equals("1")) {
                     submit.setVisibility(View.VISIBLE);
                     unitSpinner.setEnabled(true);
                     safetyOfficerSpinner.setEnabled(true);
@@ -261,7 +261,7 @@ public class EHSInitiateFragment extends Fragment {
                     attachment.setEnabled(true);
                     timeSelector.setEnabled(true);
 
-                      if(getArguments().getString("assigned").equalsIgnoreCase("True")){
+                    if (getArguments().getString("assigned").equalsIgnoreCase("True")) {
                         submit.setVisibility(View.GONE);
                         unitSpinner.setEnabled(false);
                         safetyOfficerSpinner.setEnabled(false);
@@ -276,9 +276,7 @@ public class EHSInitiateFragment extends Fragment {
 
                     }
 
-                }
-
-                else {
+                } else {
                     submit.setVisibility(View.GONE);
                     unitSpinner.setEnabled(false);
                     safetyOfficerSpinner.setEnabled(false);
@@ -454,12 +452,13 @@ public class EHSInitiateFragment extends Fragment {
             String[] incidencetime = timeSelector.getText().toString().split(":");
             incidencehr = incidencetime[0];
             String[] min_am = incidencetime[1].split(" ");
-            if(min_am.length!=0) {
+            if (min_am.length != 0) {
                 incidencemin = min_am[0];
             }
-            if(min_am.length==2){
-            incidencezone = min_am[1];
-        }}
+            if (min_am.length == 2) {
+                incidencezone = min_am[1];
+            }
+        }
         if (observationID.equals("3")) {
             subCategoryID = "0";
             catId = "0";
@@ -621,36 +620,36 @@ public class EHSInitiateFragment extends Fragment {
 
                 }
             }
-        }catch (Exception e){
+        } catch (Exception e) {
 
         }
 
         observationDatePicker = new DatePickerDialog(getActivity(), new DatePickerDialog.OnDateSetListener() {
-                @Override
-                public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-                    int mMonth = month + 1;
-                    String monthNo;
-                    if (mMonth < 10) {
-                        monthNo = "0" + mMonth;
-                    } else {
-                        monthNo = "" + mMonth;
-                    }
-                    String dayOfMonthStr;
-                    if (dayOfMonth < 10) {
-                        dayOfMonthStr = "0" + dayOfMonth;
-                    } else {
-                        dayOfMonthStr = "" + dayOfMonth;
-                    }
-                    cal.set(Calendar.DAY_OF_MONTH, dayOfMonth);
-                    cal.set(Calendar.MONTH, month);
-                    cal.set(Calendar.YEAR, year);
-                    millisecondsdailyfrom = cal.getTime();
-                    timeSelector.setText("");
-
-                    observationDateSpinner.setText("" + dayOfMonthStr + "/" + monthNo + "/" + year);
-
+            @Override
+            public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+                int mMonth = month + 1;
+                String monthNo;
+                if (mMonth < 10) {
+                    monthNo = "0" + mMonth;
+                } else {
+                    monthNo = "" + mMonth;
                 }
-            }, cal.get(Calendar.YEAR), cal.get(Calendar.MONTH), cal.get(Calendar.DAY_OF_MONTH));
+                String dayOfMonthStr;
+                if (dayOfMonth < 10) {
+                    dayOfMonthStr = "0" + dayOfMonth;
+                } else {
+                    dayOfMonthStr = "" + dayOfMonth;
+                }
+                cal.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+                cal.set(Calendar.MONTH, month);
+                cal.set(Calendar.YEAR, year);
+                millisecondsdailyfrom = cal.getTime();
+                timeSelector.setText("");
+
+                observationDateSpinner.setText("" + dayOfMonthStr + "/" + monthNo + "/" + year);
+
+            }
+        }, cal.get(Calendar.YEAR), cal.get(Calendar.MONTH), cal.get(Calendar.DAY_OF_MONTH));
 
         try {
 

@@ -2,21 +2,22 @@ package com.minda.sparsh.Adapter;
 
 import android.content.Context;
 import android.os.Bundle;
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+
 import com.minda.sparsh.R;
 import com.minda.sparsh.fragment.EHSInitiateFragment;
 import com.minda.sparsh.model.EHSObsModel;
 
 import java.util.List;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.RecyclerView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
@@ -56,7 +57,7 @@ public class EHSObsAdapter extends RecyclerView.Adapter<EHSObsAdapter.ViewHolder
 
             if (myObservations.get(i).getStatus().equals("1")) {
                 viewHolder.edit.setVisibility(View.VISIBLE);
-                if(myObservations.get(i).getAssigned().equalsIgnoreCase("True")){
+                if (myObservations.get(i).getAssigned().equalsIgnoreCase("True")) {
                     viewHolder.edit.setVisibility(View.GONE);
                     viewHolder.statusValue.setText("Assigned");
 
@@ -137,8 +138,7 @@ public class EHSObsAdapter extends RecyclerView.Adapter<EHSObsAdapter.ViewHolder
             String raisedyear = raisedDate[2];
             viewHolder.raisedOnValue.setText(raisedday + "/" + raisedmonth + "/" + raisedyear);
 
-        }
-        catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
 
         }

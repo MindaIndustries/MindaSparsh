@@ -22,7 +22,6 @@ public class GetAbnormalityImage_Model {
     private String Action;
 
 
-
     public String getAction() {
         return Action;
     }
@@ -30,9 +29,6 @@ public class GetAbnormalityImage_Model {
     public void setAction(String action) {
         Action = action;
     }
-
-
-
 
 
     public String getImagePath() {

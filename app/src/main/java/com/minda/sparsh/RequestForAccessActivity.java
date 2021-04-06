@@ -249,11 +249,7 @@ public class RequestForAccessActivity extends AppCompatActivity implements View.
         sp_source_adapter = new ArrayAdapter<String>(RequestForAccessActivity.this, android.R.layout.simple_spinner_item, sp_source_data) {
             @Override
             public boolean isEnabled(int position) {
-                if (position == 0) {
-                    return false;
-                } else {
-                    return true;
-                }
+                return position != 0;
             }
 
             @Override

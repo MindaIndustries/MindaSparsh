@@ -32,9 +32,10 @@ public class BindGroupResponse {
 
         BindGroupResponse that = (BindGroupResponse) obj;
 
-        if ((id!="0" && !id.equals(that.id)))
+        if ((id != "0" && !id.equals(that.id)))
             return false;
 
 
-        return true;    }
+        return true;
+    }
 }

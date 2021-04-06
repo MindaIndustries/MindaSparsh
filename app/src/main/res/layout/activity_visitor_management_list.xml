@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    >
+    android:layout_height="match_parent">
 
     <RelativeLayout
         android:layout_marginTop="?attr/actionBarSize"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:adjustViewBounds="true"
             android:src="@drawable/birds"
-            android:scaleType="centerCrop"
-            />
+            android:scaleType="centerCrop" />
+
         <LinearLayout
             android:background="@color/translucent"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
+            android:layout_height="match_parent" />
 
     </RelativeLayout>
 
@@ -26,48 +26,48 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="?android:attr/actionBarSize"
-        android:background="@color/colorPrimary"
-        android:gravity="center_vertical">
 
-        <ImageView
-            android:id="@+id/im_back"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight=".5"
-            android:src="@drawable/back" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="?android:attr/actionBarSize"
+            android:background="@color/colorPrimary"
+            android:gravity="center_vertical">
 
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:layout_weight="2"
-            android:text="Visitor Management"
-            android:textColor="@color/white"
-            android:textSize="20dp"
-            android:fontFamily="@font/museosans_300"
-            />
+            <ImageView
+                android:id="@+id/im_back"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight=".5"
+                android:src="@drawable/back" />
 
-        <Button
-            android:id="@+id/btn_create"
-            android:layout_width="0dp"
-            android:layout_height="25dp"
-            android:layout_margin="1dp"
-            android:layout_weight=".5"
-            android:background="@drawable/rec_button"
-            android:gravity="center"
-            android:text="Create"
-            android:fontFamily="@font/museosans_300"
-            android:textColor="@color/white"
-            android:textSize="12sp" />
-    </LinearLayout>
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_weight="2"
+                android:text="Visitor Management"
+                android:textColor="@color/white"
+                android:textSize="20dp"
+                android:fontFamily="@font/museosans_300" />
+
+            <Button
+                android:id="@+id/btn_create"
+                android:layout_width="0dp"
+                android:layout_height="25dp"
+                android:layout_margin="1dp"
+                android:layout_weight=".5"
+                android:background="@drawable/rec_button"
+                android:gravity="center"
+                android:text="Create"
+                android:fontFamily="@font/museosans_300"
+                android:textColor="@color/white"
+                android:textSize="12sp" />
+        </LinearLayout>
 
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recycler_view"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
     </LinearLayout>
 </RelativeLayout>

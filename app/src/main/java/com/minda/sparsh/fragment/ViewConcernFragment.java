@@ -2,11 +2,6 @@ package com.minda.sparsh.fragment;
 
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,6 +20,11 @@ import java.util.List;
 
 import javax.net.ssl.HttpsURLConnection;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
@@ -60,7 +60,7 @@ public class ViewConcernFragment extends Fragment {
     }
 
 
-    public void getConcerns(){
+    public void getConcerns() {
         progressBar.setVisibility(View.VISIBLE);
 
         concerns.clear();
@@ -71,24 +71,22 @@ public class ViewConcernFragment extends Fragment {
         bottomUpConcernServices.getUserConcerns(new OnTaskComplete() {
             @Override
             public void onTaskComplte(CarotResponse carotResponse) {
-                if(carotResponse.getStatuscode()== HttpsURLConnection.HTTP_OK){
+                if (carotResponse.getStatuscode() == HttpsURLConnection.HTTP_OK) {
                     List<BottomUpConcern> list = (List<BottomUpConcern>) carotResponse.getData();
-                    if(list!=null && list.size()>0){
+                    if (list != null && list.size() > 0) {
                         concerns.addAll(list);
                         no_list.setVisibility(View.GONE);
 
-                    }
-                    else{
+                    } else {
                         no_list.setVisibility(View.VISIBLE);
                     }
-                }
-                else {
+                } else {
                     no_list.setVisibility(View.VISIBLE);
                 }
                 bottomUpConcernAdapter.notifyDataSetChanged();
                 progressBar.setVisibility(View.GONE);
 
             }
-        },empCode);
+        }, empCode);
     }
 }

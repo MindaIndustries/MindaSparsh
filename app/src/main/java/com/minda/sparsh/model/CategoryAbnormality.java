@@ -2,8 +2,6 @@ package com.minda.sparsh.model;
 
 import com.google.gson.annotations.SerializedName;
 
-import java.util.Date;
-
 public class CategoryAbnormality {
     @SerializedName("id")
     public
@@ -31,7 +29,6 @@ public class CategoryAbnormality {
     public void setCategory(String category) {
         this.category = category;
     }
-
 
 
 }

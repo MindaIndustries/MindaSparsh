@@ -1,7 +1,5 @@
 package com.minda.sparsh.model;
 
-import android.content.Intent;
-
 /**
  * Created by admin on 6/2/2017.
  */
@@ -134,6 +132,7 @@ public class Dwm_Model {
     private String LapRemark;
     private String LpaCovidremark;
     private String CovidRemark;
+
     public String getCheckoncheck() {
         return checkoncheck;
     }
@@ -779,8 +778,6 @@ public class Dwm_Model {
     private String OtherAct5;
 
 
-
-
     public Integer getCovid() {
         return Covid;
     }
@@ -788,7 +785,6 @@ public class Dwm_Model {
     public void setCovid(Integer covid) {
         Covid = covid;
     }
-
 
 
     public String getLapRemark() {

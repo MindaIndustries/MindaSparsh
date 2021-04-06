@@ -9,7 +9,6 @@ import android.widget.SpinnerAdapter;
 import android.widget.TextView;
 
 import com.minda.sparsh.R;
-import com.minda.sparsh.model.IAMGetCategorySpinnerModel;
 import com.minda.sparsh.model.IAMGetSubCategoryModel;
 
 import java.util.List;
@@ -90,7 +89,7 @@ public class IAMGetSubCategoryAdapter implements SpinnerAdapter {
     public View getCustomView(int position, View convertView, ViewGroup parent) {
         View row = mInflater.inflate(R.layout.iam_spinner_cell_view, parent, false);
         TextView mTxt = (TextView) row.findViewById(R.id.spinner_txt_title);
-          mTxt.setText(spinnerData.get(position).getSubCategory());
+        mTxt.setText(spinnerData.get(position).getSubCategory());
 
 
         return row;

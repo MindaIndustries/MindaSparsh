@@ -1,8 +1,8 @@
 package com.minda.sparsh.model;
 
-import androidx.annotation.Nullable;
-
 import com.google.gson.annotations.SerializedName;
+
+import androidx.annotation.Nullable;
 
 public class EHSCategoryModel {
     @SerializedName("id")
@@ -38,5 +38,6 @@ public class EHSCategoryModel {
             return false;
 
 
-        return true;    }
+        return true;
+    }
 }

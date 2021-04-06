@@ -409,8 +409,7 @@
                                 <Spinner
                                     android:id="@+id/sp_source"
                                     android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                     />
+                                    android:layout_height="wrap_content" />
 
                                 <View
                                     android:layout_width="match_parent"
@@ -590,30 +589,31 @@
                     android:fontFamily="@font/museosans_500"
                     android:text="Access Requirement Details"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
-                    <EditText
-                        android:layout_marginTop="10dp"
-                        android:id="@+id/et_accessRequirementDetail"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:fontFamily="@font/museosans_300"
-                        android:gravity="left|top"
-                        android:imeOptions="actionDone"
-                        android:inputType="textMultiLine"
-                        android:lines="8"
-                        android:maxLines="5"
-                        android:minLines="6"
-                        android:overScrollMode="always"
-                        android:scrollbarStyle="insideInset"
-                        android:scrollbars="vertical"
-                        android:singleLine="false"
-                        android:background="@drawable/cardview_bg"
-                        android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:textColor="@color/black"
-                        android:textColorHint="@color/black" />
-<!--
-                </com.google.android.material.textfield.TextInputLayout>
--->
+                    android:layout_height="wrap_content" />
+
+                <EditText
+                    android:layout_marginTop="10dp"
+                    android:id="@+id/et_accessRequirementDetail"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:fontFamily="@font/museosans_300"
+                    android:gravity="left|top"
+                    android:imeOptions="actionDone"
+                    android:inputType="textMultiLine"
+                    android:lines="8"
+                    android:maxLines="5"
+                    android:minLines="6"
+                    android:overScrollMode="always"
+                    android:scrollbarStyle="insideInset"
+                    android:scrollbars="vertical"
+                    android:singleLine="false"
+                    android:background="@drawable/cardview_bg"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/black" />
+                <!--
+                                </com.google.android.material.textfield.TextInputLayout>
+                -->
 
 
                 <RelativeLayout
@@ -626,7 +626,7 @@
                         android:src="@drawable/attach"
                         android:id="@+id/attachment1"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"/>
+                        android:layout_height="wrap_content" />
 
                     <TextView
                         android:layout_marginTop="10dp"
@@ -639,16 +639,14 @@
                         android:layout_toLeftOf="@+id/attachment1"
                         android:text="Add attachment"
                         android:singleLine="true"
-                        android:fontFamily="@font/museosans_500"
-                        />
+                        android:fontFamily="@font/museosans_500" />
 
                     <ImageView
                         android:id="@+id/doc_view"
                         android:layout_width="100dp"
                         android:layout_height="100dp"
                         android:visibility="gone"
-                        android:layout_margin="5dp"
-                        />
+                        android:layout_margin="5dp" />
 
                 </RelativeLayout>
 

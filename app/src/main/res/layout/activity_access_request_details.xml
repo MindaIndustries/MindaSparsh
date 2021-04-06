@@ -1,23 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    >
+    android:layout_height="match_parent">
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:adjustViewBounds="true"
             android:src="@drawable/birds"
-            android:scaleType="centerCrop"
-            />
+            android:scaleType="centerCrop" />
+
         <LinearLayout
             android:layout_marginTop="?android:attr/actionBarSize"
             android:background="@color/translucent"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
+            android:layout_height="match_parent" />
 
     </RelativeLayout>
 
@@ -26,849 +27,846 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
-    <LinearLayout
-        android:id="@+id/header"
-        android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:background="@color/colorPrimary"
-        android:gravity="center_vertical">
 
-        <ImageView
-            android:id="@+id/im_back"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_weight=".3"
-            android:src="@drawable/back" />
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="50dp"
-            android:layout_weight="2"
-            android:gravity="center"
-            android:text="Approve Request"
-            android:textColor="@color/white"
-            android:textSize="20dp"
-            android:textStyle="bold" />
-
-    </LinearLayout>
-
-
-
-    <ScrollView
-        android:layout_below="@+id/header"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:fillViewport="true"
-        android:scrollbars="horizontal|vertical">
-
-        <RelativeLayout
+        <LinearLayout
+            android:id="@+id/header"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
-            <LinearLayout
-                android:id="@+id/top"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/colorPrimary"
+            android:gravity="center_vertical">
 
+            <ImageView
+                android:id="@+id/im_back"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_weight=".3"
+                android:src="@drawable/back" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="50dp"
+                android:layout_weight="2"
+                android:gravity="center"
+                android:text="Approve Request"
+                android:textColor="@color/white"
+                android:textSize="20dp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+
+        <ScrollView
+            android:layout_below="@+id/header"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fillViewport="true"
+            android:scrollbars="horizontal|vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
                 <LinearLayout
+                    android:id="@+id/top"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
-
-                        <TextView
-                            style="@style/heading_style"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:gravity="right"
-                            android:text="Access Request Number :" />
-
-                        <TextView
-                            android:id="@+id/tv_access_request_no"
-                            style="@style/content_style"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:gravity="left" />
-                    </LinearLayout>
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="5dp">
+                        android:orientation="vertical">
 
-                        <TextView
-                            style="@style/heading_style"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:gravity="right"
-                            android:text="Request On :" />
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
 
-                        <TextView
-                            android:id="@+id/tv_request_on"
-                            style="@style/content_style"
-                            android:layout_width="0dp"
+                            <TextView
+                                style="@style/heading_style"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:gravity="right"
+                                android:text="Access Request Number :" />
+
+                            <TextView
+                                android:id="@+id/tv_access_request_no"
+                                style="@style/content_style"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:gravity="left" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:gravity="left" />
+                            android:layout_marginTop="5dp">
+
+                            <TextView
+                                style="@style/heading_style"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:gravity="right"
+                                android:text="Request On :" />
+
+                            <TextView
+                                android:id="@+id/tv_request_on"
+                                style="@style/content_style"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:gravity="left" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="5dp">
+
+                            <TextView
+                                style="@style/heading_style"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:gravity="right"
+                                android:text="Request Type :" />
+
+                            <TextView
+                                android:id="@+id/tv_request_type"
+                                style="@style/content_style"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:gravity="left" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="5dp">
+
+                            <TextView
+                                style="@style/heading_style"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:gravity="right"
+                                android:text="Access Type :" />
+
+                            <TextView
+                                android:id="@+id/tv_access_type"
+                                style="@style/content_style"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:gravity="left" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="5dp">
+
+                            <TextView
+                                style="@style/heading_style"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:gravity="right"
+                                android:text="Access Sub Type :" />
+
+                            <TextView
+                                android:id="@+id/tv_access_sub_type"
+                                style="@style/content_style"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:gravity="left" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="5dp">
+
+                            <TextView
+                                style="@style/heading_style"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:gravity="right"
+                                android:text="Access For :" />
+
+                            <TextView
+                                android:id="@+id/tv_access_for"
+                                style="@style/content_style"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:gravity="left" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/lay_access_request_by"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="5dp">
+
+                            <TextView
+                                style="@style/heading_style"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:gravity="right"
+                                android:text="Access Request By :" />
+
+                            <TextView
+                                android:id="@+id/tv_access_request_by"
+                                style="@style/content_style"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:gravity="left" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/lay_source"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="5dp">
+
+                            <TextView
+                                style="@style/heading_style"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:gravity="right"
+                                android:text="Source :" />
+
+                            <TextView
+                                android:id="@+id/tv_source"
+                                style="@style/content_style"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:gravity="left" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/lay_name"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="5dp">
+
+                            <TextView
+                                style="@style/heading_style"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:gravity="right"
+                                android:text="Name :" />
+
+                            <TextView
+                                android:id="@+id/tv_name"
+                                style="@style/content_style"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:gravity="left" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/lay_organisation"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="5dp">
+
+                            <TextView
+                                style="@style/heading_style"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:gravity="right"
+                                android:text="Organisation :" />
+
+                            <TextView
+                                android:id="@+id/tv_organisation"
+                                style="@style/content_style"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:gravity="left" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/lay_purpose"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="5dp">
+
+                            <TextView
+                                style="@style/heading_style"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:gravity="right"
+                                android:text="Purpose :" />
+
+                            <TextView
+                                android:id="@+id/tv_purpose"
+                                style="@style/content_style"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:gravity="left" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/lay_access_for_name"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="5dp">
+
+                            <TextView
+                                style="@style/heading_style"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:gravity="right"
+                                android:text="Access For Name :" />
+
+                            <TextView
+                                android:id="@+id/tv_access_for_name"
+                                style="@style/content_style"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:gravity="left" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="5dp">
+
+                            <TextView
+                                style="@style/heading_style"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:gravity="right"
+                                android:text="Category :" />
+
+                            <TextView
+                                android:id="@+id/tv_category"
+                                style="@style/content_style"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:gravity="left"
+                                android:textStyle="bold"
+                                android:textColor="@color/colorPrimary" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/lay_sub_category"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="5dp">
+
+                            <TextView
+                                style="@style/heading_style"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:gravity="right"
+                                android:text="Sub Category :" />
+
+                            <TextView
+                                android:id="@+id/tv_sub_category"
+                                style="@style/content_style"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:gravity="left" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/lay_user_authorisation_profile"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="5dp">
+
+                            <TextView
+                                style="@style/heading_style"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:gravity="right"
+                                android:text="User Authorisation Profile :" />
+
+                            <TextView
+                                android:id="@+id/tv_user_authorisation_profile"
+                                style="@style/content_style"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:gravity="left" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="5dp">
+
+                            <TextView
+                                style="@style/heading_style"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:gravity="right"
+                                android:text="Approval Status :" />
+
+                            <TextView
+                                android:id="@+id/tv_approval_status"
+                                style="@style/content_style"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:gravity="left" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="5dp">
+
+                            <TextView
+                                style="@style/heading_style"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:gravity="right"
+                                android:text="Access Requirement Details :" />
+
+                            <TextView
+                                android:id="@+id/tv_access_requirement_details"
+                                style="@style/content_style"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:gravity="left"
+                                android:textStyle="bold"
+                                android:textColor="@color/colorPrimary" />
+                        </LinearLayout>
+
+                        <!--<LinearLayout-->
+                        <!--android:layout_width="match_parent"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:layout_marginTop="10dp">-->
+
+                        <!--<TextView-->
+                        <!--style="@style/content_style"-->
+                        <!--android:layout_width="0dp"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:layout_weight="1"-->
+                        <!--android:text="Domain-Business-Plant Details :" />-->
+
+                        <!--<TextView-->
+                        <!--android:id="@+id/tv_domain_business_plant_details"-->
+                        <!--style="@style/content_style"-->
+                        <!--android:layout_width="0dp"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:layout_weight="1" />-->
+                        <!--</LinearLayout>-->
+
                     </LinearLayout>
 
-                    <LinearLayout
+                    <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="5dp">
-
-                        <TextView
-                            style="@style/heading_style"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:gravity="right"
-                            android:text="Request Type :" />
-
-                        <TextView
-                            android:id="@+id/tv_request_type"
-                            style="@style/content_style"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:gravity="left" />
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="5dp">
-
-                        <TextView
-                            style="@style/heading_style"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:gravity="right"
-                            android:text="Access Type :" />
-
-                        <TextView
-                            android:id="@+id/tv_access_type"
-                            style="@style/content_style"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:gravity="left" />
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="5dp">
-
-                        <TextView
-                            style="@style/heading_style"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:gravity="right"
-                            android:text="Access Sub Type :" />
-
-                        <TextView
-                            android:id="@+id/tv_access_sub_type"
-                            style="@style/content_style"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:gravity="left" />
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="5dp">
-
-                        <TextView
-                            style="@style/heading_style"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:gravity="right"
-                            android:text="Access For :" />
-
-                        <TextView
-                            android:id="@+id/tv_access_for"
-                            style="@style/content_style"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:gravity="left" />
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:id="@+id/lay_access_request_by"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="5dp">
-
-                        <TextView
-                            style="@style/heading_style"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:gravity="right"
-                            android:text="Access Request By :" />
-
-                        <TextView
-                            android:id="@+id/tv_access_request_by"
-                            style="@style/content_style"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:gravity="left" />
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:id="@+id/lay_source"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="5dp">
-
-                        <TextView
-                            style="@style/heading_style"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:gravity="right"
-                            android:text="Source :" />
-
-                        <TextView
-                            android:id="@+id/tv_source"
-                            style="@style/content_style"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:gravity="left" />
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:id="@+id/lay_name"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="5dp">
-
-                        <TextView
-                            style="@style/heading_style"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:gravity="right"
-                            android:text="Name :" />
-
-                        <TextView
-                            android:id="@+id/tv_name"
-                            style="@style/content_style"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:gravity="left" />
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:id="@+id/lay_organisation"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="5dp">
-
-                        <TextView
-                            style="@style/heading_style"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:gravity="right"
-                            android:text="Organisation :" />
-
-                        <TextView
-                            android:id="@+id/tv_organisation"
-                            style="@style/content_style"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:gravity="left" />
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:id="@+id/lay_purpose"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="5dp">
-
-                        <TextView
-                            style="@style/heading_style"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:gravity="right"
-                            android:text="Purpose :" />
-
-                        <TextView
-                            android:id="@+id/tv_purpose"
-                            style="@style/content_style"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:gravity="left" />
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:id="@+id/lay_access_for_name"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="5dp">
-
-                        <TextView
-                            style="@style/heading_style"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:gravity="right"
-                            android:text="Access For Name :" />
-
-                        <TextView
-                            android:id="@+id/tv_access_for_name"
-                            style="@style/content_style"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:gravity="left" />
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="5dp">
-
-                        <TextView
-                            style="@style/heading_style"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:gravity="right"
-                            android:text="Category :" />
-
-                        <TextView
-                            android:id="@+id/tv_category"
-                            style="@style/content_style"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:gravity="left"
-                            android:textStyle="bold"
-                            android:textColor="@color/colorPrimary"/>
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:id="@+id/lay_sub_category"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="5dp">
-
-                        <TextView
-                            style="@style/heading_style"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:gravity="right"
-                            android:text="Sub Category :" />
-
-                        <TextView
-                            android:id="@+id/tv_sub_category"
-                            style="@style/content_style"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:gravity="left" />
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:id="@+id/lay_user_authorisation_profile"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="5dp">
-
-                        <TextView
-                            style="@style/heading_style"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:gravity="right"
-                            android:text="User Authorisation Profile :" />
-
-                        <TextView
-                            android:id="@+id/tv_user_authorisation_profile"
-                            style="@style/content_style"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:gravity="left" />
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="5dp">
-
-                        <TextView
-                            style="@style/heading_style"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:gravity="right"
-                            android:text="Approval Status :" />
-
-                        <TextView
-                            android:id="@+id/tv_approval_status"
-                            style="@style/content_style"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:gravity="left" />
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="5dp">
-
-                        <TextView
-                            style="@style/heading_style"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:gravity="right"
-                            android:text="Access Requirement Details :" />
-
-                        <TextView
-                            android:id="@+id/tv_access_requirement_details"
-                            style="@style/content_style"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:gravity="left"
-                            android:textStyle="bold"
-                            android:textColor="@color/colorPrimary"
-                            />
-                    </LinearLayout>
-
-                    <!--<LinearLayout-->
-                    <!--android:layout_width="match_parent"-->
-                    <!--android:layout_height="wrap_content"-->
-                    <!--android:layout_marginTop="10dp">-->
-
-                    <!--<TextView-->
-                    <!--style="@style/content_style"-->
-                    <!--android:layout_width="0dp"-->
-                    <!--android:layout_height="wrap_content"-->
-                    <!--android:layout_weight="1"-->
-                    <!--android:text="Domain-Business-Plant Details :" />-->
-
-                    <!--<TextView-->
-                    <!--android:id="@+id/tv_domain_business_plant_details"-->
-                    <!--style="@style/content_style"-->
-                    <!--android:layout_width="0dp"-->
-                    <!--android:layout_height="wrap_content"-->
-                    <!--android:layout_weight="1" />-->
-                    <!--</LinearLayout>-->
-
-                </LinearLayout>
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="10dp"
-                    android:text="Domain-Business-Plant Details :"
-                    android:textColor="@color/black"
-                    android:textSize="18sp" />
-                <!--for table-->
-                <TableLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:stretchColumns="*">
-
-                    <TableRow
-                        android:background="@color/colorPrimary"
-                        android:weightSum="5">
-
-                        <TextView
-                            style="@style/header_style"
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:layout_weight="1"
-                            android:background="@drawable/border"
-                            android:text="S.No" />
-
-                        <TextView
-                            style="@style/header_style"
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:layout_weight="1"
-                            android:background="@drawable/border"
-                            android:text="Domain" />
-
-                        <TextView
-                            style="@style/header_style"
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:layout_weight="1"
-                            android:background="@drawable/border"
-                            android:text="Business" />
-
-                        <TextView
-                            style="@style/header_style"
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:layout_weight="2"
-                            android:background="@drawable/border"
-                            android:text="Plant" />
-
-                    </TableRow>
-
-                    <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/rv_plant_details"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content" />
-
-                </TableLayout>
-
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="10dp"
-                    android:text="Approval Details :"
-                    android:textColor="@color/black"
-                    android:textSize="18sp" />
-                <TextView
-                    android:id="@+id/tv_scroll_Approval_Details"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="More details"
-                    android:textColor="@color/black"
-                    android:textSize="10sp"
-                    android:gravity="center|right"
-                    android:drawableRight="@drawable/ic_next"
-                    android:drawablePadding="10dp"
-                    android:textStyle="bold"/>
-
-
-
-                <HorizontalScrollView
-                    android:id="@+id/horizontalView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:scrollbars="none">
+                        android:layout_margin="10dp"
+                        android:text="Domain-Business-Plant Details :"
+                        android:textColor="@color/black"
+                        android:textSize="18sp" />
                     <!--for table-->
                     <TableLayout
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
+                        android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
                         android:stretchColumns="*">
 
-                        <TableRow android:background="@color/colorPrimary">
+                        <TableRow
+                            android:background="@color/colorPrimary"
+                            android:weightSum="5">
 
                             <TextView
                                 style="@style/header_style"
-                                android:layout_width="40dp"
+                                android:layout_width="0dp"
                                 android:layout_height="match_parent"
+                                android:layout_weight="1"
                                 android:background="@drawable/border"
                                 android:text="S.No" />
 
                             <TextView
                                 style="@style/header_style"
-                                android:layout_width="100dp"
+                                android:layout_width="0dp"
                                 android:layout_height="match_parent"
+                                android:layout_weight="1"
                                 android:background="@drawable/border"
-                                android:text="Emp Code" />
+                                android:text="Domain" />
 
                             <TextView
                                 style="@style/header_style"
-                                android:layout_width="120dp"
+                                android:layout_width="0dp"
                                 android:layout_height="match_parent"
+                                android:layout_weight="1"
                                 android:background="@drawable/border"
-                                android:text="Name" />
+                                android:text="Business" />
 
                             <TextView
                                 style="@style/header_style"
-                                android:layout_width="100dp"
+                                android:layout_width="0dp"
                                 android:layout_height="match_parent"
+                                android:layout_weight="2"
                                 android:background="@drawable/border"
-                                android:text="Status" />
-
-                            <TextView
-                                style="@style/header_style"
-                                android:layout_width="100dp"
-                                android:layout_height="match_parent"
-                                android:background="@drawable/border"
-                                android:text="Approval Level" />
-
-                            <TextView
-                                style="@style/header_style"
-                                android:layout_width="120dp"
-                                android:layout_height="match_parent"
-                                android:background="@drawable/border"
-                                android:text="Approval Request On" />
-
-                            <TextView
-                                style="@style/header_style"
-                                android:layout_width="100dp"
-                                android:layout_height="match_parent"
-                                android:background="@drawable/border"
-                                android:text="Approved/Rejected On" />
-
-                            <TextView
-                                style="@style/header_style"
-                                android:layout_width="100dp"
-                                android:layout_height="match_parent"
-                                android:background="@drawable/border"
-                                android:text="Remarks" />
-
+                                android:text="Plant" />
 
                         </TableRow>
 
                         <androidx.recyclerview.widget.RecyclerView
-                            android:id="@+id/rv_approval_details"
+                            android:id="@+id/rv_plant_details"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content" />
 
                     </TableLayout>
-                </HorizontalScrollView>
 
 
-                <TextView
-                    android:id="@+id/tv_processor_detail"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="10dp"
-                    android:text="Processor Details :"
-                    android:textColor="@color/black"
-                    android:textSize="18sp"
-                    android:visibility="gone" />
-                <TextView
-                    android:id="@+id/tv_scroll"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="More details"
-                    android:drawablePadding="10dp"
-                    android:textColor="@color/black"
-                    android:textSize="10sp"
-                    android:gravity="center|right"
-                    android:drawableRight="@drawable/ic_next"
-                    android:textStyle="bold"
-                    android:visibility="gone"/>
-
-                <HorizontalScrollView
-                    android:id="@+id/lay_processor_view"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:scrollbars="none"
-                    android:visibility="gone">
-                    <!--for table-->
-                    <TableLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_marginTop="10dp"
-                        android:stretchColumns="*">
-
-                        <TableRow android:background="@color/colorPrimary">
-
-                            <TextView
-                                style="@style/header_style"
-                                android:layout_width="40dp"
-                                android:layout_height="match_parent"
-                                android:background="@drawable/border"
-                                android:text="S.No" />
-
-                            <TextView
-                                style="@style/header_style"
-                                android:layout_width="100dp"
-                                android:layout_height="match_parent"
-                                android:background="@drawable/border"
-                                android:text="Emp Code" />
-
-                            <TextView
-                                style="@style/header_style"
-                                android:layout_width="120dp"
-                                android:layout_height="match_parent"
-                                android:background="@drawable/border"
-                                android:text="Name" />
-
-                            <TextView
-                                style="@style/header_style"
-                                android:layout_width="100dp"
-                                android:layout_height="match_parent"
-                                android:background="@drawable/border"
-                                android:text="Status" />
-
-                            <TextView
-                                style="@style/header_style"
-                                android:layout_width="100dp"
-                                android:layout_height="match_parent"
-                                android:background="@drawable/border"
-                                android:text="Processor No" />
-
-                            <TextView
-                                style="@style/header_style"
-                                android:layout_width="120dp"
-                                android:layout_height="match_parent"
-                                android:background="@drawable/border"
-                                android:text="Request On" />
-
-                            <TextView
-                                style="@style/header_style"
-                                android:layout_width="120dp"
-                                android:layout_height="match_parent"
-                                android:background="@drawable/border"
-                                android:text="Processed/Rejected On" />
-
-                            <TextView
-                                style="@style/header_style"
-                                android:layout_width="100dp"
-                                android:layout_height="match_parent"
-                                android:background="@drawable/border"
-                                android:text="Processed By" />
-
-                            <TextView
-                                style="@style/header_style"
-                                android:layout_width="100dp"
-                                android:layout_height="match_parent"
-                                android:background="@drawable/border"
-                                android:text="Remarks" />
-
-
-                        </TableRow>
-
-                        <androidx.recyclerview.widget.RecyclerView
-                            android:id="@+id/rv_processor_details"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content" />
-
-                    </TableLayout>
-                </HorizontalScrollView>
-
-                <TextView
-                    android:id="@+id/tv_approve_unapprove_heading"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="10dp"
-                    android:text="Approve/Reject Remarks :"
-                    android:textColor="@color/black"
-                    android:textSize="18sp" />
-
-                <EditText
-                    android:id="@+id/et_approve_unapprove"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="Enter Remarks here"
-                    android:inputType="text"
-                    android:minLines="5"
-                    android:layout_marginBottom="60dp"
-                    />
-
-
-
-                <!--<LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="10dp"
-                    android:gravity="center">
-
-                    <Button
-                        android:id="@+id/btn_send_back"
+                    <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginRight="5dp"
-                        android:background="@drawable/roundcornerbutton"
-                        android:text="Send Back To Requester"
-                        android:textColor="@color/white"
+                        android:layout_margin="10dp"
+                        android:text="Approval Details :"
+                        android:textColor="@color/black"
+                        android:textSize="18sp" />
+
+                    <TextView
+                        android:id="@+id/tv_scroll_Approval_Details"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="More details"
+                        android:textColor="@color/black"
+                        android:textSize="10sp"
+                        android:gravity="center|right"
+                        android:drawableRight="@drawable/ic_next"
+                        android:drawablePadding="10dp"
+                        android:textStyle="bold" />
+
+
+                    <HorizontalScrollView
+                        android:id="@+id/horizontalView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:scrollbars="none">
+                        <!--for table-->
+                        <TableLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginTop="10dp"
+                            android:stretchColumns="*">
+
+                            <TableRow android:background="@color/colorPrimary">
+
+                                <TextView
+                                    style="@style/header_style"
+                                    android:layout_width="40dp"
+                                    android:layout_height="match_parent"
+                                    android:background="@drawable/border"
+                                    android:text="S.No" />
+
+                                <TextView
+                                    style="@style/header_style"
+                                    android:layout_width="100dp"
+                                    android:layout_height="match_parent"
+                                    android:background="@drawable/border"
+                                    android:text="Emp Code" />
+
+                                <TextView
+                                    style="@style/header_style"
+                                    android:layout_width="120dp"
+                                    android:layout_height="match_parent"
+                                    android:background="@drawable/border"
+                                    android:text="Name" />
+
+                                <TextView
+                                    style="@style/header_style"
+                                    android:layout_width="100dp"
+                                    android:layout_height="match_parent"
+                                    android:background="@drawable/border"
+                                    android:text="Status" />
+
+                                <TextView
+                                    style="@style/header_style"
+                                    android:layout_width="100dp"
+                                    android:layout_height="match_parent"
+                                    android:background="@drawable/border"
+                                    android:text="Approval Level" />
+
+                                <TextView
+                                    style="@style/header_style"
+                                    android:layout_width="120dp"
+                                    android:layout_height="match_parent"
+                                    android:background="@drawable/border"
+                                    android:text="Approval Request On" />
+
+                                <TextView
+                                    style="@style/header_style"
+                                    android:layout_width="100dp"
+                                    android:layout_height="match_parent"
+                                    android:background="@drawable/border"
+                                    android:text="Approved/Rejected On" />
+
+                                <TextView
+                                    style="@style/header_style"
+                                    android:layout_width="100dp"
+                                    android:layout_height="match_parent"
+                                    android:background="@drawable/border"
+                                    android:text="Remarks" />
+
+
+                            </TableRow>
+
+                            <androidx.recyclerview.widget.RecyclerView
+                                android:id="@+id/rv_approval_details"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content" />
+
+                        </TableLayout>
+                    </HorizontalScrollView>
+
+
+                    <TextView
+                        android:id="@+id/tv_processor_detail"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:text="Processor Details :"
+                        android:textColor="@color/black"
+                        android:textSize="18sp"
                         android:visibility="gone" />
 
-                </LinearLayout>-->
-
-            </LinearLayout>
-            <FrameLayout
-                android:id="@+id/bottom"
-                android:layout_below="@+id/top"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="bottom"
-                android:visibility="visible"
-                android:background="@drawable/roundcornerbutton"
-                >
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center">
-
-                    <Button
-                        android:id="@+id/btn_approve"
-                        android:layout_width="0dp"
+                    <TextView
+                        android:id="@+id/tv_scroll"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginRight="5dp"
-                        android:layout_weight="1"
-                        android:background="@drawable/roundcornerbutton"
-                        android:text="Approve"
-                        android:textColor="@color/white" />
+                        android:text="More details"
+                        android:drawablePadding="10dp"
+                        android:textColor="@color/black"
+                        android:textSize="10sp"
+                        android:gravity="center|right"
+                        android:drawableRight="@drawable/ic_next"
+                        android:textStyle="bold"
+                        android:visibility="gone" />
 
-                    <View
-                        android:layout_width="1dp"
-                        android:layout_height="match_parent"
-                        android:background="@android:color/black" />
-
-                    <Button
-                        android:id="@+id/btn_un_approve"
-                        android:layout_width="0dp"
+                    <HorizontalScrollView
+                        android:id="@+id/lay_processor_view"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="5dp"
-                        android:layout_weight="1"
-                        android:background="@drawable/roundcornerbutton"
-                        android:text="Reject"
-                        android:textColor="@color/white" />
+                        android:scrollbars="none"
+                        android:visibility="gone">
+                        <!--for table-->
+                        <TableLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginTop="10dp"
+                            android:stretchColumns="*">
+
+                            <TableRow android:background="@color/colorPrimary">
+
+                                <TextView
+                                    style="@style/header_style"
+                                    android:layout_width="40dp"
+                                    android:layout_height="match_parent"
+                                    android:background="@drawable/border"
+                                    android:text="S.No" />
+
+                                <TextView
+                                    style="@style/header_style"
+                                    android:layout_width="100dp"
+                                    android:layout_height="match_parent"
+                                    android:background="@drawable/border"
+                                    android:text="Emp Code" />
+
+                                <TextView
+                                    style="@style/header_style"
+                                    android:layout_width="120dp"
+                                    android:layout_height="match_parent"
+                                    android:background="@drawable/border"
+                                    android:text="Name" />
+
+                                <TextView
+                                    style="@style/header_style"
+                                    android:layout_width="100dp"
+                                    android:layout_height="match_parent"
+                                    android:background="@drawable/border"
+                                    android:text="Status" />
+
+                                <TextView
+                                    style="@style/header_style"
+                                    android:layout_width="100dp"
+                                    android:layout_height="match_parent"
+                                    android:background="@drawable/border"
+                                    android:text="Processor No" />
+
+                                <TextView
+                                    style="@style/header_style"
+                                    android:layout_width="120dp"
+                                    android:layout_height="match_parent"
+                                    android:background="@drawable/border"
+                                    android:text="Request On" />
+
+                                <TextView
+                                    style="@style/header_style"
+                                    android:layout_width="120dp"
+                                    android:layout_height="match_parent"
+                                    android:background="@drawable/border"
+                                    android:text="Processed/Rejected On" />
+
+                                <TextView
+                                    style="@style/header_style"
+                                    android:layout_width="100dp"
+                                    android:layout_height="match_parent"
+                                    android:background="@drawable/border"
+                                    android:text="Processed By" />
+
+                                <TextView
+                                    style="@style/header_style"
+                                    android:layout_width="100dp"
+                                    android:layout_height="match_parent"
+                                    android:background="@drawable/border"
+                                    android:text="Remarks" />
 
 
-                    <View
-                        android:layout_width="1dp"
-                        android:layout_height="match_parent"
-                        android:background="@android:color/black" />
+                            </TableRow>
 
+                            <androidx.recyclerview.widget.RecyclerView
+                                android:id="@+id/rv_processor_details"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content" />
 
-                    <Button
-                        android:id="@+id/btn_send_back"
-                        android:layout_width="0dp"
+                        </TableLayout>
+                    </HorizontalScrollView>
+
+                    <TextView
+                        android:id="@+id/tv_approve_unapprove_heading"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="5dp"
-                        android:background="@drawable/roundcornerbutton"
-                        android:text="Send Back To Requester"
-                        android:textColor="@color/white"
-                        android:visibility="gone"
-                        android:layout_weight="1"
-                        />
+                        android:layout_margin="10dp"
+                        android:text="Approve/Reject Remarks :"
+                        android:textColor="@color/black"
+                        android:textSize="18sp" />
+
+                    <EditText
+                        android:id="@+id/et_approve_unapprove"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Enter Remarks here"
+                        android:inputType="text"
+                        android:minLines="5"
+                        android:layout_marginBottom="60dp" />
 
 
+                    <!--<LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:gravity="center">
+
+                        <Button
+                            android:id="@+id/btn_send_back"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="5dp"
+                            android:background="@drawable/roundcornerbutton"
+                            android:text="Send Back To Requester"
+                            android:textColor="@color/white"
+                            android:visibility="gone" />
+
+                    </LinearLayout>-->
 
                 </LinearLayout>
 
-            </FrameLayout>
+                <FrameLayout
+                    android:id="@+id/bottom"
+                    android:layout_below="@+id/top"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom"
+                    android:visibility="visible"
+                    android:background="@drawable/roundcornerbutton">
 
-        </RelativeLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center">
 
-    </ScrollView>
+                        <Button
+                            android:id="@+id/btn_approve"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="5dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/roundcornerbutton"
+                            android:text="Approve"
+                            android:textColor="@color/white" />
+
+                        <View
+                            android:layout_width="1dp"
+                            android:layout_height="match_parent"
+                            android:background="@android:color/black" />
+
+                        <Button
+                            android:id="@+id/btn_un_approve"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="5dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/roundcornerbutton"
+                            android:text="Reject"
+                            android:textColor="@color/white" />
+
+
+                        <View
+                            android:layout_width="1dp"
+                            android:layout_height="match_parent"
+                            android:background="@android:color/black" />
+
+
+                        <Button
+                            android:id="@+id/btn_send_back"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="5dp"
+                            android:background="@drawable/roundcornerbutton"
+                            android:text="Send Back To Requester"
+                            android:textColor="@color/white"
+                            android:visibility="gone"
+                            android:layout_weight="1" />
+
+
+                    </LinearLayout>
+
+                </FrameLayout>
+
+            </RelativeLayout>
+
+        </ScrollView>
 
     </LinearLayout>
 </RelativeLayout>

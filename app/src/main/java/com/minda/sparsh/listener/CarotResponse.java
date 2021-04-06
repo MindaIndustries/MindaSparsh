@@ -4,8 +4,7 @@ package com.minda.sparsh.listener;
  * Created by root on 6/6/17.
  */
 
-public class CarotResponse
-{
+public class CarotResponse {
     public int statuscode;
     public String errorCode;
     public String message;

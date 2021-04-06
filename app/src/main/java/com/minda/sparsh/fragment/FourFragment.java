@@ -3,19 +3,19 @@ package com.minda.sparsh.fragment;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.minda.sparsh.DashBoardActivity;
 import com.minda.sparsh.ITHelpDeskHome;
 import com.minda.sparsh.IdentityAccessManagementActivity;
 import com.minda.sparsh.R;
+
+import androidx.fragment.app.Fragment;
 
 
 public class FourFragment extends Fragment {
@@ -74,7 +74,7 @@ public class FourFragment extends Fragment {
             public void onClick(View view) {
                 Toast.makeText(contaxt, "Coming Soon!", Toast.LENGTH_SHORT).show();
 
-               // startActivity(new Intent(getActivity(), IdentityAccessManagementActivity1.class));
+                // startActivity(new Intent(getActivity(), IdentityAccessManagementActivity1.class));
 
             }
         });

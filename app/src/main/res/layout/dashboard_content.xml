@@ -8,62 +8,63 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:adjustViewBounds="true"
-        android:src="@drawable/birds"
-        android:scaleType="centerCrop"
-        />
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:adjustViewBounds="true"
+            android:src="@drawable/birds"
+            android:scaleType="centerCrop" />
+
         <LinearLayout
             android:background="@color/translucent"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
+            android:layout_height="match_parent" />
     </RelativeLayout>
-<RelativeLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
-    <LinearLayout
-        android:visibility="visible"
+
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:layout_marginTop="55dp">
+        android:layout_height="match_parent">
 
-
-
-
-        <com.google.android.material.tabs.TabLayout
-            android:id="@+id/tabs"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:tabMode="scrollable"
-            android:minHeight="?attr/actionBarSize"
-            app:tabGravity="fill"
-            app:tabTextColor="#FFF"
-            app:tabSelectedTextColor="@color/white"
-            app:tabIndicatorColor="@color/colorPrimary"
-            app:tabBackground="@drawable/tab_color_selector"
-            android:visibility="gone"
-            />
         <LinearLayout
+            android:visibility="visible"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
-           >
-            <ImageView
+            android:layout_marginTop="55dp">
+
+
+            <com.google.android.material.tabs.TabLayout
+                android:id="@+id/tabs"
                 android:layout_width="match_parent"
-                android:layout_height="70dp"
-                android:layout_marginTop="10dp"
-                android:src="@drawable/minda_sparshlogo"/>
-            <androidx.viewpager.widget.ViewPager
-                android:id="@+id/pager"
+                android:layout_height="wrap_content"
+                app:tabMode="scrollable"
+                android:minHeight="?attr/actionBarSize"
+                app:tabGravity="fill"
+                app:tabTextColor="#FFF"
+                app:tabSelectedTextColor="@color/white"
+                app:tabIndicatorColor="@color/colorPrimary"
+                app:tabBackground="@drawable/tab_color_selector"
+                android:visibility="gone" />
+
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:fillViewport="true"
-                app:layout_collapseMode="parallax"
-                />
-            <!--<ImageView-->
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="70dp"
+                    android:layout_marginTop="10dp"
+                    android:src="@drawable/minda_sparshlogo" />
+
+                <androidx.viewpager.widget.ViewPager
+                    android:id="@+id/pager"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:fillViewport="true"
+                    app:layout_collapseMode="parallax" />
+                <!--<ImageView-->
                 <!--android:id="@+id/im_right"-->
                 <!--android:layout_width="wrap_content"-->
                 <!--android:layout_height="wrap_content"-->
@@ -72,7 +73,7 @@
                 <!--android:layout_marginTop="160dp"-->
 
                 <!--/>-->
-            <!--<ImageView-->
+                <!--<ImageView-->
                 <!--android:id="@+id/im_left"-->
                 <!--android:layout_width="wrap_content"-->
                 <!--android:layout_height="wrap_content"-->
@@ -82,12 +83,9 @@
 
                 <!--/>-->
 
+            </LinearLayout>
+
+
         </LinearLayout>
-
-
-
-
-
-    </LinearLayout>
-</RelativeLayout>
+    </RelativeLayout>
 </RelativeLayout>

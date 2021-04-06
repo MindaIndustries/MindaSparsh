@@ -17,10 +17,10 @@ public interface MindacareClient {
     Call<List<CheckinDetailsResponse>> getCheckinDetails(@Query("EmpCode") String EmpCode);
 
     @GET("MindaCareClockInOut")
-    Call<String> clockInclockOut(@Query("EmpCode") String EmpCode, @Query("Message") String message,@Query("InLattitiude")String InLattitiude,@Query("InLongitude") String InLongitude,@Query("OutLattitude") String OutLattitude,@Query("OutLongitude")String OutLongitude);
+    Call<String> clockInclockOut(@Query("EmpCode") String EmpCode, @Query("Message") String message, @Query("InLattitiude") String InLattitiude, @Query("InLongitude") String InLongitude, @Query("OutLattitude") String OutLattitude, @Query("OutLongitude") String OutLongitude);
 
     @GET("MindaCareQuestions")
-    Call<List<QuesResponse>>  mindacareQuestions(@Query("EmpCode") String EmpCode);
+    Call<List<QuesResponse>> mindacareQuestions(@Query("EmpCode") String EmpCode);
 
     @GET("MindaCareState")
     Call<List<StateResponse>> getState();
@@ -30,7 +30,6 @@ public interface MindacareClient {
 
     @GET("MindaCareSubmission")
     Call<String> submitDeclaration(@Query("response") String response);
-
 
 
 }

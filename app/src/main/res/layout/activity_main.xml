@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
+
     <include layout="@layout/toolbar" />
 
     <LinearLayout
@@ -13,13 +12,15 @@
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:background="@color/colorPrimary">
+
         <ImageView
             android:id="@+id/im_back"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_gravity="center"
             android:src="@drawable/back"
-            android:layout_marginLeft="15dp"/>
+            android:layout_marginLeft="15dp" />
+
         <TextView
             android:id="@+id/tv_title"
             android:layout_width="wrap_content"
@@ -28,12 +29,11 @@
             android:textSize="20dp"
             android:gravity="center"
             android:layout_marginLeft="20dp"
-            android:textColor="#ffffff"/>
+            android:textColor="#ffffff" />
 
     </LinearLayout>
 
     <LinearLayout
-        xmlns:flip="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
@@ -41,15 +41,14 @@
         <WebView
             android:id="@+id/wv_jagriti"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-           />
+            android:layout_height="match_parent" />
 
         <!--<com.aphidmobile.flip.FlipViewController-->
-            <!--android:id="@+id/flip_view"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="0dp"-->
-            <!--android:layout_weight="1"-->
-            <!--flip:orientation="horizontal" />-->
+        <!--android:id="@+id/flip_view"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="0dp"-->
+        <!--android:layout_weight="1"-->
+        <!--flip:orientation="horizontal" />-->
 
 
     </LinearLayout>

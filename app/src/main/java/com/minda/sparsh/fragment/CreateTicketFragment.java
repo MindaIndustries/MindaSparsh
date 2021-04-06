@@ -30,7 +30,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -188,8 +187,8 @@ public class CreateTicketFragment extends Fragment {
         username = myPref.getString("username", "");
         empcode = myPref.getString("Id", "");
         // reportedby = empcode;
-        if(depucode!=null && depucode.length()>0){
-            unitcode= depucode;
+        if (depucode != null && depucode.length() > 0) {
+            unitcode = depucode;
         }
 
 
@@ -868,12 +867,12 @@ public class CreateTicketFragment extends Fragment {
                             //}
                         }
 
-                        if(unitcode!=null && unitcode.length()>0){
+                        if (unitcode != null && unitcode.length() > 0) {
                             AssetLocResponse assetLocResponse = new AssetLocResponse();
                             assetLocResponse.setId(unitcode);
                             int i = assetList.indexOf(assetLocResponse);
-                            if(i>=0){
-                                assetLocSPinner.setSelection(i+1);
+                            if (i >= 0) {
+                                assetLocSPinner.setSelection(i + 1);
                             }
 
                         }

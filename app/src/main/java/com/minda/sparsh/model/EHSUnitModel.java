@@ -9,7 +9,6 @@ public class EHSUnitModel {
     String UnitName;
 
 
-
     public String getUnitCode() {
         return UnitCode;
     }

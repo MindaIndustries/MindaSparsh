@@ -35,7 +35,7 @@ public class AssignedConcernModel {
     @SerializedName("Remarks1")
     String Remarks1;
     @SerializedName("Remarks2")
-    String  Remarks2;
+    String Remarks2;
     @SerializedName("Status")
     String Status;
     @SerializedName("Flag")

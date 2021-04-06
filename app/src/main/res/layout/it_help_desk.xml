@@ -4,22 +4,25 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-    <include layout="@layout/toolbar1"/>
+
+    <include layout="@layout/toolbar1" />
+
     <RelativeLayout
         android:layout_marginTop="?attr/actionBarSize"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:adjustViewBounds="true"
             android:src="@drawable/birds"
-            android:scaleType="centerCrop"
-            />
+            android:scaleType="centerCrop" />
+
         <LinearLayout
             android:background="@color/translucent"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
+            android:layout_height="match_parent" />
 
     </RelativeLayout>
 
@@ -46,28 +49,26 @@
                 android:id="@+id/create_ticket"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Create Ticket"
-                />
+                android:text="Create Ticket" />
 
             <com.google.android.material.tabs.TabItem
                 android:id="@+id/my_tickets"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="My Tickets"
-                />
+                android:text="My Tickets" />
+
             <com.google.android.material.tabs.TabItem
                 android:id="@+id/my_tasks"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="My Tasks"
-                />
+                android:text="My Tasks" />
 
         </com.google.android.material.tabs.TabLayout>
+
         <FrameLayout
             android:id="@+id/framelayout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_below="@+id/tablayout">
-        </FrameLayout>
+            android:layout_below="@+id/tablayout"></FrameLayout>
     </RelativeLayout>
-    </RelativeLayout>
+</RelativeLayout>

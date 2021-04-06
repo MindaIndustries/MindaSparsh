@@ -1,21 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<font-family xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+<font-family>
     <!--<font-->
-        <!--app:fontStyle="normal"-->
-        <!--app:fontWeight="400"-->
-        <!--app:font="@font/museosans_300" />-->
+    <!--app:fontStyle="normal"-->
+    <!--app:fontWeight="400"-->
+    <!--app:font="@font/museosans_300" />-->
     <!--<font-->
-        <!--app:fontStyle="italic"-->
-        <!--app:fontWeight="400"-->
-        <!--app:font="@font/museosans_500" />-->
+    <!--app:fontStyle="italic"-->
+    <!--app:fontWeight="400"-->
+    <!--app:font="@font/museosans_500" />-->
     <!--<font-->
-        <!--app:fontStyle="italic"-->
-        <!--app:fontWeight="400"-->
-        <!--android:font="@font/museosans_700" />-->
+    <!--app:fontStyle="italic"-->
+    <!--app:fontWeight="400"-->
+    <!--android:font="@font/museosans_700" />-->
     <!--<font-->
-        <!--android:fontStyle="italic"-->
-        <!--android:fontWeight="400"-->
-        <!--android:font="@font/museosans_900" />-->
+    <!--android:fontStyle="italic"-->
+    <!--android:fontWeight="400"-->
+    <!--android:font="@font/museosans_900" />-->
 
 </font-family>

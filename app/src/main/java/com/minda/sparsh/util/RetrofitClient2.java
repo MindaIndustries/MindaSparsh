@@ -1,8 +1,5 @@
 package com.minda.sparsh.util;
 
-import android.content.Context;
-import android.content.Intent;
-
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
@@ -23,7 +20,6 @@ import retrofit2.converter.scalars.ScalarsConverterFactory;
 
 public class RetrofitClient2 {
     public static final String playstoreURL = "https://play.google.com/store/apps/details?id=com.minda.sparsh";
-
 
 
     //        public static final String BASE_URL = "http://52.172.191.61/testminda.com/Service.asmx/ ";
@@ -112,6 +108,7 @@ public class RetrofitClient2 {
 
         return retrofit.create(serviceClass);
     }
+
     public static <S> S createServiceBottomUponcern(Class<S> serviceClass) {
         OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
         httpClient.protocols(Util.immutableList(Protocol.HTTP_1_1));
@@ -148,6 +145,7 @@ public class RetrofitClient2 {
 
         return retrofit.create(serviceClass);
     }
+
     public static <S> S downloadService(Class<S> serviceClass) {
         OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
         httpClient.protocols(Util.immutableList(Protocol.HTTP_1_1));
@@ -363,5 +361,4 @@ public class RetrofitClient2 {
     }
 
 
-
-} 
+}

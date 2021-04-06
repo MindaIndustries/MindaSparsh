@@ -1,8 +1,6 @@
 package com.minda.sparsh.Adapter;
 
-import android.app.Notification;
 import android.content.Context;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Typeface;
 import android.view.LayoutInflater;
@@ -38,10 +36,6 @@ public class NotificationAdapter extends BaseAdapter {
     SharedPreferences myPref;
 
 
-
-
-
-
     public NotificationAdapter(Context applicationContext, List<NotificationModel> venueData) {
         this.mContext = applicationContext;
         inflater = LayoutInflater.from(mContext);
@@ -49,11 +43,11 @@ public class NotificationAdapter extends BaseAdapter {
 
 
     }
-    public class ViewHolder {
-        public TextView tv_notification,tv_time;
-        public LinearLayout lay_notification;
-        public ImageView im_product,im_selected;
 
+    public class ViewHolder {
+        public TextView tv_notification, tv_time;
+        public LinearLayout lay_notification;
+        public ImageView im_product, im_selected;
 
 
     }
@@ -78,24 +72,18 @@ public class NotificationAdapter extends BaseAdapter {
 
         if (convertView == null) {
             final NotificationAdapter.ViewHolder holder = new NotificationAdapter.ViewHolder();
-            this.holder=holder;
+            this.holder = holder;
             convertView = inflater.inflate(R.layout.notification_call_view, null);
-            holder.tv_notification= (TextView) convertView.findViewById(R.id.tv_notification);
-            holder.lay_notification=(LinearLayout) convertView.findViewById(R.id.lay_notification);
+            holder.tv_notification = (TextView) convertView.findViewById(R.id.tv_notification);
+            holder.lay_notification = (LinearLayout) convertView.findViewById(R.id.lay_notification);
 //            holder.tv_time= (TextView) convertView.findViewById(R.id.tv_time);
             holder.tv_notification.setText(homeData.get(position).getNotification());
 //            holder.tv_time.setText(homeData.get(position).getCreatedOn());
-            if(!homeData.get(position).getIsRead())
-            {
+            if (!homeData.get(position).getIsRead()) {
 
                 holder.tv_notification.setTypeface(holder.tv_notification.getTypeface(), Typeface.BOLD);
 
             }
-
-
-
-
-
 
 
             holder.lay_notification.setOnClickListener(new View.OnClickListener() {
@@ -104,7 +92,7 @@ public class NotificationAdapter extends BaseAdapter {
                     myPref = mContext.getSharedPreferences("MyPref", Context.MODE_PRIVATE);
 
 
-                    HitMyorder(myPref.getString("Id",""),homeData.get(position).getPushNotcID().toString(),position);
+                    HitMyorder(myPref.getString("Id", ""), homeData.get(position).getPushNotcID().toString(), position);
 
 
                 }
@@ -112,17 +100,16 @@ public class NotificationAdapter extends BaseAdapter {
             convertView.setTag(holder);
 
 
-
-
             //"\n" + promotionData.get(position).getEventDate());
 
         }
         return convertView;
     }
-    public void HitMyorder(String UserId, String pushid , final int position) {
+
+    public void HitMyorder(String UserId, String pushid, final int position) {
         if (Utility.isOnline(mContext)) {
             Interface loginInterface = RetrofitClient.getClient().create(Interface.class);
-            Call<List<NotificationModel>> loginResponse = loginInterface.ReadPushNot( UserId,pushid,"mda@sPr$rZ#G!!");
+            Call<List<NotificationModel>> loginResponse = loginInterface.ReadPushNot(UserId, pushid, "mda@sPr$rZ#G!!");
             loginResponse.enqueue(new Callback<List<NotificationModel>>() {
                 @Override
                 public void onResponse(Call<List<NotificationModel>> call, Response<List<NotificationModel>> response) {
@@ -130,23 +117,20 @@ public class NotificationAdapter extends BaseAdapter {
                     List<NotificationModel> responseItem = response.body();
                     response.message();
 
-                    if(!homeData.get(position).getIsRead())
-                    {
-                        int count=Integer.parseInt(DashBoardActivity.tv_unread.getText().toString());
-                        count=count-1;
+                    if (!homeData.get(position).getIsRead()) {
+                        int count = Integer.parseInt(DashBoardActivity.tv_unread.getText().toString());
+                        count = count - 1;
                         DashBoardActivity.tv_unread.setText(String.valueOf(count));
                         homeData.get(position).setIsRead(true);
-                        NotificationActivity contaxt1= (NotificationActivity) mContext;
+                        NotificationActivity contaxt1 = (NotificationActivity) mContext;
                         contaxt1.setadapter(homeData);
                     }
 
                     if (responseItem != null) {
 
 
-
-
+                    } else {
                     }
-                    else {}
 
 
                 }

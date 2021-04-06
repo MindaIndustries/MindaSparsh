@@ -1,6 +1,5 @@
 package com.minda.sparsh.services;
 
-import com.minda.sparsh.RetrofitClient;
 import com.minda.sparsh.client.IThelpdeskClient;
 import com.minda.sparsh.listener.CarotResponse;
 import com.minda.sparsh.listener.OnTaskComplete;

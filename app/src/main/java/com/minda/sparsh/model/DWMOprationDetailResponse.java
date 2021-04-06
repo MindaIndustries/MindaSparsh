@@ -317,6 +317,7 @@ public class DWMOprationDetailResponse {
     @SerializedName("CheckoncheckRemarks")
     @Expose
     private String checkoncheckrmk;
+
     public String getCheckoncheck() {
         return checkoncheck;
     }
@@ -332,7 +333,6 @@ public class DWMOprationDetailResponse {
     public void setCheckoncheckrmk(String checkoncheckrmk) {
         this.checkoncheckrmk = checkoncheckrmk;
     }
-
 
 
     public String getOperationHeadId() {

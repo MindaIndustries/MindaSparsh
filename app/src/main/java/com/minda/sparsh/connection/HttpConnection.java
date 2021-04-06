@@ -14,17 +14,16 @@ import java.net.URL;
 
 public class HttpConnection {
 
-//    public static String BASE_URL = "https://www.mindasparsh.com/service.asmx/";
+    //    public static String BASE_URL = "https://www.mindasparsh.com/service.asmx/";
     //public static String BASE_URL = "http://52.172.191.61/TestMinda.com/service.asmx/";
-  //  public static String BASE_URL = "http://176.9.28.166/MindaSparshTest/service.asmx/";
+    //  public static String BASE_URL = "http://176.9.28.166/MindaSparshTest/service.asmx/";
     //dev environment
-      public static String BASE_URL = "https://dev.mindasparsh.com/service.asmx/";
-      public static final String mindacareUrl = "https://dev.mindasparsh.com/mindacare/login.aspx?";
+    public static String BASE_URL = "https://dev.mindasparsh.com/service.asmx/";
+    public static final String mindacareUrl = "https://dev.mindasparsh.com/mindacare/login.aspx?";
     //  prod environment
   /*     public static String BASE_URL = "https://app.mindasparsh.com/service.asmx/";
        public static final String mindacareUrl = "https://app.mindasparsh.com/mindacare/login.aspx?";
 */
-
 
 
     public String requestGetContent(String url) {
@@ -70,7 +69,6 @@ public class HttpConnection {
 
         return sb.toString();
     }
-
 
 
 }

@@ -1,102 +1,110 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            >
-            <TextView
-                android:layout_width="50dp"
-                android:layout_height="30dp"
-                android:layout_weight="1"
-                android:text="S.No"
-                android:background="@drawable/cell_view"
-                android:gravity="center"/>
-            <TextView
-                android:layout_width="200dp"
-                android:layout_height="30dp"
-                android:background="@drawable/cell_view"
-                android:layout_weight="4"
-                android:text="Abnormality"
-                android:gravity="center"/>
-            <TextView
-                android:layout_width="100dp"
-                android:layout_height="30dp"
-                android:background="@drawable/cell_view"
-                android:layout_weight="2"
-                android:text="Date"
-                android:gravity="center" />
-            <TextView
-                android:layout_width="100dp"
-                android:layout_height="30dp"
-                android:layout_weight="2"
-                android:background="@drawable/cell_view"
-                android:text="Domain"
-                android:gravity="center"/>
-            <TextView
-                android:layout_width="100dp"
-                android:layout_height="30dp"
-                android:background="@drawable/cell_view"
-                android:layout_weight="2"
-                android:text="Business"
-                android:gravity="center"
-                />
-            <TextView
-                android:layout_width="100dp"
-                android:layout_height="30dp"
-                android:background="@drawable/cell_view"
-                android:layout_weight="2"
-                android:text="Plant"
-                android:gravity="center"/>
-            <TextView
-                android:layout_width="100dp"
-                android:layout_height="30dp"
-                android:layout_weight="2"
-                android:background="@drawable/cell_view"
-                android:gravity="center"
-                android:text="Department"/>
-            <TextView
-                android:layout_width="600dp"
-                android:layout_height="30dp"
-                android:layout_weight="6"
-                android:background="@drawable/cell_view"
-                android:gravity="center"
-                android:text="Action"/>
-            <TextView
-                android:layout_width="150dp"
-                android:layout_height="30dp"
-                android:layout_weight="3"
-                android:gravity="center"
-                android:background="@drawable/cell_view"
-                android:text="Test Date"/>
-            <TextView
-                android:layout_width="150dp"
-                android:layout_height="30dp"
-                android:layout_weight="3"
-                android:background="@drawable/cell_view"
-                android:gravity="center"
-                android:text="Actual Date"/>
-            <TextView
-                android:layout_width="150dp"
-                android:layout_height="30dp"
-                android:layout_weight="3"
-                android:background="@drawable/cell_view"
-                android:gravity="center"
-                android:text="Status"/>
-            <TextView
-                android:layout_width="150dp"
-                android:layout_height="30dp"
-                android:layout_weight="4"
-                android:background="@drawable/cell_view"
-                android:gravity="center"
-                android:text="Result"/>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="50dp"
+            android:layout_height="30dp"
+            android:layout_weight="1"
+            android:text="S.No"
+            android:background="@drawable/cell_view"
+            android:gravity="center" />
+
+        <TextView
+            android:layout_width="200dp"
+            android:layout_height="30dp"
+            android:background="@drawable/cell_view"
+            android:layout_weight="4"
+            android:text="Abnormality"
+            android:gravity="center" />
+
+        <TextView
+            android:layout_width="100dp"
+            android:layout_height="30dp"
+            android:background="@drawable/cell_view"
+            android:layout_weight="2"
+            android:text="Date"
+            android:gravity="center" />
+
+        <TextView
+            android:layout_width="100dp"
+            android:layout_height="30dp"
+            android:layout_weight="2"
+            android:background="@drawable/cell_view"
+            android:text="Domain"
+            android:gravity="center" />
+
+        <TextView
+            android:layout_width="100dp"
+            android:layout_height="30dp"
+            android:background="@drawable/cell_view"
+            android:layout_weight="2"
+            android:text="Business"
+            android:gravity="center" />
+
+        <TextView
+            android:layout_width="100dp"
+            android:layout_height="30dp"
+            android:background="@drawable/cell_view"
+            android:layout_weight="2"
+            android:text="Plant"
+            android:gravity="center" />
+
+        <TextView
+            android:layout_width="100dp"
+            android:layout_height="30dp"
+            android:layout_weight="2"
+            android:background="@drawable/cell_view"
+            android:gravity="center"
+            android:text="Department" />
+
+        <TextView
+            android:layout_width="600dp"
+            android:layout_height="30dp"
+            android:layout_weight="6"
+            android:background="@drawable/cell_view"
+            android:gravity="center"
+            android:text="Action" />
+
+        <TextView
+            android:layout_width="150dp"
+            android:layout_height="30dp"
+            android:layout_weight="3"
+            android:gravity="center"
+            android:background="@drawable/cell_view"
+            android:text="Test Date" />
+
+        <TextView
+            android:layout_width="150dp"
+            android:layout_height="30dp"
+            android:layout_weight="3"
+            android:background="@drawable/cell_view"
+            android:gravity="center"
+            android:text="Actual Date" />
+
+        <TextView
+            android:layout_width="150dp"
+            android:layout_height="30dp"
+            android:layout_weight="3"
+            android:background="@drawable/cell_view"
+            android:gravity="center"
+            android:text="Status" />
+
+        <TextView
+            android:layout_width="150dp"
+            android:layout_height="30dp"
+            android:layout_weight="4"
+            android:background="@drawable/cell_view"
+            android:gravity="center"
+            android:text="Result" />
 
 
-
-        </LinearLayout>
-
+    </LinearLayout>
 
 
 </LinearLayout>

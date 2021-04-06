@@ -11,66 +11,65 @@
         app:cardUseCompatPadding="true"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-    <RelativeLayout
-        android:padding="10dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
 
-        <TextView
-            android:id="@+id/qn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="14sp"
-            android:fontFamily="@font/museosans_700"
-            android:textColor="@color/black"
-            />
-
-        <TextView
-            android:layout_marginTop="10dp"
-            android:layout_below="@+id/qn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/ans"
-            android:visibility="gone"
-            android:textSize="14sp" />
-
-
-        <RadioGroup
-            android:visibility="gone"
-            android:id="@+id/rg"
+        <RelativeLayout
+            android:padding="10dp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"></RadioGroup>
+            android:layout_height="wrap_content">
 
-        <com.minda.sparsh.customview.NoDefaultSpinner
-            android:visibility="gone"
-            android:layout_marginTop="30dp"
-            style="@style/lipstick_spinner_header_style"
-            android:id="@+id/spinner"
-            android:spinnerMode="dropdown"
-            android:popupElevation="6dp"
-            android:layout_marginLeft="-20dp"
-            android:layout_below="@+id/ll2"
-            android:dropDownVerticalOffset="20dp"
-            android:layout_alignParentRight="true"
-            android:layout_width="match_parent"
-            android:layout_toRightOf="@+id/view"
-            android:layout_height="wrap_content"
-            android:padding="5dp">
+            <TextView
+                android:id="@+id/qn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="14sp"
+                android:fontFamily="@font/museosans_700"
+                android:textColor="@color/black" />
 
-        </com.minda.sparsh.customview.NoDefaultSpinner>
-
-
-        <CheckBox
-            android:visibility="gone"
-            android:textSize="14sp"
-            android:id="@+id/checkbox"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textColor="@color/black"
-            />
+            <TextView
+                android:layout_marginTop="10dp"
+                android:layout_below="@+id/qn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/ans"
+                android:visibility="gone"
+                android:textSize="14sp" />
 
 
-    </RelativeLayout>
+            <RadioGroup
+                android:visibility="gone"
+                android:id="@+id/rg"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"></RadioGroup>
+
+            <com.minda.sparsh.customview.NoDefaultSpinner
+                android:visibility="gone"
+                android:layout_marginTop="30dp"
+                style="@style/lipstick_spinner_header_style"
+                android:id="@+id/spinner"
+                android:spinnerMode="dropdown"
+                android:popupElevation="6dp"
+                android:layout_marginLeft="-20dp"
+                android:layout_below="@+id/ll2"
+                android:dropDownVerticalOffset="20dp"
+                android:layout_alignParentRight="true"
+                android:layout_width="match_parent"
+                android:layout_toRightOf="@+id/view"
+                android:layout_height="wrap_content"
+                android:padding="5dp">
+
+            </com.minda.sparsh.customview.NoDefaultSpinner>
+
+
+            <CheckBox
+                android:visibility="gone"
+                android:textSize="14sp"
+                android:id="@+id/checkbox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black" />
+
+
+        </RelativeLayout>
     </androidx.cardview.widget.CardView>
 
 </RelativeLayout>

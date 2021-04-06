@@ -1,17 +1,14 @@
 package com.minda.sparsh;
 
 import android.content.Intent;
-
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
-
-import androidx.appcompat.widget.Toolbar;
-
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 public class IdentityAccessManagementActivity extends AppCompatActivity implements View.OnClickListener {
     ImageView im_back, iv_approve_request, iv_view_access_request, iv_access_request;

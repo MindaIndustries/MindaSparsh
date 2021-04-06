@@ -6,5 +6,5 @@ import retrofit2.http.Query;
 
 public interface FireBaseClient {
     @GET("SaveFireID")
-    Call<String> saveFirebaseID(@Query("EmpCode") String EmpCode,@Query("FireID") String FirebaseID);
+    Call<String> saveFirebaseID(@Query("EmpCode") String EmpCode, @Query("FireID") String FirebaseID);
 }

@@ -1,7 +1,6 @@
 package com.minda.sparsh;
 
 
-import com.minda.sparsh.Adapter.IAMGetAccessSubTypeAdapter;
 import com.minda.sparsh.model.ARPDModel;
 import com.minda.sparsh.model.AbnormalityView_Model;
 import com.minda.sparsh.model.AccessRequestApproverDetailsModel;
@@ -107,7 +106,7 @@ public interface Interface {
     Call<List<AddAbnormality_Model>> AddAbnormality(@Field("CKey") String CKey, @Field("group") String group, @Field("domain") String domain,
                                                     @Field("business") String business, @Field("plant") String plant, @Field("department") String department,
                                                     @Field("imagepath") String imagepath, @Field("description") String description, @Field("benefits") String benefits,
-                                                    @Field("abnormalitydate") String abnormalitydate, @Field("UploadedBy") String UploadedBy, @Field("Category")int Categeory);
+                                                    @Field("abnormalitydate") String abnormalitydate, @Field("UploadedBy") String UploadedBy, @Field("Category") int Categeory);
 
     @FormUrlEncoded
     @POST("UpdateAbnormalityNew")
@@ -136,7 +135,7 @@ public interface Interface {
     @GET("GetAbnormality")
     Call<List<AbnormalityView_Model>> GetAbnormalityDetail(@Query("CKey") String CKey, @Query("plant") String plant,
                                                            @Query("department") String department, @Query("Domain") String Domain,
-                                                           @Query("Business") String Business,@Query("Category") int Category);
+                                                           @Query("Business") String Business, @Query("Category") int Category);
 
 
     @GET("GetDashboard")
@@ -461,35 +460,34 @@ public interface Interface {
     Call<List<IAMGetListOfNames>> IAMGetListofNames(@Query("PrefixText") String PrefixText, @Query("CKey") String CKey);
 
 
-/*
-    @GET("IAMCreateRequest")
-    Call<List<IAMCreateRequestModel>> IAMCreateRequest(@Query("RequestTypeId") String RequestTypeId, @Query("AccessTypeId") String AccessTypeId,
-                                                       @Query("AccessForTypeId") String AccessForTypeId, @Query("EmpCode") String EmpCode,
-                                                       @Query("SourceTypeId") String SourceTypeId, @Query("SourceEmpCode") String SourceEmpCode,
-                                                       @Query("Organization") String Organization, @Query("Purpose") String Purpose,
-                                                       @Query("SourceName") String SourceName, @Query("AccessSubTypeId") String AccessSubTypeId,
-                                                       @Query("CategoryId") String CategoryId, @Query("SubCategoryId") String SubCategoryId,
-                                                       @Query("CategoryName") String CategoryName, @Query("SubCategoryName") String SubCategoryName,
-                                                       @Query("ProfileId") String ProfileId, @Query("ProfileName") String ProfileName,
-                                                       @Query("RequirementDetail") String RequirementDetail, @Query("CategoryList") String CategoryList,
-                                                       @Query("UnitList") String UnitList, @Query("CKey") String CKey);
+    /*
+        @GET("IAMCreateRequest")
+        Call<List<IAMCreateRequestModel>> IAMCreateRequest(@Query("RequestTypeId") String RequestTypeId, @Query("AccessTypeId") String AccessTypeId,
+                                                           @Query("AccessForTypeId") String AccessForTypeId, @Query("EmpCode") String EmpCode,
+                                                           @Query("SourceTypeId") String SourceTypeId, @Query("SourceEmpCode") String SourceEmpCode,
+                                                           @Query("Organization") String Organization, @Query("Purpose") String Purpose,
+                                                           @Query("SourceName") String SourceName, @Query("AccessSubTypeId") String AccessSubTypeId,
+                                                           @Query("CategoryId") String CategoryId, @Query("SubCategoryId") String SubCategoryId,
+                                                           @Query("CategoryName") String CategoryName, @Query("SubCategoryName") String SubCategoryName,
+                                                           @Query("ProfileId") String ProfileId, @Query("ProfileName") String ProfileName,
+                                                           @Query("RequirementDetail") String RequirementDetail, @Query("CategoryList") String CategoryList,
+                                                           @Query("UnitList") String UnitList, @Query("CKey") String CKey);
 
-*/
-@FormUrlEncoded
-@POST("IAMCreateRequest")
-Call<List<IAMCreateRequestModel>> IAMCreateRequest(@Field("RequestTypeId") String RequestTypeId, @Field("AccessTypeId") String AccessTypeId,
-                                                   @Field("AccessForTypeId") String AccessForTypeId, @Field("EmpCode") String EmpCode,
-                                                   @Field("SourceTypeId") String SourceTypeId, @Field("SourceEmpCode") String SourceEmpCode,
-                                                   @Field("Organization") String Organization, @Field("Purpose") String Purpose,
-                                                   @Field("SourceName") String SourceName, @Field("AccessSubTypeId") String AccessSubTypeId,
-                                                   @Field("CategoryId") String CategoryId, @Field("SubCategoryId") String SubCategoryId,
-                                                   @Field("CategoryName") String CategoryName, @Field("SubCategoryName") String SubCategoryName,
-                                                   @Field("ProfileId") String ProfileId, @Field("ProfileName") String ProfileName,
-                                                   @Field("RequirementDetail") String RequirementDetail, @Field("CategoryList") String CategoryList,
-                                                   @Field("UnitList") String UnitList, @Field("CKey") String CKey,@Field("FileName") String FileName,@Field("FileByte") String FileByte, @Field("_Domains") String Domains, @Field("_BusinessID") String BusinessID, @Field("_DomainNames") String DomainNames, @Field("BusinessIdName") String BusinessIdName, @Field("_PlantName") String PlantName, @Field("_PlantCode") String PlantCode, @Field("_AccessSubTypeName") String AccessSubTypeName, @Field("_AccessTypeName")String AccessTypeName, @Field("_RequestTypeName") String RequestTypeName);
+    */
+    @FormUrlEncoded
+    @POST("IAMCreateRequest")
+    Call<List<IAMCreateRequestModel>> IAMCreateRequest(@Field("RequestTypeId") String RequestTypeId, @Field("AccessTypeId") String AccessTypeId,
+                                                       @Field("AccessForTypeId") String AccessForTypeId, @Field("EmpCode") String EmpCode,
+                                                       @Field("SourceTypeId") String SourceTypeId, @Field("SourceEmpCode") String SourceEmpCode,
+                                                       @Field("Organization") String Organization, @Field("Purpose") String Purpose,
+                                                       @Field("SourceName") String SourceName, @Field("AccessSubTypeId") String AccessSubTypeId,
+                                                       @Field("CategoryId") String CategoryId, @Field("SubCategoryId") String SubCategoryId,
+                                                       @Field("CategoryName") String CategoryName, @Field("SubCategoryName") String SubCategoryName,
+                                                       @Field("ProfileId") String ProfileId, @Field("ProfileName") String ProfileName,
+                                                       @Field("RequirementDetail") String RequirementDetail, @Field("CategoryList") String CategoryList,
+                                                       @Field("UnitList") String UnitList, @Field("CKey") String CKey, @Field("FileName") String FileName, @Field("FileByte") String FileByte, @Field("_Domains") String Domains, @Field("_BusinessID") String BusinessID, @Field("_DomainNames") String DomainNames, @Field("BusinessIdName") String BusinessIdName, @Field("_PlantName") String PlantName, @Field("_PlantCode") String PlantCode, @Field("_AccessSubTypeName") String AccessSubTypeName, @Field("_AccessTypeName") String AccessTypeName, @Field("_RequestTypeName") String RequestTypeName);
 
 
-
-@GET("GetCategorys")
+    @GET("GetCategorys")
     Call<List<CategoryAbnormality>> getCategory(@Query("CKey") String CKey);
 }

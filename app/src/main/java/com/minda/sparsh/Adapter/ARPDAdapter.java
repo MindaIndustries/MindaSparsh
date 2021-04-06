@@ -1,7 +1,6 @@
 package com.minda.sparsh.Adapter;
 
 import android.content.Context;
-import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +10,8 @@ import com.minda.sparsh.R;
 import com.minda.sparsh.model.ARPDModel;
 
 import java.util.List;
+
+import androidx.recyclerview.widget.RecyclerView;
 
 public class ARPDAdapter extends RecyclerView.Adapter<ARPDAdapter.MyViewHolder> {
     private List<ARPDModel> dataList;

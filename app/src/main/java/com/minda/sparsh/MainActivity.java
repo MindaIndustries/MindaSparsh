@@ -3,10 +3,6 @@ package com.minda.sparsh;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
-
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-
 import android.view.MenuItem;
 import android.view.View;
 import android.webkit.WebView;
@@ -15,6 +11,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.minda.sparsh.model.AddAbnormality_Model;
+import com.minda.sparsh.util.RetrofitClient2;
+import com.minda.sparsh.util.Utility;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -22,10 +21,8 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.minda.sparsh.model.AddAbnormality_Model;
-import com.minda.sparsh.util.RetrofitClient2;
-import com.minda.sparsh.util.Utility;
-
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;

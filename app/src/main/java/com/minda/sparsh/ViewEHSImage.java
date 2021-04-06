@@ -3,7 +3,6 @@ package com.minda.sparsh;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
-import androidx.appcompat.widget.Toolbar;
 import android.view.MenuItem;
 import android.widget.TextView;
 
@@ -13,6 +12,7 @@ import com.bumptech.glide.request.RequestOptions;
 import com.minda.sparsh.customview.TouchImageView;
 import com.minda.sparsh.util.RetrofitClient2;
 
+import androidx.appcompat.widget.Toolbar;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 

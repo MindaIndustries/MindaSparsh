@@ -5,9 +5,6 @@ import android.app.DatePickerDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
-
-import com.google.android.material.snackbar.Snackbar;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,7 +14,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-
+import com.google.android.material.snackbar.Snackbar;
 import com.minda.sparsh.AbnormalityAddressing2Activity;
 import com.minda.sparsh.AbnormalityAddressingActivity;
 import com.minda.sparsh.Interface;

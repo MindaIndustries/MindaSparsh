@@ -48,20 +48,20 @@ public class MyTasks extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View myTicketsview = inflater.inflate(R.layout.my_tickets, container, false);
         ButterKnife.bind(this, myTicketsview);
-        ticketsAdapter = new TicketsAdapter(getActivity(),myTicketsResponse);
+        ticketsAdapter = new TicketsAdapter(getActivity(), myTicketsResponse);
         final LinearLayoutManager mLayoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false);
         myTickets.setLayoutManager(mLayoutManager);
         myTickets.setAdapter(ticketsAdapter);
         myPref = getActivity().getSharedPreferences("MyPref", MODE_PRIVATE);
         empCode = myPref.getString("Id", "Id");
-        if(Utility.isOnline(getActivity())) {
+        if (Utility.isOnline(getActivity())) {
             getMyTaskTickets(empCode, "", "", "", "", "", "0", "0", "0", "", "");
         }
         return myTicketsview;
     }
 
 
-    public void getMyTaskTickets(String EmpCode, String Location, String TicketTypeId, String Priority, String TicketGroupId, String StatusId, String SubCat, String SubCat2, String SubCat3, String ReportedDate, String CloserDate){
+    public void getMyTaskTickets(String EmpCode, String Location, String TicketTypeId, String Priority, String TicketGroupId, String StatusId, String SubCat, String SubCat2, String SubCat3, String ReportedDate, String CloserDate) {
         myTicketsResponse.clear();
         myTickets.getRecycledViewPool().clear();
         ticketsAdapter.notifyDataSetChanged();
@@ -70,20 +70,19 @@ public class MyTasks extends Fragment {
         itHelpDeskServices.getMyTaskTickets(new OnTaskComplete() {
             @Override
             public void onTaskComplte(CarotResponse carotResponse) {
-                if(carotResponse.getStatuscode() == HttpsURLConnection.HTTP_OK){
+                if (carotResponse.getStatuscode() == HttpsURLConnection.HTTP_OK) {
                     List<MyTicketsResponse> list = (List<MyTicketsResponse>) carotResponse.getData();
-                    if(list!=null && list.size()>0) {
+                    if (list != null && list.size() > 0) {
                         myTicketsResponse.addAll(list);
                         no_list.setVisibility(View.GONE);
-                    }
-                    else{
+                    } else {
                         no_list.setVisibility(View.VISIBLE);
                     }
                     ticketsAdapter.notifyDataSetChanged();
                 }
 
             }
-        },EmpCode,Location,TicketTypeId,Priority,TicketGroupId,StatusId,SubCat,SubCat2,SubCat3,ReportedDate,CloserDate);
+        }, EmpCode, Location, TicketTypeId, Priority, TicketGroupId, StatusId, SubCat, SubCat2, SubCat3, ReportedDate, CloserDate);
     }
 
 }

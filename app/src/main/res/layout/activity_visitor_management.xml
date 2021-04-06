@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:card_view="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:focusable="true"
@@ -51,8 +50,7 @@
                 android:fontFamily="@font/museosans_300"
                 android:text="Visitor Management"
                 android:textColor="@color/white"
-                android:textSize="20dp"
-                 />
+                android:textSize="20dp" />
 
             <Button
                 android:id="@+id/btn_view"
@@ -78,53 +76,53 @@
                 android:orientation="vertical"
                 android:padding="10dp">
 
-               <!-- <android.support.v7.widget.CardView
+                <!-- <android.support.v7.widget.CardView
+                     android:layout_width="match_parent"
+                     android:layout_height="wrap_content"
+                     android:layout_gravity="center"
+                     android:elevation="5dp"
+                     card_view:cardBackgroundColor="@android:color/transparent"
+                     card_view:cardCornerRadius="5dp">
+ -->
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:elevation="5dp"
-                    card_view:cardBackgroundColor="@android:color/transparent"
-                    card_view:cardCornerRadius="5dp">
--->
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
+                    android:layout_height="wrap_content">
 
-                        <com.google.android.material.textfield.TextInputLayout
-                            android:layout_width="0dp"
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="4">
+
+                        <EditText
+                            android:fontFamily="@font/museosans_300"
+                            android:id="@+id/et_visitor_mobile_no"
+                            style="@style/editTextStyleVisitor"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_weight="4">
+                            android:hint="Enter Visitor Mobile No."
+                            android:imeOptions="actionNext"
+                            android:inputType="number"
+                            android:maxLength="13" />
+                    </com.google.android.material.textfield.TextInputLayout>
 
-                            <EditText
-                                android:fontFamily="@font/museosans_300"
-                                android:id="@+id/et_visitor_mobile_no"
-                                style="@style/editTextStyleVisitor"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:hint="Enter Visitor Mobile No."
-                                android:imeOptions="actionNext"
-                                android:inputType="number"
-                                android:maxLength="13" />
-                        </com.google.android.material.textfield.TextInputLayout>
+                    <LinearLayout
+                        android:id="@+id/lay_contact"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center">
 
-                        <LinearLayout
-                            android:id="@+id/lay_contact"
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:layout_weight="1"
-                            android:gravity="center">
-
-                            <ImageView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:src="@drawable/ic_contact_phone_black_24dp" />
-                        </LinearLayout>
-
-
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/ic_contact_phone_black_24dp" />
                     </LinearLayout>
-<!--
-                </android.support.v7.widget.CardView>
--->
+
+
+                </LinearLayout>
+                <!--
+                                </android.support.v7.widget.CardView>
+                -->
 
                 <LinearLayout
                     android:id="@+id/lay_rest_content"
@@ -140,52 +138,52 @@
                         android:text="Visitor Details"
                         android:textStyle="bold" />
 
-                   <!-- <android.support.v7.widget.CardView
+                    <!-- <android.support.v7.widget.CardView
+                         android:layout_width="match_parent"
+                         android:layout_height="wrap_content"
+                         android:layout_gravity="center"
+                         android:elevation="5dp"
+                         card_view:cardBackgroundColor="@android:color/transparent"
+                         card_view:cardCornerRadius="5dp">-->
+
+                    <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:elevation="5dp"
-                        card_view:cardBackgroundColor="@android:color/transparent"
-                        card_view:cardCornerRadius="5dp">-->
+                        android:orientation="vertical">
 
-                        <LinearLayout
+                        <com.google.android.material.textfield.TextInputLayout
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="vertical">
+                            android:layout_height="wrap_content">
 
-                            <com.google.android.material.textfield.TextInputLayout
+                            <EditText
+                                android:fontFamily="@font/museosans_300"
+                                android:id="@+id/et_first_name"
+                                style="@style/editTextStyleVisitor"
                                 android:layout_width="match_parent"
-                                android:layout_height="wrap_content">
+                                android:layout_height="wrap_content"
+                                android:hint="First Name*"
+                                android:imeOptions="actionNext"
+                                android:inputType="textPersonName" />
+                        </com.google.android.material.textfield.TextInputLayout>
 
-                                <EditText
-                                    android:fontFamily="@font/museosans_300"
-                                    android:id="@+id/et_first_name"
-                                    style="@style/editTextStyleVisitor"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:hint="First Name*"
-                                    android:imeOptions="actionNext"
-                                    android:inputType="textPersonName" />
-                            </com.google.android.material.textfield.TextInputLayout>
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
 
-                            <com.google.android.material.textfield.TextInputLayout
+                            <EditText
+                                android:fontFamily="@font/museosans_300"
+                                android:id="@+id/et_last_name"
+                                style="@style/editTextStyleVisitor"
                                 android:layout_width="match_parent"
-                                android:layout_height="wrap_content">
-
-                                <EditText
-                                    android:fontFamily="@font/museosans_300"
-                                    android:id="@+id/et_last_name"
-                                    style="@style/editTextStyleVisitor"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:hint="Last Name"
-                                    android:imeOptions="actionDone"
-                                    android:inputType="textPersonName" />
-                            </com.google.android.material.textfield.TextInputLayout>
-                        </LinearLayout>
-<!--
-                    </android.support.v7.widget.CardView>
--->
+                                android:layout_height="wrap_content"
+                                android:hint="Last Name"
+                                android:imeOptions="actionDone"
+                                android:inputType="textPersonName" />
+                        </com.google.android.material.textfield.TextInputLayout>
+                    </LinearLayout>
+                    <!--
+                                        </android.support.v7.widget.CardView>
+                    -->
 
                     <TextView
                         android:layout_width="match_parent"
@@ -196,155 +194,155 @@
                         android:textColor="@color/gray_dark"
                         android:textStyle="bold" />
 
-                   <!-- <android.support.v7.widget.CardView
+                    <!-- <android.support.v7.widget.CardView
+                         android:layout_width="match_parent"
+                         android:layout_height="wrap_content"
+                         android:layout_gravity="center"
+                         android:layout_marginTop="10dp"
+                         android:elevation="5dp"
+                         card_view:cardBackgroundColor="@android:color/transparent"
+                         card_view:cardCornerRadius="5dp">
+ -->
+                    <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_marginTop="10dp"
-                        android:elevation="5dp"
-                        card_view:cardBackgroundColor="@android:color/transparent"
-                        card_view:cardCornerRadius="5dp">
--->
-                        <LinearLayout
+                        android:orientation="vertical">
+
+                        <RadioGroup
+                            android:id="@+id/rg"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:orientation="vertical">
+                            android:orientation="horizontal">
 
-                            <RadioGroup
-                                android:id="@+id/rg"
+                            <RadioButton
+                                android:fontFamily="@font/museosans_300"
+                                android:id="@+id/rb_male"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:checked="true"
+                                android:text="Male" />
+
+                            <RadioButton
+                                android:fontFamily="@font/museosans_300"
+                                android:id="@+id/rb_female"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="Female" />
+                        </RadioGroup>
+                    </LinearLayout>
+                    <!--
+                                        </android.support.v7.widget.CardView>
+                    -->
+
+                    <!-- <android.support.v7.widget.CardView
+                         android:layout_width="match_parent"
+                         android:layout_height="wrap_content"
+                         android:layout_gravity="center"
+                         android:layout_marginTop="20dp"
+                         android:elevation="5dp"
+                         card_view:cardBackgroundColor="@android:color/transparent"
+                         card_view:cardCornerRadius="5dp">-->
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <EditText
+                                android:fontFamily="@font/museosans_300"
+                                android:id="@+id/et_email"
+                                style="@style/editTextStyleVisitor"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:orientation="horizontal">
+                                android:hint="Email"
+                                android:imeOptions="actionNext"
+                                android:inputType="textEmailAddress" />
+                        </com.google.android.material.textfield.TextInputLayout>
 
-                                <RadioButton
-                                    android:fontFamily="@font/museosans_300"
-                                    android:id="@+id/rb_male"
-                                    android:layout_width="0dp"
-                                    android:layout_height="wrap_content"
-                                    android:layout_weight="1"
-                                    android:checked="true"
-                                    android:text="Male" />
-
-                                <RadioButton
-                                    android:fontFamily="@font/museosans_300"
-                                    android:id="@+id/rb_female"
-                                    android:layout_width="0dp"
-                                    android:layout_height="wrap_content"
-                                    android:layout_weight="1"
-                                    android:text="Female" />
-                            </RadioGroup>
-                        </LinearLayout>
-<!--
-                    </android.support.v7.widget.CardView>
--->
-
-                   <!-- <android.support.v7.widget.CardView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_marginTop="20dp"
-                        android:elevation="5dp"
-                        card_view:cardBackgroundColor="@android:color/transparent"
-                        card_view:cardCornerRadius="5dp">-->
-
-                        <LinearLayout
+                        <com.google.android.material.textfield.TextInputLayout
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="vertical">
+                            android:layout_height="wrap_content">
 
-                            <com.google.android.material.textfield.TextInputLayout
+                            <EditText
+                                android:id="@+id/et_mobile"
+                                style="@style/editTextStyleVisitor"
                                 android:layout_width="match_parent"
-                                android:layout_height="wrap_content">
+                                android:layout_height="wrap_content"
+                                android:hint="Mobile*"
+                                android:fontFamily="@font/museosans_300"
+                                android:imeOptions="actionNext"
+                                android:inputType="number"
+                                android:maxLength="13" />
+                        </com.google.android.material.textfield.TextInputLayout>
 
-                                <EditText
-                                    android:fontFamily="@font/museosans_300"
-                                    android:id="@+id/et_email"
-                                    style="@style/editTextStyleVisitor"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:hint="Email"
-                                    android:imeOptions="actionNext"
-                                    android:inputType="textEmailAddress" />
-                            </com.google.android.material.textfield.TextInputLayout>
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
 
-                            <com.google.android.material.textfield.TextInputLayout
+                            <EditText
+                                android:id="@+id/et_company_name"
+                                style="@style/editTextStyleVisitor"
                                 android:layout_width="match_parent"
-                                android:layout_height="wrap_content">
+                                android:layout_height="wrap_content"
+                                android:hint="Company Name*"
+                                android:fontFamily="@font/museosans_300"
+                                android:inputType="textCapSentences" />
+                        </com.google.android.material.textfield.TextInputLayout>
 
-                                <EditText
-                                    android:id="@+id/et_mobile"
-                                    style="@style/editTextStyleVisitor"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:hint="Mobile*"
-                                    android:fontFamily="@font/museosans_300"
-                                    android:imeOptions="actionNext"
-                                    android:inputType="number"
-                                    android:maxLength="13" />
-                            </com.google.android.material.textfield.TextInputLayout>
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
 
-                            <com.google.android.material.textfield.TextInputLayout
+                            <EditText
+                                android:id="@+id/et_address"
+                                style="@style/editTextStyleVisitor"
                                 android:layout_width="match_parent"
-                                android:layout_height="wrap_content">
+                                android:layout_height="wrap_content"
+                                android:hint="Address"
+                                android:fontFamily="@font/museosans_300"
+                                android:imeOptions="actionNext"
+                                android:inputType="textCapSentences" />
+                        </com.google.android.material.textfield.TextInputLayout>
 
-                                <EditText
-                                    android:id="@+id/et_company_name"
-                                    style="@style/editTextStyleVisitor"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:hint="Company Name*"
-                                    android:fontFamily="@font/museosans_300"
-                                    android:inputType="textCapSentences" />
-                            </com.google.android.material.textfield.TextInputLayout>
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
 
-                            <com.google.android.material.textfield.TextInputLayout
+                            <EditText
+                                android:id="@+id/et_city"
+                                style="@style/editTextStyleVisitor"
                                 android:layout_width="match_parent"
-                                android:layout_height="wrap_content">
+                                android:layout_height="wrap_content"
+                                android:hint="City"
+                                android:fontFamily="@font/museosans_300"
+                                android:imeOptions="actionNext"
+                                android:inputType="textCapSentences" />
+                        </com.google.android.material.textfield.TextInputLayout>
 
-                                <EditText
-                                    android:id="@+id/et_address"
-                                    style="@style/editTextStyleVisitor"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:hint="Address"
-                                    android:fontFamily="@font/museosans_300"
-                                    android:imeOptions="actionNext"
-                                    android:inputType="textCapSentences" />
-                            </com.google.android.material.textfield.TextInputLayout>
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
 
-                            <com.google.android.material.textfield.TextInputLayout
+                            <EditText
+                                android:id="@+id/et_pin_code"
+                                style="@style/editTextStyleVisitor"
                                 android:layout_width="match_parent"
-                                android:layout_height="wrap_content">
-
-                                <EditText
-                                    android:id="@+id/et_city"
-                                    style="@style/editTextStyleVisitor"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:hint="City"
-                                    android:fontFamily="@font/museosans_300"
-                                    android:imeOptions="actionNext"
-                                    android:inputType="textCapSentences" />
-                            </com.google.android.material.textfield.TextInputLayout>
-
-                            <com.google.android.material.textfield.TextInputLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content">
-
-                                <EditText
-                                    android:id="@+id/et_pin_code"
-                                    style="@style/editTextStyleVisitor"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:hint="PinCode"
-                                    android:fontFamily="@font/museosans_300"
-                                    android:imeOptions="actionNext"
-                                    android:inputType="number" />
-                            </com.google.android.material.textfield.TextInputLayout>
-                        </LinearLayout>
-<!--
-                    </android.support.v7.widget.CardView>
--->
+                                android:layout_height="wrap_content"
+                                android:hint="PinCode"
+                                android:fontFamily="@font/museosans_300"
+                                android:imeOptions="actionNext"
+                                android:inputType="number" />
+                        </com.google.android.material.textfield.TextInputLayout>
+                    </LinearLayout>
+                    <!--
+                                        </android.support.v7.widget.CardView>
+                    -->
 
                     <TextView
                         android:layout_width="match_parent"
@@ -363,209 +361,209 @@
                         card_view:cardBackgroundColor="@android:color/transparent"
                         card_view:cardCornerRadius="5dp">
 -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <EditText
+                                android:id="@+id/et_purpose"
+                                style="@style/editTextStyleVisitor"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:hint="Purpose *"
+                                android:fontFamily="@font/museosans_300"
+                                android:imeOptions="actionNext"
+                                android:inputType="textCapSentences" />
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="5dp"
+                            android:layout_marginTop="10dp"
+                            android:text="Appointment Date "
+                            android:textColor="@color/gray_dark"
+                            android:fontFamily="@font/museosans_500"
+                            android:textSize="12dp" />
+
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:orientation="vertical">
-
-                            <com.google.android.material.textfield.TextInputLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content">
-
-                                <EditText
-                                    android:id="@+id/et_purpose"
-                                    style="@style/editTextStyleVisitor"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:hint="Purpose *"
-                                    android:fontFamily="@font/museosans_300"
-                                    android:imeOptions="actionNext"
-                                    android:inputType="textCapSentences" />
-                            </com.google.android.material.textfield.TextInputLayout>
+                            android:orientation="horizontal"
+                            android:weightSum="2">
 
                             <TextView
-                                android:layout_width="match_parent"
+                                android:id="@+id/tv_from_date"
+                                style="@style/editTextStyleVisitor"
+                                android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_marginLeft="5dp"
                                 android:layout_marginTop="10dp"
-                                android:text="Appointment Date "
-                                android:textColor="@color/gray_dark"
-                                android:fontFamily="@font/museosans_500"
-                                android:textSize="12dp" />
-
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:orientation="horizontal"
-                                android:weightSum="2">
-
-                                <TextView
-                                    android:id="@+id/tv_from_date"
-                                    style="@style/editTextStyleVisitor"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginTop="10dp"
-                                    android:layout_weight="1"
-                                    android:background="@drawable/textfield_multiline_default_holo_light"
-                                    android:hint="From "
-                                    android:fontFamily="@font/museosans_300"
-                                    android:maxLines="1"
-                                    android:singleLine="true" />
-
-                                <TextView
-                                    android:id="@+id/tv_to_date"
-                                    style="@style/editTextStyleVisitor"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginTop="10dp"
-                                    android:layout_weight="1"
-                                    android:background="@drawable/textfield_multiline_default_holo_light"
-                                    android:hint="To"
-                                    android:fontFamily="@font/museosans_300"
-                                    android:maxLines="1"
-                                    android:singleLine="true" />
-
-                            </LinearLayout>
+                                android:layout_weight="1"
+                                android:background="@drawable/textfield_multiline_default_holo_light"
+                                android:hint="From "
+                                android:fontFamily="@font/museosans_300"
+                                android:maxLines="1"
+                                android:singleLine="true" />
 
                             <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginLeft="5dp"
-                                android:layout_marginTop="10dp"
-                                android:text="Time "
-                                android:fontFamily="@font/museosans_500"
-                                android:textColor="@color/gray_dark"
-                                android:textSize="12dp" />
-
-                            <LinearLayout
-                                android:layout_width="match_parent"
+                                android:id="@+id/tv_to_date"
+                                style="@style/editTextStyleVisitor"
+                                android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="10dp"
-                                android:orientation="horizontal"
-                                android:weightSum="2">
-
-                                <LinearLayout
-                                    android:layout_width="0dp"
-                                    android:layout_height="wrap_content"
-                                    android:layout_weight="1"
-                                    android:orientation="horizontal"
-                                    android:weightSum="2">
-
-                                    <Spinner
-                                        android:id="@+id/sp_start_time_hour"
-                                        android:layout_width="0dp"
-                                        android:layout_height="wrap_content"
-                                        android:layout_weight="1" />
-
-                                    <Spinner
-                                        android:id="@+id/sp_start_time_minutes"
-                                        android:layout_width="0dp"
-                                        android:layout_height="wrap_content"
-                                        android:layout_weight="1" />
-                                </LinearLayout>
-
-                                <LinearLayout
-                                    android:layout_width="0dp"
-                                    android:layout_height="wrap_content"
-                                    android:layout_weight="1"
-                                    android:orientation="horizontal"
-                                    android:weightSum="2">
-
-
-                                    <Spinner
-                                        android:id="@+id/sp_end_time_hour"
-                                        android:layout_width="0dp"
-                                        android:layout_height="wrap_content"
-                                        android:layout_weight="1" />
-
-                                    <Spinner
-                                        android:id="@+id/sp_end_time_minutes"
-                                        android:layout_width="0dp"
-                                        android:layout_height="wrap_content"
-                                        android:layout_weight="1" />
-                                </LinearLayout>
-
-                            </LinearLayout>
-
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginLeft="5dp"
-                                android:fontFamily="@font/museosans_500"
-                                android:layout_marginTop="10dp"
-                                android:text="Additional No. of Persons"
-                                android:textStyle="bold" />
-
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:orientation="horizontal"
-                                android:padding="10dp">
-
-                                <ImageView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:src="@drawable/ic_person_black_24dp" />
-
-                                <LinearLayout
-                                    android:id="@+id/lay_product_count"
-                                    android:layout_width="100dp"
-                                    android:layout_height="30dp"
-                                    android:layout_marginLeft="10dp"
-                                    android:background="@drawable/rec_shape">
-
-                                    <TextView
-                                        android:id="@+id/tv_decrement"
-                                        android:layout_width="0dp"
-                                        android:layout_height="match_parent"
-                                        android:layout_weight="1.3"
-                                        android:background="@drawable/left_rec_corner"
-                                        android:gravity="center"
-                                        android:text="-"
-                                        android:fontFamily="@font/museosans_300"
-                                        android:textColor="@color/white" />
-
-                                    <TextView
-                                        android:id="@+id/et_additional_no_person"
-                                        android:layout_width="0dp"
-                                        android:layout_height="wrap_content"
-                                        android:layout_weight="1.4"
-                                        android:gravity="center"
-                                        android:fontFamily="@font/museosans_300"
-                                        android:text="0" />
-
-                                    <TextView
-                                        android:fontFamily="@font/museosans_300"
-                                        android:id="@+id/tv_increment"
-                                        android:layout_width="0dp"
-                                        android:layout_height="match_parent"
-                                        android:layout_weight="1.3"
-                                        android:background="@drawable/left_rec_corner"
-                                        android:gravity="center"
-                                        android:text="+"
-                                        android:textColor="@color/white" />
-                                </LinearLayout>
-
-                            </LinearLayout>
-
-
-                            <!--<android.support.design.widget.TextInputLayout-->
-                            <!--android:layout_width="match_parent"-->
-                            <!--android:layout_height="wrap_content">-->
-
-                            <!--<EditText-->
-                            <!--android:id="@+id/et_additional_no_person"-->
-                            <!--style="@style/editTextStyleVisitor"-->
-                            <!--android:layout_width="match_parent"-->
-                            <!--android:layout_height="wrap_content"-->
-                            <!--android:hint="Additional No. of Persons"-->
-                            <!--android:imeOptions="actionDone" />-->
-                            <!--</android.support.design.widget.TextInputLayout>-->
+                                android:layout_weight="1"
+                                android:background="@drawable/textfield_multiline_default_holo_light"
+                                android:hint="To"
+                                android:fontFamily="@font/museosans_300"
+                                android:maxLines="1"
+                                android:singleLine="true" />
 
                         </LinearLayout>
-<!--
-                    </android.support.v7.widget.CardView>
--->
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="5dp"
+                            android:layout_marginTop="10dp"
+                            android:text="Time "
+                            android:fontFamily="@font/museosans_500"
+                            android:textColor="@color/gray_dark"
+                            android:textSize="12dp" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:orientation="horizontal"
+                            android:weightSum="2">
+
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:orientation="horizontal"
+                                android:weightSum="2">
+
+                                <Spinner
+                                    android:id="@+id/sp_start_time_hour"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1" />
+
+                                <Spinner
+                                    android:id="@+id/sp_start_time_minutes"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:orientation="horizontal"
+                                android:weightSum="2">
+
+
+                                <Spinner
+                                    android:id="@+id/sp_end_time_hour"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1" />
+
+                                <Spinner
+                                    android:id="@+id/sp_end_time_minutes"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1" />
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="5dp"
+                            android:fontFamily="@font/museosans_500"
+                            android:layout_marginTop="10dp"
+                            android:text="Additional No. of Persons"
+                            android:textStyle="bold" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:padding="10dp">
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:src="@drawable/ic_person_black_24dp" />
+
+                            <LinearLayout
+                                android:id="@+id/lay_product_count"
+                                android:layout_width="100dp"
+                                android:layout_height="30dp"
+                                android:layout_marginLeft="10dp"
+                                android:background="@drawable/rec_shape">
+
+                                <TextView
+                                    android:id="@+id/tv_decrement"
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1.3"
+                                    android:background="@drawable/left_rec_corner"
+                                    android:gravity="center"
+                                    android:text="-"
+                                    android:fontFamily="@font/museosans_300"
+                                    android:textColor="@color/white" />
+
+                                <TextView
+                                    android:id="@+id/et_additional_no_person"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1.4"
+                                    android:gravity="center"
+                                    android:fontFamily="@font/museosans_300"
+                                    android:text="0" />
+
+                                <TextView
+                                    android:fontFamily="@font/museosans_300"
+                                    android:id="@+id/tv_increment"
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1.3"
+                                    android:background="@drawable/left_rec_corner"
+                                    android:gravity="center"
+                                    android:text="+"
+                                    android:textColor="@color/white" />
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+
+                        <!--<android.support.design.widget.TextInputLayout-->
+                        <!--android:layout_width="match_parent"-->
+                        <!--android:layout_height="wrap_content">-->
+
+                        <!--<EditText-->
+                        <!--android:id="@+id/et_additional_no_person"-->
+                        <!--style="@style/editTextStyleVisitor"-->
+                        <!--android:layout_width="match_parent"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:hint="Additional No. of Persons"-->
+                        <!--android:imeOptions="actionDone" />-->
+                        <!--</android.support.design.widget.TextInputLayout>-->
+
+                    </LinearLayout>
+                    <!--
+                                        </android.support.v7.widget.CardView>
+                    -->
 
                     <LinearLayout
                         android:layout_width="match_parent"

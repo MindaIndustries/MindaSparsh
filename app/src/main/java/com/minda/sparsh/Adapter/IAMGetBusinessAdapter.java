@@ -1,7 +1,6 @@
 package com.minda.sparsh.Adapter;
 
 import android.content.Context;
-import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,6 +15,7 @@ import com.minda.sparsh.model.IAMGetBusinessModel;
 import java.util.ArrayList;
 import java.util.List;
 
+import androidx.recyclerview.widget.RecyclerView;
 
 
 public class IAMGetBusinessAdapter extends RecyclerView.Adapter<IAMGetBusinessAdapter.MyViewHolder> {
@@ -37,7 +37,7 @@ public class IAMGetBusinessAdapter extends RecyclerView.Adapter<IAMGetBusinessAd
         }
     }
 
-    public IAMGetBusinessAdapter(List<IAMGetBusinessModel> viewAppointmentModelList, Context context1,String check ) {
+    public IAMGetBusinessAdapter(List<IAMGetBusinessModel> viewAppointmentModelList, Context context1, String check) {
         this.list = viewAppointmentModelList;
         this.context = context1;
         this.checkCondition = check;
@@ -88,20 +88,18 @@ public class IAMGetBusinessAdapter extends RecyclerView.Adapter<IAMGetBusinessAd
         }
 
 
-
         holder.checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
                 if (context instanceof RequestForAccessActivity) {
-                    if(b){
+                    if (b) {
                         iamGetDomainModel.setSelected(true);
                         selectedBusines.add(iamGetDomainModel);
-                    }
-                    else{
+                    } else {
                         selectedBusines.remove(iamGetDomainModel);
                         iamGetDomainModel.setSelected(false);
                     }
-                    ((RequestForAccessActivity) context).hitIAMGetPlantApi(String.valueOf(iamGetDomainModel.getID()),selectedBusines,"checkBox",b);
+                    ((RequestForAccessActivity) context).hitIAMGetPlantApi(String.valueOf(iamGetDomainModel.getID()), selectedBusines, "checkBox", b);
 
                 }
             }
@@ -122,6 +120,7 @@ public class IAMGetBusinessAdapter extends RecyclerView.Adapter<IAMGetBusinessAd
     public int getItemCount() {
         return list.size();
     }
+
     private void resetData(String itemName) {
         for (int i = 0; i < list.size(); i++) {
             IAMGetBusinessModel mList = list.get(i);

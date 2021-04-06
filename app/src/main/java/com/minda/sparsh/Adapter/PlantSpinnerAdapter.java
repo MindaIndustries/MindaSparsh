@@ -9,7 +9,6 @@ import android.widget.SpinnerAdapter;
 import android.widget.TextView;
 
 import com.minda.sparsh.R;
-import com.minda.sparsh.model.Group_Model;
 import com.minda.sparsh.model.Plant_Model;
 
 import java.util.List;
@@ -90,7 +89,7 @@ public class PlantSpinnerAdapter implements SpinnerAdapter {
     public View getCustomView(int position, View convertView, ViewGroup parent) {
         View row = mInflater.inflate(R.layout.spinner_cell_view, parent, false);
         TextView mTxt = (TextView) row.findViewById(R.id.spinner_txt_title);
-          mTxt.setText(spinnerData.get(position).getUnitName());
+        mTxt.setText(spinnerData.get(position).getUnitName());
 
 
         return row;

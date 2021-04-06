@@ -17,8 +17,9 @@
     </style>
 
     <style name="lipstick_spinner_header_style">
-    <item name="android:background">@drawable/spinner_bg</item>
+        <item name="android:background">@drawable/spinner_bg</item>
     </style>
+
     <style name="AppTheme.NoStatusbar">
         <item name="android:windowFullscreen">true</item>
         <item name="windowNoTitle">true</item>
@@ -70,7 +71,8 @@
         <item name="android:textSize">16sp</item>
         <item name="android:textColor">@color/gray_dark</item>
     </style>
-    <style name="TermsDialogStyle" parent="@android:style/Theme.Holo.Dialog" >
+
+    <style name="TermsDialogStyle" parent="@android:style/Theme.Holo.Dialog">
         <item name="android:background">@android:color/transparent</item>
         <item name="android:windowMinWidthMajor">85%</item>
         <item name="android:windowMinWidthMinor">85%</item>
@@ -105,18 +107,17 @@
     </style>
 
 
-
     <style name="AlertDialogCustom" parent="Theme.AppCompat.Light.Dialog.Alert">
         <item name="android:background">@color/white</item>
     </style>
 
-   <!-- <style name="TextLabel" parent="TextAppearance.AppCompat">
-        <item name="android:textColorHint">@color/colorPrimary</item>
-        <item name="colorAccent">@color/colorAccent</item>
-        <item name="colorControlNormal">@color/ColorPrimaryDark</item>
-        <item name="colorControlActivated">@color/black</item>
-    </style>
--->
+    <!-- <style name="TextLabel" parent="TextAppearance.AppCompat">
+         <item name="android:textColorHint">@color/colorPrimary</item>
+         <item name="colorAccent">@color/colorAccent</item>
+         <item name="colorControlNormal">@color/ColorPrimaryDark</item>
+         <item name="colorControlActivated">@color/black</item>
+     </style>
+ -->
     <style name="NavigationDrawerStyle">
         <item name="android:fontFamily" tools:ignore="NewApi">@font/museosans_700</item>
     </style>

@@ -8,72 +8,81 @@
         <item
             android:id="@+id/profile"
             android:title="Profile"
-            android:textColor="#000000"/>
+            android:textColor="#000000" />
     </group>
 
 
     <group android:checkableBehavior="single">
-        <item android:title="MindaCare"
+        <item
+            android:title="MindaCare"
             android:visible="true"
             android:id="@+id/mindacare"
-            android:textColor="#000000"/>
+            android:textColor="#000000" />
     </group>
     <group android:checkableBehavior="single">
-        <item android:title="About Us"
+        <item
+            android:title="About Us"
             android:id="@+id/nav_aboutus"
-            android:textColor="#000000"/>
+            android:textColor="#000000" />
     </group>
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/nav_newsletter"
             android:title="Newsletter"
-            android:textColor="#000000"/>
+            android:textColor="#000000" />
     </group>
     <group android:checkableBehavior="single">
-        <item android:title="HR/Admin"
+        <item
+            android:title="HR/Admin"
             android:id="@+id/hradmin"
 
-            android:textColor="#000000"/>
+            android:textColor="#000000" />
     </group>
     <group android:checkableBehavior="single">
-        <item android:title="Manufacturing"
+        <item
+            android:title="Manufacturing"
             android:id="@+id/nav_manufacturing"
-            android:textColor="#000000"/>
+            android:textColor="#000000" />
     </group>
-    <group android:checkableBehavior="single"
+    <group
+        android:checkableBehavior="single"
         android:visible="false">
-        <item android:title="Finance"
+        <item
+            android:title="Finance"
             android:id="@+id/nav_finance"
-            android:textColor="#000000"/>
+            android:textColor="#000000" />
     </group>
-    <group android:checkableBehavior="single"
-        >
-        <item android:title="IT"
+    <group android:checkableBehavior="single">
+        <item
+            android:title="IT"
             android:id="@+id/nav_it"
-            android:textColor="#000000"/>
+            android:textColor="#000000" />
     </group>
 
 
-    <group android:checkableBehavior="single"
+    <group
+        android:checkableBehavior="single"
         android:visible="false">
-        <item android:title="Support"
+        <item
+            android:title="Support"
             android:id="@+id/nav_support"
-            android:textColor="#000000"/>
+            android:textColor="#000000" />
     </group>
 
-    <group android:checkableBehavior="single"
+    <group
+        android:checkableBehavior="single"
         android:visible="false">
-        <item android:title="Setting"
+        <item
+            android:title="Setting"
             android:id="@+id/nav_setting"
-            android:textColor="#000000"/>
+            android:textColor="#000000" />
     </group>
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/nav_signout"
             android:title="Log Out"
-            android:textColor="#000000"/>
+            android:textColor="#000000" />
     </group>
-
 
 
 </menu>

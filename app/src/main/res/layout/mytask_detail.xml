@@ -5,6 +5,7 @@
     android:layout_height="match_parent"
     android:descendantFocusability="beforeDescendants"
     android:focusableInTouchMode="true">
+
     <include layout="@layout/toolbar" />
 
     <RelativeLayout
@@ -27,14 +28,12 @@
     </RelativeLayout>
 
 
-
-
     <ScrollView
         android:layout_marginTop="?android:attr/actionBarSize"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:fillViewport="true"
-        >
+        android:fillViewport="true">
+
         <RelativeLayout
             android:padding="20dp"
             android:layout_width="match_parent"
@@ -44,14 +43,15 @@
                 android:id="@+id/view"
                 android:layout_centerInParent="true"
                 android:layout_width="0dp"
-                android:layout_height="1dp"/>
+                android:layout_height="1dp" />
+
             <TextView
                 android:fontFamily="@font/museosans_500"
                 android:id="@+id/heading"
                 android:textSize="18sp"
                 android:text="Raise Ticket"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content" />
 
             <TextView
                 android:layout_marginTop="30dp"
@@ -75,8 +75,7 @@
                 android:dropDownVerticalOffset="20dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="5dp"
-                ></com.minda.sparsh.customview.NoDefaultSpinner>
+                android:padding="5dp"></com.minda.sparsh.customview.NoDefaultSpinner>
 
             <LinearLayout
                 android:layout_marginTop="5dp"
@@ -109,8 +108,7 @@
                 android:dropDownVerticalOffset="20dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="5dp"
-                ></com.minda.sparsh.customview.NoDefaultSpinner>
+                android:padding="5dp"></com.minda.sparsh.customview.NoDefaultSpinner>
 
             <LinearLayout
                 android:layout_marginTop="5dp"
@@ -145,8 +143,7 @@
                 android:dropDownVerticalOffset="20dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="5dp"
-                ></com.minda.sparsh.customview.NoDefaultSpinner>
+                android:padding="5dp"></com.minda.sparsh.customview.NoDefaultSpinner>
 
             <LinearLayout
                 android:visibility="gone"
@@ -183,8 +180,7 @@
                 android:dropDownVerticalOffset="20dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="5dp"
-                ></com.minda.sparsh.customview.NoDefaultSpinner>
+                android:padding="5dp"></com.minda.sparsh.customview.NoDefaultSpinner>
 
             <LinearLayout
                 android:visibility="gone"
@@ -220,8 +216,7 @@
                 android:dropDownVerticalOffset="20dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="5dp"
-                ></com.minda.sparsh.customview.NoDefaultSpinner>
+                android:padding="5dp"></com.minda.sparsh.customview.NoDefaultSpinner>
 
             <LinearLayout
                 android:visibility="gone"
@@ -255,8 +250,7 @@
                 android:dropDownVerticalOffset="20dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="5dp"
-                ></com.minda.sparsh.customview.NoDefaultSpinner>
+                android:padding="5dp"></com.minda.sparsh.customview.NoDefaultSpinner>
 
             <LinearLayout
                 android:layout_marginTop="5dp"
@@ -266,6 +260,7 @@
                 android:layout_below="@+id/ticket_group"
                 android:orientation="horizontal"
                 android:id="@+id/ll3"></LinearLayout>
+
             <TextView
                 android:layout_marginTop="20dp"
                 android:id="@+id/assignee"
@@ -288,8 +283,7 @@
                 android:dropDownVerticalOffset="20dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="5dp"
-                ></com.minda.sparsh.customview.NoDefaultSpinner>
+                android:padding="5dp"></com.minda.sparsh.customview.NoDefaultSpinner>
 
             <LinearLayout
                 android:layout_marginTop="5dp"
@@ -322,8 +316,7 @@
                 android:layout_width="match_parent"
                 android:layout_toRightOf="@+id/view"
                 android:layout_height="wrap_content"
-                android:padding="5dp"
-                ></com.minda.sparsh.customview.NoDefaultSpinner>
+                android:padding="5dp"></com.minda.sparsh.customview.NoDefaultSpinner>
 
             <LinearLayout
                 android:layout_marginTop="5dp"
@@ -333,6 +326,7 @@
                 android:layout_below="@+id/reportedby_spinner"
                 android:orientation="horizontal"
                 android:id="@+id/ll5"></LinearLayout>
+
             <TextView
                 android:layout_marginTop="20dp"
                 android:id="@+id/priority"
@@ -355,8 +349,7 @@
                 android:dropDownVerticalOffset="20dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="5dp"
-                ></com.minda.sparsh.customview.NoDefaultSpinner>
+                android:padding="5dp"></com.minda.sparsh.customview.NoDefaultSpinner>
 
             <LinearLayout
                 android:layout_marginTop="5dp"
@@ -377,6 +370,7 @@
                 android:layout_below="@+id/ll6"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
+
             <TextView
                 android:layout_marginTop="20dp"
                 android:id="@+id/reported_date_value"
@@ -412,6 +406,7 @@
                 android:layout_below="@+id/ll7"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
+
             <EditText
                 android:layout_marginTop="10dp"
                 android:layout_below="@+id/description"
@@ -425,8 +420,7 @@
                 android:gravity="left|top"
                 android:hint="Enter Description here"
                 android:overScrollMode="always"
-                android:padding="5dp"
-                />
+                android:padding="5dp" />
 
             <ImageView
                 android:layout_marginTop="10dp"
@@ -435,7 +429,7 @@
                 android:src="@drawable/attach"
                 android:id="@+id/attachment"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content" />
 
             <TextView
                 android:layout_marginRight="10dp"
@@ -447,8 +441,7 @@
                 android:layout_height="wrap_content"
                 android:layout_toLeftOf="@+id/attachment"
                 android:text="Add attachment"
-                android:gravity="center"
-                />
+                android:gravity="center" />
 
             <TextView
                 android:layout_marginTop="20dp"
@@ -468,15 +461,15 @@
                 android:layout_marginTop="1dp"
                 android:layout_below="@+id/resolver_files"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content" />
 
             <ImageView
                 android:id="@+id/doc_view"
                 android:layout_below="@+id/attachment"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:visibility="gone"
-                />
+                android:visibility="gone" />
+
             <LinearLayout
                 android:visibility="gone"
                 android:layout_marginTop="5dp"
@@ -499,6 +492,7 @@
                 android:layout_below="@+id/resolver_file_list"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
+
             <AutoCompleteTextView
                 android:layout_marginTop="10dp"
                 android:layout_below="@+id/cc"
@@ -512,8 +506,7 @@
                 android:overScrollMode="always"
                 android:padding="10dp"
                 android:singleLine="true"
-                android:visibility="gone"
-                />
+                android:visibility="gone" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/cclist"
@@ -521,7 +514,7 @@
                 android:layout_marginTop="1dp"
                 android:layout_below="@+id/cc_et"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content" />
 
             <CheckBox
                 android:layout_marginTop="10dp"
@@ -530,7 +523,7 @@
                 android:id="@+id/isclosed"
                 android:visibility="gone"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content" />
 
             <CheckBox
                 android:id="@+id/ishold"
@@ -540,7 +533,7 @@
                 android:layout_toRightOf="@+id/view"
                 android:layout_below="@+id/cclist"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content" />
 
             <CheckBox
                 android:layout_marginTop="10dp"
@@ -549,8 +542,7 @@
                 android:visibility="invisible"
                 android:id="@+id/resumed"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
-
+                android:layout_height="wrap_content" />
 
 
             <TextView
@@ -563,6 +555,7 @@
                 android:layout_below="@+id/resumed"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
+
             <EditText
                 android:layout_marginTop="10dp"
                 android:layout_below="@+id/remarks"
@@ -576,8 +569,7 @@
                 android:gravity="left|top"
                 android:hint="Enter Remakrs here"
                 android:overScrollMode="always"
-                android:padding="5dp"
-                />
+                android:padding="5dp" />
 
 
             <RelativeLayout
@@ -586,12 +578,13 @@
                 android:layout_below="@+id/remarks_et"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
+
                 <TextView
                     android:textSize="16sp"
                     android:fontFamily="@font/museosans_500"
                     android:id="@+id/ticket_history"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
+                    android:layout_height="wrap_content" />
 
                 <LinearLayout
                     android:layout_marginTop="5dp"
@@ -601,8 +594,7 @@
                     android:weightSum="5"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
-                    android:background="@drawable/border"
-                    >
+                    android:background="@drawable/border">
 
                     <TextView
                         android:layout_width="0dp"
@@ -625,6 +617,7 @@
                         android:textSize="12sp"
 
                         />
+
                     <TextView
                         android:textSize="12sp"
 
@@ -636,6 +629,7 @@
                         android:background="@drawable/border"
 
                         />
+
                     <TextView
                         android:textSize="12sp"
 
@@ -647,6 +641,7 @@
                         android:background="@drawable/border"
 
                         />
+
                     <TextView
                         android:textSize="12sp"
 
@@ -660,22 +655,16 @@
                         />
 
 
-
-
                 </LinearLayout>
-
-
 
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:layout_below="@+id/header"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:id="@+id/tkt_history"
-                    />
+                    android:id="@+id/tkt_history" />
 
             </RelativeLayout>
-
 
 
             <Button
@@ -690,8 +679,8 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/header_history"
                 android:text="Cancel"
-                android:fontFamily="@font/museosans_500"
-                />
+                android:fontFamily="@font/museosans_500" />
+
             <Button
                 android:textColor="@color/white"
                 android:layout_marginLeft="10dp"
@@ -703,8 +692,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/header_history"
                 android:text="Update"
-                android:fontFamily="@font/museosans_500"
-                />
+                android:fontFamily="@font/museosans_500" />
 
 
         </RelativeLayout>

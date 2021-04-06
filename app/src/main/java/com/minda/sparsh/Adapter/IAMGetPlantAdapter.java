@@ -1,7 +1,6 @@
 package com.minda.sparsh.Adapter;
 
 import android.content.Context;
-import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +12,8 @@ import com.minda.sparsh.model.IAMGetPlantModel;
 import com.minda.sparsh.util.PlantInterface;
 
 import java.util.List;
+
+import androidx.recyclerview.widget.RecyclerView;
 
 
 public class IAMGetPlantAdapter extends RecyclerView.Adapter<IAMGetPlantAdapter.MyViewHolder> {
@@ -49,14 +50,14 @@ public class IAMGetPlantAdapter extends RecyclerView.Adapter<IAMGetPlantAdapter.
     public void onBindViewHolder(final MyViewHolder holder, int position) {
         final IAMGetPlantModel iamGetPlantModel = list.get(position);
         holder.cb.setVisibility(View.VISIBLE);
-        holder.cb.setText(iamGetPlantModel.getUnitName()+" ("+ iamGetPlantModel.getPlantCode()+")");
+        holder.cb.setText(iamGetPlantModel.getUnitName() + " (" + iamGetPlantModel.getPlantCode() + ")");
         holder.cb.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if (holder.cb.isChecked()) {
-                    plantInterface.handleClick(iamGetPlantModel.getPlantCode(), "check",iamGetPlantModel.getUnitName());
+                    plantInterface.handleClick(iamGetPlantModel.getPlantCode(), "check", iamGetPlantModel.getUnitName());
                 } else {
-                    plantInterface.handleClick(iamGetPlantModel.getPlantCode(), "unCheck",iamGetPlantModel.getUnitName());
+                    plantInterface.handleClick(iamGetPlantModel.getPlantCode(), "unCheck", iamGetPlantModel.getUnitName());
                 }
 
 //                ((RequestForAccessActivity) context).plantId(iamGetPlantModel.getPlantCode());

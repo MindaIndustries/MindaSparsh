@@ -11,9 +11,6 @@ import android.graphics.Color;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Environment;
-import androidx.core.app.NotificationCompat;
-import androidx.core.content.FileProvider;
-import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 import android.util.Log;
 
 import com.minda.sparsh.listener.CarotResponse;
@@ -27,6 +24,9 @@ import java.io.OutputStream;
 
 import javax.net.ssl.HttpsURLConnection;
 
+import androidx.core.app.NotificationCompat;
+import androidx.core.content.FileProvider;
+import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 import okhttp3.ResponseBody;
 
 public class BackgroundNotificationService extends IntentService {

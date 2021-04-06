@@ -10,7 +10,6 @@ import android.widget.TextView;
 
 import com.minda.sparsh.R;
 import com.minda.sparsh.model.Business_Model;
-import com.minda.sparsh.model.Group_Model;
 
 import java.util.List;
 

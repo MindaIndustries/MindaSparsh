@@ -3,26 +3,28 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto">
-    <include layout="@layout/toolbar1"
-        />
+
+    <include layout="@layout/toolbar1" />
 
     <RelativeLayout
         android:layout_marginTop="?attr/actionBarSize"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:adjustViewBounds="true"
             android:src="@drawable/birds"
-            android:scaleType="centerCrop"
-            />
+            android:scaleType="centerCrop" />
+
         <LinearLayout
             android:background="@color/translucent"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
+            android:layout_height="match_parent" />
 
     </RelativeLayout>
+
     <RelativeLayout
         android:id="@+id/tab_rl"
         android:layout_marginTop="?attr/actionBarSize"
@@ -47,37 +49,30 @@
                 android:id="@+id/new_concern"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="New Concern"
-                />
+                android:text="New Concern" />
+
             <com.google.android.material.tabs.TabItem
                 android:id="@+id/view_concern"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="View Concern"
-                />
-           <!-- <android.support.design.widget.TabItem
-                android:id="@+id/assign_concern"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Assigned Concern"
-                />
--->        </com.google.android.material.tabs.TabLayout>
+                android:text="View Concern" />
+            <!-- <android.support.design.widget.TabItem
+                 android:id="@+id/assign_concern"
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+                 android:text="Assigned Concern"
+                 />
+ -->
+        </com.google.android.material.tabs.TabLayout>
 
         <FrameLayout
             android:id="@+id/framelayout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_below="@+id/tablayout">
-        </FrameLayout>
-
-
-
+            android:layout_below="@+id/tablayout"></FrameLayout>
 
 
     </RelativeLayout>
-
-
-
 
 
 </RelativeLayout>

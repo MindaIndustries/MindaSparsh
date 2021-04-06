@@ -1,7 +1,6 @@
 package com.minda.sparsh.Adapter;
 
 import android.content.Context;
-import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +10,8 @@ import com.minda.sparsh.R;
 import com.minda.sparsh.model.AccessRequestApproverDetailsModel;
 
 import java.util.List;
+
+import androidx.recyclerview.widget.RecyclerView;
 
 public class AccessRequestApproverDetailsAdapter extends RecyclerView.Adapter<AccessRequestApproverDetailsAdapter.MyViewHolder> {
     private List<AccessRequestApproverDetailsModel> dataList;
@@ -55,11 +56,11 @@ public class AccessRequestApproverDetailsAdapter extends RecyclerView.Adapter<Ac
         holder.tv_approved_status.setText(approveListModel.getApprovalStatus());
         holder.tv_approval_level.setText(approveListModel.getApprovalLevel());
         holder.tv_approval_request_on.setText(approveListModel.getCreatedOn() + "");
-        if (approveListModel.getUpdatedOn()!=null) {
-            holder.tv_approval_on.setText(approveListModel.getUpdatedOn()+"");
+        if (approveListModel.getUpdatedOn() != null) {
+            holder.tv_approval_on.setText(approveListModel.getUpdatedOn() + "");
         }
 
-        if (approveListModel.getRemark()!=null) {
+        if (approveListModel.getRemark() != null) {
             holder.tv_remarks.setText(approveListModel.getRemark() + "");
         }
     }

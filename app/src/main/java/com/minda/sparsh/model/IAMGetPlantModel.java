@@ -963,9 +963,10 @@ public class IAMGetPlantModel implements Serializable {
 
         IAMGetPlantModel that = (IAMGetPlantModel) obj;
 
-        if ((unitCode!="0" && !unitCode.equals(that.unitCode)))
+        if ((unitCode != "0" && !unitCode.equals(that.unitCode)))
             return false;
 
 
-        return true;       }
+        return true;
+    }
 }

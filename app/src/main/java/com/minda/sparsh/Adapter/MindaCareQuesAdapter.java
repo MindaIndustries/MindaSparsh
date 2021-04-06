@@ -9,7 +9,6 @@ import android.widget.TextView;
 import com.minda.sparsh.R;
 import com.minda.sparsh.model.QuesResponse;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -23,10 +22,10 @@ public class MindaCareQuesAdapter extends RecyclerView.Adapter<MindaCareQuesAdap
 
     Context mContext;
     List<QuesResponse> list;
-    HashMap<String,List<String>> options;
+    HashMap<String, List<String>> options;
 
 
-    public MindaCareQuesAdapter(Context mContext, List<QuesResponse> list,HashMap<String,List<String>> options) {
+    public MindaCareQuesAdapter(Context mContext, List<QuesResponse> list, HashMap<String, List<String>> options) {
         this.mContext = mContext;
         this.list = list;
         this.options = options;
@@ -55,13 +54,13 @@ public class MindaCareQuesAdapter extends RecyclerView.Adapter<MindaCareQuesAdap
         return list.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder{
+    public class ViewHolder extends RecyclerView.ViewHolder {
         @BindView(R.id.qn)
         TextView qn;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            ButterKnife.bind(this,itemView);
+            ButterKnife.bind(this, itemView);
         }
     }
 }

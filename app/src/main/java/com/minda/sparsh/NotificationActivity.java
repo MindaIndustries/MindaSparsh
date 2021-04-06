@@ -2,9 +2,7 @@ package com.minda.sparsh;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
-import androidx.appcompat.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
@@ -19,6 +17,8 @@ import com.minda.sparsh.util.Utility;
 import java.util.ArrayList;
 import java.util.List;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -35,7 +35,7 @@ public class NotificationActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_notification);
-     //   getSupportActionBar().hide();
+        //   getSupportActionBar().hide();
 
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         title = (TextView) findViewById(R.id.title);
@@ -68,7 +68,7 @@ public class NotificationActivity extends AppCompatActivity {
                 public void onResponse(Call<List<NotificationModel>> call, Response<List<NotificationModel>> response) {
 
                     List<NotificationModel> responseItem = response.body();
-                    if (responseItem != null && responseItem.size()>0) {
+                    if (responseItem != null && responseItem.size() > 0) {
                         setadapter(responseItem);
 
 
@@ -93,6 +93,7 @@ public class NotificationActivity extends AppCompatActivity {
         NotificationAdapter notificationAdapter = new NotificationAdapter(NotificationActivity.this, list);
         list_notification.setAdapter(notificationAdapter);
     }
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {

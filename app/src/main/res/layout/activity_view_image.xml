@@ -1,28 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.minda.sparsh.ViewImageActivity"
     android:orientation="vertical">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:background="@color/colorPrimary"
             android:gravity="center_vertical"
-            android:layout_marginBottom="20dp"
-            >
+            android:layout_marginBottom="20dp">
+
             <ImageView
                 android:id="@+id/im_back"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/back"
-                android:layout_marginLeft="10dp"/>
+                android:layout_marginLeft="10dp" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -31,20 +32,22 @@
                 android:textColor="@color/white"
                 android:textSize="22dp"
                 android:textStyle="bold"
-                android:layout_marginLeft="20dp"/>
+                android:layout_marginLeft="20dp" />
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
             android:orientation="vertical"
             android:padding="20dp">
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Before Image"
                 android:textColor="#000000"
-                android:textSize="18dp"/>
+                android:textSize="18dp" />
 
 
             <ImageView
@@ -53,24 +56,27 @@
                 android:layout_height="180dp"
                 android:src="@drawable/demoimage" />
 
-           <LinearLayout
-               android:layout_width="match_parent"
-               android:layout_height="wrap_content">
-               <TextView
-                   android:layout_width="wrap_content"
-                   android:layout_height="wrap_content"
-                   android:textColor="#000000"
-                   android:textSize="18dp"
-                   android:text="Description :"
-                   android:layout_marginTop="10dp"/>
-               <TextView
-                   android:id="@+id/tv_discription"
-                   android:layout_width="wrap_content"
-                   android:layout_height="wrap_content"
-                   android:textColor="#000000"
-                   android:textSize="18dp"
-                   android:layout_marginTop="10dp"/>
-           </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#000000"
+                    android:textSize="18dp"
+                    android:text="Description :"
+                    android:layout_marginTop="10dp" />
+
+                <TextView
+                    android:id="@+id/tv_discription"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#000000"
+                    android:textSize="18dp"
+                    android:layout_marginTop="10dp" />
+            </LinearLayout>
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -78,35 +84,39 @@
                 android:orientation="vertical"
                 android:gravity="center">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="After Image"
-                android:textColor="#000000"
-                android:textSize="18dp"/>
-            <ImageView
-                android:id="@+id/Im_after"
-                android:layout_width="150dp"
-                android:layout_height="180dp"
-                android:layout_marginTop="20dp"
-                android:src="@drawable/demoimage" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="After Image"
+                    android:textColor="#000000"
+                    android:textSize="18dp" />
+
+                <ImageView
+                    android:id="@+id/Im_after"
+                    android:layout_width="150dp"
+                    android:layout_height="180dp"
+                    android:layout_marginTop="20dp"
+                    android:src="@drawable/demoimage" />
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
+
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textColor="#000000"
                         android:textSize="18dp"
                         android:text="Action:"
-                        android:layout_marginTop="10dp"/>
+                        android:layout_marginTop="10dp" />
+
                     <TextView
                         android:id="@+id/tv_action"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textColor="#000000"
                         android:textSize="18dp"
-                        android:layout_marginTop="10dp"/>
+                        android:layout_marginTop="10dp" />
                 </LinearLayout>
             </LinearLayout>
         </LinearLayout>

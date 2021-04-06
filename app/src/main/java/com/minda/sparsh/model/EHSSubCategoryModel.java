@@ -1,8 +1,8 @@
 package com.minda.sparsh.model;
 
-import androidx.annotation.Nullable;
-
 import com.google.gson.annotations.SerializedName;
+
+import androidx.annotation.Nullable;
 
 public class EHSSubCategoryModel {
 
@@ -39,5 +39,6 @@ public class EHSSubCategoryModel {
             return false;
 
 
-        return true;     }
+        return true;
+    }
 }

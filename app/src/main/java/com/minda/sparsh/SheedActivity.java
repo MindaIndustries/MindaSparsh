@@ -3,9 +3,7 @@ package com.minda.sparsh;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
-import androidx.appcompat.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -14,6 +12,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.Set;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 public class SheedActivity extends AppCompatActivity {
     Button tv_operation, tv_menufacturing, tv_dwm;
@@ -90,6 +91,7 @@ public class SheedActivity extends AppCompatActivity {
             }
         });
     }
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {

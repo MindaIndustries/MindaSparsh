@@ -1,192 +1,204 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
     <!--<LinearLayout-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:layout_marginTop="10dp"-->
-        <!--android:gravity="center"-->
-        <!--android:layout_margin="10dp">-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_marginTop="10dp"-->
+    <!--android:gravity="center"-->
+    <!--android:layout_margin="10dp">-->
 
-        <!--<ImageView-->
-            <!--android:id="@+id/im_logo"-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:background="@drawable/minda_sparsh" />-->
+    <!--<ImageView-->
+    <!--android:id="@+id/im_logo"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:background="@drawable/minda_sparsh" />-->
     <!--</LinearLayout>-->
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:gravity="center">
 
         <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:layout_marginTop="20dp"
-            android:orientation="vertical">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="NEWSLETTER"
-                android:gravity="center"
-                android:padding="5dp"
-                android:textSize="18dp"
-                android:fontFamily="@font/museosans_500"
-                android:textColor="#000000"/>
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1.5dp"
-                android:background="@drawable/gradientline"/>
-
-        </LinearLayout>
-        <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="12sp"
-            android:gravity="center"
-            android:textColor="#353434"
-            android:padding="10dp"
-            android:visibility="gone"
-            android:fontFamily="@font/museosans_300"
-            android:text="Sed ut Perspiciatis Under omnis iste natus error sit voluptatem accu santium doloremque laudantium, totam rem aperiam."/>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:gravity="center_horizontal"
-        android:orientation="horizontal">
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
             android:orientation="vertical"
             android:gravity="center">
-
-        <ImageButton
-
-            android:id="@+id/jagriti_btn"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:background="@drawable/jagritis" />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Jagriti"
-                android:textSize="14sp"
-                android:fontFamily="@font/museosans_300"
-                android:textColor="#000000"
-                android:layout_marginTop="5dp"
-                android:layout_marginBottom="10dp"/>
-        </LinearLayout>
-        <View
-            android:layout_width="1dp"
-            android:layout_height="match_parent"
-            android:background="#d7d1d1"
-
-            />
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:orientation="vertical"
-            android:gravity="center">
-
-
-            <ImageButton
-                android:id="@+id/ib_manufacturing"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:layout_marginRight="5dp"
-                android:background="@drawable/menufecturs" />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Manufacturing"
-                android:textSize="14sp"
-                android:fontFamily="@font/museosans_300"
-                android:textColor="#000000"
-                android:layout_marginTop="5dp"
-                android:layout_marginBottom="10dp"/>
-        </LinearLayout>
-
-    </LinearLayout>
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="#d7d1d1"
-            />
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center_horizontal"
-            android:orientation="horizontal"
-            >
 
             <LinearLayout
-                android:layout_marginTop="10dp"
-                android:layout_width="0dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:orientation="vertical"
-                android:gravity="center">
+                android:gravity="center"
+                android:layout_marginTop="20dp"
+                android:orientation="vertical">
 
-                <ImageButton
-                    android:id="@+id/ib_samwad"
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
-                    android:background="@drawable/samvads" />
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Samwad"
-                    android:textSize="14sp"
-                    android:fontFamily="@font/museosans_300"
-                    android:textColor="#000000"
-                    android:layout_marginTop="5dp"/>
+                    android:text="NEWSLETTER"
+                    android:gravity="center"
+                    android:padding="5dp"
+                    android:textSize="18dp"
+                    android:fontFamily="@font/museosans_500"
+                    android:textColor="#000000" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1.5dp"
+                    android:background="@drawable/gradientline" />
+
             </LinearLayout>
-            <View
-                android:layout_width="1dp"
-                android:layout_height="match_parent"
-                android:background="#d7d1d1"
 
-                />
-            <LinearLayout
-                android:layout_marginTop="10dp"
-                android:layout_width="0dp"
+            <TextView
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
+                android:textSize="12sp"
+                android:gravity="center"
+                android:textColor="#353434"
+                android:padding="10dp"
+                android:visibility="gone"
+                android:fontFamily="@font/museosans_300"
+                android:text="Sed ut Perspiciatis Under omnis iste natus error sit voluptatem accu santium doloremque laudantium, totam rem aperiam." />
 
-                android:orientation="vertical"
-                android:gravity="center">
-            <ImageButton
-                android:id="@+id/ib_engg"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_marginRight="5dp"
-            android:background="@drawable/engagmentss" />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Engineering"
-            android:textSize="14sp"
-            android:fontFamily="@font/museosans_300"
-            android:textColor="#000000"
-            android:layout_marginTop="5dp"/>
-    </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:gravity="center_horizontal"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:gravity="center">
+
+                    <ImageButton
+
+                        android:id="@+id/jagriti_btn"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:background="@drawable/jagritis" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Jagriti"
+                        android:textSize="14sp"
+                        android:fontFamily="@font/museosans_300"
+                        android:textColor="#000000"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginBottom="10dp" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:background="#d7d1d1"
+
+                    />
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:gravity="center">
 
 
+                    <ImageButton
+                        android:id="@+id/ib_manufacturing"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:layout_marginRight="5dp"
+                        android:background="@drawable/menufecturs" />
 
-        </LinearLayout>
-        <!--<LinearLayout-->
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Manufacturing"
+                        android:textSize="14sp"
+                        android:fontFamily="@font/museosans_300"
+                        android:textColor="#000000"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginBottom="10dp" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#d7d1d1" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_marginTop="10dp"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:gravity="center">
+
+                    <ImageButton
+                        android:id="@+id/ib_samwad"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:background="@drawable/samvads" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Samwad"
+                        android:textSize="14sp"
+                        android:fontFamily="@font/museosans_300"
+                        android:textColor="#000000"
+                        android:layout_marginTop="5dp" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:background="#d7d1d1"
+
+                    />
+
+                <LinearLayout
+                    android:layout_marginTop="10dp"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+
+                    android:orientation="vertical"
+                    android:gravity="center">
+
+                    <ImageButton
+                        android:id="@+id/ib_engg"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:layout_marginRight="5dp"
+                        android:background="@drawable/engagmentss" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Engineering"
+                        android:textSize="14sp"
+                        android:fontFamily="@font/museosans_300"
+                        android:textColor="#000000"
+                        android:layout_marginTop="5dp" />
+                </LinearLayout>
+
+
+            </LinearLayout>
+            <!--<LinearLayout-->
             <!--android:layout_width="match_parent"-->
             <!--android:layout_height="match_parent"-->
             <!--android:layout_marginTop="20dp"-->
@@ -194,13 +206,10 @@
             <!--android:orientation="horizontal">-->
 
 
+            <!--</LinearLayout>-->
 
 
-        <!--</LinearLayout>-->
-
-
-    </LinearLayout>
-
+        </LinearLayout>
 
 
         <ImageView
@@ -210,6 +219,7 @@
             android:layout_alignParentLeft="true"
             android:layout_marginTop="20dp"
             android:src="@drawable/left_arrow" />
+
         <ImageView
             android:id="@+id/im_right"
             android:layout_width="35dp"

@@ -142,6 +142,7 @@ public class FilePath {
         return LocalStorageProvider.AUTHORITY.equals(uri.getAuthority());
     }
 */
+
     /**
      * @param uri The Uri to check.
      * @return Whether the Uri authority is ExternalStorageProvider.
@@ -207,9 +208,9 @@ public class FilePath {
                 final int column_index = cursor.getColumnIndexOrThrow(column);
                 return cursor.getString(column_index);
             }
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
-        }finally {
+        } finally {
             if (cursor != null)
                 cursor.close();
         }
@@ -250,7 +251,8 @@ public class FilePath {
                 return DocumentsContract.getDocumentId(uri);
             }
             // ExternalStorageProvider
-            else*/ if (isExternalStorageDocument(uri)) {
+            else*/
+            if (isExternalStorageDocument(uri)) {
                 final String docId = DocumentsContract.getDocumentId(uri);
                 final String[] split = docId.split(":");
                 final String type = split[0];
@@ -269,14 +271,14 @@ public class FilePath {
                     Log.d(TAG, "getPath: id= " + id);
                     final Uri contentUri = ContentUris.withAppendedId(Uri.parse("content://downloads/public_downloads"), Long.valueOf(id));
                     return getDataColumn(context, contentUri, null, null);
-                }catch (Exception e){
+                } catch (Exception e) {
                     e.printStackTrace();
                     List<String> segments = uri.getPathSegments();
-                    if(segments.size() > 1) {
+                    if (segments.size() > 1) {
                         String rawPath = segments.get(1);
-                        if(!rawPath.startsWith("/")){
+                        if (!rawPath.startsWith("/")) {
                             return rawPath.substring(rawPath.indexOf("/"));
-                        }else {
+                        } else {
                             return rawPath;
                         }
                     }

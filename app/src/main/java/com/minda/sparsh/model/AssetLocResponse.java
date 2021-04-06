@@ -65,11 +65,12 @@ public class AssetLocResponse {
 
         AssetLocResponse that = (AssetLocResponse) obj;
 
-        if ((id!="0" && !id.equals(that.id)))
+        if ((id != "0" && !id.equals(that.id)))
             return false;
 
 
-        return true;    }
+        return true;
+    }
 
     public String getNextlevel() {
         return nextlevel;

@@ -3,7 +3,6 @@ package com.minda.sparsh.fragment;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,6 +17,8 @@ import com.minda.sparsh.SuggestionBox;
 import com.minda.sparsh.VisitorManagementActivity;
 import com.minda.sparsh.util.Constant;
 import com.minda.sparsh.util.Utility;
+
+import androidx.fragment.app.Fragment;
 
 
 public class ThreeFragment extends Fragment {
@@ -94,10 +95,10 @@ public class ThreeFragment extends Fragment {
         bottom_up.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(Utility.isOnline(getActivity())) {
+                if (Utility.isOnline(getActivity())) {
                     Intent in = new Intent(getActivity(), BottomUpConcernActivity.class);
                     startActivity(in);
-                }else{
+                } else {
                     Toast.makeText(getActivity(), "Please Check Your Network Connection", Toast.LENGTH_LONG).show();
                 }
             }

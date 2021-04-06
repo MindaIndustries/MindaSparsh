@@ -2,7 +2,6 @@ package com.minda.sparsh;
 
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import androidx.appcompat.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
@@ -15,6 +14,7 @@ import com.minda.sparsh.util.Utility;
 import java.util.Calendar;
 import java.util.List;
 
+import androidx.appcompat.widget.Toolbar;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import retrofit2.Call;
@@ -64,27 +64,27 @@ public class ProfileActivity extends BaseActivity {
         pass = myPref.getString("pass", "");
 
         empCode_str = myPref.getString("Id", "Id");
-        if(empCode_str.length()>0) {
+        if (empCode_str.length() > 0) {
             empCode.setText(empCode_str);
         }
-        if(myPref.getString("username", "").length()>0)
-        userNametext.setText("" + myPref.getString("username", ""));
-        if(myPref.getString("EmainId", "").length()>0)
-        emailValue.setText("" + myPref.getString("EmainId", ""));
-        if(myPref.getString("DOJ", "").length()>0) {
+        if (myPref.getString("username", "").length() > 0)
+            userNametext.setText("" + myPref.getString("username", ""));
+        if (myPref.getString("EmainId", "").length() > 0)
+            emailValue.setText("" + myPref.getString("EmainId", ""));
+        if (myPref.getString("DOJ", "").length() > 0) {
             String doj = myPref.getString("DOJ", "").replaceAll("/", "").replace("Date", "").replaceAll("\\(", "").replaceAll("\\)", "   ").replaceAll(" ", "");
             dojvalue.setText("" + getlogDate(Long.parseLong(doj)));
         }
 
-        if(myPref.getString("UM_DEPT_NAME", "").length()>0)
-        deptName.setText("" + myPref.getString("UM_DEPT_NAME", ""));
-        if(myPref.getString("UM_REPORTING_TO_NAME", "").length()>0)
-        reportOfcrName.setText(myPref.getString("UM_REPORTING_TO_NAME", ""));
-        if(myPref.getString("DESIGNATION", "").length()>0)
-        designationName.setText("" + myPref.getString("DESIGNATION", ""));
-        if(myPref.getString("UM_MASCOM_CODE", "").length()>0)
-        unitValue.setText("" + myPref.getString("UM_MASCOM_CODE", ""));
-        if(myPref.getString("Depu_UnitName", "").length()>0) {
+        if (myPref.getString("UM_DEPT_NAME", "").length() > 0)
+            deptName.setText("" + myPref.getString("UM_DEPT_NAME", ""));
+        if (myPref.getString("UM_REPORTING_TO_NAME", "").length() > 0)
+            reportOfcrName.setText(myPref.getString("UM_REPORTING_TO_NAME", ""));
+        if (myPref.getString("DESIGNATION", "").length() > 0)
+            designationName.setText("" + myPref.getString("DESIGNATION", ""));
+        if (myPref.getString("UM_MASCOM_CODE", "").length() > 0)
+            unitValue.setText("" + myPref.getString("UM_MASCOM_CODE", ""));
+        if (myPref.getString("Depu_UnitName", "").length() > 0) {
             deputedunitValue.setVisibility(View.VISIBLE);
             deputedunit.setVisibility(View.VISIBLE);
             deputedunitValue.setText("" + myPref.getString("Depu_UnitName", ""));
@@ -94,7 +94,8 @@ public class ProfileActivity extends BaseActivity {
         } else {
             Toast.makeText(ProfileActivity.this, "Please Check Your Network Connection", Toast.LENGTH_LONG).show();
         }
-    */}
+    */
+    }
 
 
     public void hitGetLoginApi(String userName, String password, String key) {
@@ -111,7 +112,7 @@ public class ProfileActivity extends BaseActivity {
                             mEditor.putString("Id", loginResponse.get(0).getUMUSERID());
                             mEditor.putString("username", loginResponse.get(0).getUMUSERDESC());
                             mEditor.putBoolean("IsLogin", true);
-                            mEditor.putBoolean("IsLoginNew",true);
+                            mEditor.putBoolean("IsLoginNew", true);
                             mEditor.putString("EmainId", loginResponse.get(0).getUMEMAILID());
                             mEditor.putString("AuthFor", loginResponse.get(0).getAuthFor());
                             mEditor.putString("Um_div_code", loginResponse.get(0).getUMDIVCODE());

@@ -2,18 +2,15 @@ package com.minda.sparsh.Adapter;
 
 import android.content.Context;
 import android.content.Intent;
-import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.minda.sparsh.Interface;
 import com.minda.sparsh.MyTaskDetail;
 import com.minda.sparsh.R;
 import com.minda.sparsh.TicketDetail;
-import com.minda.sparsh.fragment.CreateTicketFragment;
 import com.minda.sparsh.fragment.MyTickets;
 import com.minda.sparsh.model.MyTicketsResponse;
 

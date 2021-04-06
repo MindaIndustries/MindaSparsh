@@ -2,10 +2,11 @@ package com.minda.sparsh.fragment;
 
 
 import android.os.Bundle;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
 
 import com.minda.sparsh.VisitorManagementActivity;
+
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
 
 /**
  * A simple {@link Fragment} subclass.

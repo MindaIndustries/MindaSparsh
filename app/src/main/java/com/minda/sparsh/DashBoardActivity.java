@@ -9,27 +9,14 @@ import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
-
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.Task;
-import com.google.android.material.tabs.TabLayout;
-
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AlertDialog;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentPagerAdapter;
-import androidx.viewpager.widget.ViewPager;
-import androidx.appcompat.app.ActionBar;
-
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.material.tabs.TabLayout;
 import com.google.firebase.iid.FirebaseInstanceId;
 import com.google.firebase.iid.InstanceIdResult;
 import com.minda.sparsh.fragment.FourFragment;
@@ -37,11 +24,6 @@ import com.minda.sparsh.fragment.ManufacturingFragment;
 import com.minda.sparsh.fragment.OneFragment;
 import com.minda.sparsh.fragment.ThreeFragment;
 import com.minda.sparsh.fragment.TwoFragment;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Timer;
-
 import com.minda.sparsh.listener.CarotResponse;
 import com.minda.sparsh.listener.OnTaskComplete;
 import com.minda.sparsh.model.NotificationModel;
@@ -52,8 +34,17 @@ import com.minda.sparsh.util.Utility;
 
 import org.jsoup.Jsoup;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Timer;
+
 import javax.net.ssl.HttpsURLConnection;
 
+import androidx.appcompat.app.ActionBar;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentPagerAdapter;
+import androidx.viewpager.widget.ViewPager;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -93,7 +84,7 @@ public class DashBoardActivity extends BaseActivity implements View.OnClickListe
         empCode = myPref.getString("Id", "Id");
         User = myPref.getString("username", "");
         saveFirebaseToken(empCode);
-     //   getAppVersion();
+        //   getAppVersion();
       /*  FirebaseInstanceId.getInstance().getInstanceId()
                 .addOnCompleteListener(new OnCompleteListener<InstanceIdResult>() {
                     @Override
@@ -349,33 +340,33 @@ public class DashBoardActivity extends BaseActivity implements View.OnClickListe
     }
 
 
-    public void saveFirebaseToken(String empCode){
+    public void saveFirebaseToken(String empCode) {
 
-        FirebaseInstanceId.getInstance().getInstanceId().addOnSuccessListener( new OnSuccessListener<InstanceIdResult>() {
+        FirebaseInstanceId.getInstance().getInstanceId().addOnSuccessListener(new OnSuccessListener<InstanceIdResult>() {
             @Override
             public void onSuccess(InstanceIdResult instanceIdResult) {
 
                 String deviceTokenFcm = instanceIdResult.getToken();
-                if(Utility.isOnline(DashBoardActivity.this)){
-                FirebaseService firebaseService = new FirebaseService();
-                firebaseService.saveFirebaseID(new OnTaskComplete() {
-                    @Override
-                    public void onTaskComplte(CarotResponse carotResponse) {
-                        if(carotResponse.getStatuscode()== HttpsURLConnection.HTTP_OK){
+                if (Utility.isOnline(DashBoardActivity.this)) {
+                    FirebaseService firebaseService = new FirebaseService();
+                    firebaseService.saveFirebaseID(new OnTaskComplete() {
+                        @Override
+                        public void onTaskComplte(CarotResponse carotResponse) {
+                            if (carotResponse.getStatuscode() == HttpsURLConnection.HTTP_OK) {
 
+                            }
                         }
-                    }
-                }, empCode, deviceTokenFcm);
+                    }, empCode, deviceTokenFcm);
+                }
             }
-            }
-            });
+        });
 
-        }
+    }
 
-    public void getAppVersion(){
+    public void getAppVersion() {
         try {
             PackageInfo pInfo = getPackageManager().getPackageInfo(getPackageName(), 0);
-             version = pInfo.versionName;
+            version = pInfo.versionName;
         } catch (PackageManager.NameNotFoundException e) {
             e.printStackTrace();
         }
@@ -385,12 +376,12 @@ public class DashBoardActivity extends BaseActivity implements View.OnClickListe
         call.enqueue(new Callback<List<VersionModel>>() {
             @Override
             public void onResponse(Call<List<VersionModel>> call, Response<List<VersionModel>> response) {
-                if(response.code()== HttpsURLConnection.HTTP_OK) {
+                if (response.code() == HttpsURLConnection.HTTP_OK) {
                     List<VersionModel> list = response.body();
-                    if(list!=null && list.size()>0){
-                        if(list.get(0)!=null && list.get(0).getAndriodVersion()!=null) {
+                    if (list != null && list.size() > 0) {
+                        if (list.get(0) != null && list.get(0).getAndriodVersion() != null) {
                             String androidVersion = list.get(0).getAndriodVersion();
-                            if(version!=androidVersion){
+                            if (version != androidVersion) {
                                 //  showMsg();
                             }
                         }

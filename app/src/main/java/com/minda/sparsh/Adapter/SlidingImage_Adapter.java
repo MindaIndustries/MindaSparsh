@@ -3,18 +3,17 @@ package com.minda.sparsh.Adapter;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Parcelable;
-import androidx.viewpager.widget.PagerAdapter;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-
 
 import com.minda.sparsh.R;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
+import androidx.viewpager.widget.PagerAdapter;
 
 
 /**
@@ -35,10 +34,11 @@ public class SlidingImage_Adapter extends PagerAdapter {
         isImageAvailable = false;
         inflater = LayoutInflater.from(context);
     }
+
     public SlidingImage_Adapter(Context context, int count) {
         this.context = context;
         this.size = count;
-      //  this.IMAGES = IMAGES;
+        //  this.IMAGES = IMAGES;
         isImageAvailable = false;
         inflater = LayoutInflater.from(context);
     }
@@ -63,7 +63,7 @@ public class SlidingImage_Adapter extends PagerAdapter {
         try {
 //            imageView.setImageResource(IMAGES.get(position));
 //            imageView.setImageResource(size);
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
 
@@ -71,7 +71,7 @@ public class SlidingImage_Adapter extends PagerAdapter {
         try {
             String input = IMAGES.get(position);
             input = input.replace(" ", "%20");
-            Uri imgUri = Uri.parse("http://88.198.45.166/MindaSparsh/" +input);
+            Uri imgUri = Uri.parse("http://88.198.45.166/MindaSparsh/" + input);
 
 
             Picasso.with(context)

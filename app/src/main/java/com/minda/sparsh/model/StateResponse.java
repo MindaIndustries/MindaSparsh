@@ -30,13 +30,13 @@ public class StateResponse implements Serializable {
 
     @Override
     public boolean equals(@Nullable Object o) {
-            if (this == o) return true;
-            if (!(o instanceof StateResponse)) return false;
+        if (this == o) return true;
+        if (!(o instanceof StateResponse)) return false;
 
-            StateResponse that = (StateResponse) o;
+        StateResponse that = (StateResponse) o;
 
-            if (!state.equals(that.state)) return false;
+        if (!state.equals(that.state)) return false;
 
-            return true;
-        }
+        return true;
+    }
 }

@@ -12,13 +12,8 @@ import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Build;
-import android.provider.ContactsContract;
-import androidx.core.app.ActivityCompat;
-import androidx.fragment.app.DialogFragment;
-import androidx.core.content.ContextCompat;
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
+import android.provider.ContactsContract;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
@@ -56,6 +51,11 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
+import androidx.fragment.app.DialogFragment;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -273,10 +273,9 @@ public class VisitorManagementActivity extends AppCompatActivity implements View
             @Override
             public void onClick(View view) {
 
-                if(myPref.getString("privacy_policy","").length()==0) {
+                if (myPref.getString("privacy_policy", "").length() == 0) {
                     showTermsPolicyDialog();
-                }
-                else{
+                } else {
                     if (!checkPermission() && Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
                         requestPermission();
                     } else {
@@ -285,7 +284,7 @@ public class VisitorManagementActivity extends AppCompatActivity implements View
                     }
                 }
 
-                     }
+            }
         });
 
 
@@ -612,7 +611,7 @@ public class VisitorManagementActivity extends AppCompatActivity implements View
                     dismissProgress();
                     List<AddAbnormality_Model> visitorResponse = response.body();
 
-                    if (visitorResponse != null &&visitorResponse.size()>0) {
+                    if (visitorResponse != null && visitorResponse.size() > 0) {
                         if (visitorResponse.get(0).getColumn1().equalsIgnoreCase("Success")) {
                             Toast.makeText(VisitorManagementActivity.this, "Entry Saved Successfully", Toast.LENGTH_LONG).show();
                             finish();
@@ -761,7 +760,7 @@ public class VisitorManagementActivity extends AppCompatActivity implements View
                     List<VisitorDetailModel> visitorDetailModels = response.body();
 
                     try {
-                        if (visitorDetailModels != null && visitorDetailModels.size()>0) {
+                        if (visitorDetailModels != null && visitorDetailModels.size() > 0) {
 
                             et_visitor_mobile_no.setText(visitorDetailModels.get(0).getMobile());
                             et_first_name.setText(visitorDetailModels.get(0).getFirstName());
@@ -995,8 +994,9 @@ public class VisitorManagementActivity extends AppCompatActivity implements View
         }
         return false;
     }
-    public void showTermsPolicyDialog(){
-        final Dialog termspolicydialog = new Dialog(VisitorManagementActivity.this,R.style.TermsDialogStyle);
+
+    public void showTermsPolicyDialog() {
+        final Dialog termspolicydialog = new Dialog(VisitorManagementActivity.this, R.style.TermsDialogStyle);
         termspolicydialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         termspolicydialog.setContentView(R.layout.privacy_policy);
         termspolicydialog.getWindow().setGravity(Gravity.CENTER);
@@ -1020,11 +1020,10 @@ public class VisitorManagementActivity extends AppCompatActivity implements View
         });
 
 
-
         ok.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                myPref.edit().putString("privacy_policy","Yes").commit();
+                myPref.edit().putString("privacy_policy", "Yes").commit();
                 termspolicydialog.dismiss();
                 ok.setEnabled(false);
                 termspolicydialog.dismiss();
@@ -1037,7 +1036,7 @@ public class VisitorManagementActivity extends AppCompatActivity implements View
 
             }
         });
-        if(!termspolicydialog.isShowing()) {
+        if (!termspolicydialog.isShowing()) {
             termspolicydialog.show();
         }
 

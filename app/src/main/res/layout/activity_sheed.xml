@@ -1,27 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.minda.sparsh.SheedActivity">
+
     <include layout="@layout/toolbar" />
 
     <RelativeLayout
         android:layout_marginTop="?android:attr/actionBarSize"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:adjustViewBounds="true"
             android:src="@drawable/birds"
-            android:scaleType="centerCrop"
-            />
+            android:scaleType="centerCrop" />
+
         <LinearLayout
             android:background="@color/translucent"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
+            android:layout_height="match_parent" />
 
     </RelativeLayout>
 
@@ -32,12 +33,14 @@
         android:layout_height="?attr/actionBarSize"
         android:background="@color/colorPrimary"
         android:gravity="center_vertical">
+
         <ImageView
             android:id="@+id/im_back"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/back"
-            android:layout_marginLeft="20dp"/>
+            android:layout_marginLeft="20dp" />
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -46,7 +49,7 @@
             android:textSize="20dp"
             android:fontFamily="@font/museosans_500"
             android:gravity="center"
-            android:layout_marginLeft="20dp"/>
+            android:layout_marginLeft="20dp" />
 
 
     </LinearLayout>
@@ -58,6 +61,7 @@
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:gravity="center">
+
         <Button
             android:id="@+id/tv_dwm"
             android:layout_width="250dp"
@@ -67,8 +71,7 @@
             android:text="Plant Head"
             android:background="@drawable/roundcornerbutton"
             android:gravity="center"
-            android:padding="10dp"/>
-
+            android:padding="10dp" />
 
 
         <Button
@@ -82,9 +85,7 @@
             android:background="@drawable/roundcornerbutton"
             android:padding="10dp"
             android:layout_marginTop="20dp"
-            android:layout_marginBottom="20dp"/>
-
-
+            android:layout_marginBottom="20dp" />
 
 
         <Button
@@ -96,7 +97,7 @@
             android:textColor="@color/white"
             android:text="Operation Head"
             android:gravity="center"
-            android:padding="10dp"/>
+            android:padding="10dp" />
     </LinearLayout>
 
 

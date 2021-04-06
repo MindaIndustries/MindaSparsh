@@ -10,8 +10,7 @@
         android:weightSum="5"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/border"
-        >
+        android:background="@drawable/border">
 
         <TextView
             android:layout_width="0dp"
@@ -38,6 +37,7 @@
             android:padding="2dp"
 
             />
+
         <TextView
             android:layout_width="0dp"
             android:layout_height="match_parent"
@@ -50,6 +50,7 @@
             android:padding="2dp"
 
             />
+
         <TextView
             android:layout_width="0dp"
             android:layout_height="match_parent"
@@ -63,6 +64,7 @@
 
 
             />
+
         <TextView
             android:layout_width="0dp"
             android:layout_height="match_parent"
@@ -72,10 +74,7 @@
             android:id="@+id/created_on"
             android:background="@drawable/border"
             android:padding="2dp"
-            android:textSize="10sp"
-            />
-
-
+            android:textSize="10sp" />
 
 
     </LinearLayout>

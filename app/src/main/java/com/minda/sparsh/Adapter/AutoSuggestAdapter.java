@@ -1,14 +1,15 @@
 package com.minda.sparsh.Adapter;
 
 import android.content.Context;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import android.widget.ArrayAdapter;
 import android.widget.Filter;
 import android.widget.Filterable;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 
 public class AutoSuggestAdapter extends ArrayAdapter<String> implements Filterable {
     private List<String> mlistData;
@@ -56,10 +57,10 @@ public class AutoSuggestAdapter extends ArrayAdapter<String> implements Filterab
                 if (constraint != null) {
                     suggestions.clear();
 
-                for(int i=0;i<mlistData.size();i++){
-                    if(mlistData.get(i).toLowerCase().startsWith(constraint.toString().toLowerCase())){
-                        suggestions.add(mlistData.get(i));
-                             }
+                    for (int i = 0; i < mlistData.size(); i++) {
+                        if (mlistData.get(i).toLowerCase().startsWith(constraint.toString().toLowerCase())) {
+                            suggestions.add(mlistData.get(i));
+                        }
                     }
                     filterResults.values = suggestions;
                     filterResults.count = suggestions.size();

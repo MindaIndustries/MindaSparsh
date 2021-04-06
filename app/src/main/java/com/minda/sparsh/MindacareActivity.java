@@ -495,7 +495,7 @@ public class MindacareActivity extends AppCompatActivity implements GoogleMap.On
                                     //   textView.setTextColor(Color.BLACK);
                                     rootLayout.addView(textView);
                                     viewArrayList.add(textView);
-                                    answers.put(textView.getId(),"");
+                                    answers.put(textView.getId(), "");
                                     HashMap<String, CheckBox> checkBoxItemSelected = new HashMap<String, CheckBox>();
 
 
@@ -802,14 +802,14 @@ public class MindacareActivity extends AppCompatActivity implements GoogleMap.On
         }
     }
 
-    public void submitApi(String answersList){
+    public void submitApi(String answersList) {
         MindacareServices mindacareServices = new MindacareServices();
         mindacareServices.submitDeclaration(new OnTaskComplete() {
             @Override
             public void onTaskComplte(CarotResponse carotResponse) {
 
             }
-        },answersList);
+        }, answersList);
     }
 
 

@@ -2,13 +2,7 @@ package com.minda.sparsh;
 
 import android.app.ProgressDialog;
 import android.content.SharedPreferences;
-import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
-import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
-import androidx.recyclerview.widget.DefaultItemAnimator;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-import androidx.appcompat.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
@@ -25,6 +19,12 @@ import java.util.List;
 
 import javax.net.ssl.HttpsURLConnection;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.recyclerview.widget.DefaultItemAnimator;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -84,7 +84,7 @@ public class ApproveListActivity extends AppCompatActivity {
         recyclerView.setAdapter(mAdapter);
 
 
-       // hitGetApprovalListApi(RetrofitClient2.CKEY, myPref.getString("Id", "Id"));
+        // hitGetApprovalListApi(RetrofitClient2.CKEY, myPref.getString("Id", "Id"));
 
     }
 
@@ -101,7 +101,6 @@ public class ApproveListActivity extends AppCompatActivity {
     }
 
 
-
     public void hitGetApprovalListApi(String key, String EmpCode) {
         approveLists.clear();
         recyclerView.getRecycledViewPool().clear();
@@ -116,11 +115,11 @@ public class ApproveListActivity extends AppCompatActivity {
                 @Override
                 public void onResponse(Call<List<ApproveList>> call, Response<List<ApproveList>> response) {
                     dismissProgress();
-                    if(response.code()== HttpsURLConnection.HTTP_OK) {
+                    if (response.code() == HttpsURLConnection.HTTP_OK) {
                         List<ApproveList> approveLists1 = response.body();
 
                         try {
-                            if (approveLists1 != null && approveLists1.size()>0) {
+                            if (approveLists1 != null && approveLists1.size() > 0) {
                                 if (approveLists1.get(0).getApprovalId() != null) {
                                     approveLists.addAll(approveLists1);
                                 } else {

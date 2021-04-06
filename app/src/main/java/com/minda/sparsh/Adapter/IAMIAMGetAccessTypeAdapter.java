@@ -10,7 +10,6 @@ import android.widget.TextView;
 
 import com.minda.sparsh.R;
 import com.minda.sparsh.model.IAMGetAccessTypeSpinnerModel;
-import com.minda.sparsh.model.IAMGetRequestTypeSpinnerModel;
 
 import java.util.List;
 
@@ -90,7 +89,7 @@ public class IAMIAMGetAccessTypeAdapter implements SpinnerAdapter {
     public View getCustomView(int position, View convertView, ViewGroup parent) {
         View row = mInflater.inflate(R.layout.iam_spinner_cell_view, parent, false);
         TextView mTxt = (TextView) row.findViewById(R.id.spinner_txt_title);
-          mTxt.setText(spinnerData.get(position).getAccessType());
+        mTxt.setText(spinnerData.get(position).getAccessType());
 
 
         return row;

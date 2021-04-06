@@ -39,48 +39,42 @@
                 style="@style/content_style"
                 android:layout_width="100dp"
                 android:layout_height="match_parent"
-                android:background="@drawable/border"
-               />
+                android:background="@drawable/border" />
 
             <TextView
                 android:id="@+id/tv_processor_no"
                 style="@style/content_style"
                 android:layout_width="100dp"
                 android:layout_height="match_parent"
-                android:background="@drawable/border"
-               />
+                android:background="@drawable/border" />
 
             <TextView
                 android:id="@+id/tv_request_on"
                 style="@style/content_style"
                 android:layout_width="120dp"
                 android:layout_height="match_parent"
-                android:background="@drawable/border"
-                />
+                android:background="@drawable/border" />
 
             <TextView
                 android:id="@+id/tv_processed_rejected_on"
                 style="@style/content_style"
                 android:layout_width="120dp"
                 android:layout_height="match_parent"
-                android:background="@drawable/border"
-                />
+                android:background="@drawable/border" />
 
             <TextView
                 android:id="@+id/processed_by"
                 style="@style/content_style"
                 android:layout_width="100dp"
                 android:layout_height="match_parent"
-                android:background="@drawable/border"
-                />
+                android:background="@drawable/border" />
 
             <TextView
                 android:id="@+id/tv_remarks"
                 style="@style/content_style"
                 android:layout_width="100dp"
                 android:layout_height="match_parent"
-                android:background="@drawable/border"
-                />
+                android:background="@drawable/border" />
 
 
         </TableRow>

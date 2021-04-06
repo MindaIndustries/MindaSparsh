@@ -18,14 +18,6 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
 import android.provider.MediaStore;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.annotation.RequiresApi;
-import androidx.core.app.ActivityCompat;
-import androidx.fragment.app.Fragment;
-import androidx.core.content.ContextCompat;
-import androidx.appcompat.app.AlertDialog;
 import android.text.method.ScrollingMovementMethod;
 import android.util.Base64;
 import android.view.LayoutInflater;
@@ -63,6 +55,13 @@ import java.util.List;
 
 import javax.net.ssl.HttpsURLConnection;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.AlertDialog;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
+import androidx.fragment.app.Fragment;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -105,7 +104,7 @@ public class NewConcernFragment extends Fragment {
     ProgressBar progressBar;
 
 
-    String unitcode,depucode, empCode, username;
+    String unitcode, depucode, empCode, username;
     SharedPreferences myPref;
     ArrayList<String> unitsName = new ArrayList<String>();
     ArrayList<String> sixMNames = new ArrayList<String>();
@@ -137,9 +136,9 @@ public class NewConcernFragment extends Fragment {
         concernDateText.setText(getlogDate(System.currentTimeMillis()));
         myPref = getActivity().getSharedPreferences("MyPref", MODE_PRIVATE);
         unitcode = myPref.getString("Um_div_code", "");
-        depucode = myPref.getString("Depu_UnitCode","");
-        if(depucode!=null && depucode.length()>0){
-            unitcode= depucode;
+        depucode = myPref.getString("Depu_UnitCode", "");
+        if (depucode != null && depucode.length() > 0) {
+            unitcode = depucode;
         }
         empCode = myPref.getString("Id", "Id");
         username = myPref.getString("username", "");

@@ -9,7 +9,7 @@ import java.io.Serializable;
 public class LoginModel implements Serializable {
     public String Id;
     public String UserName;
-    public  String EmainId;
+    public String EmainId;
     public String AuthFor;
     public String UM_DIV_CODE;
 }

@@ -6,8 +6,6 @@ import android.widget.TextView;
 
 import com.google.android.material.tabs.TabLayout;
 import com.minda.sparsh.fragment.CreateTicketFragment;
-import com.minda.sparsh.fragment.EHSInitiateFragment;
-import com.minda.sparsh.fragment.EHSObservationsFragment;
 import com.minda.sparsh.fragment.MyTasks;
 import com.minda.sparsh.fragment.MyTickets;
 
@@ -23,7 +21,6 @@ public class ITHelpDeskHome extends BaseActivity {
     TextView title;
     @BindView(R.id.tablayout)
     TabLayout tabLayout;
-
 
 
     @Override
@@ -43,13 +40,10 @@ public class ITHelpDeskHome extends BaseActivity {
             public void onTabSelected(TabLayout.Tab tab) {
                 if (tab.getPosition() == 0) {
                     getSupportFragmentManager().beginTransaction().replace(R.id.framelayout, new CreateTicketFragment()).commitAllowingStateLoss();
-                }
-
-                else if (tab.getPosition() == 1) {
+                } else if (tab.getPosition() == 1) {
                     getSupportFragmentManager().beginTransaction().replace(R.id.framelayout, new MyTickets()).commitAllowingStateLoss();
 
-                }
-                else {
+                } else {
                     getSupportFragmentManager().beginTransaction().replace(R.id.framelayout, new MyTasks()).commitAllowingStateLoss();
                 }
             }
@@ -65,6 +59,7 @@ public class ITHelpDeskHome extends BaseActivity {
             }
         });
     }
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {

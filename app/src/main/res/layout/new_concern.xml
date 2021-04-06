@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent" android:layout_height="match_parent">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
     <RelativeLayout
         android:layout_below="@+id/tablayout"
@@ -9,27 +10,32 @@
         android:layout_height="match_parent"
         android:descendantFocusability="beforeDescendants"
         android:focusableInTouchMode="true">
-        <include layout="@layout/progressbar_layout"/>
+
+        <include layout="@layout/progressbar_layout" />
+
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:fillViewport="true">
+
             <RelativeLayout
                 android:padding="20dp"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
+
                 <View
                     android:id="@+id/view"
                     android:layout_centerInParent="true"
                     android:layout_width="0dp"
-                    android:layout_height="1dp"/>
+                    android:layout_height="1dp" />
+
                 <TextView
                     android:fontFamily="@font/museosans_500"
                     android:id="@+id/heading"
                     android:textSize="18sp"
                     android:text="Bottom-up Concern Form"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
+                    android:layout_height="wrap_content" />
 
                 <TextView
                     android:layout_marginTop="30dp"
@@ -88,8 +94,7 @@
                     android:layout_width="match_parent"
                     android:layout_toRightOf="@+id/view"
                     android:layout_height="wrap_content"
-                    android:padding="5dp"
-                    ></com.minda.sparsh.customview.NoDefaultSpinner>
+                    android:padding="5dp"></com.minda.sparsh.customview.NoDefaultSpinner>
 
                 <LinearLayout
                     android:layout_marginTop="10dp"
@@ -124,8 +129,7 @@
                     android:layout_width="match_parent"
                     android:layout_toRightOf="@+id/view"
                     android:layout_height="wrap_content"
-                    android:padding="5dp"
-                    ></com.minda.sparsh.customview.NoDefaultSpinner>
+                    android:padding="5dp"></com.minda.sparsh.customview.NoDefaultSpinner>
 
                 <LinearLayout
                     android:layout_marginTop="10dp"
@@ -135,6 +139,7 @@
                     android:layout_below="@+id/responsible"
                     android:orientation="horizontal"
                     android:id="@+id/ll3"></LinearLayout>
+
                 <TextView
                     android:layout_marginTop="30dp"
                     android:id="@+id/msm_reference"
@@ -160,8 +165,7 @@
                     android:gravity="left|top|center"
                     android:maxLines="4"
                     android:hint="Type MSM/Reference"
-                    android:scrollbars="vertical"
-                    ></EditText>
+                    android:scrollbars="vertical"></EditText>
 
 
                 <TextView
@@ -200,7 +204,7 @@
                     android:src="@drawable/attach"
                     android:id="@+id/attachment1"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
+                    android:layout_height="wrap_content" />
 
                 <TextView
                     android:layout_marginTop="10dp"
@@ -214,8 +218,7 @@
                     android:layout_toLeftOf="@+id/attachment1"
                     android:text="Add attachment"
                     android:singleLine="true"
-                    android:fontFamily="@font/museosans_500"
-                    />
+                    android:fontFamily="@font/museosans_500" />
 
                 <ImageView
                     android:id="@+id/doc_view1"
@@ -223,9 +226,7 @@
                     android:layout_width="100dp"
                     android:layout_height="100dp"
                     android:visibility="gone"
-                    android:layout_margin="5dp"
-                    />
-
+                    android:layout_margin="5dp" />
 
 
                 <TextView
@@ -253,8 +254,7 @@
                     android:gravity="left|top|center"
                     android:maxLines="5"
                     android:hint="Type Proposed System"
-                    android:scrollbars="vertical"
-                    ></EditText>
+                    android:scrollbars="vertical"></EditText>
 
                 <ImageView
                     android:layout_marginTop="10dp"
@@ -263,7 +263,7 @@
                     android:src="@drawable/attach"
                     android:id="@+id/attachment2"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
+                    android:layout_height="wrap_content" />
 
                 <TextView
                     android:layout_marginTop="10dp"
@@ -277,16 +277,15 @@
                     android:layout_toLeftOf="@+id/attachment2"
                     android:text="Add attachment"
                     android:singleLine="true"
-                    android:fontFamily="@font/museosans_500"
-                    />
+                    android:fontFamily="@font/museosans_500" />
+
                 <ImageView
                     android:id="@+id/doc_view2"
                     android:layout_below="@+id/proposed_system_value"
                     android:layout_width="100dp"
                     android:layout_height="100dp"
                     android:visibility="gone"
-                    android:layout_margin="5dp"
-                    />
+                    android:layout_margin="5dp" />
 
 
                 <TextView
@@ -314,8 +313,8 @@
                     android:background="@drawable/cardview_bg"
                     android:maxLines="5"
                     android:hint="Type Benefit"
-                    android:scrollbars="vertical"
-                    ></EditText>
+                    android:scrollbars="vertical"></EditText>
+
                 <ImageView
                     android:layout_marginTop="10dp"
                     android:layout_alignParentRight="true"
@@ -323,8 +322,7 @@
                     android:src="@drawable/attach"
                     android:id="@+id/attachment3"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    />
+                    android:layout_height="wrap_content" />
 
                 <TextView
                     android:layout_marginTop="10dp"
@@ -338,8 +336,7 @@
                     android:layout_toLeftOf="@+id/attachment3"
                     android:text="Add attachment"
                     android:fontFamily="@font/museosans_500"
-                    android:singleLine="true"
-                    />
+                    android:singleLine="true" />
 
 
                 <ImageView
@@ -348,8 +345,7 @@
                     android:layout_width="100dp"
                     android:layout_height="100dp"
                     android:visibility="gone"
-                    android:layout_margin="5dp"
-                    />
+                    android:layout_margin="5dp" />
 
                 <Button
                     android:layout_below="@+id/doc_view3"
@@ -362,7 +358,7 @@
                     android:textColor="@color/white"
                     android:background="@drawable/btn_bg"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
+                    android:layout_height="wrap_content" />
 
 
                 <Button
@@ -376,21 +372,19 @@
                     android:textColor="@color/white"
                     android:background="@drawable/btn_bg"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
+                    android:layout_height="wrap_content" />
 
                 <View
                     android:id="@+id/view1"
                     android:layout_centerHorizontal="true"
                     android:layout_width="1dp"
-                    android:layout_height="1dp"/>
+                    android:layout_height="1dp" />
 
 
             </RelativeLayout>
 
 
-
         </ScrollView>
-
 
 
     </RelativeLayout>

@@ -356,7 +356,6 @@ public class DWMDetailResponse {
     }
 
 
-
     public String getManufacturingID() {
         return manufacturingID;
     }

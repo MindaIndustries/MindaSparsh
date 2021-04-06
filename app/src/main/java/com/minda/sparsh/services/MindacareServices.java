@@ -152,7 +152,7 @@ public class MindacareServices {
         });
     }
 
-    public void submitDeclaration(OnTaskComplete onTaskComplete, String selectedAnswers){
+    public void submitDeclaration(OnTaskComplete onTaskComplete, String selectedAnswers) {
         MindacareClient mindacareClient = RetrofitClient2.createServiceMindacare(MindacareClient.class);
         Call<String> call = mindacareClient.submitDeclaration(selectedAnswers);
         call.enqueue(new Callback<String>() {

@@ -8,9 +8,9 @@ import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.net.ConnectivityManager;
 import android.os.Build;
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
 import android.widget.Toast;
+
+import com.minda.sparsh.R;
 
 import java.io.BufferedReader;
 import java.io.ByteArrayOutputStream;
@@ -27,7 +27,8 @@ import java.util.Date;
 import java.util.Locale;
 import java.util.TimeZone;
 
-import com.minda.sparsh.R;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 
 /**
  * Created by admin on 5/26/2017.

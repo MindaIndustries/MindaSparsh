@@ -1,7 +1,6 @@
 package com.minda.sparsh.Adapter;
 
 import android.content.Context;
-import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +12,8 @@ import com.minda.sparsh.RequestForAccessActivity;
 import com.minda.sparsh.model.IAMGetDomainModel;
 
 import java.util.List;
+
+import androidx.recyclerview.widget.RecyclerView;
 
 /**
  * Created by admin on 10/12/2017.
@@ -60,17 +61,18 @@ public class IAMGetDomainAdapter extends RecyclerView.Adapter<IAMGetDomainAdapte
             holder.checkBox.setText(iamGetDomainModel.getDomainName());
 
         } else {
-       */     holder.checkBox.setVisibility(View.GONE);
-            holder.rb.setVisibility(View.VISIBLE);
-            holder.rb.setText(iamGetDomainModel.getDomainName());
-      //  }
+       */
+        holder.checkBox.setVisibility(View.GONE);
+        holder.rb.setVisibility(View.VISIBLE);
+        holder.rb.setText(iamGetDomainModel.getDomainName());
+        //  }
 
         holder.rb.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 resetData(iamGetDomainModel.getDomainName());
                 if (context instanceof RequestForAccessActivity) {
-                    ((RequestForAccessActivity) context).hitIAMGetBusinessApi(String.valueOf(iamGetDomainModel.getDomainID()),iamGetDomainModel.getDomainName(),"radioButton");
+                    ((RequestForAccessActivity) context).hitIAMGetBusinessApi(String.valueOf(iamGetDomainModel.getDomainID()), iamGetDomainModel.getDomainName(), "radioButton");
                 }
             }
         });

@@ -1,8 +1,6 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    >
+    android:layout_height="match_parent">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -218,8 +216,7 @@
                         android:layout_height="wrap_content"
                         android:adjustViewBounds="false"
                         android:scaleType="fitCenter"
-                        android:src="@drawable/car2"
-                        />
+                        android:src="@drawable/car2" />
 
 
                 </LinearLayout>
@@ -243,15 +240,15 @@
             android:layout_height="35dp"
             android:layout_alignParentRight="true"
             android:layout_marginTop="20dp"
-            android:src="@drawable/right_arrow"
-            />
+            android:src="@drawable/right_arrow" />
 
         <ImageView
             android:layout_alignParentRight="true"
             android:layout_alignParentBottom="true"
             android:src="@drawable/iconiclogo"
             android:layout_width="80dp"
-            android:layout_height="80dp"/>
+            android:layout_height="80dp" />
+
         <TextView
             android:padding="5dp"
             android:layout_alignParentLeft="true"
@@ -259,7 +256,7 @@
             android:text="Since 1958"
             android:textColor="@color/colorPrimary"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content" />
 
     </RelativeLayout>
 

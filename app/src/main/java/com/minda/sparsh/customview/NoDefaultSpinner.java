@@ -32,23 +32,22 @@ public class NoDefaultSpinner extends androidx.appcompat.widget.AppCompatSpinner
     }
 
     @Override
-    public void setAdapter(SpinnerAdapter orig ) {
+    public void setAdapter(SpinnerAdapter orig) {
         final SpinnerAdapter adapter = newProxy(orig);
 
         super.setAdapter(adapter);
 
         try {
             final Method m = AdapterView.class.getDeclaredMethod(
-                    "setNextSelectedPositionInt",int.class);
+                    "setNextSelectedPositionInt", int.class);
             m.setAccessible(true);
-            m.invoke(this,-1);
+            m.invoke(this, -1);
 
             final Method n = AdapterView.class.getDeclaredMethod(
-                    "setSelectedPositionInt",int.class);
+                    "setSelectedPositionInt", int.class);
             n.setAccessible(true);
-            n.invoke(this,-1);
-        }
-        catch( Exception e ) {
+            n.invoke(this, -1);
+        } catch (Exception e) {
             throw new RuntimeException(e);
         }
     }
@@ -59,7 +58,6 @@ public class NoDefaultSpinner extends androidx.appcompat.widget.AppCompatSpinner
                 new Class[]{SpinnerAdapter.class},
                 new SpinnerAdapterProxy(obj));
     }
-
 
 
     /**
@@ -75,9 +73,8 @@ public class NoDefaultSpinner extends androidx.appcompat.widget.AppCompatSpinner
             this.obj = obj;
             try {
                 this.getView = SpinnerAdapter.class.getMethod(
-                        "getView",int.class,View.class,ViewGroup.class);
-            }
-            catch( Exception e ) {
+                        "getView", int.class, View.class, ViewGroup.class);
+            } catch (Exception e) {
                 throw new RuntimeException(e);
             }
         }
@@ -85,14 +82,12 @@ public class NoDefaultSpinner extends androidx.appcompat.widget.AppCompatSpinner
         public Object invoke(Object proxy, Method m, Object[] args) throws Throwable {
             try {
                 return m.equals(getView) &&
-                        (Integer)(args[0])<0 ?
-                        getView((Integer)args[0],(View)args[1],(ViewGroup)args[2]) :
+                        (Integer) (args[0]) < 0 ?
+                        getView((Integer) args[0], (View) args[1], (ViewGroup) args[2]) :
                         m.invoke(obj, args);
-            }
-            catch (InvocationTargetException e) {
+            } catch (InvocationTargetException e) {
                 throw e.getTargetException();
-            }
-            catch (Exception e) {
+            } catch (Exception e) {
                 throw new RuntimeException(e);
             }
         }
@@ -100,16 +95,16 @@ public class NoDefaultSpinner extends androidx.appcompat.widget.AppCompatSpinner
         protected View getView(int position, View convertView, ViewGroup parent)
                 throws IllegalAccessException {
 
-            if( position<0 ) {
+            if (position < 0) {
                 final TextView v =
-                        (TextView) ((LayoutInflater)getContext().getSystemService(
+                        (TextView) ((LayoutInflater) getContext().getSystemService(
                                 Context.LAYOUT_INFLATER_SERVICE)).inflate(
-                                android.R.layout.simple_spinner_dropdown_item,parent,false);
+                                android.R.layout.simple_spinner_dropdown_item, parent, false);
                 v.setText(getPrompt());
                 v.setTextColor(Color.parseColor("#999999"));
                 return v;
             }
-            return obj.getView(position,convertView,parent);
+            return obj.getView(position, convertView, parent);
         }
     }
 }

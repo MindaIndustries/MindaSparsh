@@ -2,25 +2,28 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-    <include layout="@layout/toolbar"/>
+
+    <include layout="@layout/toolbar" />
 
     <RelativeLayout
         android:layout_marginTop="?attr/actionBarSize"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:adjustViewBounds="true"
             android:src="@drawable/birds"
-            android:scaleType="centerCrop"
-            />
+            android:scaleType="centerCrop" />
+
         <LinearLayout
             android:background="@color/translucent"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
+            android:layout_height="match_parent" />
 
     </RelativeLayout>
+
     <ScrollView
         android:layout_marginTop="?android:attr/actionBarSize"
         android:layout_width="match_parent"
@@ -36,7 +39,7 @@
                 android:visibility="gone"
                 android:layout_centerHorizontal="true"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content" />
 
             <View
                 android:id="@+id/view"
@@ -51,8 +54,7 @@
                 android:layout_height="wrap_content"
                 android:text="Name :"
                 android:textSize="15sp"
-                android:fontFamily="@font/museosans_500"
-                 />
+                android:fontFamily="@font/museosans_500" />
 
 
             <TextView
@@ -66,8 +68,8 @@
                 android:text="--"
                 android:layout_alignParentLeft="true"
                 android:gravity="left|center"
-                android:fontFamily="@font/museosans_300"
-                />
+                android:fontFamily="@font/museosans_300" />
+
             <TextView
                 android:layout_below="@+id/first_name"
                 android:textColor="@color/black"
@@ -77,8 +79,7 @@
                 android:layout_height="wrap_content"
                 android:text="Email :"
                 android:textSize="15sp"
-                android:fontFamily="@font/museosans_500"
-                />
+                android:fontFamily="@font/museosans_500" />
 
 
             <TextView
@@ -92,8 +93,8 @@
                 android:textSize="13sp"
                 android:layout_alignParentLeft="true"
                 android:gravity="left|center"
-                android:fontFamily="@font/museosans_300"
-                />
+                android:fontFamily="@font/museosans_300" />
+
             <TextView
                 android:gravity="left"
                 android:layout_below="@+id/email_value"
@@ -105,9 +106,7 @@
                 android:layout_height="wrap_content"
                 android:text="EmpCode :"
                 android:layout_toLeftOf="@+id/view"
-                android:fontFamily="@font/museosans_500"
-                />
-
+                android:fontFamily="@font/museosans_500" />
 
 
             <TextView
@@ -122,8 +121,7 @@
                 android:layout_toLeftOf="@+id/view"
                 android:layout_alignParentLeft="true"
                 android:gravity="left|center"
-                android:fontFamily="@font/museosans_300"
-                />
+                android:fontFamily="@font/museosans_300" />
 
 
             <TextView
@@ -136,8 +134,7 @@
                 android:layout_height="wrap_content"
                 android:text="Date of Joining :"
                 android:textSize="15sp"
-                android:fontFamily="@font/museosans_500"
-                />
+                android:fontFamily="@font/museosans_500" />
 
 
             <TextView
@@ -151,8 +148,7 @@
                 android:textSize="13sp"
                 android:layout_toRightOf="@+id/view"
                 android:gravity="left|center"
-                android:fontFamily="@font/museosans_300"
-                />
+                android:fontFamily="@font/museosans_300" />
 
             <TextView
                 android:layout_below="@+id/emp_code"
@@ -163,8 +159,7 @@
                 android:layout_height="wrap_content"
                 android:text="Unit :"
                 android:textSize="15sp"
-                android:fontFamily="@font/museosans_500"
-                />
+                android:fontFamily="@font/museosans_500" />
 
 
             <TextView
@@ -179,8 +174,7 @@
                 android:layout_toRightOf="@+id/view"
                 android:layout_alignParentLeft="true"
                 android:gravity="left|center"
-                android:fontFamily="@font/museosans_300"
-                />
+                android:fontFamily="@font/museosans_300" />
 
 
             <TextView
@@ -192,8 +186,7 @@
                 android:layout_height="wrap_content"
                 android:text="Department Name :"
                 android:textSize="15sp"
-                android:fontFamily="@font/museosans_500"
-                />
+                android:fontFamily="@font/museosans_500" />
 
 
             <TextView
@@ -208,8 +201,7 @@
                 android:layout_toRightOf="@+id/view"
                 android:layout_alignParentLeft="true"
                 android:gravity="left|center"
-                android:fontFamily="@font/museosans_300"
-                />
+                android:fontFamily="@font/museosans_300" />
 
 
             <TextView
@@ -221,8 +213,7 @@
                 android:layout_height="wrap_content"
                 android:text="Designation :"
                 android:textSize="15sp"
-                android:fontFamily="@font/museosans_500"
-                />
+                android:fontFamily="@font/museosans_500" />
 
 
             <TextView
@@ -237,8 +228,7 @@
                 android:layout_toRightOf="@+id/view"
                 android:layout_alignParentLeft="true"
                 android:gravity="left|center"
-                android:fontFamily="@font/museosans_300"
-                />
+                android:fontFamily="@font/museosans_300" />
 
 
             <TextView
@@ -250,8 +240,7 @@
                 android:layout_height="wrap_content"
                 android:textSize="15sp"
                 android:text="Reporting Officer Name :"
-                android:fontFamily="@font/museosans_500"
-                />
+                android:fontFamily="@font/museosans_500" />
 
 
             <TextView
@@ -266,10 +255,7 @@
                 android:layout_toRightOf="@+id/view"
                 android:layout_alignParentLeft="true"
                 android:gravity="left|center"
-                android:fontFamily="@font/museosans_300"
-                />
-
-
+                android:fontFamily="@font/museosans_300" />
 
 
             <TextView
@@ -282,8 +268,7 @@
                 android:text="Deputed Unit :"
                 android:textSize="15sp"
                 android:visibility="gone"
-                android:fontFamily="@font/museosans_500"
-                />
+                android:fontFamily="@font/museosans_500" />
 
 
             <TextView
@@ -299,8 +284,7 @@
                 android:layout_toRightOf="@+id/view"
                 android:layout_alignParentLeft="true"
                 android:gravity="left|center"
-                android:fontFamily="@font/museosans_300"
-                />
+                android:fontFamily="@font/museosans_300" />
 
 
         </RelativeLayout>

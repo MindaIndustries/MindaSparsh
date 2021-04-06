@@ -3,10 +3,10 @@ package com.minda.sparsh.model;
 import com.google.gson.annotations.SerializedName;
 
 public class CityResponse {
-     @SerializedName("id")
-     String id;
-     @SerializedName("District")
-     String District;
+    @SerializedName("id")
+    String id;
+    @SerializedName("District")
+    String District;
 
     public String getId() {
         return id;

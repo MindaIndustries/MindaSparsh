@@ -75,6 +75,7 @@ public class AbnormalityView_Model {
     public String getUpdatedBy() {
         return UpdatedBy;
     }
+
     public void setUpdatedBy(String updatedBy) {
         UpdatedBy = updatedBy;
     }
@@ -92,7 +93,8 @@ public class AbnormalityView_Model {
     }
 
     public void setImplementationDate(String implementationDate) {
-        ImplementationDate = implementationDate; }
+        ImplementationDate = implementationDate;
+    }
 
     public String getTargetDate() {
         return TargetDate;

@@ -26,7 +26,7 @@ public class MindacareWeb extends AppCompatActivity {
     Toolbar toolbar;
     @BindView(R.id.title)
     TextView title;
-    String empcode,DOB;
+    String empcode, DOB;
     SharedPreferences myPref;
 
 
@@ -47,22 +47,20 @@ public class MindacareWeb extends AppCompatActivity {
 
         Calendar dob1 = Calendar.getInstance();
         dob1.setTimeInMillis(dob);
-        String day,month;
-        if(dob1.get(Calendar.DAY_OF_MONTH)<10){
-            day = "0"+dob1.get(Calendar.DAY_OF_MONTH);
+        String day, month;
+        if (dob1.get(Calendar.DAY_OF_MONTH) < 10) {
+            day = "0" + dob1.get(Calendar.DAY_OF_MONTH);
+        } else {
+            day = "" + dob1.get(Calendar.DAY_OF_MONTH);
         }
-        else{
-            day ="" +dob1.get(Calendar.DAY_OF_MONTH);
-        }
-        if((dob1.get(Calendar.MONTH)+1)<10){
-            month = "0"+(dob1.get(Calendar.MONTH)+1);
-        }
-        else{
-            month =""+(dob1.get(Calendar.MONTH)+1);
+        if ((dob1.get(Calendar.MONTH) + 1) < 10) {
+            month = "0" + (dob1.get(Calendar.MONTH) + 1);
+        } else {
+            month = "" + (dob1.get(Calendar.MONTH) + 1);
         }
 
-        String age =  ""+day+month+dob1.get(Calendar.YEAR);
-        mindacareWebView.loadUrl(HttpConnection.mindacareUrl+"EmpCode="+empcode+"&Dob="+age);
+        String age = "" + day + month + dob1.get(Calendar.YEAR);
+        mindacareWebView.loadUrl(HttpConnection.mindacareUrl + "EmpCode=" + empcode + "&Dob=" + age);
         WebSettings webSettings = mindacareWebView.getSettings();
         webSettings.setJavaScriptEnabled(true);
 

@@ -7,7 +7,6 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 
-import com.minda.sparsh.R;
 import com.crashlytics.android.Crashlytics;
 
 import io.fabric.sdk.android.Fabric;

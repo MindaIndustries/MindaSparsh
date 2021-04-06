@@ -3,24 +3,26 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    >
-    <include layout="@layout/toolbar1"/>
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <include layout="@layout/toolbar1" />
+
     <RelativeLayout
         android:layout_marginTop="?attr/actionBarSize"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:adjustViewBounds="true"
             android:src="@drawable/birds"
-            android:scaleType="centerCrop"
-            />
+            android:scaleType="centerCrop" />
+
         <LinearLayout
             android:background="@color/translucent"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
+            android:layout_height="match_parent" />
 
     </RelativeLayout>
 
@@ -47,105 +49,105 @@
                 android:id="@+id/dashboardscreen_my_car_item"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Initiate"
-                />
+                android:text="Initiate" />
 
             <com.google.android.material.tabs.TabItem
                 android:id="@+id/dashboardscreen_share_item"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="My Observations"
-                />
+                android:text="My Observations" />
 
         </com.google.android.material.tabs.TabLayout>
+
         <FrameLayout
             android:id="@+id/framelayout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_below="@+id/tablayout">
-        </FrameLayout>
+            android:layout_below="@+id/tablayout"></FrameLayout>
 
 
-
-<RelativeLayout
-    android:visibility="gone"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
-        <androidx.cardview.widget.CardView
-            android:id="@+id/initiate_card"
+        <RelativeLayout
+            android:visibility="gone"
             android:layout_width="match_parent"
-            android:layout_height="100dp"
-            card_view:cardCornerRadius="5dp"
-            card_view:cardElevation="5dp"
-            card_view:cardUseCompatPadding="true"
-            android:foreground="?android:attr/selectableItemBackground"
-            android:clickable="true"
-            card_view:cardBackgroundColor="@color/colorPrimary"
-            >
-            <RelativeLayout
-                android:padding="20dp"
+            android:layout_height="match_parent">
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/initiate_card"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="100dp"
+                card_view:cardCornerRadius="5dp"
+                card_view:cardElevation="5dp"
+                card_view:cardUseCompatPadding="true"
+                android:foreground="?android:attr/selectableItemBackground"
+                android:clickable="true"
+                card_view:cardBackgroundColor="@color/colorPrimary">
 
-                <TextView
-                    android:layout_centerVertical="true"
-                    android:layout_marginLeft="10dp"
-                    android:text="Initiate"
-                    android:textSize="20sp"
-                    android:fontFamily="@font/museosans_300"
-                    android:textColor="@color/white"
-                    android:id="@+id/initiate_text"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
+                <RelativeLayout
+                    android:padding="20dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
 
-            </RelativeLayout>
+                    <TextView
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="10dp"
+                        android:text="Initiate"
+                        android:textSize="20sp"
+                        android:fontFamily="@font/museosans_300"
+                        android:textColor="@color/white"
+                        android:id="@+id/initiate_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
 
-        </androidx.cardview.widget.CardView>
-        <androidx.cardview.widget.CardView
-            android:layout_marginTop="10dp"
-            android:layout_below="@+id/initiate_card"
-            android:id="@+id/observation_card"
-            android:layout_width="match_parent"
-            android:layout_height="100dp"
-            card_view:cardCornerRadius="5dp"
-            card_view:cardElevation="5dp"
-            card_view:cardUseCompatPadding="true"
-            card_view:cardBackgroundColor="#43428e"
-            android:foreground="?android:attr/selectableItemBackground"
-            android:clickable="true" >
-            <RelativeLayout
-                android:padding="20dp"
+                </RelativeLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_marginTop="10dp"
+                android:layout_below="@+id/initiate_card"
+                android:id="@+id/observation_card"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="100dp"
+                card_view:cardCornerRadius="5dp"
+                card_view:cardElevation="5dp"
+                card_view:cardUseCompatPadding="true"
+                card_view:cardBackgroundColor="#43428e"
+                android:foreground="?android:attr/selectableItemBackground"
+                android:clickable="true">
 
-                <TextView
-                    android:layout_centerVertical="true"
-                    android:layout_marginLeft="10dp"
-                    android:text="My Observations"
-                    android:textSize="20sp"
-                    android:fontFamily="@font/museosans_300"
-                    android:textColor="@color/white"
-                    android:id="@+id/observation_text"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
+                <RelativeLayout
+                    android:padding="20dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
 
-                <TextView
-                    android:textSize="20sp"
-                    android:text=""
-                    android:fontFamily="@font/museosans_500"
-                    android:textStyle="bold"
-                    android:textColor="@color/white"
-                    android:layout_centerVertical="true"
-                    android:layout_alignParentRight="true"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
+                    <TextView
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="10dp"
+                        android:text="My Observations"
+                        android:textSize="20sp"
+                        android:fontFamily="@font/museosans_300"
+                        android:textColor="@color/white"
+                        android:id="@+id/observation_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                    <TextView
+                        android:textSize="20sp"
+                        android:text=""
+                        android:fontFamily="@font/museosans_500"
+                        android:textStyle="bold"
+                        android:textColor="@color/white"
+                        android:layout_centerVertical="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
 
 
-            </RelativeLayout>
+                </RelativeLayout>
 
-        </androidx.cardview.widget.CardView>
+            </androidx.cardview.widget.CardView>
 
-</RelativeLayout>
+        </RelativeLayout>
 
 
     </RelativeLayout>
