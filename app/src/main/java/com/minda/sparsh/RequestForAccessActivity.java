@@ -145,8 +145,8 @@ public class RequestForAccessActivity extends AppCompatActivity implements View.
     Button btn_cancel;
 
     ArrayList<String> catlistarray = new ArrayList<String>();
-    String sp_request_type_id, sp_access_type_id, sp_access_category_id ="0", sp_access_sub_category_id = "0", sp_access_sub_type_id="0",
-            sp_user_authorization_profile_id = "0", sp_access_for_id, sp_source_id, sp_access_category_value="0", sp_access_sub_category_value = "",
+    String sp_request_type_id, sp_access_type_id, sp_access_category_id = "0", sp_access_sub_category_id = "0", sp_access_sub_type_id = "0",
+            sp_user_authorization_profile_id = "0", sp_access_for_id, sp_source_id, sp_access_category_value = "0", sp_access_sub_category_value = "",
             sp_user_authorization_profile_value = "", catListValue = "", unitCheckId = "";
     @BindView(R.id.et_name)
     EditText et_name;
@@ -184,8 +184,8 @@ public class RequestForAccessActivity extends AppCompatActivity implements View.
     ArrayAdapter<String> sp_source_adapter;
     ArrayList<IAMGetAccessTypeSpinnerModel> accesstypelist = new ArrayList<>();
 
-    String TYPE ;
-    String Domains="",BusinessID="",DomainNames="",BusinessIdName="",PlantName="",PlantCode="",AccessSubTypeName="",AccessTypeName="",RequestTypeName="";
+    String TYPE;
+    String Domains = "", BusinessID = "", DomainNames = "", BusinessIdName = "", PlantName = "", PlantCode = "", AccessSubTypeName = "", AccessTypeName = "", RequestTypeName = "";
 
     private static Bitmap rotateImageIfRequired(Context context, Bitmap img, Uri selectedImage) {
 
@@ -246,7 +246,7 @@ public class RequestForAccessActivity extends AppCompatActivity implements View.
             }
         });
 
-        sp_source_adapter = new ArrayAdapter<String>(RequestForAccessActivity.this,android.R.layout.simple_spinner_item,sp_source_data){
+        sp_source_adapter = new ArrayAdapter<String>(RequestForAccessActivity.this, android.R.layout.simple_spinner_item, sp_source_data) {
             @Override
             public boolean isEnabled(int position) {
                 if (position == 0) {
@@ -255,6 +255,7 @@ public class RequestForAccessActivity extends AppCompatActivity implements View.
                     return true;
                 }
             }
+
             @Override
             public View getDropDownView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
                 View view = super.getDropDownView(position, convertView, parent);
@@ -264,7 +265,8 @@ public class RequestForAccessActivity extends AppCompatActivity implements View.
             /*    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
                     itemTv.setBackground(getResources().getDrawable(R.drawable.darkline));
                 }
-            */    if (position == 0) {
+            */
+                if (position == 0) {
                     itemTv.setTextColor(Color.parseColor("#999999"));
                 } else {
                     itemTv.setTextColor(Color.BLACK);
@@ -277,10 +279,8 @@ public class RequestForAccessActivity extends AppCompatActivity implements View.
         sp_source_adapter.notifyDataSetChanged();
 
 
-
-
         hitIAMGetRequestTypeApi();
-       // hitIAMGetAccessTypeApi();
+        // hitIAMGetAccessTypeApi();
         hitIAMGetDomainApi();
         hitIAMGetListOfNamesApi();
         selectionListener();
@@ -503,7 +503,7 @@ public class RequestForAccessActivity extends AppCompatActivity implements View.
                             sp_source_id, et_empCode.getText().toString(), et_organisation.getText().toString(), et_purpose.getText().toString(),
                             et_name.getText().toString(), sp_access_sub_type_id, sp_access_category_id, sp_access_sub_category_id, sp_access_category_value,
                             sp_access_sub_category_value, sp_user_authorization_profile_id, sp_user_authorization_profile_value,
-                            et_accessRequirementDetail.getText().toString(), catlistarray.toString().replace("[","").replace("]",""), unitCheckId);
+                            et_accessRequirementDetail.getText().toString(), catlistarray.toString().replace("[", "").replace("]", ""), unitCheckId);
                 }
             }
         });
@@ -585,15 +585,15 @@ public class RequestForAccessActivity extends AppCompatActivity implements View.
                         accesstypelist.addAll(responseList);
                         IAMIAMGetAccessTypeAdapter mAdapter = new IAMIAMGetAccessTypeAdapter(RequestForAccessActivity.this, accesstypelist);
                         sp_access_type.setAdapter(mAdapter);
-                        if(id==3){
-                            accesstypelist.remove(accesstypelist.size()-1);
+                        if (id == 3) {
+                            accesstypelist.remove(accesstypelist.size() - 1);
                         }
-                        synchronized(mAdapter){
+                        synchronized (mAdapter) {
                             mAdapter.notify();
                         }
 
                     }
-                    }
+                }
 
                 @Override
                 public void onFailure(Call<List<IAMGetAccessTypeSpinnerModel>> call, Throwable t) {
@@ -637,7 +637,7 @@ public class RequestForAccessActivity extends AppCompatActivity implements View.
     }
 
     public void hiIAMGetCategoryApi(String requestType, final String type) {
-       TYPE = type;
+        TYPE = type;
         if (Utility.isOnline(RequestForAccessActivity.this)) {
             showProgress(true);
             Interface anInterface = RetrofitClient2.getClient().create(Interface.class);
@@ -655,7 +655,7 @@ public class RequestForAccessActivity extends AppCompatActivity implements View.
                             iam.setCategory("Please Select Category");
                             responseList.add(0, iam);
                             IAMGetCategoryAdapter mAdapter = new IAMGetCategoryAdapter(RequestForAccessActivity.this, responseList);
-                          sp_access_category.setAdapter(mAdapter);
+                            sp_access_category.setAdapter(mAdapter);
                         } else {
                             final List<KeyPairBoolData> listArray = new ArrayList<KeyPairBoolData>();
 
@@ -674,7 +674,7 @@ public class RequestForAccessActivity extends AppCompatActivity implements View.
                                     for (int i = 0; i < selectedItems.size(); i++) {
                                         if (selectedItems.get(i).isSelected()) {
                                             catlistarray.add(String.valueOf(selectedItems.get(i).getId()));
-                                            catListValue +=  selectedItems.get(i).getId()+", ";
+                                            catListValue += selectedItems.get(i).getId() + ", ";
                                             Log.i("TAG", i + " : " + selectedItems.get(i).getName() + " : " + selectedItems.get(i).isSelected());
                                         }
 
@@ -792,7 +792,7 @@ public class RequestForAccessActivity extends AppCompatActivity implements View.
             Toast.makeText(RequestForAccessActivity.this, "Please Check Your Network Connection", Toast.LENGTH_LONG).show();
     }
 
-    public void hitIAMGetBusinessApi(String domainId,String domainNames, final String callFrom) {
+    public void hitIAMGetBusinessApi(String domainId, String domainNames, final String callFrom) {
         layPlant.setVisibility(View.GONE);
         Domains = domainId;
         DomainNames = domainNames;
@@ -833,11 +833,11 @@ public class RequestForAccessActivity extends AppCompatActivity implements View.
             Toast.makeText(RequestForAccessActivity.this, "Please Check Your Network Connection", Toast.LENGTH_LONG).show();
     }
 
-    public void hitIAMGetPlantApi(String businessId,List<IAMGetBusinessModel> selectedbusinesslist, final String callType,boolean b) {
+    public void hitIAMGetPlantApi(String businessId, List<IAMGetBusinessModel> selectedbusinesslist, final String callType, boolean b) {
         if (Utility.isOnline(RequestForAccessActivity.this)) {
             BusinessID = "";
             BusinessIdName = "";
-            for(int i=0;i<selectedbusinesslist.size();i++) {
+            for (int i = 0; i < selectedbusinesslist.size(); i++) {
                 if (selectedbusinesslist.get(i).isSelected()) {
                     BusinessID += selectedbusinesslist.get(i).getID() + ", ";
                     BusinessIdName += selectedbusinesslist.get(i).getBUSINESS() + ", ";
@@ -854,11 +854,9 @@ public class RequestForAccessActivity extends AppCompatActivity implements View.
                     List<IAMGetPlantModel> responseList = response.body();
                     if (responseList != null && responseList.size() > 0) {
 
-                        if(b){
+                        if (b) {
                             combineListPlant.addAll(responseList);
-                        }
-
-                        else{
+                        } else {
                             combineListPlant.removeAll(responseList);
                         }
                        /* if (callType.equalsIgnoreCase("checkBox")) {
@@ -867,16 +865,16 @@ public class RequestForAccessActivity extends AppCompatActivity implements View.
                             combineListPlant.clear();
                             combineListPlant.addAll(responseList);
                         }
-                       */ layPlant.setVisibility(View.VISIBLE);
+                       */
+                        layPlant.setVisibility(View.VISIBLE);
                         IAMGetPlantAdapter mAdapter = new IAMGetPlantAdapter(combineListPlant, RequestForAccessActivity.this, RequestForAccessActivity.this);
                         GridLayoutManager gridLayoutManager = new GridLayoutManager(getApplicationContext(), 2);
                         recyclerViewPlant.setLayoutManager
                                 (gridLayoutManager);
                         recyclerViewPlant.setAdapter(mAdapter);
                         mAdapter.notifyDataSetChanged();
-                    }
-                    else{
-                     //   layPlant.setVisibility(View.GONE);
+                    } else {
+                        //   layPlant.setVisibility(View.GONE);
                     }
                 }
 
@@ -918,7 +916,7 @@ public class RequestForAccessActivity extends AppCompatActivity implements View.
         if (Utility.isOnline(RequestForAccessActivity.this)) {
             showProgress(true);
             Interface anInterface = RetrofitClient2.getClient().create(Interface.class);
-            Call<List<IAMCreateRequestModel>> response = anInterface.IAMCreateRequest(RequestTypeId, AccessTypeId, AccessForTypeId, EmpCode, SourceTypeId, SourceEmpCode, Organization, Purpose, SourceName, AccessSubTypeId, CategoryId, SubCategoryId, CategoryName, SubCategoryName, ProfileId, ProfileName, RequirementDetail, CategoryList, UnitList, RetrofitClient2.CKEY, fileName, fileByte,Domains,BusinessID,DomainNames,BusinessIdName,PlantName,UnitList,AccessSubTypeName,AccessTypeName,RequestTypeName);
+            Call<List<IAMCreateRequestModel>> response = anInterface.IAMCreateRequest(RequestTypeId, AccessTypeId, AccessForTypeId, EmpCode, SourceTypeId, SourceEmpCode, Organization, Purpose, SourceName, AccessSubTypeId, CategoryId, SubCategoryId, CategoryName, SubCategoryName, ProfileId, ProfileName, RequirementDetail, CategoryList, UnitList, RetrofitClient2.CKEY, fileName, fileByte, Domains, BusinessID, DomainNames, BusinessIdName, PlantName, UnitList, AccessSubTypeName, AccessTypeName, RequestTypeName);
             response.enqueue(new Callback<List<IAMCreateRequestModel>>() {
                 @Override
                 public void onResponse(Call<List<IAMCreateRequestModel>> call, Response<List<IAMCreateRequestModel>> response) {
@@ -941,9 +939,6 @@ public class RequestForAccessActivity extends AppCompatActivity implements View.
     }
 
 
-
-
-
     private void call(List<IAMGetListOfNames> responseList) {
         String[] values = new String[responseList.size()];
         for (int i = 0; i < responseList.size(); i++) {
@@ -963,9 +958,7 @@ public class RequestForAccessActivity extends AppCompatActivity implements View.
         } else if (sp_access_type.getSelectedItemPosition() == 0 && sp_access_type.getVisibility() == View.VISIBLE) {
             Toast.makeText(RequestForAccessActivity.this, "Please Select Access Type", Toast.LENGTH_SHORT).show();
             return false;
-        }
-
-        else if ( TYPE!=null && TYPE!="3" && sp_access_category.getSelectedItemPosition() == 0 && sp_access_category.getVisibility() == View.VISIBLE) {
+        } else if (TYPE != null && TYPE != "3" && sp_access_category.getSelectedItemPosition() == 0 && sp_access_category.getVisibility() == View.VISIBLE) {
             Toast.makeText(RequestForAccessActivity.this, "Please Select Category", Toast.LENGTH_SHORT).show();
             return false;
         } else if (sp_access_sub_category.getSelectedItemPosition() == 0 && sp_access_sub_category.getVisibility() == View.VISIBLE) {
@@ -1028,10 +1021,9 @@ public class RequestForAccessActivity extends AppCompatActivity implements View.
         } catch (Exception e) {
             e.printStackTrace();
         }
-        try{
-            PlantName = StringUtil.join(set1,",");
-        }
-        catch ( Exception e){
+        try {
+            PlantName = StringUtil.join(set1, ",");
+        } catch (Exception e) {
 
         }
 
@@ -1245,7 +1237,7 @@ public class RequestForAccessActivity extends AppCompatActivity implements View.
     public void showMsg(String reqno) {
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
         alertDialogBuilder.setMessage("Request raised successfully.\n" +
-                "Access Request No. is "+reqno);
+                "Access Request No. is " + reqno);
 
 
         alertDialogBuilder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
