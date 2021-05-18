@@ -160,6 +160,7 @@ public class RequestForAccessActivity extends AppCompatActivity implements View.
     ImageView im_back;
     HashSet<String> set = new HashSet<String>();
     HashSet<String> set1 = new HashSet<String>();
+    HashSet<String> set2 = new HashSet<String>();
 
     @BindView(R.id.toolbar)
     Toolbar toolbar;
@@ -335,7 +336,6 @@ public class RequestForAccessActivity extends AppCompatActivity implements View.
                         sp_source_data.add("Select Source");
                         sp_source_data.add("Internal");
                         sp_source_data.add("External");
-
                         sp_source_adapter.notifyDataSetChanged();
                     }
                 }
@@ -835,8 +835,8 @@ public class RequestForAccessActivity extends AppCompatActivity implements View.
             BusinessIdName = "";
             for (int i = 0; i < selectedbusinesslist.size(); i++) {
                 if (selectedbusinesslist.get(i).isSelected()) {
-                    BusinessID += selectedbusinesslist.get(i).getID() + ", ";
-                    BusinessIdName += selectedbusinesslist.get(i).getBUSINESS() + ", ";
+                    BusinessID += selectedbusinesslist.get(i).getID() + ",";
+                    BusinessIdName += selectedbusinesslist.get(i).getBUSINESS() + ",";
                 }
             }
 
@@ -912,7 +912,7 @@ public class RequestForAccessActivity extends AppCompatActivity implements View.
         if (Utility.isOnline(RequestForAccessActivity.this)) {
             showProgress(true);
             Interface anInterface = RetrofitClient2.getClient().create(Interface.class);
-            Call<List<IAMCreateRequestModel>> response = anInterface.IAMCreateRequest(RequestTypeId, AccessTypeId, AccessForTypeId, EmpCode, SourceTypeId, SourceEmpCode, Organization, Purpose, SourceName, AccessSubTypeId, CategoryId, SubCategoryId, CategoryName, SubCategoryName, ProfileId, ProfileName, RequirementDetail, CategoryList, UnitList, RetrofitClient2.CKEY, fileName, fileByte, Domains, BusinessID, DomainNames, BusinessIdName, PlantName, UnitList, AccessSubTypeName, AccessTypeName, RequestTypeName);
+            Call<List<IAMCreateRequestModel>> response = anInterface.IAMCreateRequest(RequestTypeId, AccessTypeId, AccessForTypeId, EmpCode, SourceTypeId, SourceEmpCode, Organization, Purpose, SourceName, AccessSubTypeId, CategoryId, SubCategoryId, CategoryName, SubCategoryName, ProfileId, ProfileName, RequirementDetail, CategoryList, UnitList, RetrofitClient2.CKEY, fileName, fileByte, Domains, BusinessID, DomainNames, BusinessIdName, PlantName, PlantCode, AccessSubTypeName, AccessTypeName, RequestTypeName);
             response.enqueue(new Callback<List<IAMCreateRequestModel>>() {
                 @Override
                 public void onResponse(Call<List<IAMCreateRequestModel>> call, Response<List<IAMCreateRequestModel>> response) {
@@ -992,14 +992,16 @@ public class RequestForAccessActivity extends AppCompatActivity implements View.
     }
 
     @Override
-    public void handleClick(String id, String clickCheck, String plantName) {
+    public void handleClick(String id, String clickCheck, String plantName,String unitcode) {
         unitCheckId = "";
         if (clickCheck.equalsIgnoreCase("check")) {
             set.add(id);
             set1.add(plantName);
+            set2.add(unitcode);
         } else {
             set.remove(id);
             set1.remove(plantName);
+            set2.remove(unitcode);
 
         }
 //        // allocate memory for string array
@@ -1023,6 +1025,12 @@ public class RequestForAccessActivity extends AppCompatActivity implements View.
 
         }
 
+        try{
+            PlantCode = StringUtil.join(set2,",");
+        }
+        catch (Exception e){
+
+        }
     }
 
     public void selectFile() {

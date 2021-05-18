@@ -55,9 +55,9 @@ public class IAMGetPlantAdapter extends RecyclerView.Adapter<IAMGetPlantAdapter.
             @Override
             public void onClick(View view) {
                 if (holder.cb.isChecked()) {
-                    plantInterface.handleClick(iamGetPlantModel.getPlantCode(), "check", iamGetPlantModel.getUnitName());
+                    plantInterface.handleClick(iamGetPlantModel.getPlantCode(), "check", iamGetPlantModel.getUnitName(),iamGetPlantModel.getUnitCode());
                 } else {
-                    plantInterface.handleClick(iamGetPlantModel.getPlantCode(), "unCheck", iamGetPlantModel.getUnitName());
+                    plantInterface.handleClick(iamGetPlantModel.getPlantCode(), "unCheck", iamGetPlantModel.getUnitName(),iamGetPlantModel.getUnitCode());
                 }
 
 //                ((RequestForAccessActivity) context).plantId(iamGetPlantModel.getPlantCode());

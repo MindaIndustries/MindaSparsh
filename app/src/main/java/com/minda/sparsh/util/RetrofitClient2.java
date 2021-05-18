@@ -13,6 +13,7 @@ import okhttp3.Protocol;
 import okhttp3.Request;
 import okhttp3.Response;
 import okhttp3.internal.Util;
+import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 import retrofit2.converter.scalars.ScalarsConverterFactory;
@@ -27,7 +28,7 @@ public class RetrofitClient2 {
     //master public static final String BASE_URL = "http://176.9.28.166/MindaSparshTest/Service.asmx/";
     // public static final String BASE_URL = "http://52.172.191.61/Test.mindasparsh.com/Service.asmx/";
     //dev
-    public static final String BASE_URL = "https://dev.mindasparsh.com/Service.asmx/";
+    /*public static final String BASE_URL = "https://dev.mindasparsh.com/Service.asmx/";
     public static final String EHS_BASE_URL = "https://dev.mindasparsh.com/ServiceEHS.asmx/";
     public static final String ehs_img = "https://dev.mindasparsh.com/ehs/files/";
     public static final String bottomup_img = "https://dev.mindasparsh.com/bottomup/files/";
@@ -37,8 +38,8 @@ public class RetrofitClient2 {
     public static final String firebaseIDsaveUrl = "https://dev.mindasparsh.com/MindaFirePushServi./adb ce.asmx/";
     public static final String mindacareUrl = "https://dev.mindasparsh.com/MindaCare.asmx/";
     public static final String ithelpdeskBaseUrl = "https://dev.mindasparsh.com/ITHelpDeskM.asmx/";
-    //prod
-   /*   public static final String BASE_URL = "https://app.mindasparsh.com/Service.asmx/";
+    *///prod
+      public static final String BASE_URL = "https://app.mindasparsh.com/Service.asmx/";
       public static final String ehs_img = "https://app.mindasparsh.com/ehs/files/";
       public static final String EHS_BASE_URL = "https://app.mindasparsh.com/ServiceEHS.asmx/";
       public static final String BottomUpBaseUrl = "https://app.mindasparsh.com/BottomUpApi.asmx/";
@@ -48,7 +49,6 @@ public class RetrofitClient2 {
     public static final String mindacareUrl = "https://app.mindasparsh.com/MindaCare.asmx/";
     public static final String ithelpdeskBaseUrl = "https://app.mindasparsh.com/ITHelpDeskM.asmx/";
     public static final String itHelpAttachment = "https://app.mindasparsh.com/ithelpdesk/Files/";
-*/
     // public static final String CKEY = "bWRhQHNQciRyWiNHISE=";
     public static final String CKEY = "mda@sPr$rZ#G!!";
 
@@ -57,11 +57,16 @@ public class RetrofitClient2 {
 
     public static Retrofit getClient() {
         if (retrofit == null) {
+            HttpLoggingInterceptor logging = new HttpLoggingInterceptor();
+            logging.setLevel(HttpLoggingInterceptor.Level.BODY);
+
+
 
             final OkHttpClient okHttpClient = new OkHttpClient.Builder()
                     .readTimeout(60, TimeUnit.SECONDS)
                     .connectTimeout(60, TimeUnit.SECONDS)
-                    .protocols(Util.immutableList(Protocol.HTTP_1_1))
+                    .protocols(Util.immutableListOf(Protocol.HTTP_1_1))
+                    //.addInterceptor(logging)
                     .build();
             retrofit = new Retrofit.Builder()
                     .baseUrl(BASE_URL)
@@ -74,7 +79,7 @@ public class RetrofitClient2 {
 
     public static <S> S createServiceEHS(Class<S> serviceClass) {
         OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
-        httpClient.protocols(Util.immutableList(Protocol.HTTP_1_1));
+        httpClient.protocols(Util.immutableListOf(Protocol.HTTP_1_1));
         httpClient.addInterceptor(new Interceptor() {
             @Override
             public Response intercept(Interceptor.Chain chain) throws IOException {
@@ -111,7 +116,7 @@ public class RetrofitClient2 {
 
     public static <S> S createServiceBottomUponcern(Class<S> serviceClass) {
         OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
-        httpClient.protocols(Util.immutableList(Protocol.HTTP_1_1));
+        httpClient.protocols(Util.immutableListOf(Protocol.HTTP_1_1));
         httpClient.addInterceptor(new Interceptor() {
             @Override
             public Response intercept(Interceptor.Chain chain) throws IOException {
@@ -148,7 +153,7 @@ public class RetrofitClient2 {
 
     public static <S> S downloadService(Class<S> serviceClass) {
         OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
-        httpClient.protocols(Util.immutableList(Protocol.HTTP_1_1));
+        httpClient.protocols(Util.immutableListOf(Protocol.HTTP_1_1));
         httpClient.addInterceptor(new Interceptor() {
             @Override
             public Response intercept(Interceptor.Chain chain) throws IOException {
@@ -185,7 +190,7 @@ public class RetrofitClient2 {
 
     public static <S> S createServiceSuggestionBox(Class<S> serviceClass) {
         OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
-        httpClient.protocols(Util.immutableList(Protocol.HTTP_1_1));
+        httpClient.protocols(Util.immutableListOf(Protocol.HTTP_1_1));
 
         httpClient.addInterceptor(new Interceptor() {
             @Override
@@ -223,7 +228,7 @@ public class RetrofitClient2 {
 
     public static <S> S createServiceSaveFirebaseID(Class<S> serviceClass) {
         OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
-        httpClient.protocols(Util.immutableList(Protocol.HTTP_1_1));
+        httpClient.protocols(Util.immutableListOf(Protocol.HTTP_1_1));
         httpClient.addInterceptor(new Interceptor() {
             @Override
             public Response intercept(Interceptor.Chain chain) throws IOException {
@@ -260,7 +265,7 @@ public class RetrofitClient2 {
 
     public static <S> S createServiceMindacare(Class<S> serviceClass) {
         OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
-        httpClient.protocols(Util.immutableList(Protocol.HTTP_1_1));
+        httpClient.protocols(Util.immutableListOf(Protocol.HTTP_1_1));
         httpClient.addInterceptor(new Interceptor() {
             @Override
             public Response intercept(Interceptor.Chain chain) throws IOException {
@@ -298,7 +303,7 @@ public class RetrofitClient2 {
 
     public static <S> S createServiceEHSUpload(Class<S> serviceClass) {
         OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
-        httpClient.protocols(Util.immutableList(Protocol.HTTP_1_1));
+        httpClient.protocols(Util.immutableListOf(Protocol.HTTP_1_1));
         httpClient.addInterceptor(new Interceptor() {
             @Override
             public Response intercept(Interceptor.Chain chain) throws IOException {
@@ -325,7 +330,7 @@ public class RetrofitClient2 {
 
     public static <S> S createServiceitHelpDesk(Class<S> serviceClass) {
         OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
-        httpClient.protocols(Util.immutableList(Protocol.HTTP_1_1));
+        httpClient.protocols(Util.immutableListOf(Protocol.HTTP_1_1));
         httpClient.addInterceptor(new Interceptor() {
             @Override
             public Response intercept(Interceptor.Chain chain) throws IOException {

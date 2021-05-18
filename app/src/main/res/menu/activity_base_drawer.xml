@@ -12,10 +12,12 @@
     </group>
 
 
-    <group android:checkableBehavior="single">
+    <group android:checkableBehavior="single"
+        android:visible="false"
+        >
         <item
             android:title="MindaCare"
-            android:visible="true"
+            android:visible="false"
             android:id="@+id/mindacare"
             android:textColor="#000000" />
     </group>
