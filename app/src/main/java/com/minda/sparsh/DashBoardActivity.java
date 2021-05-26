@@ -41,6 +41,7 @@ import java.util.Timer;
 import javax.net.ssl.HttpsURLConnection;
 
 import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
@@ -84,7 +85,7 @@ public class DashBoardActivity extends BaseActivity implements View.OnClickListe
         empCode = myPref.getString("Id", "Id");
         User = myPref.getString("username", "");
         saveFirebaseToken(empCode);
-        //   getAppVersion();
+          getAppVersion();
       /*  FirebaseInstanceId.getInstance().getInstanceId()
                 .addOnCompleteListener(new OnCompleteListener<InstanceIdResult>() {
                     @Override
@@ -382,7 +383,7 @@ public class DashBoardActivity extends BaseActivity implements View.OnClickListe
                         if (list.get(0) != null && list.get(0).getAndriodVersion() != null) {
                             String androidVersion = list.get(0).getAndriodVersion();
                             if (version != androidVersion) {
-                                //  showMsg();
+                                  showMsgUpdate();
                             }
                         }
                     }
@@ -396,9 +397,9 @@ public class DashBoardActivity extends BaseActivity implements View.OnClickListe
             }
         });
     }
-/*
-    public void showMsg() {
+    public void showMsgUpdate() {
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this,R.style.AlertDialogCustom);
+        alertDialogBuilder.setTitle("New Update");
         alertDialogBuilder.setMessage("A new Version of Minda Sparsh is available on Play Store. Please Update.");
         alertDialogBuilder.setCancelable(false);
         alertDialogBuilder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
@@ -412,16 +413,15 @@ public class DashBoardActivity extends BaseActivity implements View.OnClickListe
             }
         });
 
-        alertDialogBuilder.setNegativeButton("CANCEL", new DialogInterface.OnClickListener() {
+       /* alertDialogBuilder.setNegativeButton("CANCEL", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 dialog.dismiss();
                // finish();
             }
         });
-
+*/
         AlertDialog alertDialog = alertDialogBuilder.create();
         alertDialog.show();
     }
-*/
 }

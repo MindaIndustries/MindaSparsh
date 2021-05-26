@@ -24,7 +24,6 @@ public class HttpConnection {
        public static String BASE_URL = "https://app.mindasparsh.com/service.asmx/";
        public static final String mindacareUrl = "https://app.mindasparsh.com/mindacare/login.aspx?";
 
-
     public String requestGetContent(String url) {
         HttpURLConnection urlConnection = null;
         String result = null;
@@ -62,7 +61,7 @@ public class HttpConnection {
             try {
                 is.close();
             } catch (IOException e) {
-
+                e.printStackTrace();
             }
         }
 
