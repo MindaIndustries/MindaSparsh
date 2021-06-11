@@ -114,7 +114,7 @@ public class ManufacturingFragment extends Fragment {
             @Override
             public void onClick(View view) {
 
-                hitGetUserDetail(myPref.getString("EmainId", ""));
+                hitGetUserDetail(myPref.getString("Id", ""));
 
 
             }

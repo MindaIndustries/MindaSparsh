@@ -355,6 +355,7 @@ public class DashBoardActivity extends BaseActivity implements View.OnClickListe
                         public void onTaskComplte(CarotResponse carotResponse) {
                             if (carotResponse.getStatuscode() == HttpsURLConnection.HTTP_OK) {
 
+
                             }
                         }
                     }, empCode, deviceTokenFcm);
@@ -367,7 +368,7 @@ public class DashBoardActivity extends BaseActivity implements View.OnClickListe
     public void getAppVersion() {
         try {
             PackageInfo pInfo = getPackageManager().getPackageInfo(getPackageName(), 0);
-            version = pInfo.versionName;
+            version = String.valueOf(pInfo.versionCode);
         } catch (PackageManager.NameNotFoundException e) {
             e.printStackTrace();
         }
@@ -381,8 +382,8 @@ public class DashBoardActivity extends BaseActivity implements View.OnClickListe
                     List<VersionModel> list = response.body();
                     if (list != null && list.size() > 0) {
                         if (list.get(0) != null && list.get(0).getAndriodVersion() != null) {
-                            String androidVersion = list.get(0).getAndriodVersion();
-                            if (version != androidVersion) {
+                            String androidVersion = list.get(0).getAndriodVersion().trim();
+                            if (!version.equals(androidVersion)) {
                                   showMsgUpdate();
                             }
                         }

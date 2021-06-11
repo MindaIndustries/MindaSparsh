@@ -148,6 +148,18 @@ public class AbnormalityAddressingActivity extends AppCompatActivity {
         progress.setIndeterminate(true);
         myPref = getSharedPreferences("MyPref", Context.MODE_PRIVATE);
         empCode = myPref.getString("Id", "Id");
+        if(getIntent().getStringExtra("EDOMAIN") !=null && getIntent().getStringExtra("EDOMAIN").length()>0){
+            domainid = getIntent().getStringExtra("EDOMAIN");
+        }
+
+        else if(getIntent().getStringExtra("EBUSINESS")!=null && getIntent().getStringExtra("EBUSINESS").length()>0){
+            businessid = getIntent().getStringExtra("EBUSINESS");
+
+        }
+        else {
+            plantid = getIntent().getStringExtra("EPLANT");
+
+        }
         hitCategoryApi();
         hitPlantApi(empCode);
 
@@ -1306,8 +1318,8 @@ public class AbnormalityAddressingActivity extends AppCompatActivity {
             tv_view.setTextColor(getResources().getColor(R.color.colorPrimary));
             tv_add.setBackground(getResources().getDrawable(R.color.colorPrimary));
             tv_view.setBackground(getResources().getDrawable(R.drawable.roundcornercellviewwhite));
-            if (!myPref.getString("EmainId", "").equalsIgnoreCase("")) {
-                hitGetUserDetail(myPref.getString("EmainId", ""));
+            if (!myPref.getString("Id", "").equalsIgnoreCase("")) {
+                hitGetUserDetail(myPref.getString("Id", ""));
             } else {
                 finish();
             }
@@ -1324,8 +1336,8 @@ public class AbnormalityAddressingActivity extends AppCompatActivity {
             tv_view.setBackground(getResources().getDrawable(R.color.colorPrimary));
             tv_add.setBackground(getResources().getDrawable(R.drawable.roundcornercellviewwhite));
 //            hitGroupApi();
-            if (!myPref.getString("EmainId", "").equalsIgnoreCase("")) {
-                hitGetUserDetail(myPref.getString("EmainId", ""));
+            if (!myPref.getString("Id", "").equalsIgnoreCase("")) {
+                hitGetUserDetail(myPref.getString("Id", ""));
             } else {
                 finish();
             }
