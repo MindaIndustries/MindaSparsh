@@ -58,6 +58,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="7500 crs"
+                            android:fontFamily="@font/museosans_500"
                             android:textColor="@color/colorPrimary"
                             android:textSize="16dp" />
 
@@ -66,6 +67,7 @@
                             android:layout_height="wrap_content"
                             android:text=" Group Turnover (FY21)"
                             android:textColor="#000000"
+                            android:fontFamily="@font/museosans_500"
                             android:textStyle="italic" />
                     </LinearLayout>
 
@@ -77,6 +79,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="62 "
+                            android:fontFamily="@font/museosans_500"
                             android:textColor="@color/colorPrimary"
                             android:textSize="16dp" />
 
@@ -84,6 +87,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Plants Globally"
+                            android:fontFamily="@font/museosans_500"
                             android:textColor="#000000"
 
                             android:textStyle="italic" />
@@ -97,10 +101,12 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="18 "
+                            android:fontFamily="@font/museosans_500"
                             android:textColor="@color/colorPrimary"
                             android:textSize="16dp" />
 
                         <TextView
+                            android:fontFamily="@font/museosans_500"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Joint Ventures/Associations"
@@ -117,6 +123,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="5 "
+                            android:fontFamily="@font/museosans_500"
                             android:textColor="@color/colorPrimary"
                             android:textSize="16dp" />
 
@@ -124,6 +131,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Acquisitions"
+                            android:fontFamily="@font/museosans_500"
                             android:textColor="#000000"
                             android:textStyle="italic" />
                     </LinearLayout>
@@ -137,6 +145,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="8 "
+                            android:fontFamily="@font/museosans_500"
                             android:textColor="@color/colorPrimary"
                             android:textSize="16dp" />
 
@@ -144,6 +153,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="R&amp;D Centers"
+                            android:fontFamily="@font/museosans_500"
                             android:textColor="#000000"
                             android:textStyle="italic" />
                     </LinearLayout>
@@ -156,6 +166,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="20+ "
+                            android:fontFamily="@font/museosans_500"
                             android:textColor="@color/colorPrimary"
                             android:textSize="16dp" />
 
@@ -163,6 +174,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Product Lines"
+                            android:fontFamily="@font/museosans_500"
                             android:textColor="#000000"
                             android:textStyle="italic" />
                     </LinearLayout>
@@ -175,6 +187,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="260+ "
+                            android:fontFamily="@font/museosans_500"
                             android:textColor="@color/colorPrimary"
                             android:textSize="16dp" />
 
@@ -182,6 +195,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Product Patents"
+                            android:fontFamily="@font/museosans_500"
                             android:textColor="#000000"
                             android:textStyle="italic" />
                     </LinearLayout>
@@ -194,6 +208,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="250+ "
+                            android:fontFamily="@font/museosans_500"
                             android:textColor="@color/colorPrimary"
                             android:textSize="16dp" />
 
@@ -201,6 +216,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Design Registrations"
+                            android:fontFamily="@font/museosans_500"
                             android:textColor="#000000"
                             android:textStyle="italic" />
                     </LinearLayout>
@@ -255,6 +271,7 @@
             android:layout_alignParentLeft="true"
             android:layout_alignParentBottom="true"
             android:text="Since 1958"
+            android:fontFamily="@font/museosans_500"
             android:textColor="@color/colorPrimary"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
