@@ -114,7 +114,7 @@ public class ForceUpgradeManager implements LifecycleObserver {
       AlertDialog dialog = new AlertDialog.Builder(temp, R.style.AlertDialogCustom)
           .setTitle("New version available")
           .setMessage("A new Version of Minda Sparsh is available on Play Store. Please update app for seamless experience.")
-             // .setCancelable(false)
+              .setCancelable(false)
           .setPositiveButton("Continue",
               new DialogInterface.OnClickListener() {
                 @Override
