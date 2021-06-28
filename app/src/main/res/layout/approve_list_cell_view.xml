@@ -14,6 +14,7 @@
                 android:id="@+id/tv_access_request_no"
                 style="@style/content_style"
                 android:layout_width="0dp"
+                android:fontFamily="@font/museosans_300"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:background="@drawable/border"
@@ -26,6 +27,7 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
+                android:fontFamily="@font/museosans_300"
                 android:background="@drawable/border"
                 android:text="Request On" />
 
@@ -35,6 +37,7 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
+                android:fontFamily="@font/museosans_300"
                 android:background="@drawable/border"
                 android:text="Access For" />
 
@@ -53,6 +56,7 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
+                android:fontFamily="@font/museosans_300"
                 android:background="@drawable/border"
                 android:text="Approval Status" />
 
