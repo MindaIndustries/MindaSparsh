@@ -57,7 +57,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="7500 crs"
+                            android:text="74B"
                             android:fontFamily="@font/museosans_500"
                             android:textColor="@color/colorPrimary"
                             android:textSize="16dp" />
@@ -78,7 +78,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="62 "
+                            android:text="71 "
                             android:fontFamily="@font/museosans_500"
                             android:textColor="@color/colorPrimary"
                             android:textSize="16dp" />
@@ -115,14 +115,14 @@
                     </LinearLayout>
 
                     <LinearLayout
-                        android:visibility="gone"
+                        android:visibility="visible"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content">
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="5 "
+                            android:text="6 "
                             android:fontFamily="@font/museosans_500"
                             android:textColor="@color/colorPrimary"
                             android:textSize="16dp" />
@@ -144,7 +144,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="8 "
+                            android:text="15+ "
                             android:fontFamily="@font/museosans_500"
                             android:textColor="@color/colorPrimary"
                             android:textSize="16dp" />
@@ -186,7 +186,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="260+ "
+                            android:text="275+ "
                             android:fontFamily="@font/museosans_500"
                             android:textColor="@color/colorPrimary"
                             android:textSize="16dp" />
