@@ -55,6 +55,7 @@
                         android:layout_height="wrap_content">
 
                         <TextView
+                            android:id="@+id/trnover_value"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="74B"
@@ -63,19 +64,33 @@
                             android:textSize="16dp" />
 
                         <TextView
+                            android:id="@+id/grp"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text=" Group Turnover (FY21)"
+                            android:text=" Group Turnover"
                             android:textColor="#000000"
                             android:fontFamily="@font/museosans_500"
                             android:textStyle="italic" />
+
+                        <TextView
+                            android:id="@+id/fy"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text=" (FY21)"
+                            android:textColor="#000000"
+                            android:fontFamily="@font/museosans_500"
+                            android:textStyle="italic" />
+
+
                     </LinearLayout>
+
 
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content">
 
                         <TextView
+                            android:id="@+id/plants_glbl_value"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="71 "
@@ -84,12 +99,12 @@
                             android:textSize="16dp" />
 
                         <TextView
+                            android:id="@+id/plants_glbl"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Plants Globally"
                             android:fontFamily="@font/museosans_500"
                             android:textColor="#000000"
-
                             android:textStyle="italic" />
                     </LinearLayout>
 
@@ -101,11 +116,13 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="18 "
+                            android:id="@+id/jv_value"
                             android:fontFamily="@font/museosans_500"
                             android:textColor="@color/colorPrimary"
                             android:textSize="16dp" />
 
                         <TextView
+                            android:id="@+id/jv"
                             android:fontFamily="@font/museosans_500"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -123,11 +140,13 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="6 "
+                            android:id="@+id/acquis_value"
                             android:fontFamily="@font/museosans_500"
                             android:textColor="@color/colorPrimary"
                             android:textSize="16dp" />
 
                         <TextView
+                            android:id="@+id/acquis"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Acquisitions"
@@ -145,11 +164,14 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="15+ "
+                            android:id="@+id/rnd_center_value"
                             android:fontFamily="@font/museosans_500"
                             android:textColor="@color/colorPrimary"
                             android:textSize="16dp" />
 
                         <TextView
+                            android:id="@+id/rnd_cntr"
+
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="R&amp;D Centers"
@@ -166,11 +188,13 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="20+ "
+                            android:id="@+id/product_lines_value"
                             android:fontFamily="@font/museosans_500"
                             android:textColor="@color/colorPrimary"
                             android:textSize="16dp" />
 
                         <TextView
+                            android:id="@+id/prd_lines"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Product Lines"
@@ -187,11 +211,13 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="275+ "
+                            android:id="@+id/product_patents_value"
                             android:fontFamily="@font/museosans_500"
                             android:textColor="@color/colorPrimary"
                             android:textSize="16dp" />
 
                         <TextView
+                            android:id="@+id/prd_ptnt"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Product Patents"
@@ -208,11 +234,13 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="250+ "
+                            android:id="@+id/design_reg_value"
                             android:fontFamily="@font/museosans_500"
                             android:textColor="@color/colorPrimary"
                             android:textSize="16dp" />
 
                         <TextView
+                            android:id="@+id/design_reg"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Design Registrations"

@@ -3,6 +3,7 @@ package com.minda.sparsh;
 
 import com.minda.sparsh.model.ARPDModel;
 import com.minda.sparsh.model.AbnormalityView_Model;
+import com.minda.sparsh.model.AboutUsDetails;
 import com.minda.sparsh.model.AccessRequestApproverDetailsModel;
 import com.minda.sparsh.model.AccessRequestDetailsModel;
 import com.minda.sparsh.model.AccessRequestPlantDetailModel;
@@ -55,6 +56,9 @@ public interface Interface {
 
     @GET("GetAppVersion")
     Call<List<VersionModel>> getAppVersion();
+
+    @GET("GetAboutUs")
+    Call<List<AboutUsDetails>> getAboutDetails();
 
     // @FormUrlEncoded
     @GET("GetLogin")
