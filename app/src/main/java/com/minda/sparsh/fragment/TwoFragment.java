@@ -14,6 +14,7 @@ import com.minda.sparsh.Interface;
 import com.minda.sparsh.R;
 import com.minda.sparsh.model.AboutUsDetails;
 import com.minda.sparsh.util.RetrofitClient2;
+import com.minda.sparsh.util.Utility;
 
 import org.w3c.dom.Text;
 
@@ -110,6 +111,10 @@ public class TwoFragment extends Fragment {
       //  ImageView im_right = (ImageView) view.findViewById(R.id.im_right);
         ButterKnife.bind(this,view);
         final DashBoardActivity contaxt = (DashBoardActivity) getActivity();
+        if(Utility.isOnline(getActivity())) {
+            getAboutUsInfo();
+        }
+
         im_right.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -171,8 +176,6 @@ public class TwoFragment extends Fragment {
                             if(list.get(0).getDesignRegsistration()!=null && list.get(0).getDesignRegsistration().length()>0){
                                 design_reg_value.setText(list.get(0).getDesignRegsistration());
                             }
-
-
                         }
                     }
                 }
