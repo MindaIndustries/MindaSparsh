@@ -957,7 +957,7 @@ public class RequestForAccessActivity extends AppCompatActivity implements View.
         } else if (TYPE != null && TYPE != "3" && sp_access_category.getSelectedItemPosition() == 0 && sp_access_category.getVisibility() == View.VISIBLE) {
             Toast.makeText(RequestForAccessActivity.this, "Please Select Category", Toast.LENGTH_SHORT).show();
             return false;
-        } else if (sp_access_sub_category.getSelectedItemPosition() == 0 && sp_access_sub_category.getVisibility() == View.VISIBLE) {
+        } else if (sp_access_sub_category.getSelectedItemPosition() == 0 && layAccessSubCategory.getVisibility() == View.VISIBLE) {
             Toast.makeText(RequestForAccessActivity.this, "Please Select Sub Category", Toast.LENGTH_SHORT).show();
             return false;
         } else if (sp_access_sub_type.getSelectedItemPosition() == 0 && sp_access_sub_type.getVisibility() == View.VISIBLE) {

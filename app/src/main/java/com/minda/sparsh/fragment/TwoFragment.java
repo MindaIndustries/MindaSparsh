@@ -149,32 +149,34 @@ public class TwoFragment extends Fragment {
                     List<AboutUsDetails> list = response.body();
                     if(list!=null && list.size()>0){
                         if(list.get(0)!=null){
-                            if(list.get(0).getFY()!=null && list.get(0).getFY().length()>0) {
-                                fy.setText(list.get(0).getFY());
+                            AboutUsDetails aboutUsDetails = list.get(0);
+
+                            if(aboutUsDetails.getFY()!=null && aboutUsDetails.getFY().length()>0) {
+                                fy.setText(aboutUsDetails.getFY());
                             }
-                            if(list.get(0).getGrpTrnOver()!=null && list.get(0).getGrpTrnOver().length()>0){
-                                trnover_value.setText(list.get(0).getGrpTrnOver()+" ");
+                            if(aboutUsDetails.getGrpTrnOver()!=null && aboutUsDetails.getGrpTrnOver().length()>0){
+                                trnover_value.setText(aboutUsDetails.getGrpTrnOver()+" ");
                             }
-                            if(list.get(0).getPlantsGlobally()!=null && list.get(0).getPlantsGlobally().length()>0){
-                                plants_glbl_value.setText(list.get(0).getPlantsGlobally()+" ");
+                            if(aboutUsDetails.getPlantsGlobally()!=null && aboutUsDetails.getPlantsGlobally().length()>0){
+                                plants_glbl_value.setText(aboutUsDetails.getPlantsGlobally()+" ");
                             }
-                            if(list.get(0).getJointVenture()!=null && list.get(0).getJointVenture().length()>0){
-                                jv_value.setText(list.get(0).getJointVenture()+" ");
+                            if(aboutUsDetails.getJointVenture()!=null && aboutUsDetails.getJointVenture().length()>0){
+                                jv_value.setText(aboutUsDetails.getJointVenture()+" ");
                             }
-                            if(list.get(0).getAcquisition()!=null && list.get(0).getAcquisition().length()>0){
-                                acquis_value.setText(list.get(0).getAcquisition()+" ");
+                            if(aboutUsDetails.getAcquisition()!=null && aboutUsDetails.getAcquisition().length()>0){
+                                acquis_value.setText(aboutUsDetails.getAcquisition()+" ");
                             }
-                            if(list.get(0).getRDCenter()!=null && list.get(0).getRDCenter().length()>0){
-                                rnd_center_value.setText(list.get(0).getRDCenter());
+                            if(aboutUsDetails.getRDCenter()!=null && aboutUsDetails.getRDCenter().length()>0){
+                                rnd_center_value.setText(aboutUsDetails.getRDCenter());
                             }
-                            if(list.get(0).getProductLine()!=null && list.get(0).getProductLine().length()>0){
-                                product_lines_value.setText(list.get(0).getProductLine());
+                            if(aboutUsDetails.getProductLine()!=null && aboutUsDetails.getProductLine().length()>0){
+                                product_lines_value.setText(aboutUsDetails.getProductLine());
                             }
-                            if(list.get(0).getProductPatent()!=null && list.get(0).getProductPatent().length()>0){
-                                product_patents_value.setText(list.get(0).getProductPatent());
+                            if(aboutUsDetails.getProductPatent()!=null && aboutUsDetails.getProductPatent().length()>0){
+                                product_patents_value.setText(aboutUsDetails.getProductPatent());
                             }
-                            if(list.get(0).getDesignRegsistration()!=null && list.get(0).getDesignRegsistration().length()>0){
-                                design_reg_value.setText(list.get(0).getDesignRegsistration());
+                            if(aboutUsDetails.getDesignRegsistration()!=null && aboutUsDetails.getDesignRegsistration().length()>0){
+                                design_reg_value.setText(aboutUsDetails.getDesignRegsistration());
                             }
                         }
                     }

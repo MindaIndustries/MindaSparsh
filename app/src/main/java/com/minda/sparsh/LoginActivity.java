@@ -2,8 +2,12 @@ package com.minda.sparsh;
 
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.MotionEvent;
@@ -22,6 +26,7 @@ import com.minda.sparsh.model.BannarModel;
 import com.minda.sparsh.model.LoginModel;
 import com.minda.sparsh.model.LoginResponse;
 import com.minda.sparsh.model.NotificationModel;
+import com.minda.sparsh.model.VersionModel;
 import com.minda.sparsh.parser.ParseData;
 import com.minda.sparsh.util.RetrofitClient2;
 import com.minda.sparsh.util.Utility;
@@ -33,6 +38,9 @@ import java.util.Set;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import javax.net.ssl.HttpsURLConnection;
+
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
 import retrofit2.Call;
@@ -59,6 +67,7 @@ public class LoginActivity extends AppCompatActivity {
     boolean runtimer;
     private List<String> IMAGES = new ArrayList<>();
     public ArrayList<String> arrayList = new ArrayList<String>();
+    String version = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -147,6 +156,9 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
+        if(Utility.isOnline(LoginActivity.this)) {
+            getAppVersion();
+        }
     }
 
     private void showProgress(boolean b) {
@@ -454,5 +466,65 @@ public class LoginActivity extends AppCompatActivity {
             Toast.makeText(LoginActivity.this, "Please Check Your Network Connection", Toast.LENGTH_LONG).show();
     }
 
+    public void getAppVersion() {
+        try {
+            PackageInfo pInfo = getPackageManager().getPackageInfo(getPackageName(), 0);
+            version = String.valueOf(pInfo.versionCode);
+        } catch (PackageManager.NameNotFoundException e) {
+            e.printStackTrace();
+        }
+
+        Interface anInterface = RetrofitClient2.getClient().create(Interface.class);
+        Call<List<VersionModel>> call = anInterface.getAppVersion();
+        call.enqueue(new Callback<List<VersionModel>>() {
+            @Override
+            public void onResponse(Call<List<VersionModel>> call, Response<List<VersionModel>> response) {
+                if (response.code() == HttpsURLConnection.HTTP_OK) {
+                    List<VersionModel> list = response.body();
+                    if (list != null && list.size() > 0) {
+                        if (list.get(0) != null && list.get(0).getAndriodVersion() != null) {
+                            String androidVersion = list.get(0).getAndriodVersion().trim();
+                            if (!version.equals(androidVersion)) {
+                                showMsgUpdate();
+                            }
+                        }
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<VersionModel>> call, Throwable t) {
+                System.out.println("Api failed");
+
+            }
+        });
+    }
+    public void showMsgUpdate() {
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this,R.style.AlertDialogCustom);
+        alertDialogBuilder.setTitle("New Update");
+        alertDialogBuilder.setMessage("A new Version of Minda Sparsh is available on Play Store. Please Update.");
+        alertDialogBuilder.setCancelable(false);
+        alertDialogBuilder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface arg0, int arg1) {
+                arg0.dismiss();
+
+                //  finish();
+                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(RetrofitClient2.playstoreURL));
+                startActivity(browserIntent);
+            }
+        });
+
+       /* alertDialogBuilder.setNegativeButton("CANCEL", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+               // finish();
+            }
+        });
+*/
+        AlertDialog alertDialog = alertDialogBuilder.create();
+        alertDialog.show();
+    }
 
 }

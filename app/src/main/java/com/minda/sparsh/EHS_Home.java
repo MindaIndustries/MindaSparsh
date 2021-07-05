@@ -32,6 +32,7 @@ public class EHS_Home extends BaseActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.ehs_layout);
         ButterKnife.bind(this);
         setSupportActionBar(toolbar);
