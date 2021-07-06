@@ -49,6 +49,8 @@ public class RetrofitClient2 {
     public static final String mindacareUrl = "https://app.mindasparsh.com/MindaCare.asmx/";
     public static final String ithelpdeskBaseUrl = "https://app.mindasparsh.com/ITHelpDeskM.asmx/";
     public static final String itHelpAttachment = "https://app.mindasparsh.com/ithelpdesk/Files/";
+
+    //new CKey
    //public static final String CKEY = "bWRhQHNQciRyWiNHISE=";
     public static final String CKEY = "mda@sPr$rZ#G!!";
 
