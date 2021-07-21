@@ -89,7 +89,7 @@ public class LoginActivity extends AppCompatActivity {
         lay_values = (LinearLayout) findViewById(R.id.lay_values);
         lay_needhelp = (LinearLayout) findViewById(R.id.lay_needhelp);
         mPager = (ViewPager) findViewById(R.id.showpager);
-        hitBannerApi();
+       // hitBannerApi();
         progress.setMessage("Please wait...");
         progress.setProgressStyle(ProgressDialog.STYLE_SPINNER);
         progress.setIndeterminate(true);
@@ -146,8 +146,8 @@ public class LoginActivity extends AppCompatActivity {
                 startActivity(needhelp);
             }
         });
-        showslideview();
-        mPager.setOnTouchListener(new View.OnTouchListener() {
+      //  showslideview();
+     /*   mPager.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View view, MotionEvent motionEvent) {
                 timer.cancel();
@@ -155,7 +155,7 @@ public class LoginActivity extends AppCompatActivity {
                 return false;
             }
         });
-
+*/
         if(Utility.isOnline(LoginActivity.this)) {
             getAppVersion();
         }
@@ -383,8 +383,8 @@ public class LoginActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        timer.cancel();
-        runtimer = true;
+//        timer.cancel();
+  //      runtimer = true;
 
     }
 
