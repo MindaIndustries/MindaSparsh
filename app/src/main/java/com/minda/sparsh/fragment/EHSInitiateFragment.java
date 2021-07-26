@@ -24,6 +24,7 @@ import android.util.Base64;
 import android.util.Base64OutputStream;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -247,6 +248,23 @@ public class EHSInitiateFragment extends Fragment {
                 attachtext.setText("" + getArguments().getString("attachment"));
             }
 
+
+            actionTakenEt.setOnTouchListener(new View.OnTouchListener() {
+                @Override
+                public boolean onTouch(View v, MotionEvent motionEvent) {
+                    if (v.getId() == R.id.action_taken_et) {
+                        v.getParent().requestDisallowInterceptTouchEvent(true);
+                        switch (motionEvent.getAction() & MotionEvent.ACTION_MASK){
+                            case MotionEvent.ACTION_UP:
+                                v.getParent().requestDisallowInterceptTouchEvent(false);
+                                return true;
+                        }
+                    }
+
+                    return false;
+                }
+            });
+
             if (getArguments().getString("status") != null) {
                 if (getArguments().getString("status").equals("1")) {
                     submit.setVisibility(View.VISIBLE);
@@ -257,6 +275,7 @@ public class EHSInitiateFragment extends Fragment {
                     categorySpinner.setEnabled(true);
                     subCategorySpinner.setEnabled(true);
                     descriptionEdit.setEnabled(true);
+                    actionTakenEt.setEnabled(true);
                     attachtext.setEnabled(true);
                     attachment.setEnabled(true);
                     timeSelector.setEnabled(true);
@@ -270,7 +289,12 @@ public class EHSInitiateFragment extends Fragment {
                         categorySpinner.setEnabled(false);
                         subCategorySpinner.setEnabled(false);
                         descriptionEdit.setEnabled(false);
-                        attachtext.setEnabled(false);
+
+
+                   /*     actionTakenEt.setFocusableInTouchMode(false);
+                        actionTakenEt.clearFocus();
+                  //      actionTakenEt.setEnabled(false);
+                   */     attachtext.setEnabled(false);
                         attachment.setEnabled(false);
                         timeSelector.setEnabled(false);
 
@@ -285,7 +309,11 @@ public class EHSInitiateFragment extends Fragment {
                     categorySpinner.setEnabled(false);
                     subCategorySpinner.setEnabled(false);
                     descriptionEdit.setEnabled(false);
-                    attachtext.setEnabled(false);
+                  /*  actionTakenEt.setFocusableInTouchMode(false);
+                    actionTakenEt.clearFocus();
+
+                    //   actionTakenEt.setEnabled(false);
+                  */  attachtext.setEnabled(false);
                     attachment.setEnabled(false);
                     timeSelector.setEnabled(false);
                 }

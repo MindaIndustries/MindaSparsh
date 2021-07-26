@@ -398,6 +398,7 @@
                 android:inputType="textMultiLine"
                 android:imeOptions="actionDone"
                 android:scrollbars="vertical"
+                android:scrollbarStyle="insideInset"
                 android:padding="2dp"
                 android:gravity="left|top"
                 android:overScrollMode="always" />
