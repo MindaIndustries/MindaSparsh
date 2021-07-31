@@ -449,7 +449,6 @@ public class LoginActivity extends AppCompatActivity {
                             finish();
                         } catch (Exception e) {
                             e.printStackTrace();
-                            Log.d("test","test");
                         }
 
 
