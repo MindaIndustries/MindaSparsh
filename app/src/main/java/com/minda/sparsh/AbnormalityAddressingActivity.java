@@ -969,6 +969,9 @@ public class AbnormalityAddressingActivity extends AppCompatActivity {
                 @Override
                 public void onResponse(Call<List<AddAbnormality_Model>> call, Response<List<AddAbnormality_Model>> response) {
                  //   showProgress(false);
+                    progressBar.setVisibility(View.GONE);
+                    tv_submit.setEnabled(true);
+
                     List<AddAbnormality_Model> Departmentresponse = response.body();
 
                     if (Departmentresponse != null) {
@@ -991,17 +994,21 @@ public class AbnormalityAddressingActivity extends AppCompatActivity {
 
                 @Override
                 public void onFailure(Call<List<AddAbnormality_Model>> call, Throwable t) {
+                    progressBar.setVisibility(View.GONE);
+                    tv_submit.setEnabled(true);
 
-                 //   showProgress(false);
+
+                    //   showProgress(false);
 
                 }
             });
         } else {
+            progressBar.setVisibility(View.GONE);
+            tv_submit.setEnabled(true);
+
             Toast.makeText(AbnormalityAddressingActivity.this, "Please Check Your Network Connection", Toast.LENGTH_LONG).show();
         }
 
-        progressBar.setVisibility(View.GONE);
-        tv_submit.setEnabled(true);
 
     }
 
