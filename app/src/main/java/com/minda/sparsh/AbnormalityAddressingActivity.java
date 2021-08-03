@@ -32,6 +32,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListAdapter;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -110,6 +111,7 @@ public class AbnormalityAddressingActivity extends AppCompatActivity {
     TextView title;
     String empCode;
 
+    ProgressBar progressBar;
     int category_id;
 
     @Override
@@ -127,6 +129,7 @@ public class AbnormalityAddressingActivity extends AppCompatActivity {
         lay_one = (LinearLayout) findViewById(R.id.lay_one);
         lay_out = (LinearLayout) findViewById(R.id.lay_out);
         list_abnormalty = (ListView) findViewById(R.id.list_abnormalty);
+        progressBar =(ProgressBar) findViewById(R.id.progressBar);
         tv_view = (TextView) findViewById(R.id.tv_view);
         tv_add = (TextView) findViewById(R.id.tv_add);
         tv_upload = (TextView) findViewById(R.id.tv_upload);
@@ -431,6 +434,8 @@ public class AbnormalityAddressingActivity extends AppCompatActivity {
                 description = et_descripton.getText().toString();
                 abnormalitydate = et_finddate.getText().toString();
                 benefits = "";
+                et_descripton.setText("");
+                tv_submit.setEnabled(false);
                 if (isvalid()) {
                     hitAddAbnormalityApi(group, domainid, businessid, plantid, String.valueOf(sub_department), sImage, description, benefits, abnormalitydate, myPref.getString("Id", ""), category_id);
                 }
@@ -956,13 +961,14 @@ public class AbnormalityAddressingActivity extends AppCompatActivity {
 
     public void hitAddAbnormalityApi(String group, String domain, String business, String plant, String department, String imagepath, String description, String benefits, String abnormalitydate, String UploadedBy, int category) {
         if (Utility.isOnline(AbnormalityAddressingActivity.this)) {
-            showProgress(true);
+            progressBar.setVisibility(View.VISIBLE);
+         //   showProgress(true);
             Interface promotingMyinterface = RetrofitClient2.getClient().create(Interface.class);
             Call<List<AddAbnormality_Model>> response = promotingMyinterface.AddAbnormality(RetrofitClient2.CKEY, group, domain, business, plant, department, imagepath, description, benefits, abnormalitydate, UploadedBy, category);
             response.enqueue(new Callback<List<AddAbnormality_Model>>() {
                 @Override
                 public void onResponse(Call<List<AddAbnormality_Model>> call, Response<List<AddAbnormality_Model>> response) {
-                    showProgress(false);
+                 //   showProgress(false);
                     List<AddAbnormality_Model> Departmentresponse = response.body();
 
                     if (Departmentresponse != null) {
@@ -986,12 +992,17 @@ public class AbnormalityAddressingActivity extends AppCompatActivity {
                 @Override
                 public void onFailure(Call<List<AddAbnormality_Model>> call, Throwable t) {
 
-                    showProgress(false);
+                 //   showProgress(false);
 
                 }
             });
-        } else
+        } else {
             Toast.makeText(AbnormalityAddressingActivity.this, "Please Check Your Network Connection", Toast.LENGTH_LONG).show();
+        }
+
+        progressBar.setVisibility(View.GONE);
+        tv_submit.setEnabled(true);
+
     }
 
     public void hitCategoryApi() {
