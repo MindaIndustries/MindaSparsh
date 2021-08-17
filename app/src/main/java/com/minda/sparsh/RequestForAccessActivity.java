@@ -1262,7 +1262,9 @@ public class RequestForAccessActivity extends AppCompatActivity implements View.
         });
 
         AlertDialog alertDialog = alertDialogBuilder.create();
-        alertDialog.show();
+        if(!isFinishing()) {
+            alertDialog.show();
+        }
     }
 
 }

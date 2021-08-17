@@ -39,8 +39,7 @@ public class RetrofitClient2 {
     public static final String mindacareUrl = "https://dev.mindasparsh.com/MindaCare.asmx/";
     public static final String ithelpdeskBaseUrl = "https://dev.mindasparsh.com/ITHelpDeskM.asmx/";
     //prod
-/*
-      public static final String BASE_URL = "https://app.mindasparsh.com/Service.asmx/";
+     /* public static final String BASE_URL = "https://app.mindasparsh.com/Service.asmx/";
       public static final String ehs_img = "https://app.mindasparsh.com/ehs/files/";
       public static final String EHS_BASE_URL = "https://app.mindasparsh.com/ServiceEHS.asmx/";
       public static final String BottomUpBaseUrl = "https://app.mindasparsh.com/BottomUpApi.asmx/";
@@ -50,8 +49,7 @@ public class RetrofitClient2 {
     public static final String mindacareUrl = "https://app.mindasparsh.com/MindaCare.asmx/";
     public static final String ithelpdeskBaseUrl = "https://app.mindasparsh.com/ITHelpDeskM.asmx/";
     public static final String itHelpAttachment = "https://app.mindasparsh.com/ithelpdesk/Files/";
-*/
-    //new CKey
+   */ //new CKey
      public static final String CKEY = "bWRhQHNQciRyWiNHISE=";
   //  public static final String CKEY = "mda@sPr$rZ#G!!";
 
