@@ -1,23 +1,61 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.minda.sparsh.SplashActivity"
     android:gravity="center"
-    android:orientation="vertical">
-    <!--android:background="@drawable/splash_sparsh"-->
-    <ImageView
+    tools:context="com.minda.sparsh.SplashActivity"
+    >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        >
+
+
+        <ImageView
+            android:id="@+id/mslogo"
+            android:layout_centerHorizontal="true"
+            android:layout_width="wrap_content"
+            android:layout_height="100dp"
+            android:src="@drawable/minda_sparshlogo"
+            android:scaleType="fitCenter"
+            android:adjustViewBounds="true" />
+
+
+        <ImageView
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/mslogo"
+            android:src="@drawable/iconic_brand"
+            android:visibility="gone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </RelativeLayout>
+
+
+
+
+
+    <TextView
+        android:id="@+id/pwrd"
         android:layout_width="wrap_content"
-        android:layout_height="100dp"
-        android:src="@drawable/minda_sparshlogo"
+        android:layout_height="wrap_content"
+        android:text="Powered by"
+        android:textColor="#999999"
+        android:fontFamily="@font/museosans_300"
+        android:layout_centerHorizontal="true"
+        android:layout_above="@+id/unominda_icon" />
+
+    <ImageView
+
+        android:layout_alignParentBottom="true"
+        android:id="@+id/unominda_icon"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:src="@drawable/login_logo"
         android:scaleType="fitCenter"
+        android:layout_centerHorizontal="true"
         android:adjustViewBounds="true" />
 
-
-    <ImageView
-        android:src="@drawable/iconic_brand"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-
-</LinearLayout>
+</RelativeLayout>

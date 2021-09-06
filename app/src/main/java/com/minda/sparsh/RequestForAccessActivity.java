@@ -800,7 +800,7 @@ public class RequestForAccessActivity extends AppCompatActivity implements View.
                 @Override
                 public void onResponse(Call<List<IAMGetBusinessModel>> call, Response<List<IAMGetBusinessModel>> response) {
                     showProgress(false);
-                    List<IAMGetBusinessModel> responseList = response.body();
+                    List<IAMGetBusinessModel> responseList =  response.body(); 
                     if (responseList != null && responseList.size() > 0) {
                         if (callFrom.equalsIgnoreCase("checkBox")) {
                             combineList.addAll(responseList);
