@@ -122,5 +122,7 @@ This policy is effective as of 2020-08-25
     <string name="my_profile">My Profile</string>
     <string name="access_req">Access Request</string>
     <string name="cost_saving_ideas">Cost Saving Ideas</string>
+    <string name="button">Button</string>
+    <string name="todo">TODO</string>
 
 </resources>
