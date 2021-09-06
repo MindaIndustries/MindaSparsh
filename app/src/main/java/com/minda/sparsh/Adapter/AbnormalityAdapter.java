@@ -54,10 +54,7 @@ public class AbnormalityAdapter extends BaseAdapter {
         progress.setMessage("Please wait...");
         progress.setProgressStyle(ProgressDialog.STYLE_SPINNER);
         progress.setIndeterminate(true);
-        SimpleDateFormat timeformet = new SimpleDateFormat("hh:mm a");
         time = System.currentTimeMillis();
-
-
     }
 
     public class ViewHolder {
@@ -396,7 +393,7 @@ public class AbnormalityAdapter extends BaseAdapter {
         try {
             date = inputFormat.parse(time);
             str = outputFormat.format(date);
-        } catch (ParseException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return str;
