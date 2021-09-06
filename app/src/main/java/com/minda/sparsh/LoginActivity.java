@@ -19,8 +19,7 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Toast;
-
-import com.google.firebase.iid.FirebaseInstanceId;
+import com.google.firebase.messaging.FirebaseMessaging;
 import com.minda.sparsh.Adapter.SlidingImage_Adapter;
 import com.minda.sparsh.connection.HttpConnection;
 import com.minda.sparsh.model.BannarModel;
@@ -228,7 +227,7 @@ public class LoginActivity extends AppCompatActivity {
                         mEditor.putBoolean("IsLogin", false);
                         mEditor.putBoolean("IsLoginNew", false);
                     }
-                    refreshedToken = FirebaseInstanceId.getInstance().getToken();
+                    refreshedToken = FirebaseMessaging.getInstance().getToken().getResult();
                     HitMyorder(Id, refreshedToken);
                     mEditor.commit();
                     startActivity(intent);
@@ -442,7 +441,7 @@ public class LoginActivity extends AppCompatActivity {
                                 mEditor.putBoolean("IsLoginNew", false);
 
                             }
-                            refreshedToken = FirebaseInstanceId.getInstance().getToken();
+                            refreshedToken = FirebaseMessaging.getInstance().getToken().getResult();
                             HitMyorder(Id, refreshedToken);
                             mEditor.apply();
                             startActivity(intent);

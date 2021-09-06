@@ -15,10 +15,11 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.tabs.TabLayout;
-import com.google.firebase.iid.FirebaseInstanceId;
-import com.google.firebase.iid.InstanceIdResult;
+import com.google.firebase.messaging.FirebaseMessaging;
 import com.minda.sparsh.fragment.FourFragment;
 import com.minda.sparsh.fragment.ManufacturingFragment;
 import com.minda.sparsh.fragment.OneFragment;
@@ -32,6 +33,7 @@ import com.minda.sparsh.services.FirebaseService;
 import com.minda.sparsh.util.RetrofitClient2;
 import com.minda.sparsh.util.Utility;
 
+import org.jetbrains.annotations.NotNull;
 import org.jsoup.Jsoup;
 
 import java.util.ArrayList;
@@ -40,6 +42,7 @@ import java.util.Timer;
 
 import javax.net.ssl.HttpsURLConnection;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
@@ -343,11 +346,10 @@ public class DashBoardActivity extends BaseActivity implements View.OnClickListe
 
     public void saveFirebaseToken(String empCode) {
 
-        FirebaseInstanceId.getInstance().getInstanceId().addOnSuccessListener(new OnSuccessListener<InstanceIdResult>() {
+        FirebaseMessaging.getInstance().getToken().addOnCompleteListener(new OnCompleteListener<String>() {
             @Override
-            public void onSuccess(InstanceIdResult instanceIdResult) {
-
-                String deviceTokenFcm = instanceIdResult.getToken();
+            public void onComplete(@NonNull @NotNull Task<String> task) {
+                String deviceTokenFcm = task.getResult();
                 if (Utility.isOnline(DashBoardActivity.this)) {
                     FirebaseService firebaseService = new FirebaseService();
                     firebaseService.saveFirebaseID(new OnTaskComplete() {
@@ -358,61 +360,66 @@ public class DashBoardActivity extends BaseActivity implements View.OnClickListe
 
                             }
                         }
+
                     }, empCode, deviceTokenFcm);
+
                 }
             }
         });
-
     }
 
-    public void getAppVersion() {
-        try {
-            PackageInfo pInfo = getPackageManager().getPackageInfo(getPackageName(), 0);
-            version = String.valueOf(pInfo.versionCode);
-        } catch (PackageManager.NameNotFoundException e) {
-            e.printStackTrace();
-        }
 
-        Interface anInterface = RetrofitClient2.getClient().create(Interface.class);
-        Call<List<VersionModel>> call = anInterface.getAppVersion();
-        call.enqueue(new Callback<List<VersionModel>>() {
-            @Override
-            public void onResponse(Call<List<VersionModel>> call, Response<List<VersionModel>> response) {
-                if (response.code() == HttpsURLConnection.HTTP_OK) {
-                    List<VersionModel> list = response.body();
-                    if (list != null && list.size() > 0) {
-                        if (list.get(0) != null && list.get(0).getAndriodVersion() != null) {
-                            String androidVersion = list.get(0).getAndriodVersion().trim();
-                            if (!version.equals(androidVersion)) {
-                                  showMsgUpdate();
+
+            public void getAppVersion() {
+                try {
+                    PackageInfo pInfo = getPackageManager().getPackageInfo(getPackageName(), 0);
+                    version = String.valueOf(pInfo.versionCode);
+                } catch (PackageManager.NameNotFoundException e) {
+                    e.printStackTrace();
+                }
+
+                Interface anInterface = RetrofitClient2.getClient().create(Interface.class);
+                Call<List<VersionModel>> call = anInterface.getAppVersion();
+                call.enqueue(new Callback<List<VersionModel>>() {
+                    @Override
+                    public void onResponse(Call<List<VersionModel>> call, Response<List<VersionModel>> response) {
+                        if (response.code() == HttpsURLConnection.HTTP_OK) {
+                            List<VersionModel> list = response.body();
+                            if (list != null && list.size() > 0) {
+                                if (list.get(0) != null && list.get(0).getAndriodVersion() != null) {
+                                    String androidVersion = list.get(0).getAndriodVersion().trim();
+                                    if (!version.equals(androidVersion)) {
+                                        showMsgUpdate();
+                                    }
+                                }
                             }
                         }
                     }
-                }
+
+                    @Override
+                    public void onFailure(Call<List<VersionModel>> call, Throwable t) {
+                        System.out.println("Api failed");
+
+                    }
+                });
             }
 
-            @Override
-            public void onFailure(Call<List<VersionModel>> call, Throwable t) {
-                System.out.println("Api failed");
 
-            }
-        });
-    }
-    public void showMsgUpdate() {
-        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this,R.style.AlertDialogCustom);
-        alertDialogBuilder.setTitle("New Update");
-        alertDialogBuilder.setMessage("A new Version of Minda Sparsh is available on Play Store. Please Update.");
-        alertDialogBuilder.setCancelable(false);
-        alertDialogBuilder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface arg0, int arg1) {
-                arg0.dismiss();
+            public void showMsgUpdate() {
+                AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(DashBoardActivity.this, R.style.AlertDialogCustom);
+                alertDialogBuilder.setTitle("New Update");
+                alertDialogBuilder.setMessage("A new Version of Minda Sparsh is available on Play Store. Please Update.");
+                alertDialogBuilder.setCancelable(false);
+                alertDialogBuilder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface arg0, int arg1) {
+                        arg0.dismiss();
 
-              //  finish();
-                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(RetrofitClient2.playstoreURL));
-                startActivity(browserIntent);
-            }
-        });
+                        //  finish();
+                        Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(RetrofitClient2.playstoreURL));
+                        startActivity(browserIntent);
+                    }
+                });
 
        /* alertDialogBuilder.setNegativeButton("CANCEL", new DialogInterface.OnClickListener() {
             @Override
@@ -422,7 +429,8 @@ public class DashBoardActivity extends BaseActivity implements View.OnClickListe
             }
         });
 */
-        AlertDialog alertDialog = alertDialogBuilder.create();
-        alertDialog.show();
-    }
-}
+                AlertDialog alertDialog = alertDialogBuilder.create();
+                alertDialog.show();
+            }
+        }
+

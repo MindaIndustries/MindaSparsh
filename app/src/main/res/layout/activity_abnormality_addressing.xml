@@ -58,16 +58,16 @@
                     android:id="@+id/im_back"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
+                    android:layout_marginStart="10dp"
                     android:src="@drawable/back" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="20dp"
-                    android:text="Abnormality"
+                    android:layout_marginStart="20dp"
+                    android:text="@string/abnormality"
                     android:textColor="@color/white"
-                    android:textSize="22dp"
+                    android:textSize="22sp"
                     android:textStyle="bold" />
             </LinearLayout>
 
@@ -98,9 +98,9 @@
                     android:background="@drawable/roundcornerbutton"
                     android:gravity="center"
                     android:padding="5dp"
-                    android:text="ADD"
+                    android:text="@string/add"
                     android:textColor="#FFFFFF"
-                    android:textSize="16dp"
+                    android:textSize="16sp"
                     android:textStyle="bold" />
 
                 <TextView
@@ -111,9 +111,9 @@
                     android:background="@drawable/roundcornerbutton"
                     android:gravity="center"
                     android:padding="5dp"
-                    android:text="VIEW"
+                    android:text="@string/view"
                     android:textColor="#FFFFFF"
-                    android:textSize="16dp"
+                    android:textSize="16sp"
                     android:textStyle="bold" />
             </LinearLayout>
 
@@ -182,7 +182,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Domain"
+                            android:text="@string/domain"
                             android:textSize="14sp" />
                     </LinearLayout>
 
@@ -228,7 +228,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Business"
+                            android:text="@string/business"
                             android:textSize="14sp" />
                     </LinearLayout>
 
@@ -273,7 +273,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Plant"
+                            android:text="@string/plant"
                             android:textSize="14sp" />
                     </LinearLayout>
 
@@ -317,7 +317,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Department"
+                            android:text="@string/department"
                             android:textSize="14sp" />
                     </LinearLayout>
 
@@ -361,7 +361,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Sub Department"
+                            android:text="@string/sub_department"
                             android:textSize="14sp" />
                     </LinearLayout>
 
@@ -405,7 +405,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Category"
+                            android:text="@string/category"
                             android:textSize="14sp" />
                     </LinearLayout>
 
@@ -462,9 +462,9 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="5dp"
-                            android:text="Upload Image"
+                            android:text="@string/upload_image"
                             android:textColor="#000000"
-                            android:textSize="16dp"
+                            android:textSize="16sp"
                             android:textStyle="bold" />
 
                     </LinearLayout>
@@ -476,7 +476,7 @@
                         android:layout_marginLeft="20dp"
                         android:layout_marginRight="20dp"
                         android:layout_marginTop="20dp"
-                        android:hint="Abnormality Description">
+                        android:hint="@string/abnormality_description">
 
                         <com.google.android.material.textfield.TextInputEditText
                             android:id="@+id/et_descripton"
@@ -506,8 +506,8 @@
                         android:layout_marginLeft="20dp"
                         android:layout_marginRight="20dp"
                         android:layout_marginTop="20dp"
-                        android:text="Abnormality Finding Date"
-                        android:textSize="18dp" />
+                        android:text="@string/abnormality_finding_date"
+                        android:textSize="18sp" />
 
                     <View
                         android:layout_width="match_parent"
@@ -532,9 +532,9 @@
                             android:background="@drawable/roundcornerbutton"
                             android:gravity="center"
                             android:padding="5dp"
-                            android:text="Submit"
+                            android:text="@string/submit"
                             android:textColor="#FFFFFF"
-                            android:textSize="18dp"
+                            android:textSize="18sp"
                             android:textStyle="bold" />
 
                     </LinearLayout>
@@ -570,7 +570,7 @@
                                 android:layout_weight="1"
                                 android:background="@drawable/cell_views"
                                 android:gravity="center"
-                                android:text="S.No"
+                                android:text="@string/s_no"
                                 android:textStyle="bold" />
 
                             <TextView
@@ -579,7 +579,7 @@
                                 android:layout_weight="4"
                                 android:background="@drawable/cell_views"
                                 android:gravity="center"
-                                android:text="Abnormality"
+                                android:text="@string/abnormality"
                                 android:textStyle="bold" />
 
                             <TextView
@@ -588,7 +588,7 @@
                                 android:layout_weight="4"
                                 android:background="@drawable/cell_views"
                                 android:gravity="center"
-                                android:text="Raised By"
+                                android:text="@string/raised_by"
                                 android:textStyle="bold" />
 
                             <TextView
@@ -597,7 +597,7 @@
                                 android:layout_weight="3"
                                 android:background="@drawable/cell_views"
                                 android:gravity="center"
-                                android:text="Abnormality Date"
+                                android:text="@string/abnormality_date"
                                 android:textStyle="bold" />
 
                             <TextView
@@ -606,7 +606,7 @@
                                 android:layout_weight="2"
                                 android:background="@drawable/cell_views"
                                 android:gravity="center"
-                                android:text="Domain"
+                                android:text="@string/domain"
                                 android:textStyle="bold" />
 
                             <TextView
@@ -615,7 +615,7 @@
                                 android:layout_weight="2"
                                 android:background="@drawable/cell_views"
                                 android:gravity="center"
-                                android:text="Business"
+                                android:text="@string/business"
                                 android:textStyle="bold" />
 
                             <TextView
@@ -624,7 +624,7 @@
                                 android:layout_weight="2"
                                 android:background="@drawable/cell_views"
                                 android:gravity="center"
-                                android:text="Category"
+                                android:text="@string/category"
                                 android:textStyle="bold" />
 
                             <TextView
@@ -633,7 +633,7 @@
                                 android:layout_weight="2"
                                 android:background="@drawable/cell_views"
                                 android:gravity="center"
-                                android:text="Plant"
+                                android:text="@string/plant"
                                 android:textStyle="bold" />
 
                             <TextView
@@ -642,7 +642,7 @@
                                 android:layout_weight="2"
                                 android:background="@drawable/cell_views"
                                 android:gravity="center"
-                                android:text="Department"
+                                android:text="@string/department"
                                 android:textStyle="bold" />
 
                             <TextView
@@ -651,7 +651,7 @@
                                 android:layout_weight="3"
                                 android:background="@drawable/cell_views"
                                 android:gravity="center"
-                                android:text="Target Date"
+                                android:text="@string/target_date"
                                 android:textStyle="bold" />
 
                             <TextView
@@ -660,7 +660,7 @@
                                 android:layout_weight="6"
                                 android:background="@drawable/cell_views"
                                 android:gravity="center"
-                                android:text="Action"
+                                android:text="@string/action"
                                 android:textStyle="bold" />
 
                             <TextView
@@ -669,7 +669,7 @@
                                 android:layout_weight="3"
                                 android:background="@drawable/cell_views"
                                 android:gravity="center"
-                                android:text="Action Date"
+                                android:text="@string/action_date"
                                 android:textStyle="bold" />
 
                             <TextView
@@ -678,7 +678,7 @@
                                 android:layout_weight="4"
                                 android:background="@drawable/cell_views"
                                 android:gravity="center"
-                                android:text="Benefit"
+                                android:text="@string/benefit"
                                 android:textStyle="bold" />
 
                             <TextView
@@ -687,7 +687,7 @@
                                 android:layout_weight="3"
                                 android:background="@drawable/cell_views"
                                 android:gravity="center"
-                                android:text="Status"
+                                android:text="@string/status"
                                 android:textStyle="bold" />
 
                             <TextView
@@ -696,7 +696,7 @@
                                 android:layout_weight="3"
                                 android:background="@drawable/cell_views"
                                 android:gravity="center"
-                                android:text="Update"
+                                android:text="@string/update"
                                 android:textStyle="bold" />
 
                             <TextView
@@ -705,7 +705,7 @@
                                 android:layout_weight="3"
                                 android:background="@drawable/cell_views"
                                 android:gravity="center"
-                                android:text="View"
+                                android:text="@string/view"
                                 android:textStyle="bold" />
 
                             <TextView
@@ -714,7 +714,7 @@
                                 android:layout_weight="3"
                                 android:background="@drawable/cell_views"
                                 android:gravity="center"
-                                android:text="UpdatedBy"
+                                android:text="@string/updatedby"
                                 android:textStyle="bold" />
 
 

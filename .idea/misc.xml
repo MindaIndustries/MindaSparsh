@@ -3,6 +3,8 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="app/src/main/res/layout/abnormality.xml" value="0.16154371584699453" />
+        <entry key="app/src/main/res/layout/activity_abnormality_addressing.xml" value="0.1046875" />
         <entry key="app/src/main/res/layout/ehs_obs_row.xml" value="0.16700819672131148" />
         <entry key="app/src/main/res/layout/slidingimages_layout.xml" value="0.16700819672131148" />
         <entry key="app/src/main/res/layout/test_layout.xml" value="0.1" />

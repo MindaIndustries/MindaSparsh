@@ -91,7 +91,7 @@
                 android:gravity="center"
                 android:background="@drawable/cell_view"
                 android:layout_weight="3"
-                android:text="Add Date" />
+                android:text="@string/add_date" />
 
             <TextView
                 android:id="@+id/tv_action"
@@ -145,7 +145,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:text="Update"
+                    android:text="@string/update"
                     android:textColor="@color/colorPrimary" />
 
                 <View
@@ -167,7 +167,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:text="View"
+                    android:text="@string/view"
                     android:textColor="@color/colorPrimary" />
 
                 <View
@@ -189,7 +189,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:text="View"
+                    android:text="@string/view"
                     android:textColor="@color/colorPrimary" />
 
             </LinearLayout>

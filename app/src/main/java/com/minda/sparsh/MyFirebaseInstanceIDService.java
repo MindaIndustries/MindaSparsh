@@ -2,13 +2,12 @@ package com.minda.sparsh;
 
 import android.util.Log;
 
-import com.google.firebase.iid.FirebaseInstanceId;
-import com.google.firebase.iid.FirebaseInstanceIdService;
 
 /**
  * Created by dmin on 2/23/2018.
  */
 
+/*
 public class MyFirebaseInstanceIDService extends FirebaseInstanceIdService {
     String TAG = "test";
 
@@ -25,3 +24,4 @@ public class MyFirebaseInstanceIDService extends FirebaseInstanceIdService {
 
     }
 }
+*/

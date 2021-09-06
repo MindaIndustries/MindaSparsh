@@ -124,5 +124,29 @@ This policy is effective as of 2020-08-25
     <string name="cost_saving_ideas">Cost Saving Ideas</string>
     <string name="button">Button</string>
     <string name="todo">TODO</string>
+    <string name="add_date">Add Date</string>
+    <string name="update">Update</string>
+    <string name="view">View</string>
+    <string name="add">ADD</string>
+    <string name="domain">Domain</string>
+    <string name="business">Business</string>
+    <string name="plant">Plant</string>
+    <string name="department">Department</string>
+    <string name="sub_department">Sub Department</string>
+    <string name="category">Category</string>
+    <string name="upload_image">Upload Image</string>
+    <string name="abnormality_description">Abnormality Description</string>
+    <string name="abnormality_finding_date">Abnormality Finding Date</string>
+    <string name="submit">Submit</string>
+    <string name="s_no">S.No</string>
+    <string name="raised_by">Raised By</string>
+    <string name="abnormality">Abnormality</string>
+    <string name="abnormality_date">Abnormality Date</string>
+    <string name="target_date">Target Date</string>
+    <string name="action_date">Action Date</string>
+    <string name="action">Action</string>
+    <string name="status">Status</string>
+    <string name="benefit">Benefit</string>
+    <string name="updatedby">UpdatedBy</string>
 
 </resources>
