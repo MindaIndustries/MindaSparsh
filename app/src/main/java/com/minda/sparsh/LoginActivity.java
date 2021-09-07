@@ -2,7 +2,6 @@ package com.minda.sparsh;
 
 import android.app.ProgressDialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageInfo;
@@ -10,8 +9,6 @@ import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
@@ -102,35 +99,26 @@ public class LoginActivity extends AppCompatActivity {
         input_password = (EditText) findViewById(R.id.input_password);
         btn_login = (Button) findViewById(R.id.btn_login);
 
-        btn_login.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (isValidate()) {
-                    usernameString = input_email.getText().toString();
-                    passString = input_password.getText().toString();
-                    if (Utility.isOnline(getApplication())) {
-                        hitGetLoginApi(usernameString, passString, RetrofitClient2.CKEY);
+        btn_login.setOnClickListener(v -> {
+            if (isValidate()) {
+                usernameString = input_email.getText().toString();
+                passString = input_password.getText().toString();
+                if (Utility.isOnline(getApplication())) {
+                    hitGetLoginApi(usernameString, passString, RetrofitClient2.CKEY);
 //                        loginFetchTask = new LoginFetchTask();
 //                        loginFetchTask.execute();
-                    } else {
-                        Utility.showToast(getApplicationContext(), "Network failed. Please try later.");
-                    }
+                } else {
+                    Utility.showToast(getApplicationContext(), "Network failed. Please try later.");
                 }
             }
         });
-        lay_vision.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent vision = new Intent(LoginActivity.this, VisionActivity.class);
-                startActivity(vision);
-            }
+        lay_vision.setOnClickListener(view -> {
+            Intent vision = new Intent(LoginActivity.this, VisionActivity.class);
+            startActivity(vision);
         });
-        lay_mission.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent mission = new Intent(LoginActivity.this, MissionActivity.class);
-                startActivity(mission);
-            }
+        lay_mission.setOnClickListener(view -> {
+            Intent mission = new Intent(LoginActivity.this, MissionActivity.class);
+            startActivity(mission);
         });
         lay_values.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -504,15 +492,12 @@ public class LoginActivity extends AppCompatActivity {
         alertDialogBuilder.setTitle("New Update");
         alertDialogBuilder.setMessage("A new Version of Minda Sparsh is available on Play Store. Please Update.");
         alertDialogBuilder.setCancelable(false);
-        alertDialogBuilder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface arg0, int arg1) {
-                arg0.dismiss();
+        alertDialogBuilder.setPositiveButton("OK", (arg0, arg1) -> {
+            arg0.dismiss();
 
-                //  finish();
-                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(RetrofitClient2.playstoreURL));
-                startActivity(browserIntent);
-            }
+            //  finish();
+            Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(RetrofitClient2.playstoreURL));
+            startActivity(browserIntent);
         });
 
        /* alertDialogBuilder.setNegativeButton("CANCEL", new DialogInterface.OnClickListener() {

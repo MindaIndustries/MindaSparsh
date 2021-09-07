@@ -16,7 +16,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.tabs.TabLayout;
 import com.google.firebase.messaging.FirebaseMessaging;
@@ -38,7 +37,6 @@ import org.jsoup.Jsoup;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Timer;
 
 import javax.net.ssl.HttpsURLConnection;
 
@@ -60,8 +58,7 @@ public class DashBoardActivity extends BaseActivity implements View.OnClickListe
     RelativeLayout lay_logout;
     int count = 0;
     public static TextView tv_unread;
-    public ImageView im_right, im_left, im_logo;
-    Timer timer;
+    public ImageView im_right, im_left;
     String empCode;
     public static Integer time = 0;
 
@@ -72,15 +69,8 @@ public class DashBoardActivity extends BaseActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dash_board);
-        ActionBar actionBar = getSupportActionBar();
-//        actionBar.setTitle(R.string.app_name);
 
-//        ((ImageButton) findViewById(R.id.dwm_btn)).setOnClickListener(this);
-//        ((ImageButton) findViewById(R.id.jagriti_btn)).setOnClickListener(this);
         tv_unread = (TextView) findViewById(R.id.tv_unread);
-//        im_right= (ImageView) findViewById(R.id.im_right);
-//        im_left= (ImageView) findViewById(R.id.im_left);
-//        im_logo=(ImageView) findViewById(R.id.im_logo);
         tv_user_name = (TextView) findViewById(R.id.tv_user_name);
         lay_logout = (RelativeLayout) findViewById(R.id.lay_logout);
         viewPager = (ViewPager) findViewById(R.id.pager);
@@ -89,21 +79,7 @@ public class DashBoardActivity extends BaseActivity implements View.OnClickListe
         User = myPref.getString("username", "");
         saveFirebaseToken(empCode);
           getAppVersion();
-      /*  FirebaseInstanceId.getInstance().getInstanceId()
-                .addOnCompleteListener(new OnCompleteListener<InstanceIdResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<InstanceIdResult> task) {
-                        if (!task.isSuccessful()) {
-                            Log.w("TAG", "getInstanceId failed", task.getException());
-                            return;
-                        }
-                        // Get new Instance ID token
-                        String token = task.getResult().getToken();
-                    }
-                });
-      */  //tv_user_name.setText(User);
-//        im_left.setOnClickListener(this);
-//        im_right.setOnClickListener(this);
+
         viewPager.setOffscreenPageLimit(0);
 
         try {
@@ -149,14 +125,11 @@ public class DashBoardActivity extends BaseActivity implements View.OnClickListe
 //        timer.schedule(timerTask, 5000, 5000);
 
 
-        tv_unread.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+        tv_unread.setOnClickListener(view -> {
 
-                Intent intent = new Intent(DashBoardActivity.this, NotificationActivity.class);
-                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
-                startActivity(intent);
-            }
+            Intent intent = new Intent(DashBoardActivity.this, NotificationActivity.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(intent);
         });
         myPref = getSharedPreferences("MyPref", Context.MODE_PRIVATE);
 
@@ -187,7 +160,7 @@ public class DashBoardActivity extends BaseActivity implements View.OnClickListe
 
 
     // Adapter for the viewpager using FragmentPagerAdapter
-    class ViewPagerAdapter extends FragmentPagerAdapter {
+    static class ViewPagerAdapter extends FragmentPagerAdapter {
         private final List<Fragment> mFragmentList = new ArrayList<>();
         private final List<String> mFragmentTitleList = new ArrayList<>();
 
@@ -346,24 +319,17 @@ public class DashBoardActivity extends BaseActivity implements View.OnClickListe
 
     public void saveFirebaseToken(String empCode) {
 
-        FirebaseMessaging.getInstance().getToken().addOnCompleteListener(new OnCompleteListener<String>() {
-            @Override
-            public void onComplete(@NonNull @NotNull Task<String> task) {
-                String deviceTokenFcm = task.getResult();
-                if (Utility.isOnline(DashBoardActivity.this)) {
-                    FirebaseService firebaseService = new FirebaseService();
-                    firebaseService.saveFirebaseID(new OnTaskComplete() {
-                        @Override
-                        public void onTaskComplte(CarotResponse carotResponse) {
-                            if (carotResponse.getStatuscode() == HttpsURLConnection.HTTP_OK) {
+        FirebaseMessaging.getInstance().getToken().addOnCompleteListener(task -> {
+            String deviceTokenFcm = task.getResult();
+            if (Utility.isOnline(DashBoardActivity.this)) {
+                FirebaseService firebaseService = new FirebaseService();
+                firebaseService.saveFirebaseID(carotResponse -> {
+                    if (carotResponse.getStatuscode() == HttpsURLConnection.HTTP_OK) {
 
 
-                            }
-                        }
+                    }
+                }, empCode, deviceTokenFcm);
 
-                    }, empCode, deviceTokenFcm);
-
-                }
             }
         });
     }
@@ -410,15 +376,12 @@ public class DashBoardActivity extends BaseActivity implements View.OnClickListe
                 alertDialogBuilder.setTitle("New Update");
                 alertDialogBuilder.setMessage("A new Version of Minda Sparsh is available on Play Store. Please Update.");
                 alertDialogBuilder.setCancelable(false);
-                alertDialogBuilder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface arg0, int arg1) {
-                        arg0.dismiss();
+                alertDialogBuilder.setPositiveButton("OK", (arg0, arg1) -> {
+                    arg0.dismiss();
 
-                        //  finish();
-                        Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(RetrofitClient2.playstoreURL));
-                        startActivity(browserIntent);
-                    }
+                    //  finish();
+                    Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(RetrofitClient2.playstoreURL));
+                    startActivity(browserIntent);
                 });
 
        /* alertDialogBuilder.setNegativeButton("CANCEL", new DialogInterface.OnClickListener() {

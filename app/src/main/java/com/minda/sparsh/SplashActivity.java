@@ -9,7 +9,7 @@ import android.os.Handler;
 
 
 public class SplashActivity extends Activity {
-    private static int SPLASH_TIME_OUT = 3000;
+    private static final int SPLASH_TIME_OUT = 3000;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -17,21 +17,17 @@ public class SplashActivity extends Activity {
       //  Fabric.with(this, new Crashlytics());
         setContentView(R.layout.activity_splash);
 
-        new Handler().postDelayed(new Runnable() {
+        new Handler().postDelayed(() -> {
 
-            @Override
-            public void run() {
+            SharedPreferences myPref = getSharedPreferences("MyPref", Context.MODE_PRIVATE);
 
-                SharedPreferences myPref = getSharedPreferences("MyPref", Context.MODE_PRIVATE);
-
-                Intent i = null;
-                if (myPref.getBoolean("IsLoginNew", false))
-                    i = new Intent(SplashActivity.this, DashBoardActivity.class);
-                else
-                    i = new Intent(SplashActivity.this, LoginActivity.class);
-                startActivity(i);
-                finish();
-            }
+            Intent i;
+            if (myPref.getBoolean("IsLoginNew", false))
+                i = new Intent(SplashActivity.this, DashBoardActivity.class);
+            else
+                i = new Intent(SplashActivity.this, LoginActivity.class);
+            startActivity(i);
+            finish();
         }, SPLASH_TIME_OUT);
     }
 }
