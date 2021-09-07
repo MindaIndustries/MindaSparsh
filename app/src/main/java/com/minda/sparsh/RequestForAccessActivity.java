@@ -5,7 +5,6 @@ import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.ContentResolver;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
@@ -36,7 +35,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.androidbuts.multispinnerfilter.KeyPairBoolData;
-import com.androidbuts.multispinnerfilter.MultiSpinnerListener;
 import com.androidbuts.multispinnerfilter.MultiSpinnerSearch;
 import com.minda.sparsh.Adapter.IAMGetAccessSubTypeAdapter;
 import com.minda.sparsh.Adapter.IAMGetAuthorizationProfileAdapter;
@@ -240,12 +238,7 @@ public class RequestForAccessActivity extends AppCompatActivity implements View.
         progress.setIndeterminate(true);
         myPref = getSharedPreferences("MyPref", MODE_PRIVATE);
 
-        im_back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                finish();
-            }
-        });
+        im_back.setOnClickListener(view -> finish());
 
         sp_source_adapter = new ArrayAdapter<String>(RequestForAccessActivity.this, android.R.layout.simple_spinner_item, sp_source_data) {
             @Override
@@ -488,29 +481,23 @@ public class RequestForAccessActivity extends AppCompatActivity implements View.
 
             }
         });
-        btn_submit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (validateField()) {
-                    if (sp_source_id == null) {
-                        sp_source_id = "";
-                    }
-                    hitIAMCreateRequestApi(sp_request_type_id, sp_access_type_id, sp_access_for_id, myPref.getString("Id", "0"),
-                            sp_source_id, et_empCode.getText().toString(), et_organisation.getText().toString(), et_purpose.getText().toString(),
-                            et_name.getText().toString(), sp_access_sub_type_id, sp_access_category_id, sp_access_sub_category_id, sp_access_category_value,
-                            sp_access_sub_category_value, sp_user_authorization_profile_id, sp_user_authorization_profile_value,
-                            et_accessRequirementDetail.getText().toString(), catlistarray.toString().replace("[", "").replace("]", ""), unitCheckId);
+        btn_submit.setOnClickListener(view -> {
+            if (validateField()) {
+                if (sp_source_id == null) {
+                    sp_source_id = "";
                 }
+                hitIAMCreateRequestApi(sp_request_type_id, sp_access_type_id, sp_access_for_id, myPref.getString("Id", "0"),
+                        sp_source_id, et_empCode.getText().toString(), et_organisation.getText().toString(), et_purpose.getText().toString(),
+                        et_name.getText().toString(), sp_access_sub_type_id, sp_access_category_id, sp_access_sub_category_id, sp_access_category_value,
+                        sp_access_sub_category_value, sp_user_authorization_profile_id, sp_user_authorization_profile_value,
+                        et_accessRequirementDetail.getText().toString(), catlistarray.toString().replace("[", "").replace("]", ""), unitCheckId);
             }
         });
 
 
-        btn_cancel.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                onBackPressed();
-                finish();
-            }
+        btn_cancel.setOnClickListener(view -> {
+            onBackPressed();
+            finish();
         });
     }
 
@@ -662,19 +649,16 @@ public class RequestForAccessActivity extends AppCompatActivity implements View.
                                 h.setSelected(false);
                                 listArray.add(h);
                             }
-                            simpleSpinner.setItems(listArray, new MultiSpinnerListener() {
-                                @Override
-                                public void onItemsSelected(List<KeyPairBoolData> selectedItems) {
-                                    catListValue = "";
-                                    catlistarray.clear();
-                                    for (int i = 0; i < selectedItems.size(); i++) {
-                                        if (selectedItems.get(i).isSelected()) {
-                                            catlistarray.add(String.valueOf(selectedItems.get(i).getId()));
-                                            catListValue += selectedItems.get(i).getId() + ", ";
-                                            Log.i("TAG", i + " : " + selectedItems.get(i).getName() + " : " + selectedItems.get(i).isSelected());
-                                        }
-
+                            simpleSpinner.setItems(listArray, selectedItems -> {
+                                catListValue = "";
+                                catlistarray.clear();
+                                for (int i = 0; i < selectedItems.size(); i++) {
+                                    if (selectedItems.get(i).isSelected()) {
+                                        catlistarray.add(String.valueOf(selectedItems.get(i).getId()));
+                                        catListValue += selectedItems.get(i).getId() + ", ";
+                                        Log.i("TAG", i + " : " + selectedItems.get(i).getName() + " : " + selectedItems.get(i).isSelected());
                                     }
+
                                 }
                             });
 
@@ -1022,14 +1006,14 @@ public class RequestForAccessActivity extends AppCompatActivity implements View.
         try {
             PlantName = StringUtil.join(set1, ",");
         } catch (Exception e) {
-
+            e.printStackTrace();
         }
 
         try{
             PlantCode = StringUtil.join(set2,",");
         }
         catch (Exception e){
-
+            e.printStackTrace();
         }
     }
 
@@ -1071,32 +1055,29 @@ public class RequestForAccessActivity extends AppCompatActivity implements View.
                 "Cancel"};
         AlertDialog.Builder builder = new AlertDialog.Builder(RequestForAccessActivity.this);
         builder.setTitle("Add Photo!");
-        builder.setItems(items, new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int item) {
-                boolean result = Utility.checkPermission(RequestForAccessActivity.this);
-                if (items[item].equals("Take Photo")) {
-                    mUserChoosenTask = "Take Photo";
-                    if (result) {
-                        requestCameraPermission();
-                        if (hasCameraPermission())
-                            cameraIntent();
-                    }
-                } else if (items[item].equals("Choose from Gallery")) {
-                    mUserChoosenTask = "Choose from Gallery";
-                    if (result) {
-                        galleryIntent();
-                    }
-
-                } else if (items[item].equals("Choose Document")) {
-                    mUserChoosenTask = "Choose Document";
-                    if (result) {
-                        fileIntent();
-                    }
-
-                } else if (items[item].equals("Cancel")) {
-                    dialog.dismiss();
+        builder.setItems(items, (dialog, item) -> {
+            boolean result = Utility.checkPermission(RequestForAccessActivity.this);
+            if (items[item].equals("Take Photo")) {
+                mUserChoosenTask = "Take Photo";
+                if (result) {
+                    requestCameraPermission();
+                    if (hasCameraPermission())
+                        cameraIntent();
                 }
+            } else if (items[item].equals("Choose from Gallery")) {
+                mUserChoosenTask = "Choose from Gallery";
+                if (result) {
+                    galleryIntent();
+                }
+
+            } else if (items[item].equals("Choose Document")) {
+                mUserChoosenTask = "Choose Document";
+                if (result) {
+                    fileIntent();
+                }
+
+            } else if (items[item].equals("Cancel")) {
+                dialog.dismiss();
             }
         });
         builder.show();
@@ -1244,21 +1225,15 @@ public class RequestForAccessActivity extends AppCompatActivity implements View.
                 "Access Request No. is " + reqno);
 
 
-        alertDialogBuilder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface arg0, int arg1) {
-                arg0.dismiss();
-                finish();
+        alertDialogBuilder.setPositiveButton("OK", (arg0, arg1) -> {
+            arg0.dismiss();
+            finish();
 
-            }
         });
 
-        alertDialogBuilder.setNegativeButton("CANCEL", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                dialog.dismiss();
-                finish();
-            }
+        alertDialogBuilder.setNegativeButton("CANCEL", (dialog, which) -> {
+            dialog.dismiss();
+            finish();
         });
 
         AlertDialog alertDialog = alertDialogBuilder.create();

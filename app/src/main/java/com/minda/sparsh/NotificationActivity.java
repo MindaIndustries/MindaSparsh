@@ -51,12 +51,7 @@ public class NotificationActivity extends AppCompatActivity {
 
 
         HitMyorder(myPref.getString("Id", ""));
-        im_back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                finish();
-            }
-        });
+        im_back.setOnClickListener(view -> finish());
     }
 
     public void HitMyorder(String UserId) {
@@ -70,9 +65,6 @@ public class NotificationActivity extends AppCompatActivity {
                     List<NotificationModel> responseItem = response.body();
                     if (responseItem != null && responseItem.size() > 0) {
                         setadapter(responseItem);
-
-
-                    } else {
                     }
 
 
@@ -96,14 +88,11 @@ public class NotificationActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case android.R.id.home:
-                onBackPressed();
-                return true;
-
-            default:
-                return super.onOptionsItemSelected(item);
+        if (item.getItemId() == android.R.id.home) {
+            onBackPressed();
+            return true;
         }
+        return super.onOptionsItemSelected(item);
     }
 
 }

@@ -125,7 +125,7 @@ public class ProfileActivity extends BaseActivity {
                             mEditor.putString("Depu_UnitName", (String) loginResponse.get(0).getDepuUnitName());
                             mEditor.putString("Depu_UnitCode", (String) loginResponse.get(0).getDepuUnitCode());
                             mEditor.putString("pass", loginResponse.get(0).getUMUSERPWD());
-                            mEditor.commit();
+                            mEditor.apply();
                             empCode_str = myPref.getString("Id", "Id");
                             empCode.setText(empCode_str);
                             userNametext.setText("" + myPref.getString("username", ""));
@@ -158,14 +158,11 @@ public class ProfileActivity extends BaseActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case android.R.id.home:
-                onBackPressed();
-                return true;
-
-            default:
-                return super.onOptionsItemSelected(item);
+        if (item.getItemId() == android.R.id.home) {
+            onBackPressed();
+            return true;
         }
+        return super.onOptionsItemSelected(item);
     }
 
     public String getlogDate(long milliseconds) {

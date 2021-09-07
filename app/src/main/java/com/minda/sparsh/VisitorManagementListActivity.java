@@ -46,13 +46,7 @@ public class VisitorManagementListActivity extends AppCompatActivity implements 
         btn_create = (Button) findViewById(R.id.btn_create);
         btn_create.setOnClickListener(this);
         im_back = (ImageView) findViewById(R.id.im_back);
-        im_back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                finish();
-
-            }
-        });
+        im_back.setOnClickListener(view -> finish());
         recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
         hitGetVisitorListApi(myPref.getString("Id", "Id"));
     }
@@ -113,13 +107,11 @@ public class VisitorManagementListActivity extends AppCompatActivity implements 
 
     @Override
     public void onClick(View view) {
-        switch (view.getId()) {
-            case R.id.btn_create:
-                Intent intent = new Intent(getApplicationContext(), VisitorManagementActivity.class);
-                intent.putExtra(Constant.CALL_FROM_ACTIVITY, "Visitor_list");
-                startActivity(intent);
-                finish();
-                break;
+        if (view.getId() == R.id.btn_create) {
+            Intent intent = new Intent(getApplicationContext(), VisitorManagementActivity.class);
+            intent.putExtra(Constant.CALL_FROM_ACTIVITY, "Visitor_list");
+            startActivity(intent);
+            finish();
         }
     }
 

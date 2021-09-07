@@ -240,32 +240,24 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
         alertDialogBuilder.setMessage("are you sure?");
 
-        alertDialogBuilder.setPositiveButton("Sign out", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface arg0, int arg1) {
-                SharedPreferences myPref = getSharedPreferences("MyPref", Context.MODE_PRIVATE);
-                SharedPreferences.Editor mEditor = myPref.edit();
-                mEditor.putBoolean("IsLogin", false);
-                mEditor.putBoolean("IsLoginNew", false);
-                mEditor.commit();
+        alertDialogBuilder.setPositiveButton("Sign out", (arg0, arg1) -> {
+            SharedPreferences myPref = getSharedPreferences("MyPref", Context.MODE_PRIVATE);
+            SharedPreferences.Editor mEditor = myPref.edit();
+            mEditor.putBoolean("IsLogin", false);
+            mEditor.putBoolean("IsLoginNew", false);
+            mEditor.apply();
 
-                arg0.dismiss();
-                Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
-                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                startActivity(intent);
-                Intent myService = new Intent(getApplicationContext(), LoginActivity.class);
-                stopService(myService);
-                finish();
+            arg0.dismiss();
+            Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            startActivity(intent);
+            Intent myService = new Intent(getApplicationContext(), LoginActivity.class);
+            stopService(myService);
+            finish();
 
-            }
         });
 
-        alertDialogBuilder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                dialog.dismiss();
-            }
-        });
+        alertDialogBuilder.setNegativeButton("Cancel", (dialog, which) -> dialog.dismiss());
 
         AlertDialog alertDialog = alertDialogBuilder.create();
         alertDialog.show();

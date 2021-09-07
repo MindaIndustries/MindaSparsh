@@ -34,7 +34,6 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.TimePicker;
 import android.widget.Toast;
 
 import com.minda.sparsh.model.AddAbnormality_Model;
@@ -66,13 +65,12 @@ public class VisitorManagementActivity extends AppCompatActivity implements View
     ImageView im_back;
     Button btn_view;
     public static TextView tv_from_date, tv_to_date;
-    TextView tv_start_time, tv_end_time, et_additional_no_person, tv_decrement, tv_increment;
+    TextView et_additional_no_person, tv_decrement, tv_increment;
     private static int dateType;
     LinearLayout lay_rest_content, lay_contact;
     EditText et_visitor_mobile_no, et_first_name, et_last_name, et_email, et_mobile, et_company_name, et_address, et_city, et_pin_code, et_purpose;
     RadioGroup rg;
     String rbValue = "M";
-    String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
     private ProgressDialog progress = null;
     Button btn_submit;
     private SharedPreferences myPref = null;
@@ -101,22 +99,13 @@ public class VisitorManagementActivity extends AppCompatActivity implements View
 
         im_back = (ImageView) findViewById(R.id.im_back);
         btn_view = (Button) findViewById(R.id.btn_view);
-        btn_view.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), VisitorManagementListActivity.class);
-                startActivity(intent);
-                finish();
-            }
+        btn_view.setOnClickListener(view -> {
+            Intent intent1 = new Intent(getApplicationContext(), VisitorManagementListActivity.class);
+            startActivity(intent1);
+            finish();
         });
 
-        im_back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                finish();
-
-            }
-        });
+        im_back.setOnClickListener(view -> finish());
 
 
         myPref = getSharedPreferences("MyPref", MODE_PRIVATE);
@@ -173,43 +162,26 @@ public class VisitorManagementActivity extends AppCompatActivity implements View
         initSpinner("", "", "", "");
 
 
-        tv_increment.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                et_additional_no_person.setText(String.valueOf((Integer.parseInt(et_additional_no_person.getText().toString())) + 1));
+        tv_increment.setOnClickListener(view -> et_additional_no_person.setText(String.valueOf((Integer.parseInt(et_additional_no_person.getText().toString())) + 1)));
+
+        tv_decrement.setOnClickListener(view -> {
+            if (!et_additional_no_person.getText().toString().equalsIgnoreCase("0")) {
+                et_additional_no_person.setText(String.valueOf((Integer.parseInt(et_additional_no_person.getText().toString())) - 1));
 
             }
+
         });
 
-        tv_decrement.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (!et_additional_no_person.getText().toString().equalsIgnoreCase("0")) {
-                    et_additional_no_person.setText(String.valueOf((Integer.parseInt(et_additional_no_person.getText().toString())) - 1));
-
-                }
-
-            }
-        });
-
-        btn_submit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                validateFields();
-            }
-        });
+        btn_submit.setOnClickListener(view -> validateFields());
         rg = (RadioGroup) findViewById(R.id.rg);
-        rg.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(RadioGroup radioGroup, int i) {
-                switch (i) {
-                    case R.id.rb_male:
-                        rbValue = "M";
-                        break;
-                    case R.id.rb_female:
-                        rbValue = "F";
-                        break;
-                }
+        rg.setOnCheckedChangeListener((radioGroup, i) -> {
+            switch (i) {
+                case R.id.rb_male:
+                    rbValue = "M";
+                    break;
+                case R.id.rb_female:
+                    rbValue = "F";
+                    break;
             }
         });
         et_visitor_mobile_no.addTextChangedListener(new TextWatcher() {
@@ -238,21 +210,15 @@ public class VisitorManagementActivity extends AppCompatActivity implements View
             }
         });
 
-        tv_from_date.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                dateType = 1;
-                DialogFragment newFragment = new DatePickerFragment();
-                newFragment.show(getSupportFragmentManager(), "datePicker");
-            }
+        tv_from_date.setOnClickListener(view -> {
+            dateType = 1;
+            DialogFragment newFragment = new DatePickerFragment();
+            newFragment.show(getSupportFragmentManager(), "datePicker");
         });
-        tv_to_date.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                dateType = 2;
-                DialogFragment newFragment = new DatePickerFragment();
-                newFragment.show(getSupportFragmentManager(), "datePicker");
-            }
+        tv_to_date.setOnClickListener(view -> {
+            dateType = 2;
+            DialogFragment newFragment = new DatePickerFragment();
+            newFragment.show(getSupportFragmentManager(), "datePicker");
         });
 //        tv_start_time.setOnClickListener(new View.OnClickListener() {
 //            @Override
@@ -269,22 +235,19 @@ public class VisitorManagementActivity extends AppCompatActivity implements View
 //            }
 //        });
 
-        lay_contact.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+        lay_contact.setOnClickListener(view -> {
 
-                if (myPref.getString("privacy_policy", "").length() == 0) {
-                    showTermsPolicyDialog();
+            if (myPref.getString("privacy_policy", "").length() == 0) {
+                showTermsPolicyDialog();
+            } else {
+                if (!checkPermission() && Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                    requestPermission();
                 } else {
-                    if (!checkPermission() && Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                        requestPermission();
-                    } else {
-                        Intent intent = new Intent(Intent.ACTION_PICK, ContactsContract.Contacts.CONTENT_URI);
-                        startActivityForResult(intent, PICK_CONTACT);
-                    }
+                    Intent intent12 = new Intent(Intent.ACTION_PICK, ContactsContract.Contacts.CONTENT_URI);
+                    startActivityForResult(intent12, PICK_CONTACT);
                 }
-
             }
+
         });
 
 
@@ -444,16 +407,13 @@ public class VisitorManagementActivity extends AppCompatActivity implements View
         int hour = mcurrentTime.get(Calendar.HOUR_OF_DAY);
         int minute = mcurrentTime.get(Calendar.MINUTE);
         TimePickerDialog mTimePicker;
-        mTimePicker = new TimePickerDialog(VisitorManagementActivity.this, new TimePickerDialog.OnTimeSetListener() {
-            @Override
-            public void onTimeSet(TimePicker timePicker, int selectedHour, int selectedMinute) {
-                if (type == 1) {
+        mTimePicker = new TimePickerDialog(VisitorManagementActivity.this, (timePicker, selectedHour, selectedMinute) -> {
+            if (type == 1) {
 //                    tv_start_time.setText(selectedHour + ":" + selectedMinute);
 
-                } else {
+            } else {
 //                    tv_end_time.setText(selectedHour + ":" + selectedMinute);
 
-                }
             }
         }, hour, minute, true);//Yes 24 hour time
         mTimePicker.setTitle("Select Time");
@@ -654,35 +614,33 @@ public class VisitorManagementActivity extends AppCompatActivity implements View
     public void onActivityResult(int reqCode, int resultCode, Intent data) {
         super.onActivityResult(reqCode, resultCode, data);
 
-        switch (reqCode) {
-            case (PICK_CONTACT):
-                if (resultCode == Activity.RESULT_OK) {
+        if (reqCode == PICK_CONTACT) {
+            if (resultCode == Activity.RESULT_OK) {
 
-                    Uri contactData = data.getData();
-                    Cursor c = managedQuery(contactData, null, null, null, null);
-                    if (c.moveToFirst()) {
+                Uri contactData = data.getData();
+                Cursor c = managedQuery(contactData, null, null, null, null);
+                if (c.moveToFirst()) {
 
 
-                        String id = c.getString(c.getColumnIndexOrThrow(ContactsContract.Contacts._ID));
+                    String id = c.getString(c.getColumnIndexOrThrow(ContactsContract.Contacts._ID));
 
-                        String hasPhone = c.getString(c.getColumnIndex(ContactsContract.Contacts.HAS_PHONE_NUMBER));
+                    String hasPhone = c.getString(c.getColumnIndex(ContactsContract.Contacts.HAS_PHONE_NUMBER));
 
-                        if (hasPhone.equalsIgnoreCase("1")) {
-                            Cursor phones = getContentResolver().query(
-                                    ContactsContract.CommonDataKinds.Phone.CONTENT_URI, null,
-                                    ContactsContract.CommonDataKinds.Phone.CONTACT_ID + " = " + id,
-                                    null, null);
-                            phones.moveToFirst();
-                            String cNumber = phones.getString(phones.getColumnIndex("data1"));
-                            et_visitor_mobile_no.setText(cNumber.trim().replace(" ", ""));
-                            System.out.println("number is:" + cNumber);
-                        }
+                    if (hasPhone.equalsIgnoreCase("1")) {
+                        Cursor phones = getContentResolver().query(
+                                ContactsContract.CommonDataKinds.Phone.CONTENT_URI, null,
+                                ContactsContract.CommonDataKinds.Phone.CONTACT_ID + " = " + id,
+                                null, null);
+                        phones.moveToFirst();
+                        String cNumber = phones.getString(phones.getColumnIndex("data1"));
+                        et_visitor_mobile_no.setText(cNumber.trim().replace(" ", ""));
+                        System.out.println("number is:" + cNumber);
+                    }
 //                        String name = c.getString(c.getColumnIndex(ContactsContract.Contacts.DISPLAY_NAME));
 
 
-                    }
                 }
-                break;
+            }
         }
     }
 
@@ -699,47 +657,44 @@ public class VisitorManagementActivity extends AppCompatActivity implements View
     }
 
     public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults) {
-        switch (requestCode) {
-            case PERMISSION_REQUEST_CODE:
-                if (grantResults.length > 0) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if (requestCode == PERMISSION_REQUEST_CODE) {
+            if (grantResults.length > 0) {
 
-                    boolean locationAccepted = grantResults[0] == PackageManager.PERMISSION_GRANTED;
+                boolean locationAccepted = grantResults[0] == PackageManager.PERMISSION_GRANTED;
 
-                    if (locationAccepted)
+                if (locationAccepted)
 //                        Snackbar.make(view, "Permission Granted", Snackbar.LENGTH_LONG).show();
-                        Toast.makeText(getApplicationContext(), "Permission Granted", Toast.LENGTH_SHORT).show();
-                    else {
+                    Toast.makeText(getApplicationContext(), "Permission Granted", Toast.LENGTH_SHORT).show();
+                else {
 
 //                        Snackbar.make(view, "Permission Denied", Snackbar.LENGTH_LONG).show();
-                        Toast.makeText(VisitorManagementActivity.this, "Permission Denied", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(VisitorManagementActivity.this, "Permission Denied", Toast.LENGTH_SHORT).show();
 
-                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                            if (shouldShowRequestPermissionRationale(READ_CONTACTS)) {
-                                showMessageOKCancel("You need to allow access to the permissions",
-                                        new DialogInterface.OnClickListener() {
-                                            @Override
-                                            public void onClick(DialogInterface dialog, int which) {
-                                                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                                                    requestPermissions(new String[]{READ_CONTACTS},
-                                                            PERMISSION_REQUEST_CODE);
-                                                }
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                        if (shouldShowRequestPermissionRationale(READ_CONTACTS)) {
+                            showMessageOKCancel(
+                                    new DialogInterface.OnClickListener() {
+                                        @Override
+                                        public void onClick(DialogInterface dialog, int which) {
+                                            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                                                requestPermissions(new String[]{READ_CONTACTS},
+                                                        PERMISSION_REQUEST_CODE);
                                             }
-                                        });
-                                return;
-                            }
+                                        }
+                                    });
+                            return;
                         }
-
                     }
+
                 }
-
-
-                break;
+            }
         }
     }
 
-    private void showMessageOKCancel(String message, DialogInterface.OnClickListener okListener) {
+    private void showMessageOKCancel(DialogInterface.OnClickListener okListener) {
         new AlertDialog.Builder(VisitorManagementActivity.this)
-                .setMessage(message)
+                .setMessage("You need to allow access to the permissions")
                 .setPositiveButton("OK", okListener)
                 .setNegativeButton("Cancel", null)
                 .create()
@@ -1023,7 +978,7 @@ public class VisitorManagementActivity extends AppCompatActivity implements View
         ok.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                myPref.edit().putString("privacy_policy", "Yes").commit();
+                myPref.edit().putString("privacy_policy", "Yes").apply();
                 termspolicydialog.dismiss();
                 ok.setEnabled(false);
                 termspolicydialog.dismiss();

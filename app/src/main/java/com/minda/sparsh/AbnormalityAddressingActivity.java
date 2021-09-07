@@ -82,12 +82,12 @@ import static android.Manifest.permission.CAMERA;
 
 public class AbnormalityAddressingActivity extends AppCompatActivity {
     ListView list_abnormalty;
-    LinearLayout lay_two, lay_one, lay_out, footer;
+    LinearLayout lay_two, lay_one, lay_out;
     TextView tv_view, tv_add, tv_submit, et_finddate, tv_upload;
     ImageView Im_capture, im_back;
     Uri picUri = null;
     Bitmap myBitmap;
-    String sImage = "", base64String;
+    String sImage = "";
     int mYear, mMonth, mDay;
     private ArrayList<String> permissionsToRequest;
     private ArrayList<String> permissionsRejected = new ArrayList<>();
@@ -95,10 +95,10 @@ public class AbnormalityAddressingActivity extends AppCompatActivity {
     private final static int ALL_PERMISSIONS_RESULT = 107;
     boolean pic_uploaded = false;
     private ProgressDialog progress = null;
-    Spinner sp_department, sp_domain, sp_group, sp_business, sp_plant, sp_sdepartment, sp_category;
+    Spinner sp_department, sp_domain, sp_business, sp_plant, sp_sdepartment, sp_category;
     EditText et_descripton;
     SharedPreferences myPref;
-    String group = "UNO Minda Group", domain = "Select Domain", business, plant = "", department = "Select Department", imagepath, description, benefits, abnormalitydate, domainid = "", businessid = "";
+    String group = "UNO Minda Group", domain = "Select Domain", business, plant = "", department = "Select Department", description, benefits, abnormalitydate, domainid = "", businessid = "";
     public String BUSINESS = "", DOMAIN = "", UNITCODE = "", plantid = "", PLANTROLE = "";
     public int sub_department, orientation;
     public static String Role;
@@ -124,7 +124,7 @@ public class AbnormalityAddressingActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setHomeAsUpIndicator(R.drawable.back);
-        title.setText("Abnormality");
+        title.setText(getResources().getString(R.string.abnormality));
         lay_two = (LinearLayout) findViewById(R.id.lay_two);
         lay_one = (LinearLayout) findViewById(R.id.lay_one);
         lay_out = (LinearLayout) findViewById(R.id.lay_out);
@@ -166,12 +166,7 @@ public class AbnormalityAddressingActivity extends AppCompatActivity {
         hitCategoryApi();
         hitPlantApi(empCode);
 
-        im_back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                finish();
-            }
-        });
+        im_back.setOnClickListener(view -> finish());
         if (getIntent().getExtras() != null) {
             if (getIntent().getBooleanExtra("ADD", false)) {
                 setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
@@ -375,70 +370,56 @@ public class AbnormalityAddressingActivity extends AppCompatActivity {
 //
 //            }
 //        });
-        tv_add.setOnClickListener(new View.OnClickListener() {
+        tv_add.setOnClickListener(view -> {
 
-            @Override
-            public void onClick(View view) {
-
-                if (getResources().getConfiguration().orientation != Configuration.ORIENTATION_PORTRAIT) {
-                    finish();
-                    Intent intent = new Intent(AbnormalityAddressingActivity.this, AbnormalityAddressingActivity.class);
-                    intent.putExtra("EDOMAIN", getIntent().getStringExtra("EDOMAIN"));
-                    intent.putExtra("EBUSINESS", getIntent().getStringExtra("EBUSINESS"));
-                    intent.putExtra("EPLANT", getIntent().getStringExtra("EPLANT"));
-                    intent.putExtra("ADD", true);
-                    startActivity(intent);
-                }
+            if (getResources().getConfiguration().orientation != Configuration.ORIENTATION_PORTRAIT) {
+                finish();
+                Intent intent = new Intent(AbnormalityAddressingActivity.this, AbnormalityAddressingActivity.class);
+                intent.putExtra("EDOMAIN", getIntent().getStringExtra("EDOMAIN"));
+                intent.putExtra("EBUSINESS", getIntent().getStringExtra("EBUSINESS"));
+                intent.putExtra("EPLANT", getIntent().getStringExtra("EPLANT"));
+                intent.putExtra("ADD", true);
+                startActivity(intent);
+            }
 //                setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 //                Intent intent = new Intent(AbnormalityAddressingActivity.this,)
 
 
-            }
         });
-        tv_view.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View view) {
+        tv_view.setOnClickListener(view -> {
 
 //                setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
-                if (getResources().getConfiguration().orientation != Configuration.ORIENTATION_LANDSCAPE) {
-                    finish();
-                    Intent intent = new Intent(AbnormalityAddressingActivity.this, AbnormalityDashboard.class);
+            if (getResources().getConfiguration().orientation != Configuration.ORIENTATION_LANDSCAPE) {
+                finish();
+                Intent intent = new Intent(AbnormalityAddressingActivity.this, AbnormalityDashboard.class);
 //                    intent.putExtra("ADD", false);
-                    intent.putExtra("EDOMAIN", getIntent().getStringExtra("EDOMAIN"));
-                    intent.putExtra("EBUSINESS", getIntent().getStringExtra("EBUSINESS"));
-                    intent.putExtra("EPLANT", getIntent().getStringExtra("EPLANT"));
-                    startActivity(intent);
+                intent.putExtra("EDOMAIN", getIntent().getStringExtra("EDOMAIN"));
+                intent.putExtra("EBUSINESS", getIntent().getStringExtra("EBUSINESS"));
+                intent.putExtra("EPLANT", getIntent().getStringExtra("EPLANT"));
+                startActivity(intent);
+            }
+        });
+        Im_capture.setOnClickListener(view -> {
+            if (Utility.checkPermission(AbnormalityAddressingActivity.this)) {
+                startActivityForResult(getPickImageChooserIntent(), 200);
+                permissions.add(CAMERA);
+                permissionsToRequest = findUnAskedPermissions(permissions);
+                //get the permissions we have asked for before but are not granted..
+                //we will store this in a global AbnormalityAddressingActivitylist to access later.
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                    if (permissionsToRequest.size() > 0)
+                        requestPermissions(permissionsToRequest.toArray(new String[permissionsToRequest.size()]), ALL_PERMISSIONS_RESULT);
                 }
             }
         });
-        Im_capture.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (Utility.checkPermission(AbnormalityAddressingActivity.this)) {
-                    startActivityForResult(getPickImageChooserIntent(), 200);
-                    permissions.add(CAMERA);
-                    permissionsToRequest = findUnAskedPermissions(permissions);
-                    //get the permissions we have asked for before but are not granted..
-                    //we will store this in a global AbnormalityAddressingActivitylist to access later.
-                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                        if (permissionsToRequest.size() > 0)
-                            requestPermissions(permissionsToRequest.toArray(new String[permissionsToRequest.size()]), ALL_PERMISSIONS_RESULT);
-                    }
-                }
-            }
-        });
-        tv_submit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                description = et_descripton.getText().toString();
-                abnormalitydate = et_finddate.getText().toString();
-                benefits = "";
-                et_descripton.setText("");
-                tv_submit.setEnabled(false);
-                if (isvalid()) {
-                    hitAddAbnormalityApi(group, domainid, businessid, plantid, String.valueOf(sub_department), sImage, description, benefits, abnormalitydate, myPref.getString("Id", ""), category_id);
-                }
+        tv_submit.setOnClickListener(view -> {
+            description = et_descripton.getText().toString();
+            abnormalitydate = et_finddate.getText().toString();
+            benefits = "";
+            et_descripton.setText("");
+            tv_submit.setEnabled(false);
+            if (isvalid()) {
+                hitAddAbnormalityApi(group, domainid, businessid, plantid, String.valueOf(sub_department), sImage, description, benefits, abnormalitydate, myPref.getString("Id", ""), category_id);
             }
         });
 
@@ -533,9 +514,9 @@ public class AbnormalityAddressingActivity extends AppCompatActivity {
         return (Build.VERSION.SDK_INT > Build.VERSION_CODES.LOLLIPOP_MR1);
     }
 
-    private void showMessageOKCancel(String message, DialogInterface.OnClickListener okListener) {
+    private void showMessageOKCancel(DialogInterface.OnClickListener okListener) {
         new AlertDialog.Builder(this)
-                .setMessage(message)
+                .setMessage("These permissions are mandatory for the application Please allow access")
                 .setPositiveButton("OK", okListener)
                 .setNegativeButton("Cancel", null)
                 .create()
@@ -546,6 +527,7 @@ public class AbnormalityAddressingActivity extends AppCompatActivity {
     @Override
     public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
 
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         switch (requestCode) {
 
             case ALL_PERMISSIONS_RESULT:
@@ -563,16 +545,13 @@ public class AbnormalityAddressingActivity extends AppCompatActivity {
 
                     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
                         if (shouldShowRequestPermissionRationale(permissionsRejected.get(0))) {
-                            showMessageOKCancel("These permissions are mandatory for the application Please allow access",
-                                    new DialogInterface.OnClickListener() {
-                                        @Override
-                                        public void onClick(DialogInterface dialog, int which) {
-                                            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                            showMessageOKCancel(
+                                    (dialog, which) -> {
+                                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
 
-                                                //Log.d("API123", "permisionrejected " + permissionsRejected.size());
+                                            //Log.d("API123", "permisionrejected " + permissionsRejected.size());
 
-                                                requestPermissions(permissionsRejected.toArray(new String[permissionsRejected.size()]), ALL_PERMISSIONS_RESULT);
-                                            }
+                                            requestPermissions(permissionsRejected.toArray(new String[permissionsRejected.size()]), ALL_PERMISSIONS_RESULT);
                                         }
                                     });
                             return;
@@ -596,14 +575,11 @@ public class AbnormalityAddressingActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case android.R.id.home:
-                onBackPressed();
-                return true;
-
-            default:
-                return super.onOptionsItemSelected(item);
+        if (item.getItemId() == android.R.id.home) {
+            onBackPressed();
+            return true;
         }
+        return super.onOptionsItemSelected(item);
     }
 
     public String getStringImage(Bitmap bmp) {
@@ -636,7 +612,7 @@ public class AbnormalityAddressingActivity extends AppCompatActivity {
                     Im_capture.setImageURI(picUri);
                     Im_capture.setImageBitmap(myBitmap);
                     sImage = getStringImage(myBitmap);
-                    tv_upload.setText("Image Upload Successfully");
+                    tv_upload.setText(getResources().getString(R.string.uploaded));
                    /* if (AppUtils.isNetworkAvailable(SuggestUsActivity.this)) {
 
                         try{
@@ -667,7 +643,7 @@ public class AbnormalityAddressingActivity extends AppCompatActivity {
 
 
                 sImage = getStringImage(myBitmap);
-                tv_upload.setText("Image Upload Successfully");
+                tv_upload.setText(getResources().getString(R.string.uploaded));
 
                /* if (connectionDetector.isConnectingToInternet()) {
                     submitWorkDetails(sessionManager.getShopName(), sessionManager.getWorkshpName(), sessionManager.getLocation(), sessionManager.getStateCode(), sessionManager.getCityCode(), sessionManager.getMobile(), sessionManager.getZoneCode());
@@ -694,6 +670,7 @@ public class AbnormalityAddressingActivity extends AppCompatActivity {
         return isCamera ? getCaptureImageOutputUri() : data.getData();
     }
 
+/*
     private static Bitmap rotateImage(Bitmap img, int degree) {
         Matrix matrix = new Matrix();
         matrix.postRotate(degree);
@@ -701,6 +678,7 @@ public class AbnormalityAddressingActivity extends AppCompatActivity {
         img.recycle();
         return rotatedImg;
     }
+*/
 
     public Bitmap getResizedBitmap(Bitmap image, int maxSize) {
         int width = image.getWidth();
@@ -717,6 +695,7 @@ public class AbnormalityAddressingActivity extends AppCompatActivity {
         return Bitmap.createScaledBitmap(image, width, height, true);
     }
 
+/*
     private static Bitmap rotateImageIfRequired(Bitmap img, Uri selectedImage) throws IOException {
 
         ExifInterface ei = new ExifInterface(selectedImage.getPath());
@@ -733,6 +712,7 @@ public class AbnormalityAddressingActivity extends AppCompatActivity {
                 return img;
         }
     }
+*/
 
     public void hitGroupApi() {
         if (Utility.isOnline(AbnormalityAddressingActivity.this)) {

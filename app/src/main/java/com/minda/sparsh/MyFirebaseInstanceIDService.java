@@ -1,11 +1,7 @@
 package com.minda.sparsh;
 
-import android.util.Log;
 
 
-/**
- * Created by dmin on 2/23/2018.
- */
 
 /*
 public class MyFirebaseInstanceIDService extends FirebaseInstanceIdService {

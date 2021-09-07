@@ -688,959 +688,945 @@ public class DWMActivity extends AppCompatActivity {
 //                return false;
 //            }
 //        });
-        sign_out.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                SharedPreferences myPref = getSharedPreferences("MyPref", Context.MODE_PRIVATE);
-                SharedPreferences.Editor mEditor = myPref.edit();
-                mEditor.putBoolean("IsLogin", false);
-                mEditor.putBoolean("IsLoginNew", false);
+        sign_out.setOnClickListener(v -> {
+            SharedPreferences myPref = getSharedPreferences("MyPref", Context.MODE_PRIVATE);
+            SharedPreferences.Editor mEditor = myPref.edit();
+            mEditor.putBoolean("IsLogin", false);
+            mEditor.putBoolean("IsLoginNew", false);
 
-                mEditor.commit();
-                Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
-                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                startActivity(intent);
-                finish();
-            }
+            mEditor.commit();
+            Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            startActivity(intent);
+            finish();
         });
-        icon.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        icon.setOnClickListener(v -> {
 
 
-                //visibility
-                tv_10_2_2.setVisibility(View.VISIBLE);
-                tv_10_2_3.setVisibility(View.VISIBLE);
-                tv_10_3_2.setVisibility(View.VISIBLE);
-                tv_10_3_3.setVisibility(View.VISIBLE);
-                tv_10_4_2.setVisibility(View.VISIBLE);
-                tv_10_4_3.setVisibility(View.VISIBLE);
-                tv_10_5_2.setVisibility(View.VISIBLE);
-                tv_10_5_3.setVisibility(View.VISIBLE);
-                tv_10_2_1.setVisibility(View.VISIBLE);
-                tv_10_3_1.setVisibility(View.VISIBLE);
-                tv_10_4_1.setVisibility(View.VISIBLE);
-                tv_10_5_1.setVisibility(View.VISIBLE);
-                tv_10_5_3.setVisibility(View.VISIBLE);
-                tv_10_2_1.setVisibility(View.VISIBLE);
-                tv_10_3_1.setVisibility(View.VISIBLE);
-                tv_10_4_1.setVisibility(View.VISIBLE);
-                tv_10_5_1.setVisibility(View.VISIBLE);
-                tv_2_cc.setVisibility(View.VISIBLE);
-                tv_2_1cE.setVisibility(View.VISIBLE);
-                tv_10_2_a.setVisibility(View.VISIBLE);
-                tv_10_2_b.setVisibility(View.VISIBLE);
-                tv_10_3_a.setVisibility(View.VISIBLE);
-                tv_10_3_b.setVisibility(View.VISIBLE);
-                tv_10_4_a.setVisibility(View.VISIBLE);
-                tv_10_4_b.setVisibility(View.VISIBLE);
-                tv_10_5_a.setVisibility(View.VISIBLE);
-                tv_10_5_b.setVisibility(View.VISIBLE);
-                //tv_2_1c_viewa.setVisibility(View.VISIBLE);
-                tv_2_1_viewc.setVisibility(View.VISIBLE);
-                tv_2_1c.setVisibility(View.VISIBLE);
+            //visibility
+            tv_10_2_2.setVisibility(View.VISIBLE);
+            tv_10_2_3.setVisibility(View.VISIBLE);
+            tv_10_3_2.setVisibility(View.VISIBLE);
+            tv_10_3_3.setVisibility(View.VISIBLE);
+            tv_10_4_2.setVisibility(View.VISIBLE);
+            tv_10_4_3.setVisibility(View.VISIBLE);
+            tv_10_5_2.setVisibility(View.VISIBLE);
+            tv_10_5_3.setVisibility(View.VISIBLE);
+            tv_10_2_1.setVisibility(View.VISIBLE);
+            tv_10_3_1.setVisibility(View.VISIBLE);
+            tv_10_4_1.setVisibility(View.VISIBLE);
+            tv_10_5_1.setVisibility(View.VISIBLE);
+            tv_10_5_3.setVisibility(View.VISIBLE);
+            tv_10_2_1.setVisibility(View.VISIBLE);
+            tv_10_3_1.setVisibility(View.VISIBLE);
+            tv_10_4_1.setVisibility(View.VISIBLE);
+            tv_10_5_1.setVisibility(View.VISIBLE);
+            tv_2_cc.setVisibility(View.VISIBLE);
+            tv_2_1cE.setVisibility(View.VISIBLE);
+            tv_10_2_a.setVisibility(View.VISIBLE);
+            tv_10_2_b.setVisibility(View.VISIBLE);
+            tv_10_3_a.setVisibility(View.VISIBLE);
+            tv_10_3_b.setVisibility(View.VISIBLE);
+            tv_10_4_a.setVisibility(View.VISIBLE);
+            tv_10_4_b.setVisibility(View.VISIBLE);
+            tv_10_5_a.setVisibility(View.VISIBLE);
+            tv_10_5_b.setVisibility(View.VISIBLE);
+            //tv_2_1c_viewa.setVisibility(View.VISIBLE);
+            tv_2_1_viewc.setVisibility(View.VISIBLE);
+            tv_2_1c.setVisibility(View.VISIBLE);
 
-                tv_10_2_1_view.setVisibility(View.VISIBLE);
-                tv_10_2_2_view.setVisibility(View.VISIBLE);
-                tv_10_3_1_view.setVisibility(View.VISIBLE);
-                tv_10_3_2_view.setVisibility(View.VISIBLE);
-                tv_10_4_1_view.setVisibility(View.VISIBLE);
-                tv_10_4_2_view.setVisibility(View.VISIBLE);
-                tv_10_5_1_view.setVisibility(View.VISIBLE);
-                tv_10_5_2_view.setVisibility(View.VISIBLE);
-                tv_2_1_1c.setVisibility(View.VISIBLE);
-                tv_2_1_1_1c.setVisibility(View.VISIBLE);
-                tv_2_1c_view.setVisibility(View.VISIBLE);
-                tv_2_c_viewc.setVisibility(View.VISIBLE);
-                //
+            tv_10_2_1_view.setVisibility(View.VISIBLE);
+            tv_10_2_2_view.setVisibility(View.VISIBLE);
+            tv_10_3_1_view.setVisibility(View.VISIBLE);
+            tv_10_3_2_view.setVisibility(View.VISIBLE);
+            tv_10_4_1_view.setVisibility(View.VISIBLE);
+            tv_10_4_2_view.setVisibility(View.VISIBLE);
+            tv_10_5_1_view.setVisibility(View.VISIBLE);
+            tv_10_5_2_view.setVisibility(View.VISIBLE);
+            tv_2_1_1c.setVisibility(View.VISIBLE);
+            tv_2_1_1_1c.setVisibility(View.VISIBLE);
+            tv_2_1c_view.setVisibility(View.VISIBLE);
+            tv_2_c_viewc.setVisibility(View.VISIBLE);
+            //
 
-                tv_1_1.setVisibility(View.VISIBLE);
-                tv_1_1_view.setVisibility(View.VISIBLE);
-                tv_1_1_1a.setVisibility(View.VISIBLE);
-                tv_1_1_1_1a.setVisibility(View.VISIBLE);
-                tv_1_1a_view.setVisibility(View.VISIBLE);
-                tv_1_1aE.setVisibility(View.VISIBLE);
-                tv_1_1b.setVisibility(View.VISIBLE);
-                tv_1_1_viewa.setVisibility(View.VISIBLE);
+            tv_1_1.setVisibility(View.VISIBLE);
+            tv_1_1_view.setVisibility(View.VISIBLE);
+            tv_1_1_1a.setVisibility(View.VISIBLE);
+            tv_1_1_1_1a.setVisibility(View.VISIBLE);
+            tv_1_1a_view.setVisibility(View.VISIBLE);
+            tv_1_1aE.setVisibility(View.VISIBLE);
+            tv_1_1b.setVisibility(View.VISIBLE);
+            tv_1_1_viewa.setVisibility(View.VISIBLE);
 
-                tv_1_2.setVisibility(View.VISIBLE);
-                tv_1_2_view.setVisibility(View.VISIBLE);
-                tv_1_a.setVisibility(View.VISIBLE);
-                tv_1_b.setVisibility(View.VISIBLE);
+            tv_1_2.setVisibility(View.VISIBLE);
+            tv_1_2_view.setVisibility(View.VISIBLE);
+            tv_1_a.setVisibility(View.VISIBLE);
+            tv_1_b.setVisibility(View.VISIBLE);
 
-                tv_2_1.setVisibility(View.VISIBLE);
-                tv_2_1_view.setVisibility(View.VISIBLE);
-                tv_2_2.setVisibility(View.VISIBLE);
-                tv_2_2_view.setVisibility(View.VISIBLE);
-                tv_2_a.setVisibility(View.VISIBLE);
-                tv_2_b.setVisibility(View.VISIBLE);
+            tv_2_1.setVisibility(View.VISIBLE);
+            tv_2_1_view.setVisibility(View.VISIBLE);
+            tv_2_2.setVisibility(View.VISIBLE);
+            tv_2_2_view.setVisibility(View.VISIBLE);
+            tv_2_a.setVisibility(View.VISIBLE);
+            tv_2_b.setVisibility(View.VISIBLE);
 
-                tv_check_1.setVisibility(View.VISIBLE);
-                tv_check_1_view.setVisibility(View.VISIBLE);
-                tv_check_a.setVisibility(View.VISIBLE);
-                tv_check_2.setVisibility(View.VISIBLE);
-                tv_check_2_view.setVisibility(View.VISIBLE);
-                tv_check_b.setVisibility(View.VISIBLE);
+            tv_check_1.setVisibility(View.VISIBLE);
+            tv_check_1_view.setVisibility(View.VISIBLE);
+            tv_check_a.setVisibility(View.VISIBLE);
+            tv_check_2.setVisibility(View.VISIBLE);
+            tv_check_2_view.setVisibility(View.VISIBLE);
+            tv_check_b.setVisibility(View.VISIBLE);
 
-                tv_3_1.setVisibility(View.VISIBLE);
-                tv_3_1_view.setVisibility(View.VISIBLE);
-                tv_3_2.setVisibility(View.VISIBLE);
-                tv_3_2_view.setVisibility(View.VISIBLE);
-                tv_3_a.setVisibility(View.VISIBLE);
-                tv_3_b.setVisibility(View.VISIBLE);
+            tv_3_1.setVisibility(View.VISIBLE);
+            tv_3_1_view.setVisibility(View.VISIBLE);
+            tv_3_2.setVisibility(View.VISIBLE);
+            tv_3_2_view.setVisibility(View.VISIBLE);
+            tv_3_a.setVisibility(View.VISIBLE);
+            tv_3_b.setVisibility(View.VISIBLE);
 
-                tv_2_1_1b.setVisibility(View.VISIBLE);
-                tv_2_1_1_1b.setVisibility(View.VISIBLE);
-                tv_2_1b_view.setVisibility(View.VISIBLE);
-                tv_2_1bE.setVisibility(View.VISIBLE);
-                tv_2_1b.setVisibility(View.VISIBLE);
-                tv_2_1_viewb.setVisibility(View.VISIBLE);
-
-
-                tv_4_1.setVisibility(View.VISIBLE);
-                tv_4_1_view.setVisibility(View.VISIBLE);
-                tv_4_2.setVisibility(View.VISIBLE);
-                tv_4_2_view.setVisibility(View.VISIBLE);
-                tv_4_a.setVisibility(View.VISIBLE);
-                tv_4_b.setVisibility(View.VISIBLE);
+            tv_2_1_1b.setVisibility(View.VISIBLE);
+            tv_2_1_1_1b.setVisibility(View.VISIBLE);
+            tv_2_1b_view.setVisibility(View.VISIBLE);
+            tv_2_1bE.setVisibility(View.VISIBLE);
+            tv_2_1b.setVisibility(View.VISIBLE);
+            tv_2_1_viewb.setVisibility(View.VISIBLE);
 
 
-                tv_5_1.setVisibility(View.VISIBLE);
-                tv_5_1_view.setVisibility(View.VISIBLE);
-                tv_5_2.setVisibility(View.VISIBLE);
-                tv_5_2_view.setVisibility(View.VISIBLE);
-                tv_5_a.setVisibility(View.VISIBLE);
-                tv_5_b.setVisibility(View.VISIBLE);
-                tv_2_3c.setVisibility(View.VISIBLE);
+            tv_4_1.setVisibility(View.VISIBLE);
+            tv_4_1_view.setVisibility(View.VISIBLE);
+            tv_4_2.setVisibility(View.VISIBLE);
+            tv_4_2_view.setVisibility(View.VISIBLE);
+            tv_4_a.setVisibility(View.VISIBLE);
+            tv_4_b.setVisibility(View.VISIBLE);
 
 
-                layout_6_1.setVisibility(View.VISIBLE);
-                layout_6_1_view.setVisibility(View.VISIBLE);
-                layout_6_2.setVisibility(View.VISIBLE);
-                layout_6_2_view.setVisibility(View.VISIBLE);
-                layout_6_5.setVisibility(View.VISIBLE);
-                layout_6_7.setVisibility(View.VISIBLE);
+            tv_5_1.setVisibility(View.VISIBLE);
+            tv_5_1_view.setVisibility(View.VISIBLE);
+            tv_5_2.setVisibility(View.VISIBLE);
+            tv_5_2_view.setVisibility(View.VISIBLE);
+            tv_5_a.setVisibility(View.VISIBLE);
+            tv_5_b.setVisibility(View.VISIBLE);
+            tv_2_3c.setVisibility(View.VISIBLE);
 
-                layout_7_1.setVisibility(View.VISIBLE);
-                layout_7_1_view.setVisibility(View.VISIBLE);
-                layout_7_2.setVisibility(View.VISIBLE);
-                layout_7_2_view.setVisibility(View.VISIBLE);
-                layout_7_5.setVisibility(View.VISIBLE);
-                layout_7_7.setVisibility(View.VISIBLE);
 
-                layout_8_1.setVisibility(View.VISIBLE);
-                layout_8_1_view.setVisibility(View.VISIBLE);
-                layout_8_2.setVisibility(View.VISIBLE);
-                layout_8_2_view.setVisibility(View.VISIBLE);
-                layout_8_5.setVisibility(View.VISIBLE);
-                layout_8_7.setVisibility(View.VISIBLE);
+            layout_6_1.setVisibility(View.VISIBLE);
+            layout_6_1_view.setVisibility(View.VISIBLE);
+            layout_6_2.setVisibility(View.VISIBLE);
+            layout_6_2_view.setVisibility(View.VISIBLE);
+            layout_6_5.setVisibility(View.VISIBLE);
+            layout_6_7.setVisibility(View.VISIBLE);
 
-                layout_9_1.setVisibility(View.VISIBLE);
-                layout_9_1_view.setVisibility(View.VISIBLE);
-                layout_9_2.setVisibility(View.VISIBLE);
-                layout_9_2_view.setVisibility(View.VISIBLE);
-                layout_9_5.setVisibility(View.VISIBLE);
-                layout_9_7.setVisibility(View.VISIBLE);
+            layout_7_1.setVisibility(View.VISIBLE);
+            layout_7_1_view.setVisibility(View.VISIBLE);
+            layout_7_2.setVisibility(View.VISIBLE);
+            layout_7_2_view.setVisibility(View.VISIBLE);
+            layout_7_5.setVisibility(View.VISIBLE);
+            layout_7_7.setVisibility(View.VISIBLE);
 
-                tv_10_1.setVisibility(View.VISIBLE);
-                tv_10_1_view.setVisibility(View.VISIBLE);
-                tv_10_2.setVisibility(View.VISIBLE);
-                tv_10_2_view.setVisibility(View.VISIBLE);
-                tv_10_a.setVisibility(View.VISIBLE);
-                tv_10_b.setVisibility(View.VISIBLE);
+            layout_8_1.setVisibility(View.VISIBLE);
+            layout_8_1_view.setVisibility(View.VISIBLE);
+            layout_8_2.setVisibility(View.VISIBLE);
+            layout_8_2_view.setVisibility(View.VISIBLE);
+            layout_8_5.setVisibility(View.VISIBLE);
+            layout_8_7.setVisibility(View.VISIBLE);
 
-                two_tv.setVisibility(View.VISIBLE);
-                two_view.setVisibility(View.VISIBLE);
-                three_tv.setVisibility(View.VISIBLE);
-                three_view.setVisibility(View.VISIBLE);
-                d_y_submit_btn.setVisibility(View.VISIBLE);
-                yes_submit_btn.setVisibility(View.VISIBLE);
-                d_y_submit_btn_view.setVisibility(View.VISIBLE);
-                yes_submit_btn_view.setVisibility(View.VISIBLE);
+            layout_9_1.setVisibility(View.VISIBLE);
+            layout_9_1_view.setVisibility(View.VISIBLE);
+            layout_9_2.setVisibility(View.VISIBLE);
+            layout_9_2_view.setVisibility(View.VISIBLE);
+            layout_9_5.setVisibility(View.VISIBLE);
+            layout_9_7.setVisibility(View.VISIBLE);
 
-                d_y_tv_total_hour.setVisibility(View.VISIBLE);
-                yes_tv_total_hour.setVisibility(View.VISIBLE);
-                d_y_tv_total_hour_view.setVisibility(View.VISIBLE);
-                yes_tv_total_hour_view.setVisibility(View.VISIBLE);
+            tv_10_1.setVisibility(View.VISIBLE);
+            tv_10_1_view.setVisibility(View.VISIBLE);
+            tv_10_2.setVisibility(View.VISIBLE);
+            tv_10_2_view.setVisibility(View.VISIBLE);
+            tv_10_a.setVisibility(View.VISIBLE);
+            tv_10_b.setVisibility(View.VISIBLE);
 
-            }
+            two_tv.setVisibility(View.VISIBLE);
+            two_view.setVisibility(View.VISIBLE);
+            three_tv.setVisibility(View.VISIBLE);
+            three_view.setVisibility(View.VISIBLE);
+            d_y_submit_btn.setVisibility(View.VISIBLE);
+            yes_submit_btn.setVisibility(View.VISIBLE);
+            d_y_submit_btn_view.setVisibility(View.VISIBLE);
+            yes_submit_btn_view.setVisibility(View.VISIBLE);
+
+            d_y_tv_total_hour.setVisibility(View.VISIBLE);
+            yes_tv_total_hour.setVisibility(View.VISIBLE);
+            d_y_tv_total_hour_view.setVisibility(View.VISIBLE);
+            yes_tv_total_hour_view.setVisibility(View.VISIBLE);
+
         });
 
 
-        submit_btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if ((tv_1_3.getText().toString() != null) && (!tv_1_3.getText().toString().isEmpty()) && !tv_1_3.getText().toString().contains("nul")) {
-                    int_tv_1_3 = Integer.parseInt(tv_1_3.getText().toString());
-                } else {
-                    int_tv_1_3 = 0;
-                }
-
-                if ((tv_1_3_a.getText().toString() != null) && (!tv_1_3_a.getText().toString().isEmpty()) && !tv_1_3_a.getText().toString().contains("nul")) {
-                    int_tv_1_3a = Integer.parseInt(tv_1_3_a.getText().toString());
-                } else {
-                    int_tv_1_3a = 0;
-                }
-
-                if ((tv_2_3.getText().toString() != null) && (!tv_2_3.getText().toString().isEmpty()) && !tv_2_3.getText().toString().contains("nul")) {
-                    int_tv_2_3 = Integer.parseInt(tv_2_3.getText().toString());
-                } else {
-                    int_tv_2_3 = 0;
-                }
-
-                if ((tv_check_3.getText().toString() != null) && (!tv_check_3.getText().toString().isEmpty()) && !tv_check_3.getText().toString().contains("nul")) {
-                    int_check_1_3 = Integer.parseInt(tv_check_3.getText().toString());
-                } else {
-                    int_check_1_3 = 0;
-                }
-
-                if ((tv_3_3.getText().toString() != null) && (!tv_3_3.getText().toString().isEmpty()) && !tv_3_3.getText().toString().contains("nul")) {
-                    int_tv_3_3 = Integer.parseInt(tv_3_3.getText().toString());
-                } else {
-                    int_tv_3_3 = 0;
-                }
-
-                if ((tv_2_3c.getText().toString() != null) && (!tv_2_3c.getText().toString().isEmpty()) && !tv_2_3c.getText().toString().contains("nul")) {
-                    int_tv_2_3c = Integer.parseInt(tv_2_3c.getText().toString());
-                } else {
-                    int_tv_2_3c = 0;
-                }
-
-
-                if ((tv_4_3.getText().toString() != null) && (!tv_4_3.getText().toString().isEmpty()) && !tv_4_3.getText().toString().contains("nul")) {
-                    int_tv_4_3 = Integer.parseInt(tv_4_3.getText().toString());
-                } else {
-                    int_tv_4_3 = 0;
-                }
-
-                if ((tv_2_3b.getText().toString() != null) && (!tv_2_3b.getText().toString().isEmpty()) && !tv_2_3b.getText().toString().contains("nul")) {
-                    int_tv_2_3b = Integer.parseInt(tv_2_3b.getText().toString());
-                } else {
-                    int_tv_2_3b = 0;
-                }
-
-                if ((tv_5_3.getText().toString() != null) && (!tv_5_3.getText().toString().isEmpty()) && !tv_5_3.getText().toString().contains("nul")) {
-                    int_tv_5_3 = Integer.parseInt(tv_5_3.getText().toString());
-                } else {
-                    int_tv_5_3 = 0;
-                }
-                if ((et_6_3_1.getText().toString() != null) && (!et_6_3_1.getText().toString().isEmpty()) && !et_6_3_1.getText().toString().contains("nul")) {
-                    int_et_6_3_1 = Integer.parseInt(et_6_3_1.getText().toString());
-                } else {
-                    int_et_6_3_1 = 0;
-                }
-                if ((et_6_3_2.getText().toString() != null) && (!et_6_3_2.getText().toString().isEmpty()) && !et_6_3_2.getText().toString().contains("nul")) {
-                    int_et_6_3_2 = Integer.parseInt(et_6_3_2.getText().toString());
-                } else {
-                    int_et_6_3_2 = 0;
-                }
-                if ((et_6_3_3.getText().toString() != null) && (!et_6_3_3.getText().toString().isEmpty()) && !et_6_3_3.getText().toString().contains("nul")) {
-                    int_et_6_3_3 = Integer.parseInt(et_6_3_3.getText().toString());
-                } else {
-                    int_et_6_3_3 = 0;
-                }
-                if ((et_6_3_4.getText().toString() != null) && (!et_6_3_4.getText().toString().isEmpty()) && !et_6_3_4.getText().toString().contains("nul")) {
-                    int_et_6_3_4 = Integer.parseInt(et_6_3_4.getText().toString());
-                } else {
-                    int_et_6_3_4 = 0;
-                }
-                if ((et_6_3_5.getText().toString() != null) && (!et_6_3_5.getText().toString().isEmpty()) && !et_6_3_5.getText().toString().contains("nul")) {
-                    int_et_6_3_5 = Integer.parseInt(et_6_3_5.getText().toString());
-                } else {
-                    int_et_6_3_5 = 0;
-                }
-                if ((et_8_3_1_bestReview.getText().toString() != null) && (!et_8_3_1_bestReview.getText().toString().isEmpty()) && !et_8_3_1_bestReview.getText().toString().contains("nul")) {
-                    int_et_8_3_1_bestReview = Integer.parseInt(et_8_3_1_bestReview.getText().toString());
-                } else {
-                    int_et_8_3_1_bestReview = 0;
-                }
-
-
-                if ((et_6_3_6.getText().toString() != null) && (!et_6_3_6.getText().toString().isEmpty()) && !et_6_3_6.getText().toString().contains("nul")) {
-                    int_et_6_3_6 = Integer.parseInt(et_6_3_6.getText().toString());
-                } else {
-                    int_et_6_3_6 = 0;
-                }
-                if ((et_7_3_1.getText().toString() != null) && (!et_7_3_1.getText().toString().isEmpty()) && !et_7_3_1.getText().toString().contains("nul")) {
-                    int_et_7_3_1 = Integer.parseInt(et_7_3_1.getText().toString());
-                } else {
-                    int_et_7_3_1 = 0;
-                }
-
-                if ((et_7_3_2.getText().toString() != null) && (!et_7_3_2.getText().toString().isEmpty()) && !et_7_3_2.getText().toString().contains("nul")) {
-                    int_et_7_3_2 = Integer.parseInt(et_7_3_2.getText().toString());
-                } else {
-                    int_et_7_3_2 = 0;
-                }
-                if ((et_7_3_3.getText().toString() != null) && (!et_7_3_3.getText().toString().isEmpty()) && !et_7_3_3.getText().toString().contains("nul")) {
-                    int_et_7_3_3 = Integer.parseInt(et_7_3_3.getText().toString());
-                } else {
-                    int_et_7_3_3 = 0;
-                }
-
-                if ((et_8_3_2_unitReview.getText().toString() != null) && (!et_8_3_2_unitReview.getText().toString().isEmpty()) && !et_8_3_2_unitReview.getText().toString().contains("nul")) {
-                    int_et_8_3_2_unitReview = Integer.parseInt(et_8_3_2_unitReview.getText().toString());
-                } else {
-                    int_et_8_3_2_unitReview = 0;
-                }
-
-
-                if ((et_7_3_4.getText().toString() != null) && (!et_7_3_4.getText().toString().isEmpty()) && !et_7_3_4.getText().toString().contains("nul")) {
-                    int_et_7_3_4 = Integer.parseInt(et_7_3_4.getText().toString());
-                } else {
-                    int_et_7_3_4 = 0;
-                }
-                if ((et_8_3_1.getText().toString() != null) && (!et_8_3_1.getText().toString().isEmpty()) && !et_8_3_1.getText().toString().contains("nul")) {
-                    int_et_8_3_1 = Integer.parseInt(et_8_3_1.getText().toString());
-                } else {
-                    int_et_8_3_1 = 0;
-                }
-                if ((et_8_3_2.getText().toString() != null) && (!et_8_3_2.getText().toString().isEmpty()) && !et_8_3_2.getText().toString().contains("nul")) {
-                    int_et_8_3_2 = Integer.parseInt(et_8_3_2.getText().toString());
-                } else {
-                    int_et_8_3_2 = 0;
-                }
-                if ((et_8_3_3.getText().toString() != null) && (!et_8_3_3.getText().toString().isEmpty()) && !et_8_3_3.getText().toString().contains("nul")) {
-                    int_et_8_3_3 = Integer.parseInt(et_8_3_3.getText().toString());
-                } else {
-                    int_et_8_3_3 = 0;
-                }
-                if ((et_8_3_4.getText().toString() != null) && (!et_8_3_4.getText().toString().isEmpty()) && !et_8_3_4.getText().toString().contains("nul")) {
-                    int_et_8_3_4 = Integer.parseInt(et_8_3_4.getText().toString());
-                } else {
-                    int_et_8_3_4 = 0;
-                }
-                if ((et_8_3_5.getText().toString() != null) && (!et_8_3_5.getText().toString().isEmpty()) && !et_8_3_5.getText().toString().contains("nul")) {
-                    int_et_8_3_5 = Integer.parseInt(et_8_3_5.getText().toString());
-                } else {
-                    int_et_8_3_5 = 0;
-                }
-                if ((et_8_3_6.getText().toString() != null) && (!et_8_3_6.getText().toString().isEmpty()) && !et_8_3_6.getText().toString().contains("nul")) {
-                    int_et_8_3_6 = Integer.parseInt(et_8_3_6.getText().toString());
-                } else {
-                    int_et_8_3_6 = 0;
-                }
-                if ((et_8_3_7.getText().toString() != null) && (!et_8_3_7.getText().toString().isEmpty()) && !et_8_3_7.getText().toString().contains("nul")) {
-
-                    int_et_8_3_7 = Integer.parseInt(et_8_3_7.getText().toString());
-                } else {
-                    int_et_8_3_7 = 0;
-                }
-                if ((et_8_3_8.getText().toString() != null) && (!et_8_3_8.getText().toString().isEmpty()) && !et_8_3_8.getText().toString().contains("nul")) {
-                    int_et_8_3_8 = Integer.parseInt(et_8_3_8.getText().toString());
-                } else {
-                    int_et_8_3_8 = 0;
-                }
-                if ((et_9_3_1.getText().toString() != null) && (!et_9_3_1.getText().toString().isEmpty()) && !et_9_3_1.getText().toString().contains("nul")) {
-                    int_et_9_3_1 = Integer.parseInt(et_9_3_1.getText().toString());
-                }
-                if ((et_9_3_2.getText().toString() != null) && (!et_9_3_2.getText().toString().isEmpty()) && !et_9_3_2.getText().toString().contains("nul")) {
-                    int_et_9_3_2 = Integer.parseInt(et_9_3_2.getText().toString());
-                } else {
-                    int_et_9_3_2 = 0;
-                }
-                if ((et_9_3_3.getText().toString() != null) && (!et_9_3_3.getText().toString().isEmpty()) && !et_9_3_3.getText().toString().contains("nul")) {
-                    int_et_9_3_3 = Integer.parseInt(et_9_3_3.getText().toString());
-                } else {
-                    int_et_9_3_3 = 0;
-                }
-                if ((tv_10_3.getText().toString() != null) && (!tv_10_3.getText().toString().isEmpty()) && !tv_10_3.getText().toString().contains("nul")) {
-                    int_tv_10_3 = Integer.parseInt(tv_10_3.getText().toString());
-                } else {
-                    int_tv_10_3 = 0;
-                }
-                if ((tv_10_2_3.getText().toString() != null) && (!tv_10_2_3.getText().toString().isEmpty()) && !tv_10_2_3.getText().toString().contains("nul")) {
-                    int_tv_10_2_3 = Integer.parseInt(tv_10_2_3.getText().toString());
-                } else {
-                    int_tv_10_2_3 = 0;
-                }
-
-                if ((tv_10_3_3.getText().toString() != null) && (!tv_10_3_3.getText().toString().isEmpty()) && !tv_10_3_3.getText().toString().contains("nul")) {
-                    int_tv_10_3_3 = Integer.parseInt(tv_10_3_3.getText().toString());
-                } else {
-                    int_tv_10_3_3 = 0;
-                }
-                if ((tv_10_4_3.getText().toString() != null) && (!tv_10_4_3.getText().toString().isEmpty()) && !tv_10_4_3.getText().toString().contains("nul")) {
-                    int_tv_10_4_3 = Integer.parseInt(tv_10_4_3.getText().toString());
-                } else {
-                    int_tv_10_4_3 = 0;
-                }
-                if ((tv_10_5_3.getText().toString() != null) && (!tv_10_5_3.getText().toString().isEmpty()) && !tv_10_5_3.getText().toString().contains("nul")) {
-                    int_tv_10_5_3 = Integer.parseInt(tv_10_5_3.getText().toString());
-                } else {
-                    int_tv_10_5_3 = 0;
-                }
-
-
-                Add = int_tv_1_3 + int_tv_1_3a + int_tv_2_3b + int_tv_2_3 + int_tv_2_3c + int_tv_3_3 + int_tv_4_3 + int_tv_5_3 +
-                        int_et_6_3_1 + int_et_6_3_2 + int_et_6_3_3 + int_et_6_3_4 +
-                        /*int_et_6_3_5*/int_et_8_3_1_bestReview + int_et_6_3_6 + int_et_7_3_1 + int_et_7_3_2 +
-                        /*int_et_7_3_3*/int_et_8_3_2_unitReview + int_et_7_3_4 + int_et_8_3_1 + int_et_8_3_2 +
-                        int_et_8_3_3 + int_et_8_3_4 + int_et_8_3_5 + int_et_8_3_6 +
-                        int_et_8_3_7 + int_et_8_3_8 + int_et_9_3_1 + int_et_9_3_2 +
-                        int_et_9_3_3 + int_tv_10_3 + int_tv_10_2_3 + int_tv_10_3_3 + int_tv_10_4_3 + int_tv_10_5_3 +
-                        int_check_1_3;
-                tv_total_hour.setText(String.valueOf(Add));
-                tv_1_6_String = tv_1_6.getText().toString();
-                tv_1_6a_String = tv_1_6a.getText().toString();
-                tv_2_6_String = tv_2_6.getText().toString();
-                tv_3_6_String = tv_3_6.getText().toString();
-                tv_4_6_String = tv_4_6.getText().toString();
-                tv_5_6_String = tv_5_6.getText().toString();
-                tv_2_6b_String = tv_2_6b.getText().toString();
-                tv_2_6c_String = tv_2_6c.getText().toString();
-
-                cmt6_3_1_String = cmt6_3_1.getText().toString();
-                cmt6_3_2_String = cmt6_3_2.getText().toString();
-                cmt6_3_3_String = cmt6_3_3.getText().toString();
-                cmt6_3_4_String = cmt6_3_4.getText().toString();
-                //   cmt6_3_5_String = cmt6_3_5.getText().toString();
-                cmt8_3_1_bestReview_String = cmt8_3_1_bestReview.getText().toString();
-                cmt6_3_6_String = cmt6_3_6.getText().toString();
-
-                cmt7_3_1_String = cmt7_3_1.getText().toString();
-                cmt7_3_2_String = cmt7_3_2.getText().toString();
-                cmt7_3_3_String = cmt7_3_3.getText().toString();
-                cmt8_3_2_unitReview_String = cmt8_3_2_unitReview.getText().toString();
-                cmt7_3_4_String = cmt7_3_4.getText().toString();
-
-                cmt8_3_1_String = cmt8_3_1.getText().toString();
-                cmt8_3_2_String = cmt8_3_2.getText().toString();
-                cmt8_3_3_String = cmt8_3_3.getText().toString();
-                cmt8_3_4_String = cmt8_3_4.getText().toString();
-                cmt8_3_5_String = cmt8_3_5.getText().toString();
-                cmt8_3_6_String = cmt8_3_6.getText().toString();
-                cmt8_3_7_String = cmt8_3_7.getText().toString();
-                cmt8_3_8_String = cmt8_3_8.getText().toString();
-
-                cmt9_3_1_String = cmt9_3_1.getText().toString();
-                cmt9_3_2_String = cmt9_3_2.getText().toString();
-                cmt9_3_3_String = cmt9_3_3.getText().toString();
-
-                cmt_10_6_String = tv_10_6.getText().toString();
-                tv_10_2_6_String = tv_10_2_6.getText().toString();
-                tv_10_3_6_String = tv_10_3_6.getText().toString();
-                tv_10_4_6_String = tv_10_4_6.getText().toString();
-                tv_10_5_6_String = tv_10_5_6.getText().toString();
-                check_6_comment = tv_check_6.getText().toString();
-
-
-                if (Utility.isOnline(getApplicationContext())) {
-                    timeSheetTask = new TimeSheetTask();
-                    timeSheetTask.execute();
-                } else
-                    Utility.showToast(getApplicationContext(), "Network failed. Please try later.");
-
+        submit_btn.setOnClickListener(v -> {
+            if ((tv_1_3.getText().toString() != null) && (!tv_1_3.getText().toString().isEmpty()) && !tv_1_3.getText().toString().contains("nul")) {
+                int_tv_1_3 = Integer.parseInt(tv_1_3.getText().toString());
+            } else {
+                int_tv_1_3 = 0;
             }
+
+            if ((tv_1_3_a.getText().toString() != null) && (!tv_1_3_a.getText().toString().isEmpty()) && !tv_1_3_a.getText().toString().contains("nul")) {
+                int_tv_1_3a = Integer.parseInt(tv_1_3_a.getText().toString());
+            } else {
+                int_tv_1_3a = 0;
+            }
+
+            if ((tv_2_3.getText().toString() != null) && (!tv_2_3.getText().toString().isEmpty()) && !tv_2_3.getText().toString().contains("nul")) {
+                int_tv_2_3 = Integer.parseInt(tv_2_3.getText().toString());
+            } else {
+                int_tv_2_3 = 0;
+            }
+
+            if ((tv_check_3.getText().toString() != null) && (!tv_check_3.getText().toString().isEmpty()) && !tv_check_3.getText().toString().contains("nul")) {
+                int_check_1_3 = Integer.parseInt(tv_check_3.getText().toString());
+            } else {
+                int_check_1_3 = 0;
+            }
+
+            if ((tv_3_3.getText().toString() != null) && (!tv_3_3.getText().toString().isEmpty()) && !tv_3_3.getText().toString().contains("nul")) {
+                int_tv_3_3 = Integer.parseInt(tv_3_3.getText().toString());
+            } else {
+                int_tv_3_3 = 0;
+            }
+
+            if ((tv_2_3c.getText().toString() != null) && (!tv_2_3c.getText().toString().isEmpty()) && !tv_2_3c.getText().toString().contains("nul")) {
+                int_tv_2_3c = Integer.parseInt(tv_2_3c.getText().toString());
+            } else {
+                int_tv_2_3c = 0;
+            }
+
+
+            if ((tv_4_3.getText().toString() != null) && (!tv_4_3.getText().toString().isEmpty()) && !tv_4_3.getText().toString().contains("nul")) {
+                int_tv_4_3 = Integer.parseInt(tv_4_3.getText().toString());
+            } else {
+                int_tv_4_3 = 0;
+            }
+
+            if ((tv_2_3b.getText().toString() != null) && (!tv_2_3b.getText().toString().isEmpty()) && !tv_2_3b.getText().toString().contains("nul")) {
+                int_tv_2_3b = Integer.parseInt(tv_2_3b.getText().toString());
+            } else {
+                int_tv_2_3b = 0;
+            }
+
+            if ((tv_5_3.getText().toString() != null) && (!tv_5_3.getText().toString().isEmpty()) && !tv_5_3.getText().toString().contains("nul")) {
+                int_tv_5_3 = Integer.parseInt(tv_5_3.getText().toString());
+            } else {
+                int_tv_5_3 = 0;
+            }
+            if ((et_6_3_1.getText().toString() != null) && (!et_6_3_1.getText().toString().isEmpty()) && !et_6_3_1.getText().toString().contains("nul")) {
+                int_et_6_3_1 = Integer.parseInt(et_6_3_1.getText().toString());
+            } else {
+                int_et_6_3_1 = 0;
+            }
+            if ((et_6_3_2.getText().toString() != null) && (!et_6_3_2.getText().toString().isEmpty()) && !et_6_3_2.getText().toString().contains("nul")) {
+                int_et_6_3_2 = Integer.parseInt(et_6_3_2.getText().toString());
+            } else {
+                int_et_6_3_2 = 0;
+            }
+            if ((et_6_3_3.getText().toString() != null) && (!et_6_3_3.getText().toString().isEmpty()) && !et_6_3_3.getText().toString().contains("nul")) {
+                int_et_6_3_3 = Integer.parseInt(et_6_3_3.getText().toString());
+            } else {
+                int_et_6_3_3 = 0;
+            }
+            if ((et_6_3_4.getText().toString() != null) && (!et_6_3_4.getText().toString().isEmpty()) && !et_6_3_4.getText().toString().contains("nul")) {
+                int_et_6_3_4 = Integer.parseInt(et_6_3_4.getText().toString());
+            } else {
+                int_et_6_3_4 = 0;
+            }
+            if ((et_6_3_5.getText().toString() != null) && (!et_6_3_5.getText().toString().isEmpty()) && !et_6_3_5.getText().toString().contains("nul")) {
+                int_et_6_3_5 = Integer.parseInt(et_6_3_5.getText().toString());
+            } else {
+                int_et_6_3_5 = 0;
+            }
+            if ((et_8_3_1_bestReview.getText().toString() != null) && (!et_8_3_1_bestReview.getText().toString().isEmpty()) && !et_8_3_1_bestReview.getText().toString().contains("nul")) {
+                int_et_8_3_1_bestReview = Integer.parseInt(et_8_3_1_bestReview.getText().toString());
+            } else {
+                int_et_8_3_1_bestReview = 0;
+            }
+
+
+            if ((et_6_3_6.getText().toString() != null) && (!et_6_3_6.getText().toString().isEmpty()) && !et_6_3_6.getText().toString().contains("nul")) {
+                int_et_6_3_6 = Integer.parseInt(et_6_3_6.getText().toString());
+            } else {
+                int_et_6_3_6 = 0;
+            }
+            if ((et_7_3_1.getText().toString() != null) && (!et_7_3_1.getText().toString().isEmpty()) && !et_7_3_1.getText().toString().contains("nul")) {
+                int_et_7_3_1 = Integer.parseInt(et_7_3_1.getText().toString());
+            } else {
+                int_et_7_3_1 = 0;
+            }
+
+            if ((et_7_3_2.getText().toString() != null) && (!et_7_3_2.getText().toString().isEmpty()) && !et_7_3_2.getText().toString().contains("nul")) {
+                int_et_7_3_2 = Integer.parseInt(et_7_3_2.getText().toString());
+            } else {
+                int_et_7_3_2 = 0;
+            }
+            if ((et_7_3_3.getText().toString() != null) && (!et_7_3_3.getText().toString().isEmpty()) && !et_7_3_3.getText().toString().contains("nul")) {
+                int_et_7_3_3 = Integer.parseInt(et_7_3_3.getText().toString());
+            } else {
+                int_et_7_3_3 = 0;
+            }
+
+            if ((et_8_3_2_unitReview.getText().toString() != null) && (!et_8_3_2_unitReview.getText().toString().isEmpty()) && !et_8_3_2_unitReview.getText().toString().contains("nul")) {
+                int_et_8_3_2_unitReview = Integer.parseInt(et_8_3_2_unitReview.getText().toString());
+            } else {
+                int_et_8_3_2_unitReview = 0;
+            }
+
+
+            if ((et_7_3_4.getText().toString() != null) && (!et_7_3_4.getText().toString().isEmpty()) && !et_7_3_4.getText().toString().contains("nul")) {
+                int_et_7_3_4 = Integer.parseInt(et_7_3_4.getText().toString());
+            } else {
+                int_et_7_3_4 = 0;
+            }
+            if ((et_8_3_1.getText().toString() != null) && (!et_8_3_1.getText().toString().isEmpty()) && !et_8_3_1.getText().toString().contains("nul")) {
+                int_et_8_3_1 = Integer.parseInt(et_8_3_1.getText().toString());
+            } else {
+                int_et_8_3_1 = 0;
+            }
+            if ((et_8_3_2.getText().toString() != null) && (!et_8_3_2.getText().toString().isEmpty()) && !et_8_3_2.getText().toString().contains("nul")) {
+                int_et_8_3_2 = Integer.parseInt(et_8_3_2.getText().toString());
+            } else {
+                int_et_8_3_2 = 0;
+            }
+            if ((et_8_3_3.getText().toString() != null) && (!et_8_3_3.getText().toString().isEmpty()) && !et_8_3_3.getText().toString().contains("nul")) {
+                int_et_8_3_3 = Integer.parseInt(et_8_3_3.getText().toString());
+            } else {
+                int_et_8_3_3 = 0;
+            }
+            if ((et_8_3_4.getText().toString() != null) && (!et_8_3_4.getText().toString().isEmpty()) && !et_8_3_4.getText().toString().contains("nul")) {
+                int_et_8_3_4 = Integer.parseInt(et_8_3_4.getText().toString());
+            } else {
+                int_et_8_3_4 = 0;
+            }
+            if ((et_8_3_5.getText().toString() != null) && (!et_8_3_5.getText().toString().isEmpty()) && !et_8_3_5.getText().toString().contains("nul")) {
+                int_et_8_3_5 = Integer.parseInt(et_8_3_5.getText().toString());
+            } else {
+                int_et_8_3_5 = 0;
+            }
+            if ((et_8_3_6.getText().toString() != null) && (!et_8_3_6.getText().toString().isEmpty()) && !et_8_3_6.getText().toString().contains("nul")) {
+                int_et_8_3_6 = Integer.parseInt(et_8_3_6.getText().toString());
+            } else {
+                int_et_8_3_6 = 0;
+            }
+            if ((et_8_3_7.getText().toString() != null) && (!et_8_3_7.getText().toString().isEmpty()) && !et_8_3_7.getText().toString().contains("nul")) {
+
+                int_et_8_3_7 = Integer.parseInt(et_8_3_7.getText().toString());
+            } else {
+                int_et_8_3_7 = 0;
+            }
+            if ((et_8_3_8.getText().toString() != null) && (!et_8_3_8.getText().toString().isEmpty()) && !et_8_3_8.getText().toString().contains("nul")) {
+                int_et_8_3_8 = Integer.parseInt(et_8_3_8.getText().toString());
+            } else {
+                int_et_8_3_8 = 0;
+            }
+            if ((et_9_3_1.getText().toString() != null) && (!et_9_3_1.getText().toString().isEmpty()) && !et_9_3_1.getText().toString().contains("nul")) {
+                int_et_9_3_1 = Integer.parseInt(et_9_3_1.getText().toString());
+            }
+            if ((et_9_3_2.getText().toString() != null) && (!et_9_3_2.getText().toString().isEmpty()) && !et_9_3_2.getText().toString().contains("nul")) {
+                int_et_9_3_2 = Integer.parseInt(et_9_3_2.getText().toString());
+            } else {
+                int_et_9_3_2 = 0;
+            }
+            if ((et_9_3_3.getText().toString() != null) && (!et_9_3_3.getText().toString().isEmpty()) && !et_9_3_3.getText().toString().contains("nul")) {
+                int_et_9_3_3 = Integer.parseInt(et_9_3_3.getText().toString());
+            } else {
+                int_et_9_3_3 = 0;
+            }
+            if ((tv_10_3.getText().toString() != null) && (!tv_10_3.getText().toString().isEmpty()) && !tv_10_3.getText().toString().contains("nul")) {
+                int_tv_10_3 = Integer.parseInt(tv_10_3.getText().toString());
+            } else {
+                int_tv_10_3 = 0;
+            }
+            if ((tv_10_2_3.getText().toString() != null) && (!tv_10_2_3.getText().toString().isEmpty()) && !tv_10_2_3.getText().toString().contains("nul")) {
+                int_tv_10_2_3 = Integer.parseInt(tv_10_2_3.getText().toString());
+            } else {
+                int_tv_10_2_3 = 0;
+            }
+
+            if ((tv_10_3_3.getText().toString() != null) && (!tv_10_3_3.getText().toString().isEmpty()) && !tv_10_3_3.getText().toString().contains("nul")) {
+                int_tv_10_3_3 = Integer.parseInt(tv_10_3_3.getText().toString());
+            } else {
+                int_tv_10_3_3 = 0;
+            }
+            if ((tv_10_4_3.getText().toString() != null) && (!tv_10_4_3.getText().toString().isEmpty()) && !tv_10_4_3.getText().toString().contains("nul")) {
+                int_tv_10_4_3 = Integer.parseInt(tv_10_4_3.getText().toString());
+            } else {
+                int_tv_10_4_3 = 0;
+            }
+            if ((tv_10_5_3.getText().toString() != null) && (!tv_10_5_3.getText().toString().isEmpty()) && !tv_10_5_3.getText().toString().contains("nul")) {
+                int_tv_10_5_3 = Integer.parseInt(tv_10_5_3.getText().toString());
+            } else {
+                int_tv_10_5_3 = 0;
+            }
+
+
+            Add = int_tv_1_3 + int_tv_1_3a + int_tv_2_3b + int_tv_2_3 + int_tv_2_3c + int_tv_3_3 + int_tv_4_3 + int_tv_5_3 +
+                    int_et_6_3_1 + int_et_6_3_2 + int_et_6_3_3 + int_et_6_3_4 +
+                    /*int_et_6_3_5*/int_et_8_3_1_bestReview + int_et_6_3_6 + int_et_7_3_1 + int_et_7_3_2 +
+                    /*int_et_7_3_3*/int_et_8_3_2_unitReview + int_et_7_3_4 + int_et_8_3_1 + int_et_8_3_2 +
+                    int_et_8_3_3 + int_et_8_3_4 + int_et_8_3_5 + int_et_8_3_6 +
+                    int_et_8_3_7 + int_et_8_3_8 + int_et_9_3_1 + int_et_9_3_2 +
+                    int_et_9_3_3 + int_tv_10_3 + int_tv_10_2_3 + int_tv_10_3_3 + int_tv_10_4_3 + int_tv_10_5_3 +
+                    int_check_1_3;
+            tv_total_hour.setText(String.valueOf(Add));
+            tv_1_6_String = tv_1_6.getText().toString();
+            tv_1_6a_String = tv_1_6a.getText().toString();
+            tv_2_6_String = tv_2_6.getText().toString();
+            tv_3_6_String = tv_3_6.getText().toString();
+            tv_4_6_String = tv_4_6.getText().toString();
+            tv_5_6_String = tv_5_6.getText().toString();
+            tv_2_6b_String = tv_2_6b.getText().toString();
+            tv_2_6c_String = tv_2_6c.getText().toString();
+
+            cmt6_3_1_String = cmt6_3_1.getText().toString();
+            cmt6_3_2_String = cmt6_3_2.getText().toString();
+            cmt6_3_3_String = cmt6_3_3.getText().toString();
+            cmt6_3_4_String = cmt6_3_4.getText().toString();
+            //   cmt6_3_5_String = cmt6_3_5.getText().toString();
+            cmt8_3_1_bestReview_String = cmt8_3_1_bestReview.getText().toString();
+            cmt6_3_6_String = cmt6_3_6.getText().toString();
+
+            cmt7_3_1_String = cmt7_3_1.getText().toString();
+            cmt7_3_2_String = cmt7_3_2.getText().toString();
+            cmt7_3_3_String = cmt7_3_3.getText().toString();
+            cmt8_3_2_unitReview_String = cmt8_3_2_unitReview.getText().toString();
+            cmt7_3_4_String = cmt7_3_4.getText().toString();
+
+            cmt8_3_1_String = cmt8_3_1.getText().toString();
+            cmt8_3_2_String = cmt8_3_2.getText().toString();
+            cmt8_3_3_String = cmt8_3_3.getText().toString();
+            cmt8_3_4_String = cmt8_3_4.getText().toString();
+            cmt8_3_5_String = cmt8_3_5.getText().toString();
+            cmt8_3_6_String = cmt8_3_6.getText().toString();
+            cmt8_3_7_String = cmt8_3_7.getText().toString();
+            cmt8_3_8_String = cmt8_3_8.getText().toString();
+
+            cmt9_3_1_String = cmt9_3_1.getText().toString();
+            cmt9_3_2_String = cmt9_3_2.getText().toString();
+            cmt9_3_3_String = cmt9_3_3.getText().toString();
+
+            cmt_10_6_String = tv_10_6.getText().toString();
+            tv_10_2_6_String = tv_10_2_6.getText().toString();
+            tv_10_3_6_String = tv_10_3_6.getText().toString();
+            tv_10_4_6_String = tv_10_4_6.getText().toString();
+            tv_10_5_6_String = tv_10_5_6.getText().toString();
+            check_6_comment = tv_check_6.getText().toString();
+
+
+            if (Utility.isOnline(getApplicationContext())) {
+                timeSheetTask = new TimeSheetTask();
+                timeSheetTask.execute();
+            } else
+                Utility.showToast(getApplicationContext(), "Network failed. Please try later.");
+
         });
 
         // yesterday  button
-        yes_submit_btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if ((tv_1_2.getText().toString() != null) && (!tv_1_2.getText().toString().isEmpty()) && !tv_1_2.getText().toString().contains("nul")) {
-                    int_tv_1_2 = Integer.parseInt(tv_1_2.getText().toString());
-                } else {
-                    int_tv_1_2 = 0;
-                }
-                if ((tv_2_2.getText().toString() != null) && (!tv_2_2.getText().toString().isEmpty()) && !tv_2_2.getText().toString().contains("nul")) {
-                    int_tv_2_2 = Integer.parseInt(tv_2_2.getText().toString());
-                } else {
-                    int_tv_2_2 = 0;
-                }
-                if ((tv_2_1bE.getText().toString() != null) && (!tv_2_1bE.getText().toString().isEmpty()) && !tv_2_1bE.getText().toString().contains("nul")) {
-                    int_tv_2_1bE = Integer.parseInt(tv_2_1bE.getText().toString());
-                } else {
-                    int_tv_2_1bE = 0;
-                }
-
-                if ((tv_2_1cE.getText().toString() != null) && (!tv_2_1cE.getText().toString().isEmpty()) && !tv_2_1cE.getText().toString().contains("nul")) {
-                    int_tv_2_1cE = Integer.parseInt(tv_2_1cE.getText().toString());
-                } else {
-                    int_tv_2_1cE = 0;
-                }
-                if ((tv_check_2.getText().toString() != null) && (!tv_check_2.getText().toString().isEmpty()) && !tv_check_2.getText().toString().contains("nul")) {
-                    int_check_1_2 = Integer.parseInt(tv_check_2.getText().toString());
-                } else {
-                    int_check_1_2 = 0;
-                }
-                if ((tv_1_1aE.getText().toString() != null) && (!tv_1_1aE.getText().toString().isEmpty()) && !tv_1_1aE.getText().toString().contains("nul")) {
-                    int_tv_1_1aE = Integer.parseInt(tv_1_1aE.getText().toString());
-                } else {
-                    int_tv_1_1aE = 0;
-                }
-
-                if ((tv_3_2.getText().toString() != null) && (!tv_3_2.getText().toString().isEmpty()) && !tv_3_2.getText().toString().contains("nul")) {
-                    int_tv_3_2 = Integer.parseInt(tv_3_2.getText().toString());
-                } else {
-                    int_tv_3_2 = 0;
-                }
-                if ((tv_4_2.getText().toString() != null) && (!tv_4_2.getText().toString().isEmpty()) && !tv_4_2.getText().toString().contains("nul")) {
-                    int_tv_4_2 = Integer.parseInt(tv_4_2.getText().toString());
-                } else {
-                    int_tv_4_2 = 0;
-                }
-
-                if ((tv_5_2.getText().toString() != null) && (!tv_5_2.getText().toString().isEmpty()) && !tv_5_2.getText().toString().contains("nul")) {
-                    int_tv_5_2 = Integer.parseInt(tv_5_2.getText().toString());
-                } else {
-                    int_tv_5_2 = 0;
-                }
-                if ((et_6_2_1.getText().toString() != null) && (!et_6_2_1.getText().toString().isEmpty()) && !et_6_2_1.getText().toString().contains("nul")) {
-                    int_et_6_2_1 = Integer.parseInt(et_6_2_1.getText().toString());
-                } else {
-                    int_et_6_2_1 = 0;
-                }
-                if ((et_6_2_2.getText().toString() != null) && (!et_6_2_2.getText().toString().isEmpty()) && !et_6_2_2.getText().toString().contains("nul")) {
-                    int_et_6_2_2 = Integer.parseInt(et_6_2_2.getText().toString());
-                } else {
-                    int_et_6_2_2 = 0;
-                }
-                if ((et_6_2_3.getText().toString() != null) && (!et_6_2_3.getText().toString().isEmpty()) && !et_6_2_3.getText().toString().contains("nul")) {
-                    int_et_6_2_3 = Integer.parseInt(et_6_2_3.getText().toString());
-                } else {
-                    int_et_6_2_3 = 0;
-                }
-                if ((et_6_2_4.getText().toString() != null) && (!et_6_2_4.getText().toString().isEmpty()) && !et_6_2_4.getText().toString().contains("nul")) {
-                    int_et_6_2_4 = Integer.parseInt(et_6_2_4.getText().toString());
-                } else {
-                    int_et_6_2_4 = 0;
-                }
-                if ((et_6_2_5.getText().toString() != null) && (!et_6_2_5.getText().toString().isEmpty()) && !et_6_2_5.getText().toString().contains("nul")) {
-                    int_et_6_2_5 = Integer.parseInt(et_6_2_5.getText().toString());
-                } else {
-                    int_et_6_2_5 = 0;
-                }
-
-                if ((et_8_2_1_bestReview.getText().toString() != null) && (!et_8_2_1_bestReview.getText().toString().isEmpty()) && !et_8_2_1_bestReview.getText().toString().contains("nul")) {
-                    int_et_8_2_1_bestReview = Integer.parseInt(et_8_2_1_bestReview.getText().toString());
-                } else {
-                    int_et_8_2_1_bestReview = 0;
-                }
-                if ((et_6_2_6.getText().toString() != null) && (!et_6_2_6.getText().toString().isEmpty()) && !et_6_2_6.getText().toString().contains("nul")) {
-                    int_et_6_2_6 = Integer.parseInt(et_6_2_6.getText().toString());
-                } else {
-                    int_et_6_2_6 = 0;
-                }
-                if ((et_7_2_1.getText().toString() != null) && (!et_7_2_1.getText().toString().isEmpty()) && !et_7_2_1.getText().toString().contains("nul")) {
-                    int_et_7_2_1 = Integer.parseInt(et_7_2_1.getText().toString());
-                } else {
-                    int_et_7_2_1 = 0;
-                }
-                if ((et_7_2_2.getText().toString() != null) && (!et_7_2_2.getText().toString().isEmpty()) && !et_7_2_2.getText().toString().contains("nul")) {
-                    int_et_7_2_2 = Integer.parseInt(et_7_2_2.getText().toString());
-                } else {
-                    int_et_7_2_2 = 0;
-                }
-              /*  if ((et_7_2_3.getText().toString() != null) && (!et_7_2_3.getText().toString().isEmpty()) && !et_7_2_3.getText().toString().contains("nul")) {
-                    int_et_7_2_3 = Integer.parseInt(et_7_2_3.getText().toString());
-                } else {
-                    int_et_7_2_3 = 0;
-                }
-*/
-                if ((et_8_2_2_unitReview.getText().toString() != null) && (!et_8_2_2_unitReview.getText().toString().isEmpty()) && !et_8_2_2_unitReview.getText().toString().contains("nul")) {
-                    int_et_8_2_2_unitReview = Integer.parseInt(et_8_2_2_unitReview.getText().toString());
-                } else {
-                    int_et_8_2_2_unitReview = 0;
-                }
-
-                if ((et_7_2_4.getText().toString() != null) && (!et_7_2_4.getText().toString().isEmpty()) && !et_7_2_4.getText().toString().contains("nul")) {
-                    int_et_7_2_4 = Integer.parseInt(et_7_2_4.getText().toString());
-                } else {
-                    int_et_7_2_4 = 0;
-                }
-                if ((et_8_2_1.getText().toString() != null) && (!et_8_2_1.getText().toString().isEmpty()) && !et_8_2_1.getText().toString().contains("nul")) {
-                    int_et_8_2_1 = Integer.parseInt(et_8_2_1.getText().toString());
-                } else {
-                    int_et_8_2_1 = 0;
-                }
-                if ((et_8_2_2.getText().toString() != null) && (!et_8_2_2.getText().toString().isEmpty()) && !et_8_2_2.getText().toString().contains("nul")) {
-                    int_et_8_2_2 = Integer.parseInt(et_8_2_2.getText().toString());
-                } else {
-                    int_et_8_2_2 = 0;
-                }
-                if ((et_8_2_3.getText().toString() != null) && (!et_8_2_3.getText().toString().isEmpty()) && !et_8_2_3.getText().toString().contains("nul")) {
-                    int_et_8_2_3 = Integer.parseInt(et_8_2_3.getText().toString());
-                } else {
-                    int_et_8_2_3 = 0;
-                }
-                if ((et_8_2_4.getText().toString() != null) && (!et_8_2_4.getText().toString().isEmpty()) && !et_8_2_4.getText().toString().contains("nul")) {
-                    int_et_8_2_4 = Integer.parseInt(et_8_2_4.getText().toString());
-                } else {
-                    int_et_8_2_4 = 0;
-                }
-                if ((et_8_2_5.getText().toString() != null) && (!et_8_2_5.getText().toString().isEmpty()) && !et_8_2_5.getText().toString().contains("nul")) {
-                    int_et_8_2_5 = Integer.parseInt(et_8_2_5.getText().toString());
-                } else {
-                    int_et_8_2_5 = 0;
-                }
-                if ((et_8_2_6.getText().toString() != null) && (!et_8_2_6.getText().toString().isEmpty()) && !et_8_2_6.getText().toString().contains("nul")) {
-                    int_et_8_2_6 = Integer.parseInt(et_8_2_6.getText().toString());
-                } else {
-                    int_et_8_2_6 = 0;
-                }
-                if ((et_8_2_7.getText().toString() != null) && (!et_8_2_7.getText().toString().isEmpty()) && !et_8_2_7.getText().toString().contains("nul")) {
-
-                    int_et_8_2_7 = Integer.parseInt(et_8_2_7.getText().toString());
-                } else {
-                    int_et_8_2_7 = 0;
-                }
-                if ((et_8_2_8.getText().toString() != null) && (!et_8_2_8.getText().toString().isEmpty()) && !et_8_2_8.getText().toString().contains("nul")) {
-                    int_et_8_2_8 = Integer.parseInt(et_8_2_8.getText().toString());
-                } else {
-                    int_et_8_2_8 = 0;
-                }
-                if ((et_9_2_1.getText().toString() != null) && (!et_9_2_1.getText().toString().isEmpty()) && !et_9_2_1.getText().toString().contains("nul")) {
-                    int_et_9_2_1 = Integer.parseInt(et_9_2_1.getText().toString());
-                } else {
-                    int_et_9_2_1 = 0;
-                }
-                if ((et_9_2_2.getText().toString() != null) && (!et_9_2_2.getText().toString().isEmpty()) && !et_9_2_2.getText().toString().contains("nul")) {
-                    int_et_9_2_2 = Integer.parseInt(et_9_2_2.getText().toString());
-                } else {
-                    int_et_9_2_2 = 0;
-                }
-                if ((et_9_2_3.getText().toString() != null) && (!et_9_2_3.getText().toString().isEmpty()) && !et_9_2_3.getText().toString().contains("nul")) {
-                    int_et_9_2_3 = Integer.parseInt(et_9_2_3.getText().toString());
-                } else {
-                    int_et_9_2_3 = 0;
-                }
-                if ((tv_10_2.getText().toString() != null) && (!tv_10_2.getText().toString().isEmpty()) && !tv_10_2.getText().toString().contains("nul")) {
-                    int_tv_10_2 = Integer.parseInt(tv_10_2.getText().toString());
-                } else {
-                    int_tv_10_2 = 0;
-                }
-                if ((tv_10_2_2.getText().toString() != null) && (!tv_10_2_2.getText().toString().isEmpty()) && !tv_10_2_2.getText().toString().contains("nul")) {
-                    int_tv_10_2_2 = Integer.parseInt(tv_10_2_2.getText().toString());
-                } else {
-                    int_tv_10_2_2 = 0;
-                }
-                if ((tv_10_3_2.getText().toString() != null) && (!tv_10_3_2.getText().toString().isEmpty()) && !tv_10_3_2.getText().toString().contains("nul")) {
-                    int_tv_10_3_2 = Integer.parseInt(tv_10_3_2.getText().toString());
-                } else {
-                    int_tv_10_3_2 = 0;
-                }
-                if ((tv_10_4_2.getText().toString() != null) && (!tv_10_4_2.getText().toString().isEmpty()) && !tv_10_4_2.getText().toString().contains("nul")) {
-                    int_tv_10_4_2 = Integer.parseInt(tv_10_4_2.getText().toString());
-                } else {
-                    int_tv_10_4_2 = 0;
-                }
-                if ((tv_10_5_2.getText().toString() != null) && (!tv_10_5_2.getText().toString().isEmpty()) && !tv_10_5_2.getText().toString().contains("nul")) {
-                    int_tv_10_5_2 = Integer.parseInt(tv_10_5_2.getText().toString());
-                } else {
-                    int_tv_10_5_2 = 0;
-                }
-                YesterdayAdd = int_tv_1_2 + int_tv_2_1bE + int_tv_2_2 + int_tv_1_1aE + int_tv_2_1cE + int_tv_3_2 + int_tv_4_2 + int_tv_5_2 +
-                        int_et_6_2_1 + int_et_6_2_2 + int_et_6_2_3 + int_et_6_2_4 + /*int_et_6_2_5*/int_et_8_2_1_bestReview + int_et_6_2_6 +
-                        int_et_7_2_1 + int_et_7_2_2 + /*int_et_7_2_3*/int_et_8_2_2_unitReview + int_et_7_2_4 +
-                        int_et_8_2_1 + int_et_8_2_2 + int_et_8_2_3 + int_et_8_2_4 + int_et_8_2_5 + int_et_8_2_6 + int_et_8_2_7 + int_et_8_2_8 +
-                        int_et_9_2_1 + int_et_9_2_2 + int_et_9_2_3 + int_tv_10_2 + int_tv_10_2_2 + int_tv_10_3_2 + int_tv_10_4_2 + int_tv_10_5_2
-                        + int_check_1_2;
-                tv_2_1b5_String = tv_2_1b5.getText().toString();
-                tv_2_1c5_String = tv_2_1c5.getText().toString();
-
-
-                tv_1_5_String = tv_1_5.getText().toString();
-                tv_2_5_String = tv_2_5.getText().toString();
-                tv_3_5_String = tv_3_5.getText().toString();
-                tv_4_5_String = tv_4_5.getText().toString();
-                tv_5_5_String = tv_5_5.getText().toString();
-                cmt6_2_1_String = cmt6_2_1.getText().toString();
-                cmt6_2_2_String = cmt6_2_2.getText().toString();
-                cmt6_2_3_String = cmt6_2_3.getText().toString();
-                cmt6_2_4_String = cmt6_2_4.getText().toString();
-                // cmt6_2_5_String = cmt6_2_5.getText().toString();
-                cmt8_2_1_bestReview_String = cmt8_2_1_bestReview.getText().toString();
-                cmt6_2_6_String = cmt6_2_6.getText().toString();
-
-                cmt7_2_1_String = cmt7_2_1.getText().toString();
-                cmt7_2_2_String = cmt7_2_2.getText().toString();
-                //  cmt7_2_3_String = cmt7_2_3.getText().toString();
-                cmt8_2_2_unitReview_String = cmt8_2_2_unitReview.getText().toString();
-                cmt7_2_4_String = cmt7_2_4.getText().toString();
-
-                cmt8_2_1_String = cmt8_2_1.getText().toString();
-                cmt8_2_2_String = cmt8_2_2.getText().toString();
-                cmt8_2_3_String = cmt8_2_3.getText().toString();
-                cmt8_2_4_String = cmt8_2_4.getText().toString();
-                cmt8_2_5_String = cmt8_2_5.getText().toString();
-                cmt8_2_6_String = cmt8_2_6.getText().toString();
-                cmt8_2_7_String = cmt8_2_7.getText().toString();
-                cmt8_2_8_String = cmt8_2_8.getText().toString();
-
-                cmt9_2_1_String = cmt9_2_1.getText().toString();
-                cmt9_2_2_String = cmt9_2_2.getText().toString();
-                cmt9_2_3_String = cmt9_2_3.getText().toString();
-                cmt_tv_10_5_String = tv_10_5.getText().toString();
-                tv_1_5a_String = tv_1_5a.getText().toString();
-
-
-                tv_10_2_5_String = tv_10_2_5.getText().toString();
-                tv_10_3_5_String = tv_10_3_5.getText().toString();
-                tv_10_4_5_String = tv_10_4_5.getText().toString();
-                tv_10_5_5_String = tv_10_5_5.getText().toString();
-                check_5_comment = tv_check_5.getText().toString();
-
-
-                yes_tv_total_hour.setText(String.valueOf(YesterdayAdd));
-                if (Utility.isOnline(getApplicationContext())) {
-                    yesterdayTimeSheetTask = new yesterdayTimeSheetTask();
-                    yesterdayTimeSheetTask.execute();
-                } else
-                    Utility.showToast(getApplicationContext(), "Network failed. Please try later.");
+        yes_submit_btn.setOnClickListener(v -> {
+            if ((tv_1_2.getText().toString() != null) && (!tv_1_2.getText().toString().isEmpty()) && !tv_1_2.getText().toString().contains("nul")) {
+                int_tv_1_2 = Integer.parseInt(tv_1_2.getText().toString());
+            } else {
+                int_tv_1_2 = 0;
             }
+            if ((tv_2_2.getText().toString() != null) && (!tv_2_2.getText().toString().isEmpty()) && !tv_2_2.getText().toString().contains("nul")) {
+                int_tv_2_2 = Integer.parseInt(tv_2_2.getText().toString());
+            } else {
+                int_tv_2_2 = 0;
+            }
+            if ((tv_2_1bE.getText().toString() != null) && (!tv_2_1bE.getText().toString().isEmpty()) && !tv_2_1bE.getText().toString().contains("nul")) {
+                int_tv_2_1bE = Integer.parseInt(tv_2_1bE.getText().toString());
+            } else {
+                int_tv_2_1bE = 0;
+            }
+
+            if ((tv_2_1cE.getText().toString() != null) && (!tv_2_1cE.getText().toString().isEmpty()) && !tv_2_1cE.getText().toString().contains("nul")) {
+                int_tv_2_1cE = Integer.parseInt(tv_2_1cE.getText().toString());
+            } else {
+                int_tv_2_1cE = 0;
+            }
+            if ((tv_check_2.getText().toString() != null) && (!tv_check_2.getText().toString().isEmpty()) && !tv_check_2.getText().toString().contains("nul")) {
+                int_check_1_2 = Integer.parseInt(tv_check_2.getText().toString());
+            } else {
+                int_check_1_2 = 0;
+            }
+            if ((tv_1_1aE.getText().toString() != null) && (!tv_1_1aE.getText().toString().isEmpty()) && !tv_1_1aE.getText().toString().contains("nul")) {
+                int_tv_1_1aE = Integer.parseInt(tv_1_1aE.getText().toString());
+            } else {
+                int_tv_1_1aE = 0;
+            }
+
+            if ((tv_3_2.getText().toString() != null) && (!tv_3_2.getText().toString().isEmpty()) && !tv_3_2.getText().toString().contains("nul")) {
+                int_tv_3_2 = Integer.parseInt(tv_3_2.getText().toString());
+            } else {
+                int_tv_3_2 = 0;
+            }
+            if ((tv_4_2.getText().toString() != null) && (!tv_4_2.getText().toString().isEmpty()) && !tv_4_2.getText().toString().contains("nul")) {
+                int_tv_4_2 = Integer.parseInt(tv_4_2.getText().toString());
+            } else {
+                int_tv_4_2 = 0;
+            }
+
+            if ((tv_5_2.getText().toString() != null) && (!tv_5_2.getText().toString().isEmpty()) && !tv_5_2.getText().toString().contains("nul")) {
+                int_tv_5_2 = Integer.parseInt(tv_5_2.getText().toString());
+            } else {
+                int_tv_5_2 = 0;
+            }
+            if ((et_6_2_1.getText().toString() != null) && (!et_6_2_1.getText().toString().isEmpty()) && !et_6_2_1.getText().toString().contains("nul")) {
+                int_et_6_2_1 = Integer.parseInt(et_6_2_1.getText().toString());
+            } else {
+                int_et_6_2_1 = 0;
+            }
+            if ((et_6_2_2.getText().toString() != null) && (!et_6_2_2.getText().toString().isEmpty()) && !et_6_2_2.getText().toString().contains("nul")) {
+                int_et_6_2_2 = Integer.parseInt(et_6_2_2.getText().toString());
+            } else {
+                int_et_6_2_2 = 0;
+            }
+            if ((et_6_2_3.getText().toString() != null) && (!et_6_2_3.getText().toString().isEmpty()) && !et_6_2_3.getText().toString().contains("nul")) {
+                int_et_6_2_3 = Integer.parseInt(et_6_2_3.getText().toString());
+            } else {
+                int_et_6_2_3 = 0;
+            }
+            if ((et_6_2_4.getText().toString() != null) && (!et_6_2_4.getText().toString().isEmpty()) && !et_6_2_4.getText().toString().contains("nul")) {
+                int_et_6_2_4 = Integer.parseInt(et_6_2_4.getText().toString());
+            } else {
+                int_et_6_2_4 = 0;
+            }
+            if ((et_6_2_5.getText().toString() != null) && (!et_6_2_5.getText().toString().isEmpty()) && !et_6_2_5.getText().toString().contains("nul")) {
+                int_et_6_2_5 = Integer.parseInt(et_6_2_5.getText().toString());
+            } else {
+                int_et_6_2_5 = 0;
+            }
+
+            if ((et_8_2_1_bestReview.getText().toString() != null) && (!et_8_2_1_bestReview.getText().toString().isEmpty()) && !et_8_2_1_bestReview.getText().toString().contains("nul")) {
+                int_et_8_2_1_bestReview = Integer.parseInt(et_8_2_1_bestReview.getText().toString());
+            } else {
+                int_et_8_2_1_bestReview = 0;
+            }
+            if ((et_6_2_6.getText().toString() != null) && (!et_6_2_6.getText().toString().isEmpty()) && !et_6_2_6.getText().toString().contains("nul")) {
+                int_et_6_2_6 = Integer.parseInt(et_6_2_6.getText().toString());
+            } else {
+                int_et_6_2_6 = 0;
+            }
+            if ((et_7_2_1.getText().toString() != null) && (!et_7_2_1.getText().toString().isEmpty()) && !et_7_2_1.getText().toString().contains("nul")) {
+                int_et_7_2_1 = Integer.parseInt(et_7_2_1.getText().toString());
+            } else {
+                int_et_7_2_1 = 0;
+            }
+            if ((et_7_2_2.getText().toString() != null) && (!et_7_2_2.getText().toString().isEmpty()) && !et_7_2_2.getText().toString().contains("nul")) {
+                int_et_7_2_2 = Integer.parseInt(et_7_2_2.getText().toString());
+            } else {
+                int_et_7_2_2 = 0;
+            }
+          /*  if ((et_7_2_3.getText().toString() != null) && (!et_7_2_3.getText().toString().isEmpty()) && !et_7_2_3.getText().toString().contains("nul")) {
+                int_et_7_2_3 = Integer.parseInt(et_7_2_3.getText().toString());
+            } else {
+                int_et_7_2_3 = 0;
+            }
+*/
+            if ((et_8_2_2_unitReview.getText().toString() != null) && (!et_8_2_2_unitReview.getText().toString().isEmpty()) && !et_8_2_2_unitReview.getText().toString().contains("nul")) {
+                int_et_8_2_2_unitReview = Integer.parseInt(et_8_2_2_unitReview.getText().toString());
+            } else {
+                int_et_8_2_2_unitReview = 0;
+            }
+
+            if ((et_7_2_4.getText().toString() != null) && (!et_7_2_4.getText().toString().isEmpty()) && !et_7_2_4.getText().toString().contains("nul")) {
+                int_et_7_2_4 = Integer.parseInt(et_7_2_4.getText().toString());
+            } else {
+                int_et_7_2_4 = 0;
+            }
+            if ((et_8_2_1.getText().toString() != null) && (!et_8_2_1.getText().toString().isEmpty()) && !et_8_2_1.getText().toString().contains("nul")) {
+                int_et_8_2_1 = Integer.parseInt(et_8_2_1.getText().toString());
+            } else {
+                int_et_8_2_1 = 0;
+            }
+            if ((et_8_2_2.getText().toString() != null) && (!et_8_2_2.getText().toString().isEmpty()) && !et_8_2_2.getText().toString().contains("nul")) {
+                int_et_8_2_2 = Integer.parseInt(et_8_2_2.getText().toString());
+            } else {
+                int_et_8_2_2 = 0;
+            }
+            if ((et_8_2_3.getText().toString() != null) && (!et_8_2_3.getText().toString().isEmpty()) && !et_8_2_3.getText().toString().contains("nul")) {
+                int_et_8_2_3 = Integer.parseInt(et_8_2_3.getText().toString());
+            } else {
+                int_et_8_2_3 = 0;
+            }
+            if ((et_8_2_4.getText().toString() != null) && (!et_8_2_4.getText().toString().isEmpty()) && !et_8_2_4.getText().toString().contains("nul")) {
+                int_et_8_2_4 = Integer.parseInt(et_8_2_4.getText().toString());
+            } else {
+                int_et_8_2_4 = 0;
+            }
+            if ((et_8_2_5.getText().toString() != null) && (!et_8_2_5.getText().toString().isEmpty()) && !et_8_2_5.getText().toString().contains("nul")) {
+                int_et_8_2_5 = Integer.parseInt(et_8_2_5.getText().toString());
+            } else {
+                int_et_8_2_5 = 0;
+            }
+            if ((et_8_2_6.getText().toString() != null) && (!et_8_2_6.getText().toString().isEmpty()) && !et_8_2_6.getText().toString().contains("nul")) {
+                int_et_8_2_6 = Integer.parseInt(et_8_2_6.getText().toString());
+            } else {
+                int_et_8_2_6 = 0;
+            }
+            if ((et_8_2_7.getText().toString() != null) && (!et_8_2_7.getText().toString().isEmpty()) && !et_8_2_7.getText().toString().contains("nul")) {
+
+                int_et_8_2_7 = Integer.parseInt(et_8_2_7.getText().toString());
+            } else {
+                int_et_8_2_7 = 0;
+            }
+            if ((et_8_2_8.getText().toString() != null) && (!et_8_2_8.getText().toString().isEmpty()) && !et_8_2_8.getText().toString().contains("nul")) {
+                int_et_8_2_8 = Integer.parseInt(et_8_2_8.getText().toString());
+            } else {
+                int_et_8_2_8 = 0;
+            }
+            if ((et_9_2_1.getText().toString() != null) && (!et_9_2_1.getText().toString().isEmpty()) && !et_9_2_1.getText().toString().contains("nul")) {
+                int_et_9_2_1 = Integer.parseInt(et_9_2_1.getText().toString());
+            } else {
+                int_et_9_2_1 = 0;
+            }
+            if ((et_9_2_2.getText().toString() != null) && (!et_9_2_2.getText().toString().isEmpty()) && !et_9_2_2.getText().toString().contains("nul")) {
+                int_et_9_2_2 = Integer.parseInt(et_9_2_2.getText().toString());
+            } else {
+                int_et_9_2_2 = 0;
+            }
+            if ((et_9_2_3.getText().toString() != null) && (!et_9_2_3.getText().toString().isEmpty()) && !et_9_2_3.getText().toString().contains("nul")) {
+                int_et_9_2_3 = Integer.parseInt(et_9_2_3.getText().toString());
+            } else {
+                int_et_9_2_3 = 0;
+            }
+            if ((tv_10_2.getText().toString() != null) && (!tv_10_2.getText().toString().isEmpty()) && !tv_10_2.getText().toString().contains("nul")) {
+                int_tv_10_2 = Integer.parseInt(tv_10_2.getText().toString());
+            } else {
+                int_tv_10_2 = 0;
+            }
+            if ((tv_10_2_2.getText().toString() != null) && (!tv_10_2_2.getText().toString().isEmpty()) && !tv_10_2_2.getText().toString().contains("nul")) {
+                int_tv_10_2_2 = Integer.parseInt(tv_10_2_2.getText().toString());
+            } else {
+                int_tv_10_2_2 = 0;
+            }
+            if ((tv_10_3_2.getText().toString() != null) && (!tv_10_3_2.getText().toString().isEmpty()) && !tv_10_3_2.getText().toString().contains("nul")) {
+                int_tv_10_3_2 = Integer.parseInt(tv_10_3_2.getText().toString());
+            } else {
+                int_tv_10_3_2 = 0;
+            }
+            if ((tv_10_4_2.getText().toString() != null) && (!tv_10_4_2.getText().toString().isEmpty()) && !tv_10_4_2.getText().toString().contains("nul")) {
+                int_tv_10_4_2 = Integer.parseInt(tv_10_4_2.getText().toString());
+            } else {
+                int_tv_10_4_2 = 0;
+            }
+            if ((tv_10_5_2.getText().toString() != null) && (!tv_10_5_2.getText().toString().isEmpty()) && !tv_10_5_2.getText().toString().contains("nul")) {
+                int_tv_10_5_2 = Integer.parseInt(tv_10_5_2.getText().toString());
+            } else {
+                int_tv_10_5_2 = 0;
+            }
+            YesterdayAdd = int_tv_1_2 + int_tv_2_1bE + int_tv_2_2 + int_tv_1_1aE + int_tv_2_1cE + int_tv_3_2 + int_tv_4_2 + int_tv_5_2 +
+                    int_et_6_2_1 + int_et_6_2_2 + int_et_6_2_3 + int_et_6_2_4 + /*int_et_6_2_5*/int_et_8_2_1_bestReview + int_et_6_2_6 +
+                    int_et_7_2_1 + int_et_7_2_2 + /*int_et_7_2_3*/int_et_8_2_2_unitReview + int_et_7_2_4 +
+                    int_et_8_2_1 + int_et_8_2_2 + int_et_8_2_3 + int_et_8_2_4 + int_et_8_2_5 + int_et_8_2_6 + int_et_8_2_7 + int_et_8_2_8 +
+                    int_et_9_2_1 + int_et_9_2_2 + int_et_9_2_3 + int_tv_10_2 + int_tv_10_2_2 + int_tv_10_3_2 + int_tv_10_4_2 + int_tv_10_5_2
+                    + int_check_1_2;
+            tv_2_1b5_String = tv_2_1b5.getText().toString();
+            tv_2_1c5_String = tv_2_1c5.getText().toString();
+
+
+            tv_1_5_String = tv_1_5.getText().toString();
+            tv_2_5_String = tv_2_5.getText().toString();
+            tv_3_5_String = tv_3_5.getText().toString();
+            tv_4_5_String = tv_4_5.getText().toString();
+            tv_5_5_String = tv_5_5.getText().toString();
+            cmt6_2_1_String = cmt6_2_1.getText().toString();
+            cmt6_2_2_String = cmt6_2_2.getText().toString();
+            cmt6_2_3_String = cmt6_2_3.getText().toString();
+            cmt6_2_4_String = cmt6_2_4.getText().toString();
+            // cmt6_2_5_String = cmt6_2_5.getText().toString();
+            cmt8_2_1_bestReview_String = cmt8_2_1_bestReview.getText().toString();
+            cmt6_2_6_String = cmt6_2_6.getText().toString();
+
+            cmt7_2_1_String = cmt7_2_1.getText().toString();
+            cmt7_2_2_String = cmt7_2_2.getText().toString();
+            //  cmt7_2_3_String = cmt7_2_3.getText().toString();
+            cmt8_2_2_unitReview_String = cmt8_2_2_unitReview.getText().toString();
+            cmt7_2_4_String = cmt7_2_4.getText().toString();
+
+            cmt8_2_1_String = cmt8_2_1.getText().toString();
+            cmt8_2_2_String = cmt8_2_2.getText().toString();
+            cmt8_2_3_String = cmt8_2_3.getText().toString();
+            cmt8_2_4_String = cmt8_2_4.getText().toString();
+            cmt8_2_5_String = cmt8_2_5.getText().toString();
+            cmt8_2_6_String = cmt8_2_6.getText().toString();
+            cmt8_2_7_String = cmt8_2_7.getText().toString();
+            cmt8_2_8_String = cmt8_2_8.getText().toString();
+
+            cmt9_2_1_String = cmt9_2_1.getText().toString();
+            cmt9_2_2_String = cmt9_2_2.getText().toString();
+            cmt9_2_3_String = cmt9_2_3.getText().toString();
+            cmt_tv_10_5_String = tv_10_5.getText().toString();
+            tv_1_5a_String = tv_1_5a.getText().toString();
+
+
+            tv_10_2_5_String = tv_10_2_5.getText().toString();
+            tv_10_3_5_String = tv_10_3_5.getText().toString();
+            tv_10_4_5_String = tv_10_4_5.getText().toString();
+            tv_10_5_5_String = tv_10_5_5.getText().toString();
+            check_5_comment = tv_check_5.getText().toString();
+
+
+            yes_tv_total_hour.setText(String.valueOf(YesterdayAdd));
+            if (Utility.isOnline(getApplicationContext())) {
+                yesterdayTimeSheetTask = new yesterdayTimeSheetTask();
+                yesterdayTimeSheetTask.execute();
+            } else
+                Utility.showToast(getApplicationContext(), "Network failed. Please try later.");
         });
 
 
-        d_y_submit_btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if ((tv_1_1.getText().toString() != null) && (!tv_1_1.getText().toString().isEmpty()) && !tv_1_1.getText().toString().contains("nul")) {
-                    int_tv_1_1 = Integer.parseInt(tv_1_1.getText().toString());
-                } else {
-                    int_tv_1_1 = 0;
-                }
-                if ((tv_2_1_1b.getText().toString() != null) && (!tv_2_1_1b.getText().toString().isEmpty()) && !tv_2_1_1b.getText().toString().contains("nul")) {
-                    int_tv_2_1_1b = Integer.parseInt(tv_2_1_1b.getText().toString());
-                } else {
-                    int_tv_2_1_1b = 0;
-                }
+        d_y_submit_btn.setOnClickListener(v -> {
+            if ((tv_1_1.getText().toString() != null) && (!tv_1_1.getText().toString().isEmpty()) && !tv_1_1.getText().toString().contains("nul")) {
+                int_tv_1_1 = Integer.parseInt(tv_1_1.getText().toString());
+            } else {
+                int_tv_1_1 = 0;
+            }
+            if ((tv_2_1_1b.getText().toString() != null) && (!tv_2_1_1b.getText().toString().isEmpty()) && !tv_2_1_1b.getText().toString().contains("nul")) {
+                int_tv_2_1_1b = Integer.parseInt(tv_2_1_1b.getText().toString());
+            } else {
+                int_tv_2_1_1b = 0;
+            }
 
-                if ((tv_2_1.getText().toString() != null) && (!tv_2_1.getText().toString().isEmpty()) && !tv_2_1.getText().toString().contains("nul")) {
-                    int_tv_2_1 = Integer.parseInt(tv_2_1.getText().toString());
-                } else {
-                    int_tv_2_1 = 0;
-                }
+            if ((tv_2_1.getText().toString() != null) && (!tv_2_1.getText().toString().isEmpty()) && !tv_2_1.getText().toString().contains("nul")) {
+                int_tv_2_1 = Integer.parseInt(tv_2_1.getText().toString());
+            } else {
+                int_tv_2_1 = 0;
+            }
 
-                if ((tv_2_1_1c.getText().toString() != null) && (!tv_2_1_1c.getText().toString().isEmpty()) && !tv_2_1_1c.getText().toString().contains("nul")) {
-                    int_tv_2_1_1c = Integer.parseInt(tv_2_1_1c.getText().toString());
-                } else {
-                    int_tv_2_1_1c = 0;
-                }
-                if ((tv_1_1_1a.getText().toString() != null) && (!tv_1_1_1a.getText().toString().isEmpty()) && !tv_1_1.getText().toString().contains("nul")) {
-                    int_tv_1_1_1a = Integer.parseInt(tv_1_1_1a.getText().toString());
-                } else {
-                    int_tv_1_1_1a = 0;
-                }
-                if ((tv_check_1.getText().toString() != null) && (!tv_check_1.getText().toString().isEmpty()) && !tv_check_1.getText().toString().contains("nul")) {
-                    int_check_1_1 = Integer.parseInt(tv_check_1.getText().toString());
-                } else {
-                    int_check_1_1 = 0;
-                }
+            if ((tv_2_1_1c.getText().toString() != null) && (!tv_2_1_1c.getText().toString().isEmpty()) && !tv_2_1_1c.getText().toString().contains("nul")) {
+                int_tv_2_1_1c = Integer.parseInt(tv_2_1_1c.getText().toString());
+            } else {
+                int_tv_2_1_1c = 0;
+            }
+            if ((tv_1_1_1a.getText().toString() != null) && (!tv_1_1_1a.getText().toString().isEmpty()) && !tv_1_1.getText().toString().contains("nul")) {
+                int_tv_1_1_1a = Integer.parseInt(tv_1_1_1a.getText().toString());
+            } else {
+                int_tv_1_1_1a = 0;
+            }
+            if ((tv_check_1.getText().toString() != null) && (!tv_check_1.getText().toString().isEmpty()) && !tv_check_1.getText().toString().contains("nul")) {
+                int_check_1_1 = Integer.parseInt(tv_check_1.getText().toString());
+            } else {
+                int_check_1_1 = 0;
+            }
 
 
-                if ((tv_3_1.getText().toString() != null) && (!tv_3_1.getText().toString().isEmpty()) && !tv_3_1.getText().toString().contains("nul")) {
-                    int_tv_3_1 = Integer.parseInt(tv_3_1.getText().toString());
-                } else {
-                    int_tv_3_1 = 0;
-                }
-                if ((tv_4_1.getText().toString() != null) && (!tv_4_1.getText().toString().isEmpty()) && !tv_4_1.getText().toString().contains("nul")) {
-                    int_tv_4_1 = Integer.parseInt(tv_4_1.getText().toString());
-                } else {
-                    int_tv_4_1 = 0;
-                }
+            if ((tv_3_1.getText().toString() != null) && (!tv_3_1.getText().toString().isEmpty()) && !tv_3_1.getText().toString().contains("nul")) {
+                int_tv_3_1 = Integer.parseInt(tv_3_1.getText().toString());
+            } else {
+                int_tv_3_1 = 0;
+            }
+            if ((tv_4_1.getText().toString() != null) && (!tv_4_1.getText().toString().isEmpty()) && !tv_4_1.getText().toString().contains("nul")) {
+                int_tv_4_1 = Integer.parseInt(tv_4_1.getText().toString());
+            } else {
+                int_tv_4_1 = 0;
+            }
 
-                if ((tv_5_1.getText().toString() != null) && (!tv_5_1.getText().toString().isEmpty()) && !tv_5_1.getText().toString().contains("nul")) {
-                    int_tv_5_1 = Integer.parseInt(tv_5_1.getText().toString());
-                } else {
-                    int_tv_5_1 = 0;
-                }
-                if ((et_6_1_1.getText().toString() != null) && (!et_6_1_1.getText().toString().isEmpty()) && !et_6_1_1.getText().toString().contains("nul")) {
-                    int_et_6_1_1 = Integer.parseInt(et_6_1_1.getText().toString());
-                } else {
-                    int_et_6_1_1 = 0;
-                }
-                if ((et_6_1_2.getText().toString() != null) && (!et_6_1_2.getText().toString().isEmpty()) && !et_6_1_2.getText().toString().contains("nul")) {
-                    int_et_6_1_2 = Integer.parseInt(et_6_1_2.getText().toString());
-                } else {
-                    int_et_6_1_2 = 0;
-                }
-                if ((et_6_1_3.getText().toString() != null) && (!et_6_1_3.getText().toString().isEmpty()) && !et_6_1_3.getText().toString().contains("nul")) {
-                    int_et_6_1_3 = Integer.parseInt(et_6_1_3.getText().toString());
-                } else {
-                    int_et_6_1_3 = 0;
-                }
-                if ((et_6_1_4.getText().toString() != null) && (!et_6_1_4.getText().toString().isEmpty()) && !et_6_1_4.getText().toString().contains("nul")) {
-                    int_et_6_1_4 = Integer.parseInt(et_6_1_4.getText().toString());
-                } else {
-                    int_et_6_1_4 = 0;
-                }
-                if ((et_6_1_5.getText().toString() != null) && (!et_6_1_5.getText().toString().isEmpty()) && !et_6_1_5.getText().toString().contains("nul")) {
-                    int_et_6_1_5 = Integer.parseInt(et_6_1_5.getText().toString());
-                } else {
-                    int_et_6_1_5 = 0;
-                }
+            if ((tv_5_1.getText().toString() != null) && (!tv_5_1.getText().toString().isEmpty()) && !tv_5_1.getText().toString().contains("nul")) {
+                int_tv_5_1 = Integer.parseInt(tv_5_1.getText().toString());
+            } else {
+                int_tv_5_1 = 0;
+            }
+            if ((et_6_1_1.getText().toString() != null) && (!et_6_1_1.getText().toString().isEmpty()) && !et_6_1_1.getText().toString().contains("nul")) {
+                int_et_6_1_1 = Integer.parseInt(et_6_1_1.getText().toString());
+            } else {
+                int_et_6_1_1 = 0;
+            }
+            if ((et_6_1_2.getText().toString() != null) && (!et_6_1_2.getText().toString().isEmpty()) && !et_6_1_2.getText().toString().contains("nul")) {
+                int_et_6_1_2 = Integer.parseInt(et_6_1_2.getText().toString());
+            } else {
+                int_et_6_1_2 = 0;
+            }
+            if ((et_6_1_3.getText().toString() != null) && (!et_6_1_3.getText().toString().isEmpty()) && !et_6_1_3.getText().toString().contains("nul")) {
+                int_et_6_1_3 = Integer.parseInt(et_6_1_3.getText().toString());
+            } else {
+                int_et_6_1_3 = 0;
+            }
+            if ((et_6_1_4.getText().toString() != null) && (!et_6_1_4.getText().toString().isEmpty()) && !et_6_1_4.getText().toString().contains("nul")) {
+                int_et_6_1_4 = Integer.parseInt(et_6_1_4.getText().toString());
+            } else {
+                int_et_6_1_4 = 0;
+            }
+            if ((et_6_1_5.getText().toString() != null) && (!et_6_1_5.getText().toString().isEmpty()) && !et_6_1_5.getText().toString().contains("nul")) {
+                int_et_6_1_5 = Integer.parseInt(et_6_1_5.getText().toString());
+            } else {
+                int_et_6_1_5 = 0;
+            }
 
-                if ((et_8_1_1_best_review.getText().toString() != null) && (!et_8_1_1_best_review.getText().toString().isEmpty()) && !et_8_1_1_best_review.getText().toString().contains("nul")) {
-                    int_et_8_1_1_best_review = Integer.parseInt(et_8_1_1_best_review.getText().toString());
-                } else {
-                    int_et_8_1_1_best_review = 0;
-                }
+            if ((et_8_1_1_best_review.getText().toString() != null) && (!et_8_1_1_best_review.getText().toString().isEmpty()) && !et_8_1_1_best_review.getText().toString().contains("nul")) {
+                int_et_8_1_1_best_review = Integer.parseInt(et_8_1_1_best_review.getText().toString());
+            } else {
+                int_et_8_1_1_best_review = 0;
+            }
 
-                if ((et_6_1_6.getText().toString() != null) && (!et_6_1_6.getText().toString().isEmpty()) && !et_6_1_6.getText().toString().contains("nul")) {
-                    int_et_6_1_6 = Integer.parseInt(et_6_1_6.getText().toString());
-                } else {
-                    int_et_6_1_6 = 0;
-                }
-                if ((et_7_1_1.getText().toString() != null) && (!et_7_1_1.getText().toString().isEmpty()) && !et_7_1_1.getText().toString().contains("nul")) {
-                    int_et_7_1_1 = Integer.parseInt(et_7_1_1.getText().toString());
-                } else {
-                    int_et_7_1_1 = 0;
-                }
-                if ((et_7_1_2.getText().toString() != null) && (!et_7_1_2.getText().toString().isEmpty()) && !et_7_1_2.getText().toString().contains("nul")) {
-                    int_et_7_1_2 = Integer.parseInt(et_7_1_2.getText().toString());
-                } else {
-                    int_et_7_1_2 = 0;
-                }
-                if ((et_7_1_3.getText().toString() != null) && (!et_7_1_3.getText().toString().isEmpty()) && !et_7_1_3.getText().toString().contains("nul")) {
-                    int_et_7_1_3 = Integer.parseInt(et_7_1_3.getText().toString());
-                } else {
-                    int_et_7_1_3 = 0;
-                }
+            if ((et_6_1_6.getText().toString() != null) && (!et_6_1_6.getText().toString().isEmpty()) && !et_6_1_6.getText().toString().contains("nul")) {
+                int_et_6_1_6 = Integer.parseInt(et_6_1_6.getText().toString());
+            } else {
+                int_et_6_1_6 = 0;
+            }
+            if ((et_7_1_1.getText().toString() != null) && (!et_7_1_1.getText().toString().isEmpty()) && !et_7_1_1.getText().toString().contains("nul")) {
+                int_et_7_1_1 = Integer.parseInt(et_7_1_1.getText().toString());
+            } else {
+                int_et_7_1_1 = 0;
+            }
+            if ((et_7_1_2.getText().toString() != null) && (!et_7_1_2.getText().toString().isEmpty()) && !et_7_1_2.getText().toString().contains("nul")) {
+                int_et_7_1_2 = Integer.parseInt(et_7_1_2.getText().toString());
+            } else {
+                int_et_7_1_2 = 0;
+            }
+            if ((et_7_1_3.getText().toString() != null) && (!et_7_1_3.getText().toString().isEmpty()) && !et_7_1_3.getText().toString().contains("nul")) {
+                int_et_7_1_3 = Integer.parseInt(et_7_1_3.getText().toString());
+            } else {
+                int_et_7_1_3 = 0;
+            }
 
-                if ((et_8_1_2_unitReview.getText().toString() != null) && (!et_8_1_2_unitReview.getText().toString().isEmpty()) && !et_8_1_2_unitReview.getText().toString().contains("nul")) {
-                    int_et_8_1_2_unitReview = Integer.parseInt(et_8_1_2_unitReview.getText().toString());
-                } else {
-                    int_et_8_1_2_unitReview = 0;
-                }
-
-
-                if ((et_7_1_4.getText().toString() != null) && (!et_7_1_4.getText().toString().isEmpty()) && !et_7_1_4.getText().toString().contains("nul")) {
-                    int_et_7_1_4 = Integer.parseInt(et_7_1_4.getText().toString());
-                } else {
-                    int_et_7_1_4 = 0;
-                }
-                if ((et_8_1_1.getText().toString() != null) && (!et_8_1_1.getText().toString().isEmpty()) && !et_8_1_1.getText().toString().contains("nul")) {
-                    int_et_8_1_1 = Integer.parseInt(et_8_1_1.getText().toString());
-                } else {
-                    int_et_8_1_1 = 0;
-                }
-                if ((et_8_1_2.getText().toString() != null) && (!et_8_1_2.getText().toString().isEmpty()) && !et_8_1_2.getText().toString().contains("nul")) {
-                    int_et_8_1_2 = Integer.parseInt(et_8_1_2.getText().toString());
-                } else {
-                    int_et_8_1_2 = 0;
-                }
-                if ((et_8_1_3.getText().toString() != null) && (!et_8_1_3.getText().toString().isEmpty()) && !et_8_1_3.getText().toString().contains("nul")) {
-                    int_et_8_1_3 = Integer.parseInt(et_8_1_3.getText().toString());
-                } else {
-                    int_et_8_1_3 = 0;
-                }
-                if ((et_8_1_4.getText().toString() != null) && (!et_8_1_4.getText().toString().isEmpty()) && !et_8_1_4.getText().toString().contains("nul")) {
-                    int_et_8_1_4 = Integer.parseInt(et_8_1_4.getText().toString());
-                } else {
-                    int_et_8_1_4 = 0;
-                }
-                if ((et_8_1_5.getText().toString() != null) && (!et_8_1_5.getText().toString().isEmpty()) && !et_8_1_5.getText().toString().contains("nul")) {
-                    int_et_8_1_5 = Integer.parseInt(et_8_1_5.getText().toString());
-                } else {
-                    int_et_8_1_5 = 0;
-                }
-                if ((et_8_1_6.getText().toString() != null) && (!et_8_1_6.getText().toString().isEmpty()) && !et_8_1_6.getText().toString().contains("nul")) {
-                    int_et_8_1_6 = Integer.parseInt(et_8_1_6.getText().toString());
-                } else {
-                    int_et_8_1_6 = 0;
-                }
-                if ((et_8_1_7.getText().toString() != null) && (!et_8_1_7.getText().toString().isEmpty()) && !et_8_1_7.getText().toString().contains("nul")) {
-
-                    int_et_8_1_7 = Integer.parseInt(et_8_1_7.getText().toString());
-                } else {
-                    int_et_8_1_7 = 0;
-                }
-                if ((et_8_1_8.getText().toString() != null) && (!et_8_1_8.getText().toString().isEmpty()) && !et_8_1_8.getText().toString().contains("nul")) {
-                    int_et_8_1_8 = Integer.parseInt(et_8_1_8.getText().toString());
-                } else {
-                    int_et_8_1_8 = 0;
-                }
-                if ((et_9_1_1.getText().toString() != null) && (!et_9_1_1.getText().toString().isEmpty()) && !et_9_1_1.getText().toString().contains("nul")) {
-                    int_et_9_1_1 = Integer.parseInt(et_9_1_1.getText().toString());
-                } else {
-                    int_et_9_1_1 = 0;
-                }
-                if ((et_9_1_2.getText().toString() != null) && (!et_9_1_2.getText().toString().isEmpty()) && !et_9_1_2.getText().toString().contains("nul")) {
-                    int_et_9_1_2 = Integer.parseInt(et_9_1_2.getText().toString());
-                } else {
-                    int_et_9_1_2 = 0;
-                }
-                if ((et_9_1_3.getText().toString() != null) && (!et_9_1_3.getText().toString().isEmpty()) && !et_9_1_3.getText().toString().contains("nul")) {
-                    int_et_9_1_3 = Integer.parseInt(et_9_1_3.getText().toString());
-                } else {
-                    int_et_9_1_3 = 0;
-                }
-                if ((tv_10_1.getText().toString() != null) && (!tv_10_1.getText().toString().isEmpty()) && !tv_10_1.getText().toString().contains("nul")) {
-                    int_tv_10_1 = Integer.parseInt(tv_10_1.getText().toString());
-                } else {
-                    int_tv_10_1 = 0;
-                }
+            if ((et_8_1_2_unitReview.getText().toString() != null) && (!et_8_1_2_unitReview.getText().toString().isEmpty()) && !et_8_1_2_unitReview.getText().toString().contains("nul")) {
+                int_et_8_1_2_unitReview = Integer.parseInt(et_8_1_2_unitReview.getText().toString());
+            } else {
+                int_et_8_1_2_unitReview = 0;
+            }
 
 
-                if ((tv_10_2_1.getText().toString() != null) && (!tv_10_2_1.getText().toString().isEmpty()) && !tv_10_2_1.getText().toString().contains("nul")) {
-                    int_tv_10_2_1 = Integer.parseInt(tv_10_2_1.getText().toString());
-                } else {
-                    int_tv_10_2_1 = 0;
-                }
-                if ((tv_10_3_1.getText().toString() != null) && (!tv_10_3_1.getText().toString().isEmpty()) && !tv_10_3_1.getText().toString().contains("nul")) {
-                    int_tv_10_3_1 = Integer.parseInt(tv_10_3_1.getText().toString());
-                } else {
-                    int_tv_10_3_1 = 0;
-                }
-                if ((tv_10_4_1.getText().toString() != null) && (!tv_10_4_1.getText().toString().isEmpty()) && !tv_10_4_1.getText().toString().contains("nul")) {
-                    int_tv_10_4_1 = Integer.parseInt(tv_10_4_1.getText().toString());
-                } else {
-                    int_tv_10_4_1 = 0;
-                }
-                if ((tv_10_5_1.getText().toString() != null) && (!tv_10_5_1.getText().toString().isEmpty()) && !tv_10_5_1.getText().toString().contains("nul")) {
-                    int_tv_10_5_1 = Integer.parseInt(tv_10_5_1.getText().toString());
-                } else {
-                    int_tv_10_5_1 = 0;
-                }
+            if ((et_7_1_4.getText().toString() != null) && (!et_7_1_4.getText().toString().isEmpty()) && !et_7_1_4.getText().toString().contains("nul")) {
+                int_et_7_1_4 = Integer.parseInt(et_7_1_4.getText().toString());
+            } else {
+                int_et_7_1_4 = 0;
+            }
+            if ((et_8_1_1.getText().toString() != null) && (!et_8_1_1.getText().toString().isEmpty()) && !et_8_1_1.getText().toString().contains("nul")) {
+                int_et_8_1_1 = Integer.parseInt(et_8_1_1.getText().toString());
+            } else {
+                int_et_8_1_1 = 0;
+            }
+            if ((et_8_1_2.getText().toString() != null) && (!et_8_1_2.getText().toString().isEmpty()) && !et_8_1_2.getText().toString().contains("nul")) {
+                int_et_8_1_2 = Integer.parseInt(et_8_1_2.getText().toString());
+            } else {
+                int_et_8_1_2 = 0;
+            }
+            if ((et_8_1_3.getText().toString() != null) && (!et_8_1_3.getText().toString().isEmpty()) && !et_8_1_3.getText().toString().contains("nul")) {
+                int_et_8_1_3 = Integer.parseInt(et_8_1_3.getText().toString());
+            } else {
+                int_et_8_1_3 = 0;
+            }
+            if ((et_8_1_4.getText().toString() != null) && (!et_8_1_4.getText().toString().isEmpty()) && !et_8_1_4.getText().toString().contains("nul")) {
+                int_et_8_1_4 = Integer.parseInt(et_8_1_4.getText().toString());
+            } else {
+                int_et_8_1_4 = 0;
+            }
+            if ((et_8_1_5.getText().toString() != null) && (!et_8_1_5.getText().toString().isEmpty()) && !et_8_1_5.getText().toString().contains("nul")) {
+                int_et_8_1_5 = Integer.parseInt(et_8_1_5.getText().toString());
+            } else {
+                int_et_8_1_5 = 0;
+            }
+            if ((et_8_1_6.getText().toString() != null) && (!et_8_1_6.getText().toString().isEmpty()) && !et_8_1_6.getText().toString().contains("nul")) {
+                int_et_8_1_6 = Integer.parseInt(et_8_1_6.getText().toString());
+            } else {
+                int_et_8_1_6 = 0;
+            }
+            if ((et_8_1_7.getText().toString() != null) && (!et_8_1_7.getText().toString().isEmpty()) && !et_8_1_7.getText().toString().contains("nul")) {
 
-                D_Y_Add = int_tv_1_1 + int_tv_2_1 + int_tv_1_1_1a + int_tv_2_1_1c + int_tv_2_1_1b + int_tv_3_1 + int_tv_4_1 + int_tv_5_1 +
-                        int_et_6_1_1 + int_et_6_1_2 + int_et_6_1_3 + int_et_6_1_4 + /*int_et_6_1_5 +*/int_et_8_1_1_best_review + int_et_6_1_6 +
-                        int_et_7_1_1 + int_et_7_1_2 + /*int_et_7_1_3*/int_et_8_1_2_unitReview + int_et_7_1_4 +
-                        int_et_8_1_1 + int_et_8_1_2 + int_et_8_1_3 + int_et_8_1_4 + int_et_8_1_5 + int_et_8_1_6 + int_et_8_1_7 + int_et_8_1_8 +
-                        int_et_9_1_1 + int_et_9_1_2 + int_et_9_1_3 + int_tv_10_1 + int_tv_10_2_1 + int_tv_10_3_1 + int_tv_10_4_1 + int_tv_10_5_1
-                        + int_check_1_1;
-                d_y_tv_total_hour.setText(String.valueOf(D_Y_Add));
-
-                tv_1_4_String = tv_1_4.getText().toString();
-                tv_2_4_String = tv_2_4.getText().toString();
-                tv_3_4_String = tv_3_4.getText().toString();
-                tv_4_4_String = tv_4_4.getText().toString();
-                tv_5_4_String = tv_5_4.getText().toString();
-                cmt6_1_1_String = cmt6_1_1.getText().toString();
-                cmt6_1_2_String = cmt6_1_2.getText().toString();
-                cmt6_1_3_String = cmt6_1_3.getText().toString();
-                cmt6_1_4_String = cmt6_1_4.getText().toString();
-                //    cmt6_1_5_String = cmt6_1_5.getText().toString();
-                cmt8_1_1_bestReview_String = cmt8_1_1_bestReview.getText().toString();
-                cmt6_1_6_String = cmt6_1_6.getText().toString();
-                cmt7_1_1_String = cmt7_1_1.getText().toString();
-                cmt7_1_2_String = cmt7_1_2.getText().toString();
-                //   cmt7_1_3_String = cmt7_1_3.getText().toString();
-                cmt8_1_2_unitReview_String = cmt8_1_2_unitReview.getText().toString();
-                cmt7_1_4_String = cmt7_1_4.getText().toString();
-                cmt8_1_1_String = cmt8_1_1.getText().toString();
-                cmt8_1_2_String = cmt8_1_2.getText().toString();
-                cmt8_1_3_String = cmt8_1_3.getText().toString();
-                cmt8_1_4_String = cmt8_1_4.getText().toString();
-                cmt8_1_5_String = cmt8_1_5.getText().toString();
-                cmt8_1_6_String = cmt8_1_6.getText().toString();
-                cmt8_1_7_String = cmt8_1_7.getText().toString();
-                cmt8_1_8_String = cmt8_1_8.getText().toString();
-                cmt9_1_1_String = cmt9_1_1.getText().toString();
-                cmt9_1_2_String = cmt9_1_2.getText().toString();
-                cmt9_1_3_String = cmt9_1_3.getText().toString();
-                cmt_tv_10_4_String = tv_10_4.getText().toString();
-                tv_1_14_String = tv_1_14.getText().toString();
-                tv_2_1b4_String = tv_2_1b4.getText().toString();
-                tv_2_1c4_String = tv_2_1c4.getText().toString();
+                int_et_8_1_7 = Integer.parseInt(et_8_1_7.getText().toString());
+            } else {
+                int_et_8_1_7 = 0;
+            }
+            if ((et_8_1_8.getText().toString() != null) && (!et_8_1_8.getText().toString().isEmpty()) && !et_8_1_8.getText().toString().contains("nul")) {
+                int_et_8_1_8 = Integer.parseInt(et_8_1_8.getText().toString());
+            } else {
+                int_et_8_1_8 = 0;
+            }
+            if ((et_9_1_1.getText().toString() != null) && (!et_9_1_1.getText().toString().isEmpty()) && !et_9_1_1.getText().toString().contains("nul")) {
+                int_et_9_1_1 = Integer.parseInt(et_9_1_1.getText().toString());
+            } else {
+                int_et_9_1_1 = 0;
+            }
+            if ((et_9_1_2.getText().toString() != null) && (!et_9_1_2.getText().toString().isEmpty()) && !et_9_1_2.getText().toString().contains("nul")) {
+                int_et_9_1_2 = Integer.parseInt(et_9_1_2.getText().toString());
+            } else {
+                int_et_9_1_2 = 0;
+            }
+            if ((et_9_1_3.getText().toString() != null) && (!et_9_1_3.getText().toString().isEmpty()) && !et_9_1_3.getText().toString().contains("nul")) {
+                int_et_9_1_3 = Integer.parseInt(et_9_1_3.getText().toString());
+            } else {
+                int_et_9_1_3 = 0;
+            }
+            if ((tv_10_1.getText().toString() != null) && (!tv_10_1.getText().toString().isEmpty()) && !tv_10_1.getText().toString().contains("nul")) {
+                int_tv_10_1 = Integer.parseInt(tv_10_1.getText().toString());
+            } else {
+                int_tv_10_1 = 0;
+            }
 
 
-                tv_10_2_4_String = tv_10_2_4.getText().toString();
-                tv_10_3_4_String = tv_10_3_4.getText().toString();
-                tv_10_4_4_String = tv_10_4_4.getText().toString();
-                tv_10_5_4_String = tv_10_5_4.getText().toString();
-                check_4_comment = tv_check_4.getText().toString();
+            if ((tv_10_2_1.getText().toString() != null) && (!tv_10_2_1.getText().toString().isEmpty()) && !tv_10_2_1.getText().toString().contains("nul")) {
+                int_tv_10_2_1 = Integer.parseInt(tv_10_2_1.getText().toString());
+            } else {
+                int_tv_10_2_1 = 0;
+            }
+            if ((tv_10_3_1.getText().toString() != null) && (!tv_10_3_1.getText().toString().isEmpty()) && !tv_10_3_1.getText().toString().contains("nul")) {
+                int_tv_10_3_1 = Integer.parseInt(tv_10_3_1.getText().toString());
+            } else {
+                int_tv_10_3_1 = 0;
+            }
+            if ((tv_10_4_1.getText().toString() != null) && (!tv_10_4_1.getText().toString().isEmpty()) && !tv_10_4_1.getText().toString().contains("nul")) {
+                int_tv_10_4_1 = Integer.parseInt(tv_10_4_1.getText().toString());
+            } else {
+                int_tv_10_4_1 = 0;
+            }
+            if ((tv_10_5_1.getText().toString() != null) && (!tv_10_5_1.getText().toString().isEmpty()) && !tv_10_5_1.getText().toString().contains("nul")) {
+                int_tv_10_5_1 = Integer.parseInt(tv_10_5_1.getText().toString());
+            } else {
+                int_tv_10_5_1 = 0;
+            }
+
+            D_Y_Add = int_tv_1_1 + int_tv_2_1 + int_tv_1_1_1a + int_tv_2_1_1c + int_tv_2_1_1b + int_tv_3_1 + int_tv_4_1 + int_tv_5_1 +
+                    int_et_6_1_1 + int_et_6_1_2 + int_et_6_1_3 + int_et_6_1_4 + /*int_et_6_1_5 +*/int_et_8_1_1_best_review + int_et_6_1_6 +
+                    int_et_7_1_1 + int_et_7_1_2 + /*int_et_7_1_3*/int_et_8_1_2_unitReview + int_et_7_1_4 +
+                    int_et_8_1_1 + int_et_8_1_2 + int_et_8_1_3 + int_et_8_1_4 + int_et_8_1_5 + int_et_8_1_6 + int_et_8_1_7 + int_et_8_1_8 +
+                    int_et_9_1_1 + int_et_9_1_2 + int_et_9_1_3 + int_tv_10_1 + int_tv_10_2_1 + int_tv_10_3_1 + int_tv_10_4_1 + int_tv_10_5_1
+                    + int_check_1_1;
+            d_y_tv_total_hour.setText(String.valueOf(D_Y_Add));
+
+            tv_1_4_String = tv_1_4.getText().toString();
+            tv_2_4_String = tv_2_4.getText().toString();
+            tv_3_4_String = tv_3_4.getText().toString();
+            tv_4_4_String = tv_4_4.getText().toString();
+            tv_5_4_String = tv_5_4.getText().toString();
+            cmt6_1_1_String = cmt6_1_1.getText().toString();
+            cmt6_1_2_String = cmt6_1_2.getText().toString();
+            cmt6_1_3_String = cmt6_1_3.getText().toString();
+            cmt6_1_4_String = cmt6_1_4.getText().toString();
+            //    cmt6_1_5_String = cmt6_1_5.getText().toString();
+            cmt8_1_1_bestReview_String = cmt8_1_1_bestReview.getText().toString();
+            cmt6_1_6_String = cmt6_1_6.getText().toString();
+            cmt7_1_1_String = cmt7_1_1.getText().toString();
+            cmt7_1_2_String = cmt7_1_2.getText().toString();
+            //   cmt7_1_3_String = cmt7_1_3.getText().toString();
+            cmt8_1_2_unitReview_String = cmt8_1_2_unitReview.getText().toString();
+            cmt7_1_4_String = cmt7_1_4.getText().toString();
+            cmt8_1_1_String = cmt8_1_1.getText().toString();
+            cmt8_1_2_String = cmt8_1_2.getText().toString();
+            cmt8_1_3_String = cmt8_1_3.getText().toString();
+            cmt8_1_4_String = cmt8_1_4.getText().toString();
+            cmt8_1_5_String = cmt8_1_5.getText().toString();
+            cmt8_1_6_String = cmt8_1_6.getText().toString();
+            cmt8_1_7_String = cmt8_1_7.getText().toString();
+            cmt8_1_8_String = cmt8_1_8.getText().toString();
+            cmt9_1_1_String = cmt9_1_1.getText().toString();
+            cmt9_1_2_String = cmt9_1_2.getText().toString();
+            cmt9_1_3_String = cmt9_1_3.getText().toString();
+            cmt_tv_10_4_String = tv_10_4.getText().toString();
+            tv_1_14_String = tv_1_14.getText().toString();
+            tv_2_1b4_String = tv_2_1b4.getText().toString();
+            tv_2_1c4_String = tv_2_1c4.getText().toString();
+
+
+            tv_10_2_4_String = tv_10_2_4.getText().toString();
+            tv_10_3_4_String = tv_10_3_4.getText().toString();
+            tv_10_4_4_String = tv_10_4_4.getText().toString();
+            tv_10_5_4_String = tv_10_5_4.getText().toString();
+            check_4_comment = tv_check_4.getText().toString();
 //
 //                tv_1_4_String = tv_1_4.getText().toString();
 //                tv_2_4_String = tv_2_4.getText().toString();
@@ -1649,13 +1635,12 @@ public class DWMActivity extends AppCompatActivity {
 //                tv_5_4_String = tv_5_4.getText().toString();
 
 
-                if (Utility.isOnline(getApplicationContext())) {
-                    d_y_timeSheetTask = new d_y_TimeSheetTask();
-                    d_y_timeSheetTask.execute();
-                } else
-                    Utility.showToast(getApplicationContext(), "Network failed. Please try later.");
+            if (Utility.isOnline(getApplicationContext())) {
+                d_y_timeSheetTask = new d_y_TimeSheetTask();
+                d_y_timeSheetTask.execute();
+            } else
+                Utility.showToast(getApplicationContext(), "Network failed. Please try later.");
 
-            }
         });
 
         currentChangeListener();

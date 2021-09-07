@@ -26,7 +26,7 @@ public class IdentityAccessManagementActivity extends AppCompatActivity implemen
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setHomeAsUpIndicator(R.drawable.back);
-        title.setText("Identity & Access Management");
+        title.setText(getResources().getString(R.string.id_access_mgmt));
 
         im_back = (ImageView) findViewById(R.id.im_back);
         iv_approve_request = (ImageView) findViewById(R.id.iv_approve_request);
@@ -34,26 +34,18 @@ public class IdentityAccessManagementActivity extends AppCompatActivity implemen
         iv_access_request = (ImageView) findViewById(R.id.iv_access_request);
         iv_access_request.setOnClickListener(this);
         iv_view_access_request = (ImageView) findViewById(R.id.iv_view_access_request);
-        im_back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                finish();
-            }
-        });
+        im_back.setOnClickListener(view -> finish());
 
 //        intiUiSetup();
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case android.R.id.home:
-                onBackPressed();
-                return true;
-
-            default:
-                return super.onOptionsItemSelected(item);
+        if (item.getItemId() == android.R.id.home) {
+            onBackPressed();
+            return true;
         }
+        return super.onOptionsItemSelected(item);
     }
 
 

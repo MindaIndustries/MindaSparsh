@@ -4,7 +4,6 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.view.View;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.ImageView;
@@ -29,7 +28,6 @@ import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity {
 
-    private FlipperAdapter adapter;
     private ArrayList<String> stringArrayList;
     ImageView im_back;
     WebView wv_jagriti;
@@ -77,12 +75,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
 
-        im_back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                finish();
-            }
-        });
+        im_back.setOnClickListener(view -> finish());
     }
 
     private void readDataFromAssets() {
@@ -178,14 +171,11 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case android.R.id.home:
-                onBackPressed();
-                return true;
-
-            default:
-                return super.onOptionsItemSelected(item);
+        if (item.getItemId() == android.R.id.home) {
+            onBackPressed();
+            return true;
         }
+        return super.onOptionsItemSelected(item);
     }
 
 }

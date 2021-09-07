@@ -66,12 +66,7 @@ public class AccessRequestDetailsActivity extends AppCompatActivity implements V
         progress.setIndeterminate(true);
 
         im_back = (ImageView) findViewById(R.id.im_back);
-        im_back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                finish();
-            }
-        });
+        im_back.setOnClickListener(view -> finish());
         btn_approve = (Button) findViewById(R.id.btn_approve);
         btn_un_approve = (Button) findViewById(R.id.btn_un_approve);
         btn_send_back = (Button) findViewById(R.id.btn_send_back);
@@ -128,30 +123,11 @@ public class AccessRequestDetailsActivity extends AppCompatActivity implements V
 
         }
 
-        tv_scroll_Approval_Details.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                horizontalView.postDelayed(new Runnable() {
-                    public void run() {
-                        horizontalView.fullScroll(HorizontalScrollView.FOCUS_RIGHT);
-                    }
-                }, 100L);
-            }
-        });
+        tv_scroll_Approval_Details.setOnClickListener(view -> horizontalView.postDelayed(() -> horizontalView.fullScroll(HorizontalScrollView.FOCUS_RIGHT), 100L));
 
         //for processor details
 
-        tv_scroll.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                lay_processor_view.postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        lay_processor_view.fullScroll(HorizontalScrollView.FOCUS_RIGHT);
-                    }
-                }, 100L);
-            }
-        });
+        tv_scroll.setOnClickListener(view -> lay_processor_view.postDelayed(() -> lay_processor_view.fullScroll(HorizontalScrollView.FOCUS_RIGHT), 100L));
 
     }
 

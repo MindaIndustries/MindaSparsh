@@ -154,10 +154,6 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
         }
     }
 
-    private void handleNow() {
-        Log.d(TAG, "Short lived task is done.");
-    }
-
     private void sendRegistrationToServer(String token) {
         // TODO: Implement this method to send token to your app server.
         //register token here

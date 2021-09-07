@@ -15,11 +15,6 @@ public class VisionActivity extends AppCompatActivity {
         setContentView(R.layout.activity_vision);
         getSupportActionBar().hide();
         im_back = (ImageView) findViewById(R.id.im_back);
-        im_back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                finish();
-            }
-        });
+        im_back.setOnClickListener(view -> finish());
     }
 }

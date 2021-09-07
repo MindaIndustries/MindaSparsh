@@ -14,9 +14,6 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
 import com.google.android.material.tabs.TabLayout;
 import com.google.firebase.messaging.FirebaseMessaging;
 import com.minda.sparsh.fragment.FourFragment;
@@ -24,24 +21,15 @@ import com.minda.sparsh.fragment.ManufacturingFragment;
 import com.minda.sparsh.fragment.OneFragment;
 import com.minda.sparsh.fragment.ThreeFragment;
 import com.minda.sparsh.fragment.TwoFragment;
-import com.minda.sparsh.listener.CarotResponse;
-import com.minda.sparsh.listener.OnTaskComplete;
 import com.minda.sparsh.model.NotificationModel;
 import com.minda.sparsh.model.VersionModel;
 import com.minda.sparsh.services.FirebaseService;
 import com.minda.sparsh.util.RetrofitClient2;
 import com.minda.sparsh.util.Utility;
-
-import org.jetbrains.annotations.NotNull;
 import org.jsoup.Jsoup;
-
 import java.util.ArrayList;
 import java.util.List;
-
 import javax.net.ssl.HttpsURLConnection;
-
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
@@ -141,7 +129,7 @@ public class DashBoardActivity extends BaseActivity implements View.OnClickListe
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()) {
+      //  switch (v.getId()) {
 //            case R.id.im_left:
 //                viewPager.setCurrentItem(getItem(-1), true);
 ////                if(getItem(-1)==0)
@@ -155,7 +143,7 @@ public class DashBoardActivity extends BaseActivity implements View.OnClickListe
 ////                else {im_right.setVisibility(View.VISIBLE);}
 //
 //                break;
-        }
+       // }
     }
 
 

@@ -196,32 +196,29 @@ public class SuggestionBox extends BaseActivity {
                 "Cancel"};
         AlertDialog.Builder builder = new AlertDialog.Builder(SuggestionBox.this);
         builder.setTitle("Add Photo!");
-        builder.setItems(items, new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int item) {
-                boolean result = Utility.checkPermission(SuggestionBox.this);
-                if (items[item].equals("Take Photo")) {
-                    mUserChoosenTask = "Take Photo";
-                    if (result) {
-                        requestCameraPermission();
-                        if (hasCameraPermission())
-                            cameraIntent();
-                    }
-                } else if (items[item].equals("Choose from Gallery")) {
-                    mUserChoosenTask = "Choose from Gallery";
-                    if (result) {
-                        galleryIntent();
-                    }
-
-                } else if (items[item].equals("Choose Document")) {
-                    mUserChoosenTask = "Choose Document";
-                    if (result) {
-                        fileIntent();
-                    }
-
-                } else if (items[item].equals("Cancel")) {
-                    dialog.dismiss();
+        builder.setItems(items, (dialog, item) -> {
+            boolean result = Utility.checkPermission(SuggestionBox.this);
+            if (items[item].equals("Take Photo")) {
+                mUserChoosenTask = "Take Photo";
+                if (result) {
+                    requestCameraPermission();
+                    if (hasCameraPermission())
+                        cameraIntent();
                 }
+            } else if (items[item].equals("Choose from Gallery")) {
+                mUserChoosenTask = "Choose from Gallery";
+                if (result) {
+                    galleryIntent();
+                }
+
+            } else if (items[item].equals("Choose Document")) {
+                mUserChoosenTask = "Choose Document";
+                if (result) {
+                    fileIntent();
+                }
+
+            } else if (items[item].equals("Cancel")) {
+                dialog.dismiss();
             }
         });
         builder.show();

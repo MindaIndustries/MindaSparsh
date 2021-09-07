@@ -48,12 +48,7 @@ public class ViewImageActivity extends AppCompatActivity {
             AbnormalID = getIntent().getIntExtra("ID", 0);
         }
         hitgetimageApi(AbnormalID);
-        im_back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                finish();
-            }
-        });
+        im_back.setOnClickListener(view -> finish());
     }
 
     public void hitgetimageApi(int id) {

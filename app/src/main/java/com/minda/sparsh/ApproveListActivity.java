@@ -4,7 +4,6 @@ import android.app.ProgressDialog;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -51,31 +50,21 @@ public class ApproveListActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setHomeAsUpIndicator(R.drawable.back);
-        title.setText("Approve Request");
-
+        title.setText(getResources().getString(R.string.approve_request));
         myPref = getSharedPreferences("MyPref", MODE_PRIVATE);
-
         progress = new ProgressDialog(ApproveListActivity.this);
         progress.setMessage("Please wait...");
         progress.setProgressStyle(ProgressDialog.STYLE_SPINNER);
         progress.setIndeterminate(true);
 
         mSwipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.swipeToRefresh);
-        mSwipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-            @Override
-            public void onRefresh() {
-                hitGetApprovalListApi(RetrofitClient2.CKEY, myPref.getString("Id", "Id"));
+        mSwipeRefreshLayout.setOnRefreshListener(() -> {
+            hitGetApprovalListApi(RetrofitClient2.CKEY, myPref.getString("Id", "Id"));
 
-                mSwipeRefreshLayout.setRefreshing(false);
-            }
+            mSwipeRefreshLayout.setRefreshing(false);
         });
         im_back = (ImageView) findViewById(R.id.im_back);
-        im_back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                finish();
-            }
-        });
+        im_back.setOnClickListener(view -> finish());
         recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
         mAdapter = new ApproveListAdapter(approveLists, ApproveListActivity.this);
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(ApproveListActivity.this);

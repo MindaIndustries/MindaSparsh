@@ -1,9 +1,7 @@
 package com.minda.sparsh;
 
 import android.app.ProgressDialog;
-import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -14,15 +12,12 @@ import com.minda.sparsh.util.Utility;
 import java.util.List;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.RecyclerView;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
 public class UpdateVisitorDetailsActivity extends AppCompatActivity {
     private ProgressDialog progress = null;
-    private SharedPreferences myPref = null;
-    private RecyclerView recyclerView;
     ImageView im_back;
 
     @Override
@@ -35,13 +30,7 @@ public class UpdateVisitorDetailsActivity extends AppCompatActivity {
         progress.setIndeterminate(true);
 
         im_back = (ImageView) findViewById(R.id.im_back);
-        im_back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                finish();
-            }
-        });
-        recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
+        im_back.setOnClickListener(view -> finish());
     }
 
 

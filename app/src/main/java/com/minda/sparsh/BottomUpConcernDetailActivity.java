@@ -113,7 +113,7 @@ public class BottomUpConcernDetailActivity extends BaseActivity {
     String name;
     Calendar cal;
     DatePickerDialog observationDatePicker;
-    Date millisecondsdailyfrom = null, millisecondsdailyto = null;
+    Date millisecondsdailyfrom = null;
     @BindView(R.id.target_date_value)
     TextView target_date_value;
     @BindView(R.id.assign_to_value)
@@ -166,17 +166,17 @@ public class BottomUpConcernDetailActivity extends BaseActivity {
             raisedbyvalue.setText(bottomUpConcern.getRaisedBy());
 
             if (bottomUpConcern.getStatus().equalsIgnoreCase("True")) {
-                status_value.setText("Closed");
+                status_value.setText(getResources().getString(R.string.closed));
                 assignDetailLayout.setVisibility(View.GONE);
                 btnLayout.setVisibility(View.GONE);
 
             } else {
                 if (bottomUpConcern.getFlag().equalsIgnoreCase("True")) {
-                    status_value.setText("Assigned");
+                    status_value.setText(getResources().getString(R.string.assigned));
                     assignedDetails.setVisibility(View.VISIBLE);
 
                 } else {
-                    status_value.setText("Pending");
+                    status_value.setText(getResources().getString(R.string.pending));
                 }
             }
             if (bottomUpConcern.getAssignedTo() != null && bottomUpConcern.getAssignedTo().length() > 0) {
@@ -284,82 +284,46 @@ public class BottomUpConcernDetailActivity extends BaseActivity {
         action_suggestion_assigned_value.setMovementMethod(new ScrollingMovementMethod());
         remarked_value.setMovementMethod(new ScrollingMovementMethod());
         ScrollingMovementMethod.getInstance();
-        remarked_value.setOnTouchListener(new View.OnTouchListener() {
+        remarked_value.setOnTouchListener((v, event) -> {
 
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
+            remarked_value.getParent().requestDisallowInterceptTouchEvent(true);
 
-                remarked_value.getParent().requestDisallowInterceptTouchEvent(true);
-
-                return false;
-            }
-
-
+            return false;
         });
 
-        action_suggestion_assigned_value.setOnTouchListener(new View.OnTouchListener() {
+        action_suggestion_assigned_value.setOnTouchListener((v, event) -> {
 
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
+            action_suggestion_assigned_value.getParent().requestDisallowInterceptTouchEvent(true);
 
-                action_suggestion_assigned_value.getParent().requestDisallowInterceptTouchEvent(true);
-
-                return false;
-            }
-
-
+            return false;
         });
 
-        msm_reference_value.setOnTouchListener(new View.OnTouchListener() {
+        msm_reference_value.setOnTouchListener((v, event) -> {
 
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
+            msm_reference_value.getParent().requestDisallowInterceptTouchEvent(true);
 
-                msm_reference_value.getParent().requestDisallowInterceptTouchEvent(true);
-
-                return false;
-            }
-
-
+            return false;
         });
 
-        existing_system_value.setOnTouchListener(new View.OnTouchListener() {
+        existing_system_value.setOnTouchListener((v, event) -> {
 
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
+            existing_system_value.getParent().requestDisallowInterceptTouchEvent(true);
 
-                existing_system_value.getParent().requestDisallowInterceptTouchEvent(true);
-
-                return false;
-            }
-
-
+            return false;
         });
 
-        proposed_system_value.setOnTouchListener(new View.OnTouchListener() {
+        proposed_system_value.setOnTouchListener((v, event) -> {
 
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
+            proposed_system_value.getParent().requestDisallowInterceptTouchEvent(true);
 
-                proposed_system_value.getParent().requestDisallowInterceptTouchEvent(true);
-
-                return false;
-            }
-
-
+            return false;
         });
 
-        benefit_value.setOnTouchListener(new View.OnTouchListener() {
+        benefit_value.setOnTouchListener((v, event) -> {
 
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
+            benefit_value.getParent().requestDisallowInterceptTouchEvent(true);
 
-                benefit_value.getParent().requestDisallowInterceptTouchEvent(true);
-
-                return false;
-            }
-
-
+            return false;
         });
 
     }
@@ -474,7 +438,7 @@ public class BottomUpConcernDetailActivity extends BaseActivity {
 
     }
 
-    private BroadcastReceiver mBroadcastReceiver = new BroadcastReceiver() {
+    private final BroadcastReceiver mBroadcastReceiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
 
@@ -502,17 +466,16 @@ public class BottomUpConcernDetailActivity extends BaseActivity {
 
     @Override
     public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults) {
-        switch (requestCode) {
-            case PERMISSION_REQUEST_CODE:
-                if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if (requestCode == PERMISSION_REQUEST_CODE) {
+            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
 
-                    startImageDownload(name);
-                } else {
+                startImageDownload(name);
+            } else {
 
-                    Toast.makeText(getApplicationContext(), "Permission Denied", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "Permission Denied", Toast.LENGTH_SHORT).show();
 
-                }
-                break;
+            }
         }
     }
 
@@ -551,30 +514,27 @@ public class BottomUpConcernDetailActivity extends BaseActivity {
         cal.setTimeInMillis(System.currentTimeMillis());
         millisecondsdailyfrom = cal.getTime();
         //    target_date_value.setText("" + getlogDate(cal.getTimeInMillis()));
-        observationDatePicker = new DatePickerDialog(BottomUpConcernDetailActivity.this, new DatePickerDialog.OnDateSetListener() {
-            @Override
-            public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-                int mMonth = month + 1;
-                String monthNo;
-                if (mMonth < 10) {
-                    monthNo = "0" + mMonth;
-                } else {
-                    monthNo = "" + mMonth;
-                }
-                String dayOfMonthStr;
-                if (dayOfMonth < 10) {
-                    dayOfMonthStr = "0" + dayOfMonth;
-                } else {
-                    dayOfMonthStr = "" + dayOfMonth;
-                }
-                cal.set(Calendar.DAY_OF_MONTH, dayOfMonth);
-                cal.set(Calendar.MONTH, month);
-                cal.set(Calendar.YEAR, year);
-                millisecondsdailyfrom = cal.getTime();
-
-                target_date_value.setText("" + dayOfMonthStr + "/" + monthNo + "/" + year);
-
+        observationDatePicker = new DatePickerDialog(BottomUpConcernDetailActivity.this, (view, year, month, dayOfMonth) -> {
+            int mMonth = month + 1;
+            String monthNo;
+            if (mMonth < 10) {
+                monthNo = "0" + mMonth;
+            } else {
+                monthNo = "" + mMonth;
             }
+            String dayOfMonthStr;
+            if (dayOfMonth < 10) {
+                dayOfMonthStr = "0" + dayOfMonth;
+            } else {
+                dayOfMonthStr = "" + dayOfMonth;
+            }
+            cal.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+            cal.set(Calendar.MONTH, month);
+            cal.set(Calendar.YEAR, year);
+            millisecondsdailyfrom = cal.getTime();
+
+            target_date_value.setText("" + dayOfMonthStr + "/" + monthNo + "/" + year);
+
         }, cal.get(Calendar.YEAR), cal.get(Calendar.MONTH), cal.get(Calendar.DAY_OF_MONTH));
 
         try {
@@ -593,16 +553,13 @@ public class BottomUpConcernDetailActivity extends BaseActivity {
 
     public void assignConcern(String concernNo, String empcode, String targetDate) {
         BottomUpConcernServices bottomUpConcernServices = new BottomUpConcernServices();
-        bottomUpConcernServices.assignConcern(new OnTaskComplete() {
-            @Override
-            public void onTaskComplte(CarotResponse carotResponse) {
-                if (carotResponse.getStatuscode() == HttpsURLConnection.HTTP_OK) {
-                    Toast.makeText(BottomUpConcernDetailActivity.this, "Successfully submitted", Toast.LENGTH_LONG).show();
-                    onBackPressed();
-                } else {
-                    Toast.makeText(BottomUpConcernDetailActivity.this, "Something went wrong!", Toast.LENGTH_LONG).show();
+        bottomUpConcernServices.assignConcern(carotResponse -> {
+            if (carotResponse.getStatuscode() == HttpsURLConnection.HTTP_OK) {
+                Toast.makeText(BottomUpConcernDetailActivity.this, "Successfully submitted", Toast.LENGTH_LONG).show();
+                onBackPressed();
+            } else {
+                Toast.makeText(BottomUpConcernDetailActivity.this, "Something went wrong!", Toast.LENGTH_LONG).show();
 
-                }
             }
         }, concernNo, empcode, targetDate);
 
@@ -612,16 +569,13 @@ public class BottomUpConcernDetailActivity extends BaseActivity {
     public void completeConcern(String concernNo) {
 
         BottomUpConcernServices bottomUpConcernServices = new BottomUpConcernServices();
-        bottomUpConcernServices.completeConcern(new OnTaskComplete() {
-            @Override
-            public void onTaskComplte(CarotResponse carotResponse) {
-                if (carotResponse.getStatuscode() == HttpsURLConnection.HTTP_OK) {
-                    Toast.makeText(BottomUpConcernDetailActivity.this, "Successfully submitted", Toast.LENGTH_LONG).show();
-                    onBackPressed();
-                } else {
-                    Toast.makeText(BottomUpConcernDetailActivity.this, "Something went wrong!", Toast.LENGTH_LONG).show();
+        bottomUpConcernServices.completeConcern(carotResponse -> {
+            if (carotResponse.getStatuscode() == HttpsURLConnection.HTTP_OK) {
+                Toast.makeText(BottomUpConcernDetailActivity.this, "Successfully submitted", Toast.LENGTH_LONG).show();
+                onBackPressed();
+            } else {
+                Toast.makeText(BottomUpConcernDetailActivity.this, "Something went wrong!", Toast.LENGTH_LONG).show();
 
-                }
             }
         }, concernNo);
 
@@ -630,22 +584,19 @@ public class BottomUpConcernDetailActivity extends BaseActivity {
 
     public void getAutoSuggestions(String text) {
         BottomUpConcernServices bottomUpConcernServices = new BottomUpConcernServices();
-        bottomUpConcernServices.getAutoSuggestion(new OnTaskComplete() {
-            @Override
-            public void onTaskComplte(CarotResponse carotResponse) {
-                if (carotResponse.getStatuscode() == HttpsURLConnection.HTTP_OK) {
-                    if (carotResponse.getData() != null) {
-                        List<AutoSuggestModel> list = (List<AutoSuggestModel>) carotResponse.getData();
-                        if (list != null && list.size() > 0) {
-                            for (int i = 0; i < list.size(); i++) {
-                                suggestions.add(list.get(i).getEmpName() + "-" + list.get(i).getEmpCode() + "-" + list.get(i).getUnitCode());
-                            }
-                            if (suggestions != null && suggestions.size() > 0)
-                                autoSuggestAdapter.setData(suggestions);
-                            autoSuggestAdapter.notifyDataSetChanged();
+        bottomUpConcernServices.getAutoSuggestion(carotResponse -> {
+            if (carotResponse.getStatuscode() == HttpsURLConnection.HTTP_OK) {
+                if (carotResponse.getData() != null) {
+                    List<AutoSuggestModel> list = (List<AutoSuggestModel>) carotResponse.getData();
+                    if (list != null && list.size() > 0) {
+                        for (int i = 0; i < list.size(); i++) {
+                            suggestions.add(list.get(i).getEmpName() + "-" + list.get(i).getEmpCode() + "-" + list.get(i).getUnitCode());
                         }
-
+                        if (suggestions != null && suggestions.size() > 0)
+                            autoSuggestAdapter.setData(suggestions);
+                        autoSuggestAdapter.notifyDataSetChanged();
                     }
+
                 }
             }
         }, text);
