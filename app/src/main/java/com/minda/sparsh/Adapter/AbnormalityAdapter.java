@@ -181,8 +181,6 @@ public class AbnormalityAdapter extends BaseAdapter {
                 try {
                     Date mDate = sdf.parse(abnormilitydate);
                     time_abnormility = mDate.getTime();
-
-
                 } catch (ParseException e) {
                     e.printStackTrace();
                 }
@@ -193,8 +191,7 @@ public class AbnormalityAdapter extends BaseAdapter {
                     holder.tv_status.setBackgroundResource(R.color.white);
                 }
             }
-
-
+            
             holder.tv_Actual_date.setText(homeData.get(position).getImplementationDate());
 //            holder.tv_test_date.setText(homeData.get(position).getAbnormalityDate());
             holder.tv_action.setText(homeData.get(position).getAction());
