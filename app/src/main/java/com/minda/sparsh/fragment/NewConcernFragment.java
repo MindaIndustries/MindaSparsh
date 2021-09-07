@@ -148,46 +148,22 @@ public class NewConcernFragment extends Fragment {
         proposedSystemValue.setMovementMethod(new ScrollingMovementMethod());
         benefitValue.setMovementMethod(new ScrollingMovementMethod());
         ScrollingMovementMethod.getInstance();
-        msmReferenceValue.setOnTouchListener(new View.OnTouchListener() {
-
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                msmReferenceValue.getParent().requestDisallowInterceptTouchEvent(true);
-                return false;
-            }
-
-
+        msmReferenceValue.setOnTouchListener((v, event) -> {
+            msmReferenceValue.getParent().requestDisallowInterceptTouchEvent(true);
+            return false;
         });
-        existingSystemValue.setOnTouchListener(new View.OnTouchListener() {
-
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                existingSystemValue.getParent().requestDisallowInterceptTouchEvent(true);
-                return false;
-            }
-
-
+        existingSystemValue.setOnTouchListener((v, event) -> {
+            existingSystemValue.getParent().requestDisallowInterceptTouchEvent(true);
+            return false;
         });
-        proposedSystemValue.setOnTouchListener(new View.OnTouchListener() {
-
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                proposedSystemValue.getParent().requestDisallowInterceptTouchEvent(true);
-                return false;
-            }
-
-
+        proposedSystemValue.setOnTouchListener((v, event) -> {
+            proposedSystemValue.getParent().requestDisallowInterceptTouchEvent(true);
+            return false;
         });
 
-        benefitValue.setOnTouchListener(new View.OnTouchListener() {
-
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                benefitValue.getParent().requestDisallowInterceptTouchEvent(true);
-                return false;
-            }
-
-
+        benefitValue.setOnTouchListener((v, event) -> {
+            benefitValue.getParent().requestDisallowInterceptTouchEvent(true);
+            return false;
         });
 
 
@@ -347,22 +323,19 @@ public class NewConcernFragment extends Fragment {
 
     public void getUnits() {
         EHSServices ehsServices = new EHSServices();
-        ehsServices.getUnits(new OnTaskComplete() {
-            @Override
-            public void onTaskComplte(CarotResponse carotResponse) {
-                units.clear();
-                if (carotResponse.getStatuscode() == HttpsURLConnection.HTTP_OK) {
-                    List<EHSUnitModel> list = (List<EHSUnitModel>) carotResponse.getData();
-                    if (list != null && list.size() > 0) {
-                        units.addAll(list);
-                        for (EHSUnitModel unit : units) {
-                            unitsName.add(unit.getUnitCode() + ":" + unit.getUnitName());
-                        }
-                        if (unitsName.size() > 0) {
-                            unitSpinner.setSelection(1);
-                        }
-                        adapterUnit.notifyDataSetChanged();
+        ehsServices.getUnits(carotResponse -> {
+            units.clear();
+            if (carotResponse.getStatuscode() == HttpsURLConnection.HTTP_OK) {
+                List<EHSUnitModel> list = (List<EHSUnitModel>) carotResponse.getData();
+                if (list != null && list.size() > 0) {
+                    units.addAll(list);
+                    for (EHSUnitModel unit : units) {
+                        unitsName.add(unit.getUnitCode() + ":" + unit.getUnitName());
                     }
+                    if (unitsName.size() > 0) {
+                        unitSpinner.setSelection(1);
+                    }
+                    adapterUnit.notifyDataSetChanged();
                 }
             }
         }, unitcode);
@@ -371,26 +344,23 @@ public class NewConcernFragment extends Fragment {
 
     public void getSixMList() {
         BottomUpConcernServices bottomUpConcernServices = new BottomUpConcernServices();
-        bottomUpConcernServices.getSixM(new OnTaskComplete() {
-            @Override
-            public void onTaskComplte(CarotResponse carotResponse) {
-                sixMs.clear();
-                if (carotResponse.getStatuscode() == HttpsURLConnection.HTTP_OK) {
-                    List<SixMModel> list = (List<SixMModel>) carotResponse.getData();
-                    if (list != null && list.size() > 0) {
-                        sixMs.addAll(list);
-                        for (SixMModel sixM : sixMs) {
-                            if (sixM.getName().equalsIgnoreCase("Others") || sixM.getName().equalsIgnoreCase("Strategy")) {
+        bottomUpConcernServices.getSixM(carotResponse -> {
+            sixMs.clear();
+            if (carotResponse.getStatuscode() == HttpsURLConnection.HTTP_OK) {
+                List<SixMModel> list = (List<SixMModel>) carotResponse.getData();
+                if (list != null && list.size() > 0) {
+                    sixMs.addAll(list);
+                    for (SixMModel sixM : sixMs) {
+                        if (sixM.getName().equalsIgnoreCase("Others") || sixM.getName().equalsIgnoreCase("Strategy")) {
 
-                            } else {
-                                sixMNames.add(sixM.getName());
-                            }
+                        } else {
+                            sixMNames.add(sixM.getName());
                         }
-                        adapterResponsible6M.notifyDataSetChanged();
-
                     }
+                    adapterResponsible6M.notifyDataSetChanged();
 
                 }
+
             }
         });
     }
@@ -472,28 +442,21 @@ public class NewConcernFragment extends Fragment {
     public void saveConcern(String RaisedBy, String RaisedOn, String Unit, String Department, String ReferenceNo, String ExistingSystem, String ProposedSystem, String Benefit, String ESFile, String ESFileByte, String PSFile, String PSFileByte, String BenFile, String BenFileByte, String FirstName) {
         progressBar.setVisibility(View.VISIBLE);
         BottomUpConcernServices bottomUpConcernServices = new BottomUpConcernServices();
-        bottomUpConcernServices.saveConcern(new OnTaskComplete() {
-            @Override
-            public void onTaskComplte(CarotResponse carotResponse) {
-                if (carotResponse.getStatuscode() == HttpsURLConnection.HTTP_OK) {
-
-                }
-                progressBar.setVisibility(View.GONE);
-                new Handler().postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-
-                        if (getActivity() != null && isAdded()) {
-                            Toast.makeText(getActivity(), "Successfully submitted", Toast.LENGTH_LONG).show();
-                            Intent in = new Intent(getActivity(), BottomUpConcernActivity.class);
-                            in.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                            startActivity(in);
-                            getActivity().finish();
-                        }
-                    }
-                }, 1000);
+        bottomUpConcernServices.saveConcern(carotResponse -> {
+            if (carotResponse.getStatuscode() == HttpsURLConnection.HTTP_OK) {
 
             }
+            progressBar.setVisibility(View.GONE);
+            new Handler().postDelayed(() -> {
+
+                if (getActivity() != null && isAdded()) {
+                    Toast.makeText(getActivity(), "Successfully submitted", Toast.LENGTH_LONG).show();
+                    Intent in = new Intent(getActivity(), BottomUpConcernActivity.class);
+                    in.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    startActivity(in);
+                    getActivity().finish();
+                }
+            }, 1000);
 
         }, RaisedBy, RaisedOn, Unit, Department, ReferenceNo, ExistingSystem, ProposedSystem, Benefit, ESFile, ESFileByte, PSFile, PSFileByte, BenFile, BenFileByte, FirstName);
 
@@ -546,32 +509,29 @@ public class NewConcernFragment extends Fragment {
                 "Cancel"};
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         builder.setTitle("Add Photo!");
-        builder.setItems(items, new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int item) {
-                boolean result = Utility.checkPermission(getActivity());
-                if (items[item].equals("Take Photo")) {
-                    mUserChoosenTask = "Take Photo";
-                    if (result) {
-                        requestCameraPermission();
-                        if (hasCameraPermission())
-                            cameraIntent();
-                    }
-                } else if (items[item].equals("Choose from Gallery")) {
-                    mUserChoosenTask = "Choose from Gallery";
-                    if (result) {
-                        galleryIntent();
-                    }
-
-                } else if (items[item].equals("Choose Document")) {
-                    mUserChoosenTask = "Choose Document";
-                    if (result) {
-                        fileIntent();
-                    }
-
-                } else if (items[item].equals("Cancel")) {
-                    dialog.dismiss();
+        builder.setItems(items, (dialog, item) -> {
+            boolean result = Utility.checkPermission(getActivity());
+            if (items[item].equals("Take Photo")) {
+                mUserChoosenTask = "Take Photo";
+                if (result) {
+                    requestCameraPermission();
+                    if (hasCameraPermission())
+                        cameraIntent();
                 }
+            } else if (items[item].equals("Choose from Gallery")) {
+                mUserChoosenTask = "Choose from Gallery";
+                if (result) {
+                    galleryIntent();
+                }
+
+            } else if (items[item].equals("Choose Document")) {
+                mUserChoosenTask = "Choose Document";
+                if (result) {
+                    fileIntent();
+                }
+
+            } else if (items[item].equals("Cancel")) {
+                dialog.dismiss();
             }
         });
         builder.show();

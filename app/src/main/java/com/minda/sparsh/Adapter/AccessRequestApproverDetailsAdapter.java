@@ -14,10 +14,10 @@ import java.util.List;
 import androidx.recyclerview.widget.RecyclerView;
 
 public class AccessRequestApproverDetailsAdapter extends RecyclerView.Adapter<AccessRequestApproverDetailsAdapter.MyViewHolder> {
-    private List<AccessRequestApproverDetailsModel> dataList;
+    private final List<AccessRequestApproverDetailsModel> dataList;
     Context context;
 
-    public class MyViewHolder extends RecyclerView.ViewHolder {
+    public static class MyViewHolder extends RecyclerView.ViewHolder {
         public TextView tv_s_no, tv_approved_by_emp_code, tv_approved_by_name, tv_approved_status, tv_approval_level,
                 tv_approval_request_on, tv_approval_on, tv_remarks;
 

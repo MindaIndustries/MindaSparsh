@@ -53,18 +53,8 @@ public class FiveFragment extends Fragment {
         ImageView im_right = (ImageView) view.findViewById(R.id.im_right);
         ImageView im_left = (ImageView) view.findViewById(R.id.im_left);
         final DashBoardActivity contaxt = (DashBoardActivity) getActivity();
-        im_right.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                contaxt.viewPager.setCurrentItem(contaxt.getItem(+1), true);
-            }
-        });
-        im_left.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                contaxt.viewPager.setCurrentItem(contaxt.getItem(-1), true);
-            }
-        });
+        im_right.setOnClickListener(view1 -> contaxt.viewPager.setCurrentItem(contaxt.getItem(+1), true));
+        im_left.setOnClickListener(view12 -> contaxt.viewPager.setCurrentItem(contaxt.getItem(-1), true));
         // Inflate the layout for this fragment
         return view;
     }

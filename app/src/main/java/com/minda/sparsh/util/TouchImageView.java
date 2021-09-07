@@ -24,11 +24,10 @@ import android.view.MotionEvent;
 import android.view.ScaleGestureDetector;
 import android.view.View;
 import android.view.animation.AccelerateDecelerateInterpolator;
-import android.widget.ImageView;
 import android.widget.OverScroller;
 import android.widget.Scroller;
 
-public class TouchImageView extends ImageView {
+public class TouchImageView extends androidx.appcompat.widget.AppCompatImageView {
     private static final String DEBUG = "DEBUG";
 
     //
@@ -51,10 +50,7 @@ public class TouchImageView extends ImageView {
     // saved prior to the screen rotating.
     //
     private Matrix matrix, prevMatrix;
-
-    private static enum State {NONE, DRAG, ZOOM, FLING, ANIMATE_ZOOM}
-
-    ;
+    private enum State {NONE, DRAG, ZOOM, FLING, ANIMATE_ZOOM}
     private State state;
 
     private float minScale;
@@ -820,7 +816,7 @@ public class TouchImageView extends ImageView {
         //
         // Remember last point position for dragging
         //
-        private PointF last = new PointF();
+        private final PointF last = new PointF();
 
         @Override
         public boolean onTouch(View v, MotionEvent event) {
@@ -960,14 +956,15 @@ public class TouchImageView extends ImageView {
      */
     private class DoubleTapZoom implements Runnable {
 
-        private long startTime;
+        private final long startTime;
         private static final float ZOOM_TIME = 500;
-        private float startZoom, targetZoom;
-        private float bitmapX, bitmapY;
-        private boolean stretchImageToSuper;
-        private AccelerateDecelerateInterpolator interpolator = new AccelerateDecelerateInterpolator();
-        private PointF startTouch;
-        private PointF endTouch;
+        private final float startZoom;
+        private final float targetZoom;
+        private final float bitmapX, bitmapY;
+        private final boolean stretchImageToSuper;
+        private final AccelerateDecelerateInterpolator interpolator = new AccelerateDecelerateInterpolator();
+        private final PointF startTouch;
+        private final PointF endTouch;
 
         DoubleTapZoom(float targetZoom, float focusX, float focusY, boolean stretchImageToSuper) {
             setState(State.ANIMATE_ZOOM);
@@ -1184,7 +1181,7 @@ public class TouchImageView extends ImageView {
     }
 
     @TargetApi(VERSION_CODES.GINGERBREAD)
-    private class CompatScroller {
+    private static class CompatScroller {
         Scroller scroller;
         OverScroller overScroller;
         boolean isPreGingerbread;
@@ -1260,7 +1257,7 @@ public class TouchImageView extends ImageView {
         }
     }
 
-    private class ZoomVariables {
+    private static class ZoomVariables {
         public float scale;
         public float focusX;
         public float focusY;

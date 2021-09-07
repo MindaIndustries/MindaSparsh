@@ -22,10 +22,10 @@ import androidx.viewpager.widget.PagerAdapter;
 
 public class SlidingImage_Adapter extends PagerAdapter {
     private List<String> IMAGES;
-    private LayoutInflater inflater;
-    private Context context;
-    private int size;
-    private boolean isImageAvailable;
+    private final LayoutInflater inflater;
+    private final Context context;
+    private final int size;
+    private final boolean isImageAvailable;
 
     public SlidingImage_Adapter(Context context, List<String> IMAGES) {
         this.context = context;
@@ -61,14 +61,6 @@ public class SlidingImage_Adapter extends PagerAdapter {
         final ImageView imageView = (ImageView) imageLayout.findViewById(R.id.image);
 
         try {
-//            imageView.setImageResource(IMAGES.get(position));
-//            imageView.setImageResource(size);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-
-        try {
             String input = IMAGES.get(position);
             input = input.replace(" ", "%20");
             Uri imgUri = Uri.parse("http://88.198.45.166/MindaSparsh/" + input);
@@ -80,7 +72,7 @@ public class SlidingImage_Adapter extends PagerAdapter {
 
 
         } catch (Exception e) {
-
+            e.printStackTrace();
         }
 
         view.addView(imageLayout, 0);

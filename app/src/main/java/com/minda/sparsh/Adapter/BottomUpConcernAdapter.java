@@ -62,16 +62,13 @@ public class BottomUpConcernAdapter extends RecyclerView.Adapter<BottomUpConcern
         viewHolder.unitValue.setText(concerns.get(i).getUnit() + ":" + concerns.get(i).getUnitName());
 
 
-        viewHolder.viewDetails.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (Utility.isOnline(mContext)) {
-                    Intent in = new Intent(mContext, BottomUpConcernDetailActivity.class);
-                    in.putExtra("concernModel", (Serializable) concerns.get(i));
-                    mContext.startActivity(in);
-                } else {
-                    Toast.makeText(mContext, "Please Check Your Network Connection", Toast.LENGTH_LONG).show();
-                }
+        viewHolder.viewDetails.setOnClickListener(v -> {
+            if (Utility.isOnline(mContext)) {
+                Intent in = new Intent(mContext, BottomUpConcernDetailActivity.class);
+                in.putExtra("concernModel", (Serializable) concerns.get(i));
+                mContext.startActivity(in);
+            } else {
+                Toast.makeText(mContext, "Please Check Your Network Connection", Toast.LENGTH_LONG).show();
             }
         });
     }
@@ -81,7 +78,7 @@ public class BottomUpConcernAdapter extends RecyclerView.Adapter<BottomUpConcern
         return concerns.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
+    public static class ViewHolder extends RecyclerView.ViewHolder {
         @BindView(R.id.status)
         TextView status;
         @BindView(R.id.concern_no_value)

@@ -10,8 +10,6 @@ import android.widget.TextView;
 
 import com.minda.sparsh.Adapter.BottomUpConcernAdapter;
 import com.minda.sparsh.R;
-import com.minda.sparsh.listener.CarotResponse;
-import com.minda.sparsh.listener.OnTaskComplete;
 import com.minda.sparsh.model.BottomUpConcern;
 import com.minda.sparsh.services.BottomUpConcernServices;
 
@@ -68,25 +66,22 @@ public class ViewConcernFragment extends Fragment {
         bottomUpConcernAdapter.notifyDataSetChanged();
 
         BottomUpConcernServices bottomUpConcernServices = new BottomUpConcernServices();
-        bottomUpConcernServices.getUserConcerns(new OnTaskComplete() {
-            @Override
-            public void onTaskComplte(CarotResponse carotResponse) {
-                if (carotResponse.getStatuscode() == HttpsURLConnection.HTTP_OK) {
-                    List<BottomUpConcern> list = (List<BottomUpConcern>) carotResponse.getData();
-                    if (list != null && list.size() > 0) {
-                        concerns.addAll(list);
-                        no_list.setVisibility(View.GONE);
+        bottomUpConcernServices.getUserConcerns(carotResponse -> {
+            if (carotResponse.getStatuscode() == HttpsURLConnection.HTTP_OK) {
+                List<BottomUpConcern> list = (List<BottomUpConcern>) carotResponse.getData();
+                if (list != null && list.size() > 0) {
+                    concerns.addAll(list);
+                    no_list.setVisibility(View.GONE);
 
-                    } else {
-                        no_list.setVisibility(View.VISIBLE);
-                    }
                 } else {
                     no_list.setVisibility(View.VISIBLE);
                 }
-                bottomUpConcernAdapter.notifyDataSetChanged();
-                progressBar.setVisibility(View.GONE);
-
+            } else {
+                no_list.setVisibility(View.VISIBLE);
             }
+            bottomUpConcernAdapter.notifyDataSetChanged();
+            progressBar.setVisibility(View.GONE);
+
         }, empCode);
     }
 }

@@ -28,9 +28,9 @@ import retrofit2.Response;
 
 
 public class NotificationAdapter extends BaseAdapter {
-    private Context mContext;
-    private LayoutInflater inflater = null;
-    private List<NotificationModel> homeData = null;
+    private final Context mContext;
+    private final LayoutInflater inflater;
+    private final List<NotificationModel> homeData;
     public int total;
     NotificationAdapter.ViewHolder holder;
     SharedPreferences myPref;
@@ -44,7 +44,7 @@ public class NotificationAdapter extends BaseAdapter {
 
     }
 
-    public class ViewHolder {
+    public static class ViewHolder {
         public TextView tv_notification, tv_time;
         public LinearLayout lay_notification;
         public ImageView im_product, im_selected;
@@ -71,7 +71,7 @@ public class NotificationAdapter extends BaseAdapter {
     public View getView(final int position, View convertView, ViewGroup viewGroup) {
 
         if (convertView == null) {
-            final NotificationAdapter.ViewHolder holder = new NotificationAdapter.ViewHolder();
+            final NotificationAdapter.ViewHolder holder = new ViewHolder();
             this.holder = holder;
             convertView = inflater.inflate(R.layout.notification_call_view, null);
             holder.tv_notification = (TextView) convertView.findViewById(R.id.tv_notification);
@@ -86,16 +86,13 @@ public class NotificationAdapter extends BaseAdapter {
             }
 
 
-            holder.lay_notification.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    myPref = mContext.getSharedPreferences("MyPref", Context.MODE_PRIVATE);
+            holder.lay_notification.setOnClickListener(view -> {
+                myPref = mContext.getSharedPreferences("MyPref", Context.MODE_PRIVATE);
 
 
-                    HitMyorder(myPref.getString("Id", ""), homeData.get(position).getPushNotcID().toString(), position);
+                HitMyorder(myPref.getString("Id", ""), homeData.get(position).getPushNotcID().toString(), position);
 
 
-                }
             });
             convertView.setTag(holder);
 
@@ -125,14 +122,6 @@ public class NotificationAdapter extends BaseAdapter {
                         NotificationActivity contaxt1 = (NotificationActivity) mContext;
                         contaxt1.setadapter(homeData);
                     }
-
-                    if (responseItem != null) {
-
-
-                    } else {
-                    }
-
-
                 }
 
                 @Override

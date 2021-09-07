@@ -96,16 +96,13 @@ public class BackgroundNotificationService extends IntentService {
     public void downloadFile() {
         //    Toast.makeText(BottomUpConcernDetailActivity.this,"Downoading...",Toast.LENGTH_LONG).show();
         BottomUpConcernServices bottomUpConcernServices = new BottomUpConcernServices();
-        bottomUpConcernServices.downloadFile(new OnTaskComplete() {
-            @Override
-            public void onTaskComplte(CarotResponse carotResponse) {
-                if (carotResponse.getStatuscode() == HttpsURLConnection.HTTP_OK) {
-                    ResponseBody responseBody = (ResponseBody) carotResponse.getData();
-                    boolean writtenToDisk = writeResponseBodyToDisk(responseBody, name);
-
-                }
+        bottomUpConcernServices.downloadFile(carotResponse -> {
+            if (carotResponse.getStatuscode() == HttpsURLConnection.HTTP_OK) {
+                ResponseBody responseBody = (ResponseBody) carotResponse.getData();
+                boolean writtenToDisk = writeResponseBodyToDisk(responseBody, name);
 
             }
+
         }, name);
     }
 

@@ -29,9 +29,6 @@ public class FourFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-
-        }
     }
 
     @Override
@@ -44,49 +41,30 @@ public class FourFragment extends Fragment {
         ImageButton im_change_request_from = (ImageButton) view.findViewById(R.id.im_change_request_from);
         ImageButton it_help_desk = view.findViewById(R.id.it_help_desk);
         final DashBoardActivity contaxt = (DashBoardActivity) getActivity();
-        im_right.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                contaxt.viewPager.setCurrentItem(contaxt.getItem(+1), true);
-            }
-        });
-        im_left.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                contaxt.viewPager.setCurrentItem(contaxt.getItem(-1), true);
-            }
-        });
+        im_right.setOnClickListener(view1 -> contaxt.viewPager.setCurrentItem(contaxt.getItem(+1), true));
+        im_left.setOnClickListener(view12 -> contaxt.viewPager.setCurrentItem(contaxt.getItem(-1), true));
         // Inflate the layout for this fragment
 
-        im_identity_access_management.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+        im_identity_access_management.setOnClickListener(view13 -> {
 
-                //Toast.makeText(contaxt, "Coming Soon..", Toast.LENGTH_SHORT).show();
+            //Toast.makeText(contaxt, "Coming Soon..", Toast.LENGTH_SHORT).show();
 
-                Intent intent = new Intent(getActivity(), IdentityAccessManagementActivity.class);
-                contaxt.startActivity(intent);
-            }
+            Intent intent = new Intent(getActivity(), IdentityAccessManagementActivity.class);
+            contaxt.startActivity(intent);
         });
 
-        im_change_request_from.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Toast.makeText(contaxt, "Coming Soon!", Toast.LENGTH_SHORT).show();
+        im_change_request_from.setOnClickListener(view14 -> {
+            Toast.makeText(contaxt, "Coming Soon!", Toast.LENGTH_SHORT).show();
 
-                // startActivity(new Intent(getActivity(), IdentityAccessManagementActivity1.class));
+            // startActivity(new Intent(getActivity(), IdentityAccessManagementActivity1.class));
 
-            }
         });
 
-        it_help_desk.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+        it_help_desk.setOnClickListener(view15 -> {
 
-                Intent intent = new Intent(getActivity(), ITHelpDeskHome.class);
-                contaxt.startActivity(intent);
+            Intent intent = new Intent(getActivity(), ITHelpDeskHome.class);
+            contaxt.startActivity(intent);
 
-            }
         });
         return view;
     }

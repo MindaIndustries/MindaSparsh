@@ -50,12 +50,7 @@ public class SixFragment extends Fragment {
 //                contaxt.viewPager.setCurrentItem(contaxt.getItem(+1), true);
 //            }
 //        });
-        im_left.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                contaxt.viewPager.setCurrentItem(contaxt.getItem(-1), true);
-            }
-        });
+        im_left.setOnClickListener(view1 -> contaxt.viewPager.setCurrentItem(contaxt.getItem(-1), true));
         // Inflate the layout for this fragment
         return view;
     }

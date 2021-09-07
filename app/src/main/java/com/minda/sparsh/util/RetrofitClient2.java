@@ -2,12 +2,8 @@ package com.minda.sparsh.util;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-
-import java.io.IOException;
 import java.util.concurrent.TimeUnit;
-
 import okhttp3.Dispatcher;
-import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
 import okhttp3.Protocol;
 import okhttp3.Request;
@@ -81,19 +77,16 @@ public class RetrofitClient2 {
     public static <S> S createServiceEHS(Class<S> serviceClass) {
         OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
         httpClient.protocols(Util.immutableListOf(Protocol.HTTP_1_1));
-        httpClient.addInterceptor(new Interceptor() {
-            @Override
-            public Response intercept(Interceptor.Chain chain) throws IOException {
-                Request original = chain.request();
+        httpClient.addInterceptor(chain -> {
+            Request original = chain.request();
 
-                Request request = original.newBuilder()
-                        .addHeader("User", "Minda89652$%@@#")
-                        .addHeader("Password", "98541$%#85%$PUAtadniM")
-                        .method(original.method(), original.body())
-                        .build();
-                Response response = chain.proceed(request);
-                return response;
-            }
+            Request request = original.newBuilder()
+                    .addHeader("User", "Minda89652$%@@#")
+                    .addHeader("Password", "98541$%#85%$PUAtadniM")
+                    .method(original.method(), original.body())
+                    .build();
+            Response response = chain.proceed(request);
+            return response;
         });
 
         dispatcher1.setMaxRequests(3000);
@@ -118,19 +111,16 @@ public class RetrofitClient2 {
     public static <S> S createServiceBottomUponcern(Class<S> serviceClass) {
         OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
         httpClient.protocols(Util.immutableListOf(Protocol.HTTP_1_1));
-        httpClient.addInterceptor(new Interceptor() {
-            @Override
-            public Response intercept(Interceptor.Chain chain) throws IOException {
-                Request original = chain.request();
+        httpClient.addInterceptor(chain -> {
+            Request original = chain.request();
 
-                Request request = original.newBuilder()
-                        .addHeader("User", "MindaBtm56$#45#@")
-                        .addHeader("Password", "985Btm56$#AtadniM")
-                        .method(original.method(), original.body())
-                        .build();
-                Response response = chain.proceed(request);
-                return response;
-            }
+            Request request = original.newBuilder()
+                    .addHeader("User", "MindaBtm56$#45#@")
+                    .addHeader("Password", "985Btm56$#AtadniM")
+                    .method(original.method(), original.body())
+                    .build();
+            Response response = chain.proceed(request);
+            return response;
         });
 
         dispatcher1.setMaxRequests(3000);
@@ -155,19 +145,16 @@ public class RetrofitClient2 {
     public static <S> S downloadService(Class<S> serviceClass) {
         OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
         httpClient.protocols(Util.immutableListOf(Protocol.HTTP_1_1));
-        httpClient.addInterceptor(new Interceptor() {
-            @Override
-            public Response intercept(Interceptor.Chain chain) throws IOException {
-                Request original = chain.request();
+        httpClient.addInterceptor(chain -> {
+            Request original = chain.request();
 
-                Request request = original.newBuilder()
-                        .addHeader("User", "MindaBtm56$#45#@")
-                        .addHeader("Password", "985Btm56$#AtadniM")
-                        .method(original.method(), original.body())
-                        .build();
-                Response response = chain.proceed(request);
-                return response;
-            }
+            Request request = original.newBuilder()
+                    .addHeader("User", "MindaBtm56$#45#@")
+                    .addHeader("Password", "985Btm56$#AtadniM")
+                    .method(original.method(), original.body())
+                    .build();
+            Response response = chain.proceed(request);
+            return response;
         });
 
         dispatcher1.setMaxRequests(3000);
@@ -193,19 +180,16 @@ public class RetrofitClient2 {
         OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
         httpClient.protocols(Util.immutableListOf(Protocol.HTTP_1_1));
 
-        httpClient.addInterceptor(new Interceptor() {
-            @Override
-            public Response intercept(Interceptor.Chain chain) throws IOException {
-                Request original = chain.request();
+        httpClient.addInterceptor(chain -> {
+            Request original = chain.request();
 
-                Request request = original.newBuilder()
-                        .addHeader("User", "MindaSugg56$#45#@")
-                        .addHeader("Password", "985Sugg656$#AtadniM")
-                        .method(original.method(), original.body())
-                        .build();
-                Response response = chain.proceed(request);
-                return response;
-            }
+            Request request = original.newBuilder()
+                    .addHeader("User", "MindaSugg56$#45#@")
+                    .addHeader("Password", "985Sugg656$#AtadniM")
+                    .method(original.method(), original.body())
+                    .build();
+            Response response = chain.proceed(request);
+            return response;
         });
 
         dispatcher1.setMaxRequests(3000);
@@ -230,19 +214,16 @@ public class RetrofitClient2 {
     public static <S> S createServiceSaveFirebaseID(Class<S> serviceClass) {
         OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
         httpClient.protocols(Util.immutableListOf(Protocol.HTTP_1_1));
-        httpClient.addInterceptor(new Interceptor() {
-            @Override
-            public Response intercept(Interceptor.Chain chain) throws IOException {
-                Request original = chain.request();
+        httpClient.addInterceptor(chain -> {
+            Request original = chain.request();
 
-                Request request = original.newBuilder()
-                        .addHeader("User", "MindaBtm56$36gg5#@")
-                        .addHeader("Password", "98Push56dsad$#AtadniM")
-                        .method(original.method(), original.body())
-                        .build();
-                Response response = chain.proceed(request);
-                return response;
-            }
+            Request request = original.newBuilder()
+                    .addHeader("User", "MindaBtm56$36gg5#@")
+                    .addHeader("Password", "98Push56dsad$#AtadniM")
+                    .method(original.method(), original.body())
+                    .build();
+            Response response = chain.proceed(request);
+            return response;
         });
 
         dispatcher1.setMaxRequests(3000);
@@ -267,19 +248,16 @@ public class RetrofitClient2 {
     public static <S> S createServiceMindacare(Class<S> serviceClass) {
         OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
         httpClient.protocols(Util.immutableListOf(Protocol.HTTP_1_1));
-        httpClient.addInterceptor(new Interceptor() {
-            @Override
-            public Response intercept(Interceptor.Chain chain) throws IOException {
-                Request original = chain.request();
+        httpClient.addInterceptor(chain -> {
+            Request original = chain.request();
 
-                Request request = original.newBuilder()
-                        .addHeader("User", "MindaSugg56$#45#@")
-                        .addHeader("Password", "985Sugg656$#AtadniM")
-                        .method(original.method(), original.body())
-                        .build();
-                Response response = chain.proceed(request);
-                return response;
-            }
+            Request request = original.newBuilder()
+                    .addHeader("User", "MindaSugg56$#45#@")
+                    .addHeader("Password", "985Sugg656$#AtadniM")
+                    .method(original.method(), original.body())
+                    .build();
+            Response response = chain.proceed(request);
+            return response;
         });
 
         dispatcher1.setMaxRequests(3000);
@@ -305,13 +283,10 @@ public class RetrofitClient2 {
     public static <S> S createServiceEHSUpload(Class<S> serviceClass) {
         OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
         httpClient.protocols(Util.immutableListOf(Protocol.HTTP_1_1));
-        httpClient.addInterceptor(new Interceptor() {
-            @Override
-            public Response intercept(Interceptor.Chain chain) throws IOException {
-                Request original = chain.request();
-                Response response = chain.proceed(original);
-                return response;
-            }
+        httpClient.addInterceptor(chain -> {
+            Request original = chain.request();
+            Response response = chain.proceed(original);
+            return response;
         });
 
         dispatcher1.setMaxRequests(3000);
@@ -332,19 +307,16 @@ public class RetrofitClient2 {
     public static <S> S createServiceitHelpDesk(Class<S> serviceClass) {
         OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
         httpClient.protocols(Util.immutableListOf(Protocol.HTTP_1_1));
-        httpClient.addInterceptor(new Interceptor() {
-            @Override
-            public Response intercept(Interceptor.Chain chain) throws IOException {
-                Request original = chain.request();
+        httpClient.addInterceptor(chain -> {
+            Request original = chain.request();
 
-                Request request = original.newBuilder()
-                        .addHeader("User", "MindaBtm56$#45#@")
-                        .addHeader("Password", "985Btm56$#AtadniM")
-                        .method(original.method(), original.body())
-                        .build();
-                Response response = chain.proceed(request);
-                return response;
-            }
+            Request request = original.newBuilder()
+                    .addHeader("User", "MindaBtm56$#45#@")
+                    .addHeader("Password", "985Btm56$#AtadniM")
+                    .method(original.method(), original.body())
+                    .build();
+            Response response = chain.proceed(request);
+            return response;
         });
 
         dispatcher1.setMaxRequests(3000);

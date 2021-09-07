@@ -17,11 +17,11 @@ import androidx.recyclerview.widget.RecyclerView;
 
 
 public class IAMGetPlantAdapter extends RecyclerView.Adapter<IAMGetPlantAdapter.MyViewHolder> {
-    private List<IAMGetPlantModel> list;
+    private final List<IAMGetPlantModel> list;
     Context context;
     PlantInterface plantInterface;
 
-    public class MyViewHolder extends RecyclerView.ViewHolder {
+    public static class MyViewHolder extends RecyclerView.ViewHolder {
         public RadioButton rb;
         public CheckBox cb;
 
@@ -51,17 +51,14 @@ public class IAMGetPlantAdapter extends RecyclerView.Adapter<IAMGetPlantAdapter.
         final IAMGetPlantModel iamGetPlantModel = list.get(position);
         holder.cb.setVisibility(View.VISIBLE);
         holder.cb.setText(iamGetPlantModel.getUnitName() + " (" + iamGetPlantModel.getPlantCode() + ")");
-        holder.cb.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (holder.cb.isChecked()) {
-                    plantInterface.handleClick(iamGetPlantModel.getPlantCode(), "check", iamGetPlantModel.getUnitName(),iamGetPlantModel.getUnitCode());
-                } else {
-                    plantInterface.handleClick(iamGetPlantModel.getPlantCode(), "unCheck", iamGetPlantModel.getUnitName(),iamGetPlantModel.getUnitCode());
-                }
+        holder.cb.setOnClickListener(view -> {
+            if (holder.cb.isChecked()) {
+                plantInterface.handleClick(iamGetPlantModel.getPlantCode(), "check", iamGetPlantModel.getUnitName(),iamGetPlantModel.getUnitCode());
+            } else {
+                plantInterface.handleClick(iamGetPlantModel.getPlantCode(), "unCheck", iamGetPlantModel.getUnitName(),iamGetPlantModel.getUnitCode());
+            }
 
 //                ((RequestForAccessActivity) context).plantId(iamGetPlantModel.getPlantCode());
-            }
         });
     }
 

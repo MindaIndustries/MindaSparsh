@@ -9,7 +9,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.DatePicker;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -36,13 +35,13 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class AbnormalityAdapter extends BaseAdapter {
-    private Context mContext;
-    private LayoutInflater inflater = null;
-    private List<AbnormalityView_Model> homeData = null;
+    private final Context mContext;
+    private final LayoutInflater inflater;
+    private final List<AbnormalityView_Model> homeData;
     public String date;
     public int total;
     AbnormalityAdapter.ViewHolder holder;
-    private ProgressDialog progress = null;
+    private final ProgressDialog progress;
     long time, time_target, time_update, time_abnormility, oneday = 86400000;
 
 
@@ -57,7 +56,7 @@ public class AbnormalityAdapter extends BaseAdapter {
         time = System.currentTimeMillis();
     }
 
-    public class ViewHolder {
+    public static class ViewHolder {
         public TextView tv_result, tv_status, tv_Actual_date, tv_test_date, tv_action, tv_plant, tv_business, tv_domain, tv_category, tv_date, tv_abnormality, tv_sn, tv_update, tv_view, tv_uplodedBy, tv_department, tv_updatedby;
         public LinearLayout laycellview;
     }
@@ -208,79 +207,61 @@ public class AbnormalityAdapter extends BaseAdapter {
             holder.tv_abnormality.setText(homeData.get(position).getDescription());
             holder.tv_sn.setText(String.valueOf(position + 1));
             holder.tv_uplodedBy.setText(homeData.get(position).getUpdatedBy());
-            holder.tv_abnormality.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    if (homeData.get(position).getDescription().length() != 0)
-                        showdetail("Abnormality", homeData.get(position).getDescription());
+            holder.tv_abnormality.setOnClickListener(view -> {
+                if (homeData.get(position).getDescription().length() != 0)
+                    showdetail("Abnormality", homeData.get(position).getDescription());
+            });
+            holder.tv_action.setOnClickListener(view -> {
+                if (homeData.get(position).getAction() != null) {
+                    if (homeData.get(position).getAction().length() != 0)
+                        showdetail("Action", homeData.get(position).getAction());
                 }
             });
-            holder.tv_action.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    if (homeData.get(position).getAction() != null) {
-                        if (homeData.get(position).getAction().length() != 0)
-                            showdetail("Action", homeData.get(position).getAction());
-                    }
-                }
-            });
-            holder.tv_result.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    if (homeData.get(position).getBenefits() != null) {
-                        if (homeData.get(position).getBenefits().length() != 0)
-                            showdetail("Benifits", homeData.get(position).getBenefits());
-                    }
+            holder.tv_result.setOnClickListener(view -> {
+                if (homeData.get(position).getBenefits() != null) {
+                    if (homeData.get(position).getBenefits().length() != 0)
+                        showdetail("Benifits", homeData.get(position).getBenefits());
                 }
             });
 
-            holder.tv_update.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    if (AbnormalityAddressingActivity.Role.equalsIgnoreCase("C")) {
-                        if (holder.tv_test_date.getText().toString() != null && holder.tv_test_date.getText().toString().length() > 0 && !holder.tv_test_date.getText().toString().equalsIgnoreCase("Add Date")/*get(position).getTargetDate() != null*/) {
-                            Intent intent = new Intent(mContext, AbnormalityAddressing2Activity.class);
-                            intent.putExtra("ID", homeData.get(position).getID());
-                            intent.putExtra("domain", homeData.get(position).getDomain());
-                            intent.putExtra("business", homeData.get(position).getBusinessName());
-                            intent.putExtra("plant", homeData.get(position).getPlantName());
-                            intent.putExtra("department", homeData.get(position).getDepartmentName());
-                            mContext.startActivity(intent);
-                            AbnormalityAddressingActivity context = (AbnormalityAddressingActivity) mContext;
-                            context.finish();
-                        } else {
-                            Snackbar.make(view, "Please Set Target Date First", Snackbar.LENGTH_LONG).show();
-                        }
+            holder.tv_update.setOnClickListener(view -> {
+                if (AbnormalityAddressingActivity.Role.equalsIgnoreCase("C")) {
+                    if (holder.tv_test_date.getText().toString() != null && holder.tv_test_date.getText().toString().length() > 0 && !holder.tv_test_date.getText().toString().equalsIgnoreCase("Add Date")/*get(position).getTargetDate() != null*/) {
+                        Intent intent = new Intent(mContext, AbnormalityAddressing2Activity.class);
+                        intent.putExtra("ID", homeData.get(position).getID());
+                        intent.putExtra("domain", homeData.get(position).getDomain());
+                        intent.putExtra("business", homeData.get(position).getBusinessName());
+                        intent.putExtra("plant", homeData.get(position).getPlantName());
+                        intent.putExtra("department", homeData.get(position).getDepartmentName());
+                        mContext.startActivity(intent);
+                        AbnormalityAddressingActivity context = (AbnormalityAddressingActivity) mContext;
+                        context.finish();
                     } else {
-                        Snackbar.make(view, "You are not Authorized", Snackbar.LENGTH_LONG).show();
+                        Snackbar.make(view, "Please Set Target Date First", Snackbar.LENGTH_LONG).show();
                     }
+                } else {
+                    Snackbar.make(view, "You are not Authorized", Snackbar.LENGTH_LONG).show();
                 }
             });
-            holder.tv_view.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Intent intent = new Intent(mContext, ViewImageActivity.class);
-                    intent.putExtra("ID", homeData.get(position).getID());
-                    mContext.startActivity(intent);
-                }
+            holder.tv_view.setOnClickListener(view -> {
+                Intent intent = new Intent(mContext, ViewImageActivity.class);
+                intent.putExtra("ID", homeData.get(position).getID());
+                mContext.startActivity(intent);
             });
 
-            holder.tv_test_date.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
+            holder.tv_test_date.setOnClickListener(view -> {
 
-                    if (AbnormalityAddressingActivity.Role.equalsIgnoreCase("C")) {
-                        if (holder.tv_test_date.getText().toString().equalsIgnoreCase("Add Date")) {
-                            setdate(homeData.get(position).getID(), position, holder.tv_test_date);
-
-                        } else {
-                            Snackbar.make(view, "You have Already set Target Date", Snackbar.LENGTH_LONG).show();
-                        }
-
+                if (AbnormalityAddressingActivity.Role.equalsIgnoreCase("C")) {
+                    if (holder.tv_test_date.getText().toString().equalsIgnoreCase("Add Date")) {
+                        setdate(homeData.get(position).getID(), position, holder.tv_test_date);
 
                     } else {
-                        Snackbar.make(view, "You are not Authorized", Snackbar.LENGTH_LONG).show();
+                        Snackbar.make(view, "You have Already set Target Date", Snackbar.LENGTH_LONG).show();
                     }
+
+
+                } else {
+                    Snackbar.make(view, "You are not Authorized", Snackbar.LENGTH_LONG).show();
                 }
             });
 
@@ -308,30 +289,26 @@ public class AbnormalityAdapter extends BaseAdapter {
         int mMonth = c.get(Calendar.MONTH);
         int mDay = c.get(Calendar.DAY_OF_MONTH);
         DatePickerDialog datePickerDialog = new DatePickerDialog(mContext,
-                new DatePickerDialog.OnDateSetListener() {
+                (view, year, monthOfYear, dayOfMonth) -> {
+                    String month = String.valueOf(monthOfYear + 1);
 
-                    @Override
-                    public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
-                        String month = String.valueOf(monthOfYear + 1);
-
-                        if (month.length() == 1) {
-                            month = "0" + month;
-                        } else {
-                            month = month;
-                        }
-
-                        if (String.valueOf(dayOfMonth + 1).length() == 1) {
-                            date = "0" + String.valueOf(dayOfMonth) + "-" + month + "-" + String.valueOf(year);
-                        } else {
-                            date = String.valueOf(dayOfMonth) + "-" + month + "-" + String.valueOf(year);
-                        }
-
-                        textView.setText(date);
-
-                        hitSetTargetDateApi(id, date, homeData.get(position).getDepartment(), holder.tv_test_date);
-
-
+                    if (month.length() == 1) {
+                        month = "0" + month;
+                    } else {
+                        month = month;
                     }
+
+                    if (String.valueOf(dayOfMonth + 1).length() == 1) {
+                        date = "0" + String.valueOf(dayOfMonth) + "-" + month + "-" + String.valueOf(year);
+                    } else {
+                        date = String.valueOf(dayOfMonth) + "-" + month + "-" + String.valueOf(year);
+                    }
+
+                    textView.setText(date);
+
+                    hitSetTargetDateApi(id, date, homeData.get(position).getDepartment(), holder.tv_test_date);
+
+
                 }, mYear, mMonth, mDay);
         datePickerDialog.getDatePicker().setMinDate(System.currentTimeMillis());
         datePickerDialog.show();
@@ -387,11 +364,12 @@ public class AbnormalityAdapter extends BaseAdapter {
         SimpleDateFormat inputFormat = new SimpleDateFormat(inputPattern);
         SimpleDateFormat outputFormat = new SimpleDateFormat(outputPattern);
 
-        Date date = null;
+        Date date;
         String str = null;
 
         try {
             date = inputFormat.parse(time);
+            assert date != null;
             str = outputFormat.format(date);
         } catch (Exception e) {
             e.printStackTrace();

@@ -68,57 +68,33 @@ public class ManufacturingFragment extends Fragment {
         loginAccess = myPref.getStringSet("key", null);
 
         final DashBoardActivity contaxt = (DashBoardActivity) getActivity();
-        im_right.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                contaxt.viewPager.setCurrentItem(contaxt.getItem(+1), true);
-            }
-        });
-        im_left.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                contaxt.viewPager.setCurrentItem(contaxt.getItem(-1), true);
-            }
-        });
+        im_right.setOnClickListener(view -> contaxt.viewPager.setCurrentItem(contaxt.getItem(+1), true));
+        im_left.setOnClickListener(view -> contaxt.viewPager.setCurrentItem(contaxt.getItem(-1), true));
 
-        ehs.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent in = new Intent(getActivity(), EHS_Home.class);
-                startActivity(in);
+        ehs.setOnClickListener(v -> {
+            Intent in = new Intent(getActivity(), EHS_Home.class);
+            startActivity(in);
 
-            }
         });
         // Inflate the layout for this fragment
 
-        dmwButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        dmwButton.setOnClickListener(v -> {
 
-                try {
-                    if (loginAccess.contains("dwm") || loginAccess.contains("DWM") ||
-                            loginAccess.contains("odwm") || loginAccess.contains("ODWM") ||
-                            loginAccess.contains("mdwm") || loginAccess.contains("MDWM")) {
-                        Intent intent = new Intent(getActivity(), SheedActivity.class);
-                        startActivity(intent);
-                    } else {
-                        Toast.makeText(getContext(), "You Are Not Authorized", Toast.LENGTH_LONG).show();
-                    }
-                } catch (Exception e) {
-
+            try {
+                if (loginAccess.contains("dwm") || loginAccess.contains("DWM") ||
+                        loginAccess.contains("odwm") || loginAccess.contains("ODWM") ||
+                        loginAccess.contains("mdwm") || loginAccess.contains("MDWM")) {
+                    Intent intent = new Intent(getActivity(), SheedActivity.class);
+                    startActivity(intent);
+                } else {
+                    Toast.makeText(getContext(), "You Are Not Authorized", Toast.LENGTH_LONG).show();
                 }
-
+            } catch (Exception e) {
+                e.printStackTrace();
             }
+
         });
-        dwm_btn1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                hitGetUserDetail(myPref.getString("Id", ""));
-
-
-            }
-        });
+        dwm_btn1.setOnClickListener(view -> hitGetUserDetail(myPref.getString("Id", "")));
         return convertView;
     }
 

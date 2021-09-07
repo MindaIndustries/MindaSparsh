@@ -18,9 +18,9 @@ import java.util.List;
  */
 
 public class IAMGetAuthorizationProfileAdapter implements SpinnerAdapter {
-    private List<IAMGetAuthorizationProfileModel> spinnerData;
-    private LayoutInflater mInflater;
-    private Context mContext;
+    private final List<IAMGetAuthorizationProfileModel> spinnerData;
+    private final LayoutInflater mInflater;
+    private final Context mContext;
 
 
     public IAMGetAuthorizationProfileAdapter(Context applicationContext, List<IAMGetAuthorizationProfileModel> data) {

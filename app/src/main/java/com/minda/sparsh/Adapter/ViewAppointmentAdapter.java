@@ -32,7 +32,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class ViewAppointmentAdapter extends RecyclerView.Adapter<ViewAppointmentAdapter.MyViewHolder> {
-    private List<ViewAppointmentModel> viewAppointmentModelList;
+    private final List<ViewAppointmentModel> viewAppointmentModelList;
     Context context;
     private ProgressDialog progress = null;
 
@@ -118,37 +118,31 @@ public class ViewAppointmentAdapter extends RecyclerView.Adapter<ViewAppointment
             holder.lay_edit_cancel.setVisibility(View.GONE);
 
         }
-        holder.tv_edit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+        holder.tv_edit.setOnClickListener(view -> {
 
-                Calendar c = Calendar.getInstance();
-                SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy HH:mm");
-                String strDate = sdf.format(c.getTime());
-                if (checkTimings(strDate, viewAppointmentModel.getAppointmentDate1() + " " + viewAppointmentModel.getTimeOut())) {
-                    Intent intent = new Intent(context, VisitorManagementActivity.class);
-                    intent.putExtra(Constant.CALL_FROM_ACTIVITY, "visitor_list");
-                    intent.putExtra(Constant.VISITOR_ID, viewAppointmentModel.getVisitorLogID());
-                    context.startActivity(intent);
-                } else {
-                    Toast.makeText(context, "Time passed you can not added the details", Toast.LENGTH_SHORT).show();
-                }
+            Calendar c1 = Calendar.getInstance();
+            SimpleDateFormat sdf1 = new SimpleDateFormat("dd-MM-yyyy HH:mm");
+            String strDate1 = sdf1.format(c1.getTime());
+            if (checkTimings(strDate1, viewAppointmentModel.getAppointmentDate1() + " " + viewAppointmentModel.getTimeOut())) {
+                Intent intent = new Intent(context, VisitorManagementActivity.class);
+                intent.putExtra(Constant.CALL_FROM_ACTIVITY, "visitor_list");
+                intent.putExtra(Constant.VISITOR_ID, viewAppointmentModel.getVisitorLogID());
+                context.startActivity(intent);
+            } else {
+                Toast.makeText(context, "Time passed you can not added the details", Toast.LENGTH_SHORT).show();
             }
         });
 
-        holder.tv_cancel.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Calendar c = Calendar.getInstance();
-                SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy HH:mm");
-                String strDate = sdf.format(c.getTime());
-                if (checkTimings(strDate, viewAppointmentModel.getAppointmentDate1() + " " + viewAppointmentModel.getTimeOut())) {
-                    hitUpdateVisitorStatusApi(RetrofitClient2.CKEY, String.valueOf(viewAppointmentModel.getVisitorLogID()), "0");
+        holder.tv_cancel.setOnClickListener(view -> {
+            Calendar c12 = Calendar.getInstance();
+            SimpleDateFormat sdf12 = new SimpleDateFormat("dd-MM-yyyy HH:mm");
+            String strDate12 = sdf12.format(c12.getTime());
+            if (checkTimings(strDate12, viewAppointmentModel.getAppointmentDate1() + " " + viewAppointmentModel.getTimeOut())) {
+                hitUpdateVisitorStatusApi(RetrofitClient2.CKEY, String.valueOf(viewAppointmentModel.getVisitorLogID()), "0");
 
-                } else {
-                    Toast.makeText(context, "Appointment can't cancel", Toast.LENGTH_SHORT).show();
+            } else {
+                Toast.makeText(context, "Appointment can't cancel", Toast.LENGTH_SHORT).show();
 
-                }
             }
         });
     }

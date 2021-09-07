@@ -74,7 +74,7 @@ public class Utility {
 
     public static boolean isValidEmail(String email, Context context) {
         String EMAIL_REGEX = context.getResources().getString(R.string.email_val);
-        Boolean b = email.matches(EMAIL_REGEX);
+        boolean b = email.matches(EMAIL_REGEX);
         System.out.println("is e-mail: " + email + " :Valid = " + b);
         return b;
     }
@@ -201,7 +201,7 @@ public class Utility {
             SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
             Date currenTimeZone = (Date) calendar.getTime();
             String ChatDate = sdf.format(currenTimeZone);
-            String currentDate = getCDate(ll, tz, ChatDate, calendar);
+            String currentDate = getCDate(ChatDate);
 
             if (currentDate != null) {
                 SimpleDateFormat sdf1 = new SimpleDateFormat("hh:mm a");
@@ -217,7 +217,7 @@ public class Utility {
 
     }
 
-    private static String getCDate(Long ll, TimeZone tz, String strDate, Calendar calendar) {
+    private static String getCDate(String strDate) {
         String date = null;
         SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
         String CurrentDate = getCurrentDate(df);

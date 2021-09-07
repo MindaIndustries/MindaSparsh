@@ -187,7 +187,7 @@ public class UriUtils {
             InputStream inputStream = context.getContentResolver().openInputStream(uri);
             FileOutputStream outputStream = new FileOutputStream(file);
             int read = 0;
-            int maxBufferSize = 1 * 1024 * 1024;
+            int maxBufferSize = 1024 * 1024;
             int bytesAvailable = inputStream.available();
 
             //int bufferSize = 1024;
@@ -203,7 +203,7 @@ public class UriUtils {
             Log.e("File Path", "Path " + file.getPath());
             Log.e("File Size", "Size " + file.length());
         } catch (Exception e) {
-            Log.e("Exception", e.getMessage());
+            e.printStackTrace();
         }
         return file.getPath();
     }
@@ -222,7 +222,7 @@ public class UriUtils {
             InputStream inputStream = context.getContentResolver().openInputStream(uri);
             FileOutputStream outputStream = new FileOutputStream(file);
             int read = 0;
-            int maxBufferSize = 1 * 1024 * 1024;
+            int maxBufferSize = 1024 * 1024;
             int bytesAvailable = inputStream.available();
 
             //int bufferSize = 1024;
@@ -238,7 +238,7 @@ public class UriUtils {
             Log.e("File Path", "Path " + file.getPath());
             Log.e("File Size", "Size " + file.length());
         } catch (Exception e) {
-            Log.e("Exception", e.getMessage());
+            e.printStackTrace();
         }
         return file.getPath();
     }

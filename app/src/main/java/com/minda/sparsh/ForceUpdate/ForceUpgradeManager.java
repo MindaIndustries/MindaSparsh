@@ -3,7 +3,6 @@ package com.minda.sparsh.ForceUpdate;
 import android.app.Activity;
 import android.app.Application;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
@@ -22,9 +21,6 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.remoteconfig.FirebaseRemoteConfig;
 import com.minda.sparsh.R;
-
-import org.jsoup.helper.StringUtil;
-
 import java.lang.ref.WeakReference;
 import java.util.HashMap;
 import java.util.Map;
@@ -116,12 +112,7 @@ public class ForceUpgradeManager implements LifecycleObserver {
           .setMessage("A new Version of Minda Sparsh is available on Play Store. Please update app for seamless experience.")
               .setCancelable(false)
           .setPositiveButton("Continue",
-              new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
-                  redirectStore(url);
-                }
-              }).create();
+                  (dialog1, which) -> redirectStore(url)).create();
       if(!dialog.isShowing()) {
           dialog.show();
       }
@@ -154,24 +145,16 @@ public class ForceUpgradeManager implements LifecycleObserver {
 
     remoteConfig.setDefaultsAsync(remoteConfigDefaults);
     remoteConfig.fetch(0)
-        .addOnCompleteListener(new OnCompleteListener<Void>() {
-          @Override
-          public void onComplete(@NonNull Task<Void> task) {
-            if (task.isSuccessful()) {
-              Log.d(TAG, "remote config is fetched.");
-              remoteConfig.fetchAndActivate();
-            }
-            if (remoteConfig.getBoolean(KEY_UPDATE_REQUIRED)) {
-              String currentVersion = remoteConfig.getString(KEY_CURRENT_VERSION);
-              String appVersion = getAppVersion(context);
-              if (!TextUtils.equals(currentVersion, appVersion)) {
-                  new Handler().postDelayed(new Runnable() {
-                      @Override
-                      public void run() {
-                          onUpdateNeeded(remoteConfig.getString(KEY_UPDATE_URL));
-                      }
-                  },4000);
-              }
+        .addOnCompleteListener(task -> {
+          if (task.isSuccessful()) {
+            Log.d(TAG, "remote config is fetched.");
+            remoteConfig.fetchAndActivate();
+          }
+          if (remoteConfig.getBoolean(KEY_UPDATE_REQUIRED)) {
+            String currentVersion = remoteConfig.getString(KEY_CURRENT_VERSION);
+            String appVersion = getAppVersion(context);
+            if (!TextUtils.equals(currentVersion, appVersion)) {
+                new Handler().postDelayed(() -> onUpdateNeeded(remoteConfig.getString(KEY_UPDATE_URL)),4000);
             }
           }
         });

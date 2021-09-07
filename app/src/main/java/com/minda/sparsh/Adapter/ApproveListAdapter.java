@@ -14,12 +14,14 @@ import com.minda.sparsh.R;
 import com.minda.sparsh.model.ApproveList;
 import com.minda.sparsh.util.Utility;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.util.List;
 
 import androidx.recyclerview.widget.RecyclerView;
 
 public class ApproveListAdapter extends RecyclerView.Adapter<ApproveListAdapter.MyViewHolder> {
-    private List<ApproveList> approveLists;
+    private final List<ApproveList> approveLists;
     Context context;
 
 
@@ -28,6 +30,7 @@ public class ApproveListAdapter extends RecyclerView.Adapter<ApproveListAdapter.
         this.context = context1;
     }
 
+    @NotNull
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext())
@@ -52,21 +55,15 @@ public class ApproveListAdapter extends RecyclerView.Adapter<ApproveListAdapter.
         }
 
 
-        holder.btn_view.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(context, AccessRequestDetailsActivity.class);
-                intent.putExtra(Utility.REQUEST_ID, approveListModel.getRequestId());
-                context.startActivity(intent);
-            }
+        holder.btn_view.setOnClickListener(view -> {
+            Intent intent = new Intent(context, AccessRequestDetailsActivity.class);
+            intent.putExtra(Utility.REQUEST_ID, approveListModel.getRequestId());
+            context.startActivity(intent);
         });
-        holder.tv_access_request_no.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+        holder.tv_access_request_no.setOnClickListener(view -> {
 //                Intent intent = new Intent(context, AccessRequestDetailsActivity.class);
 //                intent.putExtra(Utility.REQUEST_ID, approveListModel.getRequestId());
 //                context.startActivity(intent);
-            }
         });
     }
 
@@ -76,8 +73,8 @@ public class ApproveListAdapter extends RecyclerView.Adapter<ApproveListAdapter.
     }
 
 
-    public class MyViewHolder extends RecyclerView.ViewHolder {
-        public TextView tv_access_request_no, tv_request_on, tv_access_for, tv_request_type, tv_Approval_status;
+    public static class MyViewHolder extends RecyclerView.ViewHolder {
+        public TextView tv_access_request_no, tv_request_on, tv_access_for, tv_Approval_status;
         Button btn_view;
 
         public MyViewHolder(View view) {

@@ -68,17 +68,14 @@ public class AssignConcernFragment extends Fragment {
         bottomUpConcernAdapter.notifyDataSetChanged();
 
         BottomUpConcernServices bottomUpConcernServices = new BottomUpConcernServices();
-        bottomUpConcernServices.getAssignedConcerns(new OnTaskComplete() {
-            @Override
-            public void onTaskComplte(CarotResponse carotResponse) {
-                if (carotResponse.getStatuscode() == HttpsURLConnection.HTTP_OK) {
-                    List<BottomUpConcern> list = (List<BottomUpConcern>) carotResponse.getData();
-                    if (list != null && list.size() > 0) {
-                        concerns.addAll(list);
-                    }
+        bottomUpConcernServices.getAssignedConcerns(carotResponse -> {
+            if (carotResponse.getStatuscode() == HttpsURLConnection.HTTP_OK) {
+                List<BottomUpConcern> list = (List<BottomUpConcern>) carotResponse.getData();
+                if (list != null && list.size() > 0) {
+                    concerns.addAll(list);
                 }
-                bottomUpConcernAdapter.notifyDataSetChanged();
             }
+            bottomUpConcernAdapter.notifyDataSetChanged();
         }, empCode);
     }
 }

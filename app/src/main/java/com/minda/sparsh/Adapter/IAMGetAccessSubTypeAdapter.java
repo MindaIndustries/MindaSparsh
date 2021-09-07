@@ -18,9 +18,9 @@ import java.util.List;
  */
 
 public class IAMGetAccessSubTypeAdapter implements SpinnerAdapter {
-    private List<IAMGetAccessSubTypeModel> spinnerData;
-    private LayoutInflater mInflater;
-    private Context mContext;
+    private final List<IAMGetAccessSubTypeModel> spinnerData;
+    private final LayoutInflater mInflater;
+    private final Context mContext;
 
 
     public IAMGetAccessSubTypeAdapter(Context applicationContext, List<IAMGetAccessSubTypeModel> data) {

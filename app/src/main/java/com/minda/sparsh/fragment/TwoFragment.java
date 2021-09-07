@@ -15,13 +15,8 @@ import com.minda.sparsh.R;
 import com.minda.sparsh.model.AboutUsDetails;
 import com.minda.sparsh.util.RetrofitClient2;
 import com.minda.sparsh.util.Utility;
-
-import org.w3c.dom.Text;
-
 import java.util.List;
-
 import javax.net.ssl.HttpsURLConnection;
-
 import androidx.fragment.app.Fragment;
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -115,23 +110,15 @@ public class TwoFragment extends Fragment {
             getAboutUsInfo();
         }
 
-        im_right.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                contaxt.viewPager.setCurrentItem(contaxt.getItem(+1), true);
-            }
-        });
+        im_right.setOnClickListener(view1 -> contaxt.viewPager.setCurrentItem(contaxt.getItem(+1), true));
 
 
-        im_web.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                String url = "https://unominda.com";
-                Intent i = new Intent(Intent.ACTION_VIEW);
-                i.setData(Uri.parse(url));
-                startActivity(i);
+        im_web.setOnClickListener(view12 -> {
+            String url = "https://unominda.com";
+            Intent i = new Intent(Intent.ACTION_VIEW);
+            i.setData(Uri.parse(url));
+            startActivity(i);
 
-            }
         });
         // Inflate the layout for this fragment
         return view;

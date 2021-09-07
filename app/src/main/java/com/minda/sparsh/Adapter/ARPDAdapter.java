@@ -14,10 +14,10 @@ import java.util.List;
 import androidx.recyclerview.widget.RecyclerView;
 
 public class ARPDAdapter extends RecyclerView.Adapter<ARPDAdapter.MyViewHolder> {
-    private List<ARPDModel> dataList;
+    private final List<ARPDModel> dataList;
     Context context;
 
-    public class MyViewHolder extends RecyclerView.ViewHolder {
+    public static class MyViewHolder extends RecyclerView.ViewHolder {
         public TextView tv_s_no, tv_emp_code, tv_name, tv_status, tv_processor_no,
                 tv_request_on, tv_processed_rejected_on, tv_remarks, processed_by;
 

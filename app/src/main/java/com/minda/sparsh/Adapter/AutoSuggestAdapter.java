@@ -12,7 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 public class AutoSuggestAdapter extends ArrayAdapter<String> implements Filterable {
-    private List<String> mlistData;
+    private final List<String> mlistData;
     List<String> suggestions;
 
     public AutoSuggestAdapter(@NonNull Context context, int resource) {

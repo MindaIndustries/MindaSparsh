@@ -18,9 +18,9 @@ import java.util.List;
  */
 
 public class IAMGetSubCategoryAdapter implements SpinnerAdapter {
-    private List<IAMGetSubCategoryModel> spinnerData;
-    private LayoutInflater mInflater;
-    private Context mContext;
+    private final List<IAMGetSubCategoryModel> spinnerData;
+    private final LayoutInflater mInflater;
+    private final Context mContext;
 
 
     public IAMGetSubCategoryAdapter(Context applicationContext, List<IAMGetSubCategoryModel> data) {

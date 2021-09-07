@@ -18,9 +18,9 @@ import java.util.List;
  */
 
 public class BusinessSpinnerAdapter implements SpinnerAdapter {
-    private List<Business_Model> spinnerData;
-    private LayoutInflater mInflater;
-    private Context mContext;
+    private final List<Business_Model> spinnerData;
+    private final LayoutInflater mInflater;
+    private final Context mContext;
 
 
     public BusinessSpinnerAdapter(Context applicationContext, List<Business_Model> data) {

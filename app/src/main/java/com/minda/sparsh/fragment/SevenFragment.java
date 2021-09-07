@@ -47,18 +47,8 @@ public class SevenFragment extends Fragment {
         ImageView dwm_btn = (ImageView) view.findViewById(R.id.dwm_btn);
 
         final DashBoardActivity contaxt = (DashBoardActivity) getActivity();
-        im_right.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                contaxt.viewPager.setCurrentItem(contaxt.getItem(+1), true);
-            }
-        });
-        im_left.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                contaxt.viewPager.setCurrentItem(contaxt.getItem(-1), true);
-            }
-        });
+        im_right.setOnClickListener(view1 -> contaxt.viewPager.setCurrentItem(contaxt.getItem(+1), true));
+        im_left.setOnClickListener(view12 -> contaxt.viewPager.setCurrentItem(contaxt.getItem(-1), true));
 //        dwm_btn.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View view) {

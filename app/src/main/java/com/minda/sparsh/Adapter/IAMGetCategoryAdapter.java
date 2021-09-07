@@ -18,15 +18,13 @@ import java.util.List;
  */
 
 public class IAMGetCategoryAdapter implements SpinnerAdapter {
-    private List<IAMGetCategorySpinnerModel> spinnerData;
-    private LayoutInflater mInflater;
-    private Context mContext;
+    private final List<IAMGetCategorySpinnerModel> spinnerData;
+    private final LayoutInflater mInflater;
 
 
     public IAMGetCategoryAdapter(Context applicationContext, List<IAMGetCategorySpinnerModel> data) {
         this.spinnerData = data;
-        this.mContext = applicationContext;
-        mInflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        mInflater = (LayoutInflater) applicationContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
     }
 

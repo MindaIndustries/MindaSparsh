@@ -12,8 +12,6 @@ import android.widget.Toast;
 
 import com.minda.sparsh.Adapter.EHSObsAdapter;
 import com.minda.sparsh.R;
-import com.minda.sparsh.listener.CarotResponse;
-import com.minda.sparsh.listener.OnTaskComplete;
 import com.minda.sparsh.model.EHSObsModel;
 import com.minda.sparsh.services.EHSServices;
 
@@ -67,39 +65,32 @@ public class EHSObservationsFragment extends Fragment {
         ehsObsAdapter.notifyDataSetChanged();
         progressBar.setVisibility(View.VISIBLE);
         EHSServices ehsServices = new EHSServices();
-        ehsServices.getIdentifiedObservations(new OnTaskComplete() {
-            @Override
-            public void onTaskComplte(CarotResponse carotResponse) {
-                if (carotResponse.getStatuscode() == HttpsURLConnection.HTTP_OK) {
-                    List<EHSObsModel> list = (List<EHSObsModel>) carotResponse.getData();
-                    if (list != null && list.size() > 0) {
-                        myObservations.addAll(list);
-                        no_list.setVisibility(View.GONE);
+        ehsServices.getIdentifiedObservations(carotResponse -> {
+            if (carotResponse.getStatuscode() == HttpsURLConnection.HTTP_OK) {
+                List<EHSObsModel> list = (List<EHSObsModel>) carotResponse.getData();
+                if (list != null && list.size() > 0) {
+                    myObservations.addAll(list);
+                    no_list.setVisibility(View.GONE);
 
-                    } else {
-                        no_list.setVisibility(View.VISIBLE);
-                    }
-                    ehsObsAdapter.notifyDataSetChanged();
                 } else {
-                    if (getActivity() != null && isAdded()) {
-                        Toast.makeText(getActivity(), "Oops! Something went wrong.", Toast.LENGTH_LONG).show();
-                    }
+                    no_list.setVisibility(View.VISIBLE);
                 }
-                progressBar.setVisibility(View.GONE);
+                ehsObsAdapter.notifyDataSetChanged();
+            } else {
+                if (getActivity() != null && isAdded()) {
+                    Toast.makeText(getActivity(), "Oops! Something went wrong.", Toast.LENGTH_LONG).show();
+                }
             }
+            progressBar.setVisibility(View.GONE);
         }, empCode);
 
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case android.R.id.home:
-                //  onBackPressed();
-                return true;
-
-            default:
-                return super.onOptionsItemSelected(item);
+        if (item.getItemId() == android.R.id.home) {//  onBackPressed();
+            return true;
         }
+        return super.onOptionsItemSelected(item);
     }
 }

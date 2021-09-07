@@ -49,7 +49,7 @@ public class TicketHistoryAdapter extends RecyclerView.Adapter<TicketHistoryAdap
         return ticketHistoryResponseList.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
+    public static class ViewHolder extends RecyclerView.ViewHolder {
         @BindView(R.id.tkt_no)
         TextView tkt_no;
         @BindView(R.id.emp_name)

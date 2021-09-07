@@ -61,56 +61,32 @@ public class ThreeFragment extends Fragment {
         ImageButton meetings = convertView.findViewById(R.id.meetings);
 
         final DashBoardActivity contaxt = (DashBoardActivity) getActivity();
-        im_right.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                contaxt.viewPager.setCurrentItem(contaxt.getItem(+1), true);
-            }
-        });
-        im_left.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                contaxt.viewPager.setCurrentItem(contaxt.getItem(-1), true);
-            }
-        });
-        Ib_visitor.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+        im_right.setOnClickListener(view -> contaxt.viewPager.setCurrentItem(contaxt.getItem(+1), true));
+        im_left.setOnClickListener(view -> contaxt.viewPager.setCurrentItem(contaxt.getItem(-1), true));
+        Ib_visitor.setOnClickListener(view -> {
 //                startActivity(new Intent(getActivity(), VisitorManagementActivity.class));
-                Intent intent = new Intent(getActivity(), VisitorManagementActivity.class);
-                intent.putExtra(Constant.CALL_FROM_ACTIVITY, "fragment");
-                startActivity(intent);
+            Intent intent = new Intent(getActivity(), VisitorManagementActivity.class);
+            intent.putExtra(Constant.CALL_FROM_ACTIVITY, "fragment");
+            startActivity(intent);
 
 
-            }
         });
 
-        meetings.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(getActivity(), "Coming Soon!", Toast.LENGTH_LONG).show();
-            }
-        });
+        meetings.setOnClickListener(v -> Toast.makeText(getActivity(), "Coming Soon!", Toast.LENGTH_LONG).show());
 
-        bottom_up.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (Utility.isOnline(getActivity())) {
-                    Intent in = new Intent(getActivity(), BottomUpConcernActivity.class);
-                    startActivity(in);
-                } else {
-                    Toast.makeText(getActivity(), "Please Check Your Network Connection", Toast.LENGTH_LONG).show();
-                }
-            }
-        });
-
-        suggestion_box.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent in = new Intent(getActivity(), SuggestionBox.class);
+        bottom_up.setOnClickListener(v -> {
+            if (Utility.isOnline(getActivity())) {
+                Intent in = new Intent(getActivity(), BottomUpConcernActivity.class);
                 startActivity(in);
-
+            } else {
+                Toast.makeText(getActivity(), "Please Check Your Network Connection", Toast.LENGTH_LONG).show();
             }
+        });
+
+        suggestion_box.setOnClickListener(v -> {
+            Intent in = new Intent(getActivity(), SuggestionBox.class);
+            startActivity(in);
+
         });
 
         return convertView;

@@ -14,10 +14,10 @@ import java.util.List;
 import androidx.recyclerview.widget.RecyclerView;
 
 public class PlantDetailsAdapter extends RecyclerView.Adapter<PlantDetailsAdapter.MyViewHolder> {
-    private List<AccessRequestPlantDetailModel> plantDetailModelList;
+    private final List<AccessRequestPlantDetailModel> plantDetailModelList;
     Context context;
 
-    public class MyViewHolder extends RecyclerView.ViewHolder {
+    public static class MyViewHolder extends RecyclerView.ViewHolder {
         public TextView tv_s_no, tv_domain, tv_business, tv_plant;
 
         public MyViewHolder(View view) {

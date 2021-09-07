@@ -54,7 +54,7 @@ public class MindaCareQuesAdapter extends RecyclerView.Adapter<MindaCareQuesAdap
         return list.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
+    public static class ViewHolder extends RecyclerView.ViewHolder {
         @BindView(R.id.qn)
         TextView qn;
 

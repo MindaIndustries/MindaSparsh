@@ -18,9 +18,9 @@ import java.util.List;
  */
 
 public class GroupSpinnerAdapter implements SpinnerAdapter {
-    private List<Sub_Department_Model> spinnerData;
-    private LayoutInflater mInflater;
-    private Context mContext;
+    private final List<Sub_Department_Model> spinnerData;
+    private final LayoutInflater mInflater;
+    private final Context mContext;
 
 
     public GroupSpinnerAdapter(Context applicationContext, List<Sub_Department_Model> data) {

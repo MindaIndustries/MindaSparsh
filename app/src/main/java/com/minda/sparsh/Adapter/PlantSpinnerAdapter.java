@@ -18,9 +18,9 @@ import java.util.List;
  */
 
 public class PlantSpinnerAdapter implements SpinnerAdapter {
-    private List<Plant_Model> spinnerData;
-    private LayoutInflater mInflater;
-    private Context mContext;
+    private final List<Plant_Model> spinnerData;
+    private final LayoutInflater mInflater;
+    private final Context mContext;
 
 
     public PlantSpinnerAdapter(Context applicationContext, List<Plant_Model> data) {

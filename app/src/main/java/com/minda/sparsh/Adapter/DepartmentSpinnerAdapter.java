@@ -18,15 +18,13 @@ import java.util.List;
  */
 
 public class DepartmentSpinnerAdapter implements SpinnerAdapter {
-    private List<Department_Model> spinnerData;
-    private LayoutInflater mInflater;
-    private Context mContext;
+    private final List<Department_Model> spinnerData;
+    private final LayoutInflater mInflater;
 
 
     public DepartmentSpinnerAdapter(Context applicationContext, List<Department_Model> data) {
         this.spinnerData = data;
-        this.mContext = applicationContext;
-        mInflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        mInflater = (LayoutInflater) applicationContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
     }
 

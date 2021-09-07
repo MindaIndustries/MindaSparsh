@@ -1,17 +1,10 @@
 package com.minda.sparsh.fragment;
 
 
-import android.app.ProgressDialog;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.LinearLayout;
-import android.widget.RadioGroup;
-import android.widget.TextView;
 
 import com.minda.sparsh.R;
 
@@ -21,20 +14,20 @@ import androidx.fragment.app.Fragment;
  * A simple {@link Fragment} subclass.
  */
 public class NewAppointmentFragment extends BaseFragment {
-    public static TextView tv_from_date, tv_to_date;
-    TextView tv_start_time, tv_end_time, et_additional_no_person, tv_decrement, tv_increment;
-    private static int dateType;
-    LinearLayout lay_rest_content, lay_contact;
-    EditText et_visitor_mobile_no, et_first_name, et_last_name, et_email, et_mobile, et_company_name, et_address, et_city, et_pin_code, et_purpose;
-    RadioGroup rg;
-    String rbValue = "M";
-    String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
-    private ProgressDialog progress = null;
-    Button btn_submit;
-    private SharedPreferences myPref = null;
-    static String tv_from_date_value = "", tv_to_date_value = "";
-    static final int PICK_CONTACT = 1;
-    private static final int PERMISSION_REQUEST_CODE = 200;
+    //public static TextView tv_from_date, tv_to_date;
+    //TextView tv_start_time, tv_end_time, et_additional_no_person, tv_decrement, tv_increment;
+    //private static int dateType;
+   // LinearLayout lay_rest_content, lay_contact;
+    //EditText et_visitor_mobile_no, et_first_name, et_last_name, et_email, et_mobile, et_company_name, et_address, et_city, et_pin_code, et_purpose;
+    //RadioGroup rg;
+    //String rbValue = "M";
+    //String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
+   // private ProgressDialog progress = null;
+   // Button btn_submit;
+   // private SharedPreferences myPref = null;
+   // static String tv_from_date_value = "", tv_to_date_value = "";
+    //static final int PICK_CONTACT = 1;
+    //private static final int PERMISSION_REQUEST_CODE = 200;
 
     public NewAppointmentFragment() {
         // Required empty public constructor

@@ -39,7 +39,7 @@ public class AbnormalityDashboard extends AppCompatActivity implements View.OnCl
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setHomeAsUpIndicator(R.drawable.back);
-        title.setText("Abnormality");
+        title.setText(getResources().getString(R.string.abnormality));
 
         im_back = (ImageView) findViewById(R.id.im_back);
         tv_continue = (TextView) findViewById(R.id.tv_continue);
@@ -61,14 +61,11 @@ public class AbnormalityDashboard extends AppCompatActivity implements View.OnCl
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case android.R.id.home:
-                onBackPressed();
-                return true;
-
-            default:
-                return super.onOptionsItemSelected(item);
+        if (item.getItemId() == android.R.id.home) {
+            onBackPressed();
+            return true;
         }
+        return super.onOptionsItemSelected(item);
     }
 
 

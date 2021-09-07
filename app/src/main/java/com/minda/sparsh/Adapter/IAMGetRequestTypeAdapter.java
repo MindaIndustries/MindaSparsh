@@ -18,9 +18,9 @@ import java.util.List;
  */
 
 public class IAMGetRequestTypeAdapter implements SpinnerAdapter {
-    private List<IAMGetRequestTypeSpinnerModel> spinnerData;
-    private LayoutInflater mInflater;
-    private Context mContext;
+    private final List<IAMGetRequestTypeSpinnerModel> spinnerData;
+    private final LayoutInflater mInflater;
+    private final Context mContext;
 
 
     public IAMGetRequestTypeAdapter(Context applicationContext, List<IAMGetRequestTypeSpinnerModel> data) {

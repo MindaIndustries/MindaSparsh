@@ -43,49 +43,27 @@ public class OneFragment extends Fragment {
         ImageButton ib_samwad = (ImageButton) view.findViewById(R.id.ib_samwad);
         ImageButton ib_engg = (ImageButton) view.findViewById(R.id.ib_engg);
         ImageButton ib_manufacturing = (ImageButton) view.findViewById(R.id.ib_manufacturing);
-        im_left.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                contaxt.viewPager.setCurrentItem(contaxt.getItem(-1), true);
-            }
+        im_left.setOnClickListener(view1 -> contaxt.viewPager.setCurrentItem(contaxt.getItem(-1), true));
+        im_right.setOnClickListener(view12 -> contaxt.viewPager.setCurrentItem(contaxt.getItem(+1), true));
+        jagritiButton.setOnClickListener(v -> {
+            Intent intent = new Intent(getActivity(), MainActivity.class);
+            intent.putExtra("pdfType", "Jagriti");
+            startActivity(intent);
         });
-        im_right.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                contaxt.viewPager.setCurrentItem(contaxt.getItem(+1), true);
-            }
+        ib_samwad.setOnClickListener(view13 -> {
+            Intent intent = new Intent(getActivity(), MainActivity.class);
+            intent.putExtra("pdfType", "Samwad");
+            startActivity(intent);
         });
-        jagritiButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), MainActivity.class);
-                intent.putExtra("pdfType", "Jagriti");
-                startActivity(intent);
-            }
+        ib_engg.setOnClickListener(view14 -> {
+            Intent intent = new Intent(getActivity(), MainActivity.class);
+            intent.putExtra("pdfType", "Engineering");
+            startActivity(intent);
         });
-        ib_samwad.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getActivity(), MainActivity.class);
-                intent.putExtra("pdfType", "Samwad");
-                startActivity(intent);
-            }
-        });
-        ib_engg.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getActivity(), MainActivity.class);
-                intent.putExtra("pdfType", "Engineering");
-                startActivity(intent);
-            }
-        });
-        ib_manufacturing.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getActivity(), MainActivity.class);
-                intent.putExtra("pdfType", "Manufacturing");
-                startActivity(intent);
-            }
+        ib_manufacturing.setOnClickListener(view15 -> {
+            Intent intent = new Intent(getActivity(), MainActivity.class);
+            intent.putExtra("pdfType", "Manufacturing");
+            startActivity(intent);
         });
 
         // Inflate the layout for this fragment

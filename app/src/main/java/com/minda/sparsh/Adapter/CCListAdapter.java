@@ -50,27 +50,21 @@ public class CCListAdapter extends RecyclerView.Adapter<CCListAdapter.ViewHolder
         if (mContext instanceof MyTaskDetail || mContext instanceof TicketDetail) {
             holder.delete.setVisibility(View.GONE);
         }
-        holder.delete.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                arrayList.remove(position);
-                notifyDataSetChanged();
-            }
+        holder.delete.setOnClickListener(view -> {
+            arrayList.remove(position);
+            notifyDataSetChanged();
         });
 
 
-        holder.email.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (mContext instanceof MyTaskDetail || mContext instanceof TicketDetail) {
-                    Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(RetrofitClient2.itHelpAttachment + arrayList.get(position)));
-                    mContext.startActivity(browserIntent);
-                }
+        holder.email.setOnClickListener(view -> {
+            if (mContext instanceof MyTaskDetail || mContext instanceof TicketDetail) {
+                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(RetrofitClient2.itHelpAttachment + arrayList.get(position)));
+                mContext.startActivity(browserIntent);
             }
         });
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
+    public static class ViewHolder extends RecyclerView.ViewHolder {
         @BindView(R.id.email)
         TextView email;
         @BindView(R.id.delete)

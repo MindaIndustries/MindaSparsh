@@ -40,6 +40,8 @@ public class EHSObsAdapter extends RecyclerView.Adapter<EHSObsAdapter.ViewHolder
         return new ViewHolder(itemView);
     }
 
+
+
     @Override
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, final int i) {
 
@@ -66,65 +68,59 @@ public class EHSObsAdapter extends RecyclerView.Adapter<EHSObsAdapter.ViewHolder
                 viewHolder.edit.setVisibility(View.GONE);
             }
 
-            viewHolder.edit.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Bundle bundle = new Bundle();
-                    bundle.putString("obsDate", myObservations.get(i).getActDate());
-                    bundle.putString("unit", myObservations.get(i).getUnitCode() + ":" + myObservations.get(i).getUnitName());
-                    bundle.putString("typeOfObs", myObservations.get(i).getOBName());
-                    bundle.putString("safetyOfficer", myObservations.get(i).getUnitSafetyOfficer());
-                    bundle.putString("identifiedLoc", myObservations.get(i).getLocation());
-                    bundle.putString("category", myObservations.get(i).getCatName());
-                    bundle.putString("subCategory", myObservations.get(i).getSubCategoryID());
-                    bundle.putString("description", myObservations.get(i).getDescription());
-                    bundle.putString("actId", myObservations.get(i).getID());
-                    bundle.putString("actNo", myObservations.get(i).getActNo());
-                    bundle.putString("catId", myObservations.get(i).getCategoryID());
-                    bundle.putString("obsId", myObservations.get(i).getObservationID());
-                    bundle.putString("incidenceTime", myObservations.get(i).getIncidenceTime());
-                    bundle.putString("incidenceAction", myObservations.get(i).getIncidentceAction());
-                    bundle.putString("attachment", myObservations.get(i).getAttachment());
-                    bundle.putString("status", myObservations.get(i).getStatus());
-                    bundle.putString("assigned", myObservations.get(i).getAssigned());
-                    EHSInitiateFragment ehsInitiateFragment = new EHSInitiateFragment();
-                    ehsInitiateFragment.setArguments(bundle);
-                    ((AppCompatActivity) mContext).getSupportFragmentManager().beginTransaction()
-                            .replace(R.id.framelayout, ehsInitiateFragment)
-                            .addToBackStack(null)
-                            .commit();
-                }
+            viewHolder.edit.setOnClickListener(v -> {
+                Bundle bundle = new Bundle();
+                bundle.putString("obsDate", myObservations.get(i).getActDate());
+                bundle.putString("unit", myObservations.get(i).getUnitCode() + ":" + myObservations.get(i).getUnitName());
+                bundle.putString("typeOfObs", myObservations.get(i).getOBName());
+                bundle.putString("safetyOfficer", myObservations.get(i).getUnitSafetyOfficer());
+                bundle.putString("identifiedLoc", myObservations.get(i).getLocation());
+                bundle.putString("category", myObservations.get(i).getCatName());
+                bundle.putString("subCategory", myObservations.get(i).getSubCategoryID());
+                bundle.putString("description", myObservations.get(i).getDescription());
+                bundle.putString("actId", myObservations.get(i).getID());
+                bundle.putString("actNo", myObservations.get(i).getActNo());
+                bundle.putString("catId", myObservations.get(i).getCategoryID());
+                bundle.putString("obsId", myObservations.get(i).getObservationID());
+                bundle.putString("incidenceTime", myObservations.get(i).getIncidenceTime());
+                bundle.putString("incidenceAction", myObservations.get(i).getIncidentceAction());
+                bundle.putString("attachment", myObservations.get(i).getAttachment());
+                bundle.putString("status", myObservations.get(i).getStatus());
+                bundle.putString("assigned", myObservations.get(i).getAssigned());
+                EHSInitiateFragment ehsInitiateFragment = new EHSInitiateFragment();
+                ehsInitiateFragment.setArguments(bundle);
+                ((AppCompatActivity) mContext).getSupportFragmentManager().beginTransaction()
+                        .replace(R.id.framelayout, ehsInitiateFragment)
+                        .addToBackStack(null)
+                        .commit();
             });
 
-            viewHolder.row.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Bundle bundle = new Bundle();
-                    bundle.putString("obsDate", myObservations.get(i).getActDate());
-                    bundle.putString("unit", myObservations.get(i).getUnitCode() + ":" + myObservations.get(i).getUnitName());
-                    bundle.putString("typeOfObs", myObservations.get(i).getOBName());
-                    bundle.putString("safetyOfficer", myObservations.get(i).getUnitSafetyOfficer());
-                    bundle.putString("identifiedLoc", myObservations.get(i).getLocation());
-                    bundle.putString("category", myObservations.get(i).getCatName());
-                    bundle.putString("subCategory", myObservations.get(i).getSubCategoryID());
-                    bundle.putString("description", myObservations.get(i).getDescription());
-                    bundle.putString("actId", myObservations.get(i).getID());
-                    bundle.putString("actNo", myObservations.get(i).getActNo());
-                    bundle.putString("catId", myObservations.get(i).getCategoryID());
-                    bundle.putString("obsId", myObservations.get(i).getObservationID());
-                    bundle.putString("incidenceTime", myObservations.get(i).getIncidenceTime());
-                    bundle.putString("incidenceAction", myObservations.get(i).getIncidentceAction());
-                    bundle.putString("attachment", myObservations.get(i).getAttachment());
-                    bundle.putString("status", myObservations.get(i).getStatus());
-                    bundle.putString("assigned", myObservations.get(i).getAssigned());
-                    EHSInitiateFragment ehsInitiateFragment = new EHSInitiateFragment();
-                    ehsInitiateFragment.setArguments(bundle);
-                    ((AppCompatActivity) mContext).getSupportFragmentManager().beginTransaction()
-                            .replace(R.id.framelayout, ehsInitiateFragment)
-                            .addToBackStack(null)
-                            .commit();
+            viewHolder.row.setOnClickListener(v -> {
+                Bundle bundle = new Bundle();
+                bundle.putString("obsDate", myObservations.get(i).getActDate());
+                bundle.putString("unit", myObservations.get(i).getUnitCode() + ":" + myObservations.get(i).getUnitName());
+                bundle.putString("typeOfObs", myObservations.get(i).getOBName());
+                bundle.putString("safetyOfficer", myObservations.get(i).getUnitSafetyOfficer());
+                bundle.putString("identifiedLoc", myObservations.get(i).getLocation());
+                bundle.putString("category", myObservations.get(i).getCatName());
+                bundle.putString("subCategory", myObservations.get(i).getSubCategoryID());
+                bundle.putString("description", myObservations.get(i).getDescription());
+                bundle.putString("actId", myObservations.get(i).getID());
+                bundle.putString("actNo", myObservations.get(i).getActNo());
+                bundle.putString("catId", myObservations.get(i).getCategoryID());
+                bundle.putString("obsId", myObservations.get(i).getObservationID());
+                bundle.putString("incidenceTime", myObservations.get(i).getIncidenceTime());
+                bundle.putString("incidenceAction", myObservations.get(i).getIncidentceAction());
+                bundle.putString("attachment", myObservations.get(i).getAttachment());
+                bundle.putString("status", myObservations.get(i).getStatus());
+                bundle.putString("assigned", myObservations.get(i).getAssigned());
+                EHSInitiateFragment ehsInitiateFragment = new EHSInitiateFragment();
+                ehsInitiateFragment.setArguments(bundle);
+                ((AppCompatActivity) mContext).getSupportFragmentManager().beginTransaction()
+                        .replace(R.id.framelayout, ehsInitiateFragment)
+                        .addToBackStack(null)
+                        .commit();
 
-                }
             });
 
             String[] actDate = myObservations.get(i).getActDate().split("/");
@@ -149,7 +145,7 @@ public class EHSObsAdapter extends RecyclerView.Adapter<EHSObsAdapter.ViewHolder
         return myObservations.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
+    public static class ViewHolder extends RecyclerView.ViewHolder {
         @BindView(R.id.obs_type)
         TextView obsType;
         @BindView(R.id.act_no_value)

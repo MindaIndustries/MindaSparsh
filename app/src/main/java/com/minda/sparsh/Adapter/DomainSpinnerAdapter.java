@@ -18,9 +18,9 @@ import java.util.List;
  */
 
 public class DomainSpinnerAdapter implements SpinnerAdapter {
-    private List<Domain_Model> spinnerData;
-    private LayoutInflater mInflater;
-    private Context mContext;
+    private final List<Domain_Model> spinnerData;
+    private final LayoutInflater mInflater;
+    private final Context mContext;
 
 
     public DomainSpinnerAdapter(Context applicationContext, List<Domain_Model> data) {

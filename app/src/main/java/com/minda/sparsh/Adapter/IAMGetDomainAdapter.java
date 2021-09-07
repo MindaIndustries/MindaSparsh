@@ -20,12 +20,12 @@ import androidx.recyclerview.widget.RecyclerView;
  */
 
 public class IAMGetDomainAdapter extends RecyclerView.Adapter<IAMGetDomainAdapter.MyViewHolder> {
-    private List<IAMGetDomainModel> list;
+    private final List<IAMGetDomainModel> list;
     Context context;
-    private RadioButton lastCheckedRB = null;
+    private final RadioButton lastCheckedRB = null;
     String checkCondition;
 
-    public class MyViewHolder extends RecyclerView.ViewHolder {
+    public static class MyViewHolder extends RecyclerView.ViewHolder {
         public RadioButton rb;
         CheckBox checkBox;
 
@@ -67,13 +67,10 @@ public class IAMGetDomainAdapter extends RecyclerView.Adapter<IAMGetDomainAdapte
         holder.rb.setText(iamGetDomainModel.getDomainName());
         //  }
 
-        holder.rb.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                resetData(iamGetDomainModel.getDomainName());
-                if (context instanceof RequestForAccessActivity) {
-                    ((RequestForAccessActivity) context).hitIAMGetBusinessApi(String.valueOf(iamGetDomainModel.getDomainID()), iamGetDomainModel.getDomainName(), "radioButton");
-                }
+        holder.rb.setOnClickListener(view -> {
+            resetData(iamGetDomainModel.getDomainName());
+            if (context instanceof RequestForAccessActivity) {
+                ((RequestForAccessActivity) context).hitIAMGetBusinessApi(String.valueOf(iamGetDomainModel.getDomainID()), iamGetDomainModel.getDomainName(), "radioButton");
             }
         });
 

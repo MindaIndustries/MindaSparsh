@@ -19,13 +19,13 @@ import androidx.recyclerview.widget.RecyclerView;
 
 
 public class IAMGetBusinessAdapter extends RecyclerView.Adapter<IAMGetBusinessAdapter.MyViewHolder> {
-    private List<IAMGetBusinessModel> list;
+    private final List<IAMGetBusinessModel> list;
     Context context;
     String checkCondition;
 
     List<IAMGetBusinessModel> selectedBusines = new ArrayList<IAMGetBusinessModel>();
 
-    public class MyViewHolder extends RecyclerView.ViewHolder {
+    public static class MyViewHolder extends RecyclerView.ViewHolder {
         public RadioButton rb;
         CheckBox checkBox;
 
@@ -88,20 +88,17 @@ public class IAMGetBusinessAdapter extends RecyclerView.Adapter<IAMGetBusinessAd
         }
 
 
-        holder.checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                if (context instanceof RequestForAccessActivity) {
-                    if (b) {
-                        iamGetDomainModel.setSelected(true);
-                        selectedBusines.add(iamGetDomainModel);
-                    } else {
-                        selectedBusines.remove(iamGetDomainModel);
-                        iamGetDomainModel.setSelected(false);
-                    }
-                    ((RequestForAccessActivity) context).hitIAMGetPlantApi(String.valueOf(iamGetDomainModel.getID()), selectedBusines, "checkBox", b);
-
+        holder.checkBox.setOnCheckedChangeListener((compoundButton, b) -> {
+            if (context instanceof RequestForAccessActivity) {
+                if (b) {
+                    iamGetDomainModel.setSelected(true);
+                    selectedBusines.add(iamGetDomainModel);
+                } else {
+                    selectedBusines.remove(iamGetDomainModel);
+                    iamGetDomainModel.setSelected(false);
                 }
+                ((RequestForAccessActivity) context).hitIAMGetPlantApi(String.valueOf(iamGetDomainModel.getID()), selectedBusines, "checkBox", b);
+
             }
         });
 

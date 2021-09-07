@@ -14,9 +14,9 @@ import com.minda.sparsh.model.CategoryAbnormality;
 import java.util.List;
 
 public class AbnormalityCategoryAdapter implements SpinnerAdapter {
-    private List<CategoryAbnormality> spinnerData;
-    private LayoutInflater mInflater;
-    private Context mContext;
+    private final List<CategoryAbnormality> spinnerData;
+    private final LayoutInflater mInflater;
+    private final Context mContext;
 
 
     public AbnormalityCategoryAdapter(Context applicationContext, List<CategoryAbnormality> data) {
