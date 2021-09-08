@@ -24,6 +24,8 @@ import com.minda.sparsh.model.AddTargetDate_Model;
 import com.minda.sparsh.util.RetrofitClient2;
 import com.minda.sparsh.util.Utility;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -83,25 +85,25 @@ public class AbnormalityAdapter extends BaseAdapter {
             final ViewHolder holder = new ViewHolder();
             this.holder = holder;
             convertView = inflater.inflate(R.layout.abnormality, null);
-            holder.tv_result = (TextView) convertView.findViewById(R.id.tv_result);
-            holder.tv_status = (TextView) convertView.findViewById(R.id.tv_status);
-            holder.tv_Actual_date = (TextView) convertView.findViewById(R.id.tv_Actual_date);
-            holder.tv_test_date = (TextView) convertView.findViewById(R.id.tv_test_date);
-            holder.tv_uplodedBy = (TextView) convertView.findViewById(R.id.tv_uplodedBy);
-            holder.tv_action = (TextView) convertView.findViewById(R.id.tv_action);
-            holder.tv_updatedby = (TextView) convertView.findViewById(R.id.tv_updatedby);
+            holder.tv_result =  convertView.findViewById(R.id.tv_result);
+            holder.tv_status =  convertView.findViewById(R.id.tv_status);
+            holder.tv_Actual_date =  convertView.findViewById(R.id.tv_Actual_date);
+            holder.tv_test_date =  convertView.findViewById(R.id.tv_test_date);
+            holder.tv_uplodedBy =  convertView.findViewById(R.id.tv_uplodedBy);
+            holder.tv_action =  convertView.findViewById(R.id.tv_action);
+            holder.tv_updatedby =  convertView.findViewById(R.id.tv_updatedby);
 
-            holder.tv_department = (TextView) convertView.findViewById(R.id.tv_department);
-            holder.tv_plant = (TextView) convertView.findViewById(R.id.tv_plant);
-            holder.tv_business = (TextView) convertView.findViewById(R.id.tv_business);
-            holder.tv_domain = (TextView) convertView.findViewById(R.id.tv_domain);
-            holder.tv_category = (TextView) convertView.findViewById(R.id.tv_category);
-            holder.tv_date = (TextView) convertView.findViewById(R.id.tv_date);
-            holder.tv_abnormality = (TextView) convertView.findViewById(R.id.tv_abnormality);
-            holder.tv_sn = (TextView) convertView.findViewById(R.id.tv_sn);
-            holder.laycellview = (LinearLayout) convertView.findViewById(R.id.laycellview);
-            holder.tv_update = (TextView) convertView.findViewById(R.id.tv_update);
-            holder.tv_view = (TextView) convertView.findViewById(R.id.tv_view);
+            holder.tv_department =  convertView.findViewById(R.id.tv_department);
+            holder.tv_plant =  convertView.findViewById(R.id.tv_plant);
+            holder.tv_business =  convertView.findViewById(R.id.tv_business);
+            holder.tv_domain =  convertView.findViewById(R.id.tv_domain);
+            holder.tv_category =  convertView.findViewById(R.id.tv_category);
+            holder.tv_date =  convertView.findViewById(R.id.tv_date);
+            holder.tv_abnormality =  convertView.findViewById(R.id.tv_abnormality);
+            holder.tv_sn =  convertView.findViewById(R.id.tv_sn);
+            holder.laycellview =  convertView.findViewById(R.id.laycellview);
+            holder.tv_update =  convertView.findViewById(R.id.tv_update);
+            holder.tv_view =  convertView.findViewById(R.id.tv_view);
             holder.tv_updatedby.setText(homeData.get(position).getUploadedBy());
 
             convertView.setTag(holder);
@@ -318,7 +320,7 @@ public class AbnormalityAdapter extends BaseAdapter {
             Call<List<AddTargetDate_Model>> response = promotingMyinterface.SetTargetDate(RetrofitClient2.CKEY, id, date);
             response.enqueue(new Callback<List<AddTargetDate_Model>>() {
                 @Override
-                public void onResponse(Call<List<AddTargetDate_Model>> call, Response<List<AddTargetDate_Model>> response) {
+                public void onResponse(@NotNull Call<List<AddTargetDate_Model>> call, @NotNull Response<List<AddTargetDate_Model>> response) {
                     showProgress(false);
                     List<AddTargetDate_Model> AddDateresponse = response.body();
                     textView.setText(date);
@@ -334,7 +336,7 @@ public class AbnormalityAdapter extends BaseAdapter {
                 }
 
                 @Override
-                public void onFailure(Call<List<AddTargetDate_Model>> call, Throwable t) {
+                public void onFailure(@NotNull Call<List<AddTargetDate_Model>> call, @NotNull Throwable t) {
 
                     showProgress(false);
 

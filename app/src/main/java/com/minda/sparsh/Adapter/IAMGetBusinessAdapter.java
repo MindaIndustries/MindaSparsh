@@ -5,12 +5,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
-import android.widget.CompoundButton;
 import android.widget.RadioButton;
 
 import com.minda.sparsh.R;
 import com.minda.sparsh.RequestForAccessActivity;
 import com.minda.sparsh.model.IAMGetBusinessModel;
+
+import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,7 +24,7 @@ public class IAMGetBusinessAdapter extends RecyclerView.Adapter<IAMGetBusinessAd
     Context context;
     String checkCondition;
 
-    List<IAMGetBusinessModel> selectedBusines = new ArrayList<IAMGetBusinessModel>();
+    List<IAMGetBusinessModel> selectedBusines = new ArrayList<>();
 
     public static class MyViewHolder extends RecyclerView.ViewHolder {
         public RadioButton rb;
@@ -31,8 +32,8 @@ public class IAMGetBusinessAdapter extends RecyclerView.Adapter<IAMGetBusinessAd
 
         public MyViewHolder(View view) {
             super(view);
-            rb = (RadioButton) view.findViewById(R.id.rb);
-            checkBox = (CheckBox) view.findViewById(R.id.cb);
+            rb =  view.findViewById(R.id.rb);
+            checkBox =  view.findViewById(R.id.cb);
 
         }
     }
@@ -44,6 +45,7 @@ public class IAMGetBusinessAdapter extends RecyclerView.Adapter<IAMGetBusinessAd
 
     }
 
+    @NotNull
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext())

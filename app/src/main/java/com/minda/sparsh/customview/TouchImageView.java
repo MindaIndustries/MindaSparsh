@@ -8,7 +8,6 @@ import android.util.AttributeSet;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.ScaleGestureDetector;
-import android.view.View;
 
 public class TouchImageView extends androidx.appcompat.widget.AppCompatImageView {
     Matrix matrix;
@@ -65,78 +64,73 @@ public class TouchImageView extends androidx.appcompat.widget.AppCompatImageView
 
         setScaleType(ScaleType.MATRIX);
 
-        setOnTouchListener(new OnTouchListener() {
+        setOnTouchListener((v, event) -> {
 
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
+            mScaleDetector.onTouchEvent(event);
 
-                mScaleDetector.onTouchEvent(event);
+            PointF curr = new PointF(event.getX(), event.getY());
 
-                PointF curr = new PointF(event.getX(), event.getY());
+            switch (event.getAction()) {
 
-                switch (event.getAction()) {
+                case MotionEvent.ACTION_DOWN:
 
-                    case MotionEvent.ACTION_DOWN:
+                    last.set(curr);
 
-                        last.set(curr);
+                    start.set(last);
 
-                        start.set(last);
+                    mode = DRAG;
 
-                        mode = DRAG;
+                    break;
 
-                        break;
+                case MotionEvent.ACTION_MOVE:
 
-                    case MotionEvent.ACTION_MOVE:
+                    if (mode == DRAG) {
 
-                        if (mode == DRAG) {
+                        float deltaX = curr.x - last.x;
 
-                            float deltaX = curr.x - last.x;
+                        float deltaY = curr.y - last.y;
 
-                            float deltaY = curr.y - last.y;
+                        float fixTransX = getFixDragTrans(deltaX, viewWidth, origWidth * saveScale);
 
-                            float fixTransX = getFixDragTrans(deltaX, viewWidth, origWidth * saveScale);
+                        float fixTransY = getFixDragTrans(deltaY, viewHeight, origHeight * saveScale);
 
-                            float fixTransY = getFixDragTrans(deltaY, viewHeight, origHeight * saveScale);
+                        matrix.postTranslate(fixTransX, fixTransY);
 
-                            matrix.postTranslate(fixTransX, fixTransY);
+                        fixTrans();
 
-                            fixTrans();
+                        last.set(curr.x, curr.y);
 
-                            last.set(curr.x, curr.y);
+                    }
 
-                        }
+                    break;
 
-                        break;
+                case MotionEvent.ACTION_UP:
 
-                    case MotionEvent.ACTION_UP:
+                    mode = NONE;
 
-                        mode = NONE;
+                    int xDiff = (int) Math.abs(curr.x - start.x);
 
-                        int xDiff = (int) Math.abs(curr.x - start.x);
+                    int yDiff = (int) Math.abs(curr.y - start.y);
 
-                        int yDiff = (int) Math.abs(curr.y - start.y);
+                    if (xDiff < CLICK && yDiff < CLICK)
 
-                        if (xDiff < CLICK && yDiff < CLICK)
+                        performClick();
 
-                            performClick();
+                    break;
 
-                        break;
+                case MotionEvent.ACTION_POINTER_UP:
 
-                    case MotionEvent.ACTION_POINTER_UP:
+                    mode = NONE;
 
-                        mode = NONE;
-
-                        break;
-
-                }
-
-                setImageMatrix(matrix);
-
-                invalidate();
-
-                return true; // indicate event was handled
+                    break;
 
             }
+
+            setImageMatrix(matrix);
+
+            invalidate();
+
+            return true; // indicate event was handled
 
         });
     }

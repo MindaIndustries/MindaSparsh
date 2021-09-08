@@ -15,6 +15,9 @@ import com.minda.sparsh.R;
 import com.minda.sparsh.model.AboutUsDetails;
 import com.minda.sparsh.util.RetrofitClient2;
 import com.minda.sparsh.util.Utility;
+
+import org.jetbrains.annotations.NotNull;
+
 import java.util.List;
 import javax.net.ssl.HttpsURLConnection;
 import androidx.fragment.app.Fragment;
@@ -130,7 +133,7 @@ public class TwoFragment extends Fragment {
         Call<List<AboutUsDetails>> call = anInterface.getAboutDetails();
         call.enqueue(new Callback<List<AboutUsDetails>>() {
             @Override
-            public void onResponse(Call<List<AboutUsDetails>> call, Response<List<AboutUsDetails>> response) {
+            public void onResponse(@NotNull Call<List<AboutUsDetails>> call, @NotNull Response<List<AboutUsDetails>> response) {
 
                 if(response.code()== HttpsURLConnection.HTTP_OK){
                     List<AboutUsDetails> list = response.body();
@@ -172,7 +175,7 @@ public class TwoFragment extends Fragment {
             }
 
             @Override
-            public void onFailure(Call<List<AboutUsDetails>> call, Throwable t) {
+            public void onFailure(@NotNull Call<List<AboutUsDetails>> call, @NotNull Throwable t) {
                 System.out.println("Api failed");
             }
         });

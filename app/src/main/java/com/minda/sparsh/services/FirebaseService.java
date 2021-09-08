@@ -6,6 +6,8 @@ import com.minda.sparsh.listener.CarotResponse;
 import com.minda.sparsh.listener.OnTaskComplete;
 import com.minda.sparsh.util.RetrofitClient2;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.io.IOException;
 
 import javax.net.ssl.HttpsURLConnection;
@@ -22,7 +24,7 @@ public class FirebaseService {
         Call<String> call = fireBaseClient.saveFirebaseID(EmpCode, firebaseToken);
         call.enqueue(new Callback<String>() {
             @Override
-            public void onResponse(Call<String> call, Response<String> response) {
+            public void onResponse(@NotNull Call<String> call, @NotNull Response<String> response) {
                 CarotResponse carotResponse = new CarotResponse();
                 carotResponse.setStatuscode(response.code());
                 if (response.code() == HttpsURLConnection.HTTP_OK) {
@@ -32,7 +34,7 @@ public class FirebaseService {
             }
 
             @Override
-            public void onFailure(Call<String> call, Throwable t) {
+            public void onFailure(@NotNull Call<String> call, @NotNull Throwable t) {
                 CarotResponse carotResponse = new CarotResponse();
                 if (t instanceof IOException) {
                     carotResponse.setMessage("Please hold on a moment, the internet connectivity seems to be slow");

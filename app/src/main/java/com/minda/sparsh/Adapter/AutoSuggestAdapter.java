@@ -37,12 +37,7 @@ public class AutoSuggestAdapter extends ArrayAdapter<String> implements Filterab
         return mlistData.get(position);
     }
 
-    /**
-     * Used to Return the full object directly from adapter.
-     *
-     * @param position
-     * @return
-     */
+
     public String getObject(int position) {
         return mlistData.get(position);
     }

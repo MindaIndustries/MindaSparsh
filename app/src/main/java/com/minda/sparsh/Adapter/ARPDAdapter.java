@@ -23,15 +23,15 @@ public class ARPDAdapter extends RecyclerView.Adapter<ARPDAdapter.MyViewHolder> 
 
         public MyViewHolder(View view) {
             super(view);
-            tv_s_no = (TextView) view.findViewById(R.id.tv_s_no);
-            tv_emp_code = (TextView) view.findViewById(R.id.tv_emp_code);
-            tv_name = (TextView) view.findViewById(R.id.tv_name);
-            tv_status = (TextView) view.findViewById(R.id.tv_status);
-            tv_processor_no = (TextView) view.findViewById(R.id.tv_processor_no);
-            tv_request_on = (TextView) view.findViewById(R.id.tv_request_on);
-            tv_processed_rejected_on = (TextView) view.findViewById(R.id.tv_processed_rejected_on);
-            processed_by = (TextView) view.findViewById(R.id.processed_by);
-            tv_remarks = (TextView) view.findViewById(R.id.tv_remarks);
+            tv_s_no =  view.findViewById(R.id.tv_s_no);
+            tv_emp_code =  view.findViewById(R.id.tv_emp_code);
+            tv_name =  view.findViewById(R.id.tv_name);
+            tv_status =  view.findViewById(R.id.tv_status);
+            tv_processor_no =  view.findViewById(R.id.tv_processor_no);
+            tv_request_on =  view.findViewById(R.id.tv_request_on);
+            tv_processed_rejected_on =  view.findViewById(R.id.tv_processed_rejected_on);
+            processed_by =  view.findViewById(R.id.processed_by);
+            tv_remarks =  view.findViewById(R.id.tv_remarks);
         }
     }
 

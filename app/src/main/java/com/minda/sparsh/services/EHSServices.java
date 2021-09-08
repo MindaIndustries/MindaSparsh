@@ -12,6 +12,8 @@ import com.minda.sparsh.model.EHSUnitModel;
 import com.minda.sparsh.model.SafetyOfficerModel;
 import com.minda.sparsh.util.RetrofitClient2;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.io.IOException;
 import java.util.List;
 
@@ -28,7 +30,7 @@ public class EHSServices {
         Call<List<EHSUnitModel>> call = ehsClient.getUnits(unitcode);
         call.enqueue(new Callback<List<EHSUnitModel>>() {
             @Override
-            public void onResponse(Call<List<EHSUnitModel>> call, Response<List<EHSUnitModel>> response) {
+            public void onResponse(@NotNull Call<List<EHSUnitModel>> call, @NotNull Response<List<EHSUnitModel>> response) {
                 CarotResponse carotResponse = new CarotResponse();
                 carotResponse.setStatuscode(response.code());
                 if (response.code() == HttpsURLConnection.HTTP_OK) {
@@ -38,7 +40,7 @@ public class EHSServices {
             }
 
             @Override
-            public void onFailure(Call<List<EHSUnitModel>> call, Throwable t) {
+            public void onFailure(@NotNull Call<List<EHSUnitModel>> call, @NotNull Throwable t) {
                 CarotResponse carotResponse = new CarotResponse();
                 if (t instanceof IOException) {
                     carotResponse.setMessage("Please hold on a moment, the internet connectivity seems to be slow");
@@ -55,7 +57,7 @@ public class EHSServices {
         Call<List<SafetyOfficerModel>> call = ehsClient.getSafetyOfficers(unitcode);
         call.enqueue(new Callback<List<SafetyOfficerModel>>() {
             @Override
-            public void onResponse(Call<List<SafetyOfficerModel>> call, Response<List<SafetyOfficerModel>> response) {
+            public void onResponse(@NotNull Call<List<SafetyOfficerModel>> call, @NotNull Response<List<SafetyOfficerModel>> response) {
                 CarotResponse carotResponse = new CarotResponse();
                 carotResponse.setStatuscode(response.code());
                 if (response.code() == HttpsURLConnection.HTTP_OK) {
@@ -65,7 +67,7 @@ public class EHSServices {
             }
 
             @Override
-            public void onFailure(Call<List<SafetyOfficerModel>> call, Throwable t) {
+            public void onFailure(@NotNull Call<List<SafetyOfficerModel>> call, @NotNull Throwable t) {
                 CarotResponse carotResponse = new CarotResponse();
                 if (t instanceof IOException) {
                     carotResponse.setMessage("Please hold on a moment, the internet connectivity seems to be slow");
@@ -80,7 +82,8 @@ public class EHSServices {
         Call<List<EHSObservationModel>> call = ehsClient.getObservationTypes();
         call.enqueue(new Callback<List<EHSObservationModel>>() {
             @Override
-            public void onResponse(Call<List<EHSObservationModel>> call, Response<List<EHSObservationModel>> response) {
+            public void onResponse(@NotNull Call<List<EHSObservationModel>> call, @NotNull Response<List<EHSObservationModel>>
+                    response) {
                 CarotResponse carotResponse = new CarotResponse();
                 carotResponse.setStatuscode(response.code());
                 if (response.code() == HttpsURLConnection.HTTP_OK) {
@@ -90,7 +93,8 @@ public class EHSServices {
             }
 
             @Override
-            public void onFailure(Call<List<EHSObservationModel>> call, Throwable t) {
+            public void onFailure(@NotNull Call<List<EHSObservationModel>>
+                                          call, @NotNull Throwable t) {
                 CarotResponse carotResponse = new CarotResponse();
                 if (t instanceof IOException) {
                     carotResponse.setMessage("Please hold on a moment, the internet connectivity seems to be slow");
@@ -106,7 +110,7 @@ public class EHSServices {
         Call<List<EHSIdentifiedLocationModel>> call = ehsClient.getIdentifiedLocations();
         call.enqueue(new Callback<List<EHSIdentifiedLocationModel>>() {
             @Override
-            public void onResponse(Call<List<EHSIdentifiedLocationModel>> call, Response<List<EHSIdentifiedLocationModel>> response) {
+            public void onResponse(@NotNull Call<List<EHSIdentifiedLocationModel>> call, @NotNull Response<List<EHSIdentifiedLocationModel>> response) {
                 CarotResponse carotResponse = new CarotResponse();
                 carotResponse.setStatuscode(response.code());
                 if (response.code() == HttpsURLConnection.HTTP_OK) {
@@ -116,7 +120,7 @@ public class EHSServices {
             }
 
             @Override
-            public void onFailure(Call<List<EHSIdentifiedLocationModel>> call, Throwable t) {
+            public void onFailure(@NotNull Call<List<EHSIdentifiedLocationModel>> call, @NotNull Throwable t) {
                 CarotResponse carotResponse = new CarotResponse();
                 if (t instanceof IOException) {
                     carotResponse.setMessage("Please hold on a moment, the internet connectivity seems to be slow");
@@ -131,7 +135,7 @@ public class EHSServices {
         Call<List<EHSCategoryModel>> call = ehsClient.getCategories(ObservationID);
         call.enqueue(new Callback<List<EHSCategoryModel>>() {
             @Override
-            public void onResponse(Call<List<EHSCategoryModel>> call, Response<List<EHSCategoryModel>> response) {
+            public void onResponse(@NotNull Call<List<EHSCategoryModel>> call, @NotNull Response<List<EHSCategoryModel>> response) {
                 CarotResponse carotResponse = new CarotResponse();
                 carotResponse.setStatuscode(response.code());
                 if (response.code() == HttpsURLConnection.HTTP_OK) {
@@ -141,7 +145,7 @@ public class EHSServices {
             }
 
             @Override
-            public void onFailure(Call<List<EHSCategoryModel>> call, Throwable t) {
+            public void onFailure(@NotNull Call<List<EHSCategoryModel>> call, @NotNull Throwable t) {
                 CarotResponse carotResponse = new CarotResponse();
                 if (t instanceof IOException) {
                     carotResponse.setMessage("Please hold on a moment, the internet connectivity seems to be slow");
@@ -156,7 +160,7 @@ public class EHSServices {
         Call<List<EHSSubCategoryModel>> call = ehsClient.getSubCategories(catId);
         call.enqueue(new Callback<List<EHSSubCategoryModel>>() {
             @Override
-            public void onResponse(Call<List<EHSSubCategoryModel>> call, Response<List<EHSSubCategoryModel>> response) {
+            public void onResponse(@NotNull Call<List<EHSSubCategoryModel>> call, @NotNull Response<List<EHSSubCategoryModel>> response) {
                 CarotResponse carotResponse = new CarotResponse();
                 carotResponse.setStatuscode(response.code());
                 if (response.code() == HttpsURLConnection.HTTP_OK) {
@@ -166,7 +170,7 @@ public class EHSServices {
             }
 
             @Override
-            public void onFailure(Call<List<EHSSubCategoryModel>> call, Throwable t) {
+            public void onFailure(@NotNull Call<List<EHSSubCategoryModel>> call, @NotNull Throwable t) {
                 CarotResponse carotResponse = new CarotResponse();
                 if (t instanceof IOException) {
                     carotResponse.setMessage("Please hold on a moment, the internet connectivity seems to be slow");
@@ -181,7 +185,7 @@ public class EHSServices {
         Call<List<EHSObsModel>> call = ehsClient.getObservations(empCode);
         call.enqueue(new Callback<List<EHSObsModel>>() {
             @Override
-            public void onResponse(Call<List<EHSObsModel>> call, Response<List<EHSObsModel>> response) {
+            public void onResponse(@NotNull Call<List<EHSObsModel>> call, @NotNull Response<List<EHSObsModel>> response) {
                 CarotResponse carotResponse = new CarotResponse();
                 carotResponse.setStatuscode(response.code());
                 if (response.code() == HttpsURLConnection.HTTP_OK) {
@@ -191,7 +195,7 @@ public class EHSServices {
             }
 
             @Override
-            public void onFailure(Call<List<EHSObsModel>> call, Throwable t) {
+            public void onFailure(@NotNull Call<List<EHSObsModel>> call, @NotNull Throwable t) {
                 CarotResponse carotResponse = new CarotResponse();
                 if (t instanceof IOException) {
                     carotResponse.setMessage("Please hold on a moment, the internet connectivity seems to be slow");
@@ -206,7 +210,7 @@ public class EHSServices {
         Call<Void> call = ehsClient.sendMail(EmpCode, ObservationName, Location, description, ActNo, UnitCode);
         call.enqueue(new Callback<Void>() {
             @Override
-            public void onResponse(Call<Void> call, Response<Void> response) {
+            public void onResponse(@NotNull Call<Void> call, @NotNull Response<Void> response) {
                 CarotResponse carotResponse = new CarotResponse();
                 carotResponse.setStatuscode(response.code());
                 if (response.code() == HttpsURLConnection.HTTP_OK) {
@@ -217,7 +221,7 @@ public class EHSServices {
             }
 
             @Override
-            public void onFailure(Call<Void> call, Throwable t) {
+            public void onFailure(@NotNull Call<Void> call, @NotNull Throwable t) {
                 CarotResponse carotResponse = new CarotResponse();
                 if (t instanceof IOException) {
                     carotResponse.setMessage("Please hold on a moment, the internet connectivity seems to be slow");
@@ -234,7 +238,7 @@ public class EHSServices {
         Call<String> call = ehsClient.submitEHS(EmpCode, ActNo, ActDate, HOD, UnitSafetyOfficer, UnitCode, Description, Attachment, AttachmentType, LocationID, CategoryID, SubCategoryID, ObservationID, IncidenceHour, IncidenceMin, IncidenceZone, IncidenceActionTaken, ObservationName, LocationName);
         call.enqueue(new Callback<String>() {
             @Override
-            public void onResponse(Call<String> call, Response<String> response) {
+            public void onResponse(@NotNull Call<String> call, @NotNull Response<String> response) {
                 CarotResponse carotResponse = new CarotResponse();
                 carotResponse.setStatuscode(response.code());
                 if (response.code() == HttpsURLConnection.HTTP_OK) {
@@ -244,7 +248,7 @@ public class EHSServices {
             }
 
             @Override
-            public void onFailure(Call<String> call, Throwable t) {
+            public void onFailure(@NotNull Call<String> call, @NotNull Throwable t) {
                 CarotResponse carotResponse = new CarotResponse();
                 if (t instanceof IOException) {
                     carotResponse.setMessage("Please hold on a moment, the internet connectivity seems to be slow");
@@ -260,7 +264,7 @@ public class EHSServices {
         Call<String> call = ehsClient.updateEhs(ActID, EmpCode, ActNo, ActDate, HOD, UnitSafetyOfficer, UnitCode, Description, Attachment, AttachmentType, LocationID, CategoryID, SubCategoryID, ObservationID, IncidenceHour, IncidenceMin, IncidenceZone, IncidenceActionTaken);
         call.enqueue(new Callback<String>() {
             @Override
-            public void onResponse(Call<String> call, Response<String> response) {
+            public void onResponse(@NotNull Call<String> call, @NotNull Response<String> response) {
                 CarotResponse carotResponse = new CarotResponse();
                 carotResponse.setStatuscode(response.code());
                 if (response.code() == HttpsURLConnection.HTTP_OK) {
@@ -270,7 +274,7 @@ public class EHSServices {
             }
 
             @Override
-            public void onFailure(Call<String> call, Throwable t) {
+            public void onFailure(@NotNull Call<String> call, @NotNull Throwable t) {
                 CarotResponse carotResponse = new CarotResponse();
                 if (t instanceof IOException) {
                     carotResponse.setMessage("Please hold on a moment, the internet connectivity seems to be slow");
@@ -286,7 +290,7 @@ public class EHSServices {
         Call<Void> call = ehsClient.uploadFile(attachment, bytes);
         call.enqueue(new Callback<Void>() {
             @Override
-            public void onResponse(Call<Void> call, Response<Void> response) {
+            public void onResponse(@NotNull Call<Void> call, @NotNull Response<Void> response) {
                 CarotResponse carotResponse = new CarotResponse();
                 carotResponse.setStatuscode(response.code());
                 if (response.code() == HttpsURLConnection.HTTP_OK) {
@@ -296,7 +300,7 @@ public class EHSServices {
             }
 
             @Override
-            public void onFailure(Call<Void> call, Throwable t) {
+            public void onFailure(@NotNull Call<Void> call, @NotNull Throwable t) {
                 CarotResponse carotResponse = new CarotResponse();
                 if (t instanceof IOException) {
                     carotResponse.setMessage("Please hold on a moment, the internet connectivity seems to be slow");

@@ -36,13 +36,13 @@ public class OneFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_one, container, false);
-        ImageView im_right = (ImageView) view.findViewById(R.id.im_right);
-        jagritiButton = (ImageButton) view.findViewById(R.id.jagriti_btn);
-        ImageView im_left = (ImageView) view.findViewById(R.id.im_left);
+        ImageView im_right =  view.findViewById(R.id.im_right);
+        jagritiButton =  view.findViewById(R.id.jagriti_btn);
+        ImageView im_left =  view.findViewById(R.id.im_left);
         final DashBoardActivity contaxt = (DashBoardActivity) getActivity();
-        ImageButton ib_samwad = (ImageButton) view.findViewById(R.id.ib_samwad);
-        ImageButton ib_engg = (ImageButton) view.findViewById(R.id.ib_engg);
-        ImageButton ib_manufacturing = (ImageButton) view.findViewById(R.id.ib_manufacturing);
+        ImageButton ib_samwad = view.findViewById(R.id.ib_samwad);
+        ImageButton ib_engg =  view.findViewById(R.id.ib_engg);
+        ImageButton ib_manufacturing =  view.findViewById(R.id.ib_manufacturing);
         im_left.setOnClickListener(view1 -> contaxt.viewPager.setCurrentItem(contaxt.getItem(-1), true));
         im_right.setOnClickListener(view12 -> contaxt.viewPager.setCurrentItem(contaxt.getItem(+1), true));
         jagritiButton.setOnClickListener(v -> {

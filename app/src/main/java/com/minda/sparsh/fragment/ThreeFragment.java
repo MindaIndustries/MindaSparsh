@@ -1,7 +1,6 @@
 package com.minda.sparsh.fragment;
 
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -52,11 +51,11 @@ public class ThreeFragment extends Fragment {
                              Bundle savedInstanceState) {
 
         View convertView = inflater.inflate(R.layout.fragment_three, container, false);
-        ImageView im_right = (ImageView) convertView.findViewById(R.id.im_right);
-        ImageView im_left = (ImageView) convertView.findViewById(R.id.im_left);
+        ImageView im_right =  convertView.findViewById(R.id.im_right);
+        ImageView im_left =  convertView.findViewById(R.id.im_left);
         ImageButton Ib_visitor = convertView.findViewById(R.id.Ib_visitor);
-        ImageButton bottom_up = (ImageButton) convertView.findViewById(R.id.bottom_up);
-        ImageButton suggestion_box = (ImageButton) convertView.findViewById(R.id.suggestion_box);
+        ImageButton bottom_up =  convertView.findViewById(R.id.bottom_up);
+        ImageButton suggestion_box =  convertView.findViewById(R.id.suggestion_box);
 
         ImageButton meetings = convertView.findViewById(R.id.meetings);
 
@@ -90,13 +89,5 @@ public class ThreeFragment extends Fragment {
         });
 
         return convertView;
-        // Inflate the layout for this fragment
-
-    }
-
-    // TODO: Rename method, update argument and hook method into UI event
-    public void onButtonPressed(Uri uri) {
-
-
     }
 }

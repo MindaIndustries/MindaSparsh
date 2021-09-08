@@ -11,6 +11,8 @@ import android.widget.ImageView;
 import com.minda.sparsh.R;
 import com.squareup.picasso.Picasso;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.util.List;
 
 import androidx.viewpager.widget.PagerAdapter;
@@ -44,7 +46,7 @@ public class SlidingImage_Adapter extends PagerAdapter {
     }
 
     @Override
-    public void destroyItem(ViewGroup container, int position, Object object) {
+    public void destroyItem(ViewGroup container, int position, @NotNull Object object) {
         container.removeView((View) object);
     }
 
@@ -53,12 +55,13 @@ public class SlidingImage_Adapter extends PagerAdapter {
         return size;
     }
 
+    @NotNull
     @Override
-    public Object instantiateItem(ViewGroup view, int position) {
+    public Object instantiateItem(@NotNull ViewGroup view, int position) {
         View imageLayout = inflater.inflate(R.layout.slidingimages_layout, view, false);
 
         assert imageLayout != null;
-        final ImageView imageView = (ImageView) imageLayout.findViewById(R.id.image);
+        final ImageView imageView = imageLayout.findViewById(R.id.image);
 
         try {
             String input = IMAGES.get(position);
@@ -81,7 +84,7 @@ public class SlidingImage_Adapter extends PagerAdapter {
     }
 
     @Override
-    public boolean isViewFromObject(View view, Object object) {
+    public boolean isViewFromObject(View view, @NotNull Object object) {
         return view.equals(object);
     }
 

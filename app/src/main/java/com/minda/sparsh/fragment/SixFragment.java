@@ -42,7 +42,7 @@ public class SixFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_six, container, false);
 //        ImageView im_right=(ImageView) view.findViewById(R.id.im_right);
-        ImageView im_left = (ImageView) view.findViewById(R.id.im_left);
+        ImageView im_left =  view.findViewById(R.id.im_left);
         final DashBoardActivity contaxt = (DashBoardActivity) getActivity();
 //        im_right.setOnClickListener(new View.OnClickListener() {
 //            @Override

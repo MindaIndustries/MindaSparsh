@@ -28,8 +28,8 @@ public class IAMGetPlantAdapter extends RecyclerView.Adapter<IAMGetPlantAdapter.
 
         public MyViewHolder(View view) {
             super(view);
-            rb = (RadioButton) view.findViewById(R.id.rb);
-            cb = (CheckBox) view.findViewById(R.id.cb);
+            rb =  view.findViewById(R.id.rb);
+            cb =  view.findViewById(R.id.cb);
         }
     }
 

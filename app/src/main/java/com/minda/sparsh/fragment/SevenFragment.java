@@ -1,15 +1,12 @@
 package com.minda.sparsh.fragment;
 
-import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-
 import com.minda.sparsh.DashBoardActivity;
 import com.minda.sparsh.R;
-
 import androidx.fragment.app.Fragment;
 
 
@@ -42,9 +39,9 @@ public class SevenFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_seven, container, false);
-        ImageView im_right = (ImageView) view.findViewById(R.id.im_right);
-        ImageView im_left = (ImageView) view.findViewById(R.id.im_left);
-        ImageView dwm_btn = (ImageView) view.findViewById(R.id.dwm_btn);
+        ImageView im_right =  view.findViewById(R.id.im_right);
+        ImageView im_left =  view.findViewById(R.id.im_left);
+        ImageView dwm_btn =  view.findViewById(R.id.dwm_btn);
 
         final DashBoardActivity contaxt = (DashBoardActivity) getActivity();
         im_right.setOnClickListener(view1 -> contaxt.viewPager.setCurrentItem(contaxt.getItem(+1), true));
@@ -59,10 +56,4 @@ public class SevenFragment extends Fragment {
         // Inflate the layout for this fragment
         return view;
     }
-
-    // TODO: Rename method, update argument and hook method into UI event
-    public void onButtonPressed(Uri uri) {
-
-    }
-
 }

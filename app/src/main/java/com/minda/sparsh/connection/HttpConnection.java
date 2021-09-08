@@ -30,7 +30,7 @@ public class HttpConnection {
             String mUrl = BASE_URL + url;
             int lastIndex = mUrl.lastIndexOf("/");
             String match = mUrl.substring(lastIndex + 1, mUrl.length());
-            URL apiUrl = null;
+            URL apiUrl;
             apiUrl = new URL(mUrl);
             urlConnection = (HttpURLConnection) apiUrl.openConnection();
 
@@ -49,13 +49,14 @@ public class HttpConnection {
     public String convertStreamToString(InputStream is) {
         BufferedReader reader = new BufferedReader(new InputStreamReader(is));
         StringBuilder sb = new StringBuilder();
-        String line = null;
+        String line;
 
         try {
             while ((line = reader.readLine()) != null) {
                 sb.append(line + "\n");
             }
-        } catch (IOException e) {
+        } catch (Exception e) {
+            e.printStackTrace();
         } finally {
             try {
                 is.close();

@@ -11,6 +11,8 @@ import com.minda.sparsh.R;
 import com.minda.sparsh.RequestForAccessActivity;
 import com.minda.sparsh.model.IAMGetDomainModel;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.util.List;
 
 import androidx.recyclerview.widget.RecyclerView;
@@ -32,8 +34,8 @@ public class IAMGetDomainAdapter extends RecyclerView.Adapter<IAMGetDomainAdapte
 
         public MyViewHolder(View view) {
             super(view);
-            rb = (RadioButton) view.findViewById(R.id.rb);
-            checkBox = (CheckBox) view.findViewById(R.id.cb);
+            rb = view.findViewById(R.id.rb);
+            checkBox = view.findViewById(R.id.cb);
 
         }
     }
@@ -45,6 +47,7 @@ public class IAMGetDomainAdapter extends RecyclerView.Adapter<IAMGetDomainAdapte
         this.checkCondition = check;
     }
 
+    @NotNull
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext())

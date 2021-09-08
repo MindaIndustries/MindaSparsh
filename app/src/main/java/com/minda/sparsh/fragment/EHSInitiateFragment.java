@@ -51,6 +51,8 @@ import com.minda.sparsh.services.EHSServices;
 import com.minda.sparsh.util.RetrofitClient2;
 import com.minda.sparsh.util.Utility;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
@@ -135,18 +137,18 @@ public class EHSInitiateFragment extends Fragment {
     Date millisecondsdailyfrom = null, millisecondsdailyto = null;
 
 
-    ArrayList<String> unitsName = new ArrayList<String>();
-    List<EHSUnitModel> units = new ArrayList<EHSUnitModel>();
-    ArrayList<String> officersName = new ArrayList<String>();
-    List<SafetyOfficerModel> safetyOfficers = new ArrayList<SafetyOfficerModel>();
-    ArrayList<String> observationtypeNames = new ArrayList<String>();
-    List<EHSObservationModel> observationTypes = new ArrayList<EHSObservationModel>();
-    ArrayList<String> identifiedLocations = new ArrayList<String>();
-    List<EHSIdentifiedLocationModel> ehsIdentifiedLocations = new ArrayList<EHSIdentifiedLocationModel>();
-    ArrayList<String> categories = new ArrayList<String>();
-    List<EHSCategoryModel> ehsCategories = new ArrayList<EHSCategoryModel>();
-    ArrayList<String> subCategories = new ArrayList<String>();
-    List<EHSSubCategoryModel> ehsSubCategories = new ArrayList<EHSSubCategoryModel>();
+    ArrayList<String> unitsName = new ArrayList<>();
+    List<EHSUnitModel> units = new ArrayList<>();
+    ArrayList<String> officersName = new ArrayList<>();
+    List<SafetyOfficerModel> safetyOfficers = new ArrayList<>();
+    ArrayList<String> observationtypeNames = new ArrayList<>();
+    List<EHSObservationModel> observationTypes = new ArrayList<>();
+    ArrayList<String> identifiedLocations = new ArrayList<>();
+    List<EHSIdentifiedLocationModel> ehsIdentifiedLocations = new ArrayList<>();
+    ArrayList<String> categories = new ArrayList<>();
+    List<EHSCategoryModel> ehsCategories = new ArrayList<>();
+    ArrayList<String> subCategories = new ArrayList<>();
+    List<EHSSubCategoryModel> ehsSubCategories = new ArrayList<>();
     ArrayAdapter<String> adapterUnit, adapterSafetyOfficer, adapterObservationType, adapterIdentifiedLocation, adapterCategory, adapterSubCategory;
     String catId;
     DatePickerDialog observationDatePicker;
@@ -637,7 +639,7 @@ public class EHSInitiateFragment extends Fragment {
                 }
             }
         } catch (Exception e) {
-
+            e.printStackTrace();
         }
 
         observationDatePicker = new DatePickerDialog(getActivity(), (view, year, month, dayOfMonth) -> {
@@ -886,7 +888,7 @@ public class EHSInitiateFragment extends Fragment {
 
             @Override
             public View getDropDownView(int position, View convertView,
-                                        ViewGroup parent) {
+                                        @NotNull ViewGroup parent) {
                 View view = super.getDropDownView(position, convertView, parent);
                 TextView itemTv = (TextView) view;
                 itemTv.setSingleLine(true);
@@ -924,7 +926,7 @@ public class EHSInitiateFragment extends Fragment {
 
             @Override
             public View getDropDownView(int position, View convertView,
-                                        ViewGroup parent) {
+                                        @NotNull ViewGroup parent) {
                 View view = super.getDropDownView(position, convertView, parent);
                 TextView itemTv = (TextView) view;
                 itemTv.setSingleLine(true);
@@ -1297,7 +1299,7 @@ public class EHSInitiateFragment extends Fragment {
 
 
     public String getStringFile(File f) {
-        InputStream inputStream = null;
+        InputStream inputStream;
         String encodedFile = "", lastVal;
         try {
             inputStream = new FileInputStream(f.getPath());
@@ -1312,10 +1314,6 @@ public class EHSInitiateFragment extends Fragment {
             }
             output64.close();
             encodedFile = output.toString();
-        } catch (FileNotFoundException e1) {
-            e1.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -1329,7 +1327,7 @@ public class EHSInitiateFragment extends Fragment {
             InputStream inputStream = new FileInputStream(f);
             ByteArrayOutputStream bos = new ByteArrayOutputStream();
             byte[] b = new byte[1024 * 11];
-            int bytesRead = 0;
+            int bytesRead;
 
             while ((bytesRead = inputStream.read(b)) != -1) {
                 bos.write(b, 0, bytesRead);
@@ -1392,35 +1390,32 @@ public class EHSInitiateFragment extends Fragment {
                 "Cancel"};
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         builder.setTitle("Add Photo!");
-        builder.setItems(items, new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int item) {
-                boolean result = Utility.checkPermission(getActivity());
-                if (items[item].equals("Take Photo")) {
-                    mUserChoosenTask = "Take Photo";
-                    if (result) {
-                        requestCameraPermission();
-                        if (hasCameraPermission())
-                            cameraIntent();
-                    }
-                } else if (items[item].equals("Choose from Gallery")) {
-                    mUserChoosenTask = "Choose from Gallery";
-                    if (result) {
-                        galleryIntent();
-                    }
+        builder.setItems(items, (dialog, item) -> {
+            boolean result = Utility.checkPermission(getActivity());
+            if (items[item].equals("Take Photo")) {
+                mUserChoosenTask = "Take Photo";
+                if (result) {
+                    requestCameraPermission();
+                    if (hasCameraPermission())
+                        cameraIntent();
+                }
+            } else if (items[item].equals("Choose from Gallery")) {
+                mUserChoosenTask = "Choose from Gallery";
+                if (result) {
+                    galleryIntent();
+                }
 
+            }
+            /*else if(items[item].equals("Choose Document")){
+                mUserChoosenTask = "Choose Document";
+                if(result){
+                    fileIntent();
                 }
-                /*else if(items[item].equals("Choose Document")){
-                    mUserChoosenTask = "Choose Document";
-                    if(result){
-                        fileIntent();
-                    }
 
-                }
-                */
-                else if (items[item].equals("Cancel")) {
-                    dialog.dismiss();
-                }
+            }
+            */
+            else if (items[item].equals("Cancel")) {
+                dialog.dismiss();
             }
         });
         builder.show();

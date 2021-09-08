@@ -53,7 +53,7 @@ public class ViewAppointmentFragment extends BaseFragment {
         progress.setProgressStyle(ProgressDialog.STYLE_SPINNER);
         progress.setIndeterminate(true);
 
-        recyclerView = (RecyclerView) convertView.findViewById(R.id.recycler_view);
+        recyclerView = convertView.findViewById(R.id.recycler_view);
         hitGetVisitorListApi(myPref.getString("Id", "Id"));
         return convertView;
     }

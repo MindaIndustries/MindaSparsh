@@ -50,7 +50,7 @@ public class IAMGetCategoryAdapter implements SpinnerAdapter {
 
     @Override
     public Object getItem(int position) {
-        return (Object) spinnerData.get(position);
+        return spinnerData.get(position);
     }
 
     @Override
@@ -86,7 +86,7 @@ public class IAMGetCategoryAdapter implements SpinnerAdapter {
     // This function called for each row ( Called data.size() times )
     public View getCustomView(int position, View convertView, ViewGroup parent) {
         View row = mInflater.inflate(R.layout.iam_spinner_cell_view, parent, false);
-        TextView mTxt = (TextView) row.findViewById(R.id.spinner_txt_title);
+        TextView mTxt =  row.findViewById(R.id.spinner_txt_title);
         mTxt.setText(spinnerData.get(position).getCategory());
 
 

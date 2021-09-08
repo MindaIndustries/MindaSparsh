@@ -22,10 +22,10 @@ public class PlantDetailsAdapter extends RecyclerView.Adapter<PlantDetailsAdapte
 
         public MyViewHolder(View view) {
             super(view);
-            tv_s_no = (TextView) view.findViewById(R.id.tv_s_no);
-            tv_domain = (TextView) view.findViewById(R.id.tv_domain);
-            tv_business = (TextView) view.findViewById(R.id.tv_business);
-            tv_plant = (TextView) view.findViewById(R.id.tv_plant);
+            tv_s_no = view.findViewById(R.id.tv_s_no);
+            tv_domain = view.findViewById(R.id.tv_domain);
+            tv_business = view.findViewById(R.id.tv_business);
+            tv_plant = view.findViewById(R.id.tv_plant);
         }
     }
 

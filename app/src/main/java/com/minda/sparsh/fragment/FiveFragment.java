@@ -50,8 +50,8 @@ public class FiveFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_five, container, false);
-        ImageView im_right = (ImageView) view.findViewById(R.id.im_right);
-        ImageView im_left = (ImageView) view.findViewById(R.id.im_left);
+        ImageView im_right =  view.findViewById(R.id.im_right);
+        ImageView im_left =  view.findViewById(R.id.im_left);
         final DashBoardActivity contaxt = (DashBoardActivity) getActivity();
         im_right.setOnClickListener(view1 -> contaxt.viewPager.setCurrentItem(contaxt.getItem(+1), true));
         im_left.setOnClickListener(view12 -> contaxt.viewPager.setCurrentItem(contaxt.getItem(-1), true));

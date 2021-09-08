@@ -34,7 +34,7 @@ public class ViewConcernFragment extends Fragment {
     @BindView(R.id.progressBar)
     ProgressBar progressBar;
     BottomUpConcernAdapter bottomUpConcernAdapter;
-    ArrayList<BottomUpConcern> concerns = new ArrayList<BottomUpConcern>();
+    ArrayList<BottomUpConcern> concerns = new ArrayList<>();
     SharedPreferences myPref;
     String empCode;
     @BindView(R.id.no_list)

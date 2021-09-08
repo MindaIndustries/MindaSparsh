@@ -1,7 +1,6 @@
 package com.minda.sparsh.fragment;
 
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -35,10 +34,10 @@ public class FourFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_four, container, false);
-        ImageView im_right = (ImageView) view.findViewById(R.id.im_right);
-        ImageView im_left = (ImageView) view.findViewById(R.id.im_left);
-        ImageButton im_identity_access_management = (ImageButton) view.findViewById(R.id.im_identity_access_management);
-        ImageButton im_change_request_from = (ImageButton) view.findViewById(R.id.im_change_request_from);
+        ImageView im_right = view.findViewById(R.id.im_right);
+        ImageView im_left = view.findViewById(R.id.im_left);
+        ImageButton im_identity_access_management = view.findViewById(R.id.im_identity_access_management);
+        ImageButton im_change_request_from = view.findViewById(R.id.im_change_request_from);
         ImageButton it_help_desk = view.findViewById(R.id.it_help_desk);
         final DashBoardActivity contaxt = (DashBoardActivity) getActivity();
         im_right.setOnClickListener(view1 -> contaxt.viewPager.setCurrentItem(contaxt.getItem(+1), true));
@@ -67,10 +66,6 @@ public class FourFragment extends Fragment {
 
         });
         return view;
-    }
-
-    // TODO: Rename method, update argument and hook method into UI event
-    public void onButtonPressed(Uri uri) {
 
     }
 

@@ -11,6 +11,8 @@ import com.minda.sparsh.model.TicketHistoryResponse;
 import com.minda.sparsh.model.TicketSubmitResponse;
 import com.minda.sparsh.util.RetrofitClient2;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.io.IOException;
 import java.util.List;
 
@@ -27,7 +29,7 @@ public class ITHelpDeskServices {
         Call<List<AssetLocResponse>> call = iThelpdeskClient.getAssetLoc(EmpCode);
         call.enqueue(new Callback<List<AssetLocResponse>>() {
             @Override
-            public void onResponse(Call<List<AssetLocResponse>> call, Response<List<AssetLocResponse>> response) {
+            public void onResponse(@NotNull Call<List<AssetLocResponse>> call, @NotNull Response<List<AssetLocResponse>> response) {
                 CarotResponse carotResponse = new CarotResponse();
                 carotResponse.setStatuscode(response.code());
                 if (response.code() == HttpsURLConnection.HTTP_OK) {
@@ -37,7 +39,7 @@ public class ITHelpDeskServices {
             }
 
             @Override
-            public void onFailure(Call<List<AssetLocResponse>> call, Throwable t) {
+            public void onFailure(@NotNull Call<List<AssetLocResponse>> call, @NotNull Throwable t) {
                 CarotResponse carotResponse = new CarotResponse();
                 if (t instanceof IOException) {
                     carotResponse.setMessage("Please hold on a moment, the internet connectivity seems to be slow");
@@ -53,7 +55,7 @@ public class ITHelpDeskServices {
         Call<List<AssetLocResponse>> call = iThelpdeskClient.getTicketType();
         call.enqueue(new Callback<List<AssetLocResponse>>() {
             @Override
-            public void onResponse(Call<List<AssetLocResponse>> call, Response<List<AssetLocResponse>> response) {
+            public void onResponse(@NotNull Call<List<AssetLocResponse>> call, @NotNull Response<List<AssetLocResponse>> response) {
                 CarotResponse carotResponse = new CarotResponse();
                 carotResponse.setStatuscode(response.code());
                 if (response.code() == HttpsURLConnection.HTTP_OK) {
@@ -63,7 +65,7 @@ public class ITHelpDeskServices {
             }
 
             @Override
-            public void onFailure(Call<List<AssetLocResponse>> call, Throwable t) {
+            public void onFailure(@NotNull Call<List<AssetLocResponse>> call, @NotNull Throwable t) {
                 CarotResponse carotResponse = new CarotResponse();
                 if (t instanceof IOException) {
                     carotResponse.setMessage("Please hold on a moment, the internet connectivity seems to be slow");
@@ -78,7 +80,7 @@ public class ITHelpDeskServices {
         Call<List<BindGroupResponse>> call = iThelpdeskClient.getBindGroup(subcat, subcat2, subcat3, ticketType, unitCode);
         call.enqueue(new Callback<List<BindGroupResponse>>() {
             @Override
-            public void onResponse(Call<List<BindGroupResponse>> call, Response<List<BindGroupResponse>> response) {
+            public void onResponse(@NotNull Call<List<BindGroupResponse>> call, @NotNull Response<List<BindGroupResponse>> response) {
                 CarotResponse carotResponse = new CarotResponse();
                 carotResponse.setStatuscode(response.code());
                 if (response.code() == HttpsURLConnection.HTTP_OK) {
@@ -88,7 +90,7 @@ public class ITHelpDeskServices {
             }
 
             @Override
-            public void onFailure(Call<List<BindGroupResponse>> call, Throwable t) {
+            public void onFailure(@NotNull Call<List<BindGroupResponse>> call, @NotNull Throwable t) {
                 CarotResponse carotResponse = new CarotResponse();
                 if (t instanceof IOException) {
                     carotResponse.setMessage("Please hold on a moment, the internet connectivity seems to be slow");
@@ -103,7 +105,7 @@ public class ITHelpDeskServices {
         Call<List<GroupAssigneeResponse>> call = iThelpdeskClient.getGroupAssignee(ticketType, unitcode);
         call.enqueue(new Callback<List<GroupAssigneeResponse>>() {
             @Override
-            public void onResponse(Call<List<GroupAssigneeResponse>> call, Response<List<GroupAssigneeResponse>> response) {
+            public void onResponse(@NotNull Call<List<GroupAssigneeResponse>> call, @NotNull Response<List<GroupAssigneeResponse>> response) {
                 CarotResponse carotResponse = new CarotResponse();
                 carotResponse.setStatuscode(response.code());
                 if (response.code() == HttpsURLConnection.HTTP_OK) {
@@ -113,7 +115,7 @@ public class ITHelpDeskServices {
             }
 
             @Override
-            public void onFailure(Call<List<GroupAssigneeResponse>> call, Throwable t) {
+            public void onFailure(@NotNull Call<List<GroupAssigneeResponse>> call, @NotNull Throwable t) {
                 CarotResponse carotResponse = new CarotResponse();
                 if (t instanceof IOException) {
                     carotResponse.setMessage("Please hold on a moment, the internet connectivity seems to be slow");
@@ -128,7 +130,7 @@ public class ITHelpDeskServices {
         Call<List<String>> call = iThelpdeskClient.getAutoName(prefixText);
         call.enqueue(new Callback<List<String>>() {
             @Override
-            public void onResponse(Call<List<String>> call, Response<List<String>> response) {
+            public void onResponse(@NotNull Call<List<String>> call, @NotNull Response<List<String>> response) {
                 CarotResponse carotResponse = new CarotResponse();
                 carotResponse.setStatuscode(response.code());
                 if (response.code() == HttpsURLConnection.HTTP_OK) {
@@ -138,7 +140,7 @@ public class ITHelpDeskServices {
             }
 
             @Override
-            public void onFailure(Call<List<String>> call, Throwable t) {
+            public void onFailure(@NotNull Call<List<String>> call, @NotNull Throwable t) {
                 CarotResponse carotResponse = new CarotResponse();
                 if (t instanceof IOException) {
                     carotResponse.setMessage("Please hold on a moment, the internet connectivity seems to be slow");
@@ -155,7 +157,7 @@ public class ITHelpDeskServices {
         Call<TicketSubmitResponse> call = iThelpdeskClient.submitRequest(location, tickettypeId, subcat, subcat2, subcat3, ticketGroupId, assignGroup, AssigneGroupCode, DefaultAssigne, reportedby, priority, attachedfiles, attFileBytes, description, cc, empcode);
         call.enqueue(new Callback<TicketSubmitResponse>() {
             @Override
-            public void onResponse(Call<TicketSubmitResponse> call, Response<TicketSubmitResponse> response) {
+            public void onResponse(@NotNull Call<TicketSubmitResponse> call, @NotNull Response<TicketSubmitResponse> response) {
                 CarotResponse carotResponse = new CarotResponse();
                 carotResponse.setStatuscode(response.code());
                 if (response.code() == HttpsURLConnection.HTTP_OK) {
@@ -166,7 +168,7 @@ public class ITHelpDeskServices {
             }
 
             @Override
-            public void onFailure(Call<TicketSubmitResponse> call, Throwable t) {
+            public void onFailure(@NotNull Call<TicketSubmitResponse> call, @NotNull Throwable t) {
                 CarotResponse carotResponse = new CarotResponse();
                 if (t instanceof IOException) {
                     carotResponse.setMessage("Please hold on a moment, the internet connectivity seems to be slow");
@@ -181,7 +183,7 @@ public class ITHelpDeskServices {
         Call<List<MyTicketsResponse>> call = iThelpdeskClient.getMyTickets(EmpCode, Location, TicketTypeId, Priority, TicketGroupID, StatusID, SubCat, SubCat2, SubCat3, ReportedDate, CloserDate);
         call.enqueue(new Callback<List<MyTicketsResponse>>() {
             @Override
-            public void onResponse(Call<List<MyTicketsResponse>> call, Response<List<MyTicketsResponse>> response) {
+            public void onResponse(@NotNull Call<List<MyTicketsResponse>> call, @NotNull Response<List<MyTicketsResponse>> response) {
                 CarotResponse carotResponse = new CarotResponse();
                 carotResponse.setStatuscode(response.code());
                 if (response.code() == HttpsURLConnection.HTTP_OK) {
@@ -191,7 +193,7 @@ public class ITHelpDeskServices {
             }
 
             @Override
-            public void onFailure(Call<List<MyTicketsResponse>> call, Throwable t) {
+            public void onFailure(@NotNull Call<List<MyTicketsResponse>> call, @NotNull Throwable t) {
                 CarotResponse carotResponse = new CarotResponse();
                 if (t instanceof IOException) {
                     carotResponse.setMessage("Please hold on a moment, the internet connectivity seems to be slow");
@@ -207,7 +209,7 @@ public class ITHelpDeskServices {
         Call<List<MyTicketsResponse>> call = iThelpdeskClient.getMyTaskTickets(EmpCode, Location, TicketTypeId, Priority, TicketGroupID, StatusID, SubCat, SubCat2, SubCat3, ReportedDate, CloserDate);
         call.enqueue(new Callback<List<MyTicketsResponse>>() {
             @Override
-            public void onResponse(Call<List<MyTicketsResponse>> call, Response<List<MyTicketsResponse>> response) {
+            public void onResponse(@NotNull Call<List<MyTicketsResponse>> call, @NotNull Response<List<MyTicketsResponse>> response) {
                 CarotResponse carotResponse = new CarotResponse();
                 carotResponse.setStatuscode(response.code());
                 if (response.code() == HttpsURLConnection.HTTP_OK) {
@@ -217,7 +219,7 @@ public class ITHelpDeskServices {
             }
 
             @Override
-            public void onFailure(Call<List<MyTicketsResponse>> call, Throwable t) {
+            public void onFailure(@NotNull Call<List<MyTicketsResponse>> call, @NotNull Throwable t) {
                 CarotResponse carotResponse = new CarotResponse();
                 if (t instanceof IOException) {
                     carotResponse.setMessage("Please hold on a moment, the internet connectivity seems to be slow");
@@ -233,7 +235,7 @@ public class ITHelpDeskServices {
         Call<List<AssetLocResponse>> call = iThelpdeskClient.getPriority();
         call.enqueue(new Callback<List<AssetLocResponse>>() {
             @Override
-            public void onResponse(Call<List<AssetLocResponse>> call, Response<List<AssetLocResponse>> response) {
+            public void onResponse(@NotNull Call<List<AssetLocResponse>> call, @NotNull Response<List<AssetLocResponse>> response) {
                 CarotResponse carotResponse = new CarotResponse();
                 carotResponse.setStatuscode(response.code());
                 if (response.code() == HttpsURLConnection.HTTP_OK) {
@@ -243,7 +245,7 @@ public class ITHelpDeskServices {
             }
 
             @Override
-            public void onFailure(Call<List<AssetLocResponse>> call, Throwable t) {
+            public void onFailure(@NotNull Call<List<AssetLocResponse>> call, @NotNull Throwable t) {
                 CarotResponse carotResponse = new CarotResponse();
                 if (t instanceof IOException) {
                     carotResponse.setMessage("Please hold on a moment, the internet connectivity seems to be slow");
@@ -258,7 +260,8 @@ public class ITHelpDeskServices {
         Call<List<AssetLocResponse>> call = iThelpdeskClient.getReportedBy(EmpCode);
         call.enqueue(new Callback<List<AssetLocResponse>>() {
             @Override
-            public void onResponse(Call<List<AssetLocResponse>> call, Response<List<AssetLocResponse>> response) {
+            public void onResponse(@NotNull Call<List<AssetLocResponse>> call, @NotNull Response<List<AssetLocResponse>>
+                    response) {
                 CarotResponse carotResponse = new CarotResponse();
                 carotResponse.setStatuscode(response.code());
                 if (response.code() == HttpsURLConnection.HTTP_OK) {
@@ -268,7 +271,7 @@ public class ITHelpDeskServices {
             }
 
             @Override
-            public void onFailure(Call<List<AssetLocResponse>> call, Throwable t) {
+            public void onFailure(@NotNull Call<List<AssetLocResponse>> call, @NotNull Throwable t) {
                 CarotResponse carotResponse = new CarotResponse();
                 if (t instanceof IOException) {
                     carotResponse.setMessage("Please hold on a moment, the internet connectivity seems to be slow");
@@ -284,7 +287,7 @@ public class ITHelpDeskServices {
         Call<List<AssetLocResponse>> call = iThelpdeskClient.getSubCat(SubCat, TicketType, UnitCode);
         call.enqueue(new Callback<List<AssetLocResponse>>() {
             @Override
-            public void onResponse(Call<List<AssetLocResponse>> call, Response<List<AssetLocResponse>> response) {
+            public void onResponse(@NotNull Call<List<AssetLocResponse>> call, @NotNull Response<List<AssetLocResponse>> response) {
                 CarotResponse carotResponse = new CarotResponse();
                 carotResponse.setStatuscode(response.code());
                 if (response.code() == HttpsURLConnection.HTTP_OK) {
@@ -294,7 +297,7 @@ public class ITHelpDeskServices {
             }
 
             @Override
-            public void onFailure(Call<List<AssetLocResponse>> call, Throwable t) {
+            public void onFailure(@NotNull Call<List<AssetLocResponse>> call, @NotNull Throwable t) {
                 CarotResponse carotResponse = new CarotResponse();
                 if (t instanceof IOException) {
                     carotResponse.setMessage("Please hold on a moment, the internet connectivity seems to be slow");
@@ -310,7 +313,7 @@ public class ITHelpDeskServices {
         Call<List<AssetLocResponse>> call = iThelpdeskClient.getSubCat2(SubCat, SubCat2, TicketType, UnitCode);
         call.enqueue(new Callback<List<AssetLocResponse>>() {
             @Override
-            public void onResponse(Call<List<AssetLocResponse>> call, Response<List<AssetLocResponse>> response) {
+            public void onResponse(@NotNull Call<List<AssetLocResponse>> call, @NotNull Response<List<AssetLocResponse>> response) {
                 CarotResponse carotResponse = new CarotResponse();
                 carotResponse.setStatuscode(response.code());
                 if (response.code() == HttpsURLConnection.HTTP_OK) {
@@ -320,7 +323,7 @@ public class ITHelpDeskServices {
             }
 
             @Override
-            public void onFailure(Call<List<AssetLocResponse>> call, Throwable t) {
+            public void onFailure(@NotNull Call<List<AssetLocResponse>> call, @NotNull Throwable t) {
                 CarotResponse carotResponse = new CarotResponse();
                 if (t instanceof IOException) {
                     carotResponse.setMessage("Please hold on a moment, the internet connectivity seems to be slow");
@@ -336,7 +339,7 @@ public class ITHelpDeskServices {
         Call<List<AssetLocResponse>> call = iThelpdeskClient.getSubCat3(SubCat2, SubCat3, TicketType, UnitCode);
         call.enqueue(new Callback<List<AssetLocResponse>>() {
             @Override
-            public void onResponse(Call<List<AssetLocResponse>> call, Response<List<AssetLocResponse>> response) {
+            public void onResponse(@NotNull Call<List<AssetLocResponse>> call, @NotNull Response<List<AssetLocResponse>> response) {
                 CarotResponse carotResponse = new CarotResponse();
                 carotResponse.setStatuscode(response.code());
                 if (response.code() == HttpsURLConnection.HTTP_OK) {
@@ -346,7 +349,7 @@ public class ITHelpDeskServices {
             }
 
             @Override
-            public void onFailure(Call<List<AssetLocResponse>> call, Throwable t) {
+            public void onFailure(@NotNull Call<List<AssetLocResponse>> call, @NotNull Throwable t) {
                 CarotResponse carotResponse = new CarotResponse();
                 if (t instanceof IOException) {
                     carotResponse.setMessage("Please hold on a moment, the internet connectivity seems to be slow");
@@ -362,7 +365,7 @@ public class ITHelpDeskServices {
         Call<TicketSubmitResponse> call = iThelpdeskClient.updateRemark(Remarks, EmpCode, TicketNo);
         call.enqueue(new Callback<TicketSubmitResponse>() {
             @Override
-            public void onResponse(Call<TicketSubmitResponse> call, Response<TicketSubmitResponse> response) {
+            public void onResponse(@NotNull Call<TicketSubmitResponse> call, @NotNull Response<TicketSubmitResponse> response) {
                 CarotResponse carotResponse = new CarotResponse();
                 carotResponse.setStatuscode(response.code());
                 if (response.code() == HttpsURLConnection.HTTP_OK) {
@@ -372,7 +375,7 @@ public class ITHelpDeskServices {
             }
 
             @Override
-            public void onFailure(Call<TicketSubmitResponse> call, Throwable t) {
+            public void onFailure(@NotNull Call<TicketSubmitResponse> call, @NotNull Throwable t) {
                 CarotResponse carotResponse = new CarotResponse();
                 if (t instanceof IOException) {
                     carotResponse.setMessage("Please hold on a moment, the internet connectivity seems to be slow");
@@ -388,7 +391,7 @@ public class ITHelpDeskServices {
         Call<List<TicketHistoryResponse>> call = iThelpdeskClient.getTicketHistory(ticketNo);
         call.enqueue(new Callback<List<TicketHistoryResponse>>() {
             @Override
-            public void onResponse(Call<List<TicketHistoryResponse>> call, Response<List<TicketHistoryResponse>> response) {
+            public void onResponse(@NotNull Call<List<TicketHistoryResponse>> call, @NotNull Response<List<TicketHistoryResponse>> response) {
                 CarotResponse carotResponse = new CarotResponse();
                 carotResponse.setStatuscode(response.code());
                 if (response.code() == HttpsURLConnection.HTTP_OK) {
@@ -398,7 +401,7 @@ public class ITHelpDeskServices {
             }
 
             @Override
-            public void onFailure(Call<List<TicketHistoryResponse>> call, Throwable t) {
+            public void onFailure(@NotNull Call<List<TicketHistoryResponse>> call, @NotNull Throwable t) {
                 CarotResponse carotResponse = new CarotResponse();
                 if (t instanceof IOException) {
                     carotResponse.setMessage("Please hold on a moment, the internet connectivity seems to be slow");
@@ -415,7 +418,7 @@ public class ITHelpDeskServices {
         Call<TicketSubmitResponse> call = iThelpdeskClient.updateMyTaskTicket(TicketNo, EmpCode, Remark, Status, Location, TicketTypeID, SubCat, SubCat2, SubCat3, TicketGroupID, AssigneGroup, AssigneGroupCode, DefaultAssigne, ReportedBy, Priority, AttachedFiles, AttFileBytes, Description, CC);
         call.enqueue(new Callback<TicketSubmitResponse>() {
             @Override
-            public void onResponse(Call<TicketSubmitResponse> call, Response<TicketSubmitResponse> response) {
+            public void onResponse(@NotNull Call<TicketSubmitResponse> call, @NotNull Response<TicketSubmitResponse> response) {
                 CarotResponse carotResponse = new CarotResponse();
                 carotResponse.setStatuscode(response.code());
                 if (response.code() == HttpsURLConnection.HTTP_OK) {
@@ -426,7 +429,7 @@ public class ITHelpDeskServices {
             }
 
             @Override
-            public void onFailure(Call<TicketSubmitResponse> call, Throwable t) {
+            public void onFailure(@NotNull Call<TicketSubmitResponse> call, @NotNull Throwable t) {
                 CarotResponse carotResponse = new CarotResponse();
                 if (t instanceof IOException) {
                     carotResponse.setMessage("Please hold on a moment, the internet connectivity seems to be slow");

@@ -20,6 +20,8 @@ import com.minda.sparsh.util.Constant;
 import com.minda.sparsh.util.RetrofitClient2;
 import com.minda.sparsh.util.Utility;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -48,20 +50,20 @@ public class ViewAppointmentAdapter extends RecyclerView.Adapter<ViewAppointment
             progress.setProgressStyle(ProgressDialog.STYLE_SPINNER);
             progress.setIndeterminate(true);
 
-            lay_edit_cancel = (LinearLayout) view.findViewById(R.id.lay_edit_cancel);
-            lay_visit_cancel = (LinearLayout) view.findViewById(R.id.lay_visit_cancel);
-            tv_appointment_date = (TextView) view.findViewById(R.id.tv_appointment_date);
-            tv_time = (TextView) view.findViewById(R.id.tv_time);
-            tv_name = (TextView) view.findViewById(R.id.tv_name);
-            tv_compname = (TextView) view.findViewById(R.id.tv_compname);
-            tv_mob = (TextView) view.findViewById(R.id.tv_mob);
-            tv_purpose = (TextView) view.findViewById(R.id.tv_purpose);
-            tv_edit = (TextView) view.findViewById(R.id.tv_edit);
-            tv_cancel = (TextView) view.findViewById(R.id.tv_cancel);
-            tv_additional_person = (TextView) view.findViewById(R.id.tv_additional_person);
-            tv_check_in = (TextView) view.findViewById(R.id.tv_check_in);
-            tv_check_out = (TextView) view.findViewById(R.id.tv_check_out);
-            tv_visitor_id = (TextView) view.findViewById(R.id.tv_visitor_id);
+            lay_edit_cancel =  view.findViewById(R.id.lay_edit_cancel);
+            lay_visit_cancel =  view.findViewById(R.id.lay_visit_cancel);
+            tv_appointment_date =  view.findViewById(R.id.tv_appointment_date);
+            tv_time =  view.findViewById(R.id.tv_time);
+            tv_name =  view.findViewById(R.id.tv_name);
+            tv_compname =  view.findViewById(R.id.tv_compname);
+            tv_mob =  view.findViewById(R.id.tv_mob);
+            tv_purpose =  view.findViewById(R.id.tv_purpose);
+            tv_edit =  view.findViewById(R.id.tv_edit);
+            tv_cancel =  view.findViewById(R.id.tv_cancel);
+            tv_additional_person =  view.findViewById(R.id.tv_additional_person);
+            tv_check_in =  view.findViewById(R.id.tv_check_in);
+            tv_check_out =  view.findViewById(R.id.tv_check_out);
+            tv_visitor_id =  view.findViewById(R.id.tv_visitor_id);
 
         }
     }
@@ -72,6 +74,7 @@ public class ViewAppointmentAdapter extends RecyclerView.Adapter<ViewAppointment
         this.context = context1;
     }
 
+    @NotNull
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext())
@@ -160,7 +163,7 @@ public class ViewAppointmentAdapter extends RecyclerView.Adapter<ViewAppointment
             Call<List<AddAbnormality_Model>> response = anInterface.UpdateVisitorStatus(key, visitorId, status);
             response.enqueue(new Callback<List<AddAbnormality_Model>>() {
                 @Override
-                public void onResponse(Call<List<AddAbnormality_Model>> call, Response<List<AddAbnormality_Model>> response) {
+                public void onResponse(@NotNull Call<List<AddAbnormality_Model>> call, @NotNull Response<List<AddAbnormality_Model>> response) {
                     dismissProgress();
                     List<AddAbnormality_Model> rps = response.body();
 
@@ -181,7 +184,7 @@ public class ViewAppointmentAdapter extends RecyclerView.Adapter<ViewAppointment
                 }
 
                 @Override
-                public void onFailure(Call<List<AddAbnormality_Model>> call, Throwable t) {
+                public void onFailure(@NotNull Call<List<AddAbnormality_Model>> call, @NotNull Throwable t) {
                     dismissProgress();
                 }
             });

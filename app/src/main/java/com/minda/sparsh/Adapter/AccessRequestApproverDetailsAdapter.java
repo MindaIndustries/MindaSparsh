@@ -9,6 +9,8 @@ import android.widget.TextView;
 import com.minda.sparsh.R;
 import com.minda.sparsh.model.AccessRequestApproverDetailsModel;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.util.List;
 
 import androidx.recyclerview.widget.RecyclerView;
@@ -23,14 +25,14 @@ public class AccessRequestApproverDetailsAdapter extends RecyclerView.Adapter<Ac
 
         public MyViewHolder(View view) {
             super(view);
-            tv_s_no = (TextView) view.findViewById(R.id.tv_s_no);
-            tv_approved_by_emp_code = (TextView) view.findViewById(R.id.tv_approved_by_emp_code);
-            tv_approved_by_name = (TextView) view.findViewById(R.id.tv_approved_by_name);
-            tv_approved_status = (TextView) view.findViewById(R.id.tv_approved_status);
-            tv_approval_level = (TextView) view.findViewById(R.id.tv_approval_level);
-            tv_approval_request_on = (TextView) view.findViewById(R.id.tv_approval_request_on);
-            tv_approval_on = (TextView) view.findViewById(R.id.tv_approval_on);
-            tv_remarks = (TextView) view.findViewById(R.id.tv_remarks);
+            tv_s_no =  view.findViewById(R.id.tv_s_no);
+            tv_approved_by_emp_code =  view.findViewById(R.id.tv_approved_by_emp_code);
+            tv_approved_by_name =  view.findViewById(R.id.tv_approved_by_name);
+            tv_approved_status =  view.findViewById(R.id.tv_approved_status);
+            tv_approval_level =  view.findViewById(R.id.tv_approval_level);
+            tv_approval_request_on =  view.findViewById(R.id.tv_approval_request_on);
+            tv_approval_on =  view.findViewById(R.id.tv_approval_on);
+            tv_remarks =  view.findViewById(R.id.tv_remarks);
         }
     }
 
@@ -40,6 +42,7 @@ public class AccessRequestApproverDetailsAdapter extends RecyclerView.Adapter<Ac
         this.context = context1;
     }
 
+    @NotNull
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext())

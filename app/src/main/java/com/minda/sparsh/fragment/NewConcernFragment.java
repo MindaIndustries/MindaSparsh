@@ -102,11 +102,11 @@ public class NewConcernFragment extends Fragment {
 
     String unitcode, depucode, empCode, username;
     SharedPreferences myPref;
-    ArrayList<String> unitsName = new ArrayList<String>();
-    ArrayList<String> sixMNames = new ArrayList<String>();
+    ArrayList<String> unitsName = new ArrayList<>();
+    ArrayList<String> sixMNames = new ArrayList<>();
 
-    List<EHSUnitModel> units = new ArrayList<EHSUnitModel>();
-    List<SixMModel> sixMs = new ArrayList<SixMModel>();
+    List<EHSUnitModel> units = new ArrayList<>();
+    List<SixMModel> sixMs = new ArrayList<>();
     ArrayAdapter<String> adapterUnit, adapterResponsible6M;
     String department;
     public static final int MY_PERMISSIONS_REQUEST_READ_EXTERNAL_STORAGE = 123;

@@ -5,5 +5,5 @@ package com.minda.sparsh.listener;
  */
 
 public interface OnTaskComplete {
-    public void onTaskComplte(CarotResponse carotResponse);
+    void onTaskComplte(CarotResponse carotResponse);
 }

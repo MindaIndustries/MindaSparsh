@@ -79,12 +79,12 @@ public class ApproveListAdapter extends RecyclerView.Adapter<ApproveListAdapter.
 
         public MyViewHolder(View view) {
             super(view);
-            tv_access_request_no = (TextView) view.findViewById(R.id.tv_access_request_no);
-            tv_request_on = (TextView) view.findViewById(R.id.tv_request_on);
-            tv_access_for = (TextView) view.findViewById(R.id.tv_access_for);
-//            tv_request_type = (TextView) view.findViewById(R.id.tv_request_type);
-            tv_Approval_status = (TextView) view.findViewById(R.id.tv_Approval_status);
-            btn_view = (Button) view.findViewById(R.id.btn_view);
+            tv_access_request_no =  view.findViewById(R.id.tv_access_request_no);
+            tv_request_on =  view.findViewById(R.id.tv_request_on);
+            tv_access_for =  view.findViewById(R.id.tv_access_for);
+//            tv_request_type =  view.findViewById(R.id.tv_request_type);
+            tv_Approval_status =  view.findViewById(R.id.tv_Approval_status);
+            btn_view =  view.findViewById(R.id.btn_view);
         }
     }
 

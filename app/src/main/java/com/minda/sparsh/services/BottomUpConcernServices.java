@@ -11,6 +11,8 @@ import com.minda.sparsh.model.BottomUpConcern;
 import com.minda.sparsh.model.SixMModel;
 import com.minda.sparsh.util.RetrofitClient2;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -33,7 +35,7 @@ public class BottomUpConcernServices {
         Call<List<SixMModel>> call = bottomUpClient.getSixM();
         call.enqueue(new Callback<List<SixMModel>>() {
             @Override
-            public void onResponse(Call<List<SixMModel>> call, Response<List<SixMModel>> response) {
+            public void onResponse(@NotNull Call<List<SixMModel>> call, @NotNull Response<List<SixMModel>> response) {
                 CarotResponse carotResponse = new CarotResponse();
                 carotResponse.setStatuscode(response.code());
                 if (response.code() == HttpsURLConnection.HTTP_OK) {
@@ -43,7 +45,7 @@ public class BottomUpConcernServices {
             }
 
             @Override
-            public void onFailure(Call<List<SixMModel>> call, Throwable t) {
+            public void onFailure(@NotNull Call<List<SixMModel>> call, @NotNull Throwable t) {
                 CarotResponse carotResponse = new CarotResponse();
                 if (t instanceof IOException) {
                     carotResponse.setMessage("Please hold on a moment, the internet connectivity seems to be slow");
@@ -61,7 +63,7 @@ public class BottomUpConcernServices {
         Call<List<BottomUpConcern>> call = bottomUpClient.getConcerns(empCode);
         call.enqueue(new Callback<List<BottomUpConcern>>() {
             @Override
-            public void onResponse(Call<List<BottomUpConcern>> call, Response<List<BottomUpConcern>> response) {
+            public void onResponse(@NotNull Call<List<BottomUpConcern>> call, @NotNull Response<List<BottomUpConcern>> response) {
                 CarotResponse carotResponse = new CarotResponse();
                 carotResponse.setStatuscode(response.code());
                 if (response.code() == HttpsURLConnection.HTTP_OK) {
@@ -71,7 +73,7 @@ public class BottomUpConcernServices {
             }
 
             @Override
-            public void onFailure(Call<List<BottomUpConcern>> call, Throwable t) {
+            public void onFailure(@NotNull Call<List<BottomUpConcern>> call, @NotNull Throwable t) {
                 CarotResponse carotResponse = new CarotResponse();
                 if (t instanceof IOException) {
                     carotResponse.setMessage("Please hold on a moment, the internet connectivity seems to be slow");
@@ -89,7 +91,7 @@ public class BottomUpConcernServices {
         Call<String> call = bottomUpClient.saveConcern(RaisedBy, RaisedOn, Unit, Department, ReferenceNo, ExistingSystem, ProposedSystem, Benefit, ESFile, ESFileByte, PSFile, PSFileByte, BenFile, BenFileByte, FirstName);
         call.enqueue(new Callback<String>() {
             @Override
-            public void onResponse(Call<String> call, Response<String> response) {
+            public void onResponse(@NotNull Call<String> call, @NotNull Response<String> response) {
                 CarotResponse carotResponse = new CarotResponse();
                 carotResponse.setStatuscode(response.code());
                 if (response.code() == HttpsURLConnection.HTTP_OK) {
@@ -99,7 +101,7 @@ public class BottomUpConcernServices {
             }
 
             @Override
-            public void onFailure(Call<String> call, Throwable t) {
+            public void onFailure(@NotNull Call<String> call, @NotNull Throwable t) {
                 CarotResponse carotResponse = new CarotResponse();
                 if (t instanceof IOException) {
                     carotResponse.setMessage("Please hold on a moment, the internet connectivity seems to be slow");
@@ -116,7 +118,7 @@ public class BottomUpConcernServices {
         Call<ResponseBody> call = bottomUpClient.downloadFileWithDynamicUrlSync(fileUrl);
         call.enqueue(new Callback<ResponseBody>() {
             @Override
-            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+            public void onResponse(@NotNull Call<ResponseBody> call, @NotNull Response<ResponseBody> response) {
                 CarotResponse carotResponse = new CarotResponse();
                 carotResponse.setStatuscode(response.code());
                 if (response.code() == HttpsURLConnection.HTTP_OK) {
@@ -127,7 +129,7 @@ public class BottomUpConcernServices {
             }
 
             @Override
-            public void onFailure(Call<ResponseBody> call, Throwable t) {
+            public void onFailure(@NotNull Call<ResponseBody> call, @NotNull Throwable t) {
                 CarotResponse carotResponse = new CarotResponse();
                 if (t instanceof IOException) {
                     carotResponse.setMessage("Please hold on a moment, the internet connectivity seems to be slow");
@@ -197,7 +199,7 @@ public class BottomUpConcernServices {
         Call<List<BottomUpConcern>> call = bottomUpClient.getAssignedConcerns(empcode);
         call.enqueue(new Callback<List<BottomUpConcern>>() {
             @Override
-            public void onResponse(Call<List<BottomUpConcern>> call, Response<List<BottomUpConcern>> response) {
+            public void onResponse(@NotNull Call<List<BottomUpConcern>> call, @NotNull Response<List<BottomUpConcern>> response) {
                 CarotResponse carotResponse = new CarotResponse();
                 carotResponse.setStatuscode(response.code());
                 if (response.code() == HttpsURLConnection.HTTP_OK) {
@@ -207,7 +209,7 @@ public class BottomUpConcernServices {
             }
 
             @Override
-            public void onFailure(Call<List<BottomUpConcern>> call, Throwable t) {
+            public void onFailure(@NotNull Call<List<BottomUpConcern>> call, @NotNull Throwable t) {
                 CarotResponse carotResponse = new CarotResponse();
                 if (t instanceof IOException) {
                     carotResponse.setMessage("Please hold on a moment, the internet connectivity seems to be slow");
@@ -224,7 +226,7 @@ public class BottomUpConcernServices {
         Call<String> call = bottomUpClient.assignAConcern(concernNo, empCode, targetDate);
         call.enqueue(new Callback<String>() {
             @Override
-            public void onResponse(Call<String> call, Response<String> response) {
+            public void onResponse(@NotNull Call<String> call, @NotNull Response<String> response) {
                 CarotResponse carotResponse = new CarotResponse();
                 carotResponse.setStatuscode(response.code());
                 if (response.code() == HttpsURLConnection.HTTP_OK) {
@@ -234,7 +236,7 @@ public class BottomUpConcernServices {
             }
 
             @Override
-            public void onFailure(Call<String> call, Throwable t) {
+            public void onFailure(@NotNull Call<String> call, @NotNull Throwable t) {
                 CarotResponse carotResponse = new CarotResponse();
                 if (t instanceof IOException) {
                     carotResponse.setMessage("Please hold on a moment, the internet connectivity seems to be slow");
@@ -249,7 +251,7 @@ public class BottomUpConcernServices {
         Call<String> call = bottomUpClient.markCompleteConcern(concernNo);
         call.enqueue(new Callback<String>() {
             @Override
-            public void onResponse(Call<String> call, Response<String> response) {
+            public void onResponse(@NotNull Call<String> call, @NotNull Response<String> response) {
                 CarotResponse carotResponse = new CarotResponse();
                 carotResponse.setStatuscode(response.code());
                 if (response.code() == HttpsURLConnection.HTTP_OK) {
@@ -259,7 +261,7 @@ public class BottomUpConcernServices {
             }
 
             @Override
-            public void onFailure(Call<String> call, Throwable t) {
+            public void onFailure(@NotNull Call<String> call, @NotNull Throwable t) {
                 CarotResponse carotResponse = new CarotResponse();
                 if (t instanceof IOException) {
                     carotResponse.setMessage("Please hold on a moment, the internet connectivity seems to be slow");
@@ -276,7 +278,7 @@ public class BottomUpConcernServices {
         Call<List<AutoSuggestModel>> call = bottomUpClient.getAutoSuggestion(prefixText);
         call.enqueue(new Callback<List<AutoSuggestModel>>() {
             @Override
-            public void onResponse(Call<List<AutoSuggestModel>> call, Response<List<AutoSuggestModel>> response) {
+            public void onResponse(@NotNull Call<List<AutoSuggestModel>> call, @NotNull Response<List<AutoSuggestModel>> response) {
                 CarotResponse carotResponse = new CarotResponse();
                 carotResponse.setStatuscode(response.code());
                 if (response.code() == HttpsURLConnection.HTTP_OK) {
@@ -287,7 +289,7 @@ public class BottomUpConcernServices {
             }
 
             @Override
-            public void onFailure(Call<List<AutoSuggestModel>> call, Throwable t) {
+            public void onFailure(@NotNull Call<List<AutoSuggestModel>> call, @NotNull Throwable t) {
                 CarotResponse carotResponse = new CarotResponse();
                 if (t instanceof IOException) {
                     carotResponse.setMessage("Please hold on a moment, the internet connectivity seems to be slow");
@@ -305,7 +307,7 @@ public class BottomUpConcernServices {
         Call<String> call = bottomUpClient.submitSuggestion(suggestion, empCode, CostAmount, other, FileName, FileType, FileByte);
         call.enqueue(new Callback<String>() {
             @Override
-            public void onResponse(Call<String> call, Response<String> response) {
+            public void onResponse(@NotNull Call<String> call, @NotNull Response<String> response) {
                 CarotResponse carotResponse = new CarotResponse();
                 carotResponse.setStatuscode(response.code());
                 if (response.code() == HttpsURLConnection.HTTP_OK) {
@@ -316,7 +318,7 @@ public class BottomUpConcernServices {
             }
 
             @Override
-            public void onFailure(Call<String> call, Throwable t) {
+            public void onFailure(@NotNull Call<String> call, @NotNull Throwable t) {
                 CarotResponse carotResponse = new CarotResponse();
                 if (t instanceof IOException) {
                     carotResponse.setMessage("Please hold on a moment, the internet connectivity seems to be slow");

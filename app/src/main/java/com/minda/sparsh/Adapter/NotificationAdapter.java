@@ -7,7 +7,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -19,6 +18,8 @@ import com.minda.sparsh.R;
 import com.minda.sparsh.RetrofitClient;
 import com.minda.sparsh.model.NotificationModel;
 import com.minda.sparsh.util.Utility;
+
+import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 
@@ -45,9 +46,8 @@ public class NotificationAdapter extends BaseAdapter {
     }
 
     public static class ViewHolder {
-        public TextView tv_notification, tv_time;
+        public TextView tv_notification;
         public LinearLayout lay_notification;
-        public ImageView im_product, im_selected;
 
 
     }
@@ -74,8 +74,8 @@ public class NotificationAdapter extends BaseAdapter {
             final NotificationAdapter.ViewHolder holder = new ViewHolder();
             this.holder = holder;
             convertView = inflater.inflate(R.layout.notification_call_view, null);
-            holder.tv_notification = (TextView) convertView.findViewById(R.id.tv_notification);
-            holder.lay_notification = (LinearLayout) convertView.findViewById(R.id.lay_notification);
+            holder.tv_notification =  convertView.findViewById(R.id.tv_notification);
+            holder.lay_notification =  convertView.findViewById(R.id.lay_notification);
 //            holder.tv_time= (TextView) convertView.findViewById(R.id.tv_time);
             holder.tv_notification.setText(homeData.get(position).getNotification());
 //            holder.tv_time.setText(homeData.get(position).getCreatedOn());
@@ -109,7 +109,7 @@ public class NotificationAdapter extends BaseAdapter {
             Call<List<NotificationModel>> loginResponse = loginInterface.ReadPushNot(UserId, pushid, "mda@sPr$rZ#G!!");
             loginResponse.enqueue(new Callback<List<NotificationModel>>() {
                 @Override
-                public void onResponse(Call<List<NotificationModel>> call, Response<List<NotificationModel>> response) {
+                public void onResponse(@NotNull Call<List<NotificationModel>> call, @NotNull Response<List<NotificationModel>> response) {
 
                     List<NotificationModel> responseItem = response.body();
                     response.message();
@@ -125,7 +125,7 @@ public class NotificationAdapter extends BaseAdapter {
                 }
 
                 @Override
-                public void onFailure(Call<List<NotificationModel>> call, Throwable t) {
+                public void onFailure(@NotNull Call<List<NotificationModel>> call, @NotNull Throwable t) {
 
 //                    Toast.makeText(mContext, "Something Wrong", Toast.LENGTH_LONG).show();
 

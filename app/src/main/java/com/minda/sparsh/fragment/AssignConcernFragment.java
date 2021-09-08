@@ -9,8 +9,6 @@ import android.widget.Toast;
 
 import com.minda.sparsh.Adapter.BottomUpConcernAdapter;
 import com.minda.sparsh.R;
-import com.minda.sparsh.listener.CarotResponse;
-import com.minda.sparsh.listener.OnTaskComplete;
 import com.minda.sparsh.model.BottomUpConcern;
 import com.minda.sparsh.services.BottomUpConcernServices;
 import com.minda.sparsh.util.Utility;
@@ -35,7 +33,7 @@ public class AssignConcernFragment extends Fragment {
     @BindView(R.id.bottomup_rv)
     RecyclerView bottomupRv;
     BottomUpConcernAdapter bottomUpConcernAdapter;
-    ArrayList<BottomUpConcern> concerns = new ArrayList<BottomUpConcern>();
+    ArrayList<BottomUpConcern> concerns = new ArrayList<>();
     SharedPreferences myPref;
     String empCode;
 

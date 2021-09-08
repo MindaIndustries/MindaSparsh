@@ -22,6 +22,8 @@ import com.minda.sparsh.model.UserDetail_Model;
 import com.minda.sparsh.util.RetrofitClient2;
 import com.minda.sparsh.util.Utility;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.io.IOException;
 import java.util.List;
 import java.util.Set;
@@ -55,11 +57,11 @@ public class ManufacturingFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View convertView = inflater.inflate(R.layout.fragment_manufacturing, container, false);
-        dmwButton = (ImageButton) convertView.findViewById(R.id.dwm_btn);
-        dwm_btn1 = (ImageButton) convertView.findViewById(R.id.dwm_btn1);
+        dmwButton = convertView.findViewById(R.id.dwm_btn);
+        dwm_btn1 = convertView.findViewById(R.id.dwm_btn1);
         ehs = convertView.findViewById(R.id.ehs);
-        ImageView im_right = (ImageView) convertView.findViewById(R.id.im_right);
-        ImageView im_left = (ImageView) convertView.findViewById(R.id.im_left);
+        ImageView im_right = convertView.findViewById(R.id.im_right);
+        ImageView im_left = convertView.findViewById(R.id.im_left);
         progress = new ProgressDialog(getActivity());
         progress.setMessage("Please wait...");
         progress.setProgressStyle(ProgressDialog.STYLE_SPINNER);
@@ -106,7 +108,7 @@ public class ManufacturingFragment extends Fragment {
             Call<List<UserDetail_Model>> response = promotingMyinterface.GetUserDetail(RetrofitClient2.CKEY, Email);
             response.enqueue(new Callback<List<UserDetail_Model>>() {
                 @Override
-                public void onResponse(Call<List<UserDetail_Model>> call, Response<List<UserDetail_Model>> response) {
+                public void onResponse(@NotNull Call<List<UserDetail_Model>> call, @NotNull Response<List<UserDetail_Model>> response) {
                     showProgress(false);
                     List<UserDetail_Model> userDetail_models = response.body();
                     if (userDetail_models != null && userDetail_models.size() != 0) {
@@ -125,7 +127,7 @@ public class ManufacturingFragment extends Fragment {
                 }
 
                 @Override
-                public void onFailure(Call<List<UserDetail_Model>> call, Throwable t) {
+                public void onFailure(@NotNull Call<List<UserDetail_Model>> call, @NotNull Throwable t) {
 
                     showProgress(false);
                     if (t instanceof IOException) {
