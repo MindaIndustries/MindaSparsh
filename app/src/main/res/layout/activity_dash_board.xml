@@ -43,7 +43,7 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:layout_marginLeft="-60dp"
+                        android:layout_marginStart="-60dp"
                         android:fontFamily="@font/museosans_300"
                         android:gravity="center"
                         android:text="Minda Sparsh"
@@ -54,15 +54,15 @@
                     <RelativeLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:layout_alignParentRight="true"
-                        android:layout_marginRight="15dp"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginEnd="15dp"
                         android:gravity="center">
 
                         <TextView
                             android:id="@+id/tv_user_name"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:drawableRight="@drawable/white_bell"
+                            android:drawableEnd="@drawable/white_bell"
                             android:fontFamily="@font/museosans_300"
                             android:gravity="center"
                             android:maxLines="1"
@@ -74,9 +74,9 @@
                             android:id="@+id/tv_unread"
                             android:layout_width="20dp"
                             android:layout_height="20dp"
-                            android:layout_alignParentRight="true"
+                            android:layout_alignParentEnd="true"
                             android:layout_marginTop="5dp"
-                            android:layout_marginRight="5dp"
+                            android:layout_marginEnd="5dp"
                             android:background="@drawable/notification_view"
                             android:gravity="center"
                             android:text="0"
@@ -87,9 +87,6 @@
 
                 </RelativeLayout>
             </androidx.appcompat.widget.Toolbar>
-
-
-            />
         </com.google.android.material.appbar.AppBarLayout>
 
         <include layout="@layout/dashboard_content" />

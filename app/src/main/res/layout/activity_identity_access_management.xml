@@ -50,7 +50,7 @@
                 android:layout_weight="2"
                 android:text="Identity &amp; Access Management"
                 android:textColor="@color/white"
-                android:textSize="20dp"
+                android:textSize="20sp"
                 android:textStyle="bold" />
 
         </LinearLayout>

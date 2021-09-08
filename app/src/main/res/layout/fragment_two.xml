@@ -27,7 +27,7 @@
                     android:padding="5dp"
                     android:text="ABOUT US"
                     android:textColor="#000000"
-                    android:textSize="18dp" />
+                    android:textSize="18sp" />
 
                 <View
                     android:layout_width="match_parent"
@@ -61,7 +61,7 @@
                             android:text="74B"
                             android:fontFamily="@font/museosans_500"
                             android:textColor="@color/colorPrimary"
-                            android:textSize="16dp" />
+                            android:textSize="16sp" />
 
                         <TextView
                             android:id="@+id/grp"
@@ -96,7 +96,7 @@
                             android:text="71 "
                             android:fontFamily="@font/museosans_500"
                             android:textColor="@color/colorPrimary"
-                            android:textSize="16dp" />
+                            android:textSize="16sp" />
 
                         <TextView
                             android:id="@+id/plants_glbl"
@@ -119,7 +119,7 @@
                             android:id="@+id/jv_value"
                             android:fontFamily="@font/museosans_500"
                             android:textColor="@color/colorPrimary"
-                            android:textSize="16dp" />
+                            android:textSize="16sp" />
 
                         <TextView
                             android:id="@+id/jv"
@@ -143,7 +143,7 @@
                             android:id="@+id/acquis_value"
                             android:fontFamily="@font/museosans_500"
                             android:textColor="@color/colorPrimary"
-                            android:textSize="16dp" />
+                            android:textSize="16sp" />
 
                         <TextView
                             android:id="@+id/acquis"
@@ -167,7 +167,7 @@
                             android:id="@+id/rnd_center_value"
                             android:fontFamily="@font/museosans_500"
                             android:textColor="@color/colorPrimary"
-                            android:textSize="16dp" />
+                            android:textSize="16sp" />
 
                         <TextView
                             android:id="@+id/rnd_cntr"
@@ -191,7 +191,7 @@
                             android:id="@+id/product_lines_value"
                             android:fontFamily="@font/museosans_500"
                             android:textColor="@color/colorPrimary"
-                            android:textSize="16dp" />
+                            android:textSize="16sp" />
 
                         <TextView
                             android:id="@+id/prd_lines"
@@ -214,7 +214,7 @@
                             android:id="@+id/product_patents_value"
                             android:fontFamily="@font/museosans_500"
                             android:textColor="@color/colorPrimary"
-                            android:textSize="16dp" />
+                            android:textSize="16sp" />
 
                         <TextView
                             android:id="@+id/prd_ptnt"
@@ -237,7 +237,7 @@
                             android:id="@+id/design_reg_value"
                             android:fontFamily="@font/museosans_500"
                             android:textColor="@color/colorPrimary"
-                            android:textSize="16dp" />
+                            android:textSize="16sp" />
 
                         <TextView
                             android:id="@+id/design_reg"
@@ -283,12 +283,12 @@
             android:id="@+id/im_right"
             android:layout_width="35dp"
             android:layout_height="35dp"
-            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
             android:layout_marginTop="20dp"
             android:src="@drawable/right_arrow" />
 
         <ImageView
-            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
             android:layout_alignParentBottom="true"
             android:src="@drawable/iconiclogo"
             android:layout_width="80dp"
@@ -297,7 +297,7 @@
 
         <TextView
             android:padding="5dp"
-            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
             android:layout_alignParentBottom="true"
             android:text="Since 1958"
             android:fontFamily="@font/museosans_500"

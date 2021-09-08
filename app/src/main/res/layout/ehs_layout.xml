@@ -35,7 +35,6 @@
             android:id="@+id/tablayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
             android:background="@drawable/toolbar_gradient"
@@ -63,7 +62,7 @@
             android:id="@+id/framelayout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_below="@+id/tablayout"></FrameLayout>
+            android:layout_below="@+id/tablayout" />
 
 
         <RelativeLayout
@@ -89,7 +88,7 @@
 
                     <TextView
                         android:layout_centerVertical="true"
-                        android:layout_marginLeft="10dp"
+                        android:layout_marginStart="10dp"
                         android:text="Initiate"
                         android:textSize="20sp"
                         android:fontFamily="@font/museosans_300"
@@ -122,7 +121,7 @@
 
                     <TextView
                         android:layout_centerVertical="true"
-                        android:layout_marginLeft="10dp"
+                        android:layout_marginStart="10dp"
                         android:text="My Observations"
                         android:textSize="20sp"
                         android:fontFamily="@font/museosans_300"
@@ -138,7 +137,7 @@
                         android:textStyle="bold"
                         android:textColor="@color/white"
                         android:layout_centerVertical="true"
-                        android:layout_alignParentRight="true"
+                        android:layout_alignParentEnd="true"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" />
 

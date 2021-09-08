@@ -52,10 +52,10 @@
                     android:layout_marginTop="30dp"
                     android:id="@+id/concern_date_spinner"
                     android:layout_below="@+id/heading"
-                    android:layout_alignParentRight="true"
+                    android:layout_alignParentEnd="true"
                     android:layout_width="match_parent"
-                    android:layout_marginLeft="-20dp"
-                    android:layout_toRightOf="@+id/view"
+                    android:layout_marginStart="-20dp"
+                    android:layout_toEndOf="@+id/view"
                     android:layout_height="wrap_content"
                     android:padding="5dp"
                     android:gravity="center" />
@@ -67,7 +67,7 @@
                     android:background="#414042"
                     android:layout_below="@+id/concern_date"
                     android:orientation="horizontal"
-                    android:id="@+id/ll1"></LinearLayout>
+                    android:id="@+id/ll1" />
 
 
                 <TextView
@@ -89,12 +89,12 @@
                     android:popupElevation="6dp"
                     android:layout_below="@+id/ll1"
                     android:dropDownVerticalOffset="20dp"
-                    android:layout_marginLeft="-20dp"
-                    android:layout_alignParentRight="true"
+                    android:layout_marginStart="-20dp"
+                    android:layout_alignParentEnd="true"
                     android:layout_width="match_parent"
-                    android:layout_toRightOf="@+id/view"
+                    android:layout_toEndOf="@+id/view"
                     android:layout_height="wrap_content"
-                    android:padding="5dp"></com.minda.sparsh.customview.NoDefaultSpinner>
+                    android:padding="5dp" />
 
                 <LinearLayout
                     android:layout_marginTop="10dp"
@@ -103,7 +103,7 @@
                     android:background="#414042"
                     android:layout_below="@+id/unit"
                     android:orientation="horizontal"
-                    android:id="@+id/ll2"></LinearLayout>
+                    android:id="@+id/ll2" />
 
                 <TextView
                     android:layout_marginTop="30dp"
@@ -124,12 +124,12 @@
                     android:popupElevation="6dp"
                     android:layout_below="@+id/ll2"
                     android:dropDownVerticalOffset="20dp"
-                    android:layout_marginLeft="-20dp"
-                    android:layout_alignParentRight="true"
+                    android:layout_marginStart="-20dp"
+                    android:layout_alignParentEnd="true"
                     android:layout_width="match_parent"
-                    android:layout_toRightOf="@+id/view"
+                    android:layout_toEndOf="@+id/view"
                     android:layout_height="wrap_content"
-                    android:padding="5dp"></com.minda.sparsh.customview.NoDefaultSpinner>
+                    android:padding="5dp" />
 
                 <LinearLayout
                     android:layout_marginTop="10dp"
@@ -138,7 +138,7 @@
                     android:background="#414042"
                     android:layout_below="@+id/responsible"
                     android:orientation="horizontal"
-                    android:id="@+id/ll3"></LinearLayout>
+                    android:id="@+id/ll3" />
 
                 <TextView
                     android:layout_marginTop="30dp"
@@ -155,7 +155,7 @@
                     android:layout_marginTop="10dp"
                     android:id="@+id/msm_reference_value"
                     android:layout_below="@+id/msm_reference"
-                    android:layout_alignParentRight="true"
+                    android:layout_alignParentEnd="true"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/cardview_bg"
@@ -165,7 +165,7 @@
                     android:gravity="left|top|center"
                     android:maxLines="4"
                     android:hint="Type MSM/Reference"
-                    android:scrollbars="vertical"></EditText>
+                    android:scrollbars="vertical" />
 
 
                 <TextView
@@ -183,7 +183,7 @@
                     android:layout_marginTop="10dp"
                     android:id="@+id/existing_system_value"
                     android:layout_below="@+id/existing_system"
-                    android:layout_alignParentRight="true"
+                    android:layout_alignParentEnd="true"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:padding="5dp"
@@ -199,7 +199,7 @@
 
                 <ImageView
                     android:layout_marginTop="10dp"
-                    android:layout_alignParentRight="true"
+                    android:layout_alignParentEnd="true"
                     android:layout_below="@+id/existing_system_value"
                     android:src="@drawable/attach"
                     android:id="@+id/attachment1"
@@ -208,14 +208,14 @@
 
                 <TextView
                     android:layout_marginTop="10dp"
-                    android:layout_marginRight="10dp"
+                    android:layout_marginEnd="10dp"
                     android:layout_alignBottom="@+id/attachment"
                     android:layout_alignTop="@+id/attachment"
                     android:layout_below="@+id/existing_system_value"
                     android:id="@+id/attachtext1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_toLeftOf="@+id/attachment1"
+                    android:layout_toStartOf="@+id/attachment1"
                     android:text="Add attachment"
                     android:singleLine="true"
                     android:fontFamily="@font/museosans_500" />
@@ -244,7 +244,7 @@
                     android:layout_marginTop="10dp"
                     android:id="@+id/proposed_system_value"
                     android:layout_below="@+id/proposed_system"
-                    android:layout_alignParentRight="true"
+                    android:layout_alignParentEnd="true"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:padding="5dp"
@@ -254,11 +254,11 @@
                     android:gravity="left|top|center"
                     android:maxLines="5"
                     android:hint="Type Proposed System"
-                    android:scrollbars="vertical"></EditText>
+                    android:scrollbars="vertical" />
 
                 <ImageView
                     android:layout_marginTop="10dp"
-                    android:layout_alignParentRight="true"
+                    android:layout_alignParentEnd="true"
                     android:layout_below="@+id/proposed_system_value"
                     android:src="@drawable/attach"
                     android:id="@+id/attachment2"
@@ -267,14 +267,14 @@
 
                 <TextView
                     android:layout_marginTop="10dp"
-                    android:layout_marginRight="10dp"
+                    android:layout_marginEnd="10dp"
                     android:layout_alignBottom="@+id/attachment"
                     android:layout_alignTop="@+id/attachment"
                     android:layout_below="@+id/proposed_system_value"
                     android:id="@+id/attachtext2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_toLeftOf="@+id/attachment2"
+                    android:layout_toStartOf="@+id/attachment2"
                     android:text="Add attachment"
                     android:singleLine="true"
                     android:fontFamily="@font/museosans_500" />
@@ -303,7 +303,7 @@
                     android:layout_marginTop="10dp"
                     android:id="@+id/benefit_value"
                     android:layout_below="@+id/benefit"
-                    android:layout_alignParentRight="true"
+                    android:layout_alignParentEnd="true"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:padding="5dp"
@@ -317,7 +317,7 @@
 
                 <ImageView
                     android:layout_marginTop="10dp"
-                    android:layout_alignParentRight="true"
+                    android:layout_alignParentEnd="true"
                     android:layout_below="@+id/benefit_value"
                     android:src="@drawable/attach"
                     android:id="@+id/attachment3"
@@ -326,14 +326,14 @@
 
                 <TextView
                     android:layout_marginTop="10dp"
-                    android:layout_marginRight="10dp"
+                    android:layout_marginEnd="10dp"
                     android:layout_alignBottom="@+id/attachment"
                     android:layout_alignTop="@+id/attachment"
                     android:layout_below="@+id/benefit_value"
                     android:id="@+id/attachtext3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_toLeftOf="@+id/attachment3"
+                    android:layout_toStartOf="@+id/attachment3"
                     android:text="Add attachment"
                     android:fontFamily="@font/museosans_500"
                     android:singleLine="true" />
@@ -353,8 +353,8 @@
                     android:id="@+id/save"
                     android:text="Save"
                     android:fontFamily="@font/museosans_500"
-                    android:layout_marginLeft="10dp"
-                    android:layout_toRightOf="@+id/view1"
+                    android:layout_marginStart="10dp"
+                    android:layout_toEndOf="@+id/view1"
                     android:textColor="@color/white"
                     android:background="@drawable/btn_bg"
                     android:layout_width="match_parent"
@@ -367,8 +367,8 @@
                     android:layout_marginTop="40dp"
                     android:id="@+id/reset"
                     android:text="Reset"
-                    android:layout_marginRight="10dp"
-                    android:layout_toLeftOf="@+id/view1"
+                    android:layout_marginEnd="10dp"
+                    android:layout_toStartOf="@+id/view1"
                     android:textColor="@color/white"
                     android:background="@drawable/btn_bg"
                     android:layout_width="match_parent"

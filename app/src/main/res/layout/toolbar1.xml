@@ -41,7 +41,7 @@
                 android:id="@+id/title"
                 android:visibility="visible"
                 android:text=""
-                android:layout_marginRight="?android:attr/actionBarSize"
+                android:layout_marginEnd="?android:attr/actionBarSize"
                 android:singleLine="true"
                 android:textSize="16sp"
                 android:fontFamily="@font/museosans_500"

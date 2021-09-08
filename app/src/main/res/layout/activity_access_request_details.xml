@@ -39,20 +39,20 @@
                 android:id="@+id/im_back"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
+                android:layout_marginStart="10dp"
                 android:layout_weight=".3"
                 android:src="@drawable/back" />
 
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="50dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="50dp"
                 android:layout_weight="2"
                 android:gravity="center"
                 android:text="Approve Request"
                 android:textColor="@color/white"
-                android:textSize="20dp"
+                android:textSize="20sp"
                 android:textStyle="bold" />
 
         </LinearLayout>
@@ -820,7 +820,7 @@
                             android:id="@+id/btn_approve"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:layout_marginRight="5dp"
+                            android:layout_marginEnd="5dp"
                             android:layout_weight="1"
                             android:background="@drawable/roundcornerbutton"
                             android:text="Approve"
@@ -835,7 +835,7 @@
                             android:id="@+id/btn_un_approve"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="5dp"
+                            android:layout_marginStart="5dp"
                             android:layout_weight="1"
                             android:background="@drawable/roundcornerbutton"
                             android:text="Reject"
@@ -852,7 +852,7 @@
                             android:id="@+id/btn_send_back"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="5dp"
+                            android:layout_marginStart="5dp"
                             android:background="@drawable/roundcornerbutton"
                             android:text="Send Back To Requester"
                             android:textColor="@color/white"

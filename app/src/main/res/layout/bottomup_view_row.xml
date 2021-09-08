@@ -24,11 +24,11 @@
                 android:layout_height="wrap_content" />
 
             <TextView
-                android:layout_toRightOf="@+id/icon"
+                android:layout_toEndOf="@+id/icon"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Pending"
-                android:layout_marginLeft="10dp"
+                android:layout_marginStart="10dp"
                 android:textColor="@color/black"
                 android:id="@+id/status"
                 android:gravity="center"
@@ -57,8 +57,8 @@
                     android:fontFamily="@font/museosans_500" />
 
                 <TextView
-                    android:layout_marginLeft="10dp"
-                    android:layout_toRightOf="@+id/view"
+                    android:layout_marginStart="10dp"
+                    android:layout_toEndOf="@+id/view"
                     android:id="@+id/concern_no_value"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -76,9 +76,9 @@
 
                 <TextView
                     android:layout_below="@+id/concern_no_value"
-                    android:layout_marginLeft="10dp"
+                    android:layout_marginStart="10dp"
                     android:layout_marginTop="10dp"
-                    android:layout_toRightOf="@+id/view"
+                    android:layout_toEndOf="@+id/view"
                     android:id="@+id/raised_on_value"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -96,9 +96,9 @@
 
                 <TextView
                     android:layout_below="@+id/raised_on_value"
-                    android:layout_marginLeft="10dp"
+                    android:layout_marginStart="10dp"
                     android:layout_marginTop="10dp"
-                    android:layout_toRightOf="@+id/view"
+                    android:layout_toEndOf="@+id/view"
                     android:id="@+id/unit_value"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -116,9 +116,9 @@
 
                 <TextView
                     android:layout_below="@+id/unit_value"
-                    android:layout_marginLeft="10dp"
+                    android:layout_marginStart="10dp"
                     android:layout_marginTop="10dp"
-                    android:layout_toRightOf="@+id/view"
+                    android:layout_toEndOf="@+id/view"
                     android:id="@+id/responsible6M_value"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -138,9 +138,9 @@
                 <TextView
                     android:visibility="gone"
                     android:layout_below="@+id/responsible6M_value"
-                    android:layout_marginLeft="10dp"
+                    android:layout_marginStart="10dp"
                     android:layout_marginTop="10dp"
-                    android:layout_toRightOf="@+id/view"
+                    android:layout_toEndOf="@+id/view"
                     android:id="@+id/msm_reference_value"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -160,9 +160,9 @@
                 <TextView
                     android:visibility="gone"
                     android:layout_below="@+id/msm_reference_value"
-                    android:layout_marginLeft="10dp"
+                    android:layout_marginStart="10dp"
                     android:layout_marginTop="10dp"
-                    android:layout_toRightOf="@+id/view"
+                    android:layout_toEndOf="@+id/view"
                     android:id="@+id/existing_system_value"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -182,9 +182,9 @@
                 <TextView
                     android:visibility="gone"
                     android:layout_below="@+id/existing_system_value"
-                    android:layout_marginLeft="10dp"
+                    android:layout_marginStart="10dp"
                     android:layout_marginTop="10dp"
-                    android:layout_toRightOf="@+id/view"
+                    android:layout_toEndOf="@+id/view"
                     android:id="@+id/proposed_system_value"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -203,9 +203,9 @@
 
                 <TextView
                     android:layout_below="@+id/proposed_system_value"
-                    android:layout_marginLeft="10dp"
+                    android:layout_marginStart="10dp"
                     android:layout_marginTop="10dp"
-                    android:layout_toRightOf="@+id/view"
+                    android:layout_toEndOf="@+id/view"
                     android:id="@+id/benefit_value"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -215,8 +215,8 @@
 
                 <Button
                     android:layout_marginTop="10dp"
-                    android:layout_marginRight="10dp"
-                    android:layout_alignParentRight="true"
+                    android:layout_marginEnd="10dp"
+                    android:layout_alignParentEnd="true"
                     android:layout_below="@+id/responsible6M_value"
                     android:id="@+id/view_details"
                     android:layout_width="wrap_content"

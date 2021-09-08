@@ -40,7 +40,7 @@
                     android:padding="5dp"
                     android:text="MindaSparsh Support"
                     android:textColor="#000000"
-                    android:textSize="18dp" />
+                    android:textSize="18sp" />
 
                 <View
                     android:layout_width="match_parent"
@@ -78,7 +78,7 @@
                         android:id="@+id/dwm_btn"
                         android:layout_width="100dp"
                         android:layout_height="100dp"
-                        android:layout_marginRight="5dp"
+                        android:layout_marginEnd="5dp"
                         android:background="@drawable/ticket_icons" />
 
                     <TextView
@@ -136,7 +136,7 @@
             android:id="@+id/im_left"
             android:layout_width="35dp"
             android:layout_height="35dp"
-            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
             android:layout_marginTop="20dp"
             android:src="@drawable/left_arrow" />
     </RelativeLayout>

@@ -48,11 +48,11 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/heading"
                 android:layout_marginTop="30dp"
-                android:layout_toRightOf="@+id/view"
+                android:layout_toEndOf="@+id/view"
                 android:dropDownVerticalOffset="20dp"
                 android:padding="5dp"
                 android:popupElevation="6dp"
-                android:spinnerMode="dropdown"></com.minda.sparsh.customview.NoDefaultSpinner>
+                android:spinnerMode="dropdown"/>
 
             <LinearLayout
                 android:id="@+id/ll1"
@@ -61,7 +61,7 @@
                 android:layout_below="@+id/asset_loc"
                 android:layout_marginTop="5dp"
                 android:background="#414042"
-                android:orientation="horizontal"></LinearLayout>
+                android:orientation="horizontal"/>
 
             <TextView
                 android:id="@+id/ticket_type"
@@ -81,11 +81,11 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/ll1"
                 android:layout_marginTop="20dp"
-                android:layout_toRightOf="@+id/view"
+                android:layout_toEndOf="@+id/view"
                 android:dropDownVerticalOffset="20dp"
                 android:padding="5dp"
                 android:popupElevation="6dp"
-                android:spinnerMode="dropdown"></com.minda.sparsh.customview.NoDefaultSpinner>
+                android:spinnerMode="dropdown"/>
 
             <LinearLayout
                 android:id="@+id/ll2"
@@ -94,7 +94,7 @@
                 android:layout_below="@+id/ticket_type"
                 android:layout_marginTop="5dp"
                 android:background="#414042"
-                android:orientation="horizontal"></LinearLayout>
+                android:orientation="horizontal"/>
 
             <TextView
                 android:id="@+id/ticket_type_sub_cat"
@@ -115,12 +115,12 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/ll2"
                 android:layout_marginTop="20dp"
-                android:layout_toRightOf="@+id/view"
+                android:layout_toEndOf="@+id/view"
                 android:dropDownVerticalOffset="20dp"
                 android:padding="5dp"
                 android:popupElevation="6dp"
                 android:spinnerMode="dropdown"
-                android:visibility="gone"></com.minda.sparsh.customview.NoDefaultSpinner>
+                android:visibility="gone"/>
 
             <LinearLayout
                 android:id="@+id/ll9"
@@ -130,7 +130,7 @@
                 android:layout_marginTop="5dp"
                 android:background="#414042"
                 android:orientation="horizontal"
-                android:visibility="gone"></LinearLayout>
+                android:visibility="gone"/>
 
 
             <TextView
@@ -152,12 +152,12 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/ll9"
                 android:layout_marginTop="20dp"
-                android:layout_toRightOf="@+id/view"
+                android:layout_toEndOf="@+id/view"
                 android:dropDownVerticalOffset="20dp"
                 android:padding="5dp"
                 android:popupElevation="6dp"
                 android:spinnerMode="dropdown"
-                android:visibility="gone"></com.minda.sparsh.customview.NoDefaultSpinner>
+                android:visibility="gone"/>
 
             <LinearLayout
                 android:id="@+id/ll10"
@@ -167,7 +167,7 @@
                 android:layout_marginTop="5dp"
                 android:background="#414042"
                 android:orientation="horizontal"
-                android:visibility="gone"></LinearLayout>
+                android:visibility="gone"/>
 
             <TextView
                 android:id="@+id/ticket_type_sub_cat3"
@@ -188,12 +188,12 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/ll10"
                 android:layout_marginTop="20dp"
-                android:layout_toRightOf="@+id/view"
+                android:layout_toEndOf="@+id/view"
                 android:dropDownVerticalOffset="20dp"
                 android:padding="5dp"
                 android:popupElevation="6dp"
                 android:spinnerMode="dropdown"
-                android:visibility="gone"></com.minda.sparsh.customview.NoDefaultSpinner>
+                android:visibility="gone"/>
 
             <LinearLayout
                 android:id="@+id/ll11"
@@ -203,7 +203,7 @@
                 android:layout_marginTop="5dp"
                 android:background="#414042"
                 android:orientation="horizontal"
-                android:visibility="gone"></LinearLayout>
+                android:visibility="gone"/>
 
             <TextView
                 android:id="@+id/ticket_group"
@@ -223,11 +223,11 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/ll11"
                 android:layout_marginTop="20dp"
-                android:layout_toRightOf="@+id/view"
+                android:layout_toEndOf="@+id/view"
                 android:dropDownVerticalOffset="20dp"
                 android:padding="5dp"
                 android:popupElevation="6dp"
-                android:spinnerMode="dropdown"></com.minda.sparsh.customview.NoDefaultSpinner>
+                android:spinnerMode="dropdown"/>
 
             <LinearLayout
                 android:id="@+id/ll3"
@@ -236,7 +236,7 @@
                 android:layout_below="@+id/ticket_group"
                 android:layout_marginTop="5dp"
                 android:background="#414042"
-                android:orientation="horizontal"></LinearLayout>
+                android:orientation="horizontal"/>
 
             <TextView
                 android:id="@+id/assignee"
@@ -256,11 +256,11 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/ll3"
                 android:layout_marginTop="20dp"
-                android:layout_toRightOf="@+id/view"
+                android:layout_toEndOf="@+id/view"
                 android:dropDownVerticalOffset="20dp"
                 android:padding="5dp"
                 android:popupElevation="6dp"
-                android:spinnerMode="dropdown"></com.minda.sparsh.customview.NoDefaultSpinner>
+                android:spinnerMode="dropdown"/>
 
             <LinearLayout
                 android:id="@+id/ll4"
@@ -269,7 +269,7 @@
                 android:layout_below="@+id/assignee"
                 android:layout_marginTop="5dp"
                 android:background="#414042"
-                android:orientation="horizontal"></LinearLayout>
+                android:orientation="horizontal"/>
 
             <TextView
                 android:id="@+id/reportedby"
@@ -289,11 +289,11 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/ll4"
                 android:layout_marginTop="20dp"
-                android:layout_toRightOf="@+id/view"
+                android:layout_toEndOf="@+id/view"
                 android:dropDownVerticalOffset="20dp"
                 android:padding="5dp"
                 android:popupElevation="6dp"
-                android:spinnerMode="dropdown"></com.minda.sparsh.customview.NoDefaultSpinner>
+                android:spinnerMode="dropdown"/>
 
             <LinearLayout
                 android:id="@+id/ll5"
@@ -302,7 +302,7 @@
                 android:layout_below="@+id/reportedby_spinner"
                 android:layout_marginTop="5dp"
                 android:background="#414042"
-                android:orientation="horizontal"></LinearLayout>
+                android:orientation="horizontal"/>
 
             <TextView
                 android:id="@+id/priority"
@@ -322,11 +322,11 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/ll5"
                 android:layout_marginTop="20dp"
-                android:layout_toRightOf="@+id/view"
+                android:layout_toEndOf="@+id/view"
                 android:dropDownVerticalOffset="20dp"
                 android:padding="5dp"
                 android:popupElevation="6dp"
-                android:spinnerMode="dropdown"></com.minda.sparsh.customview.NoDefaultSpinner>
+                android:spinnerMode="dropdown"/>
 
             <LinearLayout
                 android:id="@+id/ll6"
@@ -335,7 +335,7 @@
                 android:layout_below="@+id/priority"
                 android:layout_marginTop="5dp"
                 android:background="#414042"
-                android:orientation="horizontal"></LinearLayout>
+                android:orientation="horizontal"/>
 
             <TextView
                 android:id="@+id/reported_date"
@@ -354,7 +354,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/ll6"
                 android:layout_marginTop="20dp"
-                android:layout_toRightOf="@+id/view"
+                android:layout_toEndOf="@+id/view"
                 android:background="@drawable/cardview_bg"
                 android:fontFamily="@font/museosans_300"
                 android:gravity="center"
@@ -371,7 +371,7 @@
                 android:layout_marginTop="5dp"
                 android:background="#414042"
                 android:orientation="horizontal"
-                android:visibility="gone"></LinearLayout>
+                android:visibility="gone"/>
 
             <TextView
                 android:id="@+id/description"
@@ -404,7 +404,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/description_et"
-                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
                 android:layout_marginTop="10dp"
                 android:src="@drawable/attach" />
 
@@ -415,8 +415,8 @@
                 android:layout_below="@+id/description_et"
                 android:layout_alignTop="@+id/attachment"
                 android:layout_alignBottom="@+id/attachment"
-                android:layout_marginRight="10dp"
-                android:layout_toLeftOf="@+id/attachment"
+                android:layout_marginEnd="10dp"
+                android:layout_toStartOf="@+id/attachment"
                 android:gravity="center"
                 android:text="Add attachment" />
 
@@ -487,7 +487,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/cclist"
                 android:layout_marginTop="10dp"
-                android:layout_toRightOf="@+id/view"
+                android:layout_toEndOf="@+id/view"
                 android:text="Is Hold"
                 android:visibility="gone" />
 
@@ -507,8 +507,8 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/isclosed"
                 android:layout_marginTop="10dp"
-                android:layout_marginRight="10dp"
-                android:layout_toLeftOf="@+id/view"
+                android:layout_marginEnd="10dp"
+                android:layout_toStartOf="@+id/view"
                 android:background="@drawable/btn_bg"
                 android:fontFamily="@font/museosans_500"
                 android:text="Cancel"
@@ -519,9 +519,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/isclosed"
-                android:layout_marginLeft="10dp"
+                android:layout_marginStart="10dp"
                 android:layout_marginTop="10dp"
-                android:layout_toRightOf="@+id/view"
+                android:layout_toEndOf="@+id/view"
                 android:background="@drawable/btn_bg"
                 android:fontFamily="@font/museosans_500"
                 android:text="Submit"

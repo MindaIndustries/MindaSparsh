@@ -67,17 +67,17 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
-                    android:background="#cccccc"></LinearLayout>
+                    android:background="#cccccc" />
 
                 <Button
                     android:layout_marginBottom="10dp"
                     android:layout_marginTop="10dp"
-                    android:paddingRight="10dp"
+                    android:paddingEnd="10dp"
                     android:id="@+id/ok"
                     android:text="OK"
                     android:background="@android:color/transparent"
                     android:textColor="@color/black"
-                    android:layout_alignParentRight="true"
+                    android:layout_alignParentEnd="true"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
 
@@ -85,10 +85,10 @@
                     android:layout_marginBottom="10dp"
                     android:layout_marginTop="10dp"
                     android:id="@+id/cancel"
-                    android:layout_marginRight="30dp"
+                    android:layout_marginEnd="30dp"
                     android:text=""
                     android:visibility="gone"
-                    android:layout_toLeftOf="@+id/ok"
+                    android:layout_toStartOf="@+id/ok"
                     android:textColor="#54585a"
                     android:background="@android:color/transparent"
                     android:layout_width="wrap_content"

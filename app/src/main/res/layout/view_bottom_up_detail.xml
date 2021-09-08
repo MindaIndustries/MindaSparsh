@@ -66,15 +66,15 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/heading"
-                android:layout_alignParentRight="true"
-                android:layout_marginLeft="-20dp"
+                android:layout_alignParentEnd="true"
+                android:layout_marginStart="-20dp"
                 android:layout_marginTop="30dp"
-                android:layout_toRightOf="@+id/view"
+                android:layout_toEndOf="@+id/view"
                 android:fontFamily="@font/museosans_500"
                 android:gravity="center"
                 android:padding="5dp"
                 android:textColor="@color/black"
-                android:textSize="12sp"></TextView>
+                android:textSize="12sp" />
 
             <LinearLayout
                 android:id="@+id/ll9"
@@ -83,7 +83,7 @@
                 android:layout_below="@+id/concern_no_value"
                 android:layout_marginTop="10dp"
                 android:background="#414042"
-                android:orientation="horizontal"></LinearLayout>
+                android:orientation="horizontal" />
 
 
             <TextView
@@ -102,15 +102,15 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/ll9"
-                android:layout_alignParentRight="true"
-                android:layout_marginLeft="-20dp"
+                android:layout_alignParentEnd="true"
+                android:layout_marginStart="-20dp"
                 android:layout_marginTop="30dp"
-                android:layout_toRightOf="@+id/view"
+                android:layout_toEndOf="@+id/view"
                 android:fontFamily="@font/museosans_500"
                 android:gravity="center"
                 android:padding="5dp"
                 android:textColor="@color/black"
-                android:textSize="12sp"></TextView>
+                android:textSize="12sp" />
 
             <LinearLayout
                 android:id="@+id/ll1"
@@ -119,7 +119,7 @@
                 android:layout_below="@+id/concern_date"
                 android:layout_marginTop="10dp"
                 android:background="#414042"
-                android:orientation="horizontal"></LinearLayout>
+                android:orientation="horizontal" />
 
 
             <TextView
@@ -138,15 +138,15 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/ll1"
-                android:layout_alignParentRight="true"
-                android:layout_marginLeft="-20dp"
+                android:layout_alignParentEnd="true"
+                android:layout_marginStart="-20dp"
                 android:layout_marginTop="30dp"
-                android:layout_toRightOf="@+id/view"
+                android:layout_toEndOf="@+id/view"
                 android:fontFamily="@font/museosans_500"
                 android:gravity="center"
                 android:padding="5dp"
                 android:textColor="@color/black"
-                android:textSize="12sp"></TextView>
+                android:textSize="12sp" />
 
             <LinearLayout
                 android:id="@+id/ll2"
@@ -155,7 +155,7 @@
                 android:layout_below="@+id/unit"
                 android:layout_marginTop="10dp"
                 android:background="#414042"
-                android:orientation="horizontal"></LinearLayout>
+                android:orientation="horizontal" />
 
             <TextView
                 android:id="@+id/responsible"
@@ -173,14 +173,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/ll2"
-                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
                 android:layout_marginTop="30dp"
-                android:layout_toRightOf="@+id/view"
+                android:layout_toEndOf="@+id/view"
                 android:fontFamily="@font/museosans_500"
                 android:gravity="center"
                 android:padding="5dp"
                 android:textColor="@color/black"
-                android:textSize="12sp"></TextView>
+                android:textSize="12sp" />
 
             <LinearLayout
                 android:id="@+id/ll3"
@@ -189,7 +189,7 @@
                 android:layout_below="@+id/responsible"
                 android:layout_marginTop="10dp"
                 android:background="#414042"
-                android:orientation="horizontal"></LinearLayout>
+                android:orientation="horizontal" />
 
 
             <TextView
@@ -208,15 +208,15 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/ll3"
-                android:layout_alignParentRight="true"
-                android:layout_marginLeft="-20dp"
+                android:layout_alignParentEnd="true"
+                android:layout_marginStart="-20dp"
                 android:layout_marginTop="30dp"
-                android:layout_toRightOf="@+id/view"
+                android:layout_toEndOf="@+id/view"
                 android:fontFamily="@font/museosans_500"
                 android:gravity="center"
                 android:padding="5dp"
                 android:textColor="@color/black"
-                android:textSize="12sp"></TextView>
+                android:textSize="12sp" />
 
             <LinearLayout
                 android:id="@+id/ll7"
@@ -225,7 +225,7 @@
                 android:layout_below="@+id/raisedby"
                 android:layout_marginTop="10dp"
                 android:background="#414042"
-                android:orientation="horizontal"></LinearLayout>
+                android:orientation="horizontal" />
 
 
             <TextView
@@ -244,17 +244,17 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/ll7"
-                android:layout_alignParentRight="true"
-                android:layout_marginLeft="-20dp"
+                android:layout_alignParentEnd="true"
+                android:layout_marginStart="-20dp"
                 android:layout_marginTop="30dp"
-                android:layout_toRightOf="@+id/view"
+                android:layout_toEndOf="@+id/view"
                 android:fontFamily="@font/museosans_500"
                 android:gravity="center"
                 android:padding="5dp"
                 android:textColor="@color/black"
                 android:textSize="12sp"
 
-                ></TextView>
+                />
 
             <LinearLayout
                 android:id="@+id/ll8"
@@ -263,7 +263,7 @@
                 android:layout_below="@+id/status"
                 android:layout_marginTop="10dp"
                 android:background="#414042"
-                android:orientation="horizontal"></LinearLayout>
+                android:orientation="horizontal" />
 
 
             <TextView
@@ -282,7 +282,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/msm_reference"
-                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
                 android:layout_marginTop="10dp"
                 android:background="@drawable/cardview_bg"
                 android:fontFamily="@font/museosans_500"
@@ -312,7 +312,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/existing_system"
-                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
                 android:layout_marginTop="10dp"
                 android:background="@drawable/cardview_bg"
                 android:fontFamily="@font/museosans_500"
@@ -324,16 +324,16 @@
                 android:scrollbars="vertical"
                 android:singleLine="false"
                 android:textColor="@color/black"
-                android:textSize="12sp"></TextView>
+                android:textSize="12sp" />
 
             <TextView
                 android:id="@+id/attachtext1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/existing_system_value"
-                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
                 android:layout_marginTop="10dp"
-                android:layout_marginRight="10dp"
+                android:layout_marginEnd="10dp"
                 android:text=""
                 android:textSize="14sp" />
 
@@ -363,7 +363,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/proposed_system"
-                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
                 android:layout_marginTop="10dp"
                 android:background="@drawable/cardview_bg"
                 android:fontFamily="@font/museosans_500"
@@ -382,9 +382,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/proposed_system_value"
-                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
                 android:layout_marginTop="10dp"
-                android:layout_marginRight="10dp"
+                android:layout_marginEnd="10dp"
                 android:fontFamily="@font/museosans_500"
                 android:text=""
                 android:textSize="12sp" />
@@ -415,7 +415,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/benefit"
-                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
                 android:layout_marginTop="10dp"
                 android:background="@drawable/cardview_bg"
                 android:fontFamily="@font/museosans_500"
@@ -429,7 +429,7 @@
                 android:textColor="@color/black"
                 android:textSize="12sp"
 
-                ></TextView>
+                />
 
 
             <TextView
@@ -437,9 +437,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/benefit_value"
-                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
                 android:layout_marginTop="10dp"
-                android:layout_marginRight="10dp"
+                android:layout_marginEnd="10dp"
                 android:fontFamily="@font/museosans_500"
                 android:text=""
                 android:textSize="12sp" />
@@ -642,7 +642,7 @@
                     android:fontFamily="@font/museosans_500"
                     android:padding="5dp"
                     android:textColor="@color/black"
-                    android:textSize="12sp"></TextView>
+                    android:textSize="12sp" />
 
                 <TextView
                     android:id="@+id/action_suggestion"
@@ -669,7 +669,7 @@
                     android:fontFamily="@font/museosans_500"
                     android:scrollbars="vertical"
                     android:textColor="@color/black"
-                    android:textSize="12sp"></EditText>
+                    android:textSize="12sp" />
 
                 <TextView
                     android:id="@+id/remarks"
@@ -696,7 +696,7 @@
                     android:padding="5dp"
                     android:scrollbars="vertical"
                     android:textColor="@color/black"
-                    android:textSize="12sp"></EditText>
+                    android:textSize="12sp" />
 
             </RelativeLayout>
 
@@ -714,7 +714,7 @@
                     android:id="@+id/btn_cancel"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginRight="5dp"
+                    android:layout_marginEnd="5dp"
                     android:layout_weight="1"
                     android:background="@drawable/roundcornerbutton"
                     android:fontFamily="@font/museosans_500"
@@ -730,7 +730,7 @@
                     android:id="@+id/btn_complete"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="5dp"
+                    android:layout_marginStart="5dp"
                     android:layout_weight="1"
                     android:background="@drawable/roundcornerbutton"
                     android:fontFamily="@font/museosans_500"
@@ -748,7 +748,7 @@
                     android:id="@+id/btn_assign"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="5dp"
+                    android:layout_marginStart="5dp"
                     android:layout_weight="1"
                     android:background="@drawable/roundcornerbutton"
                     android:fontFamily="@font/museosans_500"

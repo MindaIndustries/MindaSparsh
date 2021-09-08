@@ -38,7 +38,7 @@
                     android:text="SURVEY"
                     android:gravity="center"
                     android:padding="5dp"
-                    android:textSize="20dp"
+                    android:textSize="20sp"
                     android:textColor="#000000" />
 
                 <View
@@ -63,7 +63,7 @@
                     <ImageButton
                         android:layout_width="100dp"
                         android:layout_height="100dp"
-                        android:layout_marginRight="5dp"
+                        android:layout_marginEnd="5dp"
                         android:background="@drawable/it_survey_icon" />
 
                     <TextView
@@ -84,7 +84,7 @@
             android:id="@+id/im_right"
             android:layout_width="35dp"
             android:layout_height="35dp"
-            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
             android:layout_marginTop="20dp"
             android:src="@drawable/right_arrow" />
 
@@ -92,7 +92,7 @@
             android:id="@+id/im_left"
             android:layout_width="35dp"
             android:layout_height="35dp"
-            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
             android:layout_marginTop="20dp"
             android:src="@drawable/left_arrow" />
     </RelativeLayout>

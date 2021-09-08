@@ -45,14 +45,14 @@
                 android:layout_marginTop="30dp"
                 android:id="@+id/obs_date_spinner"
                 android:layout_below="@+id/heading"
-                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
                 android:layout_width="match_parent"
-                android:layout_marginLeft="-20dp"
-                android:layout_toRightOf="@+id/view"
+                android:layout_marginStart="-20dp"
+                android:layout_toEndOf="@+id/view"
                 android:layout_height="wrap_content"
                 android:padding="5dp"
                 android:gravity="center"
-                android:drawableRight="@drawable/downward_arrow"></TextView>
+                android:drawableEnd="@drawable/downward_arrow"/>
 
             <LinearLayout
                 android:layout_marginTop="10dp"
@@ -61,7 +61,7 @@
                 android:background="#414042"
                 android:layout_below="@+id/obs_date"
                 android:orientation="horizontal"
-                android:id="@+id/ll1"></LinearLayout>
+                android:id="@+id/ll1"/>
 
 
             <TextView
@@ -83,12 +83,12 @@
                 android:popupElevation="6dp"
                 android:layout_below="@+id/ll1"
                 android:dropDownVerticalOffset="20dp"
-                android:layout_marginLeft="-20dp"
-                android:layout_alignParentRight="true"
+                android:layout_marginStart="-20dp"
+                android:layout_alignParentEnd="true"
                 android:layout_width="match_parent"
-                android:layout_toRightOf="@+id/view"
+                android:layout_toEndOf="@+id/view"
                 android:layout_height="wrap_content"
-                android:padding="5dp"></com.minda.sparsh.customview.NoDefaultSpinner>
+                android:padding="5dp" />
 
             <LinearLayout
                 android:layout_marginTop="10dp"
@@ -97,7 +97,7 @@
                 android:background="#414042"
                 android:layout_below="@+id/unit"
                 android:orientation="horizontal"
-                android:id="@+id/ll2"></LinearLayout>
+                android:id="@+id/ll2" />
 
             <TextView
                 android:layout_marginTop="30dp"
@@ -116,14 +116,14 @@
                 android:id="@+id/safety_officer_spinner"
                 android:spinnerMode="dropdown"
                 android:popupElevation="6dp"
-                android:layout_marginLeft="-20dp"
+                android:layout_marginStart="-20dp"
                 android:layout_below="@+id/ll2"
                 android:dropDownVerticalOffset="20dp"
-                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
                 android:layout_width="match_parent"
-                android:layout_toRightOf="@+id/view"
+                android:layout_toEndOf="@+id/view"
                 android:layout_height="wrap_content"
-                android:padding="5dp"></com.minda.sparsh.customview.NoDefaultSpinner>
+                android:padding="5dp" />
 
             <LinearLayout
                 android:layout_marginTop="10dp"
@@ -132,7 +132,7 @@
                 android:background="#414042"
                 android:layout_below="@+id/safety_officer"
                 android:orientation="horizontal"
-                android:id="@+id/ll4"></LinearLayout>
+                android:id="@+id/ll4" />
 
             <TextView
                 android:layout_marginTop="30dp"
@@ -152,13 +152,13 @@
                 android:spinnerMode="dropdown"
                 android:popupElevation="6dp"
                 android:layout_below="@+id/ll4"
-                android:layout_marginLeft="-20dp"
+                android:layout_marginStart="-20dp"
                 android:dropDownVerticalOffset="20dp"
-                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
                 android:layout_width="match_parent"
-                android:layout_toRightOf="@+id/view"
+                android:layout_toEndOf="@+id/view"
                 android:layout_height="wrap_content"
-                android:padding="5dp"></com.minda.sparsh.customview.NoDefaultSpinner>
+                android:padding="5dp" />
 
             <LinearLayout
                 android:layout_marginTop="10dp"
@@ -167,7 +167,7 @@
                 android:background="#414042"
                 android:layout_below="@+id/typeofObs"
                 android:orientation="horizontal"
-                android:id="@+id/ll3"></LinearLayout>
+                android:id="@+id/ll3" />
 
 
             <TextView
@@ -188,13 +188,13 @@
                 android:spinnerMode="dropdown"
                 android:popupElevation="6dp"
                 android:layout_below="@+id/ll3"
-                android:layout_marginLeft="-20dp"
+                android:layout_marginStart="-20dp"
                 android:dropDownVerticalOffset="20dp"
-                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
                 android:layout_width="match_parent"
-                android:layout_toRightOf="@+id/view"
+                android:layout_toEndOf="@+id/view"
                 android:padding="5dp"
-                android:layout_height="wrap_content"></com.minda.sparsh.customview.NoDefaultSpinner>
+                android:layout_height="wrap_content" />
 
             <LinearLayout
                 android:layout_marginTop="10dp"
@@ -203,7 +203,7 @@
                 android:background="#414042"
                 android:layout_below="@+id/identified_loc"
                 android:orientation="horizontal"
-                android:id="@+id/ll5"></LinearLayout>
+                android:id="@+id/ll5" />
 
             <TextView
                 android:layout_marginTop="30dp"
@@ -222,14 +222,14 @@
                 android:id="@+id/category_spinner"
                 android:spinnerMode="dropdown"
                 android:popupElevation="6dp"
-                android:layout_marginLeft="-20dp"
+                android:layout_marginStart="-20dp"
                 android:layout_below="@+id/ll5"
                 android:dropDownVerticalOffset="20dp"
-                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
                 android:layout_width="match_parent"
-                android:layout_toRightOf="@+id/view"
+                android:layout_toEndOf="@+id/view"
                 android:padding="5dp"
-                android:layout_height="wrap_content"></com.minda.sparsh.customview.NoDefaultSpinner>
+                android:layout_height="wrap_content" />
 
             <LinearLayout
                 android:layout_marginTop="10dp"
@@ -238,7 +238,7 @@
                 android:background="#414042"
                 android:layout_below="@+id/category"
                 android:orientation="horizontal"
-                android:id="@+id/ll6"></LinearLayout>
+                android:id="@+id/ll6" />
 
 
             <TextView
@@ -260,12 +260,12 @@
                 android:popupElevation="6dp"
                 android:layout_below="@+id/ll6"
                 android:dropDownVerticalOffset="20dp"
-                android:layout_alignParentRight="true"
-                android:layout_marginLeft="-20dp"
+                android:layout_alignParentEnd="true"
+                android:layout_marginStart="-20dp"
                 android:layout_width="match_parent"
-                android:layout_toRightOf="@+id/view"
+                android:layout_toEndOf="@+id/view"
                 android:padding="5dp"
-                android:layout_height="wrap_content"></com.minda.sparsh.customview.NoDefaultSpinner>
+                android:layout_height="wrap_content" />
 
             <LinearLayout
                 android:layout_marginTop="10dp"
@@ -274,7 +274,7 @@
                 android:background="#414042"
                 android:layout_below="@+id/sub_category"
                 android:orientation="horizontal"
-                android:id="@+id/ll7"></LinearLayout>
+                android:id="@+id/ll7" />
 
 
             <TextView
@@ -294,15 +294,15 @@
                 android:layout_marginTop="30dp"
                 android:id="@+id/time_selector"
                 android:layout_below="@+id/ll7"
-                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
                 android:layout_width="match_parent"
-                android:layout_marginLeft="-20dp"
-                android:layout_toRightOf="@+id/view"
+                android:layout_marginStart="-20dp"
+                android:layout_toEndOf="@+id/view"
                 android:layout_height="wrap_content"
                 android:padding="5dp"
                 android:hint="Time"
                 android:gravity="center"
-                android:drawableRight="@drawable/downward_arrow"></TextView>
+                android:drawableEnd="@drawable/downward_arrow" />
 
             <LinearLayout
                 android:visibility="gone"
@@ -312,7 +312,7 @@
                 android:background="#414042"
                 android:layout_below="@+id/time"
                 android:orientation="horizontal"
-                android:id="@+id/ll8"></LinearLayout>
+                android:id="@+id/ll8" />
 
 
             <TextView
@@ -346,7 +346,7 @@
 
             <ImageView
                 android:layout_marginTop="10dp"
-                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
                 android:layout_below="@+id/description_et"
                 android:src="@drawable/attach"
                 android:id="@+id/attachment"
@@ -354,14 +354,14 @@
                 android:layout_height="wrap_content" />
 
             <TextView
-                android:layout_marginRight="10dp"
+                android:layout_marginEnd="10dp"
                 android:layout_alignBottom="@+id/attachment"
                 android:layout_alignTop="@+id/attachment"
                 android:layout_below="@+id/description_et"
                 android:id="@+id/attachtext"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_toLeftOf="@+id/attachment"
+                android:layout_toStartOf="@+id/attachment"
                 android:text="Add attachment"
                 android:gravity="center" />
 
@@ -408,9 +408,9 @@
                 android:textColor="@color/white"
                 android:layout_marginTop="10dp"
                 android:id="@+id/reset"
-                android:layout_marginRight="10dp"
+                android:layout_marginEnd="10dp"
                 android:background="@drawable/btn_bg"
-                android:layout_toLeftOf="@+id/view"
+                android:layout_toStartOf="@+id/view"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/action_taken_et"
@@ -419,11 +419,11 @@
 
             <Button
                 android:textColor="@color/white"
-                android:layout_marginLeft="10dp"
+                android:layout_marginStart="10dp"
                 android:layout_marginTop="10dp"
                 android:id="@+id/submit"
                 android:background="@drawable/btn_bg"
-                android:layout_toRightOf="@+id/view"
+                android:layout_toEndOf="@+id/view"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/action_taken_et"

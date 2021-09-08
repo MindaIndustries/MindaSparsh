@@ -37,7 +37,7 @@
                 android:layout_height="match_parent"
                 android:text="Need Help"
                 android:textColor="@color/white"
-                android:textSize="20dp"
+                android:textSize="20sp"
                 android:gravity="center" />
 
             <ImageView
@@ -52,7 +52,7 @@
             android:layout_height="wrap_content"
             android:text="Support"
             android:textColor="@color/colorPrimary"
-            android:textSize="20dp"
+            android:textSize="20sp"
             android:layout_margin="10dp" />
 
         <LinearLayout
@@ -105,7 +105,7 @@
                     android:layout_height="50dp"
                     android:text="Create Ticket"
                     android:textColor="@color/white"
-                    android:textSize="16dp"
+                    android:textSize="16sp"
                     android:gravity="center"
                     android:background="@color/colorPrimary" />
             </LinearLayout>

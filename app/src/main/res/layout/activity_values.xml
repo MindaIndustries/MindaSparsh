@@ -32,7 +32,7 @@
             android:layout_height="match_parent"
             android:text="Values"
             android:textColor="@color/white"
-            android:textSize="20dp"
+            android:textSize="20sp"
             android:gravity="center" />
 
         <ImageView
@@ -70,7 +70,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/colorPrimary"
-                android:textSize="25dp"
+                android:textSize="25sp"
                 android:text="Values" />
         </LinearLayout>
 
@@ -84,7 +84,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="#000000"
-                android:textSize="16dp"
+                android:textSize="16sp"
                 android:gravity="center"
                 android:textStyle="italic"
                 android:text="Customer is Supreme, Live Quality, Encourage Creativity and Innovation to drive 3P (People Process &amp; Products), Respect for Individual, Respect for work-place Ethics" />

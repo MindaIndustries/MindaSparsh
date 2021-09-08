@@ -50,7 +50,7 @@
                 android:gravity="center_horizontal"
                 android:padding="12dp"
                 android:text="Daily Work Management----Operation Head"
-                android:textSize="16dp"
+                android:textSize="16sp"
                 android:textStyle="bold"
                 android:typeface="serif"
 
@@ -76,7 +76,7 @@
                     android:padding="2dp"
                     android:text="test name"
                     android:textColor="@color/lightblue"
-                    android:textSize="10dp"
+                    android:textSize="10sp"
                     android:textStyle="bold" />
             </LinearLayout>
 
@@ -114,7 +114,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:text="S.No"
-                            android:textSize="18dp"
+                            android:textSize="18sp"
                             android:gravity="center"
                             android:textStyle="bold" />
 
@@ -130,7 +130,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:text="Check Point"
-                            android:textSize="18dp"
+                            android:textSize="18sp"
                             android:gravity="center"
                             android:textStyle="bold" />
 
@@ -146,7 +146,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:text="Frequency"
-                            android:textSize="14dp"
+                            android:textSize="14sp"
                             android:gravity="center"
                             android:textStyle="bold" />
 
@@ -162,7 +162,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:text="Time Min/Hrs"
-                            android:textSize="14dp"
+                            android:textSize="14sp"
                             android:gravity="center"
                             android:textStyle="bold" />
 
@@ -178,7 +178,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:text="Total Time / M (Hrs)"
-                            android:textSize="14dp"
+                            android:textSize="14sp"
                             android:gravity="center"
                             android:textStyle="bold" />
 
@@ -194,7 +194,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:text="Total Time in  %"
-                            android:textSize="14dp"
+                            android:textSize="14sp"
                             android:gravity="center"
                             android:textStyle="bold" />
 
@@ -210,7 +210,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:text="Remarks"
-                            android:textSize="18dp"
+                            android:textSize="18sp"
                             android:gravity="center"
                             android:textStyle="bold" />
 
@@ -231,7 +231,7 @@
                             android:layout_height="wrap_content"
                             android:gravity="center"
                             android:text="Date"
-                            android:textSize="10dp"
+                            android:textSize="10sp"
                             android:textColor="@color/colorPrimary"
                             android:textStyle="bold" />
 
@@ -253,7 +253,7 @@
                             android:layout_height="match_parent"
                             android:gravity="center"
                             android:text="Comment"
-                            android:textSize="18dp"
+                            android:textSize="18sp"
                             android:textStyle="bold" />
 
                     </LinearLayout>
@@ -285,7 +285,7 @@
                                     android:layout_width="match_parent"
                                     android:layout_height="match_parent"
                                     android:text="1"
-                                    android:textSize="18dp"
+                                    android:textSize="18sp"
                                     android:gravity="center" />
 
                             </LinearLayout>
@@ -302,7 +302,7 @@
                                     android:layout_height="match_parent"
                                     android:background="@drawable/dotted_background"
                                     android:text="DWM &amp; Gemba Round\(Abnormality finding and suggestions)"
-                                    android:textSize="16dp"
+                                    android:textSize="16sp"
                                     android:gravity="center" />
 
                                 <TextView
@@ -311,7 +311,7 @@
                                     android:layout_height="match_parent"
                                     android:background="@drawable/dotted_background"
                                     android:text="Surprise Visit/ 5 Board Review, 6 Production Rules (ANDON, PCB, QCB, Standard Work, KANBAN, Min-Max) Inventory,  4M Control, P-Chart, Scribble Board, Scrap Yard, Night Shift Review, Red Bin Area/ HD Activity/ Concern Corner/Critical Part Shortage Review etc."
-                                    android:textSize="16dp"
+                                    android:textSize="16sp"
                                     android:gravity="center" />
 
                             </LinearLayout>
@@ -327,7 +327,7 @@
                                     android:layout_height="match_parent"
                                     android:text="2/W"
                                     android:background="@drawable/dotted_background"
-                                    android:textSize="18dp"
+                                    android:textSize="18sp"
                                     android:gravity="center" />
 
                             </LinearLayout>
@@ -343,7 +343,7 @@
                                     android:layout_height="match_parent"
                                     android:text="2Hrs"
                                     android:background="@drawable/dotted_background"
-                                    android:textSize="18dp"
+                                    android:textSize="18sp"
                                     android:gravity="center" />
 
                             </LinearLayout>
@@ -359,7 +359,7 @@
                                     android:layout_height="match_parent"
                                     android:text="16"
                                     android:background="@drawable/dotted_background"
-                                    android:textSize="18dp"
+                                    android:textSize="18sp"
                                     android:gravity="center"
 
                                     />
@@ -377,7 +377,7 @@
                                     android:layout_height="match_parent"
                                     android:text="8.0%"
                                     android:background="@drawable/dotted_background"
-                                    android:textSize="18dp"
+                                    android:textSize="18sp"
                                     android:gravity="center"
 
                                     />
@@ -394,7 +394,7 @@
                                     android:layout_width="match_parent"
                                     android:layout_height="match_parent"
                                     android:text=""
-                                    android:textSize="18dp"
+                                    android:textSize="18sp"
                                     android:gravity="center"
 
                                     />
@@ -416,7 +416,7 @@
                                     android:gravity="center"
                                     android:inputType="number"
                                     android:imeOptions="actionDone"
-                                    android:textSize="18dp"
+                                    android:textSize="18sp"
 
                                     />
 
@@ -436,7 +436,7 @@
                                     android:background="@drawable/dotted_background"
                                     android:imeOptions="actionDone"
                                     android:hint="Comment"
-                                    android:textSize="18dp"
+                                    android:textSize="18sp"
 
                                     />
 
@@ -460,7 +460,7 @@
                                     android:layout_width="match_parent"
                                     android:layout_height="match_parent"
                                     android:text="2"
-                                    android:textSize="18dp"
+                                    android:textSize="18sp"
                                     android:gravity="center" />
 
                             </LinearLayout>
@@ -476,7 +476,7 @@
                                     android:layout_weight="2"
                                     android:layout_height="match_parent"
                                     android:text="Quality Review"
-                                    android:textSize="16dp"
+                                    android:textSize="16sp"
                                     android:background="@drawable/dotted_background"
                                     android:gravity="center" />
 
@@ -493,7 +493,7 @@
                                         android:layout_weight="1"
                                         android:layout_height="0dp"
                                         android:text="Customer Concerns (QPR Response)"
-                                        android:textSize="16dp"
+                                        android:textSize="16sp"
                                         android:background="@drawable/dotted_background"
                                         android:gravity="center" />
 
@@ -503,7 +503,7 @@
                                         android:layout_height="0dp"
                                         android:background="@drawable/dotted_background"
                                         android:text="Warranty Review &amp; Meeting With Engineering for chronic issues"
-                                        android:textSize="16dp"
+                                        android:textSize="16sp"
                                         android:gravity="center" />
 
                                     <TextView
@@ -512,7 +512,7 @@
                                         android:layout_height="0dp"
                                         android:background="@drawable/dotted_background"
                                         android:text="Customer Satisfaction Report Review"
-                                        android:textSize="16dp"
+                                        android:textSize="16sp"
                                         android:gravity="center" />
 
                                     <TextView
@@ -521,7 +521,7 @@
                                         android:layout_height="0dp"
                                         android:background="@drawable/dotted_background"
                                         android:text="QIP Review etc."
-                                        android:textSize="16dp"
+                                        android:textSize="16sp"
                                         android:gravity="center" />
 
                                 </LinearLayout>
@@ -540,7 +540,7 @@
                                     android:layout_height="match_parent"
                                     android:text="W"
                                     android:background="@drawable/dotted_background"
-                                    android:textSize="18dp"
+                                    android:textSize="18sp"
                                     android:gravity="center" />
 
                             </LinearLayout>
@@ -556,7 +556,7 @@
                                     android:layout_height="match_parent"
                                     android:text="4Hrs"
                                     android:background="@drawable/dotted_background"
-                                    android:textSize="18dp"
+                                    android:textSize="18sp"
                                     android:gravity="center" />
 
                             </LinearLayout>
@@ -572,7 +572,7 @@
                                     android:layout_height="match_parent"
                                     android:text="16"
                                     android:background="@drawable/dotted_background"
-                                    android:textSize="18dp"
+                                    android:textSize="18sp"
                                     android:gravity="center" />
 
                             </LinearLayout>
@@ -588,7 +588,7 @@
                                     android:layout_height="match_parent"
                                     android:text="8.0%"
                                     android:background="@drawable/dotted_background"
-                                    android:textSize="18dp"
+                                    android:textSize="18sp"
                                     android:gravity="center"
 
                                     />
@@ -605,7 +605,7 @@
                                     android:layout_width="match_parent"
                                     android:layout_height="match_parent"
                                     android:text=""
-                                    android:textSize="18dp"
+                                    android:textSize="18sp"
                                     android:gravity="center"
 
                                     />
@@ -630,7 +630,7 @@
                                     android:imeOptions="actionDone"
                                     android:background="@drawable/dotted_background"
                                     android:gravity="center"
-                                    android:textSize="18dp"
+                                    android:textSize="18sp"
 
                                     />
 
@@ -644,7 +644,7 @@
                                     android:imeOptions="actionDone"
                                     android:background="@drawable/dotted_background"
                                     android:gravity="center"
-                                    android:textSize="18dp"
+                                    android:textSize="18sp"
 
                                     />
 
@@ -658,7 +658,7 @@
                                     android:imeOptions="actionDone"
                                     android:background="@drawable/dotted_background"
                                     android:gravity="center"
-                                    android:textSize="18dp"
+                                    android:textSize="18sp"
 
                                     />
 
@@ -672,7 +672,7 @@
                                     android:imeOptions="actionDone"
                                     android:background="@drawable/dotted_background"
                                     android:gravity="center"
-                                    android:textSize="18dp"
+                                    android:textSize="18sp"
 
                                     />
 
@@ -696,7 +696,7 @@
                                     android:background="@drawable/dotted_background"
                                     android:gravity="center"
                                     android:hint="Comment"
-                                    android:textSize="18dp"
+                                    android:textSize="18sp"
 
                                     />
 
@@ -709,7 +709,7 @@
                                     android:background="@drawable/dotted_background"
                                     android:gravity="center"
                                     android:hint="Comment"
-                                    android:textSize="18dp"
+                                    android:textSize="18sp"
 
                                     />
 
@@ -722,7 +722,7 @@
                                     android:background="@drawable/dotted_background"
                                     android:gravity="center"
                                     android:hint="Comment"
-                                    android:textSize="18dp"
+                                    android:textSize="18sp"
 
                                     />
 
@@ -735,7 +735,7 @@
                                     android:background="@drawable/dotted_background"
                                     android:gravity="center"
                                     android:hint="Comment"
-                                    android:textSize="18dp"
+                                    android:textSize="18sp"
 
                                     />
 
@@ -760,7 +760,7 @@
                                     android:layout_height="match_parent"
                                     android:text="3"
 
-                                    android:textSize="18dp"
+                                    android:textSize="18sp"
                                     android:gravity="center" />
 
                             </LinearLayout>
@@ -776,7 +776,7 @@
                                     android:layout_weight="2"
                                     android:layout_height="match_parent"
                                     android:text="Check on check"
-                                    android:textSize="16dp"
+                                    android:textSize="16sp"
                                     android:background="@drawable/dotted_background"
                                     android:gravity="center" />
 
@@ -786,7 +786,7 @@
                                     android:layout_height="match_parent"
                                     android:background="@drawable/dotted_background"
                                     android:text="Check on check for critical Process"
-                                    android:textSize="16dp"
+                                    android:textSize="16sp"
                                     android:gravity="center" />
 
                             </LinearLayout>
@@ -802,7 +802,7 @@
                                     android:layout_height="match_parent"
                                     android:text="2/M"
                                     android:background="@drawable/dotted_background"
-                                    android:textSize="18dp"
+                                    android:textSize="18sp"
                                     android:gravity="center" />
 
                             </LinearLayout>
@@ -818,7 +818,7 @@
                                     android:layout_height="match_parent"
                                     android:text=".5Hrs"
                                     android:background="@drawable/dotted_background"
-                                    android:textSize="18dp"
+                                    android:textSize="18sp"
                                     android:gravity="center" />
 
                             </LinearLayout>
@@ -834,7 +834,7 @@
                                     android:layout_height="match_parent"
                                     android:text="0.5"
                                     android:background="@drawable/dotted_background"
-                                    android:textSize="18dp"
+                                    android:textSize="18sp"
                                     android:gravity="center" />
 
                             </LinearLayout>
@@ -850,7 +850,7 @@
                                     android:layout_height="match_parent"
                                     android:text=".3%"
                                     android:background="@drawable/dotted_background"
-                                    android:textSize="18dp"
+                                    android:textSize="18sp"
                                     android:gravity="center"
 
                                     />
@@ -867,7 +867,7 @@
                                     android:layout_width="match_parent"
                                     android:layout_height="match_parent"
                                     android:text=""
-                                    android:textSize="18dp"
+                                    android:textSize="18sp"
                                     android:gravity="center" />
 
                             </LinearLayout>
@@ -912,7 +912,7 @@
                                     android:gravity="center"
                                     android:hint="Comment"
                                     android:imeOptions="actionDone"
-                                    android:textSize="18dp"
+                                    android:textSize="18sp"
 
                                     />
 
@@ -938,7 +938,7 @@
                                     android:layout_height="match_parent"
                                     android:text="4"
 
-                                    android:textSize="18dp"
+                                    android:textSize="18sp"
                                     android:gravity="center" />
 
                             </LinearLayout>
@@ -954,7 +954,7 @@
                                     android:layout_weight="2"
                                     android:layout_height="match_parent"
                                     android:text="Customer Visits"
-                                    android:textSize="16dp"
+                                    android:textSize="16sp"
                                     android:background="@drawable/dotted_background"
                                     android:gravity="center" />
 
@@ -964,7 +964,7 @@
                                     android:layout_height="match_parent"
                                     android:background="@drawable/dotted_background"
                                     android:text="All Customers (A/B/C Customers)"
-                                    android:textSize="16dp"
+                                    android:textSize="16sp"
                                     android:gravity="center" />
 
                             </LinearLayout>
@@ -980,7 +980,7 @@
                                     android:layout_height="match_parent"
                                     android:text=""
                                     android:background="@drawable/dotted_background"
-                                    android:textSize="18dp"
+                                    android:textSize="18sp"
                                     android:gravity="center" />
 
                             </LinearLayout>
@@ -996,7 +996,7 @@
                                     android:layout_height="match_parent"
                                     android:text="--"
                                     android:background="@drawable/dotted_background"
-                                    android:textSize="18dp"
+                                    android:textSize="18sp"
                                     android:gravity="center" />
 
                             </LinearLayout>
@@ -1012,7 +1012,7 @@
                                     android:layout_height="match_parent"
                                     android:text="32"
                                     android:background="@drawable/dotted_background"
-                                    android:textSize="18dp"
+                                    android:textSize="18sp"
                                     android:gravity="center" />
 
                             </LinearLayout>
@@ -1028,7 +1028,7 @@
                                     android:layout_height="match_parent"
                                     android:text="16.0%"
                                     android:background="@drawable/dotted_background"
-                                    android:textSize="18dp"
+                                    android:textSize="18sp"
                                     android:gravity="center"
 
                                     />
@@ -1045,7 +1045,7 @@
                                     android:layout_width="match_parent"
                                     android:layout_height="match_parent"
                                     android:text=""
-                                    android:textSize="18dp"
+                                    android:textSize="18sp"
                                     android:gravity="center" />
 
                             </LinearLayout>
@@ -1067,7 +1067,7 @@
                                     android:background="@drawable/dotted_background"
                                     android:gravity="center"
                                     android:imeOptions="actionDone"
-                                    android:textSize="18dp"
+                                    android:textSize="18sp"
 
                                     />
 
@@ -1090,7 +1090,7 @@
                                     android:gravity="center"
                                     android:hint="Comment"
                                     android:imeOptions="actionDone"
-                                    android:textSize="18dp"
+                                    android:textSize="18sp"
 
                                     />
 
@@ -1115,7 +1115,7 @@
                                     android:layout_width="match_parent"
                                     android:layout_height="match_parent"
                                     android:text="5"
-                                    android:textSize="18dp"
+                                    android:textSize="18sp"
                                     android:gravity="center" />
 
                             </LinearLayout>
@@ -1131,7 +1131,7 @@
                                     android:layout_weight="2"
                                     android:layout_height="match_parent"
                                     android:text="Costing Review"
-                                    android:textSize="16dp"
+                                    android:textSize="16sp"
                                     android:background="@drawable/dotted_background"
                                     android:gravity="center" />
 
@@ -1149,7 +1149,7 @@
                                         android:layout_height="0dp"
                                         android:background="@drawable/dotted_background"
                                         android:text="Inventory (Dead / Red / Imported / Local etc.)"
-                                        android:textSize="16dp"
+                                        android:textSize="16sp"
                                         android:gravity="center" />
 
                                     <TextView
@@ -1158,7 +1158,7 @@
                                         android:layout_height="0dp"
                                         android:background="@drawable/dotted_background"
                                         android:text="COPQ /6 in 1 Review &amp; Action"
-                                        android:textSize="16dp"
+                                        android:textSize="16sp"
                                         android:gravity="center" />
 
                                     <TextView
@@ -1167,7 +1167,7 @@
                                         android:layout_height="0dp"
                                         android:background="@drawable/dotted_background"
                                         android:text="DWM 1 &amp; 2 SAP report review"
-                                        android:textSize="16dp"
+                                        android:textSize="16sp"
                                         android:gravity="center" />
 
                                     <TextView
@@ -1176,7 +1176,7 @@
                                         android:layout_height="0dp"
                                         android:background="@drawable/dotted_background"
                                         android:text="VA/VE,RMC, Red Product, Freight etc"
-                                        android:textSize="16dp"
+                                        android:textSize="16sp"
                                         android:gravity="center" />
 
                                 </LinearLayout>
@@ -1195,7 +1195,7 @@
                                     android:layout_height="match_parent"
                                     android:text="2/M"
                                     android:background="@drawable/dotted_background"
-                                    android:textSize="18dp"
+                                    android:textSize="18sp"
                                     android:gravity="center" />
 
                             </LinearLayout>
@@ -1211,7 +1211,7 @@
                                     android:layout_height="match_parent"
                                     android:text="3Hrs"
                                     android:background="@drawable/dotted_background"
-                                    android:textSize="18dp"
+                                    android:textSize="18sp"
                                     android:gravity="center" />
 
                             </LinearLayout>
@@ -1227,7 +1227,7 @@
                                     android:layout_height="match_parent"
                                     android:text="6"
                                     android:background="@drawable/dotted_background"
-                                    android:textSize="18dp"
+                                    android:textSize="18sp"
                                     android:gravity="center" />
 
                             </LinearLayout>
@@ -1243,7 +1243,7 @@
                                     android:layout_height="match_parent"
                                     android:text="3.0%"
                                     android:background="@drawable/dotted_background"
-                                    android:textSize="18dp"
+                                    android:textSize="18sp"
                                     android:gravity="center"
 
                                     />
@@ -1260,7 +1260,7 @@
                                     android:layout_width="match_parent"
                                     android:layout_height="match_parent"
                                     android:text=""
-                                    android:textSize="18dp"
+                                    android:textSize="18sp"
                                     android:gravity="center"
 
                                     />
@@ -1283,7 +1283,7 @@
                                     android:gravity="center"
                                     android:inputType="number"
                                     android:imeOptions="actionDone"
-                                    android:textSize="18dp"
+                                    android:textSize="18sp"
                                     android:layout_weight="1" />
 
                                 <EditText
@@ -1295,7 +1295,7 @@
                                     android:gravity="center"
                                     android:inputType="number"
                                     android:imeOptions="actionDone"
-                                    android:textSize="18dp"
+                                    android:textSize="18sp"
                                     android:layout_weight="1" />
 
                                 <EditText
@@ -1307,7 +1307,7 @@
                                     android:gravity="center"
                                     android:inputType="number"
                                     android:imeOptions="actionDone"
-                                    android:textSize="18dp"
+                                    android:textSize="18sp"
                                     android:layout_weight="1" />
 
                                 <EditText
@@ -1319,7 +1319,7 @@
                                     android:gravity="center"
                                     android:inputType="number"
                                     android:imeOptions="actionDone"
-                                    android:textSize="18dp"
+                                    android:textSize="18sp"
                                     android:layout_weight="1" />
 
                             </LinearLayout>
@@ -1339,7 +1339,7 @@
                                     android:hint="Comment"
                                     android:imeOptions="actionDone"
                                     android:background="@drawable/dotted_background"
-                                    android:textSize="18dp"
+                                    android:textSize="18sp"
                                     android:layout_weight="1" />
 
                                 <EditText
@@ -1350,7 +1350,7 @@
                                     android:hint="Comment"
                                     android:imeOptions="actionDone"
                                     android:background="@drawable/dotted_background"
-                                    android:textSize="18dp"
+                                    android:textSize="18sp"
                                     android:layout_weight="1" />
 
                                 <EditText
@@ -1361,7 +1361,7 @@
                                     android:hint="Comment"
                                     android:imeOptions="actionDone"
                                     android:background="@drawable/dotted_background"
-                                    android:textSize="18dp"
+                                    android:textSize="18sp"
                                     android:layout_weight="1" />
 
                                 <EditText
@@ -1372,7 +1372,7 @@
                                     android:hint="Comment"
                                     android:imeOptions="actionDone"
                                     android:background="@drawable/dotted_background"
-                                    android:textSize="18dp"
+                                    android:textSize="18sp"
                                     android:layout_weight="1" />
 
                             </LinearLayout>
@@ -1395,7 +1395,7 @@
                                     android:layout_width="match_parent"
                                     android:layout_height="match_parent"
                                     android:text="6"
-                                    android:textSize="18dp"
+                                    android:textSize="18sp"
                                     android:gravity="center" />
 
                             </LinearLayout>
@@ -1411,7 +1411,7 @@
                                     android:layout_weight="2"
                                     android:layout_height="match_parent"
                                     android:text="People Development / Interaction"
-                                    android:textSize="16dp"
+                                    android:textSize="16sp"
                                     android:background="@drawable/dotted_background"
                                     android:gravity="center" />
 
@@ -1429,7 +1429,7 @@
                                         android:layout_height="0dp"
                                         android:background="@drawable/dotted_background"
                                         android:text="Unit Address / Birthday Meeting/ LL/GL Meeting"
-                                        android:textSize="16dp"
+                                        android:textSize="16sp"
                                         android:gravity="center" />
 
                                     <TextView
@@ -1438,7 +1438,7 @@
                                         android:layout_height="0dp"
                                         android:background="@drawable/dotted_background"
                                         android:text="Review of PR issue / Employee Engagement Survey report"
-                                        android:textSize="16dp"
+                                        android:textSize="16sp"
                                         android:gravity="center" />
 
                                     <TextView
@@ -1447,7 +1447,7 @@
                                         android:layout_height="0dp"
                                         android:background="@drawable/dotted_background"
                                         android:text="Training :Self/Staff/Asso (Adherence &amp; Review)"
-                                        android:textSize="16dp"
+                                        android:textSize="16sp"
                                         android:gravity="center" />
 
                                     <TextView
@@ -1456,7 +1456,7 @@
                                         android:layout_height="0dp"
                                         android:background="@drawable/dotted_background"
                                         android:text="Unit QCD review against Budget/MIS/SQPCDM targets/Capax Review etc."
-                                        android:textSize="16dp"
+                                        android:textSize="16sp"
                                         android:gravity="center" />
 
                                     <TextView
@@ -1465,7 +1465,7 @@
                                         android:layout_height="0dp"
                                         android:background="@drawable/dotted_background"
                                         android:text="Meeting as per Interunit / Group Calendar (Group Functional Meeting/Committee meeting)"
-                                        android:textSize="16dp"
+                                        android:textSize="16sp"
                                         android:gravity="center" />
 
                                 </LinearLayout>
@@ -1484,7 +1484,7 @@
                                     android:layout_height="match_parent"
                                     android:text="4/M"
                                     android:background="@drawable/dotted_background"
-                                    android:textSize="18dp"
+                                    android:textSize="18sp"
                                     android:gravity="center" />
 
                             </LinearLayout>
@@ -1500,7 +1500,7 @@
                                     android:layout_height="match_parent"
                                     android:text="4Hrs"
                                     android:background="@drawable/dotted_background"
-                                    android:textSize="18dp"
+                                    android:textSize="18sp"
                                     android:gravity="center" />
 
                             </LinearLayout>
@@ -1516,7 +1516,7 @@
                                     android:layout_height="match_parent"
                                     android:text="16"
                                     android:background="@drawable/dotted_background"
-                                    android:textSize="18dp"
+                                    android:textSize="18sp"
                                     android:gravity="center" />
 
                             </LinearLayout>
@@ -1532,7 +1532,7 @@
                                     android:layout_height="match_parent"
                                     android:text="8.0%"
                                     android:background="@drawable/dotted_background"
-                                    android:textSize="18dp"
+                                    android:textSize="18sp"
                                     android:gravity="center"
 
                                     />
@@ -1549,7 +1549,7 @@
                                     android:layout_width="match_parent"
                                     android:layout_height="match_parent"
                                     android:text=""
-                                    android:textSize="18dp"
+                                    android:textSize="18sp"
                                     android:gravity="center"
 
                                     />
@@ -1572,7 +1572,7 @@
                                     android:gravity="center"
                                     android:inputType="number"
                                     android:imeOptions="actionDone"
-                                    android:textSize="18dp"
+                                    android:textSize="18sp"
                                     android:layout_weight="1" />
 
                                 <EditText
@@ -1584,7 +1584,7 @@
                                     android:gravity="center"
                                     android:inputType="number"
                                     android:imeOptions="actionDone"
-                                    android:textSize="18dp"
+                                    android:textSize="18sp"
                                     android:layout_weight="1" />
 
                                 <EditText
@@ -1596,7 +1596,7 @@
                                     android:gravity="center"
                                     android:inputType="number"
                                     android:imeOptions="actionDone"
-                                    android:textSize="18dp"
+                                    android:textSize="18sp"
                                     android:layout_weight="1" />
 
                                 <EditText
@@ -1608,7 +1608,7 @@
                                     android:gravity="center"
                                     android:inputType="number"
                                     android:imeOptions="actionDone"
-                                    android:textSize="18dp"
+                                    android:textSize="18sp"
                                     android:layout_weight="1" />
 
                                 <EditText
@@ -1620,7 +1620,7 @@
                                     android:gravity="center"
                                     android:inputType="number"
                                     android:imeOptions="actionDone"
-                                    android:textSize="18dp"
+                                    android:textSize="18sp"
                                     android:layout_weight="1" />
 
                             </LinearLayout>
@@ -1640,7 +1640,7 @@
                                     android:hint="Comment"
                                     android:imeOptions="actionDone"
                                     android:background="@drawable/dotted_background"
-                                    android:textSize="18dp"
+                                    android:textSize="18sp"
                                     android:layout_weight="1" />
 
                                 <EditText
@@ -1651,7 +1651,7 @@
                                     android:hint="Comment"
                                     android:imeOptions="actionDone"
                                     android:background="@drawable/dotted_background"
-                                    android:textSize="18dp"
+                                    android:textSize="18sp"
                                     android:layout_weight="1" />
 
                                 <EditText
@@ -1662,7 +1662,7 @@
                                     android:hint="Comment"
                                     android:imeOptions="actionDone"
                                     android:background="@drawable/dotted_background"
-                                    android:textSize="18dp"
+                                    android:textSize="18sp"
                                     android:layout_weight="1" />
 
                                 <EditText
@@ -1673,7 +1673,7 @@
                                     android:hint="Comment"
                                     android:imeOptions="actionDone"
                                     android:background="@drawable/dotted_background"
-                                    android:textSize="18dp"
+                                    android:textSize="18sp"
                                     android:layout_weight="1" />
 
                                 <EditText
@@ -1684,7 +1684,7 @@
                                     android:hint="Comment"
                                     android:imeOptions="actionDone"
                                     android:background="@drawable/dotted_background"
-                                    android:textSize="18dp"
+                                    android:textSize="18sp"
                                     android:layout_weight="1" />
 
                             </LinearLayout>
@@ -1707,7 +1707,7 @@
                                     android:layout_width="match_parent"
                                     android:layout_height="match_parent"
                                     android:text="7"
-                                    android:textSize="18dp"
+                                    android:textSize="18sp"
                                     android:gravity="center" />
 
                             </LinearLayout>
@@ -1724,7 +1724,7 @@
                                     android:background="@drawable/dotted_background"
                                     android:layout_height="match_parent"
                                     android:text="Management Review &amp; Group Meetings"
-                                    android:textSize="16dp"
+                                    android:textSize="16sp"
                                     android:gravity="center" />
 
                                 <LinearLayout
@@ -1741,7 +1741,7 @@
                                         android:layout_height="0dp"
                                         android:background="@drawable/dotted_background"
                                         android:text="Corp/CMD/ CEOs reviews- Gemba and Mfg /Quality/ Safety/ Manpower etc."
-                                        android:textSize="16dp"
+                                        android:textSize="16sp"
                                         android:gravity="center" />
 
                                     <TextView
@@ -1749,7 +1749,7 @@
                                         android:layout_weight="1"
                                         android:layout_height="0dp"
                                         android:text="Protivity audits/Corp assessments/ statutory auditors/ Govt deptt visits and PR"
-                                        android:textSize="16dp"
+                                        android:textSize="16sp"
                                         android:background="@drawable/dotted_background"
                                         android:gravity="center" />
 
@@ -1759,7 +1759,7 @@
                                         android:layout_height="0dp"
                                         android:background="@drawable/dotted_background"
                                         android:text="No of Staff / Associate (Reg &amp; Casual) Heads / Efficiency Loss"
-                                        android:textSize="16dp"
+                                        android:textSize="16sp"
                                         android:gravity="center" />
 
                                     <TextView
@@ -1768,7 +1768,7 @@
                                         android:layout_height="0dp"
                                         android:background="@drawable/dotted_background"
                                         android:text="Unit QCD review against Budget/MIS/SQPCDM targets/Capax Review etc."
-                                        android:textSize="16dp"
+                                        android:textSize="16sp"
                                         android:gravity="center" />
 
                                     <TextView
@@ -1777,7 +1777,7 @@
                                         android:layout_height="0dp"
                                         android:background="@drawable/dotted_background"
                                         android:text="Meeting as per Interunit / Group Calendar (Group Functional Meeting/Committee meeting)"
-                                        android:textSize="16dp"
+                                        android:textSize="16sp"
                                         android:gravity="center" />
 
                                 </LinearLayout>
@@ -1796,7 +1796,7 @@
                                     android:layout_height="match_parent"
                                     android:text="4/M"
                                     android:background="@drawable/dotted_background"
-                                    android:textSize="18dp"
+                                    android:textSize="18sp"
                                     android:gravity="center" />
 
                             </LinearLayout>
@@ -1812,7 +1812,7 @@
                                     android:layout_height="match_parent"
                                     android:text="6Hrs"
                                     android:background="@drawable/dotted_background"
-                                    android:textSize="18dp"
+                                    android:textSize="18sp"
                                     android:gravity="center" />
 
                             </LinearLayout>
@@ -1828,7 +1828,7 @@
                                     android:layout_height="match_parent"
                                     android:text="24"
                                     android:background="@drawable/dotted_background"
-                                    android:textSize="18dp"
+                                    android:textSize="18sp"
                                     android:gravity="center" />
 
                             </LinearLayout>
@@ -1844,7 +1844,7 @@
                                     android:layout_height="match_parent"
                                     android:text="12.0%"
                                     android:background="@drawable/dotted_background"
-                                    android:textSize="18dp"
+                                    android:textSize="18sp"
                                     android:gravity="center"
 
                                     />
@@ -1864,7 +1864,7 @@
                                     android:layout_weight="1"
                                     android:text=""
                                     android:background="@drawable/dotted_background"
-                                    android:textSize="18dp"
+                                    android:textSize="18sp"
                                     android:gravity="center"
 
                                     />
@@ -1875,7 +1875,7 @@
                                     android:layout_weight="1"
                                     android:text=""
                                     android:background="@drawable/dotted_background"
-                                    android:textSize="18dp"
+                                    android:textSize="18sp"
                                     android:gravity="center"
 
                                     />
@@ -1886,9 +1886,8 @@
                                     android:layout_weight="1"
                                     android:text=""
                                     android:background="@drawable/dotted_background"
-                                    android:textSize="18dp"
+                                    android:textSize="18sp"
                                     android:gravity="center"
-
                                     />
 
                                 <TextView
@@ -1897,7 +1896,7 @@
                                     android:layout_weight="1"
                                     android:text=""
                                     android:background="@drawable/dotted_background"
-                                    android:textSize="18dp"
+                                    android:textSize="18sp"
                                     android:gravity="center"
 
                                     />
@@ -1906,9 +1905,9 @@
                                     android:layout_width="match_parent"
                                     android:layout_height="0dp"
                                     android:layout_weight="1"
-                                    android:text="Max 3 Meetings"
+                                    android:text="Max 3s Meetings"
                                     android:background="@drawable/dotted_background"
-                                    android:textSize="18dp"
+                                    android:textSize="18sp"
                                     android:gravity="center"
 
                                     />
@@ -1932,7 +1931,7 @@
                                     android:gravity="center"
                                     android:inputType="number"
                                     android:imeOptions="actionDone"
-                                    android:textSize="18dp"
+                                    android:textSize="18sp"
 
                                     />
 
@@ -1946,7 +1945,7 @@
                                     android:background="@drawable/dotted_background"
                                     android:gravity="center"
                                     android:imeOptions="actionDone"
-                                    android:textSize="18dp"
+                                    android:textSize="18sp"
 
                                     />
 
@@ -1960,7 +1959,7 @@
                                     android:imeOptions="actionDone"
                                     android:background="@drawable/dotted_background"
                                     android:gravity="center"
-                                    android:textSize="18dp"
+                                    android:textSize="18sp"
 
                                     />
 
@@ -1974,7 +1973,7 @@
                                     android:imeOptions="actionDone"
                                     android:background="@drawable/dotted_background"
                                     android:gravity="center"
-                                    android:textSize="18dp"
+                                    android:textSize="18sp"
 
                                     />
 
@@ -1988,7 +1987,7 @@
                                     android:imeOptions="actionDone"
                                     android:background="@drawable/dotted_background"
                                     android:gravity="center"
-                                    android:textSize="18dp"
+                                    android:textSize="18sp"
 
                                     />
 
@@ -2011,7 +2010,7 @@
                                     android:background="@drawable/dotted_background"
                                     android:gravity="center"
                                     android:hint="Comment"
-                                    android:textSize="18dp"
+                                    android:textSize="18sp"
 
                                     />
 
@@ -2024,7 +2023,7 @@
                                     android:background="@drawable/dotted_background"
                                     android:gravity="center"
                                     android:hint="Comment"
-                                    android:textSize="18dp"
+                                    android:textSize="18sp"
 
                                     />
 
@@ -2037,7 +2036,7 @@
                                     android:background="@drawable/dotted_background"
                                     android:gravity="center"
                                     android:hint="Comment"
-                                    android:textSize="18dp"
+                                    android:textSize="18sp"
 
                                     />
 
@@ -2050,7 +2049,7 @@
                                     android:background="@drawable/dotted_background"
                                     android:gravity="center"
                                     android:hint="Comment"
-                                    android:textSize="18dp"
+                                    android:textSize="18sp"
 
                                     />
 
@@ -2063,7 +2062,7 @@
                                     android:background="@drawable/dotted_background"
                                     android:gravity="center"
                                     android:hint="Comment"
-                                    android:textSize="18dp"
+                                    android:textSize="18sp"
 
                                     />
 
@@ -2087,7 +2086,7 @@
                                     android:layout_width="match_parent"
                                     android:layout_height="match_parent"
                                     android:text="8"
-                                    android:textSize="18dp"
+                                    android:textSize="18sp"
                                     android:gravity="center" />
 
                             </LinearLayout>
@@ -2103,7 +2102,7 @@
                                     android:layout_weight="2"
                                     android:layout_height="match_parent"
                                     android:text="Regular Meeting"
-                                    android:textSize="16dp"
+                                    android:textSize="16sp"
                                     android:background="@drawable/dotted_background"
                                     android:gravity="center" />
 
@@ -2121,7 +2120,7 @@
                                         android:layout_height="0dp"
                                         android:text="MMC"
                                         android:background="@drawable/dotted_background"
-                                        android:textSize="16dp"
+                                        android:textSize="16sp"
                                         android:gravity="center" />
 
                                     <TextView
@@ -2130,7 +2129,7 @@
                                         android:background="@drawable/dotted_background"
                                         android:layout_height="0dp"
                                         android:text="System Meeting (Product/Process Audit)"
-                                        android:textSize="16dp"
+                                        android:textSize="16sp"
                                         android:gravity="center" />
 
                                     <TextView
@@ -2139,7 +2138,7 @@
                                         android:background="@drawable/dotted_background"
                                         android:layout_height="0dp"
                                         android:text="Indent / Capacity Review "
-                                        android:textSize="16dp"
+                                        android:textSize="16sp"
                                         android:gravity="center" />
 
                                     <TextView
@@ -2148,7 +2147,7 @@
                                         android:background="@drawable/dotted_background"
                                         android:layout_height="0dp"
                                         android:text="SAP Adherence"
-                                        android:textSize="16dp"
+                                        android:textSize="16sp"
                                         android:gravity="center" />
 
                                     <TextView
@@ -2157,7 +2156,7 @@
                                         android:background="@drawable/dotted_background"
                                         android:layout_height="0dp"
                                         android:text="Manufacturing Road Map"
-                                        android:textSize="16dp"
+                                        android:textSize="16sp"
                                         android:gravity="center" />
 
                                     <TextView
@@ -2166,7 +2165,7 @@
                                         android:layout_height="0dp"
                                         android:background="@drawable/dotted_background"
                                         android:text="MPCP Review for all deptt Heads"
-                                        android:textSize="16dp"
+                                        android:textSize="16sp"
                                         android:gravity="center" />
 
                                     <TextView
@@ -2175,7 +2174,7 @@
                                         android:layout_height="0dp"
                                         android:background="@drawable/dotted_background"
                                         android:text="Safety Review"
-                                        android:textSize="16dp"
+                                        android:textSize="16sp"
                                         android:gravity="center" />
 
                                 </LinearLayout>
@@ -2194,7 +2193,7 @@
                                     android:layout_height="match_parent"
                                     android:text="4/M"
                                     android:background="@drawable/dotted_background"
-                                    android:textSize="18dp"
+                                    android:textSize="18sp"
                                     android:gravity="center" />
 
                             </LinearLayout>
@@ -2210,7 +2209,7 @@
                                     android:layout_height="match_parent"
                                     android:text="4Hrs"
                                     android:background="@drawable/dotted_background"
-                                    android:textSize="18dp"
+                                    android:textSize="18sp"
                                     android:gravity="center" />
 
                             </LinearLayout>
@@ -2226,7 +2225,7 @@
                                     android:layout_height="match_parent"
                                     android:text="16"
                                     android:background="@drawable/dotted_background"
-                                    android:textSize="18dp"
+                                    android:textSize="18sp"
                                     android:gravity="center" />
 
                             </LinearLayout>
@@ -2242,7 +2241,7 @@
                                     android:layout_height="match_parent"
                                     android:text="8.0%"
                                     android:background="@drawable/dotted_background"
-                                    android:textSize="18dp"
+                                    android:textSize="18sp"
                                     android:gravity="center"
 
                                     />
@@ -2261,7 +2260,7 @@
                                     android:layout_height="0dp"
                                     android:layout_weight="1"
                                     android:text=""
-                                    android:textSize="18dp"
+                                    android:textSize="18sp"
                                     android:gravity="center"
 
                                     />
@@ -2292,7 +2291,7 @@
                                         android:background="@drawable/dotted_background"
                                         android:gravity="center"
                                         android:imeOptions="actionDone"
-                                        android:textSize="16dp" />
+                                        android:textSize="16sp" />
 
                                     <EditText
                                         style="@style/editTextStyle"
@@ -2304,7 +2303,7 @@
                                         android:background="@drawable/dotted_background"
                                         android:gravity="center"
                                         android:imeOptions="actionDone"
-                                        android:textSize="16dp" />
+                                        android:textSize="16sp" />
 
                                     <EditText
                                         style="@style/editTextStyle"
@@ -2316,7 +2315,7 @@
                                         android:background="@drawable/dotted_background"
                                         android:gravity="center"
                                         android:imeOptions="actionDone"
-                                        android:textSize="16dp" />
+                                        android:textSize="16sp" />
 
                                     <EditText
                                         style="@style/editTextStyle"
@@ -2328,7 +2327,7 @@
                                         android:background="@drawable/dotted_background"
                                         android:gravity="center"
                                         android:imeOptions="actionDone"
-                                        android:textSize="16dp" />
+                                        android:textSize="16sp" />
 
                                     <EditText
                                         style="@style/editTextStyle"
@@ -2340,7 +2339,7 @@
                                         android:background="@drawable/dotted_background"
                                         android:gravity="center"
                                         android:imeOptions="actionDone"
-                                        android:textSize="16dp" />
+                                        android:textSize="16sp" />
 
                                     <EditText
                                         style="@style/editTextStyle"
@@ -2352,7 +2351,7 @@
                                         android:background="@drawable/dotted_background"
                                         android:gravity="center"
                                         android:imeOptions="actionDone"
-                                        android:textSize="16dp" />
+                                        android:textSize="16sp" />
 
                                     <EditText
                                         style="@style/editTextStyle"
@@ -2364,7 +2363,7 @@
                                         android:background="@drawable/dotted_background"
                                         android:gravity="center"
                                         android:imeOptions="actionDone"
-                                        android:textSize="16dp" />
+                                        android:textSize="16sp" />
 
 
                                 </LinearLayout>
@@ -2394,7 +2393,7 @@
                                         android:gravity="center"
                                         android:imeOptions="actionDone"
                                         android:hint="Comment"
-                                        android:textSize="16dp" />
+                                        android:textSize="16sp" />
 
                                     <EditText
                                         android:id="@+id/C_7_2"
@@ -2405,7 +2404,7 @@
                                         android:gravity="center"
                                         android:hint="Comment"
                                         android:imeOptions="actionDone"
-                                        android:textSize="16dp" />
+                                        android:textSize="16sp" />
 
                                     <EditText
                                         android:id="@+id/C_7_3"
@@ -2416,7 +2415,7 @@
                                         android:background="@drawable/dotted_background"
                                         android:gravity="center"
                                         android:hint="Comment"
-                                        android:textSize="16dp" />
+                                        android:textSize="16sp" />
 
                                     <EditText
                                         android:id="@+id/C_7_4"
@@ -2427,7 +2426,7 @@
                                         android:gravity="center"
                                         android:imeOptions="actionDone"
                                         android:hint="Comment"
-                                        android:textSize="16dp" />
+                                        android:textSize="16sp" />
 
                                     <EditText
                                         android:id="@+id/C_7_5"
@@ -2438,7 +2437,7 @@
                                         android:gravity="center"
                                         android:hint="Comment"
                                         android:imeOptions="actionDone"
-                                        android:textSize="16dp" />
+                                        android:textSize="16sp" />
 
                                     <EditText
                                         android:id="@+id/C_7_6"
@@ -2449,7 +2448,7 @@
                                         android:background="@drawable/dotted_background"
                                         android:gravity="center"
                                         android:hint="Comment"
-                                        android:textSize="16dp" />
+                                        android:textSize="16sp" />
 
                                     <EditText
                                         android:id="@+id/C_7_7"
@@ -2460,7 +2459,7 @@
                                         android:background="@drawable/dotted_background"
                                         android:gravity="center"
                                         android:hint="Comment"
-                                        android:textSize="16dp" />
+                                        android:textSize="16sp" />
 
 
                                 </LinearLayout>
@@ -2485,7 +2484,7 @@
                                     android:layout_width="match_parent"
                                     android:layout_height="match_parent"
                                     android:text="9"
-                                    android:textSize="18dp"
+                                    android:textSize="18sp"
                                     android:gravity="center" />
 
                             </LinearLayout>
@@ -2502,7 +2501,7 @@
                                     android:layout_height="match_parent"
                                     android:text="Supplier Review"
                                     android:background="@drawable/dotted_background"
-                                    android:textSize="16dp"
+                                    android:textSize="16sp"
                                     android:gravity="center" />
 
                                 <LinearLayout
@@ -2519,7 +2518,7 @@
                                         android:layout_height="0dp"
                                         android:text="Communication Meeting"
                                         android:background="@drawable/dotted_background"
-                                        android:textSize="16dp"
+                                        android:textSize="16sp"
                                         android:gravity="center" />
 
                                     <TextView
@@ -2528,7 +2527,7 @@
                                         android:layout_height="0dp"
                                         android:background="@drawable/dotted_background"
                                         android:text="Worst Supplier Meeting / GYR Supplier Review / Review of Supplier Improvement Plan"
-                                        android:textSize="16dp"
+                                        android:textSize="16sp"
                                         android:gravity="center" />
 
                                     <TextView
@@ -2537,7 +2536,7 @@
                                         android:layout_height="0dp"
                                         android:background="@drawable/dotted_background"
                                         android:text="Supplier / Ancillaries Visit (As per Plan)"
-                                        android:textSize="16dp"
+                                        android:textSize="16sp"
                                         android:gravity="center" />
 
 
@@ -2559,7 +2558,7 @@
                                     android:layout_weight="2"
                                     android:text="M"
                                     android:background="@drawable/dotted_background"
-                                    android:textSize="18dp"
+                                    android:textSize="18sp"
                                     android:gravity="center" />
 
                                 <TextView
@@ -2568,7 +2567,7 @@
                                     android:layout_weight="1"
                                     android:text="2/M"
                                     android:background="@drawable/dotted_background"
-                                    android:textSize="18dp"
+                                    android:textSize="18sp"
                                     android:gravity="center" />
 
                             </LinearLayout>
@@ -2586,7 +2585,7 @@
                                     android:layout_weight="2"
                                     android:text="4Hrs"
                                     android:background="@drawable/dotted_background"
-                                    android:textSize="18dp"
+                                    android:textSize="18sp"
                                     android:gravity="center" />
 
                                 <TextView
@@ -2595,7 +2594,7 @@
                                     android:layout_weight="1"
                                     android:text="8Hrs"
                                     android:background="@drawable/dotted_background"
-                                    android:textSize="18dp"
+                                    android:textSize="18sp"
                                     android:gravity="center" />
 
                             </LinearLayout>
@@ -2613,7 +2612,7 @@
                                     android:layout_weight="2"
                                     android:text="4"
                                     android:background="@drawable/dotted_background"
-                                    android:textSize="18dp"
+                                    android:textSize="18sp"
                                     android:gravity="center" />
 
                                 <TextView
@@ -2622,7 +2621,7 @@
                                     android:layout_weight="1"
                                     android:text="16"
                                     android:background="@drawable/dotted_background"
-                                    android:textSize="18dp"
+                                    android:textSize="18sp"
                                     android:gravity="center" />
 
                             </LinearLayout>
@@ -2640,7 +2639,7 @@
                                     android:layout_weight="2"
                                     android:text="2.0%"
                                     android:background="@drawable/dotted_background"
-                                    android:textSize="18dp"
+                                    android:textSize="18sp"
                                     android:gravity="center"
 
                                     />
@@ -2651,7 +2650,7 @@
                                     android:layout_weight="1"
                                     android:text="8.0%"
                                     android:background="@drawable/dotted_background"
-                                    android:textSize="18dp"
+                                    android:textSize="18sp"
                                     android:gravity="center"
 
                                     />
@@ -2671,7 +2670,7 @@
                                     android:layout_weight="1"
                                     android:text=""
                                     android:background="@drawable/dotted_background"
-                                    android:textSize="18dp"
+                                    android:textSize="18sp"
                                     android:gravity="center"
 
                                     />
@@ -2682,7 +2681,7 @@
                                     android:layout_weight="1"
                                     android:text=""
                                     android:background="@drawable/dotted_background"
-                                    android:textSize="18dp"
+                                    android:textSize="18sp"
                                     android:gravity="center"
 
                                     />
@@ -2693,7 +2692,7 @@
                                     android:layout_weight="1"
                                     android:text="Cover major supplier once / Quarter"
                                     android:background="@drawable/dotted_background"
-                                    android:textSize="18dp"
+                                    android:textSize="18sp"
                                     android:gravity="center"
 
                                     />
@@ -2725,7 +2724,7 @@
                                         android:gravity="center"
                                         android:inputType="number"
                                         android:imeOptions="actionDone"
-                                        android:textSize="16dp" />
+                                        android:textSize="16sp" />
 
                                     <EditText
                                         style="@style/editTextStyle"
@@ -2737,7 +2736,7 @@
                                         android:background="@drawable/dotted_background"
                                         android:gravity="center"
                                         android:imeOptions="actionDone"
-                                        android:textSize="16dp" />
+                                        android:textSize="16sp" />
 
                                     <EditText
                                         style="@style/editTextStyle"
@@ -2749,7 +2748,7 @@
                                         android:background="@drawable/dotted_background"
                                         android:gravity="center"
                                         android:imeOptions="actionDone"
-                                        android:textSize="16dp" />
+                                        android:textSize="16sp" />
 
 
                                 </LinearLayout>
@@ -2780,7 +2779,7 @@
                                         android:gravity="center"
                                         android:imeOptions="actionDone"
                                         android:hint="Comment"
-                                        android:textSize="16dp" />
+                                        android:textSize="16sp" />
 
                                     <EditText
                                         android:id="@+id/C_8_2"
@@ -2791,7 +2790,7 @@
                                         android:gravity="center"
                                         android:imeOptions="actionDone"
                                         android:hint="Comment"
-                                        android:textSize="16dp" />
+                                        android:textSize="16sp" />
 
                                     <EditText
                                         android:id="@+id/C_8_3"
@@ -2802,7 +2801,7 @@
                                         android:gravity="center"
                                         android:imeOptions="actionDone"
                                         android:hint="Comment"
-                                        android:textSize="16dp" />
+                                        android:textSize="16sp" />
 
                                 </LinearLayout>
 
@@ -2826,7 +2825,7 @@
                                     android:layout_width="match_parent"
                                     android:layout_height="match_parent"
                                     android:text="10"
-                                    android:textSize="18dp"
+                                    android:textSize="18sp"
                                     android:gravity="center" />
 
                             </LinearLayout>
@@ -2843,7 +2842,7 @@
                                     android:layout_height="match_parent"
                                     android:text="Strategic Initiative"
                                     android:background="@drawable/dotted_background"
-                                    android:textSize="16dp"
+                                    android:textSize="16sp"
                                     android:gravity="center" />
 
                                 <LinearLayout
@@ -2860,7 +2859,7 @@
                                         android:layout_height="0dp"
                                         android:background="@drawable/dotted_background"
                                         android:text="Contribution Improvement"
-                                        android:textSize="16dp"
+                                        android:textSize="16sp"
                                         android:gravity="center" />
 
                                     <TextView
@@ -2869,7 +2868,7 @@
                                         android:layout_height="0dp"
                                         android:background="@drawable/dotted_background"
                                         android:text="Review of Strategic Initiative"
-                                        android:textSize="16dp"
+                                        android:textSize="16sp"
                                         android:gravity="center" />
 
 
@@ -2889,7 +2888,7 @@
                                     android:layout_height="match_parent"
                                     android:text="2/M"
                                     android:background="@drawable/dotted_background"
-                                    android:textSize="18dp"
+                                    android:textSize="18sp"
                                     android:gravity="center" />
 
                             </LinearLayout>
@@ -2905,7 +2904,7 @@
                                     android:layout_height="match_parent"
                                     android:text="4Hrs"
                                     android:background="@drawable/dotted_background"
-                                    android:textSize="18dp"
+                                    android:textSize="18sp"
                                     android:gravity="center" />
 
                             </LinearLayout>
@@ -2921,7 +2920,7 @@
                                     android:layout_height="match_parent"
                                     android:text="8"
                                     android:background="@drawable/dotted_background"
-                                    android:textSize="18dp"
+                                    android:textSize="18sp"
                                     android:gravity="center" />
 
                             </LinearLayout>
@@ -2937,7 +2936,7 @@
                                     android:layout_height="match_parent"
                                     android:text="4.0%"
                                     android:background="@drawable/dotted_background"
-                                    android:textSize="18dp"
+                                    android:textSize="18sp"
                                     android:gravity="center"
 
                                     />
@@ -2957,7 +2956,7 @@
                                     android:layout_weight="1"
                                     android:text=""
                                     android:background="@drawable/dotted_background"
-                                    android:textSize="18dp"
+                                    android:textSize="18sp"
                                     android:gravity="center"
 
                                     />
@@ -2968,7 +2967,7 @@
                                     android:layout_weight="1"
                                     android:text=""
                                     android:background="@drawable/dotted_background"
-                                    android:textSize="18dp"
+                                    android:textSize="18sp"
                                     android:gravity="center"
 
                                     />
@@ -2999,7 +2998,7 @@
                                         android:gravity="center"
                                         android:inputType="number"
                                         android:imeOptions="actionDone"
-                                        android:textSize="16dp" />
+                                        android:textSize="16sp" />
 
                                     <EditText
                                         style="@style/editTextStyle"
@@ -3011,7 +3010,7 @@
                                         android:background="@drawable/dotted_background"
                                         android:gravity="center"
                                         android:imeOptions="actionDone"
-                                        android:textSize="16dp" />
+                                        android:textSize="16sp" />
 
 
                                 </LinearLayout>
@@ -3041,7 +3040,7 @@
                                         android:gravity="center"
                                         android:hint="Comment"
                                         android:imeOptions="actionDone"
-                                        android:textSize="16dp" />
+                                        android:textSize="16sp" />
 
                                     <EditText
                                         android:id="@+id/C_9_2"
@@ -3052,7 +3051,7 @@
                                         android:gravity="center"
                                         android:hint="Comment"
                                         android:imeOptions="actionDone"
-                                        android:textSize="16dp" />
+                                        android:textSize="16sp" />
 
 
                                 </LinearLayout>
@@ -3077,7 +3076,7 @@
                                     android:layout_width="match_parent"
                                     android:layout_height="match_parent"
                                     android:text="11"
-                                    android:textSize="18dp"
+                                    android:textSize="18sp"
                                     android:gravity="center" />
 
                             </LinearLayout>
@@ -3094,7 +3093,7 @@
                                     android:layout_height="match_parent"
                                     android:text="Development Review"
                                     android:background="@drawable/dotted_background"
-                                    android:textSize="16dp"
+                                    android:textSize="16sp"
                                     android:gravity="center" />
 
                                 <LinearLayout
@@ -3111,7 +3110,7 @@
                                         android:layout_height="0dp"
                                         android:background="@drawable/dotted_background"
                                         android:text="Review with NPD /Meeting with development for Customer Audit report pending NC review"
-                                        android:textSize="16dp"
+                                        android:textSize="16sp"
                                         android:gravity="center" />
 
                                     <TextView
@@ -3120,7 +3119,7 @@
                                         android:layout_height="0dp"
                                         android:background="@drawable/dotted_background"
                                         android:text="Meeting with development for Customer complaint (Line/ Warranty/ New/ Regular)"
-                                        android:textSize="16dp"
+                                        android:textSize="16sp"
                                         android:gravity="center" />
 
                                     <TextView
@@ -3129,7 +3128,7 @@
                                         android:layout_height="0dp"
                                         android:background="@drawable/dotted_background"
                                         android:text="New Customer LVPT &amp; HVPT approval (as per development plan)"
-                                        android:textSize="16dp"
+                                        android:textSize="16sp"
                                         android:gravity="center" />
 
 
@@ -3149,7 +3148,7 @@
                                     android:layout_height="match_parent"
                                     android:text="2/M"
                                     android:background="@drawable/dotted_background"
-                                    android:textSize="18dp"
+                                    android:textSize="18sp"
                                     android:gravity="center" />
 
                             </LinearLayout>
@@ -3165,7 +3164,7 @@
                                     android:layout_height="match_parent"
                                     android:text="3Hrs"
                                     android:background="@drawable/dotted_background"
-                                    android:textSize="18dp"
+                                    android:textSize="18sp"
                                     android:gravity="center" />
 
                             </LinearLayout>
@@ -3181,7 +3180,7 @@
                                     android:layout_height="match_parent"
                                     android:text="6"
                                     android:background="@drawable/dotted_background"
-                                    android:textSize="18dp"
+                                    android:textSize="18sp"
                                     android:gravity="center" />
 
                             </LinearLayout>
@@ -3197,7 +3196,7 @@
                                     android:layout_height="match_parent"
                                     android:text="3.0%"
                                     android:background="@drawable/dotted_background"
-                                    android:textSize="18dp"
+                                    android:textSize="18sp"
                                     android:gravity="center"
 
                                     />
@@ -3217,7 +3216,7 @@
                                     android:layout_weight="1"
                                     android:text=""
                                     android:background="@drawable/dotted_background"
-                                    android:textSize="18dp"
+                                    android:textSize="18sp"
                                     android:gravity="center"
 
                                     />
@@ -3228,7 +3227,7 @@
                                     android:layout_weight="1"
                                     android:text=""
                                     android:background="@drawable/dotted_background"
-                                    android:textSize="18dp"
+                                    android:textSize="18sp"
                                     android:gravity="center"
 
                                     />
@@ -3239,7 +3238,7 @@
                                     android:layout_weight="1"
                                     android:text=""
                                     android:background="@drawable/dotted_background"
-                                    android:textSize="18dp"
+                                    android:textSize="18sp"
                                     android:gravity="center"
 
                                     />
@@ -3268,7 +3267,7 @@
                                         android:background="@drawable/dotted_background"
                                         android:gravity="center"
                                         android:imeOptions="actionDone"
-                                        android:textSize="16dp" />
+                                        android:textSize="16sp" />
 
                                     <EditText
                                         style="@style/editTextStyle"
@@ -3280,7 +3279,7 @@
                                         android:background="@drawable/dotted_background"
                                         android:gravity="center"
                                         android:imeOptions="actionDone"
-                                        android:textSize="16dp" />
+                                        android:textSize="16sp" />
 
                                     <EditText
                                         style="@style/editTextStyle"
@@ -3292,7 +3291,7 @@
                                         android:gravity="center"
                                         android:inputType="number"
                                         android:imeOptions="actionDone"
-                                        android:textSize="16dp" />
+                                        android:textSize="16sp" />
 
 
                                 </LinearLayout>
@@ -3322,7 +3321,7 @@
                                         android:gravity="center"
                                         android:hint="Comment"
                                         android:imeOptions="actionDone"
-                                        android:textSize="16dp" />
+                                        android:textSize="16sp" />
 
                                     <EditText
                                         android:id="@+id/C_10_2"
@@ -3333,7 +3332,7 @@
                                         android:gravity="center"
                                         android:hint="Comment"
                                         android:imeOptions="actionDone"
-                                        android:textSize="16dp" />
+                                        android:textSize="16sp" />
 
                                     <EditText
                                         android:id="@+id/C_10_3"
@@ -3344,7 +3343,7 @@
                                         android:gravity="center"
                                         android:hint="Comment"
                                         android:imeOptions="actionDone"
-                                        android:textSize="16dp" />
+                                        android:textSize="16sp" />
 
 
                                 </LinearLayout>
@@ -3370,7 +3369,7 @@
                                     android:layout_height="match_parent"
                                     android:gravity="center"
                                     android:text="12"
-                                    android:textSize="18dp" />
+                                    android:textSize="18sp" />
 
                             </LinearLayout>
 
@@ -3387,7 +3386,7 @@
                                     android:background="@drawable/dotted_background"
                                     android:gravity="center"
                                     android:text="Other Activity"
-                                    android:textSize="16dp" />
+                                    android:textSize="16sp" />
 
                                 <LinearLayout
                                     android:layout_width="0dp"
@@ -3404,7 +3403,7 @@
                                         android:background="@drawable/dotted_background"
                                         android:gravity="center"
                                         android:text=""
-                                        android:textSize="16dp" />
+                                        android:textSize="16sp" />
 
                                     <TextView
                                         android:layout_width="match_parent"
@@ -3413,7 +3412,7 @@
                                         android:background="@drawable/dotted_background"
                                         android:gravity="center"
                                         android:text=""
-                                        android:textSize="16dp" />
+                                        android:textSize="16sp" />
 
                                     <TextView
                                         android:layout_width="match_parent"
@@ -3422,7 +3421,7 @@
                                         android:background="@drawable/dotted_background"
                                         android:gravity="center"
                                         android:text=""
-                                        android:textSize="16dp" />
+                                        android:textSize="16sp" />
 
                                     <TextView
                                         android:layout_width="match_parent"
@@ -3431,7 +3430,7 @@
                                         android:background="@drawable/dotted_background"
                                         android:gravity="center"
                                         android:text=""
-                                        android:textSize="16dp" />
+                                        android:textSize="16sp" />
 
                                     <TextView
                                         android:layout_width="match_parent"
@@ -3440,7 +3439,7 @@
                                         android:background="@drawable/dotted_background"
                                         android:gravity="center"
                                         android:text=""
-                                        android:textSize="16dp" />
+                                        android:textSize="16sp" />
 
                                     <TextView
                                         android:layout_width="match_parent"
@@ -3449,7 +3448,7 @@
                                         android:background="@drawable/dotted_background"
                                         android:gravity="center"
                                         android:text=""
-                                        android:textSize="16dp" />
+                                        android:textSize="16sp" />
 
                                     <TextView
                                         android:layout_width="match_parent"
@@ -3458,7 +3457,7 @@
                                         android:background="@drawable/dotted_background"
                                         android:gravity="center"
                                         android:text=""
-                                        android:textSize="16dp" />
+                                        android:textSize="16sp" />
 
                                     <TextView
                                         android:layout_width="match_parent"
@@ -3467,7 +3466,7 @@
                                         android:background="@drawable/dotted_background"
                                         android:gravity="center"
                                         android:text=""
-                                        android:textSize="16dp" />
+                                        android:textSize="16sp" />
 
 
                                 </LinearLayout>
@@ -3486,7 +3485,6 @@
                                     android:layout_height="match_parent"
                                     android:layout_weight="3"
                                     android:orientation="vertical"
-
                                     >
 
                                     <TextView
@@ -3496,7 +3494,7 @@
                                         android:background="@drawable/dotted_background"
                                         android:gravity="center"
                                         android:text=""
-                                        android:textSize="16dp" />
+                                        android:textSize="16sp" />
 
                                     <TextView
                                         android:layout_width="match_parent"
@@ -3505,7 +3503,7 @@
                                         android:background="@drawable/dotted_background"
                                         android:gravity="center"
                                         android:text=""
-                                        android:textSize="16dp" />
+                                        android:textSize="16sp" />
 
                                     <TextView
                                         android:layout_width="match_parent"
@@ -3514,7 +3512,7 @@
                                         android:background="@drawable/dotted_background"
                                         android:gravity="center"
                                         android:text=""
-                                        android:textSize="16dp" />
+                                        android:textSize="16sp" />
 
                                     <TextView
                                         android:layout_width="match_parent"
@@ -3523,7 +3521,7 @@
                                         android:background="@drawable/dotted_background"
                                         android:gravity="center"
                                         android:text=""
-                                        android:textSize="16dp" />
+                                        android:textSize="16sp" />
 
                                     <TextView
                                         android:layout_width="match_parent"
@@ -3532,7 +3530,7 @@
                                         android:background="@drawable/dotted_background"
                                         android:gravity="center"
                                         android:text=""
-                                        android:textSize="16dp" />
+                                        android:textSize="16sp" />
 
                                     <TextView
                                         android:layout_width="match_parent"
@@ -3541,7 +3539,7 @@
                                         android:background="@drawable/dotted_background"
                                         android:gravity="center"
                                         android:text=""
-                                        android:textSize="16dp" />
+                                        android:textSize="16sp" />
 
                                     <TextView
                                         android:layout_width="match_parent"
@@ -3550,7 +3548,7 @@
                                         android:background="@drawable/dotted_background"
                                         android:gravity="center"
                                         android:text=""
-                                        android:textSize="16dp" />
+                                        android:textSize="16sp" />
 
                                     <TextView
                                         android:layout_width="match_parent"
@@ -3559,98 +3557,7 @@
                                         android:background="@drawable/dotted_background"
                                         android:gravity="center"
                                         android:text=""
-                                        android:textSize="16dp" />
-
-
-                                </LinearLayout>
-
-                            </LinearLayout>
-
-                            <LinearLayout
-                                android:layout_width="0dp"
-                                android:layout_height="match_parent"
-                                android:layout_weight=".5"
-                                android:background="@drawable/dwm_operatin_head_background">
-
-                                <LinearLayout
-                                    android:layout_width="0dp"
-                                    android:layout_height="match_parent"
-                                    android:layout_weight="3"
-                                    android:orientation="vertical"
-
-                                    >
-
-                                    <TextView
-                                        android:layout_width="match_parent"
-                                        android:layout_height="0dp"
-                                        android:layout_weight="1"
-                                        android:background="@drawable/dotted_background"
-                                        android:gravity="center"
-                                        android:text=""
-                                        android:textSize="16dp" />
-
-                                    <TextView
-                                        android:layout_width="match_parent"
-                                        android:layout_height="0dp"
-                                        android:layout_weight="1"
-                                        android:background="@drawable/dotted_background"
-                                        android:gravity="center"
-                                        android:text=""
-                                        android:textSize="16dp" />
-
-                                    <TextView
-                                        android:layout_width="match_parent"
-                                        android:layout_height="0dp"
-                                        android:layout_weight="1"
-                                        android:background="@drawable/dotted_background"
-                                        android:gravity="center"
-                                        android:text=""
-                                        android:textSize="16dp" />
-
-                                    <TextView
-                                        android:layout_width="match_parent"
-                                        android:layout_height="0dp"
-                                        android:layout_weight="1"
-                                        android:background="@drawable/dotted_background"
-                                        android:gravity="center"
-                                        android:text=""
-                                        android:textSize="16dp" />
-
-                                    <TextView
-                                        android:layout_width="match_parent"
-                                        android:layout_height="0dp"
-                                        android:layout_weight="1"
-                                        android:background="@drawable/dotted_background"
-                                        android:gravity="center"
-                                        android:text=""
-                                        android:textSize="16dp" />
-
-                                    <TextView
-                                        android:layout_width="match_parent"
-                                        android:layout_height="0dp"
-                                        android:layout_weight="1"
-                                        android:background="@drawable/dotted_background"
-                                        android:gravity="center"
-                                        android:text=""
-                                        android:textSize="16dp" />
-
-                                    <TextView
-                                        android:layout_width="match_parent"
-                                        android:layout_height="0dp"
-                                        android:layout_weight="1"
-                                        android:background="@drawable/dotted_background"
-                                        android:gravity="center"
-                                        android:text=""
-                                        android:textSize="16dp" />
-
-                                    <TextView
-                                        android:layout_width="match_parent"
-                                        android:layout_height="0dp"
-                                        android:layout_weight="1"
-                                        android:background="@drawable/dotted_background"
-                                        android:gravity="center"
-                                        android:text=""
-                                        android:textSize="16dp" />
+                                        android:textSize="16sp" />
 
 
                                 </LinearLayout>
@@ -3678,7 +3585,7 @@
                                         android:background="@drawable/dotted_background"
                                         android:gravity="center"
                                         android:text=""
-                                        android:textSize="16dp" />
+                                        android:textSize="16sp" />
 
                                     <TextView
                                         android:layout_width="match_parent"
@@ -3687,7 +3594,7 @@
                                         android:background="@drawable/dotted_background"
                                         android:gravity="center"
                                         android:text=""
-                                        android:textSize="16dp" />
+                                        android:textSize="16sp" />
 
                                     <TextView
                                         android:layout_width="match_parent"
@@ -3696,7 +3603,7 @@
                                         android:background="@drawable/dotted_background"
                                         android:gravity="center"
                                         android:text=""
-                                        android:textSize="16dp" />
+                                        android:textSize="16sp" />
 
                                     <TextView
                                         android:layout_width="match_parent"
@@ -3705,7 +3612,7 @@
                                         android:background="@drawable/dotted_background"
                                         android:gravity="center"
                                         android:text=""
-                                        android:textSize="16dp" />
+                                        android:textSize="16sp" />
 
                                     <TextView
                                         android:layout_width="match_parent"
@@ -3714,7 +3621,7 @@
                                         android:background="@drawable/dotted_background"
                                         android:gravity="center"
                                         android:text=""
-                                        android:textSize="16dp" />
+                                        android:textSize="16sp" />
 
                                     <TextView
                                         android:layout_width="match_parent"
@@ -3723,7 +3630,7 @@
                                         android:background="@drawable/dotted_background"
                                         android:gravity="center"
                                         android:text=""
-                                        android:textSize="16dp" />
+                                        android:textSize="16sp" />
 
                                     <TextView
                                         android:layout_width="match_parent"
@@ -3732,7 +3639,7 @@
                                         android:background="@drawable/dotted_background"
                                         android:gravity="center"
                                         android:text=""
-                                        android:textSize="16dp" />
+                                        android:textSize="16sp" />
 
                                     <TextView
                                         android:layout_width="match_parent"
@@ -3741,7 +3648,7 @@
                                         android:background="@drawable/dotted_background"
                                         android:gravity="center"
                                         android:text=""
-                                        android:textSize="16dp" />
+                                        android:textSize="16sp" />
 
 
                                 </LinearLayout>
@@ -3769,7 +3676,7 @@
                                         android:background="@drawable/dotted_background"
                                         android:gravity="center"
                                         android:text=""
-                                        android:textSize="16dp" />
+                                        android:textSize="16sp" />
 
                                     <TextView
                                         android:layout_width="match_parent"
@@ -3778,7 +3685,7 @@
                                         android:background="@drawable/dotted_background"
                                         android:gravity="center"
                                         android:text=""
-                                        android:textSize="16dp" />
+                                        android:textSize="16sp" />
 
                                     <TextView
                                         android:layout_width="match_parent"
@@ -3787,7 +3694,7 @@
                                         android:background="@drawable/dotted_background"
                                         android:gravity="center"
                                         android:text=""
-                                        android:textSize="16dp" />
+                                        android:textSize="16sp" />
 
                                     <TextView
                                         android:layout_width="match_parent"
@@ -3796,7 +3703,7 @@
                                         android:background="@drawable/dotted_background"
                                         android:gravity="center"
                                         android:text=""
-                                        android:textSize="16dp" />
+                                        android:textSize="16sp" />
 
                                     <TextView
                                         android:layout_width="match_parent"
@@ -3805,7 +3712,7 @@
                                         android:background="@drawable/dotted_background"
                                         android:gravity="center"
                                         android:text=""
-                                        android:textSize="16dp" />
+                                        android:textSize="16sp" />
 
                                     <TextView
                                         android:layout_width="match_parent"
@@ -3814,7 +3721,7 @@
                                         android:background="@drawable/dotted_background"
                                         android:gravity="center"
                                         android:text=""
-                                        android:textSize="16dp" />
+                                        android:textSize="16sp" />
 
                                     <TextView
                                         android:layout_width="match_parent"
@@ -3823,7 +3730,7 @@
                                         android:background="@drawable/dotted_background"
                                         android:gravity="center"
                                         android:text=""
-                                        android:textSize="16dp" />
+                                        android:textSize="16sp" />
 
                                     <TextView
                                         android:layout_width="match_parent"
@@ -3832,7 +3739,98 @@
                                         android:background="@drawable/dotted_background"
                                         android:gravity="center"
                                         android:text=""
-                                        android:textSize="16dp" />
+                                        android:textSize="16sp" />
+
+
+                                </LinearLayout>
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight=".5"
+                                android:background="@drawable/dwm_operatin_head_background">
+
+                                <LinearLayout
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="3"
+                                    android:orientation="vertical"
+
+                                    >
+
+                                    <TextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="0dp"
+                                        android:layout_weight="1"
+                                        android:background="@drawable/dotted_background"
+                                        android:gravity="center"
+                                        android:text=""
+                                        android:textSize="16sp" />
+
+                                    <TextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="0dp"
+                                        android:layout_weight="1"
+                                        android:background="@drawable/dotted_background"
+                                        android:gravity="center"
+                                        android:text=""
+                                        android:textSize="16sp" />
+
+                                    <TextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="0dp"
+                                        android:layout_weight="1"
+                                        android:background="@drawable/dotted_background"
+                                        android:gravity="center"
+                                        android:text=""
+                                        android:textSize="16sp" />
+
+                                    <TextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="0dp"
+                                        android:layout_weight="1"
+                                        android:background="@drawable/dotted_background"
+                                        android:gravity="center"
+                                        android:text=""
+                                        android:textSize="16sp" />
+
+                                    <TextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="0dp"
+                                        android:layout_weight="1"
+                                        android:background="@drawable/dotted_background"
+                                        android:gravity="center"
+                                        android:text=""
+                                        android:textSize="16sp" />
+
+                                    <TextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="0dp"
+                                        android:layout_weight="1"
+                                        android:background="@drawable/dotted_background"
+                                        android:gravity="center"
+                                        android:text=""
+                                        android:textSize="16sp" />
+
+                                    <TextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="0dp"
+                                        android:layout_weight="1"
+                                        android:background="@drawable/dotted_background"
+                                        android:gravity="center"
+                                        android:text=""
+                                        android:textSize="16sp" />
+
+                                    <TextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="0dp"
+                                        android:layout_weight="1"
+                                        android:background="@drawable/dotted_background"
+                                        android:gravity="center"
+                                        android:text=""
+                                        android:textSize="16sp" />
 
 
                                 </LinearLayout>
@@ -3853,7 +3851,7 @@
                                     android:gravity="center"
                                     android:text=""
                                     android:background="@drawable/dotted_background"
-                                    android:textSize="18dp"
+                                    android:textSize="18sp"
 
                                     />
 
@@ -3864,7 +3862,7 @@
                                     android:gravity="center"
                                     android:text=""
                                     android:background="@drawable/dotted_background"
-                                    android:textSize="18dp"
+                                    android:textSize="18sp"
 
                                     />
 
@@ -3875,7 +3873,7 @@
                                     android:gravity="center"
                                     android:text=""
                                     android:background="@drawable/dotted_background"
-                                    android:textSize="18dp"
+                                    android:textSize="18sp"
 
                                     />
 
@@ -3886,7 +3884,7 @@
                                     android:gravity="center"
                                     android:text=""
                                     android:background="@drawable/dotted_background"
-                                    android:textSize="18dp"
+                                    android:textSize="18sp"
 
                                     />
 
@@ -3897,7 +3895,7 @@
                                     android:gravity="center"
                                     android:text=""
                                     android:background="@drawable/dotted_background"
-                                    android:textSize="18dp"
+                                    android:textSize="18sp"
 
                                     />
 
@@ -3908,7 +3906,7 @@
                                     android:gravity="center"
                                     android:text=""
                                     android:background="@drawable/dotted_background"
-                                    android:textSize="18dp"
+                                    android:textSize="18sp"
 
                                     />
 
@@ -3919,7 +3917,7 @@
                                     android:gravity="center"
                                     android:text=""
                                     android:background="@drawable/dotted_background"
-                                    android:textSize="18dp"
+                                    android:textSize="18sp"
 
                                     />
 
@@ -3930,7 +3928,7 @@
                                     android:gravity="center"
                                     android:text=""
                                     android:background="@drawable/dotted_background"
-                                    android:textSize="18dp"
+                                    android:textSize="18sp"
 
                                     />
 
@@ -3961,7 +3959,7 @@
                                         android:gravity="center"
                                         android:inputType="number"
                                         android:imeOptions="actionDone"
-                                        android:textSize="16dp" />
+                                        android:textSize="16sp" />
 
                                     <EditText
                                         style="@style/editTextStyle"
@@ -3973,7 +3971,7 @@
                                         android:background="@drawable/dotted_background"
                                         android:gravity="center"
                                         android:imeOptions="actionDone"
-                                        android:textSize="16dp" />
+                                        android:textSize="16sp" />
 
                                     <EditText
                                         style="@style/editTextStyle"
@@ -3985,7 +3983,7 @@
                                         android:background="@drawable/dotted_background"
                                         android:gravity="center"
                                         android:imeOptions="actionDone"
-                                        android:textSize="16dp" />
+                                        android:textSize="16sp" />
 
                                     <EditText
                                         style="@style/editTextStyle"
@@ -3997,7 +3995,7 @@
                                         android:background="@drawable/dotted_background"
                                         android:gravity="center"
                                         android:imeOptions="actionDone"
-                                        android:textSize="16dp" />
+                                        android:textSize="16sp" />
 
                                     <EditText
                                         style="@style/editTextStyle"
@@ -4009,7 +4007,7 @@
                                         android:background="@drawable/dotted_background"
                                         android:gravity="center"
                                         android:imeOptions="actionDone"
-                                        android:textSize="16dp" />
+                                        android:textSize="16sp" />
 
                                     <EditText
                                         style="@style/editTextStyle"
@@ -4021,7 +4019,7 @@
                                         android:background="@drawable/dotted_background"
                                         android:gravity="center"
                                         android:imeOptions="actionDone"
-                                        android:textSize="16dp" />
+                                        android:textSize="16sp" />
 
                                     <EditText
                                         style="@style/editTextStyle"
@@ -4033,7 +4031,7 @@
                                         android:background="@drawable/dotted_background"
                                         android:gravity="center"
                                         android:imeOptions="actionDone"
-                                        android:textSize="16dp" />
+                                        android:textSize="16sp" />
 
                                     <EditText
                                         style="@style/editTextStyle"
@@ -4045,7 +4043,7 @@
                                         android:background="@drawable/dotted_background"
                                         android:gravity="center"
                                         android:imeOptions="actionDone"
-                                        android:textSize="16dp" />
+                                        android:textSize="16sp" />
 
 
                                 </LinearLayout>
@@ -4075,7 +4073,7 @@
                                         android:gravity="center"
                                         android:hint="Comment"
                                         android:imeOptions="actionDone"
-                                        android:textSize="16dp" />
+                                        android:textSize="16sp" />
 
                                     <EditText
                                         android:id="@+id/C_11_2"
@@ -4086,7 +4084,7 @@
                                         android:gravity="center"
                                         android:hint="Comment"
                                         android:imeOptions="actionDone"
-                                        android:textSize="16dp" />
+                                        android:textSize="16sp" />
 
                                     <EditText
                                         android:id="@+id/C_11_3"
@@ -4097,7 +4095,7 @@
                                         android:gravity="center"
                                         android:hint="Comment"
                                         android:imeOptions="actionDone"
-                                        android:textSize="16dp" />
+                                        android:textSize="16sp" />
 
                                     <EditText
                                         android:id="@+id/C_11_4"
@@ -4108,7 +4106,7 @@
                                         android:gravity="center"
                                         android:hint="Comment"
                                         android:imeOptions="actionDone"
-                                        android:textSize="16dp" />
+                                        android:textSize="16sp" />
 
                                     <EditText
                                         android:id="@+id/C_11_5"
@@ -4119,7 +4117,7 @@
                                         android:gravity="center"
                                         android:hint="Comment"
                                         android:imeOptions="actionDone"
-                                        android:textSize="16dp" />
+                                        android:textSize="16sp" />
 
                                     <EditText
                                         android:id="@+id/C_11_6"
@@ -4130,7 +4128,7 @@
                                         android:gravity="center"
                                         android:hint="Comment"
                                         android:imeOptions="actionDone"
-                                        android:textSize="16dp" />
+                                        android:textSize="16sp" />
 
                                     <EditText
                                         android:id="@+id/C_11_7"
@@ -4141,7 +4139,7 @@
                                         android:gravity="center"
                                         android:imeOptions="actionDone"
                                         android:hint="Comment"
-                                        android:textSize="16dp" />
+                                        android:textSize="16sp" />
 
                                     <EditText
                                         android:id="@+id/C_11_8"
@@ -4152,7 +4150,7 @@
                                         android:gravity="center"
                                         android:imeOptions="actionDone"
                                         android:hint="Comment"
-                                        android:textSize="16dp" />
+                                        android:textSize="16sp" />
 
 
                                 </LinearLayout>
@@ -4178,7 +4176,7 @@
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:text="TOTAL TIME"
-                                    android:textSize="18dp"
+                                    android:textSize="18sp"
                                     android:layout_marginRight="10dp"
                                     android:gravity="right"
                                     android:textStyle="bold"
@@ -4198,7 +4196,7 @@
                                     android:layout_height="match_parent"
                                     android:text=""
                                     android:background="@drawable/dotted_background"
-                                    android:textSize="18dp"
+                                    android:textSize="18sp"
                                     android:gravity="center" />
 
                             </LinearLayout>
@@ -4214,7 +4212,7 @@
                                     android:layout_height="match_parent"
                                     android:text=""
                                     android:background="@drawable/dotted_background"
-                                    android:textSize="18dp"
+                                    android:textSize="18sp"
                                     android:gravity="center"
 
                                     />
@@ -4232,7 +4230,7 @@
                                     android:layout_height="match_parent"
                                     android:text="160"
                                     android:background="@drawable/dotted_background"
-                                    android:textSize="18dp"
+                                    android:textSize="18sp"
                                     android:gravity="center"
 
                                     />
@@ -4250,7 +4248,7 @@
                                     android:layout_height="match_parent"
                                     android:text="88%"
                                     android:background="@drawable/dotted_background"
-                                    android:textSize="18dp"
+                                    android:textSize="18sp"
                                     android:gravity="center"
 
                                     />
@@ -4267,7 +4265,7 @@
                                     android:layout_width="match_parent"
                                     android:layout_height="match_parent"
                                     android:text=""
-                                    android:textSize="18dp"
+                                    android:textSize="18sp"
                                     android:gravity="center"
 
                                     />
@@ -4285,7 +4283,7 @@
                                     android:layout_height="match_parent"
                                     android:background="@drawable/dotted_background"
                                     android:gravity="center"
-                                    android:textSize="18dp"
+                                    android:textSize="18sp"
 
                                     />
 
@@ -4302,7 +4300,7 @@
                                     android:layout_height="match_parent"
                                     android:background="@drawable/dotted_background"
                                     android:gravity="center"
-                                    android:textSize="18dp"
+                                    android:textSize="18sp"
 
                                     />
 
@@ -4327,7 +4325,7 @@
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:text="TOTAL AVAILABLE TIME"
-                                    android:textSize="18dp"
+                                    android:textSize="18sp"
                                     android:gravity="right"
                                     android:layout_marginRight="10dp"
                                     android:textStyle="bold"
@@ -4347,7 +4345,7 @@
                                     android:layout_height="match_parent"
                                     android:text=""
                                     android:background="@drawable/dotted_background"
-                                    android:textSize="18dp"
+                                    android:textSize="18sp"
                                     android:gravity="center" />
 
                             </LinearLayout>
@@ -4363,7 +4361,7 @@
                                     android:layout_height="match_parent"
                                     android:text=""
                                     android:background="@drawable/dotted_background"
-                                    android:textSize="18dp"
+                                    android:textSize="18sp"
                                     android:gravity="center" />
 
                             </LinearLayout>
@@ -4379,7 +4377,7 @@
                                     android:layout_height="match_parent"
                                     android:text="200"
                                     android:background="@drawable/dotted_background"
-                                    android:textSize="18dp"
+                                    android:textSize="18sp"
                                     android:gravity="center"
 
                                     />
@@ -4397,7 +4395,7 @@
                                     android:layout_height="match_parent"
                                     android:text=""
                                     android:background="@drawable/dotted_background"
-                                    android:textSize="18dp"
+                                    android:textSize="18sp"
                                     android:gravity="center"
 
                                     />
@@ -4415,7 +4413,7 @@
                                     android:layout_height="match_parent"
                                     android:text="Total Time"
                                     android:textColor="@color/colorPrimary"
-                                    android:textSize="18dp"
+                                    android:textSize="18sp"
                                     android:gravity="right"
 
                                     />
@@ -4434,7 +4432,7 @@
                                     android:layout_height="match_parent"
                                     android:background="@drawable/dotted_background"
                                     android:gravity="center"
-                                    android:textSize="18dp"
+                                    android:textSize="18sp"
 
                                     />
 
@@ -4454,7 +4452,7 @@
                                     android:gravity="center"
                                     android:text="Submit"
                                     android:textColor="@color/white"
-                                    android:textSize="18dp"
+                                    android:textSize="18sp"
 
                                     />
 
@@ -4478,7 +4476,7 @@
                                     android:layout_height="wrap_content"
                                     android:text="Note:- \n 1)  Others activities to be done as per A-GAC E.g. MRBP, Budget, Detail Review, OS Meet, Open House, Appraisals, Supplier Meet, A+ Get Together, I-Meet, Strategic Meet, CIJ, PMS etc
 \n 2) Commercial Review will be separate"
-                                    android:textSize="18dp"
+                                    android:textSize="18sp"
                                     android:paddingLeft="10dp"
                                     android:gravity="left"
 

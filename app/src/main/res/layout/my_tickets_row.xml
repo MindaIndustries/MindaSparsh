@@ -23,8 +23,8 @@
                 android:id="@+id/status"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_toRightOf="@+id/icon"
+                android:layout_marginStart="10dp"
+                android:layout_toEndOf="@+id/icon"
                 android:fontFamily="@font/museosans_700"
                 android:gravity="center"
                 android:text=""
@@ -54,8 +54,8 @@
                     android:id="@+id/tkt_type_value"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:layout_toRightOf="@+id/view"
+                    android:layout_marginStart="10dp"
+                    android:layout_toEndOf="@+id/view"
                     android:fontFamily="@font/museosans_300"
                     android:text="" />
 
@@ -73,9 +73,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/tkt_type_value"
-                    android:layout_marginLeft="10dp"
+                    android:layout_marginStart="10dp"
                     android:layout_marginTop="10dp"
-                    android:layout_toRightOf="@+id/view"
+                    android:layout_toEndOf="@+id/view"
                     android:fontFamily="@font/museosans_300"
                     android:text="" />
 
@@ -93,9 +93,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/tkt_no_value"
-                    android:layout_marginLeft="10dp"
+                    android:layout_marginStart="10dp"
                     android:layout_marginTop="10dp"
-                    android:layout_toRightOf="@+id/view"
+                    android:layout_toEndOf="@+id/view"
                     android:fontFamily="@font/museosans_300"
                     android:text="" />
 
@@ -113,9 +113,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/reported_dt_time_value"
-                    android:layout_marginLeft="10dp"
+                    android:layout_marginStart="10dp"
                     android:layout_marginTop="10dp"
-                    android:layout_toRightOf="@+id/view"
+                    android:layout_toEndOf="@+id/view"
                     android:fontFamily="@font/museosans_300"
                     android:text="" />
 
@@ -134,9 +134,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/assignee_value"
-                    android:layout_marginLeft="10dp"
+                    android:layout_marginStart="10dp"
                     android:layout_marginTop="10dp"
-                    android:layout_toRightOf="@+id/view"
+                    android:layout_toEndOf="@+id/view"
                     android:fontFamily="@font/museosans_300"
                     android:text=""
                     android:visibility="gone" />
@@ -155,9 +155,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/cc_value"
-                    android:layout_marginLeft="10dp"
+                    android:layout_marginStart="10dp"
                     android:layout_marginTop="10dp"
-                    android:layout_toRightOf="@+id/view"
+                    android:layout_toEndOf="@+id/view"
                     android:fontFamily="@font/museosans_300"
                     android:text="" />
 
@@ -175,9 +175,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/assign_loc_value"
-                    android:layout_marginLeft="10dp"
+                    android:layout_marginStart="10dp"
                     android:layout_marginTop="10dp"
-                    android:layout_toRightOf="@+id/view"
+                    android:layout_toEndOf="@+id/view"
                     android:fontFamily="@font/museosans_300"
                     android:text="" />
 
