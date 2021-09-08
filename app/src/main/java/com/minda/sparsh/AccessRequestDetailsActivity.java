@@ -23,6 +23,8 @@ import com.minda.sparsh.model.AccessRequestPlantDetailModel;
 import com.minda.sparsh.util.RetrofitClient2;
 import com.minda.sparsh.util.Utility;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.util.List;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -65,52 +67,52 @@ public class AccessRequestDetailsActivity extends AppCompatActivity implements V
         progress.setProgressStyle(ProgressDialog.STYLE_SPINNER);
         progress.setIndeterminate(true);
 
-        im_back = (ImageView) findViewById(R.id.im_back);
+        im_back = findViewById(R.id.im_back);
         im_back.setOnClickListener(view -> finish());
-        btn_approve = (Button) findViewById(R.id.btn_approve);
-        btn_un_approve = (Button) findViewById(R.id.btn_un_approve);
-        btn_send_back = (Button) findViewById(R.id.btn_send_back);
+        btn_approve = findViewById(R.id.btn_approve);
+        btn_un_approve = findViewById(R.id.btn_un_approve);
+        btn_send_back = findViewById(R.id.btn_send_back);
         btn_approve.setOnClickListener(this);
         btn_un_approve.setOnClickListener(this);
         btn_send_back.setOnClickListener(this);
 
-        lay_processor_view = (HorizontalScrollView) findViewById(R.id.lay_processor_view);
+        lay_processor_view = findViewById(R.id.lay_processor_view);
 
-        et_approve_unapprove = (EditText) findViewById(R.id.et_approve_unapprove);
-        tv_access_request_no = (TextView) findViewById(R.id.tv_access_request_no);
-        tv_request_on = (TextView) findViewById(R.id.tv_request_on);
-        tv_request_type = (TextView) findViewById(R.id.tv_request_type);
-        tv_access_type = (TextView) findViewById(R.id.tv_access_type);
-        tv_access_sub_type = (TextView) findViewById(R.id.tv_access_sub_type);
-        tv_access_for = (TextView) findViewById(R.id.tv_access_for);
-        tv_access_for_name = (TextView) findViewById(R.id.tv_access_for_name);
-        tv_category = (TextView) findViewById(R.id.tv_category);
-        tv_sub_category = (TextView) findViewById(R.id.tv_sub_category);
-        tv_user_authorisation_profile = (TextView) findViewById(R.id.tv_user_authorisation_profile);
-        tv_approval_status = (TextView) findViewById(R.id.tv_approval_status);
-        tv_access_requirement_details = (TextView) findViewById(R.id.tv_access_requirement_details);
+        et_approve_unapprove = findViewById(R.id.et_approve_unapprove);
+        tv_access_request_no = findViewById(R.id.tv_access_request_no);
+        tv_request_on = findViewById(R.id.tv_request_on);
+        tv_request_type = findViewById(R.id.tv_request_type);
+        tv_access_type = findViewById(R.id.tv_access_type);
+        tv_access_sub_type = findViewById(R.id.tv_access_sub_type);
+        tv_access_for = findViewById(R.id.tv_access_for);
+        tv_access_for_name = findViewById(R.id.tv_access_for_name);
+        tv_category = findViewById(R.id.tv_category);
+        tv_sub_category = findViewById(R.id.tv_sub_category);
+        tv_user_authorisation_profile = findViewById(R.id.tv_user_authorisation_profile);
+        tv_approval_status = findViewById(R.id.tv_approval_status);
+        tv_access_requirement_details = findViewById(R.id.tv_access_requirement_details);
 
-        tv_access_request_by = (TextView) findViewById(R.id.tv_access_request_by);
-        tv_source = (TextView) findViewById(R.id.tv_source);
-        tv_name = (TextView) findViewById(R.id.tv_name);
-        tv_organisation = (TextView) findViewById(R.id.tv_organisation);
-        tv_purpose = (TextView) findViewById(R.id.tv_purpose);
-        tv_approve_unapprove_heading = (TextView) findViewById(R.id.tv_approve_unapprove_heading);
-        tv_processor_detail = (TextView) findViewById(R.id.tv_processor_detail);
-        tv_scroll = (TextView) findViewById(R.id.tv_scroll);
+        tv_access_request_by = findViewById(R.id.tv_access_request_by);
+        tv_source =  findViewById(R.id.tv_source);
+        tv_name =  findViewById(R.id.tv_name);
+        tv_organisation =  findViewById(R.id.tv_organisation);
+        tv_purpose =  findViewById(R.id.tv_purpose);
+        tv_approve_unapprove_heading =  findViewById(R.id.tv_approve_unapprove_heading);
+        tv_processor_detail =  findViewById(R.id.tv_processor_detail);
+        tv_scroll =  findViewById(R.id.tv_scroll);
 
-        lay_access_request_by = (LinearLayout) findViewById(R.id.lay_access_request_by);
-        lay_source = (LinearLayout) findViewById(R.id.lay_source);
-        lay_name = (LinearLayout) findViewById(R.id.lay_name);
-        lay_organisation = (LinearLayout) findViewById(R.id.lay_organisation);
-        lay_purpose = (LinearLayout) findViewById(R.id.lay_purpose);
-        lay_access_for_name = (LinearLayout) findViewById(R.id.lay_access_for_name);
-        lay_sub_category = (LinearLayout) findViewById(R.id.lay_sub_category);
-        lay_user_authorisation_profile = (LinearLayout) findViewById(R.id.lay_user_authorisation_profile);
+        lay_access_request_by =  findViewById(R.id.lay_access_request_by);
+        lay_source =  findViewById(R.id.lay_source);
+        lay_name =  findViewById(R.id.lay_name);
+        lay_organisation =  findViewById(R.id.lay_organisation);
+        lay_purpose =  findViewById(R.id.lay_purpose);
+        lay_access_for_name =  findViewById(R.id.lay_access_for_name);
+        lay_sub_category =  findViewById(R.id.lay_sub_category);
+        lay_user_authorisation_profile =  findViewById(R.id.lay_user_authorisation_profile);
 
-        rv_plant_details = (RecyclerView) findViewById(R.id.rv_plant_details);
-        rv_approval_details = (RecyclerView) findViewById(R.id.rv_approval_details);
-        rv_processor_details = (RecyclerView) findViewById(R.id.rv_processor_details);
+        rv_plant_details =  findViewById(R.id.rv_plant_details);
+        rv_approval_details =  findViewById(R.id.rv_approval_details);
+        rv_processor_details =  findViewById(R.id.rv_processor_details);
 
         tv_scroll_Approval_Details = findViewById(R.id.tv_scroll_Approval_Details);
 
@@ -139,7 +141,7 @@ public class AccessRequestDetailsActivity extends AppCompatActivity implements V
             Call<List<AccessRequestDetailsModel>> response = anInterface.GetAccessRequestDetail(key, requestId);
             response.enqueue(new Callback<List<AccessRequestDetailsModel>>() {
                 @Override
-                public void onResponse(Call<List<AccessRequestDetailsModel>> call, Response<List<AccessRequestDetailsModel>> response) {
+                public void onResponse(@NotNull Call<List<AccessRequestDetailsModel>> call, @NotNull Response<List<AccessRequestDetailsModel>> response) {
                     dismissProgress();
                     List<AccessRequestDetailsModel> accessRequestDetailsModels = response.body();
 
@@ -364,6 +366,7 @@ public class AccessRequestDetailsActivity extends AppCompatActivity implements V
                     dismissProgress();
                     List<ARPDModel> responses = response.body();
 
+                    assert responses != null;
                     if (responses.size() != 0) {
                         if (responses.get(0).getApprovalId() != null) {
                             tv_processor_detail.setVisibility(View.VISIBLE);
@@ -438,6 +441,7 @@ public class AccessRequestDetailsActivity extends AppCompatActivity implements V
                     dismissProgress();
                     List<ARPDModel> responses = response.body();
 
+                    assert responses != null;
                     if (responses.size() != 0) {
                         if (responses.get(0).getApprovalId() != null) {
                             tv_processor_detail.setVisibility(View.VISIBLE);
@@ -514,6 +518,7 @@ public class AccessRequestDetailsActivity extends AppCompatActivity implements V
                     dismissProgress();
                     String responses = response.body();
 
+                    assert responses != null;
                     if (responses.equalsIgnoreCase("Request Approved successfully")) {
                         Toast.makeText(AccessRequestDetailsActivity.this, responses, Toast.LENGTH_SHORT).show();
                         finish();
@@ -547,6 +552,7 @@ public class AccessRequestDetailsActivity extends AppCompatActivity implements V
                     dismissProgress();
                     String responses = response.body();
 
+                    assert responses != null;
                     if (responses.equalsIgnoreCase("Request Rejected successfully")) {
                         Toast.makeText(AccessRequestDetailsActivity.this, responses, Toast.LENGTH_SHORT).show();
                         finish();
@@ -581,6 +587,7 @@ public class AccessRequestDetailsActivity extends AppCompatActivity implements V
                     dismissProgress();
                     String responses = response.body();
 
+                    assert responses != null;
                     if (responses.equalsIgnoreCase("Request Send Back to Requestor successfully")) {
                         Toast.makeText(AccessRequestDetailsActivity.this, responses, Toast.LENGTH_SHORT).show();
                         finish();

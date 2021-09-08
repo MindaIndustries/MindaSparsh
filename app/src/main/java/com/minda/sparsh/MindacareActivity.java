@@ -110,7 +110,7 @@ public class MindacareActivity extends AppCompatActivity implements GoogleMap.On
 
     LatLng LATLNG;
     String selected = "0";
-    List<QuesResponse> quesResponseList = new ArrayList<QuesResponse>();
+    List<QuesResponse> quesResponseList = new ArrayList<>();
 
     private boolean permissionDenied = false;
     private GoogleMap map;
@@ -119,21 +119,19 @@ public class MindacareActivity extends AppCompatActivity implements GoogleMap.On
 
     String selection = "0";
     MindaCareQuesAdapter mindaCareQuesAdapter;
-    HashMap<String, List<String>> options = new HashMap<String, List<String>>();
+    HashMap<String, List<String>> options = new HashMap<>();
     @BindView(R.id.rootLayout)
     LinearLayout rootLayout;
-    ArrayList<String> unitsName = new ArrayList<String>();
-    List<EHSUnitModel> units = new ArrayList<EHSUnitModel>();
-    String empCode, unitcode, User, DOB, Mobile, gender, Address, stateValue, cityValue, tempValue;
-    ArrayList<String> city = new ArrayList<String>();
-    ArrayList<String> state = new ArrayList<String>();
+    ArrayList<String> unitsName = new ArrayList<>();
+    List<EHSUnitModel> units = new ArrayList<>();
+    String empCode, unitcode, User, DOB, Mobile, stateValue, cityValue;
+    ArrayList<String> city = new ArrayList<>();
+    ArrayList<String> state = new ArrayList<>();
     ArrayList<StateResponse> stateObject = new ArrayList<>();
     ArrayList<CityResponse> cityObject = new ArrayList<>();
     MySpinner spinCity;
     ArrayAdapter adapter;
-    MyCheckbox myCheckboxView = null;
     HashMap<Integer, String> answers = new HashMap<>();
-    String ans1, ans2, ans3, ans4, ans5, ans6, ans7, ans8, ans9, ans10, ans11, ans12, ans13, ans14;
     ArrayList<View> viewArrayList = new ArrayList<>();
 
 
@@ -219,14 +217,11 @@ public class MindacareActivity extends AppCompatActivity implements GoogleMap.On
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case android.R.id.home:
-                onBackPressed();
-                return true;
-
-            default:
-                return super.onOptionsItemSelected(item);
+        if (item.getItemId() == android.R.id.home) {
+            onBackPressed();
+            return true;
         }
+        return super.onOptionsItemSelected(item);
     }
 
     private void enableMyLocation() {
@@ -243,40 +238,37 @@ public class MindacareActivity extends AppCompatActivity implements GoogleMap.On
 
     public void getCheckInDetails() {
         MindacareServices mindacareServices = new MindacareServices();
-        mindacareServices.getCheckinDetails(new OnTaskComplete() {
-            @Override
-            public void onTaskComplte(CarotResponse carotResponse) {
-                if (carotResponse.getStatuscode() == HttpURLConnection.HTTP_OK) {
-                    if (carotResponse.getData() != null) {
-                        List<CheckinDetailsResponse> list = (List<CheckinDetailsResponse>) carotResponse.getData();
-                        if (list != null && list.size() > 0) {
-                            if (list.get(0).getStatus().equals("H")) {
-                                selected = "H";
+        mindacareServices.getCheckinDetails(carotResponse -> {
+            if (carotResponse.getStatuscode() == HttpURLConnection.HTTP_OK) {
+                if (carotResponse.getData() != null) {
+                    List<CheckinDetailsResponse> list = (List<CheckinDetailsResponse>) carotResponse.getData();
+                    if (list != null && list.size() > 0) {
+                        if (list.get(0).getStatus().equals("H")) {
+                            selected = "H";
+                            mapLayout.setVisibility(View.VISIBLE);
+                            wfo.setBackgroundColor(getResources().getColor(R.color.disableBtn));
+                        } else if (list.get(0).getStatus().equals("O")) {
+                            selected = "O";
+                            mapLayout.setVisibility(View.GONE);
+                            wfh.setBackgroundColor(getResources().getColor(R.color.disableBtn));
+                        } else {
+                            if (selection.equals("Home")) {
                                 mapLayout.setVisibility(View.VISIBLE);
-                                wfo.setBackgroundColor(getResources().getColor(R.color.disableBtn));
-                            } else if (list.get(0).getStatus().equals("O")) {
-                                selected = "O";
-                                mapLayout.setVisibility(View.GONE);
-                                wfh.setBackgroundColor(getResources().getColor(R.color.disableBtn));
-                            } else {
-                                if (selection.equals("Home")) {
-                                    mapLayout.setVisibility(View.VISIBLE);
-                                }
                             }
-                            if (list.get(0).getInTime() != null && list.get(0).getInTime().length() > 0) {
-                                clock.setText("Clock Out");
-                                timeLayout.setVisibility(View.VISIBLE);
-                                clockintime.setText("Clock In: " + list.get(0).getRIntime());
-                            }
-                            if (list.get(0).getOutTime() != null && list.get(0).getOutTime().length() > 0) {
-                                clock.setVisibility(View.GONE);
-                                mapLayout.setVisibility(View.GONE);
-                                timeLayout.setVisibility(View.VISIBLE);
-                                clockintime.setText("Clock In: " + list.get(0).getRIntime());
-                                clockouttime.setText("Clock Out: " + list.get(0).getOutTime().split(" ")[1].split(":")[0] + ":" + list.get(0).getOutTime().split(" ")[1].split(":")[1] + list.get(0).getOutTime().split(" ")[2]);
-                                totalhr.setText("Total Working Hour: " + convertDate(list.get(0).getInTime(), list.get(0).getOutTime()));
-                                Toast.makeText(MindacareActivity.this, "Today’s Clock In and Clock Out is completed.", Toast.LENGTH_LONG).show();
-                            }
+                        }
+                        if (list.get(0).getInTime() != null && list.get(0).getInTime().length() > 0) {
+                            clock.setText("Clock Out");
+                            timeLayout.setVisibility(View.VISIBLE);
+                            clockintime.setText("Clock In: " + list.get(0).getRIntime());
+                        }
+                        if (list.get(0).getOutTime() != null && list.get(0).getOutTime().length() > 0) {
+                            clock.setVisibility(View.GONE);
+                            mapLayout.setVisibility(View.GONE);
+                            timeLayout.setVisibility(View.VISIBLE);
+                            clockintime.setText("Clock In: " + list.get(0).getRIntime());
+                            clockouttime.setText("Clock Out: " + list.get(0).getOutTime().split(" ")[1].split(":")[0] + ":" + list.get(0).getOutTime().split(" ")[1].split(":")[1] + list.get(0).getOutTime().split(" ")[2]);
+                            totalhr.setText("Total Working Hour: " + convertDate(list.get(0).getInTime(), list.get(0).getOutTime()));
+                            Toast.makeText(MindacareActivity.this, "Today’s Clock In and Clock Out is completed.", Toast.LENGTH_LONG).show();
                         }
                     }
                 }
@@ -306,6 +298,7 @@ public class MindacareActivity extends AppCompatActivity implements GoogleMap.On
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         if (requestCode != LOCATION_PERMISSION_REQUEST_CODE) {
             return;
         }
@@ -328,43 +321,34 @@ public class MindacareActivity extends AppCompatActivity implements GoogleMap.On
         SettingsClient settingsClient = LocationServices.getSettingsClient(this);
         Task<LocationSettingsResponse> task = settingsClient.checkLocationSettings(builder.build());
 
-        task.addOnSuccessListener(this, new OnSuccessListener<LocationSettingsResponse>() {
-            @Override
-            public void onSuccess(LocationSettingsResponse locationSettingsResponse) {
-                Log.d("GPS_main", "OnSuccess");
-                fusedLocationClient.getLastLocation()
-                        .addOnSuccessListener(MindacareActivity.this, new OnSuccessListener<Location>() {
-                            @Override
-                            public void onSuccess(Location location) {
-                                // Got last known location. In some rare situations this can be null.
-                                if (location != null) {
-                                    LatLng latLng = new LatLng(location.getLatitude(), location.getLongitude());
-                                    map.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 15));
-                                    MarkerOptions markerOptions = new MarkerOptions();
-                                    markerOptions.position(latLng);
-                                    markerOptions.title(latLng.latitude + " : " + latLng.longitude);
-                                    LATLNG = latLng;
-                                    map.clear();
-                                    map.addMarker(markerOptions);
-                                }
-                            }
-                        });
-                // GPS is ON
-            }
+        task.addOnSuccessListener(this, locationSettingsResponse -> {
+            Log.d("GPS_main", "OnSuccess");
+            fusedLocationClient.getLastLocation()
+                    .addOnSuccessListener(MindacareActivity.this, location -> {
+                        // Got last known location. In some rare situations this can be null.
+                        if (location != null) {
+                            LatLng latLng = new LatLng(location.getLatitude(), location.getLongitude());
+                            map.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 15));
+                            MarkerOptions markerOptions = new MarkerOptions();
+                            markerOptions.position(latLng);
+                            markerOptions.title(latLng.latitude + " : " + latLng.longitude);
+                            LATLNG = latLng;
+                            map.clear();
+                            map.addMarker(markerOptions);
+                        }
+                    });
+            // GPS is ON
         });
 
-        task.addOnFailureListener(this, new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull final Exception e) {
-                Log.d("GPS_main", "GPS off");
-                // GPS off
-                if (e instanceof ResolvableApiException) {
-                    ResolvableApiException resolvable = (ResolvableApiException) e;
-                    try {
-                        resolvable.startResolutionForResult(MindacareActivity.this, 123);
-                    } catch (IntentSender.SendIntentException e1) {
-                        e1.printStackTrace();
-                    }
+        task.addOnFailureListener(this, e -> {
+            Log.d("GPS_main", "GPS off");
+            // GPS off
+            if (e instanceof ResolvableApiException) {
+                ResolvableApiException resolvable = (ResolvableApiException) e;
+                try {
+                    resolvable.startResolutionForResult(MindacareActivity.this, 123);
+                } catch (IntentSender.SendIntentException e1) {
+                    e1.printStackTrace();
                 }
             }
         });
@@ -380,21 +364,18 @@ public class MindacareActivity extends AppCompatActivity implements GoogleMap.On
                     // GPS was turned on;
                     map.setMyLocationEnabled(true);
                     fusedLocationClient.getLastLocation()
-                            .addOnSuccessListener(this, new OnSuccessListener<Location>() {
-                                @Override
-                                public void onSuccess(Location location) {
-                                    // Got last known location. In some rare situations this can be null.
-                                    if (location != null) {
-                                        LatLng latLng = new LatLng(location.getLatitude(), location.getLongitude());
-                                        map.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 15));
-                                        MarkerOptions markerOptions = new MarkerOptions();
-                                        markerOptions.position(latLng);
-                                        markerOptions.title(latLng.latitude + " : " + latLng.longitude);
-                                        map.clear();
-                                        map.addMarker(markerOptions);
+                            .addOnSuccessListener(this, location -> {
+                                // Got last known location. In some rare situations this can be null.
+                                if (location != null) {
+                                    LatLng latLng = new LatLng(location.getLatitude(), location.getLongitude());
+                                    map.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 15));
+                                    MarkerOptions markerOptions = new MarkerOptions();
+                                    markerOptions.position(latLng);
+                                    markerOptions.title(latLng.latitude + " : " + latLng.longitude);
+                                    map.clear();
+                                    map.addMarker(markerOptions);
 
-                                        // Logic to handle location object
-                                    }
+                                    // Logic to handle location object
                                 }
                             });
 
@@ -411,18 +392,15 @@ public class MindacareActivity extends AppCompatActivity implements GoogleMap.On
 
     public void clockInclockOut(String empCode, String message, String InLattitiude, String InLongitude, String OutLattitude, String OutLongitude) {
         MindacareServices mindacareServices = new MindacareServices();
-        mindacareServices.clockInclockOut(new OnTaskComplete() {
-            @Override
-            public void onTaskComplte(CarotResponse carotResponse) {
-                if (carotResponse.getData() != null && carotResponse.getData().toString().length() > 0) {
-                    if (carotResponse.getStatuscode() == HttpURLConnection.HTTP_OK) {
-                        if (clock.getText().toString().equalsIgnoreCase("CLOCK IN")) {
-                            clock.setText("CLOCK OUT");
-                            Toast.makeText(MindacareActivity.this, "Thank you for starting your day with Clock in, Fill Self declaration form.", Toast.LENGTH_LONG).show();
-                        } else {
-                            clock.setText("CLOCK IN");
-                            getCheckInDetails();
-                        }
+        mindacareServices.clockInclockOut(carotResponse -> {
+            if (carotResponse.getData() != null && carotResponse.getData().toString().length() > 0) {
+                if (carotResponse.getStatuscode() == HttpURLConnection.HTTP_OK) {
+                    if (clock.getText().toString().equalsIgnoreCase("CLOCK IN")) {
+                        clock.setText("CLOCK OUT");
+                        Toast.makeText(MindacareActivity.this, "Thank you for starting your day with Clock in, Fill Self declaration form.", Toast.LENGTH_LONG).show();
+                    } else {
+                        clock.setText("CLOCK IN");
+                        getCheckInDetails();
                     }
                 }
             }
@@ -496,7 +474,7 @@ public class MindacareActivity extends AppCompatActivity implements GoogleMap.On
                                     rootLayout.addView(textView);
                                     viewArrayList.add(textView);
                                     answers.put(textView.getId(), "");
-                                    HashMap<String, CheckBox> checkBoxItemSelected = new HashMap<String, CheckBox>();
+                                    HashMap<String, CheckBox> checkBoxItemSelected = new HashMap<>();
 
 
                                     for (int a = 0; a < optionsArr.size(); a++) {
@@ -505,22 +483,19 @@ public class MindacareActivity extends AppCompatActivity implements GoogleMap.On
                                         checkBox.setText(optionsArr.get(a));
                                         rootLayout.addView(checkBox);
                                         checkBoxItemSelected.put(optionsArr.get(a), checkBox);
-                                        checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-                                            @Override
-                                            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                                                if (!optionsArr.contains("None of the above")) {
-                                                    //  return;
-                                                } else if (checkBoxItemSelected.get("None of the above").isChecked()) {
-                                                    for (String key : checkBoxItemSelected.keySet()) {
-                                                        if (!key.equalsIgnoreCase("None of the above")) {
-                                                            checkBoxItemSelected.get(key).setChecked(false);
-                                                        }
+                                        checkBox.setOnCheckedChangeListener((buttonView, isChecked) -> {
+                                            if (!optionsArr.contains("None of the above")) {
+                                                //  return;
+                                            } else if (checkBoxItemSelected.get("None of the above").isChecked()) {
+                                                for (String key : checkBoxItemSelected.keySet()) {
+                                                    if (!key.equalsIgnoreCase("None of the above")) {
+                                                        checkBoxItemSelected.get(key).setChecked(false);
                                                     }
                                                 }
-                                                System.out.println("TEST" + getAllChecked(checkBoxItemSelected).toString());
-                                                answers.put(textView.getId(), getAllChecked(checkBoxItemSelected).toString());
-
                                             }
+                                            System.out.println("TEST" + getAllChecked(checkBoxItemSelected).toString());
+                                            answers.put(textView.getId(), getAllChecked(checkBoxItemSelected).toString());
+
                                         });
 
                                     }
@@ -641,12 +616,7 @@ public class MindacareActivity extends AppCompatActivity implements GoogleMap.On
                                         spinCity = new MySpinner.Builder(MindacareActivity.this)
                                                 .setTitle("City").setItem(city).setFormLayout(rootLayout).create();
                                         spinCity.setId(Integer.parseInt(quesResponseList.get(i).getID()));
-                                        spinCity.setSpinnerOnSelectedListener(new MySpinner.OnSelectedListener() {
-                                            @Override
-                                            public void onSelected(String value) {
-                                                cityValue = value;
-                                            }
-                                        });
+                                        spinCity.setSpinnerOnSelectedListener(value -> cityValue = value);
                                         viewArrayList.add(spinCity);
 
 
@@ -705,20 +675,17 @@ public class MindacareActivity extends AppCompatActivity implements GoogleMap.On
     public void getUnits() {
 
         EHSServices ehsServices = new EHSServices();
-        ehsServices.getUnits(new OnTaskComplete() {
-            @Override
-            public void onTaskComplte(CarotResponse carotResponse) {
-                if (carotResponse.getStatuscode() == HttpsURLConnection.HTTP_OK) {
-                    List<EHSUnitModel> list = (List<EHSUnitModel>) carotResponse.getData();
-                    units.addAll(list);
-                    for (EHSUnitModel unit : units) {
-                        if (unit.getUnitCode().equals(unitcode)) {
-                            unitsName.add(unit.getUnitCode() + ":" + unit.getUnitName());
-                        }
+        ehsServices.getUnits(carotResponse -> {
+            if (carotResponse.getStatuscode() == HttpsURLConnection.HTTP_OK) {
+                List<EHSUnitModel> list = (List<EHSUnitModel>) carotResponse.getData();
+                units.addAll(list);
+                for (EHSUnitModel unit : units) {
+                    if (unit.getUnitCode().equals(unitcode)) {
+                        unitsName.add(unit.getUnitCode() + ":" + unit.getUnitName());
                     }
                 }
-
             }
+
         }, unitcode);
 
     }
@@ -726,14 +693,11 @@ public class MindacareActivity extends AppCompatActivity implements GoogleMap.On
     public void getStates() {
         stateObject.clear();
         MindacareServices mindacareServices = new MindacareServices();
-        mindacareServices.getState(new OnTaskComplete() {
-            @Override
-            public void onTaskComplte(CarotResponse carotResponse) {
-                if (carotResponse.getStatuscode() == HttpsURLConnection.HTTP_OK) {
-                    List<StateResponse> stateResponses = (List<StateResponse>) carotResponse.getData();
-                    if (stateResponses != null && stateResponses.size() > 0) {
-                        stateObject.addAll(stateResponses);
-                    }
+        mindacareServices.getState(carotResponse -> {
+            if (carotResponse.getStatuscode() == HttpsURLConnection.HTTP_OK) {
+                List<StateResponse> stateResponses = (List<StateResponse>) carotResponse.getData();
+                if (stateResponses != null && stateResponses.size() > 0) {
+                    stateObject.addAll(stateResponses);
                 }
             }
         });
@@ -742,33 +706,30 @@ public class MindacareActivity extends AppCompatActivity implements GoogleMap.On
     public void getCity(String StateID, int i) {
         cityObject.clear();
         MindacareServices mindacareServices = new MindacareServices();
-        mindacareServices.getCity(new OnTaskComplete() {
-            @Override
-            public void onTaskComplte(CarotResponse carotResponse) {
-                if (carotResponse.getStatuscode() == HttpsURLConnection.HTTP_OK) {
-                    List<CityResponse> cityResponses = (List<CityResponse>) carotResponse.getData();
-                    if (cityResponses != null && cityResponses.size() > 0) {
-                        cityObject.addAll(cityResponses);
-                    }
-                    city.clear();
+        mindacareServices.getCity(carotResponse -> {
+            if (carotResponse.getStatuscode() == HttpsURLConnection.HTTP_OK) {
+                List<CityResponse> cityResponses = (List<CityResponse>) carotResponse.getData();
+                if (cityResponses != null && cityResponses.size() > 0) {
+                    cityObject.addAll(cityResponses);
+                }
+                city.clear();
 
-                    for (CityResponse cityResponse : cityObject) {
-                        city.add(cityResponse.getDistrict());
-                    }
-                    if (adapter != null) {
-                        adapter.notifyDataSetChanged();
-                    }
-
-                    try {
-                        if (quesResponseList.get(i).getCity() != null && quesResponseList.get(i).getCity().length() > 0) {
-                            spinCity.setValue("" + quesResponseList.get(i).getCity());
-                        }
-                    } catch (Exception e) {
-
-                    }
+                for (CityResponse cityResponse : cityObject) {
+                    city.add(cityResponse.getDistrict());
+                }
+                if (adapter != null) {
+                    adapter.notifyDataSetChanged();
                 }
 
+                try {
+                    if (quesResponseList.get(i).getCity() != null && quesResponseList.get(i).getCity().length() > 0) {
+                        spinCity.setValue("" + quesResponseList.get(i).getCity());
+                    }
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
             }
+
         }, StateID);
 
 
@@ -804,22 +765,17 @@ public class MindacareActivity extends AppCompatActivity implements GoogleMap.On
 
     public void submitApi(String answersList) {
         MindacareServices mindacareServices = new MindacareServices();
-        mindacareServices.submitDeclaration(new OnTaskComplete() {
-            @Override
-            public void onTaskComplte(CarotResponse carotResponse) {
+        mindacareServices.submitDeclaration(carotResponse -> {
 
-            }
         }, answersList);
     }
 
 
     public ArrayList<String> getAllChecked(HashMap<String, CheckBox> checkBoxItemSelected) {
         ArrayList<String> checkedList = new ArrayList();
-        Iterator var2 = checkBoxItemSelected.keySet().iterator();
 
-        while (var2.hasNext()) {
-            String key = (String) var2.next();
-            if (((CheckBox) checkBoxItemSelected.get(key)).isChecked()) {
+        for (String key : checkBoxItemSelected.keySet()) {
+            if (checkBoxItemSelected.get(key).isChecked()) {
                 checkedList.add(key);
             }
         }

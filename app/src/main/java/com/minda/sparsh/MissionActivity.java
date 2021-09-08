@@ -13,7 +13,7 @@ public class MissionActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mission);
         getSupportActionBar().hide();
-        im_back = (ImageView) findViewById(R.id.im_back);
+        im_back =  findViewById(R.id.im_back);
         im_back.setOnClickListener(view -> finish());
     }
 }

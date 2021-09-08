@@ -43,11 +43,11 @@ public class VisitorManagementListActivity extends AppCompatActivity implements 
         progress.setMessage("Please wait...");
         progress.setProgressStyle(ProgressDialog.STYLE_SPINNER);
         progress.setIndeterminate(true);
-        btn_create = (Button) findViewById(R.id.btn_create);
+        btn_create =  findViewById(R.id.btn_create);
         btn_create.setOnClickListener(this);
-        im_back = (ImageView) findViewById(R.id.im_back);
+        im_back =  findViewById(R.id.im_back);
         im_back.setOnClickListener(view -> finish());
-        recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
+        recyclerView =  findViewById(R.id.recycler_view);
         hitGetVisitorListApi(myPref.getString("Id", "Id"));
     }
 

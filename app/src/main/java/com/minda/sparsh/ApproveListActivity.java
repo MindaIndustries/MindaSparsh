@@ -44,8 +44,8 @@ public class ApproveListActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_approve_list);
-        toolbar = (Toolbar) findViewById(R.id.toolbar);
-        title = (TextView) findViewById(R.id.title);
+        toolbar =  findViewById(R.id.toolbar);
+        title =  findViewById(R.id.title);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
@@ -57,15 +57,15 @@ public class ApproveListActivity extends AppCompatActivity {
         progress.setProgressStyle(ProgressDialog.STYLE_SPINNER);
         progress.setIndeterminate(true);
 
-        mSwipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.swipeToRefresh);
+        mSwipeRefreshLayout =  findViewById(R.id.swipeToRefresh);
         mSwipeRefreshLayout.setOnRefreshListener(() -> {
             hitGetApprovalListApi(RetrofitClient2.CKEY, myPref.getString("Id", "Id"));
 
             mSwipeRefreshLayout.setRefreshing(false);
         });
-        im_back = (ImageView) findViewById(R.id.im_back);
+        im_back =  findViewById(R.id.im_back);
         im_back.setOnClickListener(view -> finish());
-        recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
+        recyclerView =  findViewById(R.id.recycler_view);
         mAdapter = new ApproveListAdapter(approveLists, ApproveListActivity.this);
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(ApproveListActivity.this);
         recyclerView.setLayoutManager(mLayoutManager);
@@ -79,14 +79,11 @@ public class ApproveListActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case android.R.id.home:
-                onBackPressed();
-                return true;
-
-            default:
-                return super.onOptionsItemSelected(item);
+        if (item.getItemId() == android.R.id.home) {
+            onBackPressed();
+            return true;
         }
+        return super.onOptionsItemSelected(item);
     }
 
 

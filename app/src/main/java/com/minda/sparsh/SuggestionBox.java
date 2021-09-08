@@ -4,7 +4,6 @@ import android.Manifest;
 import android.app.Activity;
 import android.content.ContentResolver;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
@@ -126,34 +125,28 @@ public class SuggestionBox extends BaseActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case android.R.id.home:
-                onBackPressed();
-                return true;
-
-            default:
-                return super.onOptionsItemSelected(item);
+        if (item.getItemId() == android.R.id.home) {
+            onBackPressed();
+            return true;
         }
+        return super.onOptionsItemSelected(item);
     }
 
     public void submitSuggestion(String suggestion, String empCode, String CostAmount, String other, String fileName, String fileType, String fileByte) {
         progressBar.setVisibility(View.VISIBLE);
         BottomUpConcernServices bottomUpConcernServices = new BottomUpConcernServices();
-        bottomUpConcernServices.submitSuggestion(new OnTaskComplete() {
-            @Override
-            public void onTaskComplte(CarotResponse carotResponse) {
-                if (carotResponse.getStatuscode() == HttpsURLConnection.HTTP_OK) {
-                    if (carotResponse.getData().toString().contains("Sucess")) {
-                        Toast.makeText(SuggestionBox.this, "Successfully submitted", Toast.LENGTH_LONG).show();
-                        onBackPressed();
-                    }
-                } else {
-                    Toast.makeText(SuggestionBox.this, "Something went wrong!", Toast.LENGTH_LONG).show();
-
+        bottomUpConcernServices.submitSuggestion(carotResponse -> {
+            if (carotResponse.getStatuscode() == HttpsURLConnection.HTTP_OK) {
+                if (carotResponse.getData().toString().contains("Sucess")) {
+                    Toast.makeText(SuggestionBox.this, "Successfully submitted", Toast.LENGTH_LONG).show();
+                    onBackPressed();
                 }
-                progressBar.setVisibility(View.GONE);
+            } else {
+                Toast.makeText(SuggestionBox.this, "Something went wrong!", Toast.LENGTH_LONG).show();
 
             }
+            progressBar.setVisibility(View.GONE);
+
         }, suggestion, empCode, CostAmount, other, fileName, fileType, fileByte);
     }
 
@@ -363,7 +356,7 @@ public class SuggestionBox extends BaseActivity {
         addAttach.setText(fileName);
         bytes = new byte[(int) file.length()];
 
-        FileInputStream fis = null;
+        FileInputStream fis;
         try {
             fis = new FileInputStream(file);
             fis.read(bytes); //read file into bytes[]

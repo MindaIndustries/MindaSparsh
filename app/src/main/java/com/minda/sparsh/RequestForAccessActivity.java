@@ -61,6 +61,7 @@ import com.minda.sparsh.util.RetrofitClient2;
 import com.minda.sparsh.util.UriUtils;
 import com.minda.sparsh.util.Utility;
 
+import org.jetbrains.annotations.NotNull;
 import org.jsoup.helper.StringUtil;
 
 import java.io.ByteArrayOutputStream;
@@ -156,9 +157,9 @@ public class RequestForAccessActivity extends AppCompatActivity implements View.
     EditText et_accessRequirementDetail;
     @BindView(R.id.im_back)
     ImageView im_back;
-    HashSet<String> set = new HashSet<String>();
-    HashSet<String> set1 = new HashSet<String>();
-    HashSet<String> set2 = new HashSet<String>();
+    HashSet<String> set = new HashSet<>();
+    HashSet<String> set1 = new HashSet<>();
+    HashSet<String> set2 = new HashSet<>();
 
     @BindView(R.id.toolbar)
     Toolbar toolbar;
@@ -290,14 +291,11 @@ public class RequestForAccessActivity extends AppCompatActivity implements View.
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case android.R.id.home:
-                onBackPressed();
-                return true;
-
-            default:
-                return super.onOptionsItemSelected(item);
+        if (item.getItemId() == android.R.id.home) {
+            onBackPressed();
+            return true;
         }
+        return super.onOptionsItemSelected(item);
     }
 
     private void selectionListener() {
@@ -630,7 +628,7 @@ public class RequestForAccessActivity extends AppCompatActivity implements View.
                 public void onResponse(Call<List<IAMGetCategorySpinnerModel>> call, Response<List<IAMGetCategorySpinnerModel>> response) {
                     showProgress(false);
                     if (response.body() != null && response.body().size() != 0) {
-                        List<IAMGetCategorySpinnerModel> responseList = null;
+                        List<IAMGetCategorySpinnerModel> responseList;
                         responseList = response.body();
                         if (!type.equalsIgnoreCase("3")) {
                             IAMGetCategorySpinnerModel iam = new IAMGetCategorySpinnerModel();
@@ -829,7 +827,7 @@ public class RequestForAccessActivity extends AppCompatActivity implements View.
             Call<List<IAMGetPlantModel>> response = anInterface.IAMGetPlant(businessId, RetrofitClient2.CKEY);
             response.enqueue(new Callback<List<IAMGetPlantModel>>() {
                 @Override
-                public void onResponse(Call<List<IAMGetPlantModel>> call, Response<List<IAMGetPlantModel>> response) {
+                public void onResponse(@NotNull Call<List<IAMGetPlantModel>> call, @NotNull Response<List<IAMGetPlantModel>> response) {
                     showProgress(false);
                     List<IAMGetPlantModel> responseList = response.body();
                     if (responseList != null && responseList.size() > 0) {
@@ -859,7 +857,7 @@ public class RequestForAccessActivity extends AppCompatActivity implements View.
                 }
 
                 @Override
-                public void onFailure(Call<List<IAMGetPlantModel>> call, Throwable t) {
+                public void onFailure(@NotNull Call<List<IAMGetPlantModel>> call, @NotNull Throwable t) {
                     showProgress(false);
                 }
             });
@@ -874,7 +872,7 @@ public class RequestForAccessActivity extends AppCompatActivity implements View.
             Call<List<IAMGetListOfNames>> response = anInterface.IAMGetListofNames("", RetrofitClient2.CKEY);
             response.enqueue(new Callback<List<IAMGetListOfNames>>() {
                 @Override
-                public void onResponse(Call<List<IAMGetListOfNames>> call, Response<List<IAMGetListOfNames>> response) {
+                public void onResponse(@NotNull Call<List<IAMGetListOfNames>> call, @NotNull Response<List<IAMGetListOfNames>> response) {
                     showProgress(false);
                     List<IAMGetListOfNames> responseList = response.body();
                     if (responseList != null && responseList.size() > 0) {
@@ -884,7 +882,7 @@ public class RequestForAccessActivity extends AppCompatActivity implements View.
 
 
                 @Override
-                public void onFailure(Call<List<IAMGetListOfNames>> call, Throwable t) {
+                public void onFailure(@NotNull Call<List<IAMGetListOfNames>> call, @NotNull Throwable t) {
                     showProgress(false);
                 }
             });
@@ -899,7 +897,7 @@ public class RequestForAccessActivity extends AppCompatActivity implements View.
             Call<List<IAMCreateRequestModel>> response = anInterface.IAMCreateRequest(RequestTypeId, AccessTypeId, AccessForTypeId, EmpCode, SourceTypeId, SourceEmpCode, Organization, Purpose, SourceName, AccessSubTypeId, CategoryId, SubCategoryId, CategoryName, SubCategoryName, ProfileId, ProfileName, RequirementDetail, CategoryList, UnitList, RetrofitClient2.CKEY, fileName, fileByte, Domains, BusinessID, DomainNames, BusinessIdName, PlantName, PlantCode, AccessSubTypeName, AccessTypeName, RequestTypeName);
             response.enqueue(new Callback<List<IAMCreateRequestModel>>() {
                 @Override
-                public void onResponse(Call<List<IAMCreateRequestModel>> call, Response<List<IAMCreateRequestModel>> response) {
+                public void onResponse(@NotNull Call<List<IAMCreateRequestModel>> call, @NotNull Response<List<IAMCreateRequestModel>> response) {
                     showProgress(false);
                     List<IAMCreateRequestModel> responseList = response.body();
                     if (responseList != null && responseList.size() > 0) {
@@ -910,7 +908,7 @@ public class RequestForAccessActivity extends AppCompatActivity implements View.
                 }
 
                 @Override
-                public void onFailure(Call<List<IAMCreateRequestModel>> call, Throwable t) {
+                public void onFailure(@NotNull Call<List<IAMCreateRequestModel>> call, @NotNull Throwable t) {
                     showProgress(false);
                 }
             });
@@ -924,7 +922,7 @@ public class RequestForAccessActivity extends AppCompatActivity implements View.
         for (int i = 0; i < responseList.size(); i++) {
             values[i] = responseList.get(i).getEMP();
         }
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>
+        ArrayAdapter<String> adapter = new ArrayAdapter<>
                 (this, android.R.layout.select_dialog_item, values);
 
         et_empCode.setThreshold(1);//will start working from first character

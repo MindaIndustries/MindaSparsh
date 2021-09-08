@@ -1,13 +1,11 @@
 package com.minda.sparsh;
 
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.net.Uri;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
@@ -27,8 +25,6 @@ import com.minda.sparsh.model.VersionModel;
 import com.minda.sparsh.services.FirebaseService;
 import com.minda.sparsh.util.RetrofitClient2;
 import com.minda.sparsh.util.Utility;
-
-import org.jsoup.Jsoup;
 
 import java.util.ArrayList;
 import java.util.List;

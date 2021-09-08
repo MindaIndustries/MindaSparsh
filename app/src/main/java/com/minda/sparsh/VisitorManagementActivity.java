@@ -20,7 +20,6 @@ import android.text.TextWatcher;
 import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
 import android.view.Gravity;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.Window;
 import android.widget.AdapterView;
@@ -97,8 +96,8 @@ public class VisitorManagementActivity extends AppCompatActivity implements View
             visitorId = intent.getIntExtra(Constant.VISITOR_ID, 0);
         }
 
-        im_back = (ImageView) findViewById(R.id.im_back);
-        btn_view = (Button) findViewById(R.id.btn_view);
+        im_back =  findViewById(R.id.im_back);
+        btn_view =  findViewById(R.id.btn_view);
         btn_view.setOnClickListener(view -> {
             Intent intent1 = new Intent(getApplicationContext(), VisitorManagementListActivity.class);
             startActivity(intent1);
@@ -114,16 +113,16 @@ public class VisitorManagementActivity extends AppCompatActivity implements View
         progress.setMessage("Please wait...");
         progress.setProgressStyle(ProgressDialog.STYLE_SPINNER);
         progress.setIndeterminate(true);
-        btn_submit = (Button) findViewById(R.id.btn_submit);
-        lay_rest_content = (LinearLayout) findViewById(R.id.lay_rest_content);
-        lay_contact = (LinearLayout) findViewById(R.id.lay_contact);
-//        tv_start_time = (TextView) findViewById(R.id.tv_start_time);
-//        tv_end_time = (TextView) findViewById(R.id.tv_end_time);
-        tv_decrement = (TextView) findViewById(R.id.tv_decrement);
-        tv_increment = (TextView) findViewById(R.id.tv_increment);
+        btn_submit =  findViewById(R.id.btn_submit);
+        lay_rest_content =  findViewById(R.id.lay_rest_content);
+        lay_contact =  findViewById(R.id.lay_contact);
+//        tv_start_time =  findViewById(R.id.tv_start_time);
+//        tv_end_time =  findViewById(R.id.tv_end_time);
+        tv_decrement =  findViewById(R.id.tv_decrement);
+        tv_increment =  findViewById(R.id.tv_increment);
 
-        tv_from_date = (TextView) findViewById(R.id.tv_from_date);
-        tv_to_date = (TextView) findViewById(R.id.tv_to_date);
+        tv_from_date =  findViewById(R.id.tv_from_date);
+        tv_to_date =  findViewById(R.id.tv_to_date);
         String currentDateTimeString = new SimpleDateFormat("dd/MM/yyyy").format(new Date());
         tv_from_date.setText(currentDateTimeString);
         tv_to_date.setText(currentDateTimeString);
@@ -131,24 +130,24 @@ public class VisitorManagementActivity extends AppCompatActivity implements View
 
         tv_from_date_value = currentDate;
         tv_to_date_value = currentDate;
-        et_visitor_mobile_no = (EditText) findViewById(R.id.et_visitor_mobile_no);
-        et_first_name = (EditText) findViewById(R.id.et_first_name);
-        et_last_name = (EditText) findViewById(R.id.et_last_name);
-        et_email = (EditText) findViewById(R.id.et_email);
-        et_mobile = (EditText) findViewById(R.id.et_mobile);
-        et_company_name = (EditText) findViewById(R.id.et_company_name);
-        et_address = (EditText) findViewById(R.id.et_address);
-        et_city = (EditText) findViewById(R.id.et_city);
-        et_pin_code = (EditText) findViewById(R.id.et_pin_code);
-        et_purpose = (EditText) findViewById(R.id.et_purpose);
-        et_additional_no_person = (TextView) findViewById(R.id.et_additional_no_person);
+        et_visitor_mobile_no =  findViewById(R.id.et_visitor_mobile_no);
+        et_first_name =  findViewById(R.id.et_first_name);
+        et_last_name =  findViewById(R.id.et_last_name);
+        et_email =  findViewById(R.id.et_email);
+        et_mobile =  findViewById(R.id.et_mobile);
+        et_company_name =  findViewById(R.id.et_company_name);
+        et_address =  findViewById(R.id.et_address);
+        et_city =  findViewById(R.id.et_city);
+        et_pin_code =  findViewById(R.id.et_pin_code);
+        et_purpose =  findViewById(R.id.et_purpose);
+        et_additional_no_person =  findViewById(R.id.et_additional_no_person);
 
         // spinner
 
-        sp_start_time_hour = (Spinner) findViewById(R.id.sp_start_time_hour);
-        sp_start_time_minutes = (Spinner) findViewById(R.id.sp_start_time_minutes);
-        sp_end_time_hour = (Spinner) findViewById(R.id.sp_end_time_hour);
-        sp_end_time_minutes = (Spinner) findViewById(R.id.sp_end_time_minutes);
+        sp_start_time_hour =  findViewById(R.id.sp_start_time_hour);
+        sp_start_time_minutes =  findViewById(R.id.sp_start_time_minutes);
+        sp_end_time_hour =  findViewById(R.id.sp_end_time_hour);
+        sp_end_time_minutes =  findViewById(R.id.sp_end_time_minutes);
 
 
         Calendar c = Calendar.getInstance();
@@ -173,7 +172,7 @@ public class VisitorManagementActivity extends AppCompatActivity implements View
         });
 
         btn_submit.setOnClickListener(view -> validateFields());
-        rg = (RadioGroup) findViewById(R.id.rg);
+        rg = findViewById(R.id.rg);
         rg.setOnCheckedChangeListener((radioGroup, i) -> {
             switch (i) {
                 case R.id.rb_male:
@@ -258,7 +257,7 @@ public class VisitorManagementActivity extends AppCompatActivity implements View
     }
 
     private void initSpinner(String s1, String s2, String s3, String s4) {
-        hourList = new ArrayList<String>();
+        hourList = new ArrayList<>();
         hourList.add("Hour");
         hourList.add("1");
         hourList.add("2");
@@ -285,19 +284,19 @@ public class VisitorManagementActivity extends AppCompatActivity implements View
         hourList.add("23");
         hourList.add("24");
 
-        minuteList = new ArrayList<String>();
+        minuteList = new ArrayList<>();
         minuteList.add("Minutes");
         minuteList.add("00");
         minuteList.add("15");
         minuteList.add("30");
         minuteList.add("45");
 
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(
                 this, android.R.layout.simple_spinner_item, hourList);
 
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
-        ArrayAdapter<String> adapterMinutes = new ArrayAdapter<String>(
+        ArrayAdapter<String> adapterMinutes = new ArrayAdapter<>(
                 this, android.R.layout.simple_spinner_item, minuteList);
 
         adapterMinutes.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -674,13 +673,10 @@ public class VisitorManagementActivity extends AppCompatActivity implements View
                     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
                         if (shouldShowRequestPermissionRationale(READ_CONTACTS)) {
                             showMessageOKCancel(
-                                    new DialogInterface.OnClickListener() {
-                                        @Override
-                                        public void onClick(DialogInterface dialog, int which) {
-                                            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                                                requestPermissions(new String[]{READ_CONTACTS},
-                                                        PERMISSION_REQUEST_CODE);
-                                            }
+                                    (dialog, which) -> {
+                                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                                            requestPermissions(new String[]{READ_CONTACTS},
+                                                    PERMISSION_REQUEST_CODE);
                                         }
                                     });
                             return;
@@ -801,10 +797,10 @@ public class VisitorManagementActivity extends AppCompatActivity implements View
 //                            tv_end_time.setText(autoFillMobileModels.get(0).getTimeOut() + "");
 //                            et_additional_no_person.setText(autoFillMobileModels.get(0).getAddPersons() + "");
                             if (autoFillMobileModels.get(0).getGender().equalsIgnoreCase("M")) {
-                                RadioButton radioButton = (RadioButton) findViewById(R.id.rb_male);
+                                RadioButton radioButton = findViewById(R.id.rb_male);
                                 radioButton.setChecked(true);
                             } else {
-                                RadioButton radioButton = (RadioButton) findViewById(R.id.rb_female);
+                                RadioButton radioButton = findViewById(R.id.rb_female);
                                 radioButton.setChecked(true);
                             }
 
@@ -819,7 +815,7 @@ public class VisitorManagementActivity extends AppCompatActivity implements View
                             et_address.setText("");
                             et_city.setText("");
                             et_pin_code.setText("");
-                            RadioButton radioButton = (RadioButton) findViewById(R.id.rb_male);
+                            RadioButton radioButton = findViewById(R.id.rb_male);
                             radioButton.setChecked(true);
 //                            et_purpose.setText(autoFillMobileModels.get(0).getP() + "");
 //                            tv_from_date.setText(autoFillMobileModels.get(0).getAppointmentDate1() + "");
@@ -961,35 +957,26 @@ public class VisitorManagementActivity extends AppCompatActivity implements View
         final Button ok = termspolicydialog.findViewById(R.id.ok);
         content.setMovementMethod(new ScrollingMovementMethod());
         ScrollingMovementMethod.getInstance();
-        content.setOnTouchListener(new View.OnTouchListener() {
+        content.setOnTouchListener((v, event) -> {
 
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
+            content.getParent().requestDisallowInterceptTouchEvent(true);
 
-                content.getParent().requestDisallowInterceptTouchEvent(true);
-
-                return false;
-            }
-
-
+            return false;
         });
 
 
-        ok.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                myPref.edit().putString("privacy_policy", "Yes").apply();
-                termspolicydialog.dismiss();
-                ok.setEnabled(false);
-                termspolicydialog.dismiss();
-                if (!checkPermission() && Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                    requestPermission();
-                } else {
-                    Intent intent = new Intent(Intent.ACTION_PICK, ContactsContract.Contacts.CONTENT_URI);
-                    startActivityForResult(intent, PICK_CONTACT);
-                }
-
+        ok.setOnClickListener(view -> {
+            myPref.edit().putString("privacy_policy", "Yes").apply();
+            termspolicydialog.dismiss();
+            ok.setEnabled(false);
+            termspolicydialog.dismiss();
+            if (!checkPermission() && Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                requestPermission();
+            } else {
+                Intent intent = new Intent(Intent.ACTION_PICK, ContactsContract.Contacts.CONTENT_URI);
+                startActivityForResult(intent, PICK_CONTACT);
             }
+
         });
         if (!termspolicydialog.isShowing()) {
             termspolicydialog.show();

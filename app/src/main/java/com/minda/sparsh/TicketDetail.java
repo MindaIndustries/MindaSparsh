@@ -49,7 +49,7 @@ public class TicketDetail extends BaseActivity {
     ArrayList<String> recyclerview_list = new ArrayList<>();
 
     SharedPreferences myPref;
-    String empCode, ticketNo, Remarks;
+    String empCode, ticketNo;
     CCListAdapter ccListAdapter;
     MyTicketsResponse myTicket;
     @BindView(R.id.header)
@@ -113,29 +113,23 @@ public class TicketDetail extends BaseActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case android.R.id.home:
-                onBackPressed();
-                return true;
-
-            default:
-                return super.onOptionsItemSelected(item);
+        if (item.getItemId() == android.R.id.home) {
+            onBackPressed();
+            return true;
         }
+        return super.onOptionsItemSelected(item);
     }
 
 
     public void updateRemark() {
 
         ITHelpDeskServices itHelpDeskServices = new ITHelpDeskServices();
-        itHelpDeskServices.updateRemark(new OnTaskComplete() {
-            @Override
-            public void onTaskComplte(CarotResponse carotResponse) {
+        itHelpDeskServices.updateRemark(carotResponse -> {
 
-                if (carotResponse.getStatuscode() == HttpsURLConnection.HTTP_OK) {
-                    Toast.makeText(TicketDetail.this, "Remarks Updated", Toast.LENGTH_LONG).show();
-                    remark_et.setText("");
-                    getTicketHistory();
-                }
+            if (carotResponse.getStatuscode() == HttpsURLConnection.HTTP_OK) {
+                Toast.makeText(TicketDetail.this, "Remarks Updated", Toast.LENGTH_LONG).show();
+                remark_et.setText("");
+                getTicketHistory();
             }
         }, remark_et.getText().toString(), empCode, ticketNo);
 
@@ -148,27 +142,24 @@ public class TicketDetail extends BaseActivity {
         tktHistoryRv.getRecycledViewPool().clear();
         ticketsAdapter.notifyDataSetChanged();
         ITHelpDeskServices itHelpDeskServices = new ITHelpDeskServices();
-        itHelpDeskServices.getTicketHistory(new OnTaskComplete() {
-            @Override
-            public void onTaskComplte(CarotResponse carotResponse) {
-                if (carotResponse.getStatuscode() == HttpsURLConnection.HTTP_OK) {
+        itHelpDeskServices.getTicketHistory(carotResponse -> {
+            if (carotResponse.getStatuscode() == HttpsURLConnection.HTTP_OK) {
 
-                    List<TicketHistoryResponse> list = (List<TicketHistoryResponse>) carotResponse.getData();
-                    if (list != null && list.size() > 0) {
-                        tktHistoryList.addAll(list);
-                    }
-                    if (tktHistoryList.size() > 0) {
-                        headerHistory.setVisibility(View.VISIBLE);
-                    } else {
-                        headerHistory.setVisibility(View.GONE);
-                    }
+                List<TicketHistoryResponse> list = (List<TicketHistoryResponse>) carotResponse.getData();
+                if (list != null && list.size() > 0) {
+                    tktHistoryList.addAll(list);
+                }
+                if (tktHistoryList.size() > 0) {
+                    headerHistory.setVisibility(View.VISIBLE);
                 } else {
                     headerHistory.setVisibility(View.GONE);
-
-
                 }
-                ticketsAdapter.notifyDataSetChanged();
+            } else {
+                headerHistory.setVisibility(View.GONE);
+
+
             }
+            ticketsAdapter.notifyDataSetChanged();
         }, ticketNo);
     }
 }

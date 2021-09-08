@@ -7,7 +7,6 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.view.View;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -80,9 +79,9 @@ public class DWMOperationHeadActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dwmoperation_head);
-        tv_submit = (TextView) findViewById(R.id.tv_submit);
-        tv_total = (TextView) findViewById(R.id.tv_total);
-        tv_select_date = (TextView) findViewById(R.id.tv_select_date);
+        tv_submit =  findViewById(R.id.tv_submit);
+        tv_total =  findViewById(R.id.tv_total);
+        tv_select_date =  findViewById(R.id.tv_select_date);
 
         String day, month;
 
@@ -103,123 +102,123 @@ public class DWMOperationHeadActivity extends AppCompatActivity {
         tv_select_date.setText(day + "-" + month + "-" + mYear);
 
 
-        H_1_1 = (EditText) findViewById(R.id.H_1_1);
-        C_1_1 = (EditText) findViewById(R.id.C_1_1);
+        H_1_1 =  findViewById(R.id.H_1_1);
+        C_1_1 =  findViewById(R.id.C_1_1);
 
-        H_2_1 = (EditText) findViewById(R.id.H_2_1);
-        H_2_2 = (EditText) findViewById(R.id.H_2_2);
-        H_2_3 = (EditText) findViewById(R.id.H_2_3);
-        H_2_4 = (EditText) findViewById(R.id.H_2_4);
-
-
-        C_2_1 = (EditText) findViewById(R.id.C_2_1);
-        C_2_2 = (EditText) findViewById(R.id.C_2_2);
-        C_2_3 = (EditText) findViewById(R.id.C_2_3);
-        C_2_4 = (EditText) findViewById(R.id.C_2_4);
-
-        check_3_1 = (EditText) findViewById(R.id.check_3_1);
-        check_C_3_1 = (EditText) findViewById(R.id.check_C_3_1);
-
-        H_3_1 = (EditText) findViewById(R.id.H_3_1);
-        C_3_1 = (EditText) findViewById(R.id.C_3_1);
+        H_2_1 =  findViewById(R.id.H_2_1);
+        H_2_2 =  findViewById(R.id.H_2_2);
+        H_2_3 =  findViewById(R.id.H_2_3);
+        H_2_4 =  findViewById(R.id.H_2_4);
 
 
-        H_4_1 = (EditText) findViewById(R.id.H_4_1);
-        H_4_2 = (EditText) findViewById(R.id.H_4_2);
-        H_4_3 = (EditText) findViewById(R.id.H_4_3);
-        H_4_4 = (EditText) findViewById(R.id.H_4_4);
+        C_2_1 =  findViewById(R.id.C_2_1);
+        C_2_2 =  findViewById(R.id.C_2_2);
+        C_2_3 =  findViewById(R.id.C_2_3);
+        C_2_4 =  findViewById(R.id.C_2_4);
 
-        C_4_1 = (EditText) findViewById(R.id.C_4_1);
-        C_4_2 = (EditText) findViewById(R.id.C_4_2);
-        C_4_3 = (EditText) findViewById(R.id.C_4_3);
-        C_4_4 = (EditText) findViewById(R.id.C_4_4);
+        check_3_1 =  findViewById(R.id.check_3_1);
+        check_C_3_1 =  findViewById(R.id.check_C_3_1);
 
-        H_5_1 = (EditText) findViewById(R.id.H_5_1);
-        H_5_2 = (EditText) findViewById(R.id.H_5_2);
-        H_5_3 = (EditText) findViewById(R.id.H_5_3);
-        H_5_4 = (EditText) findViewById(R.id.H_5_4);
-        H_5_5 = (EditText) findViewById(R.id.H_5_5);
-
-        C_5_1 = (EditText) findViewById(R.id.C_5_1);
-        C_5_2 = (EditText) findViewById(R.id.C_5_2);
-        C_5_3 = (EditText) findViewById(R.id.C_5_3);
-        C_5_4 = (EditText) findViewById(R.id.C_5_4);
-        C_5_5 = (EditText) findViewById(R.id.C_5_5);
-
-        H_6_1 = (EditText) findViewById(R.id.H_6_1);
-        H_6_2 = (EditText) findViewById(R.id.H_6_2);
-        H_6_3 = (EditText) findViewById(R.id.H_6_3);
-        H_6_4 = (EditText) findViewById(R.id.H_6_4);
-        H_6_5 = (EditText) findViewById(R.id.H_6_5);
-
-        C_6_1 = (EditText) findViewById(R.id.C_6_1);
-        C_6_2 = (EditText) findViewById(R.id.C_6_2);
-        C_6_3 = (EditText) findViewById(R.id.C_6_3);
-        C_6_4 = (EditText) findViewById(R.id.C_6_4);
-        C_6_5 = (EditText) findViewById(R.id.C_6_5);
-
-        H_7_1 = (EditText) findViewById(R.id.H_7_1);
-        H_7_2 = (EditText) findViewById(R.id.H_7_2);
-        H_7_3 = (EditText) findViewById(R.id.H_7_3);
-        H_7_4 = (EditText) findViewById(R.id.H_7_4);
-        H_7_5 = (EditText) findViewById(R.id.H_7_5);
-        H_7_6 = (EditText) findViewById(R.id.H_7_6);
-        H_7_7 = (EditText) findViewById(R.id.H_7_7);
+        H_3_1 =  findViewById(R.id.H_3_1);
+        C_3_1 =  findViewById(R.id.C_3_1);
 
 
-        C_7_1 = (EditText) findViewById(R.id.C_7_1);
-        C_7_2 = (EditText) findViewById(R.id.C_7_2);
-        C_7_3 = (EditText) findViewById(R.id.C_7_3);
-        C_7_4 = (EditText) findViewById(R.id.C_7_4);
-        C_7_5 = (EditText) findViewById(R.id.C_7_5);
-        C_7_6 = (EditText) findViewById(R.id.C_7_6);
-        C_7_7 = (EditText) findViewById(R.id.C_7_7);
+        H_4_1 =  findViewById(R.id.H_4_1);
+        H_4_2 =  findViewById(R.id.H_4_2);
+        H_4_3 =  findViewById(R.id.H_4_3);
+        H_4_4 =  findViewById(R.id.H_4_4);
+
+        C_4_1 =  findViewById(R.id.C_4_1);
+        C_4_2 =  findViewById(R.id.C_4_2);
+        C_4_3 =  findViewById(R.id.C_4_3);
+        C_4_4 =  findViewById(R.id.C_4_4);
+
+        H_5_1 =  findViewById(R.id.H_5_1);
+        H_5_2 =  findViewById(R.id.H_5_2);
+        H_5_3 =  findViewById(R.id.H_5_3);
+        H_5_4 =  findViewById(R.id.H_5_4);
+        H_5_5 =  findViewById(R.id.H_5_5);
+
+        C_5_1 =  findViewById(R.id.C_5_1);
+        C_5_2 =  findViewById(R.id.C_5_2);
+        C_5_3 =  findViewById(R.id.C_5_3);
+        C_5_4 =  findViewById(R.id.C_5_4);
+        C_5_5 =  findViewById(R.id.C_5_5);
+
+        H_6_1 =  findViewById(R.id.H_6_1);
+        H_6_2 =  findViewById(R.id.H_6_2);
+        H_6_3 =  findViewById(R.id.H_6_3);
+        H_6_4 =  findViewById(R.id.H_6_4);
+        H_6_5 =  findViewById(R.id.H_6_5);
+
+        C_6_1 =  findViewById(R.id.C_6_1);
+        C_6_2 =  findViewById(R.id.C_6_2);
+        C_6_3 =  findViewById(R.id.C_6_3);
+        C_6_4 =  findViewById(R.id.C_6_4);
+        C_6_5 =  findViewById(R.id.C_6_5);
+
+        H_7_1 =  findViewById(R.id.H_7_1);
+        H_7_2 =  findViewById(R.id.H_7_2);
+        H_7_3 =  findViewById(R.id.H_7_3);
+        H_7_4 =  findViewById(R.id.H_7_4);
+        H_7_5 =  findViewById(R.id.H_7_5);
+        H_7_6 =  findViewById(R.id.H_7_6);
+        H_7_7 =  findViewById(R.id.H_7_7);
 
 
-        H_8_1 = (EditText) findViewById(R.id.H_8_1);
-        H_8_2 = (EditText) findViewById(R.id.H_8_2);
-        H_8_3 = (EditText) findViewById(R.id.H_8_3);
-
-        C_8_1 = (EditText) findViewById(R.id.C_8_1);
-        C_8_2 = (EditText) findViewById(R.id.C_8_2);
-        C_8_3 = (EditText) findViewById(R.id.C_8_3);
-
-
-        H_9_1 = (EditText) findViewById(R.id.H_9_1);
-        H_9_2 = (EditText) findViewById(R.id.H_9_2);
-
-        C_9_1 = (EditText) findViewById(R.id.C_9_1);
-        C_9_2 = (EditText) findViewById(R.id.C_9_2);
+        C_7_1 =  findViewById(R.id.C_7_1);
+        C_7_2 =  findViewById(R.id.C_7_2);
+        C_7_3 =  findViewById(R.id.C_7_3);
+        C_7_4 =  findViewById(R.id.C_7_4);
+        C_7_5 =  findViewById(R.id.C_7_5);
+        C_7_6 =  findViewById(R.id.C_7_6);
+        C_7_7 =  findViewById(R.id.C_7_7);
 
 
-        H_10_1 = (EditText) findViewById(R.id.H_10_1);
-        H_10_2 = (EditText) findViewById(R.id.H_10_2);
-        H_10_3 = (EditText) findViewById(R.id.H_10_3);
+        H_8_1 =  findViewById(R.id.H_8_1);
+        H_8_2 =  findViewById(R.id.H_8_2);
+        H_8_3 =  findViewById(R.id.H_8_3);
 
-        C_10_1 = (EditText) findViewById(R.id.C_10_1);
-        C_10_2 = (EditText) findViewById(R.id.C_10_2);
-        C_10_3 = (EditText) findViewById(R.id.C_10_3);
-
-
-        H_11_1 = (EditText) findViewById(R.id.H_11_1);
-        H_11_2 = (EditText) findViewById(R.id.H_11_2);
-        H_11_3 = (EditText) findViewById(R.id.H_11_3);
-        H_11_4 = (EditText) findViewById(R.id.H_11_4);
-        H_11_5 = (EditText) findViewById(R.id.H_11_5);
-        H_11_6 = (EditText) findViewById(R.id.H_11_6);
-        H_11_7 = (EditText) findViewById(R.id.H_11_7);
-        H_11_8 = (EditText) findViewById(R.id.H_11_8);
-        C_11_1 = (EditText) findViewById(R.id.C_11_1);
-        C_11_2 = (EditText) findViewById(R.id.C_11_2);
-        C_11_3 = (EditText) findViewById(R.id.C_11_3);
-        C_11_4 = (EditText) findViewById(R.id.C_11_4);
-        C_11_5 = (EditText) findViewById(R.id.C_11_5);
-        C_11_6 = (EditText) findViewById(R.id.C_11_6);
-        C_11_7 = (EditText) findViewById(R.id.C_11_7);
-        C_11_8 = (EditText) findViewById(R.id.C_11_8);
+        C_8_1 =  findViewById(R.id.C_8_1);
+        C_8_2 =  findViewById(R.id.C_8_2);
+        C_8_3 =  findViewById(R.id.C_8_3);
 
 
-        user_name = (TextView) findViewById(R.id.user_name);
+        H_9_1 =  findViewById(R.id.H_9_1);
+        H_9_2 =  findViewById(R.id.H_9_2);
+
+        C_9_1 =  findViewById(R.id.C_9_1);
+        C_9_2 =  findViewById(R.id.C_9_2);
+
+
+        H_10_1 =  findViewById(R.id.H_10_1);
+        H_10_2 =  findViewById(R.id.H_10_2);
+        H_10_3 =  findViewById(R.id.H_10_3);
+
+        C_10_1 =  findViewById(R.id.C_10_1);
+        C_10_2 =  findViewById(R.id.C_10_2);
+        C_10_3 =  findViewById(R.id.C_10_3);
+
+
+        H_11_1 =  findViewById(R.id.H_11_1);
+        H_11_2 =  findViewById(R.id.H_11_2);
+        H_11_3 =  findViewById(R.id.H_11_3);
+        H_11_4 =  findViewById(R.id.H_11_4);
+        H_11_5 =  findViewById(R.id.H_11_5);
+        H_11_6 =  findViewById(R.id.H_11_6);
+        H_11_7 =  findViewById(R.id.H_11_7);
+        H_11_8 =  findViewById(R.id.H_11_8);
+        C_11_1 =  findViewById(R.id.C_11_1);
+        C_11_2 =  findViewById(R.id.C_11_2);
+        C_11_3 =  findViewById(R.id.C_11_3);
+        C_11_4 =  findViewById(R.id.C_11_4);
+        C_11_5 =  findViewById(R.id.C_11_5);
+        C_11_6 =  findViewById(R.id.C_11_6);
+        C_11_7 =  findViewById(R.id.C_11_7);
+        C_11_8 =  findViewById(R.id.C_11_8);
+
+
+        user_name =  findViewById(R.id.user_name);
 
         progress = new ProgressDialog(this);
         progress.setMessage("Please wait...");
@@ -233,20 +232,10 @@ public class DWMOperationHeadActivity extends AppCompatActivity {
         hitGetManufacturingDetails(tv_select_date.getText().toString().replace("-", "/"));
 
 
-        tv_submit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                hitNewManufacturingHead();
-            }
-        });
+        tv_submit.setOnClickListener(view -> hitNewManufacturingHead());
 
 
-        tv_select_date.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                showDialog(0);
-            }
-        });
+        tv_select_date.setOnClickListener(v -> showDialog(0));
 
         tv_select_date.addTextChangedListener(new TextWatcher() {
             @Override
@@ -361,10 +350,10 @@ public class DWMOperationHeadActivity extends AppCompatActivity {
 //        return new DatePickerDialog(this, datePickerListener, mYear, mMonth, mDay);
     }
 
-    private DatePickerDialog.OnDateSetListener datePickerListener = new DatePickerDialog.OnDateSetListener() {
+    private final DatePickerDialog.OnDateSetListener datePickerListener = new DatePickerDialog.OnDateSetListener() {
         public void onDateSet(DatePicker view, int selectedYear,
                               int selectedMonth, int selectedDay) {
-            String day = null, month = null;
+            String day, month;
             if (String.valueOf(selectedDay).length() == 1) {
                 day = "0" + selectedDay;
             } else {
@@ -846,7 +835,7 @@ public class DWMOperationHeadActivity extends AppCompatActivity {
         try {
             date = inputFormat.parse(time);
             str = outputFormat.format(date);
-        } catch (ParseException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return str;

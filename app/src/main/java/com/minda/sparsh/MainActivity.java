@@ -43,8 +43,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         //   getSupportActionBar().hide();
 
-        toolbar = (Toolbar) findViewById(R.id.toolbar);
-        title = (TextView) findViewById(R.id.title);
+        toolbar =  findViewById(R.id.toolbar);
+        title =  findViewById(R.id.title);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
@@ -54,8 +54,8 @@ public class MainActivity extends AppCompatActivity {
         progress.setMessage("Please wait...");
         progress.setProgressStyle(ProgressDialog.STYLE_SPINNER);
         progress.setIndeterminate(true);
-        im_back = (ImageView) findViewById(R.id.im_back);
-        TextView tv_title = (TextView) findViewById(R.id.tv_title);
+        im_back =  findViewById(R.id.im_back);
+        TextView tv_title =  findViewById(R.id.tv_title);
         Intent intent = getIntent();
         pdfType = intent.getStringExtra("pdfType");
         try {
@@ -138,7 +138,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     void webView(String url) {
-        wv_jagriti = (WebView) findViewById(R.id.wv_jagriti);
+        wv_jagriti =  findViewById(R.id.wv_jagriti);
         wv_jagriti.getSettings().setJavaScriptEnabled(true);
         wv_jagriti.getSettings().setLoadWithOverviewMode(true);
         wv_jagriti.getSettings().setUseWideViewPort(true);

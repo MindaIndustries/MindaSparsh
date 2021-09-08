@@ -119,7 +119,7 @@ public class BottomUpConcernDetailActivity extends BaseActivity {
     TextView targetDatedValue;
     String empCode;
 
-    ArrayList<String> suggestions = new ArrayList<String>();
+    ArrayList<String> suggestions = new ArrayList<>();
 
     private static final int PERMISSION_REQUEST_CODE = 1;
 

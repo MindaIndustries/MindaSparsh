@@ -161,14 +161,14 @@ public class MyTaskDetail extends BaseActivity {
     SharedPreferences myPref;
     String unitcode, depucode, username, empcode;
 
-    ArrayList<String> assetloc = new ArrayList<String>();
+    ArrayList<String> assetloc = new ArrayList<>();
     ArrayList<AssetLocResponse> assetList = new ArrayList<>();
     ArrayAdapter<String> assetAdapter, ticketTypeAdapter, ticketGroupAdapter, groupAssigneeAdapter, priorityAdapter, reportedbyAdapter, subcatAdapter, subcat2Adapter, subcat3Adapter;
-    ArrayList<String> tickettypes = new ArrayList<String>();
+    ArrayList<String> tickettypes = new ArrayList<>();
     ArrayList<AssetLocResponse> ticketTypeList = new ArrayList<>();
-    ArrayList<String> ticketGroups = new ArrayList<String>();
+    ArrayList<String> ticketGroups = new ArrayList<>();
     ArrayList<BindGroupResponse> ticketGroupList = new ArrayList<>();
-    ArrayList<String> groupAssignee = new ArrayList<String>();
+    ArrayList<String> groupAssignee = new ArrayList<>();
     ArrayList<GroupAssigneeResponse> groupAssigneeList = new ArrayList<>();
     ArrayList<String> priorities = new ArrayList<>();
     ArrayList<AssetLocResponse> priorityList = new ArrayList<>();
@@ -215,14 +215,11 @@ public class MyTaskDetail extends BaseActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case android.R.id.home:
-                onBackPressed();
-                return true;
-
-            default:
-                return super.onOptionsItemSelected(item);
+        if (item.getItemId() == android.R.id.home) {
+            onBackPressed();
+            return true;
         }
+        return super.onOptionsItemSelected(item);
     }
 
     public void initUI() {
@@ -271,36 +268,27 @@ public class MyTaskDetail extends BaseActivity {
         }
 
 
-        resumed.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                if (b) {
-                    statusStr = "Resume";
-                }
+        resumed.setOnCheckedChangeListener((compoundButton, b) -> {
+            if (b) {
+                statusStr = "Resume";
             }
         });
 
 
-        isClosed.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                if (b) {
-                    statusStr = "Close";
-                    isHold.setVisibility(View.GONE);
-                } else {
-                    isHold.setVisibility(View.VISIBLE);
-                }
+        isClosed.setOnCheckedChangeListener((compoundButton, b) -> {
+            if (b) {
+                statusStr = "Close";
+                isHold.setVisibility(View.GONE);
+            } else {
+                isHold.setVisibility(View.VISIBLE);
             }
         });
-        isHold.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                if (b) {
-                    isClosed.setVisibility(View.GONE);
-                    statusStr = "Hold";
-                } else {
-                    isClosed.setVisibility(View.VISIBLE);
-                }
+        isHold.setOnCheckedChangeListener((compoundButton, b) -> {
+            if (b) {
+                isClosed.setVisibility(View.GONE);
+                statusStr = "Hold";
+            } else {
+                isClosed.setVisibility(View.VISIBLE);
             }
         });
         Calendar calendar = Calendar.getInstance();
@@ -990,32 +978,29 @@ public class MyTaskDetail extends BaseActivity {
     public void getAssetLoc() {
         assetList.clear();
         ITHelpDeskServices itHelpDeskServices = new ITHelpDeskServices();
-        itHelpDeskServices.getAssetLoc(new OnTaskComplete() {
-            @Override
-            public void onTaskComplte(CarotResponse carotResponse) {
-                if (carotResponse.getStatuscode() == HttpsURLConnection.HTTP_OK) {
-                    List<AssetLocResponse> list = (List<AssetLocResponse>) carotResponse.getData();
-                    if (list != null && list.size() > 0) {
-                        assetList.addAll(list);
+        itHelpDeskServices.getAssetLoc(carotResponse -> {
+            if (carotResponse.getStatuscode() == HttpsURLConnection.HTTP_OK) {
+                List<AssetLocResponse> list = (List<AssetLocResponse>) carotResponse.getData();
+                if (list != null && list.size() > 0) {
+                    assetList.addAll(list);
 
-                        for (AssetLocResponse assetLocResponse : assetList) {
-                            // if (assetLocResponse.getId().equals(unitcode)) {
-                            assetloc.add(assetLocResponse.getName());
-                            //}
-                        }
-                        if (assetloc.size() > 0) {
-                            assetLocSPinner.setSelection(1);
-                        }
-
-                        if (myTicket != null && myTicket.getUnitCode() != null) {
-                            int i = assetloc.indexOf(myTicket.getUnitCode());
-                            assetLocSPinner.setSelection(i);
-                        }
-                        assetAdapter.notifyDataSetChanged();
+                    for (AssetLocResponse assetLocResponse : assetList) {
+                        // if (assetLocResponse.getId().equals(unitcode)) {
+                        assetloc.add(assetLocResponse.getName());
+                        //}
                     }
-                }
+                    if (assetloc.size() > 0) {
+                        assetLocSPinner.setSelection(1);
+                    }
 
+                    if (myTicket != null && myTicket.getUnitCode() != null) {
+                        int i = assetloc.indexOf(myTicket.getUnitCode());
+                        assetLocSPinner.setSelection(i);
+                    }
+                    assetAdapter.notifyDataSetChanged();
+                }
             }
+
         }, empcode);
 
     }
@@ -1023,25 +1008,22 @@ public class MyTaskDetail extends BaseActivity {
     public void getTicketType() {
         ticketTypeList.clear();
         ITHelpDeskServices itHelpDeskServices = new ITHelpDeskServices();
-        itHelpDeskServices.getTicketType(new OnTaskComplete() {
-            @Override
-            public void onTaskComplte(CarotResponse carotResponse) {
-                if (carotResponse.getStatuscode() == HttpsURLConnection.HTTP_OK) {
-                    List<AssetLocResponse> list = (List<AssetLocResponse>) carotResponse.getData();
-                    if (list != null && list.size() > 0) {
-                        ticketTypeList.addAll(list);
-                        for (AssetLocResponse assetLocResponse : ticketTypeList) {
-                            tickettypes.add(assetLocResponse.getName());
-                        }
+        itHelpDeskServices.getTicketType(carotResponse -> {
+            if (carotResponse.getStatuscode() == HttpsURLConnection.HTTP_OK) {
+                List<AssetLocResponse> list = (List<AssetLocResponse>) carotResponse.getData();
+                if (list != null && list.size() > 0) {
+                    ticketTypeList.addAll(list);
+                    for (AssetLocResponse assetLocResponse : ticketTypeList) {
+                        tickettypes.add(assetLocResponse.getName());
                     }
                 }
-
-                if (myTicket != null && myTicket.getTicketType() != null) {
-                    int i = tickettypes.indexOf(myTicket.getTicketType());
-                    ticketTypeSpinner.setSelection(i);
-                }
-                ticketTypeAdapter.notifyDataSetChanged();
             }
+
+            if (myTicket != null && myTicket.getTicketType() != null) {
+                int i = tickettypes.indexOf(myTicket.getTicketType());
+                ticketTypeSpinner.setSelection(i);
+            }
+            ticketTypeAdapter.notifyDataSetChanged();
         });
     }
 
@@ -1050,34 +1032,31 @@ public class MyTaskDetail extends BaseActivity {
         ticketGroups.add("Select");
         ticketGroupList.clear();
         ITHelpDeskServices itHelpDeskServices = new ITHelpDeskServices();
-        itHelpDeskServices.getTicketGroup(new OnTaskComplete() {
-            @Override
-            public void onTaskComplte(CarotResponse carotResponse) {
-                if (carotResponse.getStatuscode() == HttpsURLConnection.HTTP_OK) {
-                    List<BindGroupResponse> list = (List<BindGroupResponse>) carotResponse.getData();
-                    if (list != null && list.size() > 0) {
-                        ticketGroupList.addAll(list);
-                        for (BindGroupResponse bindGroupResponse : ticketGroupList) {
-                            ticketGroups.add(bindGroupResponse.getName());
-                        }
+        itHelpDeskServices.getTicketGroup(carotResponse -> {
+            if (carotResponse.getStatuscode() == HttpsURLConnection.HTTP_OK) {
+                List<BindGroupResponse> list = (List<BindGroupResponse>) carotResponse.getData();
+                if (list != null && list.size() > 0) {
+                    ticketGroupList.addAll(list);
+                    for (BindGroupResponse bindGroupResponse : ticketGroupList) {
+                        ticketGroups.add(bindGroupResponse.getName());
                     }
-
-                    if (myTicket != null && myTicket.getTicketGroup() != null) {
-                        BindGroupResponse bindGroupResponse = new BindGroupResponse();
-                        bindGroupResponse.setId(myTicket.getTicketGroup());
-                        try {
-                            int i = ticketGroupList.indexOf(bindGroupResponse);
-                            ticketgroupSpinner.setSelection(i + 1);
-                        } catch (Exception e) {
-
-                        }
-                    }
-
-
-                    ticketGroupAdapter.notifyDataSetChanged();
                 }
 
+                if (myTicket != null && myTicket.getTicketGroup() != null) {
+                    BindGroupResponse bindGroupResponse = new BindGroupResponse();
+                    bindGroupResponse.setId(myTicket.getTicketGroup());
+                    try {
+                        int i = ticketGroupList.indexOf(bindGroupResponse);
+                        ticketgroupSpinner.setSelection(i + 1);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+
+
+                ticketGroupAdapter.notifyDataSetChanged();
             }
+
         }, ticketType, unitcode, subcat, subcat2, subcat3);
     }
 
@@ -1086,26 +1065,23 @@ public class MyTaskDetail extends BaseActivity {
         groupAssignee.add("Select");
         groupAssigneeList.clear();
         ITHelpDeskServices itHelpDeskServices = new ITHelpDeskServices();
-        itHelpDeskServices.getGroupAssignee(new OnTaskComplete() {
-            @Override
-            public void onTaskComplte(CarotResponse carotResponse) {
-                if (carotResponse.getStatuscode() == HttpsURLConnection.HTTP_OK) {
-                    List<GroupAssigneeResponse> list = (List<GroupAssigneeResponse>) carotResponse.getData();
-                    if (list != null && list.size() > 0) {
-                        groupAssigneeList.addAll(list);
-                        for (GroupAssigneeResponse groupAssigneeResponse : groupAssigneeList) {
-                            groupAssignee.add(groupAssigneeResponse.getName());
-                        }
+        itHelpDeskServices.getGroupAssignee(carotResponse -> {
+            if (carotResponse.getStatuscode() == HttpsURLConnection.HTTP_OK) {
+                List<GroupAssigneeResponse> list = (List<GroupAssigneeResponse>) carotResponse.getData();
+                if (list != null && list.size() > 0) {
+                    groupAssigneeList.addAll(list);
+                    for (GroupAssigneeResponse groupAssigneeResponse : groupAssigneeList) {
+                        groupAssignee.add(groupAssigneeResponse.getName());
                     }
-
-                    if (myTicket != null && myTicket.getAssigne() != null) {
-                        int i = groupAssignee.indexOf(myTicket.getAssigne());
-                        asigneeSpinner.setSelection(i);
-                    }
-                    groupAssigneeAdapter.notifyDataSetChanged();
                 }
 
+                if (myTicket != null && myTicket.getAssigne() != null) {
+                    int i = groupAssignee.indexOf(myTicket.getAssigne());
+                    asigneeSpinner.setSelection(i);
+                }
+                groupAssigneeAdapter.notifyDataSetChanged();
             }
+
         }, ticketType, unitcode);
 
     }
@@ -1114,48 +1090,39 @@ public class MyTaskDetail extends BaseActivity {
     public void getAutoName(String prefix) {
 
         ITHelpDeskServices itHelpDeskServices = new ITHelpDeskServices();
-        itHelpDeskServices.getAutoName(new OnTaskComplete() {
-            @Override
-            public void onTaskComplte(CarotResponse carotResponse) {
+        itHelpDeskServices.getAutoName(carotResponse -> {
 
-                if (carotResponse.getStatuscode() == HttpsURLConnection.HTTP_OK) {
-                    List<String> names = (List<String>) carotResponse.getData();
-                    ArrayAdapter<String> adapter = new ArrayAdapter<String>
-                            (MyTaskDetail.this, android.R.layout.select_dialog_item, names);
+            if (carotResponse.getStatuscode() == HttpsURLConnection.HTTP_OK) {
+                List<String> names = (List<String>) carotResponse.getData();
+                ArrayAdapter<String> adapter = new ArrayAdapter<>
+                        (MyTaskDetail.this, android.R.layout.select_dialog_item, names);
 
-                    ccEt.setThreshold(3);
-                    ccEt.setAdapter(adapter);
-                    ccEt.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                        @Override
-                        public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                            if (recyclerview_list.size() < 6) {
-                                recyclerview_list.add(names.get(i));
-                                ccListAdapter.notifyDataSetChanged();
-                            } else {
-                                Toast.makeText(MyTaskDetail.this, "You can add upto 5 emails in CC", Toast.LENGTH_LONG).show();
-                            }
-                            ccEt.setText("");
-                        }
-                    });
-                    adapter.notifyDataSetChanged();
-                }
+                ccEt.setThreshold(3);
+                ccEt.setAdapter(adapter);
+                ccEt.setOnItemClickListener((adapterView, view, i, l) -> {
+                    if (recyclerview_list.size() < 6) {
+                        recyclerview_list.add(names.get(i));
+                        ccListAdapter.notifyDataSetChanged();
+                    } else {
+                        Toast.makeText(MyTaskDetail.this, "You can add upto 5 emails in CC", Toast.LENGTH_LONG).show();
+                    }
+                    ccEt.setText("");
+                });
+                adapter.notifyDataSetChanged();
             }
         }, prefix);
     }
 
     public void submitRequest(String location, String tickettypeid, String subcat, String subcat2, String subcat3, String tickettypegroupid, String assigneegroup, String asigneGroupCode, String DefaultAssigne, String reportedby, String priority, String attachedfiles, String attFileBytes, String description, String cc) {
         ITHelpDeskServices itHelpDeskServices = new ITHelpDeskServices();
-        itHelpDeskServices.submitRequest(new OnTaskComplete() {
-            @Override
-            public void onTaskComplte(CarotResponse carotResponse) {
-                if (carotResponse.getStatuscode() == HttpsURLConnection.HTTP_OK) {
-                    Toast.makeText(MyTaskDetail.this, "Successfully submitted", Toast.LENGTH_LONG).show();
-                    Intent in = new Intent(MyTaskDetail.this, ITHelpDeskHome.class);
-                    in.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                    startActivity(in);
-                    finish();
+        itHelpDeskServices.submitRequest(carotResponse -> {
+            if (carotResponse.getStatuscode() == HttpsURLConnection.HTTP_OK) {
+                Toast.makeText(MyTaskDetail.this, "Successfully submitted", Toast.LENGTH_LONG).show();
+                Intent in = new Intent(MyTaskDetail.this, ITHelpDeskHome.class);
+                in.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(in);
+                finish();
 
-                }
             }
         }, location, tickettypeid, subcat, subcat2, subcat3, tickettypegroupid, assigneegroup, asigneGroupCode, DefaultAssigne, reportedby, priority, attachedfiles, attFileBytes, description, cc, empcode);
 
@@ -1167,30 +1134,27 @@ public class MyTaskDetail extends BaseActivity {
         priorities.add("Select");
         priorityList.clear();
         ITHelpDeskServices itHelpDeskServices = new ITHelpDeskServices();
-        itHelpDeskServices.getPriority(new OnTaskComplete() {
-            @Override
-            public void onTaskComplte(CarotResponse carotResponse) {
-                if (carotResponse.getStatuscode() == HttpsURLConnection.HTTP_OK) {
-                    List<AssetLocResponse> list = (List<AssetLocResponse>) carotResponse.getData();
-                    if (list != null && list.size() > 0) {
-                        priorityList.addAll(list);
-                    }
-                    for (AssetLocResponse assetLocResponse : priorityList) {
-                        priorities.add(assetLocResponse.getName());
-                    }
-
-
-                    if (myTicket != null && myTicket.getPriority() != null) {
-                        AssetLocResponse assetLocResponse = new AssetLocResponse();
-                        assetLocResponse.setId(myTicket.getPriority());
-                        int i = priorityList.indexOf(assetLocResponse);
-                        prioritySpinner.setSelection(i + 1);
-                    }
-                    priorityAdapter.notifyDataSetChanged();
-
+        itHelpDeskServices.getPriority(carotResponse -> {
+            if (carotResponse.getStatuscode() == HttpsURLConnection.HTTP_OK) {
+                List<AssetLocResponse> list = (List<AssetLocResponse>) carotResponse.getData();
+                if (list != null && list.size() > 0) {
+                    priorityList.addAll(list);
+                }
+                for (AssetLocResponse assetLocResponse : priorityList) {
+                    priorities.add(assetLocResponse.getName());
                 }
 
+
+                if (myTicket != null && myTicket.getPriority() != null) {
+                    AssetLocResponse assetLocResponse = new AssetLocResponse();
+                    assetLocResponse.setId(myTicket.getPriority());
+                    int i = priorityList.indexOf(assetLocResponse);
+                    prioritySpinner.setSelection(i + 1);
+                }
+                priorityAdapter.notifyDataSetChanged();
+
             }
+
         });
     }
 
@@ -1200,29 +1164,26 @@ public class MyTaskDetail extends BaseActivity {
         reportedByListResponse.clear();
 
         ITHelpDeskServices itHelpDeskServices = new ITHelpDeskServices();
-        itHelpDeskServices.getReportedBy(new OnTaskComplete() {
-            @Override
-            public void onTaskComplte(CarotResponse carotResponse) {
+        itHelpDeskServices.getReportedBy(carotResponse -> {
 
-                if (carotResponse.getStatuscode() == HttpsURLConnection.HTTP_OK) {
-                    List<AssetLocResponse> list = (List<AssetLocResponse>) carotResponse.getData();
-                    if (list != null && list.size() > 0) {
-                        reportedByListResponse.addAll(list);
-                    }
-                    for (AssetLocResponse assetLocResponse : reportedByListResponse) {
-                        reportedbylist.add(assetLocResponse.getName().toUpperCase());
-                    }
-
-                    if (myTicket != null && myTicket.getReportedby() != null) {
-                        int i = reportedbylist.indexOf(myTicket.getReportedby().toUpperCase());
-                        reportedBySpinner.setSelection(i);
-                    }
-
-                    reportedbyAdapter.notifyDataSetChanged();
+            if (carotResponse.getStatuscode() == HttpsURLConnection.HTTP_OK) {
+                List<AssetLocResponse> list = (List<AssetLocResponse>) carotResponse.getData();
+                if (list != null && list.size() > 0) {
+                    reportedByListResponse.addAll(list);
+                }
+                for (AssetLocResponse assetLocResponse : reportedByListResponse) {
+                    reportedbylist.add(assetLocResponse.getName().toUpperCase());
                 }
 
+                if (myTicket != null && myTicket.getReportedby() != null) {
+                    int i = reportedbylist.indexOf(myTicket.getReportedby().toUpperCase());
+                    reportedBySpinner.setSelection(i);
+                }
 
+                reportedbyAdapter.notifyDataSetChanged();
             }
+
+
         }, empcode);
     }
 
@@ -1231,33 +1192,30 @@ public class MyTaskDetail extends BaseActivity {
         subcats.add("Select");
         subcatList.clear();
         ITHelpDeskServices itHelpDeskServices = new ITHelpDeskServices();
-        itHelpDeskServices.getSubCat(new OnTaskComplete() {
-            @Override
-            public void onTaskComplte(CarotResponse carotResponse) {
-                if (carotResponse.getStatuscode() == HttpsURLConnection.HTTP_OK) {
-                    List<AssetLocResponse> list = (List<AssetLocResponse>) carotResponse.getData();
-                    if (list != null && list.size() > 0) {
-                        subcatList.addAll(list);
-
-                    }
-                    for (AssetLocResponse assetLocResponse : subcatList) {
-                        subcats.add(assetLocResponse.getName());
-                    }
-
-                    if (myTicket != null && myTicket.getSubCat() != null) {
-                        AssetLocResponse assetLocResponse = new AssetLocResponse();
-                        assetLocResponse.setId(myTicket.getSubCat());
-                        int i = subcatList.indexOf(assetLocResponse);
-
-                        if (i >= 0) {
-                            ticket_type_spinner_sub_cat.setSelection(i + 1);
-                        }
-                    }
-                    subcatAdapter.notifyDataSetChanged();
+        itHelpDeskServices.getSubCat(carotResponse -> {
+            if (carotResponse.getStatuscode() == HttpsURLConnection.HTTP_OK) {
+                List<AssetLocResponse> list = (List<AssetLocResponse>) carotResponse.getData();
+                if (list != null && list.size() > 0) {
+                    subcatList.addAll(list);
 
                 }
+                for (AssetLocResponse assetLocResponse : subcatList) {
+                    subcats.add(assetLocResponse.getName());
+                }
+
+                if (myTicket != null && myTicket.getSubCat() != null) {
+                    AssetLocResponse assetLocResponse = new AssetLocResponse();
+                    assetLocResponse.setId(myTicket.getSubCat());
+                    int i = subcatList.indexOf(assetLocResponse);
+
+                    if (i >= 0) {
+                        ticket_type_spinner_sub_cat.setSelection(i + 1);
+                    }
+                }
+                subcatAdapter.notifyDataSetChanged();
 
             }
+
         }, SubCat, TicketType, UnitCode);
     }
 
@@ -1267,30 +1225,27 @@ public class MyTaskDetail extends BaseActivity {
         subcat2List.clear();
 
         ITHelpDeskServices itHelpDeskServices = new ITHelpDeskServices();
-        itHelpDeskServices.getSubCat2(new OnTaskComplete() {
-            @Override
-            public void onTaskComplte(CarotResponse carotResponse) {
-                if (carotResponse.getStatuscode() == HttpsURLConnection.HTTP_OK) {
-                    List<AssetLocResponse> list = (List<AssetLocResponse>) carotResponse.getData();
-                    if (list != null && list.size() > 0) {
-                        subcat2List.addAll(list);
+        itHelpDeskServices.getSubCat2(carotResponse -> {
+            if (carotResponse.getStatuscode() == HttpsURLConnection.HTTP_OK) {
+                List<AssetLocResponse> list = (List<AssetLocResponse>) carotResponse.getData();
+                if (list != null && list.size() > 0) {
+                    subcat2List.addAll(list);
 
-                    }
-                    for (AssetLocResponse assetLocResponse : subcat2List) {
-                        subcats2.add(assetLocResponse.getName());
-
-                    }
-
-                    if (myTicket != null && myTicket.getSubCat2() != null) {
-                        AssetLocResponse assetLocResponse = new AssetLocResponse();
-                        assetLocResponse.setId(myTicket.getSubCat2());
-                        int i = subcat2List.indexOf(assetLocResponse);
-                        if (i >= 0) {
-                            ticket_type_spinner_sub_cat2.setSelection(i + 1);
-                        }
-                    }
-                    subcat2Adapter.notifyDataSetChanged();
                 }
+                for (AssetLocResponse assetLocResponse : subcat2List) {
+                    subcats2.add(assetLocResponse.getName());
+
+                }
+
+                if (myTicket != null && myTicket.getSubCat2() != null) {
+                    AssetLocResponse assetLocResponse = new AssetLocResponse();
+                    assetLocResponse.setId(myTicket.getSubCat2());
+                    int i = subcat2List.indexOf(assetLocResponse);
+                    if (i >= 0) {
+                        ticket_type_spinner_sub_cat2.setSelection(i + 1);
+                    }
+                }
+                subcat2Adapter.notifyDataSetChanged();
             }
         }, SubCat, SubCat2, TicketType, UnitCode);
     }
@@ -1581,7 +1536,7 @@ public class MyTaskDetail extends BaseActivity {
         attachtext.setText(attachmentName);
         bytes = new byte[(int) file.length()];
 
-        FileInputStream fis = null;
+        FileInputStream fis;
         try {
             fis = new FileInputStream(file);
             fis.read(bytes); //read file into bytes[]
@@ -1633,19 +1588,16 @@ public class MyTaskDetail extends BaseActivity {
 
     public void updateTicket() {
         ITHelpDeskServices itHelpDeskServices = new ITHelpDeskServices();
-        itHelpDeskServices.updateMyTaskTicket(new OnTaskComplete() {
-            @Override
-            public void onTaskComplte(CarotResponse carotResponse) {
-                if (carotResponse.getStatuscode() == HttpsURLConnection.HTTP_OK) {
-                    Toast.makeText(MyTaskDetail.this, "Ticket Updated successfully", Toast.LENGTH_LONG).show();
-                    Intent in = new Intent(MyTaskDetail.this, ITHelpDeskHome.class);
-                    in.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                    startActivity(in);
-                    finish();
-
-                }
+        itHelpDeskServices.updateMyTaskTicket(carotResponse -> {
+            if (carotResponse.getStatuscode() == HttpsURLConnection.HTTP_OK) {
+                Toast.makeText(MyTaskDetail.this, "Ticket Updated successfully", Toast.LENGTH_LONG).show();
+                Intent in = new Intent(MyTaskDetail.this, ITHelpDeskHome.class);
+                in.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(in);
+                finish();
 
             }
+
         }, myTicket.getTicketNo(), empcode, remarks_et.getText().toString(), statusStr, location, tickettypeid, subcat, subcat2, subcat3, tickettypegroupid, assigneegroup, asigneGroupCode, DefaultAssigne, reportedby, priority, attachmentNames.toString().replace("[", "").replace("]", ""), attachmentFiles.toString().replace("[", "").replace("]", ""), "", "");
     }
 
@@ -1654,26 +1606,23 @@ public class MyTaskDetail extends BaseActivity {
         tktHistoryRv.getRecycledViewPool().clear();
         ticketsAdapter.notifyDataSetChanged();
         ITHelpDeskServices itHelpDeskServices = new ITHelpDeskServices();
-        itHelpDeskServices.getTicketHistory(new OnTaskComplete() {
-            @Override
-            public void onTaskComplte(CarotResponse carotResponse) {
-                if (carotResponse.getStatuscode() == HttpsURLConnection.HTTP_OK) {
+        itHelpDeskServices.getTicketHistory(carotResponse -> {
+            if (carotResponse.getStatuscode() == HttpsURLConnection.HTTP_OK) {
 
-                    List<TicketHistoryResponse> list = (List<TicketHistoryResponse>) carotResponse.getData();
-                    if (list != null && list.size() > 0) {
-                        tktHistoryList.addAll(list);
-                    }
-                    if (tktHistoryList.size() > 0) {
-                        headerHistory.setVisibility(View.VISIBLE);
-                    } else {
-                        headerHistory.setVisibility(View.GONE);
-                    }
+                List<TicketHistoryResponse> list = (List<TicketHistoryResponse>) carotResponse.getData();
+                if (list != null && list.size() > 0) {
+                    tktHistoryList.addAll(list);
+                }
+                if (tktHistoryList.size() > 0) {
+                    headerHistory.setVisibility(View.VISIBLE);
                 } else {
                     headerHistory.setVisibility(View.GONE);
-
                 }
-                ticketsAdapter.notifyDataSetChanged();
+            } else {
+                headerHistory.setVisibility(View.GONE);
+
             }
+            ticketsAdapter.notifyDataSetChanged();
         }, ticketNo);
     }
 

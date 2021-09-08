@@ -27,19 +27,19 @@ public class SheedActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sheed);
-        toolbar = (Toolbar) findViewById(R.id.toolbar);
-        title = (TextView) findViewById(R.id.title);
+        toolbar =  findViewById(R.id.toolbar);
+        title =  findViewById(R.id.title);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setHomeAsUpIndicator(R.drawable.back);
         title.setText(getResources().getString(R.string.dwm));
 
-        tv_dwm = (Button) findViewById(R.id.tv_dwm);
-        im_back = (ImageView) findViewById(R.id.im_back);
+        tv_dwm =  findViewById(R.id.tv_dwm);
+        im_back =  findViewById(R.id.im_back);
 
-        tv_menufacturing = (Button) findViewById(R.id.tv_menufacturing);
-        tv_operation = (Button) findViewById(R.id.tv_operation);
+        tv_menufacturing =  findViewById(R.id.tv_menufacturing);
+        tv_operation =  findViewById(R.id.tv_operation);
         myPref = getSharedPreferences("MyPref", Context.MODE_PRIVATE);
         loginAccess = myPref.getStringSet("key", null);
 

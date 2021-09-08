@@ -29,7 +29,7 @@ public class UpdateVisitorDetailsActivity extends AppCompatActivity {
         progress.setProgressStyle(ProgressDialog.STYLE_SPINNER);
         progress.setIndeterminate(true);
 
-        im_back = (ImageView) findViewById(R.id.im_back);
+        im_back =  findViewById(R.id.im_back);
         im_back.setOnClickListener(view -> finish());
     }
 

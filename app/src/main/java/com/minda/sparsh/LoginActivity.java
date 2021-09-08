@@ -62,8 +62,8 @@ public class LoginActivity extends AppCompatActivity {
     TimerTask timerTask;
     LinearLayout lay_vision, lay_mission, lay_values, lay_needhelp;
     boolean runtimer;
-    private List<String> IMAGES = new ArrayList<>();
-    public ArrayList<String> arrayList = new ArrayList<String>();
+    private final List<String> IMAGES = new ArrayList<>();
+    public ArrayList<String> arrayList = new ArrayList<>();
     String version = "";
 
     @Override
@@ -81,23 +81,23 @@ public class LoginActivity extends AppCompatActivity {
 //        IMAGES.add(R.drawable.login5) ;
 
 
-        lay_vision = (LinearLayout) findViewById(R.id.lay_vision);
-        lay_mission = (LinearLayout) findViewById(R.id.lay_mission);
-        lay_values = (LinearLayout) findViewById(R.id.lay_values);
-        lay_needhelp = (LinearLayout) findViewById(R.id.lay_needhelp);
-        mPager = (ViewPager) findViewById(R.id.showpager);
+        lay_vision =  findViewById(R.id.lay_vision);
+        lay_mission =  findViewById(R.id.lay_mission);
+        lay_values =  findViewById(R.id.lay_values);
+        lay_needhelp =  findViewById(R.id.lay_needhelp);
+        mPager =  findViewById(R.id.showpager);
        // hitBannerApi();
         progress.setMessage("Please wait...");
         progress.setProgressStyle(ProgressDialog.STYLE_SPINNER);
         progress.setIndeterminate(true);
 
         myPref = getSharedPreferences("MyPref", Context.MODE_PRIVATE);
-        cbTerms = (CheckBox) findViewById(R.id.cb_terms);
+        cbTerms =  findViewById(R.id.cb_terms);
 
         pd = new ParseData();
-        input_email = (EditText) findViewById(R.id.input_email);
-        input_password = (EditText) findViewById(R.id.input_password);
-        btn_login = (Button) findViewById(R.id.btn_login);
+        input_email =  findViewById(R.id.input_email);
+        input_password =  findViewById(R.id.input_password);
+        btn_login =  findViewById(R.id.btn_login);
 
         btn_login.setOnClickListener(v -> {
             if (isValidate()) {
@@ -120,19 +120,13 @@ public class LoginActivity extends AppCompatActivity {
             Intent mission = new Intent(LoginActivity.this, MissionActivity.class);
             startActivity(mission);
         });
-        lay_values.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent values = new Intent(LoginActivity.this, ValuesActivity.class);
-                startActivity(values);
-            }
+        lay_values.setOnClickListener(view -> {
+            Intent values = new Intent(LoginActivity.this, ValuesActivity.class);
+            startActivity(values);
         });
-        lay_needhelp.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent needhelp = new Intent(LoginActivity.this, NeedhelpActivity.class);
-                startActivity(needhelp);
-            }
+        lay_needhelp.setOnClickListener(view -> {
+            Intent needhelp = new Intent(LoginActivity.this, NeedhelpActivity.class);
+            startActivity(needhelp);
         });
       //  showslideview();
      /*   mPager.setOnTouchListener(new View.OnTouchListener() {
@@ -203,8 +197,8 @@ public class LoginActivity extends AppCompatActivity {
                     arrayList.clear();
                     String currentString = loginModel.AuthFor;
                     String[] separated = currentString.split(",");
-                    for (int i = 0; i < separated.length; i++) {
-                        arrayList.add(separated[i]);
+                    for (String s : separated) {
+                        arrayList.add(s);
                     }
 
                     //Set the values
@@ -217,7 +211,7 @@ public class LoginActivity extends AppCompatActivity {
                     }
                     refreshedToken = FirebaseMessaging.getInstance().getToken().getResult();
                     HitMyorder(Id, refreshedToken);
-                    mEditor.commit();
+                    mEditor.apply();
                     startActivity(intent);
                     finish();
                 } else {
@@ -264,13 +258,6 @@ public class LoginActivity extends AppCompatActivity {
 
                     List<NotificationModel> responseItem = response.body();
                     response.message();
-                    if (responseItem != null) {
-
-
-                    } else {
-                    }
-
-
                 }
 
                 @Override
@@ -296,15 +283,11 @@ public class LoginActivity extends AppCompatActivity {
         timerTask = new TimerTask() {
             @Override
             public void run() {
-                mPager.post(new Runnable() {
-
-                    @Override
-                    public void run() {
-                        try {
-                            mPager.setCurrentItem((mPager.getCurrentItem() + 1) % IMAGES.size());
-                        } catch (Exception e) {
-                            e.printStackTrace();
-                        }
+                mPager.post(() -> {
+                    try {
+                        mPager.setCurrentItem((mPager.getCurrentItem() + 1) % IMAGES.size());
+                    } catch (Exception e) {
+                        e.printStackTrace();
                     }
                 });
             }
@@ -414,13 +397,13 @@ public class LoginActivity extends AppCompatActivity {
 
                             if (currentString != null) {
                                 String[] separated = currentString.split(",");
-                                for (int i = 0; i < separated.length; i++) {
-                                    arrayList.add(separated[i]);
+                                for (String s : separated) {
+                                    arrayList.add(s);
                                 }
                             }
 
                             //Set the values
-                            Set<String> set = new HashSet<String>();
+                            Set<String> set = new HashSet<>();
                             set.addAll(arrayList);
                             mEditor.putStringSet("key", set);
 

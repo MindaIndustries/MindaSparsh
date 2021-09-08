@@ -103,8 +103,8 @@ public class AbnormalityAddressingActivity extends AppCompatActivity {
     List<Domain_Model> Domainresponse;
     List<Business_Model> Businessresponse;
     List<Plant_Model> Plantresponse;
-    List<Department_Model> Departmentresponse = new ArrayList<Department_Model>();
-    List<Sub_Department_Model> Subdepartmentresponse = new ArrayList<Sub_Department_Model>();
+    List<Department_Model> Departmentresponse = new ArrayList<>();
+    List<Sub_Department_Model> Subdepartmentresponse = new ArrayList<>();
     Toolbar toolbar;
     TextView title;
     String empCode;
@@ -484,7 +484,7 @@ public class AbnormalityAddressingActivity extends AppCompatActivity {
     }
 
     private ArrayList<String> findUnAskedPermissions(ArrayList<String> wanted) {
-        ArrayList<String> result = new ArrayList<String>();
+        ArrayList<String> result = new ArrayList<>();
 
         for (String perm : wanted) {
             if (!hasPermission(perm)) {

@@ -33,12 +33,12 @@ public class ViewImageActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_image);
-        Im_before = (ImageView) findViewById(R.id.Im_before);
-        Im_after = (ImageView) findViewById(R.id.Im_after);
-        im_back = (ImageView) findViewById(R.id.im_back);
-        tv_discription = (TextView) findViewById(R.id.tv_discription);
-        lay_afterimage = (LinearLayout) findViewById(R.id.lay_afterimage);
-        tv_action = (TextView) findViewById(R.id.tv_action);
+        Im_before =  findViewById(R.id.Im_before);
+        Im_after =  findViewById(R.id.Im_after);
+        im_back =  findViewById(R.id.im_back);
+        tv_discription =  findViewById(R.id.tv_discription);
+        lay_afterimage =  findViewById(R.id.lay_afterimage);
+        tv_action =  findViewById(R.id.tv_action);
 
         progress = new ProgressDialog(this);
         progress.setMessage("Please wait...");

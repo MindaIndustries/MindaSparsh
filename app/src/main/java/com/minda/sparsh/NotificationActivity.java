@@ -4,7 +4,6 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -14,7 +13,8 @@ import com.minda.sparsh.Adapter.NotificationAdapter;
 import com.minda.sparsh.model.NotificationModel;
 import com.minda.sparsh.util.Utility;
 
-import java.util.ArrayList;
+import org.jetbrains.annotations.NotNull;
+
 import java.util.List;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -25,7 +25,6 @@ import retrofit2.Response;
 
 public class NotificationActivity extends AppCompatActivity {
     ListView list_notification;
-    java.util.List<String> List = new ArrayList<>();
     SharedPreferences myPref;
     ImageView im_back;
     Toolbar toolbar;
@@ -37,16 +36,16 @@ public class NotificationActivity extends AppCompatActivity {
         setContentView(R.layout.activity_notification);
         //   getSupportActionBar().hide();
 
-        toolbar = (Toolbar) findViewById(R.id.toolbar);
-        title = (TextView) findViewById(R.id.title);
+        toolbar =  findViewById(R.id.toolbar);
+        title =  findViewById(R.id.title);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setHomeAsUpIndicator(R.drawable.back);
         title.setText(getResources().getString(R.string.notifications));
 
-        im_back = (ImageView) findViewById(R.id.im_back);
-        list_notification = (ListView) findViewById(R.id.list_notification);
+        im_back =  findViewById(R.id.im_back);
+        list_notification =  findViewById(R.id.list_notification);
         myPref = getSharedPreferences("MyPref", Context.MODE_PRIVATE);
 
 
@@ -60,7 +59,7 @@ public class NotificationActivity extends AppCompatActivity {
             Call<java.util.List<NotificationModel>> loginResponse = loginInterface.GetPushNot(UserId, "mda@sPr$rZ#G!!");
             loginResponse.enqueue(new Callback<List<NotificationModel>>() {
                 @Override
-                public void onResponse(Call<List<NotificationModel>> call, Response<List<NotificationModel>> response) {
+                public void onResponse(@NotNull Call<List<NotificationModel>> call, @NotNull Response<List<NotificationModel>> response) {
 
                     List<NotificationModel> responseItem = response.body();
                     if (responseItem != null && responseItem.size() > 0) {
@@ -71,7 +70,7 @@ public class NotificationActivity extends AppCompatActivity {
                 }
 
                 @Override
-                public void onFailure(Call<List<NotificationModel>> call, Throwable t) {
+                public void onFailure(@NotNull Call<List<NotificationModel>> call, @NotNull Throwable t) {
                     Toast.makeText(NotificationActivity.this, "Something Wrong", Toast.LENGTH_LONG).show();
 
 

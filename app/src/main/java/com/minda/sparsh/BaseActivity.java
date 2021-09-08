@@ -2,7 +2,6 @@ package com.minda.sparsh;
 
 import android.app.ProgressDialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Build;
@@ -63,7 +62,7 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
     protected Toolbar getActionBarToolbar() {
 
         if (mActionBarToolbar == null) {
-            mActionBarToolbar = (Toolbar) findViewById(R.id.toolbar);
+            mActionBarToolbar =  findViewById(R.id.toolbar);
             if (mActionBarToolbar != null) {
                 // Depending on which version of Android you are on the Toolbar or the ActionBar may be
                 // active so the a11y description is set here.
@@ -88,7 +87,7 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
 
 
     private void setupNavDrawer() {
-        mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+        mDrawerLayout =  findViewById(R.id.drawer_layout);
         if (mDrawerLayout == null) {
             return;
         }
@@ -109,21 +108,14 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
         }
 
 
-        mNavigationView = (NavigationView) findViewById(R.id.nav_view);
-        try {
-
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
+        mNavigationView =  findViewById(R.id.nav_view);
         mNavigationView.setNavigationItemSelectedListener(this);
 
         View headerView = mNavigationView.getHeaderView(0);
         myPref = getSharedPreferences("MyPref", MODE_PRIVATE);
 
 
-        TextView userName = (TextView) headerView.findViewById(R.id.tv_firm_name);
+        TextView userName =  headerView.findViewById(R.id.tv_firm_name);
 //        if (!sessionManager.getFirmName().equalsIgnoreCase("")) {
         userName.setText(myPref.getString("username", "username"));
 //
@@ -138,7 +130,7 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
 
     @Override
     public void onBackPressed() {
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        DrawerLayout drawer =  findViewById(R.id.drawer_layout);
         if (drawer != null && drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
