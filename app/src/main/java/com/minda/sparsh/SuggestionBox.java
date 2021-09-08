@@ -24,8 +24,6 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.minda.sparsh.listener.CarotResponse;
-import com.minda.sparsh.listener.OnTaskComplete;
 import com.minda.sparsh.services.BottomUpConcernServices;
 import com.minda.sparsh.util.UriUtils;
 import com.minda.sparsh.util.Utility;

@@ -15,8 +15,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class FlipperAdapter extends BaseAdapter {
 
-    private AppCompatActivity appCompatActivity;
-    private List<String> strings;
+    private final AppCompatActivity appCompatActivity;
+    private final List<String> strings;
     private int[] drawableIds =
             {
 //            R.drawable.image_1,

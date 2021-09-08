@@ -42,6 +42,8 @@ import com.minda.sparsh.util.Constant;
 import com.minda.sparsh.util.RetrofitClient2;
 import com.minda.sparsh.util.Utility;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -706,7 +708,7 @@ public class VisitorManagementActivity extends AppCompatActivity implements View
             Call<List<VisitorDetailModel>> response = anInterface.GetVisitorDetail(key, visitorId);
             response.enqueue(new Callback<List<VisitorDetailModel>>() {
                 @Override
-                public void onResponse(Call<List<VisitorDetailModel>> call, Response<List<VisitorDetailModel>> response) {
+                public void onResponse(Call<List<VisitorDetailModel>> call, @NotNull Response<List<VisitorDetailModel>> response) {
                     dismissProgress();
                     List<VisitorDetailModel> visitorDetailModels = response.body();
 
@@ -758,7 +760,7 @@ public class VisitorManagementActivity extends AppCompatActivity implements View
                 }
 
                 @Override
-                public void onFailure(Call<List<VisitorDetailModel>> call, Throwable t) {
+                public void onFailure(@NotNull Call<List<VisitorDetailModel>> call, @NotNull Throwable t) {
                     dismissProgress();
                 }
             });
@@ -774,7 +776,7 @@ public class VisitorManagementActivity extends AppCompatActivity implements View
             Call<List<AutoFillMobileModel>> response = anInterface.GetVisitorDetailbyMobile(key, mobile);
             response.enqueue(new Callback<List<AutoFillMobileModel>>() {
                 @Override
-                public void onResponse(Call<List<AutoFillMobileModel>> call, Response<List<AutoFillMobileModel>> response) {
+                public void onResponse(@NotNull Call<List<AutoFillMobileModel>> call, @NotNull Response<List<AutoFillMobileModel>> response) {
                     dismissProgress();
                     List<AutoFillMobileModel> autoFillMobileModels = response.body();
 
@@ -834,7 +836,7 @@ public class VisitorManagementActivity extends AppCompatActivity implements View
                 }
 
                 @Override
-                public void onFailure(Call<List<AutoFillMobileModel>> call, Throwable t) {
+                public void onFailure(@NotNull Call<List<AutoFillMobileModel>> call, @NotNull Throwable t) {
                     dismissProgress();
                 }
             });

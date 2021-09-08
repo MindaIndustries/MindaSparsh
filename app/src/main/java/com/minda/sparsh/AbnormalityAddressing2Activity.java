@@ -51,15 +51,15 @@ import static android.Manifest.permission.CAMERA;
 public class AbnormalityAddressing2Activity extends AppCompatActivity {
 
     ListView list_abnormalty;
-    LinearLayout lay_out, footer;
+    LinearLayout lay_out;
     TextView tv_submit, tv_upload, tv_Department, tv_plant, tv_business, tv_domain, et_finddate;
     ImageView Im_capture, im_back;
     Uri picUri = null;
     Bitmap myBitmap;
-    String sImage = "", base64String;
+    String sImage = "";
     private ArrayList<String> permissionsToRequest;
-    private ArrayList<String> permissionsRejected = new ArrayList<>();
-    private ArrayList<String> permissions = new ArrayList<>();
+    private final ArrayList<String> permissionsRejected = new ArrayList<>();
+    private final ArrayList<String> permissions = new ArrayList<>();
     private final static int ALL_PERMISSIONS_RESULT = 107;
     boolean pic_uploaded = false;
     private ProgressDialog progress = null;
@@ -73,11 +73,11 @@ public class AbnormalityAddressing2Activity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_abnormality_addressing2);
-        tv_upload = (TextView) findViewById(R.id.tv_upload);
-        tv_Department = (TextView) findViewById(R.id.tv_Department);
-        tv_plant = (TextView) findViewById(R.id.tv_plant);
-        tv_business = (TextView) findViewById(R.id.tv_business);
-        tv_domain = (TextView) findViewById(R.id.tv_domain);
+        tv_upload =  findViewById(R.id.tv_upload);
+        tv_Department =  findViewById(R.id.tv_Department);
+        tv_plant =  findViewById(R.id.tv_plant);
+        tv_business =  findViewById(R.id.tv_business);
+        tv_domain =  findViewById(R.id.tv_domain);
         myPref = getSharedPreferences("MyPref", Context.MODE_PRIVATE);
         if (getIntent().getExtras() != null) {
             AbnormalID = getIntent().getIntExtra("ID", 0);
@@ -89,69 +89,58 @@ public class AbnormalityAddressing2Activity extends AppCompatActivity {
         }
 
 
-        lay_out = (LinearLayout) findViewById(R.id.lay_out);
-        list_abnormalty = (ListView) findViewById(R.id.list_abnormalty);
+        lay_out =  findViewById(R.id.lay_out);
+        list_abnormalty =  findViewById(R.id.list_abnormalty);
 
 
-        Im_capture = (ImageView) findViewById(R.id.Im_capture);
-        im_back = (ImageView) findViewById(R.id.im_back);
+        Im_capture =  findViewById(R.id.Im_capture);
+        im_back =  findViewById(R.id.im_back);
 
-        et_finddate = (TextView) findViewById(R.id.et_finddate);
-        et_descripton = (EditText) findViewById(R.id.et_descripton);
-        et_benefits = (EditText) findViewById(R.id.et_benefits);
-        tv_submit = (TextView) findViewById(R.id.tv_submit);
+        et_finddate =  findViewById(R.id.et_finddate);
+        et_descripton =  findViewById(R.id.et_descripton);
+        et_benefits =  findViewById(R.id.et_benefits);
+        tv_submit =  findViewById(R.id.tv_submit);
         progress = new ProgressDialog(this);
         progress.setMessage("Please wait...");
         progress.setProgressStyle(ProgressDialog.STYLE_SPINNER);
         progress.setIndeterminate(true);
-        im_back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                finish();
-            }
-        });
+        im_back.setOnClickListener(view -> finish());
         String date = new SimpleDateFormat("dd-MM-yyy", Locale.getDefault()).format(new Date());
         et_finddate.setText(date);
 
 
-        Im_capture.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (Utility.checkPermission(AbnormalityAddressing2Activity.this)) {
-                    startActivityForResult(getPickImageChooserIntent(), 200);
-                    permissions.add(CAMERA);
-                    permissionsToRequest = findUnAskedPermissions(permissions);
-                    //get the permissions we have asked for before but are not granted..
-                    //we will store this in a global list to access later.
+        Im_capture.setOnClickListener(view -> {
+            if (Utility.checkPermission(AbnormalityAddressing2Activity.this)) {
+                startActivityForResult(getPickImageChooserIntent(), 200);
+                permissions.add(CAMERA);
+                permissionsToRequest = findUnAskedPermissions(permissions);
+                //get the permissions we have asked for before but are not granted..
+                //we will store this in a global list to access later.
 
 
-                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
 
 
-                        if (permissionsToRequest.size() > 0)
-                            requestPermissions(permissionsToRequest.toArray(new String[permissionsToRequest.size()]), ALL_PERMISSIONS_RESULT);
-                    }
+                    if (permissionsToRequest.size() > 0)
+                        requestPermissions(permissionsToRequest.toArray(new String[permissionsToRequest.size()]), ALL_PERMISSIONS_RESULT);
                 }
             }
         });
-        tv_submit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Action = et_descripton.getText().toString();
-                ImplementationDate = et_finddate.getText().toString();
+        tv_submit.setOnClickListener(view -> {
+            Action = et_descripton.getText().toString();
+            ImplementationDate = et_finddate.getText().toString();
 
-                if (Action.length() != 0) {
-                    if (sImage.length() != 0) {
-                        hitUpdateAbnormalityApi(AbnormalID, sImage, Action, ImplementationDate, et_benefits.getText().toString(), myPref.getString("Id", ""));
-                    } else {
-                        Toast.makeText(AbnormalityAddressing2Activity.this, "Please Attach Image", Toast.LENGTH_LONG).show();
-                    }
+            if (Action.length() != 0) {
+                if (sImage.length() != 0) {
+                    hitUpdateAbnormalityApi(AbnormalID, sImage, Action, ImplementationDate, et_benefits.getText().toString(), myPref.getString("Id", ""));
                 } else {
-                    Toast.makeText(AbnormalityAddressing2Activity.this, "Please fill Action", Toast.LENGTH_LONG).show();
+                    Toast.makeText(AbnormalityAddressing2Activity.this, "Please Attach Image", Toast.LENGTH_LONG).show();
                 }
-
-
+            } else {
+                Toast.makeText(AbnormalityAddressing2Activity.this, "Please fill Action", Toast.LENGTH_LONG).show();
             }
+
+
         });
     }
 
@@ -220,7 +209,7 @@ public class AbnormalityAddressing2Activity extends AppCompatActivity {
 
 
     private ArrayList<String> findUnAskedPermissions(ArrayList<String> wanted) {
-        ArrayList<String> result = new ArrayList<String>();
+        ArrayList<String> result = new ArrayList<>();
 
         for (String perm : wanted) {
             if (!hasPermission(perm)) {
@@ -257,6 +246,7 @@ public class AbnormalityAddressing2Activity extends AppCompatActivity {
     @Override
     public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
 
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         switch (requestCode) {
 
             case ALL_PERMISSIONS_RESULT:
@@ -275,15 +265,12 @@ public class AbnormalityAddressing2Activity extends AppCompatActivity {
                     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
                         if (shouldShowRequestPermissionRationale(permissionsRejected.get(0))) {
                             showMessageOKCancel("These permissions are mandatory for the application Please allow access",
-                                    new DialogInterface.OnClickListener() {
-                                        @Override
-                                        public void onClick(DialogInterface dialog, int which) {
-                                            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                                    (dialog, which) -> {
+                                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
 
-                                                //Log.d("API123", "permisionrejected " + permissionsRejected.size());
+                                            //Log.d("API123", "permisionrejected " + permissionsRejected.size());
 
-                                                requestPermissions(permissionsRejected.toArray(new String[permissionsRejected.size()]), ALL_PERMISSIONS_RESULT);
-                                            }
+                                            requestPermissions(permissionsRejected.toArray(new String[permissionsRejected.size()]), ALL_PERMISSIONS_RESULT);
                                         }
                                     });
                             return;
@@ -317,6 +304,7 @@ public class AbnormalityAddressing2Activity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 
+        super.onActivityResult(requestCode, resultCode, data);
         Bitmap bitmap;
         if (resultCode == Activity.RESULT_OK) {
             Im_capture.setVisibility(View.VISIBLE);

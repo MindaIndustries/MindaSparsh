@@ -16,8 +16,6 @@ import com.minda.sparsh.model.DWMOprationDetailResponse;
 import com.minda.sparsh.model.DwmResponse;
 import com.minda.sparsh.util.RetrofitClient2;
 import com.minda.sparsh.util.Utility;
-
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -829,7 +827,7 @@ public class DWMOperationHeadActivity extends AppCompatActivity {
         SimpleDateFormat inputFormat = new SimpleDateFormat(inputPattern);
         SimpleDateFormat outputFormat = new SimpleDateFormat(outputPattern);
 
-        Date date = null;
+        Date date;
         String str = null;
 
         try {
