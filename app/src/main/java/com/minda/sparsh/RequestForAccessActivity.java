@@ -1113,7 +1113,8 @@ public class RequestForAccessActivity extends AppCompatActivity implements View.
         Utility.saveFileToSdCard(mDestinationFile, thumbnail);
         String fileName = mDestinationFile.getName();
         System.out.println("fileName" + fileName);
-        bytes = getBytesFromBitmap(thumbnail);
+        bytes = getBytesFromBitmap(
+                thumbnail);
         fileType = "jpg";
         bmp = thumbnail;
         attachtext.setText(fileName);
@@ -1187,7 +1188,7 @@ public class RequestForAccessActivity extends AppCompatActivity implements View.
         attachtext.setText(fileName);
         bytes = new byte[(int) file.length()];
 
-        FileInputStream fis = null;
+        FileInputStream fis;
         try {
             fis = new FileInputStream(file);
             fis.read(bytes); //read file into bytes[]

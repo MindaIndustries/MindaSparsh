@@ -4,6 +4,12 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="../../../../../../layout/custom_preview.xml" value="0.15885416666666666" />
+        <entry key="app/src/main/res/drawable/border.xml" value="0.238671875" />
+        <entry key="app/src/main/res/drawable/btn_bg.xml" value="0.238671875" />
+        <entry key="app/src/main/res/drawable/btn_bg_grey.xml" value="0.238671875" />
+        <entry key="app/src/main/res/drawable/btn_bg_orange.xml" value="0.238671875" />
+        <entry key="app/src/main/res/drawable/btn_bg_sbmt.xml" value="0.238671875" />
+        <entry key="app/src/main/res/drawable/cardview_bg.xml" value="0.238671875" />
         <entry key="app/src/main/res/layout/abnormality.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_abnormality_addressing.xml" value="0.1046875" />
         <entry key="app/src/main/res/layout/activity_abnormality_addressing2.xml" value="0.1046875" />
