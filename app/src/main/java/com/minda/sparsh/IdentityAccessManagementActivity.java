@@ -20,20 +20,20 @@ public class IdentityAccessManagementActivity extends AppCompatActivity implemen
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_identity_access_management);
-        toolbar = (Toolbar) findViewById(R.id.toolbar);
-        title = (TextView) findViewById(R.id.title);
+        toolbar =  findViewById(R.id.toolbar);
+        title =  findViewById(R.id.title);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setHomeAsUpIndicator(R.drawable.back);
         title.setText(getResources().getString(R.string.id_access_mgmt));
 
-        im_back = (ImageView) findViewById(R.id.im_back);
-        iv_approve_request = (ImageView) findViewById(R.id.iv_approve_request);
+        im_back =  findViewById(R.id.im_back);
+        iv_approve_request =  findViewById(R.id.iv_approve_request);
         iv_approve_request.setOnClickListener(this);
-        iv_access_request = (ImageView) findViewById(R.id.iv_access_request);
+        iv_access_request =  findViewById(R.id.iv_access_request);
         iv_access_request.setOnClickListener(this);
-        iv_view_access_request = (ImageView) findViewById(R.id.iv_view_access_request);
+        iv_view_access_request =  findViewById(R.id.iv_view_access_request);
         im_back.setOnClickListener(view -> finish());
 
 //        intiUiSetup();
@@ -49,10 +49,10 @@ public class IdentityAccessManagementActivity extends AppCompatActivity implemen
     }
 
 
-    private void intiUiSetup() {
+   /* private void intiUiSetup() {
 //        replaceFragment(new IAMMenuFragment(), false, false);
     }
-
+*/
 //    public void replaceFragment(final Fragment fragment, final boolean needToAddBackStack, final boolean clearStack) {
 //        final FragmentManager fm = getSupportFragmentManager();
 //        final FragmentTransaction ft = fm.beginTransaction();

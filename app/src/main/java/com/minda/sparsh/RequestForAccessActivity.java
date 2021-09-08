@@ -784,7 +784,7 @@ public class RequestForAccessActivity extends AppCompatActivity implements View.
                 @Override
                 public void onResponse(Call<List<IAMGetBusinessModel>> call, Response<List<IAMGetBusinessModel>> response) {
                     showProgress(false);
-                    List<IAMGetBusinessModel> responseList =  response.body(); 
+                    List<IAMGetBusinessModel> responseList = response.body();
                     if (responseList != null && responseList.size() > 0) {
                         if (callFrom.equalsIgnoreCase("checkBox")) {
                             combineList.addAll(responseList);
@@ -976,7 +976,7 @@ public class RequestForAccessActivity extends AppCompatActivity implements View.
     }
 
     @Override
-    public void handleClick(String id, String clickCheck, String plantName,String unitcode) {
+    public void handleClick(String id, String clickCheck, String plantName, String unitcode) {
         unitCheckId = "";
         if (clickCheck.equalsIgnoreCase("check")) {
             set.add(id);
@@ -1009,10 +1009,9 @@ public class RequestForAccessActivity extends AppCompatActivity implements View.
             e.printStackTrace();
         }
 
-        try{
-            PlantCode = StringUtil.join(set2,",");
-        }
-        catch (Exception e){
+        try {
+            PlantCode = StringUtil.join(set2, ",");
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
@@ -1238,7 +1237,7 @@ public class RequestForAccessActivity extends AppCompatActivity implements View.
         });
 
         AlertDialog alertDialog = alertDialogBuilder.create();
-        if(!isFinishing()) {
+        if (!isFinishing()) {
             alertDialog.show();
         }
     }
