@@ -249,7 +249,7 @@ public class AccessRequestDetailsActivity extends AppCompatActivity implements V
                 }
 
                 @Override
-                public void onFailure(Call<List<AccessRequestDetailsModel>> call, Throwable t) {
+                public void onFailure(@NotNull Call<List<AccessRequestDetailsModel>> call, @NotNull Throwable t) {
                     dismissProgress();
                 }
             });
@@ -265,7 +265,7 @@ public class AccessRequestDetailsActivity extends AppCompatActivity implements V
             Call<List<AccessRequestPlantDetailModel>> response = anInterface.GetAccessRequestPlantDetail(key, requestId);
             response.enqueue(new Callback<List<AccessRequestPlantDetailModel>>() {
                 @Override
-                public void onResponse(Call<List<AccessRequestPlantDetailModel>> call, Response<List<AccessRequestPlantDetailModel>> response) {
+                public void onResponse(@NotNull Call<List<AccessRequestPlantDetailModel>> call, @NotNull Response<List<AccessRequestPlantDetailModel>> response) {
                     dismissProgress();
                     List<AccessRequestPlantDetailModel> accessRequestPlantDetailModels = response.body();
 
@@ -285,7 +285,7 @@ public class AccessRequestDetailsActivity extends AppCompatActivity implements V
                 }
 
                 @Override
-                public void onFailure(Call<List<AccessRequestPlantDetailModel>> call, Throwable t) {
+                public void onFailure(@NotNull Call<List<AccessRequestPlantDetailModel>> call, @NotNull Throwable t) {
                     dismissProgress();
                 }
             });
@@ -301,7 +301,7 @@ public class AccessRequestDetailsActivity extends AppCompatActivity implements V
             Call<List<AccessRequestApproverDetailsModel>> response = anInterface.GetAccessRequestApproverDetail(key, accessRequestNo);
             response.enqueue(new Callback<List<AccessRequestApproverDetailsModel>>() {
                 @Override
-                public void onResponse(Call<List<AccessRequestApproverDetailsModel>> call, Response<List<AccessRequestApproverDetailsModel>> response) {
+                public void onResponse(@NotNull Call<List<AccessRequestApproverDetailsModel>> call, @NotNull Response<List<AccessRequestApproverDetailsModel>> response) {
                     dismissProgress();
                     List<AccessRequestApproverDetailsModel> responses = response.body();
 
@@ -346,7 +346,7 @@ public class AccessRequestDetailsActivity extends AppCompatActivity implements V
                 }
 
                 @Override
-                public void onFailure(Call<List<AccessRequestApproverDetailsModel>> call, Throwable t) {
+                public void onFailure(@NotNull Call<List<AccessRequestApproverDetailsModel>> call, @NotNull Throwable t) {
                     dismissProgress();
                 }
             });
@@ -362,7 +362,7 @@ public class AccessRequestDetailsActivity extends AppCompatActivity implements V
             Call<List<ARPDModel>> response = anInterface.GetAccessRequestProcessorDetail(key, accessRequestNo, categoryId);
             response.enqueue(new Callback<List<ARPDModel>>() {
                 @Override
-                public void onResponse(Call<List<ARPDModel>> call, Response<List<ARPDModel>> response) {
+                public void onResponse(@NotNull Call<List<ARPDModel>> call, @NotNull Response<List<ARPDModel>> response) {
                     dismissProgress();
                     List<ARPDModel> responses = response.body();
 
@@ -422,7 +422,7 @@ public class AccessRequestDetailsActivity extends AppCompatActivity implements V
                 }
 
                 @Override
-                public void onFailure(Call<List<ARPDModel>> call, Throwable t) {
+                public void onFailure(@NotNull Call<List<ARPDModel>> call, @NotNull Throwable t) {
                     dismissProgress();
                 }
             });
@@ -437,7 +437,7 @@ public class AccessRequestDetailsActivity extends AppCompatActivity implements V
             Call<List<ARPDModel>> response = anInterface.GetAccessRequestProcessorDetailExt(key, accessRequestNo);
             response.enqueue(new Callback<List<ARPDModel>>() {
                 @Override
-                public void onResponse(Call<List<ARPDModel>> call, Response<List<ARPDModel>> response) {
+                public void onResponse(@NotNull Call<List<ARPDModel>> call, @NotNull Response<List<ARPDModel>> response) {
                     dismissProgress();
                     List<ARPDModel> responses = response.body();
 
@@ -497,7 +497,7 @@ public class AccessRequestDetailsActivity extends AppCompatActivity implements V
                 }
 
                 @Override
-                public void onFailure(Call<List<ARPDModel>> call, Throwable t) {
+                public void onFailure(@NotNull Call<List<ARPDModel>> call, @NotNull Throwable t) {
                     dismissProgress();
                 }
             });
@@ -514,7 +514,7 @@ public class AccessRequestDetailsActivity extends AppCompatActivity implements V
             Call<String> response = anInterface.IAMApprove(key, approvalId, accessRequestNo, empCode, approvalText, attachment, approvalLevel);
             response.enqueue(new Callback<String>() {
                 @Override
-                public void onResponse(Call<String> call, Response<String> response) {
+                public void onResponse(@NotNull Call<String> call, @NotNull Response<String> response) {
                     dismissProgress();
                     String responses = response.body();
 
@@ -531,7 +531,7 @@ public class AccessRequestDetailsActivity extends AppCompatActivity implements V
 
 
                 @Override
-                public void onFailure(Call<String> call, Throwable t) {
+                public void onFailure(@NotNull Call<String> call, @NotNull Throwable t) {
                     dismissProgress();
                 }
             });
@@ -548,7 +548,7 @@ public class AccessRequestDetailsActivity extends AppCompatActivity implements V
             Call<String> response = anInterface.IAMUnApprove(key, approvalId, accessRequestNo, empCode, rejectionText, attachment, approvalLevel);
             response.enqueue(new Callback<String>() {
                 @Override
-                public void onResponse(Call<String> call, Response<String> response) {
+                public void onResponse(@NotNull Call<String> call, @NotNull Response<String> response) {
                     dismissProgress();
                     String responses = response.body();
 
@@ -565,7 +565,7 @@ public class AccessRequestDetailsActivity extends AppCompatActivity implements V
 
 
                 @Override
-                public void onFailure(Call<String> call, Throwable t) {
+                public void onFailure(@NotNull Call<String> call, @NotNull Throwable t) {
                     dismissProgress();
                 }
             });
@@ -583,7 +583,7 @@ public class AccessRequestDetailsActivity extends AppCompatActivity implements V
             Call<String> response = anInterface.IAMBacktoRequestor(key, approvalId, accessRequestNo, empCode, rejectionText, attachment, approvalLevel);
             response.enqueue(new Callback<String>() {
                 @Override
-                public void onResponse(Call<String> call, Response<String> response) {
+                public void onResponse(@NotNull Call<String> call, @NotNull Response<String> response) {
                     dismissProgress();
                     String responses = response.body();
 
@@ -598,7 +598,7 @@ public class AccessRequestDetailsActivity extends AppCompatActivity implements V
 
 
                 @Override
-                public void onFailure(Call<String> call, Throwable t) {
+                public void onFailure(@NotNull Call<String> call, @NotNull Throwable t) {
                     dismissProgress();
                 }
             });

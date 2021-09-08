@@ -14,6 +14,8 @@ import com.minda.sparsh.model.AddAbnormality_Model;
 import com.minda.sparsh.util.RetrofitClient2;
 import com.minda.sparsh.util.Utility;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -117,7 +119,7 @@ public class MainActivity extends AppCompatActivity {
             Call<List<AddAbnormality_Model>> response = anInterface.GetPdf(type, RetrofitClient2.CKEY);
             response.enqueue(new Callback<List<AddAbnormality_Model>>() {
                 @Override
-                public void onResponse(Call<List<AddAbnormality_Model>> call, Response<List<AddAbnormality_Model>> response) {
+                public void onResponse(@NotNull Call<List<AddAbnormality_Model>> call, @NotNull Response<List<AddAbnormality_Model>> response) {
                     showProgress(false);
                     List<AddAbnormality_Model> pdfResponse = response.body();
                     if (pdfResponse != null && pdfResponse.size() > 0 && !pdfResponse.get(0).getColumn1().equalsIgnoreCase("")) {
@@ -129,7 +131,7 @@ public class MainActivity extends AppCompatActivity {
                 }
 
                 @Override
-                public void onFailure(Call<List<AddAbnormality_Model>> call, Throwable t) {
+                public void onFailure(@NotNull Call<List<AddAbnormality_Model>> call, @NotNull Throwable t) {
                     showProgress(false);
                 }
             });

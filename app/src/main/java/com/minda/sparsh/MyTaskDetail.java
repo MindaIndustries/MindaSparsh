@@ -4,7 +4,6 @@ import android.Manifest;
 import android.app.Activity;
 import android.content.ContentResolver;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
@@ -1255,36 +1254,33 @@ public class MyTaskDetail extends BaseActivity {
         subcat3List.clear();
 
         ITHelpDeskServices itHelpDeskServices = new ITHelpDeskServices();
-        itHelpDeskServices.getSubCat3(new OnTaskComplete() {
-            @Override
-            public void onTaskComplte(CarotResponse carotResponse) {
-                if (carotResponse.getStatuscode() == HttpsURLConnection.HTTP_OK) {
-                    List<AssetLocResponse> list = (List<AssetLocResponse>) carotResponse.getData();
-                    if (list != null && list.size() > 0) {
-                        subcat3List.addAll(list);
-                    }
-
-                    for (AssetLocResponse assetLocResponse : subcat3List) {
-                        if (assetLocResponse.getName() != null) {
-                            subcats3.add(assetLocResponse.getName());
-                        } else {
-                            subcats3.add(assetLocResponse.getNamecat3());
-                        }
-                    }
-
-                    if (myTicket != null && myTicket.getSubCat3() != null) {
-                        AssetLocResponse assetLocResponse = new AssetLocResponse();
-                        assetLocResponse.setId(myTicket.getSubCat3());
-                        int i = subcat3List.indexOf(assetLocResponse);
-                        if (i >= 0) {
-                            ticket_type_spinner_sub_cat3.setSelection(i + 1);
-                        }
-                    }
-                    subcat3Adapter.notifyDataSetChanged();
-
+        itHelpDeskServices.getSubCat3(carotResponse -> {
+            if (carotResponse.getStatuscode() == HttpsURLConnection.HTTP_OK) {
+                List<AssetLocResponse> list = (List<AssetLocResponse>) carotResponse.getData();
+                if (list != null && list.size() > 0) {
+                    subcat3List.addAll(list);
                 }
 
+                for (AssetLocResponse assetLocResponse : subcat3List) {
+                    if (assetLocResponse.getName() != null) {
+                        subcats3.add(assetLocResponse.getName());
+                    } else {
+                        subcats3.add(assetLocResponse.getNamecat3());
+                    }
+                }
+
+                if (myTicket != null && myTicket.getSubCat3() != null) {
+                    AssetLocResponse assetLocResponse = new AssetLocResponse();
+                    assetLocResponse.setId(myTicket.getSubCat3());
+                    int i = subcat3List.indexOf(assetLocResponse);
+                    if (i >= 0) {
+                        ticket_type_spinner_sub_cat3.setSelection(i + 1);
+                    }
+                }
+                subcat3Adapter.notifyDataSetChanged();
+
             }
+
         }, SubCat2, SubCat3, TicketType, UnitCode);
     }
 

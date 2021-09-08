@@ -56,6 +56,8 @@ import com.minda.sparsh.util.AbnormalityDashboard;
 import com.minda.sparsh.util.RetrofitClient2;
 import com.minda.sparsh.util.Utility;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
@@ -116,8 +118,8 @@ public class AbnormalityAddressingActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_abnormality_addressing);
-        toolbar =  findViewById(R.id.toolbar);
-        title =  findViewById(R.id.title);
+        toolbar = findViewById(R.id.toolbar);
+        title = findViewById(R.id.title);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
@@ -519,7 +521,7 @@ public class AbnormalityAddressingActivity extends AppCompatActivity {
 
     @TargetApi(Build.VERSION_CODES.M)
     @Override
-    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+    public void onRequestPermissionsResult(int requestCode, @NotNull String[] permissions, @NotNull int[] grantResults) {
 
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         switch (requestCode) {
@@ -715,7 +717,7 @@ public class AbnormalityAddressingActivity extends AppCompatActivity {
             Call<List<Group_Model>> response = promotingMyinterface.GetGroup();
             response.enqueue(new Callback<List<Group_Model>>() {
                 @Override
-                public void onResponse(Call<List<Group_Model>> call, Response<List<Group_Model>> response) {
+                public void onResponse(@NotNull Call<List<Group_Model>> call, @NotNull Response<List<Group_Model>> response) {
                     showProgress(false);
                     List<Group_Model> Groupresponse = response.body();
                     Group_Model group_model = new Group_Model();
@@ -733,7 +735,7 @@ public class AbnormalityAddressingActivity extends AppCompatActivity {
                 }
 
                 @Override
-                public void onFailure(Call<List<Group_Model>> call, Throwable t) {
+                public void onFailure(@NotNull Call<List<Group_Model>> call, @NotNull Throwable t) {
 
                     showProgress(false);
 
@@ -762,7 +764,7 @@ public class AbnormalityAddressingActivity extends AppCompatActivity {
             Call<List<Domain_Model>> response = promotingMyinterface.GetDomain(RetrofitClient2.CKEY);
             response.enqueue(new Callback<List<Domain_Model>>() {
                 @Override
-                public void onResponse(Call<List<Domain_Model>> call, Response<List<Domain_Model>> response) {
+                public void onResponse(@NotNull Call<List<Domain_Model>> call, @NotNull Response<List<Domain_Model>> response) {
                     showProgress(false);
                     Domainresponse = response.body();
                     Domain_Model domain_model = new Domain_Model();
@@ -790,7 +792,7 @@ public class AbnormalityAddressingActivity extends AppCompatActivity {
                 }
 
                 @Override
-                public void onFailure(Call<List<Domain_Model>> call, Throwable t) {
+                public void onFailure(@NotNull Call<List<Domain_Model>> call, @NotNull Throwable t) {
 
                     showProgress(false);
 
@@ -807,7 +809,7 @@ public class AbnormalityAddressingActivity extends AppCompatActivity {
             Call<List<Business_Model>> response = promotingMyinterface.GetBusiness(RetrofitClient2.CKEY, Domain);
             response.enqueue(new Callback<List<Business_Model>>() {
                 @Override
-                public void onResponse(Call<List<Business_Model>> call, Response<List<Business_Model>> response) {
+                public void onResponse(@NotNull Call<List<Business_Model>> call, @NotNull Response<List<Business_Model>> response) {
                     showProgress(false);
                     Businessresponse = response.body();
                     Business_Model business_Model = new Business_Model();
@@ -836,7 +838,7 @@ public class AbnormalityAddressingActivity extends AppCompatActivity {
                 }
 
                 @Override
-                public void onFailure(Call<List<Business_Model>> call, Throwable t) {
+                public void onFailure(@NotNull Call<List<Business_Model>> call, @NotNull Throwable t) {
 
                     showProgress(false);
 
@@ -853,7 +855,7 @@ public class AbnormalityAddressingActivity extends AppCompatActivity {
             Call<List<Plant_Model>> response = promotingMyinterface.GetPlant(RetrofitClient2.CKEY, empCode);
             response.enqueue(new Callback<List<Plant_Model>>() {
                 @Override
-                public void onResponse(Call<List<Plant_Model>> call, Response<List<Plant_Model>> response) {
+                public void onResponse(@NotNull Call<List<Plant_Model>> call, @NotNull Response<List<Plant_Model>> response) {
                     try {
                         showProgress(false);
                         Plantresponse = response.body();
@@ -884,7 +886,7 @@ public class AbnormalityAddressingActivity extends AppCompatActivity {
                 }
 
                 @Override
-                public void onFailure(Call<List<Plant_Model>> call, Throwable t) {
+                public void onFailure(@NotNull Call<List<Plant_Model>> call, @NotNull Throwable t) {
 
                     showProgress(false);
 
@@ -901,7 +903,7 @@ public class AbnormalityAddressingActivity extends AppCompatActivity {
             Call<List<Department_Model>> response = promotingMyinterface.GetDepartment(RetrofitClient2.CKEY);
             response.enqueue(new Callback<List<Department_Model>>() {
                 @Override
-                public void onResponse(Call<List<Department_Model>> call, Response<List<Department_Model>> response) {
+                public void onResponse(@NotNull Call<List<Department_Model>> call, @NotNull Response<List<Department_Model>> response) {
                     showProgress(false);
                     Departmentresponse.clear();
                     Department_Model department_model = new Department_Model();
@@ -923,7 +925,7 @@ public class AbnormalityAddressingActivity extends AppCompatActivity {
                 }
 
                 @Override
-                public void onFailure(Call<List<Department_Model>> call, Throwable t) {
+                public void onFailure(@NotNull Call<List<Department_Model>> call, @NotNull Throwable t) {
 
                     showProgress(false);
 
@@ -941,7 +943,7 @@ public class AbnormalityAddressingActivity extends AppCompatActivity {
             Call<List<AddAbnormality_Model>> response = promotingMyinterface.AddAbnormality(RetrofitClient2.CKEY, group, domain, business, plant, department, imagepath, description, benefits, abnormalitydate, UploadedBy, category);
             response.enqueue(new Callback<List<AddAbnormality_Model>>() {
                 @Override
-                public void onResponse(Call<List<AddAbnormality_Model>> call, Response<List<AddAbnormality_Model>> response) {
+                public void onResponse(@NotNull Call<List<AddAbnormality_Model>> call, @NotNull Response<List<AddAbnormality_Model>> response) {
                     //   showProgress(false);
                     progressBar.setVisibility(View.GONE);
                     tv_submit.setEnabled(true);
@@ -967,7 +969,7 @@ public class AbnormalityAddressingActivity extends AppCompatActivity {
                 }
 
                 @Override
-                public void onFailure(Call<List<AddAbnormality_Model>> call, Throwable t) {
+                public void onFailure(@NotNull Call<List<AddAbnormality_Model>> call, @NotNull Throwable t) {
                     progressBar.setVisibility(View.GONE);
                     tv_submit.setEnabled(true);
 
@@ -993,7 +995,7 @@ public class AbnormalityAddressingActivity extends AppCompatActivity {
         Call<List<CategoryAbnormality>> call = anInterface.getCategory(RetrofitClient2.CKEY);
         call.enqueue(new Callback<List<CategoryAbnormality>>() {
             @Override
-            public void onResponse(Call<List<CategoryAbnormality>> call, Response<List<CategoryAbnormality>> response) {
+            public void onResponse(@NotNull Call<List<CategoryAbnormality>> call, @NotNull Response<List<CategoryAbnormality>> response) {
                 showProgress(false);
                 List<CategoryAbnormality> list1 = response.body();
                 if (list1 != null && list1.size() > 0) {
@@ -1024,7 +1026,7 @@ public class AbnormalityAddressingActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onFailure(Call<List<CategoryAbnormality>> call, Throwable t) {
+            public void onFailure(@NotNull Call<List<CategoryAbnormality>> call, @NotNull Throwable t) {
                 showProgress(false);
             }
         });
@@ -1038,7 +1040,7 @@ public class AbnormalityAddressingActivity extends AppCompatActivity {
             Call<List<AbnormalityView_Model>> response = promotingMyinterface.GetAbnormalityDetail(RetrofitClient2.CKEY, plant, department, domain, business, category_id);
             response.enqueue(new Callback<List<AbnormalityView_Model>>() {
                 @Override
-                public void onResponse(Call<List<AbnormalityView_Model>> call, Response<List<AbnormalityView_Model>> response) {
+                public void onResponse(@NotNull Call<List<AbnormalityView_Model>> call, @NotNull Response<List<AbnormalityView_Model>> response) {
                     showProgress(false);
                     List<AbnormalityView_Model> AbnormalityDetail = response.body();
 
@@ -1053,8 +1055,7 @@ public class AbnormalityAddressingActivity extends AppCompatActivity {
                 }
 
                 @Override
-                public void onFailure(Call<List<AbnormalityView_Model>> call, Throwable t) {
-
+                public void onFailure(@NotNull Call<List<AbnormalityView_Model>> call, @NotNull Throwable t) {
                     showProgress(false);
 
                 }
@@ -1159,7 +1160,7 @@ public class AbnormalityAddressingActivity extends AppCompatActivity {
             Call<List<UserDetail_Model>> response = promotingMyinterface.GetUserDetail(RetrofitClient2.CKEY, Email);
             response.enqueue(new Callback<List<UserDetail_Model>>() {
                 @Override
-                public void onResponse(Call<List<UserDetail_Model>> call, Response<List<UserDetail_Model>> response) {
+                public void onResponse(@NotNull Call<List<UserDetail_Model>> call, @NotNull Response<List<UserDetail_Model>> response) {
                     showProgress(false);
                     List<UserDetail_Model> userDetail_models = response.body();
 
@@ -1181,7 +1182,7 @@ public class AbnormalityAddressingActivity extends AppCompatActivity {
                 }
 
                 @Override
-                public void onFailure(Call<List<UserDetail_Model>> call, Throwable t) {
+                public void onFailure(@NotNull Call<List<UserDetail_Model>> call, @NotNull Throwable t) {
 
                     showProgress(false);
 
@@ -1198,7 +1199,7 @@ public class AbnormalityAddressingActivity extends AppCompatActivity {
             Call<List<Sub_Department_Model>> response = promotingMyinterface.GetDepartmentDetail(RetrofitClient2.CKEY, departmentID);
             response.enqueue(new Callback<List<Sub_Department_Model>>() {
                 @Override
-                public void onResponse(Call<List<Sub_Department_Model>> call, Response<List<Sub_Department_Model>> response) {
+                public void onResponse(@NotNull Call<List<Sub_Department_Model>> call, @NotNull Response<List<Sub_Department_Model>> response) {
                     showProgress(false);
                     Subdepartmentresponse = response.body();
                     Sub_Department_Model sub_department_model = new Sub_Department_Model();
@@ -1214,7 +1215,7 @@ public class AbnormalityAddressingActivity extends AppCompatActivity {
                 }
 
                 @Override
-                public void onFailure(Call<List<Sub_Department_Model>> call, Throwable t) {
+                public void onFailure(@NotNull Call<List<Sub_Department_Model>> call, @NotNull Throwable t) {
                     showProgress(false);
                 }
             });

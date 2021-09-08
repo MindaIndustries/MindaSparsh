@@ -9,7 +9,6 @@ import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -27,6 +26,8 @@ import com.minda.sparsh.model.VersionModel;
 import com.minda.sparsh.parser.ParseData;
 import com.minda.sparsh.util.RetrofitClient2;
 import com.minda.sparsh.util.Utility;
+
+import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -254,14 +255,14 @@ public class LoginActivity extends AppCompatActivity {
             Call<List<NotificationModel>> loginResponse = loginInterface.ReadPushNot(UserId, deviceid, "mda@sPr$rZ#G!!");
             loginResponse.enqueue(new Callback<List<NotificationModel>>() {
                 @Override
-                public void onResponse(Call<List<NotificationModel>> call, Response<List<NotificationModel>> response) {
+                public void onResponse(@NotNull Call<List<NotificationModel>> call, @NotNull Response<List<NotificationModel>> response) {
 
                     List<NotificationModel> responseItem = response.body();
                     response.message();
                 }
 
                 @Override
-                public void onFailure(Call<List<NotificationModel>> call, Throwable t) {
+                public void onFailure(@NotNull Call<List<NotificationModel>> call, @NotNull Throwable t) {
 
 //                    Toast.makeText(mContext, "Something Wrong", Toast.LENGTH_LONG).show();
 
@@ -304,7 +305,7 @@ public class LoginActivity extends AppCompatActivity {
             Call<List<BannarModel>> Loginresponse = promotingMyinterface.GetBanner("");
             Loginresponse.enqueue(new Callback<List<BannarModel>>() {
                 @Override
-                public void onResponse(Call<List<BannarModel>> call, Response<List<BannarModel>> response) {
+                public void onResponse(@NotNull Call<List<BannarModel>> call, @NotNull Response<List<BannarModel>> response) {
                     showProgress(false);
                     List<BannarModel> BannarModel = response.body();
                     IMAGES.clear();
@@ -341,7 +342,7 @@ public class LoginActivity extends AppCompatActivity {
                 }
 
                 @Override
-                public void onFailure(Call<List<BannarModel>> call, Throwable t) {
+                public void onFailure(@NotNull Call<List<BannarModel>> call, @NotNull Throwable t) {
 
                     showProgress(false);
 
@@ -366,7 +367,7 @@ public class LoginActivity extends AppCompatActivity {
             Call<List<LoginResponse>> response = promotingMyinterface.GetLogin(userName, password, key);
             response.enqueue(new Callback<List<LoginResponse>>() {
                 @Override
-                public void onResponse(Call<List<LoginResponse>> call, Response<List<LoginResponse>> response) {
+                public void onResponse(@NotNull Call<List<LoginResponse>> call, @NotNull Response<List<LoginResponse>> response) {
                     showProgress(false);
                     List<LoginResponse> loginResponse = response.body();
                     if (loginResponse != null && loginResponse.size() > 0) {
@@ -429,7 +430,7 @@ public class LoginActivity extends AppCompatActivity {
                 }
 
                 @Override
-                public void onFailure(Call<List<LoginResponse>> call, Throwable t) {
+                public void onFailure(@NotNull Call<List<LoginResponse>> call, @NotNull Throwable t) {
                     showProgress(false);
                 }
             });
@@ -449,7 +450,7 @@ public class LoginActivity extends AppCompatActivity {
         Call<List<VersionModel>> call = anInterface.getAppVersion();
         call.enqueue(new Callback<List<VersionModel>>() {
             @Override
-            public void onResponse(Call<List<VersionModel>> call, Response<List<VersionModel>> response) {
+            public void onResponse(@NotNull Call<List<VersionModel>> call, @NotNull Response<List<VersionModel>> response) {
                 if (response.code() == HttpsURLConnection.HTTP_OK) {
                     List<VersionModel> list = response.body();
                     if (list != null && list.size() > 0) {
@@ -464,7 +465,7 @@ public class LoginActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onFailure(Call<List<VersionModel>> call, Throwable t) {
+            public void onFailure(@NotNull Call<List<VersionModel>> call, @NotNull Throwable t) {
                 System.out.println("Api failed");
 
             }

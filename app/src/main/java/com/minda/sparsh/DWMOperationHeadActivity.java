@@ -16,6 +16,9 @@ import com.minda.sparsh.model.DWMOprationDetailResponse;
 import com.minda.sparsh.model.DwmResponse;
 import com.minda.sparsh.util.RetrofitClient2;
 import com.minda.sparsh.util.Utility;
+
+import org.jetbrains.annotations.NotNull;
+
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -292,7 +295,7 @@ public class DWMOperationHeadActivity extends AppCompatActivity {
                     check_3_1.getText().toString(), check_C_3_1.getText().toString());
             response.enqueue(new Callback<List<DwmResponse>>() {
                 @Override
-                public void onResponse(Call<List<DwmResponse>> call, Response<List<DwmResponse>> response) {
+                public void onResponse(@NotNull Call<List<DwmResponse>> call, @NotNull Response<List<DwmResponse>> response) {
                     showProgress(false);
                     List<DwmResponse> Responsedata = response.body();
 
@@ -312,7 +315,7 @@ public class DWMOperationHeadActivity extends AppCompatActivity {
                 }
 
                 @Override
-                public void onFailure(Call<List<DwmResponse>> call, Throwable t) {
+                public void onFailure(@NotNull Call<List<DwmResponse>> call, @NotNull Throwable t) {
 
                     showProgress(false);
 
@@ -530,7 +533,7 @@ public class DWMOperationHeadActivity extends AppCompatActivity {
             Call<List<DWMOprationDetailResponse>> response = promotingMyinterface.GetGetOperationDetails(myPref.getString("Id", "Id"), date, RetrofitClient2.CKEY);
             response.enqueue(new Callback<List<DWMOprationDetailResponse>>() {
                 @Override
-                public void onResponse(Call<List<DWMOprationDetailResponse>> call, Response<List<DWMOprationDetailResponse>> response) {
+                public void onResponse(@NotNull Call<List<DWMOprationDetailResponse>> call, @NotNull Response<List<DWMOprationDetailResponse>> response) {
                     showProgress(false);
                     List<DWMOprationDetailResponse> Responsedata = response.body();
 //
@@ -552,7 +555,7 @@ public class DWMOperationHeadActivity extends AppCompatActivity {
                 }
 
                 @Override
-                public void onFailure(Call<List<DWMOprationDetailResponse>> call, Throwable t) {
+                public void onFailure(@NotNull Call<List<DWMOprationDetailResponse>> call, @NotNull Throwable t) {
 
                     showProgress(false);
 

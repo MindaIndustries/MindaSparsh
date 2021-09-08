@@ -26,6 +26,8 @@ import com.minda.sparsh.services.FirebaseService;
 import com.minda.sparsh.util.RetrofitClient2;
 import com.minda.sparsh.util.Utility;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -156,6 +158,7 @@ public class DashBoardActivity extends BaseActivity implements View.OnClickListe
             super(manager);
         }
 
+        @NotNull
         @Override
         public Fragment getItem(int position) {
             return mFragmentList.get(position);
@@ -183,7 +186,7 @@ public class DashBoardActivity extends BaseActivity implements View.OnClickListe
             Call<List<NotificationModel>> loginResponse = loginInterface.GetPushNot(UserId, "mda@sPr$rZ#G!!");
             loginResponse.enqueue(new Callback<List<NotificationModel>>() {
                 @Override
-                public void onResponse(Call<List<NotificationModel>> call, Response<List<NotificationModel>> response) {
+                public void onResponse(@NotNull Call<List<NotificationModel>> call, @NotNull Response<List<NotificationModel>> response) {
 
                     List<NotificationModel> responseItem = response.body();
                     response.message();
@@ -206,7 +209,7 @@ public class DashBoardActivity extends BaseActivity implements View.OnClickListe
                 }
 
                 @Override
-                public void onFailure(Call<List<NotificationModel>> call, Throwable t) {
+                public void onFailure(@NotNull Call<List<NotificationModel>> call, @NotNull Throwable t) {
                     Toast.makeText(DashBoardActivity.this, "Something Wrong", Toast.LENGTH_LONG).show();
 
 
@@ -334,7 +337,7 @@ public class DashBoardActivity extends BaseActivity implements View.OnClickListe
         Call<List<VersionModel>> call = anInterface.getAppVersion();
         call.enqueue(new Callback<List<VersionModel>>() {
             @Override
-            public void onResponse(Call<List<VersionModel>> call, Response<List<VersionModel>> response) {
+            public void onResponse(@NotNull Call<List<VersionModel>> call, @NotNull Response<List<VersionModel>> response) {
                 if (response.code() == HttpsURLConnection.HTTP_OK) {
                     List<VersionModel> list = response.body();
                     if (list != null && list.size() > 0) {
@@ -349,7 +352,7 @@ public class DashBoardActivity extends BaseActivity implements View.OnClickListe
             }
 
             @Override
-            public void onFailure(Call<List<VersionModel>> call, Throwable t) {
+            public void onFailure(@NotNull Call<List<VersionModel>> call, @NotNull Throwable t) {
                 System.out.println("Api failed");
 
             }

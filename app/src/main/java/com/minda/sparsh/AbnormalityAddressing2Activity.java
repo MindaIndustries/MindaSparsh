@@ -31,6 +31,8 @@ import com.minda.sparsh.model.AddAbnormality_Model;
 import com.minda.sparsh.util.RetrofitClient2;
 import com.minda.sparsh.util.Utility;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
@@ -233,9 +235,9 @@ public class AbnormalityAddressing2Activity extends AppCompatActivity {
         return (Build.VERSION.SDK_INT > Build.VERSION_CODES.LOLLIPOP_MR1);
     }
 
-    private void showMessageOKCancel(String message, DialogInterface.OnClickListener okListener) {
+    private void showMessageOKCancel(DialogInterface.OnClickListener okListener) {
         new AlertDialog.Builder(this)
-                .setMessage(message)
+                .setMessage("These permissions are mandatory for the application Please allow access")
                 .setPositiveButton("OK", okListener)
                 .setNegativeButton("Cancel", null)
                 .create()
@@ -244,7 +246,7 @@ public class AbnormalityAddressing2Activity extends AppCompatActivity {
 
     @TargetApi(Build.VERSION_CODES.M)
     @Override
-    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+    public void onRequestPermissionsResult(int requestCode, @NotNull String[] permissions, @NotNull int[] grantResults) {
 
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         switch (requestCode) {
@@ -264,7 +266,7 @@ public class AbnormalityAddressing2Activity extends AppCompatActivity {
 
                     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
                         if (shouldShowRequestPermissionRationale(permissionsRejected.get(0))) {
-                            showMessageOKCancel("These permissions are mandatory for the application Please allow access",
+                            showMessageOKCancel(
                                     (dialog, which) -> {
                                         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
 
@@ -438,7 +440,7 @@ public class AbnormalityAddressing2Activity extends AppCompatActivity {
             Call<List<AddAbnormality_Model>> response = promotingMyinterface.UpdateAbnormality(RetrofitClient2.CKEY, AbnormalID, ImagePathAfter, Action, ImplementationDate, benifits, UpdatedBy);
             response.enqueue(new Callback<List<AddAbnormality_Model>>() {
                 @Override
-                public void onResponse(Call<List<AddAbnormality_Model>> call, Response<List<AddAbnormality_Model>> response) {
+                public void onResponse(@NotNull Call<List<AddAbnormality_Model>> call, @NotNull Response<List<AddAbnormality_Model>> response) {
                     showProgress(false);
                     List<AddAbnormality_Model> Departmentresponse = response.body();
 
@@ -462,7 +464,7 @@ public class AbnormalityAddressing2Activity extends AppCompatActivity {
                 }
 
                 @Override
-                public void onFailure(Call<List<AddAbnormality_Model>> call, Throwable t) {
+                public void onFailure(@NotNull Call<List<AddAbnormality_Model>> call, @NotNull Throwable t) {
 
                     showProgress(false);
 

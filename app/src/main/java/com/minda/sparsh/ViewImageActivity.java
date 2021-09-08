@@ -15,6 +15,8 @@ import com.minda.sparsh.model.GetAbnormalityImage_Model;
 import com.minda.sparsh.util.RetrofitClient2;
 import com.minda.sparsh.util.Utility;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.util.List;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -58,7 +60,7 @@ public class ViewImageActivity extends AppCompatActivity {
             Call<List<GetAbnormalityImage_Model>> response = promotingMyinterface.GetAbnormalityImage(RetrofitClient2.CKEY, id);
             response.enqueue(new Callback<List<GetAbnormalityImage_Model>>() {
                 @Override
-                public void onResponse(Call<List<GetAbnormalityImage_Model>> call, Response<List<GetAbnormalityImage_Model>> response) {
+                public void onResponse(@NotNull Call<List<GetAbnormalityImage_Model>> call, @NotNull Response<List<GetAbnormalityImage_Model>> response) {
                     showProgress(false);
                     List<GetAbnormalityImage_Model> images = response.body();
 
@@ -78,7 +80,7 @@ public class ViewImageActivity extends AppCompatActivity {
                 }
 
                 @Override
-                public void onFailure(Call<List<GetAbnormalityImage_Model>> call, Throwable t) {
+                public void onFailure(@NotNull Call<List<GetAbnormalityImage_Model>> call, @NotNull Throwable t) {
 
                     showProgress(false);
 

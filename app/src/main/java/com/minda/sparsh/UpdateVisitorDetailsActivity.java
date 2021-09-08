@@ -9,6 +9,8 @@ import com.minda.sparsh.model.AddAbnormality_Model;
 import com.minda.sparsh.util.RetrofitClient2;
 import com.minda.sparsh.util.Utility;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.util.List;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -41,7 +43,7 @@ public class UpdateVisitorDetailsActivity extends AppCompatActivity {
             Call<List<AddAbnormality_Model>> response = anInterface.UpdateVisitorStatus(key, visitorId, status);
             response.enqueue(new Callback<List<AddAbnormality_Model>>() {
                 @Override
-                public void onResponse(Call<List<AddAbnormality_Model>> call, Response<List<AddAbnormality_Model>> response) {
+                public void onResponse(@NotNull Call<List<AddAbnormality_Model>> call, @NotNull Response<List<AddAbnormality_Model>> response) {
                     dismissProgress();
                     List<AddAbnormality_Model> approveLists = response.body();
 
@@ -60,7 +62,7 @@ public class UpdateVisitorDetailsActivity extends AppCompatActivity {
                 }
 
                 @Override
-                public void onFailure(Call<List<AddAbnormality_Model>> call, Throwable t) {
+                public void onFailure(@NotNull Call<List<AddAbnormality_Model>> call, @NotNull Throwable t) {
                     dismissProgress();
                 }
             });

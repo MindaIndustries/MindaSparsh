@@ -18,7 +18,8 @@ import com.minda.sparsh.model.DwmResponse;
 import com.minda.sparsh.util.RetrofitClient2;
 import com.minda.sparsh.util.Utility;
 
-import java.text.ParseException;
+import org.jetbrains.annotations.NotNull;
+
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -289,7 +290,7 @@ public class DWMMfgHeadActivity extends BaseActivity {
                     check_4_1.getText().toString(), check_C_4_1.getText().toString());
             response.enqueue(new Callback<List<DwmResponse>>() {
                 @Override
-                public void onResponse(Call<List<DwmResponse>> call, Response<List<DwmResponse>> response) {
+                public void onResponse(@NotNull Call<List<DwmResponse>> call, @NotNull Response<List<DwmResponse>> response) {
                     showProgress(false);
                     List<DwmResponse> Responsedata = response.body();
                     if (Responsedata != null) {
@@ -304,7 +305,7 @@ public class DWMMfgHeadActivity extends BaseActivity {
                 }
 
                 @Override
-                public void onFailure(Call<List<DwmResponse>> call, Throwable t) {
+                public void onFailure(@NotNull Call<List<DwmResponse>> call, @NotNull Throwable t) {
 
                     showProgress(false);
 
@@ -524,7 +525,7 @@ public class DWMMfgHeadActivity extends BaseActivity {
             Call<List<DWMDetailResponse>> response = promotingMyinterface.GetManufacturingDetails(myPref.getString("Id", "Id"), date, RetrofitClient2.CKEY);
             response.enqueue(new Callback<List<DWMDetailResponse>>() {
                 @Override
-                public void onResponse(Call<List<DWMDetailResponse>> call, Response<List<DWMDetailResponse>> response) {
+                public void onResponse(@NotNull Call<List<DWMDetailResponse>> call, @NotNull Response<List<DWMDetailResponse>> response) {
                     showProgress(false);
                     List<DWMDetailResponse> Responsedata = response.body();
 //
@@ -545,7 +546,7 @@ public class DWMMfgHeadActivity extends BaseActivity {
                 }
 
                 @Override
-                public void onFailure(Call<List<DWMDetailResponse>> call, Throwable t) {
+                public void onFailure(@NotNull Call<List<DWMDetailResponse>> call, @NotNull Throwable t) {
 
                     showProgress(false);
 

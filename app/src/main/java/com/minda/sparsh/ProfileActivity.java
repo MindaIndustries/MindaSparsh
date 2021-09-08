@@ -11,6 +11,8 @@ import com.minda.sparsh.model.LoginResponse;
 import com.minda.sparsh.util.RetrofitClient2;
 import com.minda.sparsh.util.Utility;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.util.Calendar;
 import java.util.List;
 
@@ -104,7 +106,7 @@ public class ProfileActivity extends BaseActivity {
             Call<List<LoginResponse>> response = promotingMyinterface.GetLogin(userName, password, key);
             response.enqueue(new Callback<List<LoginResponse>>() {
                 @Override
-                public void onResponse(Call<List<LoginResponse>> call, Response<List<LoginResponse>> response) {
+                public void onResponse(@NotNull Call<List<LoginResponse>> call, @NotNull Response<List<LoginResponse>> response) {
                     List<LoginResponse> loginResponse = response.body();
                     if (loginResponse != null) {
                         try {
@@ -149,7 +151,7 @@ public class ProfileActivity extends BaseActivity {
                 }
 
                 @Override
-                public void onFailure(Call<List<LoginResponse>> call, Throwable t) {
+                public void onFailure(@NotNull Call<List<LoginResponse>> call, @NotNull Throwable t) {
                 }
             });
         } else

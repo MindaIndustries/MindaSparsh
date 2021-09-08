@@ -143,7 +143,7 @@ public class RequestForAccessActivity extends AppCompatActivity implements View.
     @BindView(R.id.btn_cancel)
     Button btn_cancel;
 
-    ArrayList<String> catlistarray = new ArrayList<String>();
+    ArrayList<String> catlistarray = new ArrayList<>();
     String sp_request_type_id, sp_access_type_id, sp_access_category_id = "0", sp_access_sub_category_id = "0", sp_access_sub_type_id = "0",
             sp_user_authorization_profile_id = "0", sp_access_for_id, sp_source_id, sp_access_category_value = "0", sp_access_sub_category_value = "",
             sp_user_authorization_profile_value = "", catListValue = "", unitCheckId = "";
@@ -522,7 +522,7 @@ public class RequestForAccessActivity extends AppCompatActivity implements View.
             Call<List<IAMGetRequestTypeSpinnerModel>> response = promotingMyinterface.IAMGetRequestType(RetrofitClient2.CKEY);
             response.enqueue(new Callback<List<IAMGetRequestTypeSpinnerModel>>() {
                 @Override
-                public void onResponse(Call<List<IAMGetRequestTypeSpinnerModel>> call, Response<List<IAMGetRequestTypeSpinnerModel>> response) {
+                public void onResponse(@NotNull Call<List<IAMGetRequestTypeSpinnerModel>> call, @NotNull Response<List<IAMGetRequestTypeSpinnerModel>> response) {
                     showProgress(false);
                     List<IAMGetRequestTypeSpinnerModel> responseList = response.body();
                     if (responseList != null && responseList.size() > 0) {
@@ -537,7 +537,7 @@ public class RequestForAccessActivity extends AppCompatActivity implements View.
                 }
 
                 @Override
-                public void onFailure(Call<List<IAMGetRequestTypeSpinnerModel>> call, Throwable t) {
+                public void onFailure(@NotNull Call<List<IAMGetRequestTypeSpinnerModel>> call, @NotNull Throwable t) {
                     showProgress(false);
                 }
             });
@@ -553,7 +553,7 @@ public class RequestForAccessActivity extends AppCompatActivity implements View.
             Call<List<IAMGetAccessTypeSpinnerModel>> response = anInterface.IAMGetAccessType(RetrofitClient2.CKEY);
             response.enqueue(new Callback<List<IAMGetAccessTypeSpinnerModel>>() {
                 @Override
-                public void onResponse(Call<List<IAMGetAccessTypeSpinnerModel>> call, Response<List<IAMGetAccessTypeSpinnerModel>> response) {
+                public void onResponse(@NotNull Call<List<IAMGetAccessTypeSpinnerModel>> call, @NotNull Response<List<IAMGetAccessTypeSpinnerModel>> response) {
                     showProgress(false);
                     List<IAMGetAccessTypeSpinnerModel> responseList = response.body();
 
@@ -577,7 +577,7 @@ public class RequestForAccessActivity extends AppCompatActivity implements View.
                 }
 
                 @Override
-                public void onFailure(Call<List<IAMGetAccessTypeSpinnerModel>> call, Throwable t) {
+                public void onFailure(@NotNull Call<List<IAMGetAccessTypeSpinnerModel>> call, @NotNull Throwable t) {
                     showProgress(false);
                 }
             });
@@ -592,7 +592,7 @@ public class RequestForAccessActivity extends AppCompatActivity implements View.
             Call<List<IAMGetAccessSubTypeModel>> response = anInterface.IAMGetAccessSubType(accessType, RetrofitClient2.CKEY);
             response.enqueue(new Callback<List<IAMGetAccessSubTypeModel>>() {
                 @Override
-                public void onResponse(Call<List<IAMGetAccessSubTypeModel>> call, Response<List<IAMGetAccessSubTypeModel>> response) {
+                public void onResponse(@NotNull Call<List<IAMGetAccessSubTypeModel>> call, @NotNull Response<List<IAMGetAccessSubTypeModel>> response) {
                     showProgress(false);
                     if (response.body() != null && response.body().size() > 0) {
                         List<IAMGetAccessSubTypeModel> responseList = response.body();
@@ -609,7 +609,7 @@ public class RequestForAccessActivity extends AppCompatActivity implements View.
                 }
 
                 @Override
-                public void onFailure(Call<List<IAMGetAccessSubTypeModel>> call, Throwable t) {
+                public void onFailure(@NotNull Call<List<IAMGetAccessSubTypeModel>> call, @NotNull Throwable t) {
                     showProgress(false);
                 }
             });
@@ -625,7 +625,7 @@ public class RequestForAccessActivity extends AppCompatActivity implements View.
             Call<List<IAMGetCategorySpinnerModel>> response = anInterface.IAMGetCategory(requestType, RetrofitClient2.CKEY);
             response.enqueue(new Callback<List<IAMGetCategorySpinnerModel>>() {
                 @Override
-                public void onResponse(Call<List<IAMGetCategorySpinnerModel>> call, Response<List<IAMGetCategorySpinnerModel>> response) {
+                public void onResponse(@NotNull Call<List<IAMGetCategorySpinnerModel>> call, @NotNull Response<List<IAMGetCategorySpinnerModel>> response) {
                     showProgress(false);
                     if (response.body() != null && response.body().size() != 0) {
                         List<IAMGetCategorySpinnerModel> responseList;
@@ -638,7 +638,7 @@ public class RequestForAccessActivity extends AppCompatActivity implements View.
                             IAMGetCategoryAdapter mAdapter = new IAMGetCategoryAdapter(RequestForAccessActivity.this, responseList);
                             sp_access_category.setAdapter(mAdapter);
                         } else {
-                            final List<KeyPairBoolData> listArray = new ArrayList<KeyPairBoolData>();
+                            final List<KeyPairBoolData> listArray = new ArrayList<>();
 
                             for (int i = 0; i < responseList.size(); i++) {
                                 KeyPairBoolData h = new KeyPairBoolData();
@@ -665,7 +665,7 @@ public class RequestForAccessActivity extends AppCompatActivity implements View.
                 }
 
                 @Override
-                public void onFailure(Call<List<IAMGetCategorySpinnerModel>> call, Throwable t) {
+                public void onFailure(@NotNull Call<List<IAMGetCategorySpinnerModel>> call, @NotNull Throwable t) {
                     showProgress(false);
                 }
             });
@@ -680,7 +680,7 @@ public class RequestForAccessActivity extends AppCompatActivity implements View.
             Call<List<IAMGetSubCategoryModel>> response = anInterface.IAMGetSubCategory(categoryId, RetrofitClient2.CKEY);
             response.enqueue(new Callback<List<IAMGetSubCategoryModel>>() {
                 @Override
-                public void onResponse(Call<List<IAMGetSubCategoryModel>> call, Response<List<IAMGetSubCategoryModel>> response) {
+                public void onResponse(@NotNull Call<List<IAMGetSubCategoryModel>> call, @NotNull Response<List<IAMGetSubCategoryModel>> response) {
                     showProgress(false);
                     if (response.body() != null && response.body().size() != 0) {
                         List<IAMGetSubCategoryModel> responseList = response.body();
@@ -700,7 +700,7 @@ public class RequestForAccessActivity extends AppCompatActivity implements View.
                 }
 
                 @Override
-                public void onFailure(Call<List<IAMGetSubCategoryModel>> call, Throwable t) {
+                public void onFailure(@NotNull Call<List<IAMGetSubCategoryModel>> call, @NotNull Throwable t) {
                     showProgress(false);
                 }
             });
@@ -715,7 +715,7 @@ public class RequestForAccessActivity extends AppCompatActivity implements View.
             Call<List<IAMGetAuthorizationProfileModel>> response = anInterface.IAMGetAuthorizationProfile(categoryId, RetrofitClient2.CKEY);
             response.enqueue(new Callback<List<IAMGetAuthorizationProfileModel>>() {
                 @Override
-                public void onResponse(Call<List<IAMGetAuthorizationProfileModel>> call, Response<List<IAMGetAuthorizationProfileModel>> response) {
+                public void onResponse(@NotNull Call<List<IAMGetAuthorizationProfileModel>> call, @NotNull Response<List<IAMGetAuthorizationProfileModel>> response) {
                     showProgress(false);
                     if (response.body() != null && response.body().size() != 0) {
                         List<IAMGetAuthorizationProfileModel> responseList = response.body();
@@ -734,7 +734,7 @@ public class RequestForAccessActivity extends AppCompatActivity implements View.
                 }
 
                 @Override
-                public void onFailure(Call<List<IAMGetAuthorizationProfileModel>> call, Throwable t) {
+                public void onFailure(@NotNull Call<List<IAMGetAuthorizationProfileModel>> call, @NotNull Throwable t) {
                     showProgress(false);
                 }
             });
@@ -749,7 +749,7 @@ public class RequestForAccessActivity extends AppCompatActivity implements View.
             Call<List<IAMGetDomainModel>> response = anInterface.IAMGetDomain(RetrofitClient2.CKEY);
             response.enqueue(new Callback<List<IAMGetDomainModel>>() {
                 @Override
-                public void onResponse(Call<List<IAMGetDomainModel>> call, Response<List<IAMGetDomainModel>> response) {
+                public void onResponse(@NotNull Call<List<IAMGetDomainModel>> call, @NotNull Response<List<IAMGetDomainModel>> response) {
                     showProgress(false);
                     List<IAMGetDomainModel> responseList = response.body();
                     if (responseList != null && responseList.size() > 0) {
@@ -762,7 +762,7 @@ public class RequestForAccessActivity extends AppCompatActivity implements View.
                 }
 
                 @Override
-                public void onFailure(Call<List<IAMGetDomainModel>> call, Throwable t) {
+                public void onFailure(@NotNull Call<List<IAMGetDomainModel>> call, @NotNull Throwable t) {
                     showProgress(false);
                 }
             });
@@ -780,7 +780,7 @@ public class RequestForAccessActivity extends AppCompatActivity implements View.
             Call<List<IAMGetBusinessModel>> response = anInterface.IAMGetBusiness(domainId, RetrofitClient2.CKEY);
             response.enqueue(new Callback<List<IAMGetBusinessModel>>() {
                 @Override
-                public void onResponse(Call<List<IAMGetBusinessModel>> call, Response<List<IAMGetBusinessModel>> response) {
+                public void onResponse(@NotNull Call<List<IAMGetBusinessModel>> call, @NotNull Response<List<IAMGetBusinessModel>> response) {
                     showProgress(false);
                     List<IAMGetBusinessModel> responseList = response.body();
                     if (responseList != null && responseList.size() > 0) {
@@ -803,7 +803,7 @@ public class RequestForAccessActivity extends AppCompatActivity implements View.
                 }
 
                 @Override
-                public void onFailure(Call<List<IAMGetBusinessModel>> call, Throwable t) {
+                public void onFailure(@NotNull Call<List<IAMGetBusinessModel>> call, @NotNull Throwable t) {
                     showProgress(false);
                 }
             });
@@ -936,7 +936,7 @@ public class RequestForAccessActivity extends AppCompatActivity implements View.
         } else if (sp_access_type.getSelectedItemPosition() == 0 && sp_access_type.getVisibility() == View.VISIBLE) {
             Toast.makeText(RequestForAccessActivity.this, "Please Select Access Type", Toast.LENGTH_SHORT).show();
             return false;
-        } else if (TYPE != null && TYPE != "3" && sp_access_category.getSelectedItemPosition() == 0 && sp_access_category.getVisibility() == View.VISIBLE) {
+        } else if (TYPE != null && !TYPE.equals("3") && sp_access_category.getSelectedItemPosition() == 0 && sp_access_category.getVisibility() == View.VISIBLE) {
             Toast.makeText(RequestForAccessActivity.this, "Please Select Category", Toast.LENGTH_SHORT).show();
             return false;
         } else if (sp_access_sub_category.getSelectedItemPosition() == 0 && layAccessSubCategory.getVisibility() == View.VISIBLE) {

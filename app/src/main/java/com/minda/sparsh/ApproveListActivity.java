@@ -13,6 +13,8 @@ import com.minda.sparsh.model.ApproveList;
 import com.minda.sparsh.util.RetrofitClient2;
 import com.minda.sparsh.util.Utility;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -99,7 +101,7 @@ public class ApproveListActivity extends AppCompatActivity {
             Call<List<ApproveList>> response = anInterface.GetApprovalList(key, EmpCode);
             response.enqueue(new Callback<List<ApproveList>>() {
                 @Override
-                public void onResponse(Call<List<ApproveList>> call, Response<List<ApproveList>> response) {
+                public void onResponse(@NotNull Call<List<ApproveList>> call, @NotNull Response<List<ApproveList>> response) {
                     dismissProgress();
                     if (response.code() == HttpsURLConnection.HTTP_OK) {
                         List<ApproveList> approveLists1 = response.body();
@@ -120,7 +122,7 @@ public class ApproveListActivity extends AppCompatActivity {
                 }
 
                 @Override
-                public void onFailure(Call<List<ApproveList>> call, Throwable t) {
+                public void onFailure(@NotNull Call<List<ApproveList>> call, @NotNull Throwable t) {
                     dismissProgress();
                 }
             });

@@ -15,6 +15,8 @@ import com.minda.sparsh.util.Constant;
 import com.minda.sparsh.util.RetrofitClient2;
 import com.minda.sparsh.util.Utility;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.util.List;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -36,18 +38,16 @@ public class VisitorManagementListActivity extends AppCompatActivity implements 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_visitor_management_list);
-
         myPref = getSharedPreferences("MyPref", MODE_PRIVATE);
-
         progress = new ProgressDialog(VisitorManagementListActivity.this);
         progress.setMessage("Please wait...");
         progress.setProgressStyle(ProgressDialog.STYLE_SPINNER);
         progress.setIndeterminate(true);
-        btn_create =  findViewById(R.id.btn_create);
+        btn_create = findViewById(R.id.btn_create);
         btn_create.setOnClickListener(this);
-        im_back =  findViewById(R.id.im_back);
+        im_back = findViewById(R.id.im_back);
         im_back.setOnClickListener(view -> finish());
-        recyclerView =  findViewById(R.id.recycler_view);
+        recyclerView = findViewById(R.id.recycler_view);
         hitGetVisitorListApi(myPref.getString("Id", "Id"));
     }
 
@@ -58,12 +58,9 @@ public class VisitorManagementListActivity extends AppCompatActivity implements 
             Call<List<ViewAppointmentModel>> response = anInterface.GetVisitorList(RetrofitClient2.CKEY, EmpCode);
             response.enqueue(new Callback<List<ViewAppointmentModel>>() {
                 @Override
-                public void onResponse(Call<List<ViewAppointmentModel>> call, Response<List<ViewAppointmentModel>> response) {
+                public void onResponse(@NotNull Call<List<ViewAppointmentModel>> call, @NotNull Response<List<ViewAppointmentModel>> response) {
                     dismissProgress();
-
-
                     List<ViewAppointmentModel> visitorResponse = response.body();
-
                     if (visitorResponse != null && visitorResponse.size() > 0) {
                         if (!visitorResponse.get(0).getFirstName().equalsIgnoreCase("")) {
                             ViewAppointmentAdapter mAdapter = new ViewAppointmentAdapter(response.body(), VisitorManagementListActivity.this);
@@ -71,7 +68,6 @@ public class VisitorManagementListActivity extends AppCompatActivity implements 
                             recyclerView.setLayoutManager(mLayoutManager);
                             recyclerView.setItemAnimator(new DefaultItemAnimator());
                             recyclerView.setAdapter(mAdapter);
-
                         } else {
                             Toast.makeText(VisitorManagementListActivity.this, "Something went wrong", Toast.LENGTH_LONG).show();
                         }
@@ -79,7 +75,7 @@ public class VisitorManagementListActivity extends AppCompatActivity implements 
                 }
 
                 @Override
-                public void onFailure(Call<List<ViewAppointmentModel>> call, Throwable t) {
+                public void onFailure(@NotNull Call<List<ViewAppointmentModel>> call, @NotNull Throwable t) {
                     dismissProgress();
                 }
             });
@@ -119,6 +115,5 @@ public class VisitorManagementListActivity extends AppCompatActivity implements 
     protected void onResume() {
         super.onResume();
         hitGetVisitorListApi(myPref.getString("Id", "Id"));
-
     }
 }

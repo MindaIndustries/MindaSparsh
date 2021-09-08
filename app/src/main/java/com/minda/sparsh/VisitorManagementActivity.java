@@ -568,7 +568,7 @@ public class VisitorManagementActivity extends AppCompatActivity implements View
                     PinCode, Gender, Purpose, TimeIn, TimeOut, VisitingDate, AppointmentDate, UnitCode, AddPerson, id);
             response.enqueue(new Callback<List<AddAbnormality_Model>>() {
                 @Override
-                public void onResponse(Call<List<AddAbnormality_Model>> call, Response<List<AddAbnormality_Model>> response) {
+                public void onResponse(@NotNull Call<List<AddAbnormality_Model>> call, @NotNull Response<List<AddAbnormality_Model>> response) {
                     dismissProgress();
                     List<AddAbnormality_Model> visitorResponse = response.body();
 
@@ -584,7 +584,7 @@ public class VisitorManagementActivity extends AppCompatActivity implements View
                 }
 
                 @Override
-                public void onFailure(Call<List<AddAbnormality_Model>> call, Throwable t) {
+                public void onFailure(@NotNull Call<List<AddAbnormality_Model>> call, @NotNull Throwable t) {
                     dismissProgress();
                 }
             });
