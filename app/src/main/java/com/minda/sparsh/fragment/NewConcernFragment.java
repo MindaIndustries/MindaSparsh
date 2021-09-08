@@ -4,7 +4,6 @@ import android.Manifest;
 import android.app.Activity;
 import android.content.ContentResolver;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
@@ -21,7 +20,6 @@ import android.provider.MediaStore;
 import android.text.method.ScrollingMovementMethod;
 import android.util.Base64;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -37,8 +35,6 @@ import android.widget.Toast;
 import com.minda.sparsh.BottomUpConcernActivity;
 import com.minda.sparsh.R;
 import com.minda.sparsh.customview.NoDefaultSpinner;
-import com.minda.sparsh.listener.CarotResponse;
-import com.minda.sparsh.listener.OnTaskComplete;
 import com.minda.sparsh.model.EHSUnitModel;
 import com.minda.sparsh.model.SixMModel;
 import com.minda.sparsh.services.BottomUpConcernServices;
@@ -724,7 +720,7 @@ public class NewConcernFragment extends Fragment {
         attachtext.setText(attachmentName);
         bytes = new byte[(int) file.length()];
 
-        FileInputStream fis = null;
+        FileInputStream fis;
         try {
             fis = new FileInputStream(file);
             fis.read(bytes); //read file into bytes[]

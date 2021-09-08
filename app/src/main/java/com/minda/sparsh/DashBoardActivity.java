@@ -14,6 +14,7 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import com.google.android.material.tabs.TabLayout;
 import com.google.firebase.messaging.FirebaseMessaging;
 import com.minda.sparsh.fragment.FourFragment;
@@ -26,15 +27,18 @@ import com.minda.sparsh.model.VersionModel;
 import com.minda.sparsh.services.FirebaseService;
 import com.minda.sparsh.util.RetrofitClient2;
 import com.minda.sparsh.util.Utility;
+
 import org.jsoup.Jsoup;
+
 import java.util.ArrayList;
 import java.util.List;
+
 import javax.net.ssl.HttpsURLConnection;
+
 import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
-import androidx.viewpager.widget.ViewPager;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -58,15 +62,15 @@ public class DashBoardActivity extends BaseActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dash_board);
 
-        tv_unread = (TextView) findViewById(R.id.tv_unread);
-        tv_user_name = (TextView) findViewById(R.id.tv_user_name);
-        lay_logout = (RelativeLayout) findViewById(R.id.lay_logout);
-        viewPager = (ViewPager) findViewById(R.id.pager);
+        tv_unread = findViewById(R.id.tv_unread);
+        tv_user_name = findViewById(R.id.tv_user_name);
+        lay_logout = findViewById(R.id.lay_logout);
+        viewPager = findViewById(R.id.pager);
         myPref = getSharedPreferences("MyPref", Context.MODE_PRIVATE);
         empCode = myPref.getString("Id", "Id");
         User = myPref.getString("username", "");
         saveFirebaseToken(empCode);
-          getAppVersion();
+        getAppVersion();
 
         viewPager.setOffscreenPageLimit(0);
 
@@ -94,7 +98,7 @@ public class DashBoardActivity extends BaseActivity implements View.OnClickListe
         viewPager.setAdapter(adapter);
 
 
-        TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
+        TabLayout tabLayout = findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(viewPager);
 //        TimerTask timerTask = new TimerTask() {
 //            @Override
@@ -129,7 +133,7 @@ public class DashBoardActivity extends BaseActivity implements View.OnClickListe
 
     @Override
     public void onClick(View v) {
-      //  switch (v.getId()) {
+        //  switch (v.getId()) {
 //            case R.id.im_left:
 //                viewPager.setCurrentItem(getItem(-1), true);
 ////                if(getItem(-1)==0)
@@ -143,7 +147,7 @@ public class DashBoardActivity extends BaseActivity implements View.OnClickListe
 ////                else {im_right.setVisibility(View.VISIBLE);}
 //
 //                break;
-       // }
+        // }
     }
 
 
@@ -202,10 +206,7 @@ public class DashBoardActivity extends BaseActivity implements View.OnClickListe
 //                        }
 
 
-                    } else {
                     }
-
-
                 }
 
                 @Override
@@ -223,6 +224,7 @@ public class DashBoardActivity extends BaseActivity implements View.OnClickListe
         return viewPager.getCurrentItem() + i;
     }
 
+/*
     private class GetVersionCode extends AsyncTask<Void, String, String> {
 
         @Override
@@ -303,6 +305,7 @@ public class DashBoardActivity extends BaseActivity implements View.OnClickListe
 
 
     }
+*/
 
 
     public void saveFirebaseToken(String empCode) {
@@ -323,54 +326,53 @@ public class DashBoardActivity extends BaseActivity implements View.OnClickListe
     }
 
 
+    public void getAppVersion() {
+        try {
+            PackageInfo pInfo = getPackageManager().getPackageInfo(getPackageName(), 0);
+            version = String.valueOf(pInfo.versionCode);
+        } catch (PackageManager.NameNotFoundException e) {
+            e.printStackTrace();
+        }
 
-            public void getAppVersion() {
-                try {
-                    PackageInfo pInfo = getPackageManager().getPackageInfo(getPackageName(), 0);
-                    version = String.valueOf(pInfo.versionCode);
-                } catch (PackageManager.NameNotFoundException e) {
-                    e.printStackTrace();
-                }
-
-                Interface anInterface = RetrofitClient2.getClient().create(Interface.class);
-                Call<List<VersionModel>> call = anInterface.getAppVersion();
-                call.enqueue(new Callback<List<VersionModel>>() {
-                    @Override
-                    public void onResponse(Call<List<VersionModel>> call, Response<List<VersionModel>> response) {
-                        if (response.code() == HttpsURLConnection.HTTP_OK) {
-                            List<VersionModel> list = response.body();
-                            if (list != null && list.size() > 0) {
-                                if (list.get(0) != null && list.get(0).getAndriodVersion() != null) {
-                                    String androidVersion = list.get(0).getAndriodVersion().trim();
-                                    if (!version.equals(androidVersion)) {
-                                        showMsgUpdate();
-                                    }
-                                }
+        Interface anInterface = RetrofitClient2.getClient().create(Interface.class);
+        Call<List<VersionModel>> call = anInterface.getAppVersion();
+        call.enqueue(new Callback<List<VersionModel>>() {
+            @Override
+            public void onResponse(Call<List<VersionModel>> call, Response<List<VersionModel>> response) {
+                if (response.code() == HttpsURLConnection.HTTP_OK) {
+                    List<VersionModel> list = response.body();
+                    if (list != null && list.size() > 0) {
+                        if (list.get(0) != null && list.get(0).getAndriodVersion() != null) {
+                            String androidVersion = list.get(0).getAndriodVersion().trim();
+                            if (!version.equals(androidVersion)) {
+                                showMsgUpdate();
                             }
                         }
                     }
-
-                    @Override
-                    public void onFailure(Call<List<VersionModel>> call, Throwable t) {
-                        System.out.println("Api failed");
-
-                    }
-                });
+                }
             }
 
+            @Override
+            public void onFailure(Call<List<VersionModel>> call, Throwable t) {
+                System.out.println("Api failed");
 
-            public void showMsgUpdate() {
-                AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(DashBoardActivity.this, R.style.AlertDialogCustom);
-                alertDialogBuilder.setTitle("New Update");
-                alertDialogBuilder.setMessage("A new Version of Minda Sparsh is available on Play Store. Please Update.");
-                alertDialogBuilder.setCancelable(false);
-                alertDialogBuilder.setPositiveButton("OK", (arg0, arg1) -> {
-                    arg0.dismiss();
+            }
+        });
+    }
 
-                    //  finish();
-                    Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(RetrofitClient2.playstoreURL));
-                    startActivity(browserIntent);
-                });
+
+    public void showMsgUpdate() {
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(DashBoardActivity.this, R.style.AlertDialogCustom);
+        alertDialogBuilder.setTitle("New Update");
+        alertDialogBuilder.setMessage("A new Version of Minda Sparsh is available on Play Store. Please Update.");
+        alertDialogBuilder.setCancelable(false);
+        alertDialogBuilder.setPositiveButton("OK", (arg0, arg1) -> {
+            arg0.dismiss();
+
+            //  finish();
+            Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(RetrofitClient2.playstoreURL));
+            startActivity(browserIntent);
+        });
 
        /* alertDialogBuilder.setNegativeButton("CANCEL", new DialogInterface.OnClickListener() {
             @Override
@@ -380,8 +382,8 @@ public class DashBoardActivity extends BaseActivity implements View.OnClickListe
             }
         });
 */
-                AlertDialog alertDialog = alertDialogBuilder.create();
-                alertDialog.show();
-            }
-        }
+        AlertDialog alertDialog = alertDialogBuilder.create();
+        alertDialog.show();
+    }
+}
 

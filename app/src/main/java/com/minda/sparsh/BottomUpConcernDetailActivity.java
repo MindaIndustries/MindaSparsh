@@ -334,7 +334,7 @@ public class BottomUpConcernDetailActivity extends BaseActivity {
         if (Utility.isOnline(BottomUpConcernDetailActivity.this)) {
             name = bottomUpConcern.getESDocument();
             if (hasWritePermissions()) {
-                myPref.edit().putString("download", bottomUpConcern.getESDocument()).commit();
+                myPref.edit().putString("download", bottomUpConcern.getESDocument()).apply();
                 startImageDownload(bottomUpConcern.getESDocument());
             } else {
                 requestPermission();
@@ -350,7 +350,7 @@ public class BottomUpConcernDetailActivity extends BaseActivity {
         if (Utility.isOnline(BottomUpConcernDetailActivity.this)) {
             name = bottomUpConcern.getPSDocument();
             if (hasWritePermissions()) {
-                myPref.edit().putString("download", bottomUpConcern.getPSDocument()).commit();
+                myPref.edit().putString("download", bottomUpConcern.getPSDocument()).apply();
                 startImageDownload(bottomUpConcern.getPSDocument());
             } else {
                 requestPermission();
@@ -367,7 +367,7 @@ public class BottomUpConcernDetailActivity extends BaseActivity {
         if (Utility.isOnline(BottomUpConcernDetailActivity.this)) {
             name = bottomUpConcern.getBDocument();
             if (hasWritePermissions()) {
-                myPref.edit().putString("download", bottomUpConcern.getBDocument()).commit();
+                myPref.edit().putString("download", bottomUpConcern.getBDocument()).apply();
                 startImageDownload(bottomUpConcern.getBDocument());
             } else {
                 requestPermission();
@@ -414,14 +414,11 @@ public class BottomUpConcernDetailActivity extends BaseActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case android.R.id.home:
-                onBackPressed();
-                return true;
-
-            default:
-                return super.onOptionsItemSelected(item);
+        if (item.getItemId() == android.R.id.home) {
+            onBackPressed();
+            return true;
         }
+        return super.onOptionsItemSelected(item);
     }
 
 
