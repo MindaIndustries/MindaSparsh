@@ -889,7 +889,7 @@
                                     android:background="@drawable/dotted_background"
                                     android:gravity="center"
                                     android:imeOptions="actionDone"
-                                    android:textSize="18dp"
+                                    android:textSize="18sp"
 
                                     />
 
@@ -4477,7 +4477,8 @@
                                     android:text="Note:- \n 1)  Others activities to be done as per A-GAC E.g. MRBP, Budget, Detail Review, OS Meet, Open House, Appraisals, Supplier Meet, A+ Get Together, I-Meet, Strategic Meet, CIJ, PMS etc
 \n 2) Commercial Review will be separate"
                                     android:textSize="18sp"
-                                    android:paddingLeft="10dp"
+                                    android:paddingStart="10dp"
+                                    android:paddingEnd="10dp"
                                     android:gravity="left"
 
                                     />

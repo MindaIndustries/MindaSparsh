@@ -725,7 +725,7 @@
                             android:id="@+id/list_abnormalty"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:divider="@null"></ListView>
+                            android:divider="@null" />
                     </LinearLayout>
                 </HorizontalScrollView>
 

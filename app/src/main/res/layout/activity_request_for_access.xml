@@ -44,7 +44,7 @@
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
+            android:layout_marginStart="20dp"
             android:layout_weight="2"
             android:text="Request Access For"
             android:textColor="@color/white"
@@ -95,7 +95,7 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="5dp"
+                        android:layout_marginStart="5dp"
                         android:layout_marginTop="10dp"
                         android:fontFamily="@font/museosans_500"
                         android:text="Request Type" />
@@ -128,7 +128,7 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="5dp"
+                        android:layout_marginStart="5dp"
                         android:layout_marginTop="10dp"
                         android:fontFamily="@font/museosans_500"
                         android:text="Access Type" />
@@ -167,7 +167,7 @@
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="5dp"
+                            android:layout_marginStart="5dp"
                             android:layout_marginTop="10dp"
                             android:fontFamily="@font/museosans_500"
                             android:text="Access Sub-Type" />
@@ -208,7 +208,7 @@
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="5dp"
+                            android:layout_marginStart="5dp"
                             android:layout_marginTop="10dp"
                             android:fontFamily="@font/museosans_500"
                             android:text="Access Category" />
@@ -251,7 +251,7 @@
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="5dp"
+                            android:layout_marginStart="5dp"
                             android:layout_marginTop="10dp"
                             android:text="Access Category" />
 
@@ -275,7 +275,7 @@
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="5dp"
+                            android:layout_marginStart="5dp"
                             android:layout_marginTop="10dp"
                             android:text="Access Sub Category" />
 
@@ -316,7 +316,7 @@
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="5dp"
+                            android:layout_marginStart="5dp"
                             android:layout_marginTop="10dp"
                             android:text="User Authorization Profile" />
 
@@ -349,7 +349,7 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="5dp"
+                        android:layout_marginStart="5dp"
                         android:layout_marginTop="10dp"
                         android:fontFamily="@font/museosans_500"
                         android:text="Access For" />
@@ -391,7 +391,7 @@
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="5dp"
+                            android:layout_marginStart="5dp"
                             android:layout_marginTop="10dp"
                             android:text="Source" />
 
@@ -494,7 +494,7 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="5dp"
+                        android:layout_marginStart="5dp"
                         android:layout_marginTop="10dp"
                         android:fontFamily="@font/museosans_500"
                         android:text="Domain" />
@@ -519,7 +519,7 @@
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="5dp"
+                            android:layout_marginStart="5dp"
                             android:layout_marginTop="10dp"
                             android:text="Business" />
 
@@ -546,7 +546,7 @@
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="5dp"
+                            android:layout_marginStart="5dp"
                             android:layout_marginTop="10dp"
                             android:text="Plant" />
 
@@ -584,7 +584,7 @@
 -->
 
                 <TextView
-                    android:layout_marginLeft="5dp"
+                    android:layout_marginStart="5dp"
                     android:layout_marginTop="10dp"
                     android:fontFamily="@font/museosans_500"
                     android:text="Access Requirement Details"
@@ -622,7 +622,7 @@
 
                     <ImageView
                         android:layout_marginTop="10dp"
-                        android:layout_alignParentRight="true"
+                        android:layout_alignParentEnd="true"
                         android:src="@drawable/attach"
                         android:id="@+id/attachment1"
                         android:layout_width="wrap_content"
@@ -630,13 +630,13 @@
 
                     <TextView
                         android:layout_marginTop="10dp"
-                        android:layout_marginRight="10dp"
+                        android:layout_marginEnd="10dp"
                         android:layout_alignBottom="@+id/attachment"
                         android:layout_alignTop="@+id/attachment"
                         android:id="@+id/attachtext1"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_toLeftOf="@+id/attachment1"
+                        android:layout_toStartOf="@+id/attachment1"
                         android:text="Add attachment"
                         android:singleLine="true"
                         android:fontFamily="@font/museosans_500" />

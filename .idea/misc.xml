@@ -11,7 +11,7 @@
         <entry key="app/src/main/res/drawable/btn_bg_sbmt.xml" value="0.238671875" />
         <entry key="app/src/main/res/drawable/cardview_bg.xml" value="0.238671875" />
         <entry key="app/src/main/res/layout/abnormality.xml" value="0.1" />
-        <entry key="app/src/main/res/layout/activity_abnormality_addressing.xml" value="0.1046875" />
+        <entry key="app/src/main/res/layout/activity_abnormality_addressing.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_abnormality_addressing2.xml" value="0.1046875" />
         <entry key="app/src/main/res/layout/activity_abnormality_dashboard.xml" value="0.1046875" />
         <entry key="app/src/main/res/layout/activity_access_request_details.xml" value="0.1046875" />

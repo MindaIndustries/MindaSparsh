@@ -313,7 +313,7 @@
                     android:background="@drawable/cardview_bg"
                     android:maxLines="5"
                     android:hint="Type Benefit"
-                    android:scrollbars="vertical"></EditText>
+                    android:scrollbars="vertical" />
 
                 <ImageView
                     android:layout_marginTop="10dp"
