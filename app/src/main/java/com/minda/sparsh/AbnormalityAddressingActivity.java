@@ -14,8 +14,6 @@ import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.content.res.Configuration;
 import android.graphics.Bitmap;
-import android.graphics.Matrix;
-import android.media.ExifInterface;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -90,8 +88,8 @@ public class AbnormalityAddressingActivity extends AppCompatActivity {
     String sImage = "";
     int mYear, mMonth, mDay;
     private ArrayList<String> permissionsToRequest;
-    private ArrayList<String> permissionsRejected = new ArrayList<>();
-    private ArrayList<String> permissions = new ArrayList<>();
+    private final ArrayList<String> permissionsRejected = new ArrayList<>();
+    private final ArrayList<String> permissions = new ArrayList<>();
     private final static int ALL_PERMISSIONS_RESULT = 107;
     boolean pic_uploaded = false;
     private ProgressDialog progress = null;
@@ -118,48 +116,45 @@ public class AbnormalityAddressingActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_abnormality_addressing);
-        toolbar = (Toolbar) findViewById(R.id.toolbar);
-        title = (TextView) findViewById(R.id.title);
+        toolbar =  findViewById(R.id.toolbar);
+        title =  findViewById(R.id.title);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setHomeAsUpIndicator(R.drawable.back);
         title.setText(getResources().getString(R.string.abnormality));
-        lay_two = (LinearLayout) findViewById(R.id.lay_two);
-        lay_one = (LinearLayout) findViewById(R.id.lay_one);
-        lay_out = (LinearLayout) findViewById(R.id.lay_out);
-        list_abnormalty = (ListView) findViewById(R.id.list_abnormalty);
-        progressBar =(ProgressBar) findViewById(R.id.progressBar);
-        tv_view = (TextView) findViewById(R.id.tv_view);
-        tv_add = (TextView) findViewById(R.id.tv_add);
-        tv_upload = (TextView) findViewById(R.id.tv_upload);
-        Im_capture = (ImageView) findViewById(R.id.Im_capture);
-        sp_department = (Spinner) findViewById(R.id.sp_department);
-        sp_domain = (Spinner) findViewById(R.id.sp_domain);
+        lay_two = findViewById(R.id.lay_two);
+        lay_one = findViewById(R.id.lay_one);
+        lay_out = findViewById(R.id.lay_out);
+        list_abnormalty = findViewById(R.id.list_abnormalty);
+        progressBar = findViewById(R.id.progressBar);
+        tv_view = findViewById(R.id.tv_view);
+        tv_add = findViewById(R.id.tv_add);
+        tv_upload = findViewById(R.id.tv_upload);
+        Im_capture = findViewById(R.id.Im_capture);
+        sp_department = findViewById(R.id.sp_department);
+        sp_domain = findViewById(R.id.sp_domain);
 //        sp_group = (Spinner) findViewById(R.id.sp_group);
-        sp_business = (Spinner) findViewById(R.id.sp_business);
-        sp_sdepartment = (Spinner) findViewById(R.id.sp_sdepartment);
-        sp_category = (Spinner) findViewById(R.id.sp_category);
-        sp_plant = (Spinner) findViewById(R.id.sp_plant);
-        et_finddate = (TextView) findViewById(R.id.et_finddate);
-        et_descripton = (EditText) findViewById(R.id.et_descripton);
-        tv_submit = (TextView) findViewById(R.id.tv_submit);
-        im_back = (ImageView) findViewById(R.id.im_back);
+        sp_business = findViewById(R.id.sp_business);
+        sp_sdepartment = findViewById(R.id.sp_sdepartment);
+        sp_category = findViewById(R.id.sp_category);
+        sp_plant = findViewById(R.id.sp_plant);
+        et_finddate = findViewById(R.id.et_finddate);
+        et_descripton = findViewById(R.id.et_descripton);
+        tv_submit = findViewById(R.id.tv_submit);
+        im_back = findViewById(R.id.im_back);
         progress = new ProgressDialog(this);
         progress.setMessage("Please wait...");
         progress.setProgressStyle(ProgressDialog.STYLE_SPINNER);
         progress.setIndeterminate(true);
         myPref = getSharedPreferences("MyPref", Context.MODE_PRIVATE);
         empCode = myPref.getString("Id", "Id");
-        if(getIntent().getStringExtra("EDOMAIN") !=null && getIntent().getStringExtra("EDOMAIN").length()>0){
+        if (getIntent().getStringExtra("EDOMAIN") != null && getIntent().getStringExtra("EDOMAIN").length() > 0) {
             domainid = getIntent().getStringExtra("EDOMAIN");
-        }
-
-        else if(getIntent().getStringExtra("EBUSINESS")!=null && getIntent().getStringExtra("EBUSINESS").length()>0){
+        } else if (getIntent().getStringExtra("EBUSINESS") != null && getIntent().getStringExtra("EBUSINESS").length() > 0) {
             businessid = getIntent().getStringExtra("EBUSINESS");
 
-        }
-        else {
+        } else {
             plantid = getIntent().getStringExtra("EPLANT");
 
         }
@@ -170,11 +165,10 @@ public class AbnormalityAddressingActivity extends AppCompatActivity {
         if (getIntent().getExtras() != null) {
             if (getIntent().getBooleanExtra("ADD", false)) {
                 setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-                checkorentation();
             } else {
                 setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
-                checkorentation();
             }
+            checkorentation();
         }
 
 
@@ -885,7 +879,7 @@ public class AbnormalityAddressingActivity extends AppCompatActivity {
                             }
                         }
                     } catch (Exception e) {
-
+                        e.printStackTrace();
                     }
                 }
 
@@ -942,13 +936,13 @@ public class AbnormalityAddressingActivity extends AppCompatActivity {
     public void hitAddAbnormalityApi(String group, String domain, String business, String plant, String department, String imagepath, String description, String benefits, String abnormalitydate, String UploadedBy, int category) {
         if (Utility.isOnline(AbnormalityAddressingActivity.this)) {
             progressBar.setVisibility(View.VISIBLE);
-         //   showProgress(true);
+            //   showProgress(true);
             Interface promotingMyinterface = RetrofitClient2.getClient().create(Interface.class);
             Call<List<AddAbnormality_Model>> response = promotingMyinterface.AddAbnormality(RetrofitClient2.CKEY, group, domain, business, plant, department, imagepath, description, benefits, abnormalitydate, UploadedBy, category);
             response.enqueue(new Callback<List<AddAbnormality_Model>>() {
                 @Override
                 public void onResponse(Call<List<AddAbnormality_Model>> call, Response<List<AddAbnormality_Model>> response) {
-                 //   showProgress(false);
+                    //   showProgress(false);
                     progressBar.setVisibility(View.GONE);
                     tv_submit.setEnabled(true);
 
@@ -1274,32 +1268,22 @@ public class AbnormalityAddressingActivity extends AppCompatActivity {
         final AlertDialog.Builder builder1 = new AlertDialog.Builder(AbnormalityAddressingActivity.this);
         builder1.setMessage("Select View Or Add For Move Ahead");
         builder1.setTitle("Abnormality");
-        builder1.setOnCancelListener(new DialogInterface.OnCancelListener() {
-            @Override
-            public void onCancel(DialogInterface dialogInterface) {
-                finish();
-
-            }
-        });
+        builder1.setOnCancelListener(dialogInterface -> finish());
 
         builder1.setPositiveButton(
                 "Add",
-                new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int id) {
-                        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-                        checkorentation();
-                        dialog.dismiss();
-                    }
+                (dialog, id) -> {
+                    setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+                    checkorentation();
+                    dialog.dismiss();
                 });
 
         builder1.setNegativeButton(
                 "View",
-                new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int id) {
-                        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
-                        checkorentation();
-                        dialog.dismiss();
-                    }
+                (dialog, id) -> {
+                    setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+                    checkorentation();
+                    dialog.dismiss();
                 });
 
 
