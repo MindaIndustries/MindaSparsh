@@ -61,7 +61,7 @@
         <entry key="app/src/main/res/layout/fragment_iamdetails.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_manufacturing.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_new_appointment.xml" value="0.1" />
-        <entry key="app/src/main/res/layout/fragment_one.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/fragment_one.xml" value="0.4" />
         <entry key="app/src/main/res/layout/fragment_seven.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_six.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_three.xml" value="0.1" />
@@ -102,6 +102,8 @@
         <entry key="app/src/main/res/layout/view_bottom_up_detail.xml" value="0.1" />
         <entry key="app/src/main/res/layout/view_concern.xml" value="0.1" />
         <entry key="app/src/main/res/layout/view_ehs_img.xml" value="0.1" />
+        <entry key="app/src/main/res/menu/activity_base_drawer.xml" value="0.2234375" />
+        <entry key="app/src/main/res/menu/main_menu.xml" value="0.2234375" />
       </map>
     </option>
   </component>

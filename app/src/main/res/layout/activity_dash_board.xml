@@ -22,7 +22,7 @@
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
-                android:background="@drawable/toolbar_gradient"
+                android:background="#eb3045"
                 android:contentInsetStart="0dp"
                 android:contentInsetLeft="0dp"
                 android:contentInsetEnd="0dp"
@@ -46,7 +46,7 @@
                         android:layout_marginStart="-60dp"
                         android:fontFamily="@font/museosans_300"
                         android:gravity="center"
-                        android:text="Minda Sparsh"
+                        android:text=""
                         android:textColor="#ffffff"
                         android:textSize="18sp"
                         android:textStyle="bold" />
@@ -80,6 +80,7 @@
                             android:background="@drawable/notification_view"
                             android:gravity="center"
                             android:text="0"
+                            android:visibility="gone"
                             android:textColor="@color/white"
                             android:textSize="12sp" />
                     </RelativeLayout>

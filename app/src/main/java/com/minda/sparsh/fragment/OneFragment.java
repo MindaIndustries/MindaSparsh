@@ -12,6 +12,7 @@ import com.minda.sparsh.DashBoardActivity;
 import com.minda.sparsh.MainActivity;
 import com.minda.sparsh.R;
 
+import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 
 
@@ -37,30 +38,35 @@ public class OneFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_one, container, false);
         ImageView im_right =  view.findViewById(R.id.im_right);
-        jagritiButton =  view.findViewById(R.id.jagriti_btn);
+        CardView card_view = view.findViewById(R.id.card_view);
+        CardView card_view1 = view.findViewById(R.id.card_view1);
+        CardView card_view2= view.findViewById(R.id.card_view2);
+        CardView card_view3 = view.findViewById(R.id.card_view3);
+
+        //  jagritiButton =  view.findViewById(R.id.jagriti_btn);
         ImageView im_left =  view.findViewById(R.id.im_left);
         final DashBoardActivity contaxt = (DashBoardActivity) getActivity();
-        ImageButton ib_samwad = view.findViewById(R.id.ib_samwad);
-        ImageButton ib_engg =  view.findViewById(R.id.ib_engg);
-        ImageButton ib_manufacturing =  view.findViewById(R.id.ib_manufacturing);
+     //   ImageButton ib_samwad = view.findViewById(R.id.ib_samwad);
+       // ImageButton ib_engg =  view.findViewById(R.id.ib_engg);
+     //   ImageButton ib_manufacturing =  view.findViewById(R.id.ib_manufacturing);
         im_left.setOnClickListener(view1 -> contaxt.viewPager.setCurrentItem(contaxt.getItem(-1), true));
         im_right.setOnClickListener(view12 -> contaxt.viewPager.setCurrentItem(contaxt.getItem(+1), true));
-        jagritiButton.setOnClickListener(v -> {
+        card_view.setOnClickListener(v -> {
             Intent intent = new Intent(getActivity(), MainActivity.class);
             intent.putExtra("pdfType", "Jagriti");
             startActivity(intent);
         });
-        ib_samwad.setOnClickListener(view13 -> {
+        card_view2.setOnClickListener(view13 -> {
             Intent intent = new Intent(getActivity(), MainActivity.class);
             intent.putExtra("pdfType", "Samwad");
             startActivity(intent);
         });
-        ib_engg.setOnClickListener(view14 -> {
+        card_view3.setOnClickListener(view14 -> {
             Intent intent = new Intent(getActivity(), MainActivity.class);
             intent.putExtra("pdfType", "Engineering");
             startActivity(intent);
         });
-        ib_manufacturing.setOnClickListener(view15 -> {
+        card_view1.setOnClickListener(view15 -> {
             Intent intent = new Intent(getActivity(), MainActivity.class);
             intent.putExtra("pdfType", "Manufacturing");
             startActivity(intent);
