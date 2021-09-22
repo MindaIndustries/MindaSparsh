@@ -84,7 +84,7 @@
                         android:fontFamily="@font/museosans_700"
                         android:text="KEY HIGHLIGHTS"
                         android:textColor="@android:color/black"
-                        android:textSize="16sp" />
+                        android:textSize="18sp" />
 
                     <LinearLayout
                         android:padding="10dp"
@@ -95,34 +95,77 @@
                         android:orientation="vertical">
 
                         <LinearLayout
-                            android:padding="5dp"
-                            android:layout_weight="1"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content">
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:padding="5dp">
 
                             <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginRight="5dp"
                                 android:layout_weight="1"
                                 android:background="@drawable/about_us_bg"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content">
+                                android:padding="5dp">
+
                                 <ImageView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:src="@drawable/global"
-                                    />
+                                    android:src="@drawable/global" />
+
+                                <TextView
+                                    android:id="@+id/plants_glbl_value"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_alignParentRight="true"
+                                    android:fontFamily="@font/museosans_500"
+                                    android:text="71 "
+                                    android:textColor="@color/colorPrimary"
+                                    android:textSize="16sp" />
+
+                                <TextView
+                                    android:textColor="#000000"
+                                    android:id="@+id/plants_glbl"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_below="@+id/plants_glbl_value"
+                                    android:layout_alignParentRight="true"
+                                    android:fontFamily="@font/museosans_500"
+                                    android:text="Plants Globally" />
 
                             </RelativeLayout>
+
                             <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="5dp"
                                 android:layout_weight="1"
                                 android:background="@drawable/about_us_bg"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content">
+                                android:padding="5dp">
+
                                 <ImageView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:src="@drawable/global"
-                                    />
+                                    android:src="@drawable/joint_venture" />
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="18 "
+                                    android:layout_alignParentRight="true"
+                                    android:id="@+id/jv_value"
+                                    android:fontFamily="@font/museosans_500"
+                                    android:textColor="@color/colorPrimary"
+                                    android:textSize="16sp" />
 
+                                <TextView
+                                    android:textColor="#000000"
+                                    android:id="@+id/jv"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_below="@+id/jv_value"
+                                    android:layout_alignParentRight="true"
+                                    android:fontFamily="@font/museosans_500"
+                                    android:text="Joint Ventures" />
                             </RelativeLayout>
 
                         </LinearLayout>
@@ -133,18 +176,112 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content">
                             <RelativeLayout
+                                android:padding="5dp"
                                 android:layout_weight="1"
+                                android:layout_marginRight="5dp"
                                 android:background="@drawable/about_us_bg"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content">
+
                                 <ImageView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:src="@drawable/global"
-                                    />
+                                    android:src="@drawable/rnd" />
+                                <TextView
+                                    android:layout_alignParentRight="true"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="15+ "
+                                    android:id="@+id/rnd_center_value"
+                                    android:fontFamily="@font/museosans_500"
+                                    android:textColor="@color/colorPrimary"
+                                    android:textSize="16sp" />
 
+                                <TextView
+                                    android:textColor="#000000"
+                                    android:id="@+id/rnd_cntr"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_below="@+id/rnd_center_value"
+                                    android:layout_alignParentRight="true"
+                                    android:fontFamily="@font/museosans_500"
+                                    android:text="R&amp;D Centers" />
                             </RelativeLayout>
                             <RelativeLayout
+                                android:padding="5dp"
+                                android:layout_marginLeft="5dp"
+                                android:layout_weight="1"
+                                android:background="@drawable/about_us_bg"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content">
+
+                                <ImageView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:src="@drawable/cart" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="20+ "
+                                    android:layout_alignParentRight="true"
+                                    android:id="@+id/product_lines_value"
+                                    android:fontFamily="@font/museosans_500"
+                                    android:textColor="@color/colorPrimary"
+                                    android:textSize="16sp" />
+
+                                <TextView
+                                    android:textColor="#000000"
+                                    android:id="@+id/prd_lines"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_below="@+id/product_lines_value"
+                                    android:layout_alignParentRight="true"
+                                    android:fontFamily="@font/museosans_500"
+                                    android:text="Product Lines" />
+                            </RelativeLayout>
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_weight="1"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+                            <RelativeLayout
+                                android:padding="5dp"
+                                android:layout_weight="1"
+                                android:layout_marginRight="5dp"
+                                android:background="@drawable/about_us_bg"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content">
+
+                                <ImageView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:src="@drawable/group" />
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="275+ "
+                                    android:layout_alignParentRight="true"
+                                    android:id="@+id/product_patents_value"
+                                    android:fontFamily="@font/museosans_500"
+                                    android:textColor="@color/colorPrimary"
+                                    android:textSize="16sp" />
+
+                                <TextView
+                                    android:textColor="#000000"
+                                    android:id="@+id/prd_ptnt"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_below="@+id/product_patents_value"
+                                    android:layout_alignParentRight="true"
+                                    android:fontFamily="@font/museosans_500"
+                                    android:text="Product Patents" />
+                            </RelativeLayout>
+                            <RelativeLayout
+                                android:padding="5dp"
+                                android:layout_marginLeft="5dp"
                                 android:layout_weight="1"
                                 android:background="@drawable/about_us_bg"
                                 android:layout_width="match_parent"
@@ -152,8 +289,27 @@
                                 <ImageView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:src="@drawable/global"
+                                    android:src="@drawable/design"
                                     />
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="250+ "
+                                    android:layout_alignParentRight="true"
+                                    android:id="@+id/design_reg_value"
+                                    android:fontFamily="@font/museosans_500"
+                                    android:textColor="@color/colorPrimary"
+                                    android:textSize="16sp" />
+
+                                <TextView
+                                    android:textColor="#000000"
+                                    android:id="@+id/design_reg"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_below="@+id/design_reg_value"
+                                    android:layout_alignParentRight="true"
+                                    android:fontFamily="@font/museosans_500"
+                                    android:text="Design Registrations" />
 
                             </RelativeLayout>
 
@@ -164,6 +320,8 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content">
                             <RelativeLayout
+                                android:padding="5dp"
+                                android:layout_marginRight="5dp"
                                 android:layout_weight="1"
                                 android:background="@drawable/about_us_bg"
                                 android:layout_width="match_parent"
@@ -171,51 +329,62 @@
                                 <ImageView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:src="@drawable/global"
+                                    android:src="@drawable/grptrnover"
                                     />
+
+                                <TextView
+                                    android:id="@+id/trnover_value"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="74B"
+                                    android:layout_alignParentRight="true"
+                                    android:fontFamily="@font/museosans_500"
+                                    android:textColor="@color/colorPrimary"
+                                    android:textSize="16sp" />
+
+                                <TextView
+                                    android:id="@+id/grp"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_below="@+id/trnover_value"
+                                    android:layout_alignParentRight="true"
+                                    android:text=" Group Turnover FY21"
+                                    android:textColor="#000000" />
 
                             </RelativeLayout>
                             <RelativeLayout
+                                android:padding="5dp"
                                 android:layout_weight="1"
+                                android:layout_marginLeft="5dp"
                                 android:background="@drawable/about_us_bg"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content">
+
                                 <ImageView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:src="@drawable/global"
-                                    />
+                                    android:src="@drawable/acq" />
 
-                            </RelativeLayout>
-
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:layout_weight="1"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content">
-                            <RelativeLayout
-                                android:layout_weight="1"
-                                android:background="@drawable/about_us_bg"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content">
-                                <ImageView
+                                <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:src="@drawable/global"
-                                    />
+                                    android:text="6 "
+                                    android:layout_alignParentRight="true"
+                                    android:id="@+id/acquis_value"
+                                    android:fontFamily="@font/museosans_500"
+                                    android:textColor="@color/colorPrimary"
+                                    android:textSize="16sp"
+                                   />
 
-                            </RelativeLayout>
-                            <RelativeLayout
-                                android:layout_weight="1"
-                                android:background="@drawable/about_us_bg"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content">
-                                <ImageView
+                                <TextView
+                                    android:textColor="#000000"
+                                    android:id="@+id/acquis"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:src="@drawable/global"
-                                    />
+                                    android:layout_below="@+id/acquis_value"
+                                    android:layout_alignParentRight="true"
+                                    android:fontFamily="@font/museosans_500"
+                                    android:text="Acquisitions" />
 
                             </RelativeLayout>
 

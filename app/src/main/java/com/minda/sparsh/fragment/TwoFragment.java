@@ -43,13 +43,13 @@ public class TwoFragment extends Fragment {
     ImageView im_web;
   */  @BindView(R.id.im_right)
     ImageView im_right;
- /*   @BindView(R.id.trnover_value)
+    @BindView(R.id.trnover_value)
     TextView trnover_value;
     @BindView(R.id.grp)
     TextView grp;
-    @BindView(R.id.fy)
+   /* @BindView(R.id.fy)
     TextView fy;
-    @BindView(R.id.plants_glbl_value)
+   */ @BindView(R.id.plants_glbl_value)
     TextView plants_glbl_value;
     @BindView(R.id.plants_glbl)
     TextView plants_glbl;
@@ -79,7 +79,6 @@ public class TwoFragment extends Fragment {
     TextView design_reg;
 
 
-*/
 
     public TwoFragment() {
         // Required empty public constructor
@@ -143,10 +142,10 @@ public class TwoFragment extends Fragment {
                         if(list.get(0)!=null){
                             AboutUsDetails aboutUsDetails = list.get(0);
 
-                         /*   if(aboutUsDetails.getFY()!=null && aboutUsDetails.getFY().length()>0) {
+                           /* if(aboutUsDetails.getFY()!=null && aboutUsDetails.getFY().length()>0) {
                                 fy.setText(aboutUsDetails.getFY());
                             }
-                            if(aboutUsDetails.getGrpTrnOver()!=null && aboutUsDetails.getGrpTrnOver().length()>0){
+                           */ if(aboutUsDetails.getGrpTrnOver()!=null && aboutUsDetails.getGrpTrnOver().length()>0){
                                 trnover_value.setText(aboutUsDetails.getGrpTrnOver()+" ");
                             }
                             if(aboutUsDetails.getPlantsGlobally()!=null && aboutUsDetails.getPlantsGlobally().length()>0){
@@ -169,7 +168,7 @@ public class TwoFragment extends Fragment {
                             }
                             if(aboutUsDetails.getDesignRegsistration()!=null && aboutUsDetails.getDesignRegsistration().length()>0){
                                 design_reg_value.setText(aboutUsDetails.getDesignRegsistration());
-                            }*/
+                            }
                         }
                     }
                 }
