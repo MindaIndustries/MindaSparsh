@@ -70,13 +70,15 @@
                 <Button
                     android:id="@+id/btn_view"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="40dp"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp"
                     android:layout_margin="5dp"
-                    android:background="@color/red"
+                    android:background="@color/colorPrimary"
                     android:text="View Details"
                     android:textAllCaps="false"
                     android:textColor="@color/white"
-                    android:textSize="10sp" />
+                    android:textSize="12sp" />
             </LinearLayout>
 
 

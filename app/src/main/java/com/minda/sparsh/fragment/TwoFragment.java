@@ -38,11 +38,12 @@ public class TwoFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    @BindView(R.id.im_web)
+
+  /*  @BindView(R.id.im_web)
     ImageView im_web;
-    @BindView(R.id.im_right)
+  */  @BindView(R.id.im_right)
     ImageView im_right;
-    @BindView(R.id.trnover_value)
+ /*   @BindView(R.id.trnover_value)
     TextView trnover_value;
     @BindView(R.id.grp)
     TextView grp;
@@ -78,6 +79,7 @@ public class TwoFragment extends Fragment {
     TextView design_reg;
 
 
+*/
 
     public TwoFragment() {
         // Required empty public constructor
@@ -116,14 +118,14 @@ public class TwoFragment extends Fragment {
         im_right.setOnClickListener(view1 -> contaxt.viewPager.setCurrentItem(contaxt.getItem(+1), true));
 
 
-        im_web.setOnClickListener(view12 -> {
+        /*im_web.setOnClickListener(view12 -> {
             String url = "https://unominda.com";
             Intent i = new Intent(Intent.ACTION_VIEW);
             i.setData(Uri.parse(url));
             startActivity(i);
 
         });
-        // Inflate the layout for this fragment
+        */// Inflate the layout for this fragment
         return view;
     }
 
@@ -141,7 +143,7 @@ public class TwoFragment extends Fragment {
                         if(list.get(0)!=null){
                             AboutUsDetails aboutUsDetails = list.get(0);
 
-                            if(aboutUsDetails.getFY()!=null && aboutUsDetails.getFY().length()>0) {
+                         /*   if(aboutUsDetails.getFY()!=null && aboutUsDetails.getFY().length()>0) {
                                 fy.setText(aboutUsDetails.getFY());
                             }
                             if(aboutUsDetails.getGrpTrnOver()!=null && aboutUsDetails.getGrpTrnOver().length()>0){
@@ -167,7 +169,7 @@ public class TwoFragment extends Fragment {
                             }
                             if(aboutUsDetails.getDesignRegsistration()!=null && aboutUsDetails.getDesignRegsistration().length()>0){
                                 design_reg_value.setText(aboutUsDetails.getDesignRegsistration());
-                            }
+                            }*/
                         }
                     }
                 }

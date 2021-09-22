@@ -28,6 +28,7 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Set;
 
+import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -40,6 +41,7 @@ public class ManufacturingFragment extends Fragment {
     private ProgressDialog progress = null;
     SharedPreferences myPref;
     Set<String> loginAccess;
+    CardView cardView,cardView1,cardView2;
 
     public ManufacturingFragment() {
         // Required empty public constructor
@@ -58,8 +60,14 @@ public class ManufacturingFragment extends Fragment {
         // Inflate the layout for this fragment
         View convertView = inflater.inflate(R.layout.fragment_manufacturing, container, false);
         dmwButton = convertView.findViewById(R.id.dwm_btn);
-        dwm_btn1 = convertView.findViewById(R.id.dwm_btn1);
-        ehs = convertView.findViewById(R.id.ehs);
+       // dwm_btn1 = convertView.findViewById(R.id.dwm_btn1);
+        //ehs = convertView.findViewById(R.id.ehs);
+        cardView = convertView.findViewById(R.id.card_view);
+        cardView1 = convertView.findViewById(R.id.card_view1);
+        cardView2 = convertView.findViewById(R.id.card_view2);
+
+
+
         ImageView im_right = convertView.findViewById(R.id.im_right);
         ImageView im_left = convertView.findViewById(R.id.im_left);
         progress = new ProgressDialog(getActivity());
@@ -73,14 +81,14 @@ public class ManufacturingFragment extends Fragment {
         im_right.setOnClickListener(view -> contaxt.viewPager.setCurrentItem(contaxt.getItem(+1), true));
         im_left.setOnClickListener(view -> contaxt.viewPager.setCurrentItem(contaxt.getItem(-1), true));
 
-        ehs.setOnClickListener(v -> {
+        cardView2.setOnClickListener(v -> {
             Intent in = new Intent(getActivity(), EHS_Home.class);
             startActivity(in);
 
         });
         // Inflate the layout for this fragment
 
-        dmwButton.setOnClickListener(v -> {
+        cardView.setOnClickListener(v -> {
 
             try {
                 if (loginAccess.contains("dwm") || loginAccess.contains("DWM") ||
@@ -96,7 +104,7 @@ public class ManufacturingFragment extends Fragment {
             }
 
         });
-        dwm_btn1.setOnClickListener(view -> hitGetUserDetail(myPref.getString("Id", "")));
+        cardView1.setOnClickListener(view -> hitGetUserDetail(myPref.getString("Id", "")));
         return convertView;
     }
 

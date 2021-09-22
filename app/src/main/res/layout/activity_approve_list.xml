@@ -6,6 +6,7 @@
     <include layout="@layout/toolbar" />
 
     <RelativeLayout
+        android:visibility="gone"
         android:layout_marginTop="?android:attr/actionBarSize"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -34,7 +35,7 @@
             android:visibility="gone"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:background="@drawable/toolbar_gradient"
+            android:background="#eb3045"
             android:gravity="center_vertical">
 
             <ImageView
@@ -73,7 +74,7 @@
                 android:stretchColumns="*">
 
                 <TableRow
-                    android:background="@color/colorPrimary"
+                    android:background="#eb3045"
                     android:weightSum="5">
 
                     <TextView

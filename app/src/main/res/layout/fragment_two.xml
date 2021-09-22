@@ -1,19 +1,21 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:layout_height="match_parent">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
         <LinearLayout
+            android:id="@+id/heading"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:gravity="center"
             android:orientation="vertical">
 
             <LinearLayout
+
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="20dp"
@@ -23,258 +25,13 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/museosans_500"
+                    android:fontFamily="@font/museosans_700"
                     android:gravity="center"
                     android:padding="5dp"
                     android:text="ABOUT US"
                     android:textColor="#000000"
                     android:textSize="18sp" />
 
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1.5dp"
-                    android:background="@drawable/gradientline" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_marginLeft="40dp"
-                    android:layout_marginRight="40dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/roundcornerholo"
-                    android:gravity="center"
-                    android:orientation="vertical">
-
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content">
-
-                        <TextView
-                            android:id="@+id/trnover_value"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="74B"
-                            android:fontFamily="@font/museosans_500"
-                            android:textColor="@color/colorPrimary"
-                            android:textSize="16sp" />
-
-                        <TextView
-                            android:id="@+id/grp"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text=" Group Turnover"
-                            android:textColor="#000000"
-                            android:fontFamily="@font/museosans_500"
-                            android:textStyle="italic" />
-
-                        <TextView
-                            android:id="@+id/fy"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text=" (FY21)"
-                            android:textColor="#000000"
-                            android:fontFamily="@font/museosans_500"
-                            android:textStyle="italic" />
-
-
-                    </LinearLayout>
-
-
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content">
-
-                        <TextView
-                            android:id="@+id/plants_glbl_value"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="71 "
-                            android:fontFamily="@font/museosans_500"
-                            android:textColor="@color/colorPrimary"
-                            android:textSize="16sp" />
-
-                        <TextView
-                            android:id="@+id/plants_glbl"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Plants Globally"
-                            android:fontFamily="@font/museosans_500"
-                            android:textColor="#000000"
-                            android:textStyle="italic" />
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="18 "
-                            android:id="@+id/jv_value"
-                            android:fontFamily="@font/museosans_500"
-                            android:textColor="@color/colorPrimary"
-                            android:textSize="16sp" />
-
-                        <TextView
-                            android:id="@+id/jv"
-                            android:fontFamily="@font/museosans_500"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Joint Ventures/Associations"
-                            android:textColor="#000000"
-                            android:textStyle="italic" />
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:visibility="visible"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="6 "
-                            android:id="@+id/acquis_value"
-                            android:fontFamily="@font/museosans_500"
-                            android:textColor="@color/colorPrimary"
-                            android:textSize="16sp" />
-
-                        <TextView
-                            android:id="@+id/acquis"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Acquisitions"
-                            android:fontFamily="@font/museosans_500"
-                            android:textColor="#000000"
-                            android:textStyle="italic" />
-                    </LinearLayout>
-
-
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="15+ "
-                            android:id="@+id/rnd_center_value"
-                            android:fontFamily="@font/museosans_500"
-                            android:textColor="@color/colorPrimary"
-                            android:textSize="16sp" />
-
-                        <TextView
-                            android:id="@+id/rnd_cntr"
-
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="R&amp;D Centers"
-                            android:fontFamily="@font/museosans_500"
-                            android:textColor="#000000"
-                            android:textStyle="italic" />
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="20+ "
-                            android:id="@+id/product_lines_value"
-                            android:fontFamily="@font/museosans_500"
-                            android:textColor="@color/colorPrimary"
-                            android:textSize="16sp" />
-
-                        <TextView
-                            android:id="@+id/prd_lines"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Product Lines"
-                            android:fontFamily="@font/museosans_500"
-                            android:textColor="#000000"
-                            android:textStyle="italic" />
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="275+ "
-                            android:id="@+id/product_patents_value"
-                            android:fontFamily="@font/museosans_500"
-                            android:textColor="@color/colorPrimary"
-                            android:textSize="16sp" />
-
-                        <TextView
-                            android:id="@+id/prd_ptnt"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Product Patents"
-                            android:fontFamily="@font/museosans_500"
-                            android:textColor="#000000"
-                            android:textStyle="italic" />
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="250+ "
-                            android:id="@+id/design_reg_value"
-                            android:fontFamily="@font/museosans_500"
-                            android:textColor="@color/colorPrimary"
-                            android:textSize="16sp" />
-
-                        <TextView
-                            android:id="@+id/design_reg"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Design Registrations"
-                            android:fontFamily="@font/museosans_500"
-                            android:textColor="#000000"
-                            android:textStyle="italic" />
-                    </LinearLayout>
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="1">
-
-                    <ImageView
-                        android:id="@+id/im_web"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:adjustViewBounds="false"
-                        android:scaleType="fitCenter"
-                        android:src="@drawable/car2" />
-
-
-                </LinearLayout>
-
-
-                <!--<ImageView-->
-
-                <!--android:layout_width="match_parent"-->
-
-                <!--android:layout_height="match_parent"-->
-                <!--android:src="@drawable/about_back"-->
-                <!--android:textColor="@color/colorPrimary"/>-->
             </LinearLayout>
 
 
@@ -286,26 +43,192 @@
             android:layout_height="35dp"
             android:layout_alignParentEnd="true"
             android:layout_marginTop="20dp"
-            app:tint="@android:color/black"
-            android:src="@drawable/right_arrow" />
+            android:src="@drawable/right_arrow"
+            app:tint="@android:color/black" />
 
-        <ImageView
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentBottom="true"
-            android:src="@drawable/iconiclogo"
-            android:layout_width="80dp"
-            android:visibility="gone"
-            android:layout_height="80dp" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/heading"
+            android:orientation="vertical">
 
-        <TextView
-            android:padding="5dp"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentBottom="true"
-            android:text="Since 1958"
-            android:fontFamily="@font/museosans_500"
-            android:textColor="@color/colorPrimary"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="25">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:adjustViewBounds="true"
+                    android:scaleType="center"
+                    android:src="@drawable/banner" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="75">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="20dp">
+
+                    <TextView
+                        android:id="@+id/highlights"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:fontFamily="@font/museosans_700"
+                        android:text="KEY HIGHLIGHTS"
+                        android:textColor="@android:color/black"
+                        android:textSize="16sp" />
+
+                    <LinearLayout
+                        android:padding="10dp"
+                        android:weightSum="4"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_below="@+id/highlights"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:padding="5dp"
+                            android:layout_weight="1"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <RelativeLayout
+                                android:layout_weight="1"
+                                android:background="@drawable/about_us_bg"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content">
+                                <ImageView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:src="@drawable/global"
+                                    />
+
+                            </RelativeLayout>
+                            <RelativeLayout
+                                android:layout_weight="1"
+                                android:background="@drawable/about_us_bg"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content">
+                                <ImageView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:src="@drawable/global"
+                                    />
+
+                            </RelativeLayout>
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:orientation="horizontal"
+                            android:layout_weight="1"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+                            <RelativeLayout
+                                android:layout_weight="1"
+                                android:background="@drawable/about_us_bg"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content">
+                                <ImageView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:src="@drawable/global"
+                                    />
+
+                            </RelativeLayout>
+                            <RelativeLayout
+                                android:layout_weight="1"
+                                android:background="@drawable/about_us_bg"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content">
+                                <ImageView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:src="@drawable/global"
+                                    />
+
+                            </RelativeLayout>
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_weight="1"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+                            <RelativeLayout
+                                android:layout_weight="1"
+                                android:background="@drawable/about_us_bg"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content">
+                                <ImageView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:src="@drawable/global"
+                                    />
+
+                            </RelativeLayout>
+                            <RelativeLayout
+                                android:layout_weight="1"
+                                android:background="@drawable/about_us_bg"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content">
+                                <ImageView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:src="@drawable/global"
+                                    />
+
+                            </RelativeLayout>
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_weight="1"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+                            <RelativeLayout
+                                android:layout_weight="1"
+                                android:background="@drawable/about_us_bg"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content">
+                                <ImageView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:src="@drawable/global"
+                                    />
+
+                            </RelativeLayout>
+                            <RelativeLayout
+                                android:layout_weight="1"
+                                android:background="@drawable/about_us_bg"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content">
+                                <ImageView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:src="@drawable/global"
+                                    />
+
+                            </RelativeLayout>
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                </RelativeLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
 
     </RelativeLayout>
 

@@ -9,7 +9,7 @@
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="?android:attr/actionBarSize"
-        android:background="@drawable/toolbar_gradient"
+        android:background="#eb3045"
         app:popupTheme="@style/AppTheme.PopupOverlay"
         app:contentInsetStartWithNavigation="0dp"
         android:contentInsetLeft="0dp"
