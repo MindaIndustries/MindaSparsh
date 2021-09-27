@@ -9,9 +9,11 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.minda.sparsh.ChangeRequest;
 import com.minda.sparsh.DashBoardActivity;
 import com.minda.sparsh.ITHelpDeskHome;
 import com.minda.sparsh.IdentityAccessManagementActivity;
+import com.minda.sparsh.MindacareWeb;
 import com.minda.sparsh.R;
 
 import androidx.cardview.widget.CardView;
@@ -38,6 +40,8 @@ public class FourFragment extends Fragment {
         ImageView im_right = view.findViewById(R.id.im_right);
         ImageView im_left = view.findViewById(R.id.im_left);
         CardView card_view = view.findViewById(R.id.card_view);
+        CardView card_view1 = view.findViewById(R.id.card_view1);
+        CardView card_view2 = view.findViewById(R.id.card_view2);
        // ImageButton im_identity_access_management = view.findViewById(R.id.im_identity_access_management);
         ImageButton im_change_request_from = view.findViewById(R.id.im_change_request_from);
         ImageButton it_help_desk = view.findViewById(R.id.it_help_desk);
@@ -50,6 +54,21 @@ public class FourFragment extends Fragment {
             Intent intent = new Intent(getActivity(), IdentityAccessManagementActivity.class);
             contaxt.startActivity(intent);
         });
+        card_view1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent in = new Intent(getActivity(), MindacareWeb.class);
+                startActivity(in);
+            }
+        });
+        card_view2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent in = new Intent(getActivity(), ChangeRequest.class);
+                startActivity(in);
+            }
+        });
+
         im_change_request_from.setOnClickListener(view14 -> {
             Toast.makeText(contaxt, "Coming Soon!", Toast.LENGTH_SHORT).show();
 
@@ -58,7 +77,6 @@ public class FourFragment extends Fragment {
         });
 
         it_help_desk.setOnClickListener(view15 -> {
-
             Intent intent = new Intent(getActivity(), ITHelpDeskHome.class);
             contaxt.startActivity(intent);
 

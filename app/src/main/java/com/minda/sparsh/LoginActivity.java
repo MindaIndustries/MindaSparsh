@@ -409,6 +409,7 @@ public class LoginActivity extends AppCompatActivity {
                             mEditor.putString("pass", loginResponse.get(0).getUMUSERPWD());
                             mEditor.putString("DOB", loginResponse.get(0).getDOB());
                             mEditor.putString("Mobile", loginResponse.get(0).getMobile());
+                            mEditor.putInt("Level",loginResponse.get(0).getUMEMPLEVEL());
                             arrayList.clear();
                             String currentString = loginResponse.get(0).getAuthFor();
 

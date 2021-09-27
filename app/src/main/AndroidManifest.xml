@@ -179,6 +179,11 @@
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
+            android:name=".ChangeRequest"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar" />
+
+        <activity
             android:name=".ITHelpDeskHome"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />

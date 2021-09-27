@@ -14,11 +14,15 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:orientation="vertical">
+        <LinearLayout
+            android:padding="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
                 android:gravity="center"
                 android:orientation="vertical">
 
@@ -33,10 +37,10 @@
                     android:textSize="18sp" />
 
                 <View
-                    android:visibility="gone"
                     android:layout_width="match_parent"
                     android:layout_height="1.5dp"
-                    android:background="@drawable/gradientline" />
+                    android:background="@drawable/gradientline"
+                    android:visibility="gone" />
             </LinearLayout>
 
 
@@ -46,7 +50,9 @@
                 android:layout_marginTop="30dp"
                 android:gravity="center"
                 android:orientation="horizontal">
+
                 <RelativeLayout
+                    android:layout_weight="1"
                     android:id="@+id/card_container1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -84,6 +90,68 @@
                                     android:visibility="visible" />
 
                             </RelativeLayout>
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentRight="true"
+                                android:layout_marginTop="10dp"
+                                android:layout_marginRight="20dp"
+                                android:src="@drawable/shape"
+                                app:tint="#eb3045" />
+                        </RelativeLayout>
+                    </androidx.cardview.widget.CardView>
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignLeft="@+id/card_view"
+                        android:layout_marginLeft="20dp"
+                        android:elevation="10dp"
+                        android:src="@drawable/idaccess" />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_weight="1"
+                    android:id="@+id/card_container2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true">
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/card_view1"
+                        android:layout_width="200dp"
+                        android:layout_height="150dp"
+                        android:layout_marginTop="10dp"
+                        android:foreground="?android:attr/selectableItemBackground"
+                        app:cardBackgroundColor="#ffffff"
+                        app:cardCornerRadius="15dp"
+                        app:cardElevation="4dp"
+                        app:cardUseCompatPadding="true">
+
+                        <RelativeLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content">
+
+                            <RelativeLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical"
+                                android:padding="30dp">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="20dp"
+                                    android:fontFamily="@font/museosans_700"
+                                    android:text="IT Survey"
+                                    android:textColor="#4a4f54"
+                                    android:textSize="16sp"
+                                    android:visibility="visible" />
+
+                            </RelativeLayout>
+
                             <ImageView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
@@ -105,60 +173,60 @@
 
                 </RelativeLayout>
 
-              <!--  <LinearLayout
-                    android:id="@+id/lay_identity_access_management"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:orientation="vertical">
+                <!--  <LinearLayout
+                      android:id="@+id/lay_identity_access_management"
+                      android:layout_width="0dp"
+                      android:layout_height="wrap_content"
+                      android:layout_weight="1"
+                      android:gravity="center"
+                      android:orientation="vertical">
 
 
-                    <ImageButton
-                        android:id="@+id/im_identity_access_management"
-                        android:layout_width="100dp"
-                        android:layout_height="100dp"
-                        android:layout_marginEnd="5dp"
-                        android:background="@drawable/project_icons" />
+                      <ImageButton
+                          android:id="@+id/im_identity_access_management"
+                          android:layout_width="100dp"
+                          android:layout_height="100dp"
+                          android:layout_marginEnd="5dp"
+                          android:background="@drawable/project_icons" />
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="5dp"
-                        android:fontFamily="@font/museosans_300"
-                        android:gravity="center"
-                        android:text="ID &amp; Access Management"
-                        android:textColor="#000000"
-                        android:textSize="14sp" />
+                      <TextView
+                          android:layout_width="wrap_content"
+                          android:layout_height="wrap_content"
+                          android:layout_marginTop="5dp"
+                          android:fontFamily="@font/museosans_300"
+                          android:gravity="center"
+                          android:text="ID &amp; Access Management"
+                          android:textColor="#000000"
+                          android:textSize="14sp" />
 
-                </LinearLayout>
+                  </LinearLayout>
 
-                <View
-                    android:layout_width="1dp"
-                    android:layout_height="match_parent"
-                    android:background="#d7d1d1"
-                    android:visibility="gone"
+                  <View
+                      android:layout_width="1dp"
+                      android:layout_height="match_parent"
+                      android:background="#d7d1d1"
+                      android:visibility="gone"
 
-                    />
--->
+                      />
+  -->
 
                 <!--second menu-->
 
                 <LinearLayout
-                    android:visibility="gone"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
                     android:layout_marginTop="10dp"
+                    android:layout_weight="1"
                     android:gravity="center"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    android:visibility="gone">
 
                     <ImageButton
                         android:id="@+id/it_help_desk"
                         android:layout_width="100dp"
                         android:layout_height="100dp"
-                        android:background="@drawable/ithelpdesk"
-                        android:layout_marginEnd="5dp" />
+                        android:layout_marginEnd="5dp"
+                        android:background="@drawable/ithelpdesk" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -173,13 +241,13 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:visibility="gone"
                     android:id="@+id/lay_change_request_from"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:gravity="center"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    android:visibility="gone">
 
 
                     <ImageButton
@@ -203,11 +271,126 @@
 
             </LinearLayout>
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="30dp"
+                android:orientation="horizontal"
+                android:weightSum="2"
+                >
+
+                <RelativeLayout
+                    android:layout_weight="1"
+                    android:id="@+id/card_container3"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content">
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/card_view2"
+                        android:layout_width="200dp"
+                        android:layout_height="150dp"
+                        android:layout_marginTop="10dp"
+                        android:foreground="?android:attr/selectableItemBackground"
+                        app:cardBackgroundColor="#ffffff"
+                        app:cardCornerRadius="15dp"
+                        app:cardElevation="4dp"
+                        app:cardUseCompatPadding="true">
+
+                        <RelativeLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content">
+
+                            <RelativeLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical"
+                                android:padding="30dp">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="20dp"
+                                    android:fontFamily="@font/museosans_700"
+                                    android:text="Change Request"
+                                    android:textColor="#4a4f54"
+                                    android:textSize="16sp"
+                                    android:visibility="visible" />
+
+                            </RelativeLayout>
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentRight="true"
+                                android:layout_marginTop="10dp"
+                                android:layout_marginRight="20dp"
+                                android:src="@drawable/shape"
+                                app:tint="#eb3045" />
+                        </RelativeLayout>
+                    </androidx.cardview.widget.CardView>
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignLeft="@+id/card_view2"
+                        android:layout_marginLeft="20dp"
+                        android:elevation="10dp"
+                        android:src="@drawable/idaccess" />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"/>
+
+                <!--  <LinearLayout
+                      android:id="@+id/lay_identity_access_management"
+                      android:layout_width="0dp"
+                      android:layout_height="wrap_content"
+                      android:layout_weight="1"
+                      android:gravity="center"
+                      android:orientation="vertical">
+
+
+                      <ImageButton
+                          android:id="@+id/im_identity_access_management"
+                          android:layout_width="100dp"
+                          android:layout_height="100dp"
+                          android:layout_marginEnd="5dp"
+                          android:background="@drawable/project_icons" />
+
+                      <TextView
+                          android:layout_width="wrap_content"
+                          android:layout_height="wrap_content"
+                          android:layout_marginTop="5dp"
+                          android:fontFamily="@font/museosans_300"
+                          android:gravity="center"
+                          android:text="ID &amp; Access Management"
+                          android:textColor="#000000"
+                          android:textSize="14sp" />
+
+                  </LinearLayout>
+
+                  <View
+                      android:layout_width="1dp"
+                      android:layout_height="match_parent"
+                      android:background="#d7d1d1"
+                      android:visibility="gone"
+
+                      />
+  -->
+
+                <!--second menu-->
+
+
+            </LinearLayout>
+
             <View
-                android:visibility="gone"
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:background="#d7d1d1" />
+                android:background="#d7d1d1"
+                android:visibility="gone" />
 
             <LinearLayout
 
@@ -227,24 +410,23 @@
 
 
                 <LinearLayout
-                    android:visibility="visible"
-                    android:layout_marginTop="10dp"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
                     android:layout_weight="1"
                     android:gravity="center"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    android:visibility="visible">
 
                     <ImageButton
-                        android:visibility="gone"
                         android:id="@+id/Ib_visitor"
                         android:layout_width="100dp"
                         android:layout_height="100dp"
                         android:layout_marginEnd="5dp"
-                        android:background="@drawable/visitor_icons" />
+                        android:background="@drawable/visitor_icons"
+                        android:visibility="gone" />
 
                     <TextView
-                        android:visibility="gone"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
@@ -253,12 +435,13 @@
                         android:gravity="center"
                         android:text=""
                         android:textColor="#000000"
-                        android:textSize="14sp" />
+                        android:textSize="14sp"
+                        android:visibility="gone" />
                 </LinearLayout>
 
 
             </LinearLayout>
-
+        </LinearLayout>
 
         </LinearLayout>
 

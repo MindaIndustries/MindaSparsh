@@ -18,7 +18,7 @@ import androidx.appcompat.widget.Toolbar;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class MindacareWeb extends AppCompatActivity {
+public class ChangeRequest extends AppCompatActivity {
 
     @BindView(R.id.mindacare_web)
     WebView mindacareWebView;
@@ -28,7 +28,6 @@ public class MindacareWeb extends AppCompatActivity {
     TextView title;
     String empcode, DOB;
     SharedPreferences myPref;
-    int level;
 
 
     @Override
@@ -41,12 +40,11 @@ public class MindacareWeb extends AppCompatActivity {
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setHomeAsUpIndicator(R.drawable.back);
        // title.setText(getResources().getString(R.string.mindacare_selfDeclaration));
-        title.setText("IT Survey");
+        title.setText("Change Request");
 
         myPref = getSharedPreferences("MyPref", MODE_PRIVATE);
         empcode = myPref.getString("Id", "Id");
         DOB = myPref.getString("DOB", "");
-        level = myPref.getInt("Level",0);
         long dob = Long.parseLong(DOB.replace("/Date", "").replace("/", "").replace("(", "").replace(")", ""));
 
         Calendar dob1 = Calendar.getInstance();
@@ -65,7 +63,7 @@ public class MindacareWeb extends AppCompatActivity {
 
         String age = "" + day + month + dob1.get(Calendar.YEAR);
     //    mindacareWebView.loadUrl(HttpConnection.mindacareUrl + "EmpCode=" + empcode + "&Dob=" + age);
-        mindacareWebView.loadUrl(HttpConnection.itsurveyUrl+"?EmpCode="+ empcode+"&Level="+level);
+        mindacareWebView.loadUrl(HttpConnection.c_rurl/*+"empcode="+ empcode*/);
 
         WebSettings webSettings = mindacareWebView.getSettings();
         webSettings.setJavaScriptEnabled(true);
