@@ -20,6 +20,7 @@ import com.minda.sparsh.fragment.ManufacturingFragment;
 import com.minda.sparsh.fragment.OneFragment;
 import com.minda.sparsh.fragment.ThreeFragment;
 import com.minda.sparsh.fragment.TwoFragment;
+import com.minda.sparsh.model.NotiCount;
 import com.minda.sparsh.model.NotificationModel;
 import com.minda.sparsh.model.VersionModel;
 import com.minda.sparsh.services.FirebaseService;
@@ -28,6 +29,7 @@ import com.minda.sparsh.util.Utility;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.security.PublicKey;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -122,9 +124,9 @@ public class DashBoardActivity extends BaseActivity implements View.OnClickListe
             startActivity(intent);
         });
         myPref = getSharedPreferences("MyPref", Context.MODE_PRIVATE);
+        getNotifcount(empCode);
 
-
-        HitMyorder(myPref.getString("Id", ""));
+        //HitMyorder(myPref.getString("Id", ""));
 
 
     }
@@ -133,6 +135,7 @@ public class DashBoardActivity extends BaseActivity implements View.OnClickListe
     public void onClick(View v) {
         //  switch (v.getId()) {
 //            case R.id.im_left:
+
 //                viewPager.setCurrentItem(getItem(-1), true);
 ////                if(getItem(-1)==0)
 ////                {im_left.setVisibility(View.GONE);}
@@ -384,5 +387,37 @@ public class DashBoardActivity extends BaseActivity implements View.OnClickListe
         AlertDialog alertDialog = alertDialogBuilder.create();
         alertDialog.show();
     }
+
+    public void getNotifcount(String UserId){
+        Interface loginInterface = RetrofitClient2.getClient().create(Interface.class);
+        Call<java.util.List<NotiCount>> call = loginInterface.GetPushNotCount(UserId, "mda@sPr$rZ#G!!");
+        call.enqueue(new Callback<List<NotiCount>>() {
+            @Override
+            public void onResponse(Call<List<NotiCount>> call, Response<List<NotiCount>> response) {
+                if(response.code()==HttpsURLConnection.HTTP_OK){
+                    List<NotiCount> list = response.body();
+                    if(list!=null && list.size()>0){
+                        if(list.get(0).getVal()>0) {
+                            tv_unread.setText("" + list.get(0).getVal());
+                            tv_unread.setVisibility(View.VISIBLE);
+                        }
+                        else{
+                            tv_unread.setVisibility(View.GONE);
+
+                        }
+                    }
+                }
+
+            }
+
+            @Override
+            public void onFailure(Call<List<NotiCount>> call, Throwable t) {
+
+            }
+        });
+
+    }
+
+
 }
 

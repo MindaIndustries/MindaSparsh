@@ -57,20 +57,34 @@
         </LinearLayout>
 
 
-        <LinearLayout
+        <RelativeLayout
+            android:background="@color/screen_bg"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center"
-            android:orientation="vertical">
+            >
 
-            <ImageView
+            <Button
+                android:layout_alignRight="@+id/iv_approve_request"
+                android:layout_alignLeft="@+id/iv_approve_request"
+                android:text="Request Access"
+                android:textColor="#ffffff"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp"
+                android:drawablePadding="10dp"
+                android:drawableLeft="@drawable/key"
+                android:textSize="14sp"
+                android:fontFamily="@font/museosans_700"
+                android:background="@drawable/btn_bg_round"
                 android:id="@+id/iv_access_request"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:src="@drawable/access_request"
+                android:layout_width="wrap_content"
+                android:layout_height="60dp"
                 android:visibility="visible" />
 
             <ImageView
+
                 android:id="@+id/iv_view_access_request"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -78,13 +92,25 @@
                 android:src="@drawable/view_access_control"
                 android:visibility="gone" />
 
-            <ImageView
+            <Button
+                android:layout_below="@+id/iv_access_request"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp"
+                android:drawablePadding="10dp"
+                android:text="Approve Request"
+                android:textColor="#ffffff"
+                android:textSize="14sp"
+                android:fontFamily="@font/museosans_700"
+                android:background="@drawable/btn_bg_round"
                 android:id="@+id/iv_approve_request"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:src="@drawable/approve_request" />
-        </LinearLayout>
+                android:layout_width="wrap_content"
+                android:layout_height="60dp"
+                android:layout_marginTop="20dp"
+                android:drawableLeft="@drawable/approval"
+                 />
+        </RelativeLayout>
 
     </LinearLayout>
 </RelativeLayout>

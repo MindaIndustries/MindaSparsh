@@ -11,6 +11,7 @@ import android.widget.Toast;
 
 import com.minda.sparsh.Adapter.NotificationAdapter;
 import com.minda.sparsh.model.NotificationModel;
+import com.minda.sparsh.util.RetrofitClient2;
 import com.minda.sparsh.util.Utility;
 
 import org.jetbrains.annotations.NotNull;
@@ -55,7 +56,7 @@ public class NotificationActivity extends AppCompatActivity {
 
     public void HitMyorder(String UserId) {
         if (Utility.isOnline(NotificationActivity.this)) {
-            Interface loginInterface = RetrofitClient.getClient().create(Interface.class);
+            Interface loginInterface = RetrofitClient2.getClient().create(Interface.class);
             Call<java.util.List<NotificationModel>> loginResponse = loginInterface.GetPushNot(UserId, "mda@sPr$rZ#G!!");
             loginResponse.enqueue(new Callback<List<NotificationModel>>() {
                 @Override

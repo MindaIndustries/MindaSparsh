@@ -36,6 +36,7 @@ import android.widget.Toast;
 
 import com.androidbuts.multispinnerfilter.KeyPairBoolData;
 import com.androidbuts.multispinnerfilter.MultiSpinnerSearch;
+import com.google.android.material.textfield.TextInputEditText;
 import com.minda.sparsh.Adapter.IAMGetAccessSubTypeAdapter;
 import com.minda.sparsh.Adapter.IAMGetAuthorizationProfileAdapter;
 import com.minda.sparsh.Adapter.IAMGetBusinessAdapter;
@@ -154,7 +155,7 @@ public class RequestForAccessActivity extends AppCompatActivity implements View.
     @BindView(R.id.et_purpose)
     EditText et_purpose;
     @BindView(R.id.et_accessRequirementDetail)
-    EditText et_accessRequirementDetail;
+    TextInputEditText et_accessRequirementDetail;
     @BindView(R.id.im_back)
     ImageView im_back;
     HashSet<String> set = new HashSet<>();

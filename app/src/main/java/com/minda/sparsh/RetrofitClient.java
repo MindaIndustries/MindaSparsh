@@ -4,7 +4,7 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class RetrofitClient {
-    public static final String BASE_URL = "https://www.mindasparsh.com/service.asmx/";
+    public static final String BASE_URL = "https://dev.mindasparsh.com/service.asmx/";
     private static Retrofit retrofit = null;
 
 

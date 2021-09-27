@@ -47,7 +47,7 @@
         <activity
             android:name=".RequestForAccessActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/spinnertheme" />
         <activity
             android:name=".VisitorManagementListActivity"
             android:screenOrientation="portrait"
@@ -151,7 +151,7 @@
         <activity
             android:name=".EHS_Home"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/spinnertheme" />
         <activity
             android:name=".BottomUpConcernDetailActivity"
             android:screenOrientation="portrait"
@@ -159,7 +159,7 @@
         <activity
             android:name=".BottomUpConcernActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/spinnertheme" />
 
 
         <activity
@@ -169,7 +169,7 @@
         <activity
             android:name=".SuggestionBox"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/spinnertheme" />
         <activity
             android:name=".ProfileActivity"
             android:screenOrientation="portrait"

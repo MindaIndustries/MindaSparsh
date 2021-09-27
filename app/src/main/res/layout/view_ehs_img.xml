@@ -6,6 +6,7 @@
     <include layout="@layout/toolbar" />
 
     <RelativeLayout
+        android:background="@color/screen_bg"
         android:layout_marginTop="?android:attr/actionBarSize"
         android:layout_width="match_parent"
         android:id="@+id/container"

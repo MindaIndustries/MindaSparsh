@@ -6,6 +6,7 @@
     <include layout="@layout/progressbar_layout" />
 
     <RelativeLayout
+        android:background="@color/screen_bg"
         android:layout_below="@+id/tablayout"
         android:id="@+id/view_concern"
         android:layout_width="match_parent"

@@ -27,6 +27,7 @@
     </RelativeLayout>
 
     <RelativeLayout
+        android:background="@color/screen_bg"
         android:id="@+id/tab_rl"
         android:layout_marginTop="?attr/actionBarSize"
         android:layout_width="match_parent"
@@ -40,10 +41,11 @@
             android:layout_alignParentTop="true"
             android:background="#eb3045"
             android:visibility="visible"
-            app:tabTextColor="@android:color/white"
             app:tabIndicatorColor="@android:color/white"
             app:tabIndicatorHeight="2dp"
-            app:tabSelectedTextColor="#ffffff">
+            app:tabSelectedTextColor="#ffffff"
+            app:tabTextAppearance="@android:style/TextAppearance.Widget.TabWidget"
+            app:tabTextColor="@android:color/white">
 
             <com.google.android.material.tabs.TabItem
                 android:id="@+id/new_concern"

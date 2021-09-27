@@ -20,6 +20,8 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
 import android.provider.MediaStore;
+import android.text.method.KeyListener;
+import android.text.method.TextKeyListener;
 import android.util.Base64;
 import android.util.Base64OutputStream;
 import android.util.Log;
@@ -37,6 +39,8 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.bumptech.glide.Glide;
+import com.google.android.material.textfield.TextInputEditText;
+import com.google.android.material.textfield.TextInputLayout;
 import com.minda.sparsh.EHS_Home;
 import com.minda.sparsh.R;
 import com.minda.sparsh.ViewEHSImage;
@@ -69,6 +73,7 @@ import javax.net.ssl.HttpsURLConnection;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.widget.AppCompatAutoCompleteTextView;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
@@ -83,27 +88,35 @@ import static android.content.Context.MODE_PRIVATE;
 
 public class EHSInitiateFragment extends Fragment {
     @BindView(R.id.obs_date_spinner)
-    TextView observationDateSpinner;
+    TextInputEditText observationDateSpinner;
     @BindView(R.id.unit_spinner)
-    NoDefaultSpinner unitSpinner;
+    AppCompatAutoCompleteTextView unitSpinner;
     @BindView(R.id.safety_officer_spinner)
-    NoDefaultSpinner safetyOfficerSpinner;
+    AppCompatAutoCompleteTextView safetyOfficerSpinner;
     @BindView(R.id.type_spinner)
-    NoDefaultSpinner typeOfObservationSpinner;
+    AppCompatAutoCompleteTextView typeOfObservationSpinner;
     @BindView(R.id.identified_loc_spinner)
-    NoDefaultSpinner identifiedLocationSpinner;
+    AppCompatAutoCompleteTextView identifiedLocationSpinner;
     @BindView(R.id.category)
     TextView categoryText;
     @BindView(R.id.category_spinner)
-    NoDefaultSpinner categorySpinner;
+    AppCompatAutoCompleteTextView categorySpinner;
     @BindView(R.id.sub_category_spinner)
-    NoDefaultSpinner subCategorySpinner;
+    AppCompatAutoCompleteTextView subCategorySpinner;
+    @BindView(R.id.customerSpinnerLayout4)
+    TextInputLayout customerSpinnerLayout4;
+
+    @BindView(R.id.customerSpinnerLayout5)
+    TextInputLayout customerSpinnerLayout5;
+    @BindView(R.id.customerSpinnerLayout8)
+    TextInputLayout customerSpinnerLayout8;
+
     @BindView(R.id.sub_category)
     TextView subCategorytext;
     @BindView(R.id.ll7)
     LinearLayout ll7;
     @BindView(R.id.description_et)
-    EditText descriptionEdit;
+    TextInputEditText descriptionEdit;
     @BindView(R.id.submit)
     Button submit;
     @BindView(R.id.reset)
@@ -112,16 +125,14 @@ public class EHSInitiateFragment extends Fragment {
     ImageView attachment;
     @BindView(R.id.attachtext)
     TextView attachtext;
-    @BindView(R.id.time)
-    TextView time;
     @BindView(R.id.time_selector)
-    TextView timeSelector;
+    TextInputEditText timeSelector;
+    @BindView(R.id.customerSpinnerLayout6)
+    TextInputLayout customerSpinnerLayout6;
     @BindView(R.id.ll8)
     LinearLayout ll8;
-    @BindView(R.id.actiontaken)
-    TextView actiontaken;
     @BindView(R.id.action_taken_et)
-    EditText actionTakenEt;
+    TextInputEditText actionTakenEt;
     @BindView(R.id.doc_view)
     ImageView docView;
     @BindView(R.id.progressBar)
@@ -264,8 +275,12 @@ public class EHSInitiateFragment extends Fragment {
                     unitSpinner.setEnabled(true);
                     safetyOfficerSpinner.setEnabled(true);
                     typeOfObservationSpinner.setEnabled(true);
+                    typeOfObservationSpinner.setKeyListener(TextKeyListener.getInstance(false, TextKeyListener.Capitalize.WORDS));
                     identifiedLocationSpinner.setEnabled(true);
+                    identifiedLocationSpinner.setKeyListener(TextKeyListener.getInstance(false, TextKeyListener.Capitalize.WORDS));
                     categorySpinner.setEnabled(true);
+                    categorySpinner.setKeyListener(TextKeyListener.getInstance(false, TextKeyListener.Capitalize.WORDS));
+                    subCategorySpinner.setKeyListener(TextKeyListener.getInstance(false, TextKeyListener.Capitalize.WORDS));
                     subCategorySpinner.setEnabled(true);
                     descriptionEdit.setEnabled(true);
                     actionTakenEt.setEnabled(true);
@@ -320,6 +335,18 @@ public class EHSInitiateFragment extends Fragment {
             observationDateSpinner.setTextColor(Color.parseColor("#000000"));
         }
 
+        safetyOfficerSpinner.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
+                if (position == 0) {
+                    return;
+                }
+                if (officersName != null && officersName.size() > 0)
+                    safetyOfficer = safetyOfficers.get(position).getUnitOfficer();
+
+            }
+        });
+/*
         safetyOfficerSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -335,6 +362,82 @@ public class EHSInitiateFragment extends Fragment {
 
             }
         });
+*/
+
+        typeOfObservationSpinner.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
+                obstype = observationtypeNames.get(position);
+                if (observationTypes.size() > 0) {
+                    if (position >=0) {
+                        observationID = observationTypes.get(position).getId();
+                        ActID = observationTypes.get(position).getShortName() + "-" + unitcode + "-";
+                        if (observationID.equals("4")) {
+                            categories.clear();
+                            ehsCategories.clear();
+                         //   categories.add("Select");
+                            adapterCategory.notifyDataSetChanged();
+                            subCategorySpinner.setVisibility(View.GONE);
+                            customerSpinnerLayout5.setVisibility(View.GONE);
+                            subCategorytext.setVisibility(View.GONE);
+                        //    ll7.setVisibility(View.GONE);
+                         //   time.setVisibility(View.VISIBLE);
+                            timeSelector.setVisibility(View.VISIBLE);
+                            customerSpinnerLayout6.setVisibility(View.VISIBLE);
+                         //   ll8.setVisibility(View.VISIBLE);
+                            customerSpinnerLayout8.setVisibility(View.VISIBLE);
+                            actionTakenEt.setVisibility(View.VISIBLE);
+                        //    categoryText.setVisibility(View.VISIBLE);
+                            categorySpinner.setVisibility(View.VISIBLE);
+                         //   categorySpinner.setText("");
+                            customerSpinnerLayout4.setVisibility(View.VISIBLE);
+                        //    ll6.setVisibility(View.VISIBLE);
+
+                        } else if (observationID.equals("3")) {
+                            categoryText.setVisibility(View.GONE);
+                            categorySpinner.setVisibility(View.GONE);
+                            customerSpinnerLayout4.setVisibility(View.GONE);
+                            ll6.setVisibility(View.GONE);
+                            subCategorySpinner.setVisibility(View.GONE);
+                            customerSpinnerLayout5.setVisibility(View.GONE);
+                            subCategorytext.setVisibility(View.GONE);
+                            ll7.setVisibility(View.GONE);
+
+                        } else {
+                            categories.clear();
+                            ehsCategories.clear();
+                            //     categories.add("Select");
+                            adapterCategory.notifyDataSetChanged();
+                            subCategorySpinner.setVisibility(View.VISIBLE);
+                           // subCategorySpinner.setText("");
+                            customerSpinnerLayout5.setVisibility(View.VISIBLE);
+
+                            // subCategorytext.setVisibility(View.VISIBLE);
+                          //  ll7.setVisibility(View.VISIBLE);
+                         //   time.setVisibility(View.GONE);
+                            timeSelector.setVisibility(View.GONE);
+                            customerSpinnerLayout6.setVisibility(View.GONE);
+                          //  ll8.setVisibility(View.GONE);
+                            customerSpinnerLayout8.setVisibility(View.GONE);
+                            actionTakenEt.setVisibility(View.GONE);
+                       //     categoryText.setVisibility(View.VISIBLE);
+                            categorySpinner.setVisibility(View.VISIBLE);
+                       //     categorySpinner.setText("");
+                            customerSpinnerLayout4.setVisibility(View.VISIBLE);
+                            //   ll6.setVisibility(View.VISIBLE);
+
+
+                        }
+                        getCategories(observationID);
+
+
+                    }
+                }
+
+            }
+        });
+
+/*
         typeOfObservationSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -400,7 +503,20 @@ public class EHSInitiateFragment extends Fragment {
 
             }
         });
-        identifiedLocationSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+*/
+
+        identifiedLocationSpinner.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
+                identifiedLocation = identifiedLocations.get(position);
+                if (ehsIdentifiedLocations.size() > 0) {
+                    if (position >= 0)
+                        locationID = ehsIdentifiedLocations.get(position).getID();
+                }
+
+            }
+        });
+      /*  identifiedLocationSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 identifiedLocation = identifiedLocations.get(position);
@@ -415,6 +531,20 @@ public class EHSInitiateFragment extends Fragment {
 
             }
         });
+      */
+        subCategorySpinner.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
+                subcategory = subCategories.get(position);
+                if (ehsSubCategories.size() > 1) {
+                    if (position >= 0)
+                        subCategoryID = ehsSubCategories.get(position).getID();
+                }
+
+            }
+        });
+
+/*
         subCategorySpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -430,6 +560,7 @@ public class EHSInitiateFragment extends Fragment {
 
             }
         });
+*/
 
     }
 
@@ -717,11 +848,12 @@ public class EHSInitiateFragment extends Fragment {
                     }
                     adapterUnit.notifyDataSetChanged();
                     if (unitsName.size() > 0) {
-                        unitSpinner.setSelection(1);
+                        unitSpinner.setText(unitsName.get(0));
                     }
                     if (getArguments() != null && getArguments().getString("unit") != null) {
                         int i = unitsName.indexOf(getArguments().getString("unit"));
-                        unitSpinner.setSelection(i);
+                        if(i>=0)
+                        unitSpinner.setText(unitsName.get(i));
 
                     }
                 }
@@ -743,12 +875,14 @@ public class EHSInitiateFragment extends Fragment {
                         officersName.add(safetyOfficer.getUSName());
                     }
                     adapterSafetyOfficer.notifyDataSetChanged();
-                    if (officersName.size() > 1) {
-                        safetyOfficerSpinner.setSelection(1);
+                    if (officersName.size() > 0) {
+                        safetyOfficerSpinner.setText(officersName.get(0));
+                        safetyOfficer = safetyOfficers.get(0).getUnitOfficer();
                     }
                     if (getArguments() != null && getArguments().getString("safetyOfficer") != null && getArguments().getString("safetyOfficer").length() > 0) {
                         int i = officersName.indexOf(getArguments().getString("safetyOfficer"));
-                        safetyOfficerSpinner.setSelection(i);
+                        if(i>=0)
+                        safetyOfficerSpinner.setText(officersName.get(i));
                     }
                 }
             }
@@ -769,7 +903,76 @@ public class EHSInitiateFragment extends Fragment {
                     adapterObservationType.notifyDataSetChanged();
                     if (getArguments() != null && getArguments().getString("typeOfObs") != null) {
                         int i = observationtypeNames.indexOf(getArguments().getString("typeOfObs"));
-                        typeOfObservationSpinner.setSelection(i);
+                        typeOfObservationSpinner.setText(observationtypeNames.get(i));
+                        observationID = observationTypes.get(i).getId();
+                        obstype = observationtypeNames.get(i);
+                        if (observationTypes.size() > 0) {
+                            if (i >=0) {
+                                observationID = observationTypes.get(i).getId();
+                                ActID = observationTypes.get(i).getShortName() + "-" + unitcode + "-";
+                                if (observationID.equals("4")) {
+                                    categories.clear();
+                                    ehsCategories.clear();
+                                    //   categories.add("Select");
+                                    adapterCategory.notifyDataSetChanged();
+                                    subCategorySpinner.setVisibility(View.GONE);
+                                    customerSpinnerLayout5.setVisibility(View.GONE);
+                                    subCategorytext.setVisibility(View.GONE);
+                                    //    ll7.setVisibility(View.GONE);
+                                    //   time.setVisibility(View.VISIBLE);
+                                    timeSelector.setVisibility(View.VISIBLE);
+                                    customerSpinnerLayout6.setVisibility(View.VISIBLE);
+                                    //   ll8.setVisibility(View.VISIBLE);
+                                    customerSpinnerLayout8.setVisibility(View.VISIBLE);
+                                    actionTakenEt.setVisibility(View.VISIBLE);
+                                    //    categoryText.setVisibility(View.VISIBLE);
+                                    categorySpinner.setVisibility(View.VISIBLE);
+                                //    categorySpinner.setText("");
+                                    customerSpinnerLayout4.setVisibility(View.VISIBLE);
+                                    //    ll6.setVisibility(View.VISIBLE);
+
+                                } else if (observationID.equals("3")) {
+                                    categoryText.setVisibility(View.GONE);
+                                    categorySpinner.setVisibility(View.GONE);
+                                    customerSpinnerLayout4.setVisibility(View.GONE);
+                                    ll6.setVisibility(View.GONE);
+                                    subCategorySpinner.setVisibility(View.GONE);
+                                    customerSpinnerLayout5.setVisibility(View.GONE);
+                                    subCategorytext.setVisibility(View.GONE);
+                                    ll7.setVisibility(View.GONE);
+
+                                } else {
+                                    categories.clear();
+                                    ehsCategories.clear();
+                                    //     categories.add("Select");
+                                    adapterCategory.notifyDataSetChanged();
+                                    subCategorySpinner.setVisibility(View.VISIBLE);
+                               //     subCategorySpinner.setText("");
+                                    customerSpinnerLayout5.setVisibility(View.VISIBLE);
+
+                                    // subCategorytext.setVisibility(View.VISIBLE);
+                                    //  ll7.setVisibility(View.VISIBLE);
+                                    //   time.setVisibility(View.GONE);
+                                    timeSelector.setVisibility(View.GONE);
+                                    customerSpinnerLayout6.setVisibility(View.GONE);
+                                    //  ll8.setVisibility(View.GONE);
+                                    customerSpinnerLayout8.setVisibility(View.GONE);
+                                    actionTakenEt.setVisibility(View.GONE);
+                                    //     categoryText.setVisibility(View.VISIBLE);
+                                    categorySpinner.setVisibility(View.VISIBLE);
+                             //       categorySpinner.setText("");
+                                    customerSpinnerLayout4.setVisibility(View.VISIBLE);
+                                    //   ll6.setVisibility(View.VISIBLE);
+
+
+                                }
+                                getCategories(observationID);
+
+
+                            }
+                        }
+
+
                     }
                 }
             }
@@ -789,8 +992,9 @@ public class EHSInitiateFragment extends Fragment {
                     adapterIdentifiedLocation.notifyDataSetChanged();
                     if (getArguments() != null && getArguments().getString("identifiedLoc") != null) {
                         int i = identifiedLocations.indexOf(getArguments().getString("identifiedLoc"));
-                        identifiedLocationSpinner.setSelection(i);
-                        locationID = ehsIdentifiedLocations.get(i - 1).getID();
+                       // identifiedLocationSpinner.setSelection(i);
+                        identifiedLocationSpinner.setText(identifiedLocations.get(i));
+                        locationID = ehsIdentifiedLocations.get(i).getID();
                     }
                 }
             }
@@ -807,16 +1011,43 @@ public class EHSInitiateFragment extends Fragment {
                     for (EHSCategoryModel ehsCategory : ehsCategories) {
                         categories.add(ehsCategory.getName());
                     }
+                    categorySpinner.setText("");
+                    subCategorySpinner.setText("");
+                    subCategoryID = "0";
+                    catId = "0";
+                    adapterCategory = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_item, categories);
+                    categorySpinner.setAdapter(adapterCategory);
                     adapterCategory.notifyDataSetChanged();
 
                     if (getArguments() != null && getArguments().getString("catId") != null) {
                         for (int i = 0; i < ehsCategories.size(); i++) {
                             if (getArguments().getString("catId").equals(ehsCategories.get(i).getId())) {
-                                categorySpinner.setSelection(i + 1);
+                                categorySpinner.setText(categories.get(i));
+                                catId = ehsCategories.get(i).getId();
+                                getSubCategories(catId);
                             }
                         }
                     }
 
+
+                    categorySpinner.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                        @Override
+                        public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
+                            if (position >= 0) {
+                                catId = ehsCategories.get(position).getId();
+                                category = categories.get(position);
+                                subCategories.clear();
+                          //      subCategories.add("Select");
+                                initSubCategorySpinner();
+                                getSubCategories(catId);
+                            } else {
+                                subCategories.clear();
+                             //   subCategories.add("Select");
+                                adapterSubCategory.notifyDataSetChanged();
+                            }
+                        }
+                    });
+/*
                     categorySpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                         @Override
                         public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -840,6 +1071,7 @@ public class EHSInitiateFragment extends Fragment {
 
                         }
                     });
+*/
                 }
 
             }
@@ -849,7 +1081,7 @@ public class EHSInitiateFragment extends Fragment {
 
     public void getSubCategories(String catId) {
         subCategories.clear();
-        subCategories.add("Select");
+      //  subCategories.add("Select");
         ehsSubCategories.clear();
         EHSServices ehsServices = new EHSServices();
         ehsServices.getSubCategories(carotResponse -> {
@@ -860,12 +1092,21 @@ public class EHSInitiateFragment extends Fragment {
                     for (EHSSubCategoryModel ehsSubCategory : ehsSubCategories) {
                         subCategories.add(ehsSubCategory.getName());
                     }
+                    subCategorySpinner.setText("");
+                    subCategoryID = "0";
+                    adapterSubCategory = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_item, subCategories);
+                    subCategorySpinner.setAdapter(adapterSubCategory);
                     adapterSubCategory.notifyDataSetChanged();
-                    if (subCategoryID != null) {
-                        EHSSubCategoryModel ehsSubCategoryModel = new EHSSubCategoryModel();
-                        ehsSubCategoryModel.setID(subCategoryID);
-                        int i = ehsSubCategories.indexOf(ehsSubCategoryModel);
-                        subCategorySpinner.setSelection(i + 1);
+                    try {
+                        if (getArguments() != null && getArguments().getString("subCategory") != null) {
+                            EHSSubCategoryModel ehsSubCategoryModel = new EHSSubCategoryModel();
+                            ehsSubCategoryModel.setID(getArguments().getString("subCategory"));
+                            int i = ehsSubCategories.indexOf(ehsSubCategoryModel);
+                            subCategoryID = getArguments().getString("subCategory");
+                            subCategorySpinner.setText(subCategories.get(i));
+                        }
+                    }catch (Exception e){
+                        e.printStackTrace();
                     }
                 }
 
@@ -875,8 +1116,8 @@ public class EHSInitiateFragment extends Fragment {
 
     public void initUnitSpinner() {
         unitsName.clear();
-        unitsName.add("Select");
-        adapterUnit = new ArrayAdapter<String>(getActivity(), R.layout.spinner_row, unitsName) {
+   //     unitsName.add("Select");
+        adapterUnit = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_item, unitsName);/* {
             @Override
             public boolean isEnabled(int position) {
                 if (position == 0) {
@@ -904,17 +1145,17 @@ public class EHSInitiateFragment extends Fragment {
                 return view;
             }
         };
-
-        adapterUnit.setDropDownViewResource(R.layout.spinner_row);
+*/
+    //    adapterUnit.setDropDownViewResource(R.layout.spinner_row);
         unitSpinner.setAdapter(adapterUnit);
-        unitSpinner.setSelection(0);
+       // unitSpinner.setSelection(0);
 
     }
 
     public void initSafetyOfficerSpinner() {
         officersName.clear();
-        officersName.add("Select");
-        adapterSafetyOfficer = new ArrayAdapter<String>(getActivity(), R.layout.spinner_row, officersName) {
+     //   officersName.add("Select");
+        adapterSafetyOfficer = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_item, officersName); /*{
             @Override
             public boolean isEnabled(int position) {
                 if (position == 0) {
@@ -943,16 +1184,16 @@ public class EHSInitiateFragment extends Fragment {
             }
         };
 
-        adapterSafetyOfficer.setDropDownViewResource(R.layout.spinner_row);
+        adapterSafetyOfficer.setDropDownViewResource(R.layout.spinner_row);*/
         safetyOfficerSpinner.setAdapter(adapterSafetyOfficer);
-        safetyOfficerSpinner.setSelection(0);
+      //  safetyOfficerSpinner.setSelection(0);
 
     }
 
     public void initObservationTypeSpinner() {
         observationtypeNames.clear();
-        observationtypeNames.add("Select");
-        adapterObservationType = new ArrayAdapter<String>(getActivity(), R.layout.spinner_row, observationtypeNames) {
+      //  observationtypeNames.add("Select");
+        adapterObservationType = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_item, observationtypeNames);/* {
             @Override
             public boolean isEnabled(int position) {
                 if (position == 0) {
@@ -979,18 +1220,18 @@ public class EHSInitiateFragment extends Fragment {
                 }
                 return view;
             }
-        };
+        };*/
 
-        adapterObservationType.setDropDownViewResource(R.layout.spinner_row);
+      //  adapterObservationType.setDropDownViewResource(android.R.layout.simple_spinner_item);
         typeOfObservationSpinner.setAdapter(adapterObservationType);
-        typeOfObservationSpinner.setSelection(0);
+     //   typeOfObservationSpinner.setSelection(0);
 
     }
 
     public void initIdentifiedLocationSpinner() {
         identifiedLocations.clear();
-        identifiedLocations.add("Select");
-        adapterIdentifiedLocation = new ArrayAdapter<String>(getActivity(), R.layout.spinner_row, identifiedLocations) {
+       // identifiedLocations.add("Select");
+        adapterIdentifiedLocation = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_item, identifiedLocations);/* {
             @Override
             public boolean isEnabled(int position) {
                 if (position == 0) {
@@ -1019,16 +1260,16 @@ public class EHSInitiateFragment extends Fragment {
             }
         };
 
-        adapterIdentifiedLocation.setDropDownViewResource(R.layout.spinner_row);
+        adapterIdentifiedLocation.setDropDownViewResource(R.layout.spinner_row);*/
         identifiedLocationSpinner.setAdapter(adapterIdentifiedLocation);
-        identifiedLocationSpinner.setSelection(0);
+      //  identifiedLocationSpinner.setSelection(0);
 
     }
 
     public void initCategorySpinner() {
         categories.clear();
-        categories.add("Select");
-        adapterCategory = new ArrayAdapter<String>(getActivity(), R.layout.spinner_row, categories) {
+      //  categories.add("Select");
+        adapterCategory = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_item, categories);/* {
             @Override
             public boolean isEnabled(int position) {
                 if (position == 0) {
@@ -1057,14 +1298,13 @@ public class EHSInitiateFragment extends Fragment {
             }
         };
 
-        adapterCategory.setDropDownViewResource(R.layout.spinner_row);
+        adapterCategory.setDropDownViewResource(R.layout.spinner_row);*/
         categorySpinner.setAdapter(adapterCategory);
-        categorySpinner.setSelection(0);
 
     }
 
     public void initSubCategorySpinner() {
-        adapterSubCategory = new ArrayAdapter<String>(getActivity(), R.layout.spinner_row, subCategories) {
+        adapterSubCategory = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_item, subCategories);/* {
             @Override
             public boolean isEnabled(int position) {
                 if (position == 0) {
@@ -1094,8 +1334,7 @@ public class EHSInitiateFragment extends Fragment {
         };
 
         adapterSubCategory.setDropDownViewResource(R.layout.spinner_row);
-        subCategorySpinner.setAdapter(adapterSubCategory);
-        subCategorySpinner.setSelection(0);
+*/        subCategorySpinner.setAdapter(adapterSubCategory);
 
     }
 

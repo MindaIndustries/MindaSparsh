@@ -15,6 +15,33 @@
         <item name="android:statusBarColor">#000000</item>
 
     </style>
+    
+    <style name="box" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu">
+        <item name="boxStrokeColor">@color/colorPrimary</item>
+        <item name="hintTextColor">@color/colorPrimary</item>
+        <item name="colorControlActivated">@color/colorPrimary</item>
+
+
+    </style>
+
+    <style name="edittext" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
+        <item name="boxStrokeColor">@color/colorPrimary</item>
+        <item name="hintTextColor">@color/colorPrimary</item>
+        <item name="colorControlActivated">@color/colorPrimary</item>
+
+
+    </style>
+
+
+
+    <style name="spinnertheme" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:statusBarColor">#000000</item>
+        <item name="android:colorAccent">@color/colorPrimary</item>
+        <item name="android:state_activated">@color/colorPrimary</item>
+
+    </style>
 
     <style name="lipstick_spinner_header_style">
         <item name="android:background">@drawable/spinner_bg</item>

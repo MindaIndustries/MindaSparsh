@@ -24,6 +24,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -83,7 +84,8 @@ import static android.Manifest.permission.CAMERA;
 public class AbnormalityAddressingActivity extends AppCompatActivity {
     ListView list_abnormalty;
     LinearLayout lay_two, lay_one, lay_out;
-    TextView tv_view, tv_add, tv_submit, et_finddate, tv_upload;
+    TextView tv_view, tv_add, et_finddate, tv_upload;
+    Button tv_submit;
     ImageView Im_capture, im_back;
     Uri picUri = null;
     Bitmap myBitmap;
@@ -1299,7 +1301,7 @@ public class AbnormalityAddressingActivity extends AppCompatActivity {
             lay_one.setVisibility(View.VISIBLE);
             tv_add.setTextColor(getResources().getColor(R.color.white));
             tv_view.setTextColor(getResources().getColor(R.color.colorPrimary));
-            tv_add.setBackground(getResources().getDrawable(R.color.colorPrimary));
+            tv_add.setBackground(getResources().getDrawable(R.drawable.btn_bg));
             tv_view.setBackground(getResources().getDrawable(R.drawable.roundcornercellviewwhite));
             if (!myPref.getString("Id", "").equalsIgnoreCase("")) {
                 hitGetUserDetail(myPref.getString("Id", ""));
@@ -1316,7 +1318,7 @@ public class AbnormalityAddressingActivity extends AppCompatActivity {
             lay_one.setVisibility(View.GONE);
             tv_view.setTextColor(getResources().getColor(R.color.white));
             tv_add.setTextColor(getResources().getColor(R.color.colorPrimary));
-            tv_view.setBackground(getResources().getDrawable(R.color.colorPrimary));
+            tv_view.setBackground(getResources().getDrawable(R.drawable.btn_bg));
             tv_add.setBackground(getResources().getDrawable(R.drawable.roundcornercellviewwhite));
 //            hitGroupApi();
             if (!myPref.getString("Id", "").equalsIgnoreCase("")) {

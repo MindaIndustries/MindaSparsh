@@ -46,8 +46,9 @@ public class NotificationAdapter extends BaseAdapter {
     }
 
     public static class ViewHolder {
-        public TextView tv_notification;
+        public TextView tv_notification,message,date;
         public LinearLayout lay_notification;
+
 
 
     }
@@ -75,9 +76,13 @@ public class NotificationAdapter extends BaseAdapter {
             this.holder = holder;
             convertView = inflater.inflate(R.layout.notification_call_view, null);
             holder.tv_notification =  convertView.findViewById(R.id.tv_notification);
-            holder.lay_notification =  convertView.findViewById(R.id.lay_notification);
+            holder.message = convertView.findViewById(R.id.message);
+            holder.date = convertView.findViewById(R.id.date);
 //            holder.tv_time= (TextView) convertView.findViewById(R.id.tv_time);
-            holder.tv_notification.setText(homeData.get(position).getNotification());
+            holder.tv_notification.setText(homeData.get(position).getSubject());
+            holder.message.setText(homeData.get(position).getNotification());
+            holder.date.setText(homeData.get(position).getCreatedOn());
+
 //            holder.tv_time.setText(homeData.get(position).getCreatedOn());
             if (!homeData.get(position).getIsRead()) {
 
@@ -85,15 +90,6 @@ public class NotificationAdapter extends BaseAdapter {
 
             }
 
-
-            holder.lay_notification.setOnClickListener(view -> {
-                myPref = mContext.getSharedPreferences("MyPref", Context.MODE_PRIVATE);
-
-
-                HitMyorder(myPref.getString("Id", ""), homeData.get(position).getPushNotcID().toString(), position);
-
-
-            });
             convertView.setTag(holder);
 
 

@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/screen_bg"
+    >
 
     <include layout="@layout/toolbar" />
 
@@ -734,7 +736,7 @@
                     android:layout_marginStart="5dp"
                     android:layout_weight="1"
                     android:background="@drawable/roundcornerbutton"
-                    android:fontFamily="@font/museosans_500"
+                    android:fontFamily="@font/museosans_700"
                     android:text="Complete"
                     android:textColor="@color/white"
                     android:textSize="14sp" />
@@ -752,7 +754,7 @@
                     android:layout_marginStart="5dp"
                     android:layout_weight="1"
                     android:background="@drawable/roundcornerbutton"
-                    android:fontFamily="@font/museosans_500"
+                    android:fontFamily="@font/museosans_700"
                     android:text="Assign"
                     android:textColor="@color/white"
                     android:textSize="14sp" />

@@ -4,7 +4,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.minda.sparsh.ViewImageActivity"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@color/screen_bg"
+    >
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -14,7 +16,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:background="@color/colorPrimary"
+            android:background="#eb3045"
             android:gravity="center_vertical"
             android:layout_marginBottom="20dp">
 

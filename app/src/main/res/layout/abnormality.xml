@@ -6,6 +6,7 @@
         android:layout_height="wrap_content">
 
         <LinearLayout
+            android:background="@color/screen_bg"
             android:layout_width="wrap_content"
             android:layout_height="50dp"
             android:id="@+id/laycellview">

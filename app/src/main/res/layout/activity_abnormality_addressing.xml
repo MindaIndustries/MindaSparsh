@@ -42,6 +42,7 @@
         android:layout_height="match_parent">
 
         <LinearLayout
+            android:background="@color/screen_bg"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:focusable="true"
@@ -89,17 +90,17 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
-                android:background="@drawable/roundcornerabnormality">
+                >
 
                 <TextView
                     android:id="@+id/tv_add"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:background="@drawable/roundcornerbutton"
                     android:gravity="center"
                     android:padding="5dp"
                     android:text="@string/add"
+                    android:background="@drawable/btn_bg"
                     android:textColor="#FFFFFF"
                     android:textSize="16sp"
                     android:textStyle="bold" />
@@ -109,10 +110,10 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:background="@drawable/roundcornerbutton"
                     android:gravity="center"
                     android:padding="5dp"
                     android:text="@string/view"
+                    android:background="@drawable/btn_bg"
                     android:textColor="#FFFFFF"
                     android:textSize="16sp"
                     android:textStyle="bold" />
@@ -526,16 +527,20 @@
                         android:layout_margin="20dp"
                         android:gravity="center">
 
-                        <TextView
+                        <Button
                             android:id="@+id/tv_submit"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:background="@drawable/roundcornerbutton"
+                            android:layout_width="wrap_content"
+                            android:layout_height="45dp"
+                            android:background="@drawable/btn_bg"
                             android:gravity="center"
-                            android:padding="5dp"
+                            android:paddingLeft="25dp"
+                            android:paddingRight="25dp"
                             android:text="@string/submit"
                             android:textColor="#FFFFFF"
-                            android:textSize="18sp"
+                            android:textSize="14sp"
+                            android:fontFamily="@font/museosans_700"
+                            android:drawableLeft="@drawable/done"
+                            android:drawablePadding="10dp"
                             android:textStyle="bold" />
 
                     </LinearLayout>

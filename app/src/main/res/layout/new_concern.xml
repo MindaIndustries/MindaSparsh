@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <RelativeLayout
+        android:background="@color/screen_bg"
         android:layout_below="@+id/tablayout"
         android:id="@+id/new_concern"
         android:layout_width="match_parent"
@@ -37,30 +39,46 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
 
-                <TextView
-                    android:layout_marginTop="30dp"
-                    android:id="@+id/concern_date"
-                    android:text="Concern Date :"
-                    android:textSize="16sp"
-                    android:textColor="@color/black"
-                    android:fontFamily="@font/museosans_500"
-                    android:layout_below="@+id/heading"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
 
                 <TextView
-                    android:layout_marginTop="30dp"
-                    android:id="@+id/concern_date_spinner"
-                    android:layout_below="@+id/heading"
-                    android:layout_alignParentEnd="true"
-                    android:layout_width="match_parent"
-                    android:layout_marginStart="-20dp"
-                    android:layout_toEndOf="@+id/view"
+                    android:visibility="gone"
+                    android:id="@+id/concern_date"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:padding="5dp"
-                    android:gravity="center" />
+                    android:layout_below="@+id/heading"
+                    android:layout_marginTop="30dp"
+                    android:fontFamily="@font/museosans_500"
+                    android:text="Concern Date :"
+                    android:textColor="@color/black"
+                    android:textSize="16sp" />
+
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/customerSpinnerLayout0"
+                    android:layout_width="match_parent"
+                    style="@style/edittext"
+                    android:layout_marginTop="10dp"
+                    android:layout_below="@+id/heading"
+                    android:layout_height="wrap_content"
+                    android:hint="Concern Date">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/concern_date_spinner"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:gravity="left"
+                        android:hint=""
+                        android:editable="false"
+                        android:imeOptions="actionNext"
+                        android:padding="18dp"
+                         />
+                </com.google.android.material.textfield.TextInputLayout>
+
+
 
                 <LinearLayout
+                    android:visibility="gone"
                     android:layout_marginTop="10dp"
                     android:layout_width="match_parent"
                     android:layout_height="2dp"
@@ -75,33 +93,39 @@
                     android:id="@+id/unit"
                     android:text="Unit :"
                     android:textSize="16sp"
+                    android:visibility="gone"
                     android:textColor="@color/black"
                     android:fontFamily="@font/museosans_500"
                     android:layout_below="@+id/ll1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
 
-                <com.minda.sparsh.customview.NoDefaultSpinner
-                    android:layout_marginTop="30dp"
-                    style="@style/lipstick_spinner_header_style"
-                    android:id="@+id/unit_spinner"
-                    android:spinnerMode="dropdown"
-                    android:popupElevation="6dp"
-                    android:layout_below="@+id/ll1"
-                    android:dropDownVerticalOffset="20dp"
-                    android:layout_marginStart="-20dp"
-                    android:layout_alignParentEnd="true"
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/customerSpinnerLayout"
                     android:layout_width="match_parent"
-                    android:layout_toEndOf="@+id/view"
+                    style="@style/box"
+                    android:layout_marginTop="10dp"
                     android:layout_height="wrap_content"
-                    android:padding="5dp" />
+                    android:layout_below="@+id/customerSpinnerLayout0"
+                    android:hint="Unit">
+
+                    <androidx.appcompat.widget.AppCompatAutoCompleteTextView
+                        android:id="@+id/unit_spinner"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:clickable="true"
+                        android:editable="false"
+                        tools:ignore="KeyboardInaccessibleWidget" />
+                </com.google.android.material.textfield.TextInputLayout>
 
                 <LinearLayout
+                    android:visibility="gone"
                     android:layout_marginTop="10dp"
                     android:layout_width="match_parent"
                     android:layout_height="2dp"
                     android:background="#414042"
-                    android:layout_below="@+id/unit"
+                    android:layout_below="@+id/customerSpinnerLayout"
                     android:orientation="horizontal"
                     android:id="@+id/ll2" />
 
@@ -113,25 +137,31 @@
                     android:textColor="@color/black"
                     android:fontFamily="@font/museosans_500"
                     android:layout_below="@+id/ll2"
+                    android:visibility="gone"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
 
-                <com.minda.sparsh.customview.NoDefaultSpinner
-                    android:layout_marginTop="30dp"
-                    style="@style/lipstick_spinner_header_style"
-                    android:id="@+id/responsible_spinner"
-                    android:spinnerMode="dropdown"
-                    android:popupElevation="6dp"
-                    android:layout_below="@+id/ll2"
-                    android:dropDownVerticalOffset="20dp"
-                    android:layout_marginStart="-20dp"
-                    android:layout_alignParentEnd="true"
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/customerSpinnerLayout1"
                     android:layout_width="match_parent"
-                    android:layout_toEndOf="@+id/view"
+                    style="@style/box"
+                    android:layout_marginTop="10dp"
                     android:layout_height="wrap_content"
-                    android:padding="5dp" />
+                    android:layout_below="@+id/customerSpinnerLayout"
+                    android:hint="Responsible 6M">
+
+                    <androidx.appcompat.widget.AppCompatAutoCompleteTextView
+                        android:id="@+id/responsible_spinner"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:clickable="true"
+                        android:editable="false"
+                        tools:ignore="KeyboardInaccessibleWidget" />
+                </com.google.android.material.textfield.TextInputLayout>
+
 
                 <LinearLayout
+                    android:visibility="gone"
                     android:layout_marginTop="10dp"
                     android:layout_width="match_parent"
                     android:layout_height="2dp"
@@ -145,62 +175,77 @@
                     android:id="@+id/msm_reference"
                     android:text="MSM/Reference :"
                     android:textSize="16sp"
+                    android:visibility="gone"
                     android:textColor="@color/black"
                     android:fontFamily="@font/museosans_500"
-                    android:layout_below="@+id/ll3"
+                    android:layout_below="@+id/customerSpinnerLayout1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
-
-                <EditText
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/customerSpinnerLayout2"
+                    android:layout_width="match_parent"
+                    style="@style/edittext"
                     android:layout_marginTop="10dp"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/customerSpinnerLayout1"
+                    android:hint="MSM/Reference">
+
+                <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/msm_reference_value"
-                    android:layout_below="@+id/msm_reference"
-                    android:layout_alignParentEnd="true"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/cardview_bg"
-                    android:padding="5dp"
+                    android:layout_alignParentEnd="true"
+                    android:gravity="left"
+                    android:hint=""
                     android:imeOptions="actionNext"
                     android:inputType="textMultiLine"
-                    android:gravity="left|top|center"
                     android:maxLines="4"
-                    android:hint="Type MSM/Reference"
+                    android:padding="18dp"
                     android:scrollbars="vertical" />
-
+                </com.google.android.material.textfield.TextInputLayout>
 
                 <TextView
                     android:layout_marginTop="10dp"
                     android:id="@+id/existing_system"
                     android:text="Existing System :"
                     android:textSize="16sp"
+                    android:visibility="gone"
                     android:textColor="@color/black"
                     android:fontFamily="@font/museosans_500"
-                    android:layout_below="@+id/msm_reference_value"
+                    android:layout_below="@+id/customerSpinnerLayout2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
 
-                <EditText
-                    android:layout_marginTop="10dp"
-                    android:id="@+id/existing_system_value"
-                    android:layout_below="@+id/existing_system"
-                    android:layout_alignParentEnd="true"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:padding="5dp"
-                    android:imeOptions="actionNext"
-                    android:inputType="textMultiLine"
-                    android:maxLines="5"
-                    android:hint="Type Existing system"
-                    android:scrollbars="vertical"
-                    android:gravity="left|top|center"
-                    android:background="@drawable/cardview_bg">
 
-                </EditText>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/customerSpinnerLayout3"
+                    android:layout_width="match_parent"
+                    style="@style/edittext"
+                    android:layout_marginTop="10dp"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/customerSpinnerLayout2"
+                    android:hint="Existing System">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/existing_system_value"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:gravity="left"
+                        android:hint=""
+                        android:imeOptions="actionNext"
+                        android:inputType="textMultiLine"
+                        android:maxLines="4"
+                        android:padding="18dp"
+                        android:scrollbars="vertical" />
+                </com.google.android.material.textfield.TextInputLayout>
+
 
                 <ImageView
                     android:layout_marginTop="10dp"
                     android:layout_alignParentEnd="true"
-                    android:layout_below="@+id/existing_system_value"
+                    android:layout_below="@+id/customerSpinnerLayout3"
                     android:src="@drawable/attach"
                     android:id="@+id/attachment1"
                     android:layout_width="wrap_content"
@@ -211,7 +256,7 @@
                     android:layout_marginEnd="10dp"
                     android:layout_alignBottom="@+id/attachment"
                     android:layout_alignTop="@+id/attachment"
-                    android:layout_below="@+id/existing_system_value"
+                    android:layout_below="@+id/customerSpinnerLayout3"
                     android:id="@+id/attachtext1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -222,7 +267,7 @@
 
                 <ImageView
                     android:id="@+id/doc_view1"
-                    android:layout_below="@+id/existing_system_value"
+                    android:layout_below="@+id/customerSpinnerLayout3"
                     android:layout_width="100dp"
                     android:layout_height="100dp"
                     android:visibility="gone"
@@ -234,32 +279,41 @@
                     android:id="@+id/proposed_system"
                     android:text="Proposed System :"
                     android:textSize="16sp"
+                    android:visibility="gone"
                     android:textColor="@color/black"
                     android:fontFamily="@font/museosans_500"
                     android:layout_below="@+id/doc_view1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
 
-                <EditText
-                    android:layout_marginTop="10dp"
-                    android:id="@+id/proposed_system_value"
-                    android:layout_below="@+id/proposed_system"
-                    android:layout_alignParentEnd="true"
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/customerSpinnerLayout4"
                     android:layout_width="match_parent"
+                    style="@style/edittext"
+                    android:layout_marginTop="10dp"
                     android:layout_height="wrap_content"
-                    android:padding="5dp"
-                    android:imeOptions="actionNext"
-                    android:inputType="textMultiLine"
-                    android:background="@drawable/cardview_bg"
-                    android:gravity="left|top|center"
-                    android:maxLines="5"
-                    android:hint="Type Proposed System"
-                    android:scrollbars="vertical" />
+                    android:layout_below="@+id/attachment1"
+                    android:hint="Proposed System">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/proposed_system_value"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:gravity="left"
+                        android:hint=""
+                        android:imeOptions="actionNext"
+                        android:inputType="textMultiLine"
+                        android:maxLines="4"
+                        android:padding="18dp"
+                        android:scrollbars="vertical" />
+                </com.google.android.material.textfield.TextInputLayout>
+
 
                 <ImageView
                     android:layout_marginTop="10dp"
                     android:layout_alignParentEnd="true"
-                    android:layout_below="@+id/proposed_system_value"
+                    android:layout_below="@+id/customerSpinnerLayout4"
                     android:src="@drawable/attach"
                     android:id="@+id/attachment2"
                     android:layout_width="wrap_content"
@@ -270,7 +324,7 @@
                     android:layout_marginEnd="10dp"
                     android:layout_alignBottom="@+id/attachment"
                     android:layout_alignTop="@+id/attachment"
-                    android:layout_below="@+id/proposed_system_value"
+                    android:layout_below="@+id/customerSpinnerLayout4"
                     android:id="@+id/attachtext2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -281,7 +335,7 @@
 
                 <ImageView
                     android:id="@+id/doc_view2"
-                    android:layout_below="@+id/proposed_system_value"
+                    android:layout_below="@+id/customerSpinnerLayout4"
                     android:layout_width="100dp"
                     android:layout_height="100dp"
                     android:visibility="gone"
@@ -293,43 +347,52 @@
                     android:id="@+id/benefit"
                     android:text="Benefit :"
                     android:textSize="16sp"
+                    android:visibility="gone"
                     android:textColor="@color/black"
                     android:fontFamily="@font/museosans_500"
                     android:layout_below="@+id/doc_view2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
 
-                <EditText
-                    android:layout_marginTop="10dp"
-                    android:id="@+id/benefit_value"
-                    android:layout_below="@+id/benefit"
-                    android:layout_alignParentEnd="true"
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/customerSpinnerLayout5"
                     android:layout_width="match_parent"
+                    style="@style/edittext"
+                    android:layout_marginTop="10dp"
                     android:layout_height="wrap_content"
-                    android:padding="5dp"
-                    android:inputType="textMultiLine"
-                    android:imeOptions="actionDone"
-                    android:gravity="left|top|center"
-                    android:background="@drawable/cardview_bg"
-                    android:maxLines="5"
-                    android:hint="Type Benefit"
-                    android:scrollbars="vertical" />
+                    android:layout_below="@+id/attachment2"
+                    android:hint="Benefit">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/benefit_value"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:gravity="left"
+                        android:hint=""
+                        android:imeOptions="actionNext"
+                        android:inputType="textMultiLine"
+                        android:maxLines="4"
+                        android:padding="18dp"
+                        android:scrollbars="vertical" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+
 
                 <ImageView
                     android:layout_marginTop="10dp"
                     android:layout_alignParentEnd="true"
-                    android:layout_below="@+id/benefit_value"
+                    android:layout_below="@+id/customerSpinnerLayout5"
                     android:src="@drawable/attach"
                     android:id="@+id/attachment3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
 
                 <TextView
-                    android:layout_marginTop="10dp"
-                    android:layout_marginEnd="10dp"
-                    android:layout_alignBottom="@+id/attachment"
-                    android:layout_alignTop="@+id/attachment"
-                    android:layout_below="@+id/benefit_value"
+                    android:layout_alignBottom="@+id/attachment3"
+                    android:layout_alignTop="@+id/attachment3"
+                    android:layout_below="@+id/customerSpinnerLayout5"
                     android:id="@+id/attachtext3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -341,38 +404,42 @@
 
                 <ImageView
                     android:id="@+id/doc_view3"
-                    android:layout_below="@+id/benefit_value"
+                    android:layout_below="@+id/customerSpinnerLayout5"
                     android:layout_width="100dp"
                     android:layout_height="100dp"
                     android:visibility="gone"
                     android:layout_margin="5dp" />
 
-                <Button
-                    android:layout_below="@+id/doc_view3"
-                    android:layout_marginTop="40dp"
+                <android.widget.Button
                     android:id="@+id/save"
-                    android:text="Save"
-                    android:fontFamily="@font/museosans_500"
-                    android:layout_marginStart="10dp"
-                    android:layout_toEndOf="@+id/view1"
-                    android:textColor="@color/white"
-                    android:background="@drawable/btn_bg"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
-
-
-                <Button
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/doc_view3"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="40dp"
+                    android:layout_toEndOf="@+id/view1"
+                    android:background="@drawable/btn_bg"
                     android:fontFamily="@font/museosans_500"
+                    android:text="Save"
+                    android:drawableLeft="@drawable/done"
+                    android:paddingLeft="10dp"
+                    android:textColor="@color/white" />
+
+
+                <android.widget.Button
+                    android:id="@+id/reset"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_below="@+id/doc_view3"
                     android:layout_marginTop="40dp"
-                    android:id="@+id/reset"
-                    android:text="Reset"
                     android:layout_marginEnd="10dp"
                     android:layout_toStartOf="@+id/view1"
-                    android:textColor="@color/white"
                     android:background="@drawable/btn_bg"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                    android:fontFamily="@font/museosans_500"
+                    android:text="Reset"
+                    android:drawableLeft="@drawable/reset"
+                    android:paddingLeft="10dp"
+                    android:textColor="@color/white" />
 
                 <View
                     android:id="@+id/view1"

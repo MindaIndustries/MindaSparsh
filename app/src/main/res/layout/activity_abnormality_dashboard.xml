@@ -26,6 +26,7 @@
     </RelativeLayout>
 
     <LinearLayout
+        android:background="@color/screen_bg"
         android:layout_marginTop="?android:attr/actionBarSize"
         android:orientation="vertical"
         android:layout_width="match_parent"
@@ -162,7 +163,7 @@
                 android:id="@+id/tv_continue"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/roundcornerbutton"
+                android:background="@drawable/btn_bg"
                 android:gravity="center"
                 android:padding="5dp"
                 android:text="Continue"

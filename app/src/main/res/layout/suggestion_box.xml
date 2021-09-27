@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/screen_bg"
+    >
 
     <include layout="@layout/toolbar" />
 
@@ -44,34 +46,33 @@
                 android:layout_marginTop="?android:attr/actionBarSize" />
 
 
-            <TextView
-                android:fontFamily="@font/museosans_500"
+            <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/drop_ur_suggestion"
-                android:text="Drop Your Suggestion :"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="@color/black" />
-
-            <EditText
-                android:fontFamily="@font/museosans_300"
-                android:layout_marginTop="10dp"
                 android:layout_width="match_parent"
+                style="@style/edittext"
+                android:layout_marginTop="10dp"
                 android:layout_height="wrap_content"
-                android:id="@+id/drop_suggestion"
-                android:hint="Enter your Suggestion"
-                android:gravity="left|top"
-                android:inputType="textMultiLine"
-                android:scrollbars="vertical"
-                android:padding="5dp"
-                android:textColor="@color/black"
-                android:maxLines="10"
-                android:background="@drawable/cardview_bg"
-                android:layout_below="@+id/drop_ur_suggestion" />
+                android:layout_below="@+id/customerSpinnerLayout2"
+                android:hint="Drop Your Suggestion">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/drop_suggestion"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:gravity="left"
+                    android:hint=""
+                    android:imeOptions="actionNext"
+                    android:inputType="textMultiLine"
+                    android:maxLines="4"
+                    android:padding="18dp"
+                    android:scrollbars="vertical" />
+            </com.google.android.material.textfield.TextInputLayout>
 
             <TextView
                 android:fontFamily="@font/museosans_500"
                 android:layout_marginTop="10dp"
-                android:layout_below="@+id/drop_suggestion"
+                android:layout_below="@+id/drop_ur_suggestion"
                 android:layout_toStartOf="@+id/addAttachment"
                 android:id="@+id/add_attach"
                 android:layout_marginEnd="10dp"
@@ -84,7 +85,7 @@
 
             <ImageView
                 android:id="@+id/doc_view"
-                android:layout_below="@+id/drop_suggestion"
+                android:layout_below="@+id/drop_ur_suggestion"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:visibility="gone"
@@ -93,68 +94,77 @@
 
             <ImageView
                 android:layout_marginTop="10dp"
-                android:layout_below="@+id/drop_suggestion"
+                android:layout_below="@+id/drop_ur_suggestion"
                 android:layout_alignParentEnd="true"
                 android:id="@+id/addAttachment"
                 android:src="@drawable/attach"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
 
-            <TextView
-                android:fontFamily="@font/museosans_500"
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/expected_cost_saving_txt"
+                android:layout_width="match_parent"
+                style="@style/edittext"
                 android:layout_marginTop="50dp"
+                android:layout_height="wrap_content"
                 android:layout_below="@+id/doc_view"
-                android:textColor="@color/black"
-                android:layout_width="wrap_content"
-                android:text="Expected Cost Saving/Reduction (Rs) :"
-                android:layout_height="wrap_content"
-                android:id="@+id/expected_cost_saving_txt" />
+                android:hint="Expected Cost Saving/Reduction (Rs)">
 
-            <EditText
-                android:textColor="@color/black"
-                android:fontFamily="@font/museosans_300"
-                android:layout_marginTop="10dp"
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/expected_cost_saving"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:gravity="left"
+                    android:hint=""
+                    android:imeOptions="actionNext"
+                    android:inputType="textMultiLine"
+                    android:maxLines="4"
+                    android:padding="18dp"
+                    android:scrollbars="vertical" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/other_benefit_txt"
                 android:layout_width="match_parent"
+                style="@style/edittext"
+                android:layout_marginTop="50dp"
                 android:layout_height="wrap_content"
-                android:id="@+id/expected_cost_saving"
                 android:layout_below="@+id/expected_cost_saving_txt"
-                android:hint="Enter cost benefit Amount"
-                android:padding="5dp"
-                android:background="@drawable/cardview_bg" />
+                android:hint="Other Benefit">
 
-            <TextView
-                android:textColor="@color/black"
-                android:fontFamily="@font/museosans_500"
-                android:layout_marginTop="10dp"
-                android:layout_below="@+id/expected_cost_saving"
-                android:layout_width="wrap_content"
-                android:text="Other Benefit :"
-                android:layout_height="wrap_content"
-                android:id="@+id/other_benefit_txt" />
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/othr_ben"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:gravity="left"
+                    android:hint=""
+                    android:imeOptions="actionNext"
+                    android:inputType="textMultiLine"
+                    android:maxLines="4"
+                    android:padding="18dp"
+                    android:scrollbars="vertical" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-            <EditText
-                android:textColor="@color/black"
-                android:fontFamily="@font/museosans_300"
-                android:padding="5dp"
-                android:background="@drawable/cardview_bg"
-                android:layout_marginTop="10dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/othr_ben"
-                android:layout_below="@+id/other_benefit_txt"
-                android:hint="Enter other benefit" />
-
-            <Button
-                android:layout_marginTop="20dp"
-                android:layout_centerHorizontal="true"
+            <android.widget.Button
                 android:id="@+id/submit"
-                android:fontFamily="@font/museosans_500"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_below="@+id/other_benefit_txt"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/btn_bg"
+                android:drawableLeft="@drawable/done"
+                android:drawablePadding="10dp"
+                android:fontFamily="@font/museosans_700"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
                 android:text="Submit"
                 android:textColor="#ffffff"
-                android:background="@drawable/btn_bg"
-                android:layout_below="@+id/othr_ben"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:textSize="14sp" />
 
         </RelativeLayout>
 

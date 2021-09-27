@@ -9,15 +9,20 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.minda.sparsh.DashBoardActivity;
 import com.minda.sparsh.Interface;
 import com.minda.sparsh.R;
 import com.minda.sparsh.model.AboutUsDetails;
+import com.minda.sparsh.model.DashboardImagesModel;
 import com.minda.sparsh.util.RetrofitClient2;
 import com.minda.sparsh.util.Utility;
+import com.synnapps.carouselview.CarouselView;
+import com.synnapps.carouselview.ImageListener;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.ArrayList;
 import java.util.List;
 import javax.net.ssl.HttpsURLConnection;
 import androidx.fragment.app.Fragment;
@@ -77,7 +82,9 @@ public class TwoFragment extends Fragment {
     TextView design_reg_value;
     @BindView(R.id.design_reg)
     TextView design_reg;
-
+    @BindView(R.id.carouselView)
+    CarouselView carouselView;
+    ArrayList<DashboardImagesModel> banners = new ArrayList<>();
 
 
     public TwoFragment() {
@@ -112,6 +119,7 @@ public class TwoFragment extends Fragment {
         final DashBoardActivity contaxt = (DashBoardActivity) getActivity();
         if(Utility.isOnline(getActivity())) {
             getAboutUsInfo();
+            getDahboardImages();
         }
 
         im_right.setOnClickListener(view1 -> contaxt.viewPager.setCurrentItem(contaxt.getItem(+1), true));
@@ -172,7 +180,6 @@ public class TwoFragment extends Fragment {
                         }
                     }
                 }
-
             }
 
             @Override
@@ -182,4 +189,37 @@ public class TwoFragment extends Fragment {
         });
 
     }
+    public void getDahboardImages(){
+        banners.clear();
+        Interface anInterface = RetrofitClient2.createServiceDashboardImages(Interface.class);
+        Call<List<DashboardImagesModel>> call = anInterface.getDashboardImages();
+        call.enqueue(new Callback<List<DashboardImagesModel>>() {
+            @Override
+            public void onResponse(Call<List<DashboardImagesModel>> call, Response<List<DashboardImagesModel>> response) {
+                if(response.code()== HttpsURLConnection.HTTP_OK) {
+                    List<DashboardImagesModel> list = response.body();
+                    banners.addAll(list);
+                    carouselView.setImageListener(imageListener);
+                    carouselView.setPageCount(banners.size());
+                    carouselView.setIndicatorVisibility(View.GONE);
+                }
+                }
+
+            @Override
+            public void onFailure(Call<List<DashboardImagesModel>> call, Throwable t) {
+                System.out.println("Api failed");
+            }
+        });
+
+    }
+    ImageListener imageListener = new ImageListener() {
+        @Override
+        public void setImageForPosition(int position, ImageView imageView) {
+            imageView.setAdjustViewBounds(true);
+            imageView.setScaleType(ImageView.ScaleType.FIT_XY);
+            Glide.with(getActivity()).load(banners.get(position).getImgsrc()).into(imageView);
+        }
+    };
+
+
 }

@@ -12,9 +12,9 @@
         android:orientation="vertical">
 
         <LinearLayout
+            android:background="#eb3045"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:background="@color/colorPrimary"
             android:gravity="center">
 
             <LinearLayout
@@ -101,13 +101,13 @@
                 android:layout_marginTop="30dp">
 
                 <TextView
-                    android:layout_width="150dp"
+                    android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:text="Create Ticket"
                     android:textColor="@color/white"
                     android:textSize="16sp"
                     android:gravity="center"
-                    android:background="@color/colorPrimary" />
+                    android:background="@drawable/btn_bg" />
             </LinearLayout>
 
         </LinearLayout>

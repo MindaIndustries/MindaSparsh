@@ -32,6 +32,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.material.textfield.TextInputEditText;
 import com.minda.sparsh.BottomUpConcernActivity;
 import com.minda.sparsh.R;
 import com.minda.sparsh.customview.NoDefaultSpinner;
@@ -55,6 +56,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.widget.AppCompatAutoCompleteTextView;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
@@ -69,19 +71,19 @@ public class NewConcernFragment extends Fragment {
     @BindView(R.id.new_concern)
     RelativeLayout newConcern;
     @BindView(R.id.concern_date_spinner)
-    TextView concernDateText;
+    TextInputEditText concernDateText;
     @BindView(R.id.unit_spinner)
-    NoDefaultSpinner unitSpinner;
+    AppCompatAutoCompleteTextView unitSpinner;
     @BindView(R.id.responsible_spinner)
-    NoDefaultSpinner responsibleSpinner;
+    AppCompatAutoCompleteTextView responsibleSpinner;
     @BindView(R.id.msm_reference_value)
-    EditText msmReferenceValue;
+    TextInputEditText msmReferenceValue;
     @BindView(R.id.existing_system_value)
-    EditText existingSystemValue;
+    TextInputEditText existingSystemValue;
     @BindView(R.id.proposed_system_value)
-    EditText proposedSystemValue;
+    TextInputEditText proposedSystemValue;
     @BindView(R.id.benefit_value)
-    EditText benefitValue;
+    TextInputEditText benefitValue;
     @BindView(R.id.save)
     Button save;
     @BindView(R.id.attachtext1)
@@ -198,6 +200,15 @@ public class NewConcernFragment extends Fragment {
 
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
+        responsibleSpinner.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                    department = sixMs.get(i).getID();
+
 
             }
         });
@@ -328,8 +339,9 @@ public class NewConcernFragment extends Fragment {
                     for (EHSUnitModel unit : units) {
                         unitsName.add(unit.getUnitCode() + ":" + unit.getUnitName());
                     }
-                    if (unitsName.size() > 0) {
-                        unitSpinner.setSelection(1);
+                    if (unitsName.size() >= 0) {
+                        unitSpinner.setText(unitsName.get(0));
+                        //  unitSpinner.setSelection(1);
                     }
                     adapterUnit.notifyDataSetChanged();
                 }
@@ -363,8 +375,10 @@ public class NewConcernFragment extends Fragment {
 
     public void initUnitSpinner() {
         unitsName.clear();
-        unitsName.add("Select");
-        adapterUnit = new ArrayAdapter<String>(getActivity(), R.layout.spinner_row, unitsName) {
+       // unitsName.add("Select");
+        adapterUnit = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_item, unitsName) ;
+
+      /*  adapterUnit = new ArrayAdapter<String>(getActivity(), R.layout.spinner_row, unitsName) {
             @Override
             public boolean isEnabled(int position) {
                 if (position == 0) {
@@ -392,17 +406,16 @@ public class NewConcernFragment extends Fragment {
                 return view;
             }
         };
-
-        adapterUnit.setDropDownViewResource(R.layout.spinner_row);
+*/
+      //  adapterUnit.setDropDownViewResource(R.layout.spinner_row);
         unitSpinner.setAdapter(adapterUnit);
-        unitSpinner.setSelection(0);
 
     }
 
     public void initSixMSpinner() {
         sixMNames.clear();
-        sixMNames.add("Select");
-        adapterResponsible6M = new ArrayAdapter<String>(getActivity(), R.layout.spinner_row, sixMNames) {
+      //  sixMNames.add("Select");
+        adapterResponsible6M = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_item, sixMNames); /*{
             @Override
             public boolean isEnabled(int position) {
                 if (position == 0) {
@@ -429,10 +442,10 @@ public class NewConcernFragment extends Fragment {
                 }
                 return view;
             }
-        };
-        adapterResponsible6M.setDropDownViewResource(R.layout.spinner_row);
+        };*/
+        adapterResponsible6M.setDropDownViewResource(android.R.layout.simple_spinner_item);
         responsibleSpinner.setAdapter(adapterResponsible6M);
-        responsibleSpinner.setSelection(0);
+   //     responsibleSpinner.setSelection(0);
     }
 
     public void saveConcern(String RaisedBy, String RaisedOn, String Unit, String Department, String ReferenceNo, String ExistingSystem, String ProposedSystem, String Benefit, String ESFile, String ESFileByte, String PSFile, String PSFileByte, String BenFile, String BenFileByte, String FirstName) {

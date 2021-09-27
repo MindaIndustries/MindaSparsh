@@ -17,5 +17,6 @@
     <color name="red_text">#d8241c</color>
     <color name="translucent">#99ffffff</color>
     <color name="disableBtn">#8F8782</color>
+    <color name="screen_bg">#F6F6F6</color>
 
 </resources>

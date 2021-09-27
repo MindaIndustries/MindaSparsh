@@ -33,7 +33,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="?android:attr/actionBarSize"
-            android:background="@color/colorPrimary"
+            android:background="#eb3045"
             android:gravity="center_vertical">
 
             <ImageView
@@ -63,7 +63,7 @@
                 android:gravity="center"
                 android:text="View"
                 android:fontFamily="@font/museosans_300"
-                android:textColor="@color/white"
+                android:textColor="@color/black"
                 android:textSize="12sp" />
         </LinearLayout>
 
@@ -576,8 +576,10 @@
                             android:layout_width="200dp"
                             android:layout_height="50dp"
                             android:layout_margin="15dp"
-                            android:background="@drawable/roundcornerbutton"
+                            android:background="@drawable/btn_bg"
                             android:text="Submit"
+                            android:drawableLeft="@drawable/done"
+                            android:paddingLeft="10dp"
                             android:fontFamily="@font/museosans_500"
                             android:textColor="@color/white" />
 

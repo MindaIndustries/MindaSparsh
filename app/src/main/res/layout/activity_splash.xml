@@ -4,48 +4,45 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center"
+    android:background="@color/screen_bg"
     tools:context="com.minda.sparsh.SplashActivity"
     >
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
         >
 
 
         <ImageView
             android:id="@+id/mslogo"
-            android:layout_centerHorizontal="true"
             android:layout_width="wrap_content"
             android:layout_height="100dp"
-            android:src="@drawable/minda_sparshlogo"
+            android:layout_centerHorizontal="true"
+            android:adjustViewBounds="true"
             android:scaleType="fitCenter"
-            android:adjustViewBounds="true" />
+            android:src="@drawable/minda_sparshlogo" />
 
 
         <ImageView
-            android:layout_centerHorizontal="true"
-            android:layout_below="@+id/mslogo"
-            android:src="@drawable/iconic_brand"
-            android:visibility="gone"
+            android:background="@drawable/circle"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-    </RelativeLayout>
-
-
-
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/mslogo"
+            android:layout_centerInParent="true"
+            android:src="@drawable/ess"
+            android:visibility="visible" />
 
 
     <TextView
         android:id="@+id/pwrd"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Powered by"
-        android:textColor="#999999"
-        android:fontFamily="@font/museosans_300"
+        android:layout_above="@+id/unominda_icon"
         android:layout_centerHorizontal="true"
-        android:layout_above="@+id/unominda_icon" />
+        android:fontFamily="@font/museosans_300"
+        android:text="Powered by"
+        android:textColor="#999999" />
 
     <ImageView
 
@@ -58,4 +55,5 @@
         android:layout_centerHorizontal="true"
         android:adjustViewBounds="true" />
 
+</RelativeLayout>
 </RelativeLayout>

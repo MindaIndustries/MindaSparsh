@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:focusable="true"
+    android:background="@color/screen_bg"
     android:focusableInTouchMode="true">
 
     <include layout="@layout/toolbar" />
@@ -584,37 +585,28 @@
                     >
 -->
 
-                <TextView
-                    android:layout_marginStart="5dp"
-                    android:layout_marginTop="10dp"
-                    android:fontFamily="@font/museosans_500"
-                    android:text="Access Requirement Details"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-
-                <EditText
-                    android:layout_marginTop="10dp"
-                    android:id="@+id/et_accessRequirementDetail"
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/customerSpinnerLayout"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:fontFamily="@font/museosans_300"
-                    android:gravity="left|top"
-                    android:imeOptions="actionDone"
-                    android:inputType="textMultiLine"
-                    android:lines="8"
-                    android:maxLines="5"
-                    android:minLines="6"
-                    android:overScrollMode="always"
-                    android:scrollbarStyle="insideInset"
-                    android:scrollbars="vertical"
-                    android:singleLine="false"
-                    android:background="@drawable/cardview_bg"
-                    android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:textColor="@color/black"
-                    android:textColorHint="@color/black" />
-                <!--
-                                </com.google.android.material.textfield.TextInputLayout>
-                -->
+                    style="@style/edittext"
+                    android:layout_marginTop="10dp"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/attachment2"
+                    android:hint="Access Requirement Details">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/et_accessRequirementDetail"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:gravity="left"
+                        android:hint=""
+                        android:imeOptions="actionNext"
+                        android:inputType="textMultiLine"
+                        android:maxLines="4"
+                        android:padding="18dp"
+                        android:scrollbars="vertical" />
+                </com.google.android.material.textfield.TextInputLayout>
 
 
                 <RelativeLayout
@@ -632,8 +624,8 @@
                     <TextView
                         android:layout_marginTop="10dp"
                         android:layout_marginEnd="10dp"
-                        android:layout_alignBottom="@+id/attachment"
-                        android:layout_alignTop="@+id/attachment"
+                        android:layout_alignBottom="@+id/attachment1"
+                        android:layout_alignTop="@+id/attachment1"
                         android:id="@+id/attachtext1"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -659,26 +651,32 @@
                     android:layout_height="wrap_content"
                     android:gravity="center">
 
-                    <Button
-                        android:id="@+id/btn_submit"
-                        android:layout_width="0dp"
-                        android:layout_height="50dp"
-                        android:layout_margin="15dp"
-                        android:layout_weight="1"
-                        android:background="@drawable/roundcornerbutton"
-                        android:fontFamily="@font/museosans_500"
-                        android:text="Submit"
-                        android:textColor="@color/white" />
 
-                    <Button
+                    <android.widget.Button
                         android:id="@+id/btn_cancel"
                         android:layout_width="0dp"
                         android:layout_height="50dp"
                         android:layout_margin="15dp"
                         android:layout_weight="1"
-                        android:background="@drawable/roundcornerbutton"
-                        android:fontFamily="@font/museosans_500"
+                        android:background="@drawable/btn_bg"
+                        android:fontFamily="@font/museosans_700"
                         android:text="Cancel"
+                        android:textSize="14sp"
+                        android:paddingLeft="10dp"
+                        android:drawableLeft="@drawable/cancel"
+                        android:textColor="@color/white" />
+                    <android.widget.Button
+                        android:id="@+id/btn_submit"
+                        android:layout_width="0dp"
+                        android:layout_height="50dp"
+                        android:layout_margin="15dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/btn_bg"
+                        android:fontFamily="@font/museosans_700"
+                        android:textSize="14sp"
+                        android:drawableLeft="@drawable/done"
+                        android:paddingLeft="10dp"
+                        android:text="Submit"
                         android:textColor="@color/white" />
 
                 </LinearLayout>

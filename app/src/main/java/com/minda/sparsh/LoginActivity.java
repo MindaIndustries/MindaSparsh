@@ -9,10 +9,12 @@ import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.text.method.PasswordTransformationMethod;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 import com.google.firebase.messaging.FirebaseMessaging;
@@ -66,7 +68,8 @@ public class LoginActivity extends AppCompatActivity {
     private final List<String> IMAGES = new ArrayList<>();
     public ArrayList<String> arrayList = new ArrayList<>();
     String version = "";
-
+    ImageView view_pass;
+    boolean ispassvisible;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -87,6 +90,7 @@ public class LoginActivity extends AppCompatActivity {
         lay_values =  findViewById(R.id.lay_values);
         lay_needhelp =  findViewById(R.id.lay_needhelp);
         mPager =  findViewById(R.id.showpager);
+        view_pass = findViewById(R.id.view_pass);
        // hitBannerApi();
         progress.setMessage("Please wait...");
         progress.setProgressStyle(ProgressDialog.STYLE_SPINNER);
@@ -128,6 +132,18 @@ public class LoginActivity extends AppCompatActivity {
         lay_needhelp.setOnClickListener(view -> {
             Intent needhelp = new Intent(LoginActivity.this, NeedhelpActivity.class);
             startActivity(needhelp);
+        });
+        view_pass.setOnClickListener(view -> {
+            if(ispassvisible){
+                input_password.setTransformationMethod(new PasswordTransformationMethod());
+            }
+            else{
+                input_password.setTransformationMethod(null);
+            }
+
+            input_password.setSelection(input_password.length());
+            ispassvisible= !ispassvisible;
+
         });
       //  showslideview();
      /*   mPager.setOnTouchListener(new View.OnTouchListener() {
@@ -413,8 +429,8 @@ public class LoginActivity extends AppCompatActivity {
                                 mEditor.putBoolean("IsLoginNew", false);
 
                             }
-                            refreshedToken = FirebaseMessaging.getInstance().getToken().getResult();
-                            HitMyorder(Id, refreshedToken);
+                         //   refreshedToken = FirebaseMessaging.getInstance().getToken().getResult();
+                           // HitMyorder(Id, refreshedToken);
                             mEditor.apply();
                             startActivity(intent);
                             finish();

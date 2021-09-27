@@ -73,7 +73,7 @@ public class EHSObsAdapter extends RecyclerView.Adapter<EHSObsAdapter.ViewHolder
                 bundle.putString("obsDate", myObservations.get(i).getActDate());
                 bundle.putString("unit", myObservations.get(i).getUnitCode() + ":" + myObservations.get(i).getUnitName());
                 bundle.putString("typeOfObs", myObservations.get(i).getOBName());
-                bundle.putString("safetyOfficer", myObservations.get(i).getUnitSafetyOfficer());
+                bundle.putString("safetyOfficer", myObservations.get(i).getUSName());
                 bundle.putString("identifiedLoc", myObservations.get(i).getLocation());
                 bundle.putString("category", myObservations.get(i).getCatName());
                 bundle.putString("subCategory", myObservations.get(i).getSubCategoryID());
@@ -100,7 +100,7 @@ public class EHSObsAdapter extends RecyclerView.Adapter<EHSObsAdapter.ViewHolder
                 bundle.putString("obsDate", myObservations.get(i).getActDate());
                 bundle.putString("unit", myObservations.get(i).getUnitCode() + ":" + myObservations.get(i).getUnitName());
                 bundle.putString("typeOfObs", myObservations.get(i).getOBName());
-                bundle.putString("safetyOfficer", myObservations.get(i).getUnitSafetyOfficer());
+                bundle.putString("safetyOfficer", myObservations.get(i).getUSName());
                 bundle.putString("identifiedLoc", myObservations.get(i).getLocation());
                 bundle.putString("category", myObservations.get(i).getCatName());
                 bundle.putString("subCategory", myObservations.get(i).getSubCategoryID());

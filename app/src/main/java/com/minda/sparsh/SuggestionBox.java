@@ -24,6 +24,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.material.textfield.TextInputEditText;
 import com.minda.sparsh.services.BottomUpConcernServices;
 import com.minda.sparsh.util.UriUtils;
 import com.minda.sparsh.util.Utility;
@@ -46,11 +47,11 @@ import butterknife.OnClick;
 public class SuggestionBox extends BaseActivity {
 
     @BindView(R.id.drop_suggestion)
-    EditText dropSuggestion;
+    TextInputEditText dropSuggestion;
     @BindView(R.id.expected_cost_saving)
-    EditText expectedCostSaving;
+    TextInputEditText expectedCostSaving;
     @BindView(R.id.othr_ben)
-    EditText otherBenefit;
+    TextInputEditText otherBenefit;
     @BindView(R.id.toolbar)
     Toolbar toolbar;
     @BindView(R.id.title)

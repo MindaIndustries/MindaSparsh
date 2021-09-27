@@ -24,7 +24,7 @@ public class RetrofitClient2 {
     //master public static final String BASE_URL = "http://176.9.28.166/MindaSparshTest/Service.asmx/";
     // public static final String BASE_URL = "http://52.172.191.61/Test.mindasparsh.com/Service.asmx/";
     //dev
-   /* public static final String BASE_URL = "https://dev.mindasparsh.com/Service.asmx/";
+    public static final String BASE_URL = "https://dev.mindasparsh.com/Service.asmx/";
     public static final String EHS_BASE_URL = "https://dev.mindasparsh.com/ServiceEHS.asmx/";
     public static final String ehs_img = "https://dev.mindasparsh.com/ehs/files/";
     public static final String bottomup_img = "https://dev.mindasparsh.com/bottomup/files/";
@@ -34,8 +34,8 @@ public class RetrofitClient2 {
     public static final String firebaseIDsaveUrl = "https://dev.mindasparsh.com/MindaFirePushServi./adb ce.asmx/";
     public static final String mindacareUrl = "https://dev.mindasparsh.com/MindaCare.asmx/";
     public static final String ithelpdeskBaseUrl = "https://dev.mindasparsh.com/ITHelpDeskM.asmx/";
-   */ //prod
-    public static final String BASE_URL = "https://app.mindasparsh.com/Service.asmx/";
+    //prod
+   /* public static final String BASE_URL = "https://app.mindasparsh.com/Service.asmx/";
     public static final String ehs_img = "https://app.mindasparsh.com/ehs/files/";
     public static final String EHS_BASE_URL = "https://app.mindasparsh.com/ServiceEHS.asmx/";
     public static final String BottomUpBaseUrl = "https://app.mindasparsh.com/BottomUpApi.asmx/";
@@ -45,9 +45,9 @@ public class RetrofitClient2 {
     public static final String mindacareUrl = "https://app.mindasparsh.com/MindaCare.asmx/";
     public static final String ithelpdeskBaseUrl = "https://app.mindasparsh.com/ITHelpDeskM.asmx/";
     public static final String itHelpAttachment = "https://app.mindasparsh.com/ithelpdesk/Files/";
-    //new CKey
-   //  public static final String CKEY = "bWRhQHNQciRyWiNHISE=";
-    public static final String CKEY = "mda@sPr$rZ#G!!";
+   */ //new CKey
+     public static final String CKEY = "bWRhQHNQciRyWiNHISE=";
+ //   public static final String CKEY = "mda@sPr$rZ#G!!";
 
     private static Retrofit retrofit = null;
     static Dispatcher dispatcher1 = new Dispatcher();
@@ -73,6 +73,44 @@ public class RetrofitClient2 {
         }
         return retrofit;
     }
+
+    public static <S> S createServiceDashboardImages(Class<S> serviceClass) {
+        OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
+        httpClient.protocols(Util.immutableListOf(Protocol.HTTP_1_1));
+        httpClient.addInterceptor(chain -> {
+            Request original = chain.request();
+
+            Request request = original.newBuilder()
+                    .addHeader("User", "Mik8%4##IB^&s85")
+                    .addHeader("Password", "615ss1BIdn@#gsd525siM")
+                    .method(original.method(), original.body())
+                    .build();
+            Response response = chain.proceed(request);
+            return response;
+        });
+
+        dispatcher1.setMaxRequests(3000);
+        httpClient.dispatcher(dispatcher1);
+
+        Gson gson = new GsonBuilder()
+                .setLenient()
+                .create();
+
+        OkHttpClient client = httpClient.readTimeout(60, TimeUnit.SECONDS)
+                .connectTimeout(60, TimeUnit.SECONDS).build();
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(BASE_URL)
+                .addConverterFactory(ScalarsConverterFactory.create())
+                .addConverterFactory(GsonConverterFactory.create(gson))
+                .client(client)
+                .build();
+
+        return retrofit.create(serviceClass);
+    }
+
+
+
+
 
     public static <S> S createServiceEHS(Class<S> serviceClass) {
         OkHttpClient.Builder httpClient = new OkHttpClient.Builder();

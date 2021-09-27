@@ -17,6 +17,7 @@ import com.minda.sparsh.model.CategoryAbnormality;
 import com.minda.sparsh.model.DDModel;
 import com.minda.sparsh.model.DWMDetailResponse;
 import com.minda.sparsh.model.DWMOprationDetailResponse;
+import com.minda.sparsh.model.DashboardImagesModel;
 import com.minda.sparsh.model.Department_Model;
 import com.minda.sparsh.model.Domain_Model;
 import com.minda.sparsh.model.DwmResponse;
@@ -34,6 +35,7 @@ import com.minda.sparsh.model.IAMGetPlantModel;
 import com.minda.sparsh.model.IAMGetRequestTypeSpinnerModel;
 import com.minda.sparsh.model.IAMGetSubCategoryModel;
 import com.minda.sparsh.model.LoginResponse;
+import com.minda.sparsh.model.NotiCount;
 import com.minda.sparsh.model.NotificationModel;
 import com.minda.sparsh.model.Plant_Model;
 import com.minda.sparsh.model.Sub_Department_Model;
@@ -60,6 +62,9 @@ public interface Interface {
     @GET("GetAboutUs")
     Call<List<AboutUsDetails>> getAboutDetails();
 
+    @GET("GetDashboardImages")
+    Call<List<DashboardImagesModel>> getDashboardImages();
+
     // @FormUrlEncoded
     @GET("GetLogin")
     Call<List<LoginResponse>> GetLogin(@Query("username") String username, @Query("pass") String pass, @Query("CKey") String CKey);
@@ -70,6 +75,9 @@ public interface Interface {
 
     @GET("GetPushNot")
     Call<List<NotificationModel>> GetPushNot(@Query("userid") String UserId, @Query("CKey") String CKey);
+
+    @GET("GetPushNotCount")
+    Call<List<NotiCount>> GetPushNotCount(@Query("userid") String UserId, @Query("CKey") String CKey);
 
     @GET("UpdateDeviceId")
     Call<List<NotificationModel>> UpdateDeviceId(@Query("userid") String userid, @Query("deviceid") String deviceid, @Query("CKey") String CKey);
