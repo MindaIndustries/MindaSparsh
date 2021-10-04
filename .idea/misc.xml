@@ -29,7 +29,7 @@
         <entry key="app/src/main/res/layout/activity_approve_list.xml" value="0.1046875" />
         <entry key="app/src/main/res/layout/activity_approve_list1.xml" value="0.1046875" />
         <entry key="app/src/main/res/layout/activity_base.xml" value="0.1046875" />
-        <entry key="app/src/main/res/layout/activity_dash_board.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_dash_board.xml" value="0.2" />
         <entry key="app/src/main/res/layout/activity_dwm.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_dwmmfg_head.xml" value="0.1557377049180328" />
         <entry key="app/src/main/res/layout/activity_dwmoperation_head.xml" value="0.1" />
@@ -59,7 +59,7 @@
         <entry key="app/src/main/res/layout/city_row.xml" value="0.14959016393442623" />
         <entry key="app/src/main/res/layout/cr.xml" value="0.18271857923497267" />
         <entry key="app/src/main/res/layout/create_ticket.xml" value="0.1" />
-        <entry key="app/src/main/res/layout/dashboard_content.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/dashboard_content.xml" value="0.2" />
         <entry key="app/src/main/res/layout/domain_cell_view.xml" value="0.1" />
         <entry key="app/src/main/res/layout/ehs_initiate.xml" value="0.176" />
         <entry key="app/src/main/res/layout/ehs_layout.xml" value="0.2" />

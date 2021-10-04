@@ -117,7 +117,7 @@ public class DashBoardActivity extends BaseActivity implements View.OnClickListe
 //        timer.schedule(timerTask, 5000, 5000);
 
 
-        tv_unread.setOnClickListener(view -> {
+        tv_user_name.setOnClickListener(view -> {
 
             Intent intent = new Intent(DashBoardActivity.this, NotificationActivity.class);
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);

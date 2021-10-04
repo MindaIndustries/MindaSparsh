@@ -36,25 +36,25 @@
     </RelativeLayout>
 
     <ScrollView
-        android:layout_marginTop="?android:attr/actionBarSize"
-        android:fillViewport="true"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_marginTop="?android:attr/actionBarSize"
+        android:fillViewport="true">
 
         <LinearLayout
-            android:background="@color/screen_bg"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:background="@color/screen_bg"
             android:focusable="true"
             android:focusableInTouchMode="true"
             android:orientation="vertical">
 
             <LinearLayout
-                android:visibility="gone"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
                 android:background="@color/colorPrimary"
-                android:gravity="center_vertical">
+                android:gravity="center_vertical"
+                android:visibility="gone">
 
                 <ImageView
                     android:id="@+id/im_back"
@@ -89,18 +89,17 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
-                >
+                android:layout_marginRight="20dp">
 
                 <TextView
                     android:id="@+id/tv_add"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:background="@drawable/btn_bg"
                     android:gravity="center"
                     android:padding="5dp"
                     android:text="@string/add"
-                    android:background="@drawable/btn_bg"
                     android:textColor="#FFFFFF"
                     android:textSize="16sp"
                     android:textStyle="bold" />
@@ -110,33 +109,36 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:background="@drawable/btn_bg"
                     android:gravity="center"
                     android:padding="5dp"
                     android:text="@string/view"
-                    android:background="@drawable/btn_bg"
                     android:textColor="#FFFFFF"
                     android:textSize="16sp"
                     android:textStyle="bold" />
             </LinearLayout>
 
             <LinearLayout
-                android:padding="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="20dp"
-                    android:layout_marginRight="20dp"
                     android:layout_marginTop="10dp"
+                    android:layout_marginRight="20dp"
                     android:orientation="vertical">
 
                     <LinearLayout
-                        android:visibility="gone"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
+                        android:layout_height="wrap_content"
+                        android:visibility="gone">
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -146,11 +148,11 @@
                     </LinearLayout>
 
                     <LinearLayout
-                        android:visibility="gone"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
-                        android:gravity="center">
+                        android:gravity="center"
+                        android:visibility="gone">
 
                         <LinearLayout
                             android:layout_width="match_parent"
@@ -175,14 +177,14 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="20dp"
-                    android:layout_marginRight="20dp"
                     android:layout_marginTop="10dp"
+                    android:layout_marginRight="20dp"
                     android:orientation="vertical">
 
                     <LinearLayout
-                        android:visibility="gone"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
+                        android:layout_height="wrap_content"
+                        android:visibility="gone">
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -192,11 +194,11 @@
                     </LinearLayout>
 
                     <LinearLayout
-                        android:visibility="gone"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
-                        android:gravity="center">
+                        android:gravity="center"
+                        android:visibility="gone">
 
                         <LinearLayout
                             android:layout_width="match_parent"
@@ -219,11 +221,11 @@
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/customerSpinnerLayout"
-                    android:layout_width="match_parent"
                     style="@style/box"
-                    android:layout_marginTop="10dp"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/customerSpinnerLayout1"
+                    android:layout_marginTop="10dp"
                     android:hint="Plant">
 
                     <androidx.appcompat.widget.AppCompatAutoCompleteTextView
@@ -234,57 +236,92 @@
                         android:editable="false"
                         tools:ignore="KeyboardInaccessibleWidget" />
                 </com.google.android.material.textfield.TextInputLayout>
-
-                <LinearLayout
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/customerSpinnerLayout1"
+                    style="@style/box"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginRight="20dp"
                     android:layout_marginTop="10dp"
-                    android:orientation="vertical">
+                    android:hint="@string/department">
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/department"
-                            android:textSize="14sp" />
-                    </LinearLayout>
-
-                    <LinearLayout
+                    <androidx.appcompat.widget.AppCompatAutoCompleteTextView
+                        android:id="@+id/sp_department"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
-                        android:gravity="center">
+                        android:clickable="true"
+                        android:editable="false"
+                        tools:ignore="KeyboardInaccessibleWidget" />
+                </com.google.android.material.textfield.TextInputLayout>
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/customerSpinnerLayout3"
+                    style="@style/box"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:hint="@string/sub_department">
 
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="vertical">
+                    <androidx.appcompat.widget.AppCompatAutoCompleteTextView
+                        android:id="@+id/sp_sdepartment"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:clickable="true"
+                        android:editable="false"
+                        tools:ignore="KeyboardInaccessibleWidget" />
+                </com.google.android.material.textfield.TextInputLayout>
 
-                            <Spinner
-                                android:id="@+id/sp_department"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content" />
+                <!--
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="20dp"
+                                    android:layout_marginTop="10dp"
+                                    android:layout_marginRight="20dp"
+                                    android:orientation="vertical">
 
-                            <View
-                                android:layout_width="match_parent"
-                                android:layout_height="1dp"
-                                android:background="#000000" />
-                        </LinearLayout>
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content">
 
-                    </LinearLayout>
-                </LinearLayout>
+                                        <TextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:text="@string/department"
+                                            android:textSize="14sp" />
+                                    </LinearLayout>
 
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginTop="10dp"
+                                        android:gravity="center">
+
+                                        <LinearLayout
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:orientation="vertical">
+
+                                            <Spinner
+                                                android:id="@+id/sp_department"
+                                                android:layout_width="match_parent"
+                                                android:layout_height="wrap_content" />
+
+                                            <View
+                                                android:layout_width="match_parent"
+                                                android:layout_height="1dp"
+                                                android:background="#000000" />
+                                        </LinearLayout>
+
+                                    </LinearLayout>
+                                </LinearLayout>
+                -->
+
+<!--
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="20dp"
-                    android:layout_marginRight="20dp"
                     android:layout_marginTop="10dp"
+                    android:layout_marginRight="20dp"
                     android:orientation="vertical">
 
                     <LinearLayout
@@ -322,51 +359,70 @@
 
                     </LinearLayout>
                 </LinearLayout>
+-->
 
-                <LinearLayout
+                <!--
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="20dp"
+                                    android:layout_marginTop="10dp"
+                                    android:layout_marginRight="20dp"
+                                    android:orientation="vertical">
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content">
+
+                                        <TextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:text="@string/category"
+                                            android:textSize="14sp" />
+                                    </LinearLayout>
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginTop="10dp"
+                                        android:gravity="center">
+
+                                        <LinearLayout
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:orientation="vertical">
+
+                                            <Spinner
+                                                android:id="@+id/sp_category"
+                                                android:layout_width="match_parent"
+                                                android:layout_height="wrap_content" />
+
+                                            <View
+                                                android:layout_width="match_parent"
+                                                android:layout_height="1dp"
+                                                android:background="#000000" />
+                                        </LinearLayout>
+
+                                    </LinearLayout>
+                                </LinearLayout>
+                -->
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/customerSpinnerLayout2"
+                    style="@style/box"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginRight="20dp"
                     android:layout_marginTop="10dp"
-                    android:orientation="vertical">
+                    android:hint="@string/category">
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/category"
-                            android:textSize="14sp" />
-                    </LinearLayout>
-
-                    <LinearLayout
+                    <androidx.appcompat.widget.AppCompatAutoCompleteTextView
+                        android:id="@+id/sp_category"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
-                        android:gravity="center">
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="vertical">
-
-                            <Spinner
-                                android:id="@+id/sp_category"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content" />
-
-                            <View
-                                android:layout_width="match_parent"
-                                android:layout_height="1dp"
-                                android:background="#000000" />
-                        </LinearLayout>
-
-                    </LinearLayout>
-                </LinearLayout>
-
+                        android:clickable="true"
+                        android:editable="false"
+                        tools:ignore="KeyboardInaccessibleWidget" />
+                </com.google.android.material.textfield.TextInputLayout>
 
                 <LinearLayout
                     android:id="@+id/lay_one"
@@ -378,8 +434,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="30dp"
-                        android:layout_marginRight="30dp"
                         android:layout_marginTop="30dp"
+                        android:layout_marginRight="30dp"
                         android:gravity="center"
                         android:orientation="vertical">
 
@@ -387,8 +443,8 @@
                             android:id="@+id/Im_capture"
                             android:layout_width="150dp"
                             android:layout_height="150dp"
-                            android:src="@drawable/demoimage"
-                            android:scaleType="centerCrop" />
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/demoimage" />
 
                         <TextView
                             android:id="@+id/tv_upload"
@@ -404,14 +460,14 @@
 
 
                     <com.google.android.material.textfield.TextInputLayout
+                        style="@style/edittext"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="20dp"
-                        android:layout_marginRight="20dp"
                         android:layout_marginTop="20dp"
-                        style="@style/edittext"
-                        android:theme="@style/edittext"
-                        android:hint="@string/abnormality_description">
+                        android:layout_marginRight="20dp"
+                        android:hint="@string/abnormality_description"
+                        android:theme="@style/edittext">
 
                         <com.google.android.material.textfield.TextInputEditText
                             android:id="@+id/et_descripton"
@@ -435,31 +491,31 @@
                     <!--android:layout_height="wrap_content"-->
                     <!--android:imeOptions="actionDone" />-->
                     <com.google.android.material.textfield.TextInputLayout
+                        style="@style/edittext"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="20dp"
-                        android:layout_marginRight="20dp"
                         android:layout_marginTop="20dp"
-                        style="@style/edittext"
+                        android:layout_marginRight="20dp"
                         android:hint="@string/abnormality_description">
 
                         <com.google.android.material.textfield.TextInputEditText
                             android:id="@+id/et_finddate"
-                            android:editable="false"
-                            android:textSize="18sp"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:imeOptions="actionDone" />
+                            android:editable="false"
+                            android:imeOptions="actionDone"
+                            android:textSize="18sp" />
 
                     </com.google.android.material.textfield.TextInputLayout>
 
                     <View
-                        android:visibility="gone"
                         android:layout_width="match_parent"
                         android:layout_height="1dp"
                         android:layout_marginLeft="20dp"
                         android:layout_marginRight="20dp"
-                        android:background="#000000" />
+                        android:background="#000000"
+                        android:visibility="gone" />
 
                     <!--</android.support.design.widget.TextInputLayout>-->
 
@@ -475,15 +531,15 @@
                             android:layout_width="wrap_content"
                             android:layout_height="45dp"
                             android:background="@drawable/btn_bg"
+                            android:drawableLeft="@drawable/done"
+                            android:drawablePadding="10dp"
+                            android:fontFamily="@font/museosans_700"
                             android:gravity="center"
                             android:paddingLeft="25dp"
                             android:paddingRight="25dp"
                             android:text="@string/submit"
                             android:textColor="#FFFFFF"
                             android:textSize="14sp"
-                            android:fontFamily="@font/museosans_700"
-                            android:drawableLeft="@drawable/done"
-                            android:drawablePadding="10dp"
                             android:textStyle="bold" />
 
                     </LinearLayout>
