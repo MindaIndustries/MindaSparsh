@@ -62,7 +62,6 @@
             android:src="@drawable/right_arrow" />
 
         <RelativeLayout
-            android:padding="20dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/im_left">
@@ -190,7 +189,10 @@
                                         android:text="Manufacturing"
                                         android:textColor="#4a4f54"
                                         android:textSize="16sp"
-                                        android:visibility="visible" />
+                                        android:visibility="visible"
+                                        app:autoSizeMaxTextSize="16sp"
+                                        app:autoSizeMinTextSize="12sp"
+                                        app:autoSizeTextType="uniform" />
 
                                 </RelativeLayout>
                                     <ImageView
@@ -330,6 +332,9 @@
                                         android:text="Engineering"
                                         android:textColor="#4a4f54"
                                         android:textSize="16sp"
+                                        app:autoSizeMaxTextSize="16sp"
+                                        app:autoSizeMinTextSize="12sp"
+                                        app:autoSizeTextType="uniform"
                                         android:visibility="visible" />
 
                                 </RelativeLayout>

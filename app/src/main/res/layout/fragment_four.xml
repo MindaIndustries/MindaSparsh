@@ -15,7 +15,7 @@
             android:gravity="center"
             android:orientation="vertical">
         <LinearLayout
-            android:padding="20dp"
+            android:layout_marginTop="20dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
@@ -27,7 +27,7 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:layout_width="80dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/museosans_700"
                     android:gravity="center"
@@ -48,7 +48,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_marginTop="30dp"
-                android:gravity="center"
+                android:gravity="center_horizontal"
                 android:orientation="horizontal">
 
                 <RelativeLayout
@@ -82,12 +82,15 @@
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:layout_marginTop="20dp"
                                     android:fontFamily="@font/museosans_700"
                                     android:text="ID &amp; Access Management"
                                     android:textColor="#4a4f54"
                                     android:textSize="16sp"
-                                    android:visibility="visible" />
+                                    android:layout_marginTop="20dp"
+                                    android:visibility="visible"
+                                    app:autoSizeMaxTextSize="16sp"
+                                    app:autoSizeMinTextSize="12sp"
+                                    app:autoSizeTextType="uniform" />
 
                             </RelativeLayout>
 
@@ -148,7 +151,10 @@
                                     android:text="IT Survey"
                                     android:textColor="#4a4f54"
                                     android:textSize="16sp"
-                                    android:visibility="visible" />
+                                    android:visibility="visible"
+                                    app:autoSizeMaxTextSize="16sp"
+                                    app:autoSizeMinTextSize="12sp"
+                                    app:autoSizeTextType="uniform" />
 
                             </RelativeLayout>
 
@@ -169,7 +175,7 @@
                         android:layout_alignLeft="@+id/card_view1"
                         android:layout_marginLeft="20dp"
                         android:elevation="10dp"
-                        android:src="@drawable/idaccess" />
+                        android:src="@drawable/it_survey" />
 
                 </RelativeLayout>
 
@@ -314,6 +320,9 @@
                                     android:text="Change Request"
                                     android:textColor="#4a4f54"
                                     android:textSize="16sp"
+                                    app:autoSizeMaxTextSize="16sp"
+                                    app:autoSizeMinTextSize="12sp"
+                                    app:autoSizeTextType="uniform"
                                     android:visibility="visible" />
 
                             </RelativeLayout>
@@ -335,7 +344,7 @@
                         android:layout_alignLeft="@+id/card_view2"
                         android:layout_marginLeft="20dp"
                         android:elevation="10dp"
-                        android:src="@drawable/idaccess" />
+                        android:src="@drawable/change_request" />
 
                 </RelativeLayout>
 

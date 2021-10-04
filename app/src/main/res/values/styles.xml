@@ -6,13 +6,15 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:statusBarColor">#eb3045</item>
+
     </style>
 
 
     <style name="AppTheme.NoActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
-        <item name="android:statusBarColor">#000000</item>
+        <item name="android:statusBarColor">#eb3045</item>
 
     </style>
     
@@ -20,6 +22,9 @@
         <item name="boxStrokeColor">@color/colorPrimary</item>
         <item name="hintTextColor">@color/colorPrimary</item>
         <item name="colorControlActivated">@color/colorPrimary</item>
+        <item name="endIconTint">@color/colorPrimary</item>
+        <item name="android:textCursorDrawable">@drawable/cursor_drawable</item>
+        <item name="colorAccent">@color/colorPrimary</item>
 
 
     </style>
@@ -27,8 +32,8 @@
     <style name="edittext" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
         <item name="boxStrokeColor">@color/colorPrimary</item>
         <item name="hintTextColor">@color/colorPrimary</item>
-        <item name="colorControlActivated">@color/colorPrimary</item>
-
+        <item name="android:textCursorDrawable">@drawable/cursor_drawable</item>
+        <item name="android:colorAccent">@color/colorPrimary</item>
 
     </style>
 
@@ -37,9 +42,10 @@
     <style name="spinnertheme" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
-        <item name="android:statusBarColor">#000000</item>
+        <item name="android:statusBarColor">#eb3045</item>
         <item name="android:colorAccent">@color/colorPrimary</item>
         <item name="android:state_activated">@color/colorPrimary</item>
+        <item name="android:textCursorDrawable">@drawable/cursor_drawable</item>
 
     </style>
 

@@ -651,6 +651,19 @@
                     android:layout_height="wrap_content"
                     android:gravity="center">
 
+                    <android.widget.Button
+                        android:id="@+id/btn_submit"
+                        android:layout_width="0dp"
+                        android:layout_height="50dp"
+                        android:layout_margin="15dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/btn_bg"
+                        android:fontFamily="@font/museosans_700"
+                        android:textSize="14sp"
+                        android:drawableLeft="@drawable/done"
+                        android:paddingLeft="10dp"
+                        android:text="Submit"
+                        android:textColor="@color/white" />
 
                     <android.widget.Button
                         android:id="@+id/btn_cancel"
@@ -664,19 +677,6 @@
                         android:textSize="14sp"
                         android:paddingLeft="10dp"
                         android:drawableLeft="@drawable/cancel"
-                        android:textColor="@color/white" />
-                    <android.widget.Button
-                        android:id="@+id/btn_submit"
-                        android:layout_width="0dp"
-                        android:layout_height="50dp"
-                        android:layout_margin="15dp"
-                        android:layout_weight="1"
-                        android:background="@drawable/btn_bg"
-                        android:fontFamily="@font/museosans_700"
-                        android:textSize="14sp"
-                        android:drawableLeft="@drawable/done"
-                        android:paddingLeft="10dp"
-                        android:text="Submit"
                         android:textColor="@color/white" />
 
                 </LinearLayout>

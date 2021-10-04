@@ -65,8 +65,8 @@ public class MindacareWeb extends AppCompatActivity {
 
         String age = "" + day + month + dob1.get(Calendar.YEAR);
     //    mindacareWebView.loadUrl(HttpConnection.mindacareUrl + "EmpCode=" + empcode + "&Dob=" + age);
-        mindacareWebView.loadUrl(HttpConnection.itsurveyUrl+"?EmpCode="+ empcode+"&Level="+level);
-
+      //  mindacareWebView.loadUrl(HttpConnection.itsurveyUrl+"?EmpCode="+ empcode+"&Level="+level);
+        mindacareWebView.loadUrl(HttpConnection.itsurveyUrl+"EmpCode="+empcode+"&Level="+level);
         WebSettings webSettings = mindacareWebView.getSettings();
         webSettings.setJavaScriptEnabled(true);
 

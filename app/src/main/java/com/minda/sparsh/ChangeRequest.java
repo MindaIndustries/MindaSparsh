@@ -63,7 +63,7 @@ public class ChangeRequest extends AppCompatActivity {
 
         String age = "" + day + month + dob1.get(Calendar.YEAR);
     //    mindacareWebView.loadUrl(HttpConnection.mindacareUrl + "EmpCode=" + empcode + "&Dob=" + age);
-        mindacareWebView.loadUrl(HttpConnection.c_rurl/*+"empcode="+ empcode*/);
+        mindacareWebView.loadUrl("https://itsupport.unominda.com/app/itdesk/");
 
         WebSettings webSettings = mindacareWebView.getSettings();
         webSettings.setJavaScriptEnabled(true);

@@ -24,6 +24,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
@@ -36,6 +37,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.material.textfield.TextInputEditText;
 import com.minda.sparsh.Adapter.AbnormalityAdapter;
 import com.minda.sparsh.Adapter.AbnormalityCategoryAdapter;
 import com.minda.sparsh.Adapter.BusinessSpinnerAdapter;
@@ -73,6 +75,7 @@ import java.util.Locale;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatAutoCompleteTextView;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.content.FileProvider;
 import retrofit2.Call;
@@ -84,7 +87,8 @@ import static android.Manifest.permission.CAMERA;
 public class AbnormalityAddressingActivity extends AppCompatActivity {
     ListView list_abnormalty;
     LinearLayout lay_two, lay_one, lay_out;
-    TextView tv_view, tv_add, et_finddate, tv_upload;
+    TextView tv_view, tv_add, tv_upload;
+    TextInputEditText et_finddate;
     Button tv_submit;
     ImageView Im_capture, im_back;
     Uri picUri = null;
@@ -97,8 +101,9 @@ public class AbnormalityAddressingActivity extends AppCompatActivity {
     private final static int ALL_PERMISSIONS_RESULT = 107;
     boolean pic_uploaded = false;
     private ProgressDialog progress = null;
-    Spinner sp_department, sp_domain, sp_business, sp_plant, sp_sdepartment, sp_category;
-    EditText et_descripton;
+    Spinner sp_department, sp_domain, sp_business, sp_sdepartment, sp_category;
+    TextInputEditText et_descripton;
+    AppCompatAutoCompleteTextView sp_plant;
     SharedPreferences myPref;
     String group = "UNO Minda Group", domain = "Select Domain", business, plant = "", department = "Select Department", description, benefits, abnormalitydate, domainid = "", businessid = "";
     public String BUSINESS = "", DOMAIN = "", UNITCODE = "", plantid = "", PLANTROLE = "";
@@ -106,7 +111,7 @@ public class AbnormalityAddressingActivity extends AppCompatActivity {
     public static String Role;
     List<Domain_Model> Domainresponse;
     List<Business_Model> Businessresponse;
-    List<Plant_Model> Plantresponse;
+    List<Plant_Model> Plantresponse = new ArrayList<>();
     List<Department_Model> Departmentresponse = new ArrayList<>();
     List<Sub_Department_Model> Subdepartmentresponse = new ArrayList<>();
     Toolbar toolbar;
@@ -115,6 +120,9 @@ public class AbnormalityAddressingActivity extends AppCompatActivity {
 
     ProgressBar progressBar;
     int category_id;
+
+    ArrayList<String> plants = new ArrayList<>();
+    ArrayAdapter<String> adapterUnit;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -162,6 +170,11 @@ public class AbnormalityAddressingActivity extends AppCompatActivity {
             plantid = getIntent().getStringExtra("EPLANT");
 
         }
+        adapterUnit = new ArrayAdapter<>(AbnormalityAddressingActivity.this, android.R.layout.simple_spinner_item,plants);
+        sp_plant.setAdapter(adapterUnit);
+
+
+
         hitCategoryApi();
         hitPlantApi(empCode);
 
@@ -246,9 +259,9 @@ public class AbnormalityAddressingActivity extends AppCompatActivity {
                     plant_model.setUnitCode("0");
                     plant_model.setUnitName("Select Plant");
                     list.add(0, plant_model);
-                    PlantSpinnerAdapter departmentSpinnerAdapter = new PlantSpinnerAdapter(AbnormalityAddressingActivity.this, list);
+                  /*  PlantSpinnerAdapter departmentSpinnerAdapter = new PlantSpinnerAdapter(AbnormalityAddressingActivity.this, list);
                     sp_plant.setAdapter(departmentSpinnerAdapter);
-                }
+               */ }
 
 
 //                hitGetAbnormalityDetailApi(plantid, String.valueOf(sub_department), domainid, businessid);
@@ -322,12 +335,12 @@ public class AbnormalityAddressingActivity extends AppCompatActivity {
 
             }
         });
-        sp_plant.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+      /*  sp_plant.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                Plant_Model selectedItem = (Plant_Model) adapterView.getSelectedItem();
-                plant = selectedItem.getUnitName();
-                plantid = selectedItem.getUnitCode();
+              //  Plant_Model selectedItem = (Plant_Model) adapterView.getSelectedItem();
+                plant = Plantresponse.get(i).getUnitName();
+                plantid = Plantresponse.get(i).getUnitCode();
                 if (!plant.equalsIgnoreCase("Select Plant")) {
 //                    hitSubdepartmentApi();
                     hitDepartmentApi();
@@ -350,6 +363,30 @@ public class AbnormalityAddressingActivity extends AppCompatActivity {
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {
 
+            }
+        });
+*/
+        sp_plant.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+              //  Plant_Model selectedItem = (Plant_Model) adapterView.getSelectedItem();
+                plant = Plantresponse.get(i).getUnitName();
+                plantid = Plantresponse.get(i).getUnitCode();
+                if (!plant.equalsIgnoreCase("Select Plant")) {
+//                    hitSubdepartmentApi();
+                    hitDepartmentApi();
+                } else {
+                    List<Department_Model> list = new ArrayList<>();
+                    Department_Model department_model = new Department_Model();
+                    department_model.setID("0");
+                    department_model.setDEPARTMENT("Select Department");
+                    list.add(0, department_model);
+                    DepartmentSpinnerAdapter departmentSpinnerAdapter = new DepartmentSpinnerAdapter(AbnormalityAddressingActivity.this, list);
+                    sp_department.setAdapter(departmentSpinnerAdapter);
+
+
+                }
+//
             }
         });
 //        sp_group.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -860,19 +897,31 @@ public class AbnormalityAddressingActivity extends AppCompatActivity {
                 public void onResponse(@NotNull Call<List<Plant_Model>> call, @NotNull Response<List<Plant_Model>> response) {
                     try {
                         showProgress(false);
-                        Plantresponse = response.body();
+                  /*      Plantresponse = response.body();
                         Plant_Model plant_model = new Plant_Model();
                         plant_model.setUnitCode("0");
                         plant_model.setUnitName("Select Plant");
                         Plantresponse.add(0, plant_model);
+*/
 
-                        if (Plantresponse != null) {
-                            PlantSpinnerAdapter departmentSpinnerAdapter = new PlantSpinnerAdapter(AbnormalityAddressingActivity.this, Plantresponse);
+
+                        /*    PlantSpinnerAdapter departmentSpinnerAdapter = new PlantSpinnerAdapter(AbnormalityAddressingActivity.this, Plantresponse);
                             sp_plant.setAdapter(departmentSpinnerAdapter);
+*/
+                            List<Plant_Model> list = response.body();
 
-                            for (int i = 0; i < Plantresponse.size(); i++) {
+                            if(list!= null && list.size()>0){
+                                for (Plant_Model plantModel : list) {
+                                    Plantresponse.add(plantModel);
+
+                                    plants.add(plantModel.getUnitName());
+                                }
+                                adapterUnit.notifyDataSetChanged();
+                            }
+
+                            for (int i = 0; i < list.size(); i++) {
                                 if (UNITCODE.equalsIgnoreCase(Plantresponse.get(i).getUnitCode())) {
-                                    sp_plant.setSelection(i);
+                                    sp_plant.setText(""+Plantresponse.get(i).getUnitName());
                                     if (PLANTROLE.equalsIgnoreCase("Best Coordinator") || PLANTROLE.equalsIgnoreCase("Plant Head")) {
                                         sp_plant.setEnabled(false);
                                     } else {
@@ -881,7 +930,7 @@ public class AbnormalityAddressingActivity extends AppCompatActivity {
                                     break;
                                 }
                             }
-                        }
+
                     } catch (Exception e) {
                         e.printStackTrace();
                     }

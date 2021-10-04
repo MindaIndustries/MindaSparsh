@@ -127,6 +127,9 @@
                                                 android:text="Bottom Up Concern"
                                                 android:textColor="#4a4f54"
                                                 android:textSize="16sp"
+                                                app:autoSizeMaxTextSize="16sp"
+                                                app:autoSizeMinTextSize="12sp"
+                                                app:autoSizeTextType="uniform"
                                                 android:visibility="visible" />
 
 
@@ -273,6 +276,9 @@
                                                 android:text="Cost Saving Ideas"
                                                 android:textColor="#4a4f54"
                                                 android:textSize="16sp"
+                                                app:autoSizeMaxTextSize="16sp"
+                                                app:autoSizeMinTextSize="12sp"
+                                                app:autoSizeTextType="uniform"
                                                 android:visibility="visible" />
                                         </RelativeLayout>
                                         <ImageView
@@ -339,6 +345,9 @@
                                                 android:text="Visitor Management"
                                                 android:textColor="#4a4f54"
                                                 android:textSize="16sp"
+                                                app:autoSizeMaxTextSize="16sp"
+                                                app:autoSizeMinTextSize="12sp"
+                                                app:autoSizeTextType="uniform"
                                                 android:visibility="visible" />
 
                                         </RelativeLayout>

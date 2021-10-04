@@ -44,6 +44,7 @@
             app:tabTextColor="@android:color/white"
             app:tabIndicatorColor="@android:color/white"
             app:tabIndicatorHeight="2dp"
+            app:tabTextAppearance="@android:style/TextAppearance.Widget.TabWidget"
             app:tabSelectedTextColor="#ffffff">
 
             <com.google.android.material.tabs.TabItem

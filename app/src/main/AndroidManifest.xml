@@ -89,7 +89,7 @@
         <activity
             android:name=".DashBoardActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/Theme.AppCompat.NoActionBar" />
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".BaseActivity"
             android:screenOrientation="portrait" />
@@ -109,7 +109,7 @@
         <activity android:name=".NeedhelpActivity" />
         <activity
             android:name=".AbnormalityAddressingActivity"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/spinnertheme" />
         <activity
             android:name=".AbnormalityAddressing2Activity"
             android:theme="@style/AppTheme.NoActionBar" />

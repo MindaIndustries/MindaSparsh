@@ -102,7 +102,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:padding="5dp">
+                            >
 
                             <RelativeLayout
                                 android:layout_width="match_parent"
@@ -113,6 +113,7 @@
                                 android:padding="5dp">
 
                                 <ImageView
+                                    android:id="@+id/img1"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:src="@drawable/global" />
@@ -128,14 +129,19 @@
                                     android:textSize="16sp" />
 
                                 <TextView
-                                    android:textColor="#000000"
                                     android:id="@+id/plants_glbl"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_below="@+id/plants_glbl_value"
                                     android:layout_alignParentRight="true"
+                                    android:layout_toRightOf="@+id/img1"
                                     android:fontFamily="@font/museosans_500"
-                                    android:text="Plants Globally" />
+                                    android:gravity="right|center"
+                                    android:text="Plants Globally"
+                                    android:textColor="#000000"
+                                    app:autoSizeMaxTextSize="12sp"
+                                    app:autoSizeMinTextSize="10sp"
+                                    app:autoSizeTextType="uniform" />
 
                             </RelativeLayout>
 
@@ -148,6 +154,7 @@
                                 android:padding="5dp">
 
                                 <ImageView
+                                    android:id="@+id/img2"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:src="@drawable/joint_venture" />
@@ -162,14 +169,19 @@
                                     android:textSize="16sp" />
 
                                 <TextView
-                                    android:textColor="#000000"
                                     android:id="@+id/jv"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_below="@+id/jv_value"
                                     android:layout_alignParentRight="true"
+                                    android:layout_toRightOf="@+id/img2"
                                     android:fontFamily="@font/museosans_500"
-                                    android:text="Joint Ventures" />
+                                    android:gravity="right|center"
+                                    android:text="Joint Ventures"
+                                    android:textColor="#000000"
+                                    app:autoSizeMaxTextSize="12sp"
+                                    app:autoSizeMinTextSize="10sp"
+                                    app:autoSizeTextType="uniform" />
                             </RelativeLayout>
 
                         </LinearLayout>
@@ -188,6 +200,7 @@
                                 android:layout_height="wrap_content">
 
                                 <ImageView
+                                    android:id="@+id/img3"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:src="@drawable/rnd" />
@@ -202,14 +215,19 @@
                                     android:textSize="16sp" />
 
                                 <TextView
-                                    android:textColor="#000000"
                                     android:id="@+id/rnd_cntr"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_below="@+id/rnd_center_value"
                                     android:layout_alignParentRight="true"
+                                    android:layout_toRightOf="@+id/img3"
                                     android:fontFamily="@font/museosans_500"
-                                    android:text="R&amp;D Centers" />
+                                    android:gravity="right|center"
+                                    android:text="R&amp;D Centers"
+                                    android:textColor="#000000"
+                                    app:autoSizeMaxTextSize="12sp"
+                                    app:autoSizeMinTextSize="10sp"
+                                    app:autoSizeTextType="uniform" />
                             </RelativeLayout>
                             <RelativeLayout
                                 android:padding="5dp"
@@ -220,6 +238,7 @@
                                 android:layout_height="wrap_content">
 
                                 <ImageView
+                                    android:id="@+id/img4"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:src="@drawable/cart" />
@@ -235,14 +254,19 @@
                                     android:textSize="16sp" />
 
                                 <TextView
-                                    android:textColor="#000000"
                                     android:id="@+id/prd_lines"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_below="@+id/product_lines_value"
                                     android:layout_alignParentRight="true"
+                                    android:layout_toRightOf="@+id/img4"
                                     android:fontFamily="@font/museosans_500"
-                                    android:text="Product Lines" />
+                                    android:gravity="right|center"
+                                    android:text="Product Lines"
+                                    android:textColor="#000000"
+                                    app:autoSizeMaxTextSize="12sp"
+                                    app:autoSizeMinTextSize="10sp"
+                                    app:autoSizeTextType="uniform" />
                             </RelativeLayout>
 
                         </LinearLayout>
@@ -260,6 +284,7 @@
                                 android:layout_height="wrap_content">
 
                                 <ImageView
+                                    android:id="@+id/img5"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:src="@drawable/group" />
@@ -274,14 +299,19 @@
                                     android:textSize="16sp" />
 
                                 <TextView
-                                    android:textColor="#000000"
                                     android:id="@+id/prd_ptnt"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_below="@+id/product_patents_value"
                                     android:layout_alignParentRight="true"
+                                    android:layout_toRightOf="@+id/img5"
                                     android:fontFamily="@font/museosans_500"
-                                    android:text="Product Patents" />
+                                    android:gravity="right|center"
+                                    android:text="Product Patents"
+                                    android:textColor="#000000"
+                                    app:autoSizeMaxTextSize="12sp"
+                                    app:autoSizeMinTextSize="10sp"
+                                    app:autoSizeTextType="uniform" />
                             </RelativeLayout>
                             <RelativeLayout
                                 android:padding="5dp"
@@ -291,6 +321,7 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content">
                                 <ImageView
+                                    android:id="@+id/img6"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:src="@drawable/design"
@@ -306,14 +337,19 @@
                                     android:textSize="16sp" />
 
                                 <TextView
-                                    android:textColor="#000000"
                                     android:id="@+id/design_reg"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_below="@+id/design_reg_value"
                                     android:layout_alignParentRight="true"
+                                    android:layout_toRightOf="@+id/img6"
                                     android:fontFamily="@font/museosans_500"
-                                    android:text="Design Registrations" />
+                                    android:gravity="right|center"
+                                    android:text="Design Registrations"
+                                    android:textColor="#000000"
+                                    app:autoSizeMaxTextSize="12sp"
+                                    app:autoSizeMinTextSize="10sp"
+                                    app:autoSizeTextType="uniform" />
 
                             </RelativeLayout>
 
@@ -331,6 +367,7 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content">
                                 <ImageView
+                                    android:id="@+id/img7"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:src="@drawable/grptrnover"
@@ -352,8 +389,13 @@
                                     android:layout_height="wrap_content"
                                     android:layout_below="@+id/trnover_value"
                                     android:layout_alignParentRight="true"
+                                    android:layout_toRightOf="@+id/img7"
+                                    android:gravity="right|center"
                                     android:text=" Group Turnover FY21"
-                                    android:textColor="#000000" />
+                                    android:textColor="#000000"
+                                    app:autoSizeMaxTextSize="12sp"
+                                    app:autoSizeMinTextSize="10sp"
+                                    app:autoSizeTextType="uniform" />
 
                             </RelativeLayout>
                             <RelativeLayout
@@ -365,6 +407,7 @@
                                 android:layout_height="wrap_content">
 
                                 <ImageView
+                                    android:id="@+id/img8"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:src="@drawable/acq" />
@@ -381,14 +424,19 @@
                                    />
 
                                 <TextView
-                                    android:textColor="#000000"
                                     android:id="@+id/acquis"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_below="@+id/acquis_value"
                                     android:layout_alignParentRight="true"
+                                    android:layout_toRightOf="@+id/img8"
                                     android:fontFamily="@font/museosans_500"
-                                    android:text="Acquisitions" />
+                                    android:gravity="right|center"
+                                    android:text="Acquisitions"
+                                    app:autoSizeMaxTextSize="12sp"
+                                    app:autoSizeMinTextSize="10sp"
+                                    app:autoSizeTextType="uniform"
+                                    android:textColor="#000000" />
 
                             </RelativeLayout>
 

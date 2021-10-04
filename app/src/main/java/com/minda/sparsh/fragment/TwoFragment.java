@@ -18,6 +18,7 @@ import com.minda.sparsh.model.DashboardImagesModel;
 import com.minda.sparsh.util.RetrofitClient2;
 import com.minda.sparsh.util.Utility;
 import com.synnapps.carouselview.CarouselView;
+import com.synnapps.carouselview.ImageClickListener;
 import com.synnapps.carouselview.ImageListener;
 
 import org.jetbrains.annotations.NotNull;
@@ -122,6 +123,7 @@ public class TwoFragment extends Fragment {
             getDahboardImages();
         }
 
+
         im_right.setOnClickListener(view1 -> contaxt.viewPager.setCurrentItem(contaxt.getItem(+1), true));
 
 
@@ -202,6 +204,7 @@ public class TwoFragment extends Fragment {
                     carouselView.setImageListener(imageListener);
                     carouselView.setPageCount(banners.size());
                     carouselView.setIndicatorVisibility(View.GONE);
+                    carouselView.setImageClickListener(imageClickListener);
                 }
                 }
 
@@ -221,5 +224,11 @@ public class TwoFragment extends Fragment {
         }
     };
 
+    ImageClickListener imageClickListener = new ImageClickListener() {
+        @Override
+        public void onClick(int position) {
+            // to be added
+        }
+    };
 
 }

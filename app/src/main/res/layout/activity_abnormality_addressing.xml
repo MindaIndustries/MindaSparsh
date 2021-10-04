@@ -120,53 +120,10 @@
             </LinearLayout>
 
             <LinearLayout
+                android:padding="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
-
-                <!--<LinearLayout-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:layout_marginLeft="20dp"-->
-                <!--android:layout_marginRight="20dp"-->
-                <!--android:layout_marginTop="10dp"-->
-                <!--android:orientation="vertical">-->
-
-                <!--<LinearLayout-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="wrap_content">-->
-
-                <!--<TextView-->
-                <!--android:layout_width="wrap_content"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:text="Group"-->
-                <!--android:textSize="14sp" />-->
-                <!--</LinearLayout>-->
-
-                <!--<LinearLayout-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:layout_marginTop="10dp"-->
-                <!--android:gravity="center">-->
-
-                <!--<LinearLayout-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:orientation="vertical">-->
-
-                <!--<Spinner-->
-                <!--android:id="@+id/sp_group"-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="wrap_content" />-->
-
-                <!--<View-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="1dp"-->
-                <!--android:background="#000000" />-->
-                <!--</LinearLayout>-->
-
-                <!--</LinearLayout>-->
-                <!--</LinearLayout>-->
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -260,49 +217,23 @@
                     </LinearLayout>
                 </LinearLayout>
 
-                <LinearLayout
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/customerSpinnerLayout"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginRight="20dp"
+                    style="@style/box"
                     android:layout_marginTop="10dp"
-                    android:orientation="vertical">
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/customerSpinnerLayout1"
+                    android:hint="Plant">
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/plant"
-                            android:textSize="14sp" />
-                    </LinearLayout>
-
-                    <LinearLayout
+                    <androidx.appcompat.widget.AppCompatAutoCompleteTextView
+                        android:id="@+id/sp_plant"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
-                        android:gravity="center">
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="vertical">
-
-                            <Spinner
-                                android:id="@+id/sp_plant"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content" />
-
-                            <View
-                                android:layout_width="match_parent"
-                                android:layout_height="1dp"
-                                android:background="#000000" />
-                        </LinearLayout>
-
-                    </LinearLayout>
-                </LinearLayout>
+                        android:clickable="true"
+                        android:editable="false"
+                        tools:ignore="KeyboardInaccessibleWidget" />
+                </com.google.android.material.textfield.TextInputLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -478,6 +409,8 @@
                         android:layout_marginLeft="20dp"
                         android:layout_marginRight="20dp"
                         android:layout_marginTop="20dp"
+                        style="@style/edittext"
+                        android:theme="@style/edittext"
                         android:hint="@string/abnormality_description">
 
                         <com.google.android.material.textfield.TextInputEditText
@@ -501,17 +434,27 @@
                     <!--android:layout_width="match_parent"-->
                     <!--android:layout_height="wrap_content"-->
                     <!--android:imeOptions="actionDone" />-->
-                    <TextView
-                        android:id="@+id/et_finddate"
+                    <com.google.android.material.textfield.TextInputLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="20dp"
                         android:layout_marginRight="20dp"
                         android:layout_marginTop="20dp"
-                        android:text="@string/abnormality_finding_date"
-                        android:textSize="18sp" />
+                        style="@style/edittext"
+                        android:hint="@string/abnormality_description">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/et_finddate"
+                            android:editable="false"
+                            android:textSize="18sp"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:imeOptions="actionDone" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
 
                     <View
+                        android:visibility="gone"
                         android:layout_width="match_parent"
                         android:layout_height="1dp"
                         android:layout_marginLeft="20dp"
@@ -527,7 +470,7 @@
                         android:layout_margin="20dp"
                         android:gravity="center">
 
-                        <Button
+                        <android.widget.Button
                             android:id="@+id/tv_submit"
                             android:layout_width="wrap_content"
                             android:layout_height="45dp"
