@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
     android:focusable="true"
     android:background="@color/screen_bg"
     android:focusableInTouchMode="true">
@@ -81,165 +82,76 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
-
-                <!-- <android.support.v7.widget.CardView
-                     android:layout_width="match_parent"
-                     android:layout_height="wrap_content"
-                     android:layout_gravity="center"
-                     android:elevation="5dp"
-                     card_view:cardCornerRadius="5dp">
-                -->
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="5dp"
-                        android:layout_marginTop="10dp"
-                        android:fontFamily="@font/museosans_500"
-                        android:text="Request Type" />
-
-                    <LinearLayout
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/customerSpinnerLayout2"
+                        style="@style/box"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
-                        android:gravity="center">
+                        android:hint="Request Type">
 
-                        <LinearLayout
+                        <androidx.appcompat.widget.AppCompatAutoCompleteTextView
+                            android:id="@+id/sp_request_type"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:orientation="vertical">
+                            android:clickable="true"
+                            android:editable="false"
+                            tools:ignore="KeyboardInaccessibleWidget" />
+                    </com.google.android.material.textfield.TextInputLayout>
 
-                            <Spinner
-                                android:id="@+id/sp_request_type"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content" />
-
-                            <View
-                                android:layout_width="match_parent"
-                                android:layout_height="1dp"
-                                android:background="#000000" />
-                        </LinearLayout>
-
-                    </LinearLayout>
-
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="5dp"
-                        android:layout_marginTop="10dp"
-                        android:fontFamily="@font/museosans_500"
-                        android:text="Access Type" />
-
-                    <LinearLayout
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/customerSpinnerLayout3"
+                        style="@style/box"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
-                        android:gravity="center">
+                        android:hint="Access Type">
 
-                        <LinearLayout
+                        <androidx.appcompat.widget.AppCompatAutoCompleteTextView
+                            android:id="@+id/sp_access_type"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:orientation="vertical">
-
-                            <Spinner
-                                android:id="@+id/sp_access_type"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content" />
-
-                            <View
-                                android:layout_width="match_parent"
-                                android:layout_height="1dp"
-                                android:background="#000000" />
-                        </LinearLayout>
-
-                    </LinearLayout>
-
-                    <LinearLayout
+                            android:clickable="true"
+                            android:editable="false"
+                            tools:ignore="KeyboardInaccessibleWidget" />
+                    </com.google.android.material.textfield.TextInputLayout>
+                    <com.google.android.material.textfield.TextInputLayout
                         android:id="@+id/layAccessSubType"
+                        style="@style/box"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:orientation="vertical">
+                        android:layout_marginTop="10dp"
+                        android:hint="Access Sub-Type">
 
-                        <TextView
+                        <androidx.appcompat.widget.AppCompatAutoCompleteTextView
+                            android:id="@+id/sp_access_sub_type"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginStart="5dp"
-                            android:layout_marginTop="10dp"
-                            android:fontFamily="@font/museosans_500"
-                            android:text="Access Sub-Type" />
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="10dp"
-                            android:gravity="center">
-
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:orientation="vertical">
-
-                                <Spinner
-                                    android:id="@+id/sp_access_sub_type"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content" />
-
-                                <View
-                                    android:layout_width="match_parent"
-                                    android:layout_height="1dp"
-                                    android:background="#000000" />
-                            </LinearLayout>
-
-                        </LinearLayout>
-
-                    </LinearLayout>
-
-                    <LinearLayout
+                            android:clickable="true"
+                            android:editable="false"
+                            tools:ignore="KeyboardInaccessibleWidget" />
+                    </com.google.android.material.textfield.TextInputLayout>
+                    <com.google.android.material.textfield.TextInputLayout
+                        style="@style/box"
                         android:id="@+id/layAccessCategory"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:orientation="vertical">
+                        android:layout_marginTop="10dp"
+                        android:hint="Access Category">
 
-                        <TextView
+                        <androidx.appcompat.widget.AppCompatAutoCompleteTextView
+                            android:id="@+id/sp_access_category"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginStart="5dp"
-                            android:layout_marginTop="10dp"
-                            android:fontFamily="@font/museosans_500"
-                            android:text="Access Category" />
+                            android:clickable="true"
+                            android:editable="false"
+                            tools:ignore="KeyboardInaccessibleWidget" />
+                    </com.google.android.material.textfield.TextInputLayout>
 
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="10dp"
-                            android:gravity="center">
-
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:orientation="vertical">
-
-                                <Spinner
-                                    android:id="@+id/sp_access_category"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content" />
-
-                                <View
-                                    android:layout_width="match_parent"
-                                    android:layout_height="1dp"
-                                    android:background="#000000" />
-                            </LinearLayout>
-
-                        </LinearLayout>
-
-                    </LinearLayout>
 
                     <LinearLayout
                         android:id="@+id/layMultiAccessCategory"
@@ -257,6 +169,8 @@
                             android:layout_marginTop="10dp"
                             android:text="Access Category" />
 
+
+
                         <com.androidbuts.multispinnerfilter.MultiSpinnerSearch
                             android:id="@+id/simpleMultiSpinner"
                             android:layout_width="match_parent"
@@ -266,176 +180,94 @@
                             app:hintText="Please Select Access Category " />
                     </LinearLayout>
 
-                    <LinearLayout
+                    <com.google.android.material.textfield.TextInputLayout
                         android:id="@+id/layAccessSubCategory"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:orientation="vertical"
-                        android:visibility="gone">
-
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="5dp"
-                            android:layout_marginTop="10dp"
-                            android:text="Access Sub Category" />
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="10dp"
-                            android:gravity="center">
-
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:orientation="vertical">
-
-                                <Spinner
-                                    android:id="@+id/sp_access_sub_category"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content" />
-
-                                <View
-                                    android:layout_width="match_parent"
-                                    android:layout_height="1dp"
-                                    android:background="#000000" />
-                            </LinearLayout>
-
-                        </LinearLayout>
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:id="@+id/layUserAuthorisationProfile"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:orientation="vertical"
-                        android:visibility="gone">
-
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="5dp"
-                            android:layout_marginTop="10dp"
-                            android:text="User Authorization Profile" />
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="10dp"
-                            android:gravity="center">
-
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:orientation="vertical">
-
-                                <Spinner
-                                    android:id="@+id/sp_user_authorization_profile"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content" />
-
-                                <View
-                                    android:layout_width="match_parent"
-                                    android:layout_height="1dp"
-                                    android:background="#000000" />
-                            </LinearLayout>
-
-                        </LinearLayout>
-
-                    </LinearLayout>
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="5dp"
-                        android:layout_marginTop="10dp"
-                        android:fontFamily="@font/museosans_500"
-                        android:text="Access For" />
-
-                    <LinearLayout
+                        style="@style/box"
+                        android:visibility="gone"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
-                        android:gravity="center">
+                        android:hint="Access Sub-Type">
 
-                        <LinearLayout
+                        <androidx.appcompat.widget.AppCompatAutoCompleteTextView
+                            android:id="@+id/sp_access_sub_category"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:orientation="vertical">
-
-                            <Spinner
-                                android:id="@+id/sp_access_for"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:entries="@array/access_for" />
-
-                            <View
-                                android:layout_width="match_parent"
-                                android:layout_height="1dp"
-                                android:background="#000000" />
-                        </LinearLayout>
-
-                    </LinearLayout>
-
-
-                    <LinearLayout
-                        android:id="@+id/laySource"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:orientation="vertical"
-                        android:visibility="gone">
-
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="5dp"
-                            android:layout_marginTop="10dp"
-                            android:text="Source" />
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="10dp"
-                            android:gravity="center">
-
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:orientation="vertical">
-
-                                <Spinner
-                                    android:id="@+id/sp_source"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content" />
-
-                                <View
-                                    android:layout_width="match_parent"
-                                    android:layout_height="1dp"
-                                    android:background="#000000" />
-                            </LinearLayout>
-
-                        </LinearLayout>
-                    </LinearLayout>
+                            android:clickable="true"
+                            android:editable="false"
+                            tools:ignore="KeyboardInaccessibleWidget" />
+                    </com.google.android.material.textfield.TextInputLayout>
 
                     <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/layUserAuthorisationProfile"
+                        style="@style/box"
+                        android:visibility="gone"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp">
+                        android:layout_marginTop="10dp"
+                        android:hint="User Authorization Profile">
 
-                        <AutoCompleteTextView
+                        <androidx.appcompat.widget.AppCompatAutoCompleteTextView
+                            android:id="@+id/sp_user_authorization_profile"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:clickable="true"
+                            android:editable="false"
+                            tools:ignore="KeyboardInaccessibleWidget" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/customerSpinnerLayout1"
+                        style="@style/box"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:hint="Access For">
+
+                        <androidx.appcompat.widget.AppCompatAutoCompleteTextView
+                            android:id="@+id/sp_access_for"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:clickable="true"
+                            android:editable="false"
+                            tools:ignore="KeyboardInaccessibleWidget" />
+                    </com.google.android.material.textfield.TextInputLayout>
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/laySource"
+                        style="@style/box"
+                        android:visibility="gone"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:hint="Source">
+
+                        <androidx.appcompat.widget.AppCompatAutoCompleteTextView
+                            android:id="@+id/sp_source"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:clickable="true"
+                            android:editable="false"
+                            tools:ignore="KeyboardInaccessibleWidget" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        style="@style/box"
+                        android:id="@+id/emp"
+                        android:visibility="gone"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:hint="Employee">
+
+                        <androidx.appcompat.widget.AppCompatAutoCompleteTextView
                             android:id="@+id/et_empCode"
                             style="@style/editTextStyleVisitor"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:hint="Employee"
                             android:imeOptions="actionNext"
                             android:inputType="textPersonName"
-                            android:visibility="gone" />
+                             />
                     </com.google.android.material.textfield.TextInputLayout>
 
                     <LinearLayout
@@ -447,46 +279,55 @@
                         android:visibility="gone">
 
                         <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/customerSpinnerLayout0"
                             android:layout_width="match_parent"
+                            style="@style/edittext"
+                            android:layout_marginTop="10dp"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="10dp">
+                            android:hint="Name">
 
-                            <EditText
+                            <com.google.android.material.textfield.TextInputEditText
                                 android:id="@+id/et_name"
-                                style="@style/editTextStyleVisitor"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:hint="Name"
+                                android:gravity="left"
+                                android:editable="false"
                                 android:imeOptions="actionNext"
-                                android:inputType="textPersonName" />
+                                android:padding="18dp"
+                                android:inputType="textPersonName"
+                                />
                         </com.google.android.material.textfield.TextInputLayout>
 
+
                         <com.google.android.material.textfield.TextInputLayout
+                            style="@style/edittext"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="10dp">
+                            android:layout_marginTop="10dp"
+                            android:hint="Organisation"
+                            >
 
-                            <EditText
+                            <com.google.android.material.textfield.TextInputEditText
                                 android:id="@+id/et_organisation"
-                                style="@style/editTextStyleVisitor"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:hint="Organisation"
                                 android:imeOptions="actionNext"
+                                android:gravity="left"
                                 android:inputType="textPersonName" />
                         </com.google.android.material.textfield.TextInputLayout>
 
                         <com.google.android.material.textfield.TextInputLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:hint="Purpose"
+                            style="@style/edittext"
                             android:layout_marginTop="10dp">
 
-                            <EditText
+                            <com.google.android.material.textfield.TextInputEditText
                                 android:id="@+id/et_purpose"
-                                style="@style/editTextStyleVisitor"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:hint="Purpose"
+                                android:gravity="left"
                                 android:imeOptions="actionNext"
                                 android:inputType="textPersonName" />
                         </com.google.android.material.textfield.TextInputLayout>
@@ -651,19 +492,6 @@
                     android:layout_height="wrap_content"
                     android:gravity="center">
 
-                    <android.widget.Button
-                        android:id="@+id/btn_submit"
-                        android:layout_width="0dp"
-                        android:layout_height="50dp"
-                        android:layout_margin="15dp"
-                        android:layout_weight="1"
-                        android:background="@drawable/btn_bg"
-                        android:fontFamily="@font/museosans_700"
-                        android:textSize="14sp"
-                        android:drawableLeft="@drawable/done"
-                        android:paddingLeft="10dp"
-                        android:text="Submit"
-                        android:textColor="@color/white" />
 
                     <android.widget.Button
                         android:id="@+id/btn_cancel"
@@ -677,6 +505,19 @@
                         android:textSize="14sp"
                         android:paddingLeft="10dp"
                         android:drawableLeft="@drawable/cancel"
+                        android:textColor="@color/white" />
+                    <android.widget.Button
+                        android:id="@+id/btn_submit"
+                        android:layout_width="0dp"
+                        android:layout_height="50dp"
+                        android:layout_margin="15dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/btn_bg"
+                        android:fontFamily="@font/museosans_700"
+                        android:textSize="14sp"
+                        android:drawableLeft="@drawable/done"
+                        android:paddingLeft="10dp"
+                        android:text="Submit"
                         android:textColor="@color/white" />
 
                 </LinearLayout>

@@ -765,23 +765,30 @@
                         </TableLayout>
                     </HorizontalScrollView>
 
-                    <TextView
+                    <com.google.android.material.textfield.TextInputLayout
                         android:id="@+id/tv_approve_unapprove_heading"
                         android:layout_width="match_parent"
+                        style="@style/edittext"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginTop="10dp"
                         android:layout_height="wrap_content"
-                        android:layout_margin="10dp"
-                        android:text="Approve/Reject Remarks :"
-                        android:textColor="@color/black"
-                        android:textSize="18sp" />
+                        android:layout_below="@+id/attachment2"
+                        android:hint="Approve/Reject Remarks">
 
-                    <EditText
-                        android:id="@+id/et_approve_unapprove"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:hint="Enter Remarks here"
-                        android:inputType="text"
-                        android:minLines="5"
-                        android:layout_marginBottom="60dp" />
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/et_approve_unapprove"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:gravity="left"
+                            android:hint=""
+                            android:imeOptions="actionNext"
+                            android:inputType="textMultiLine"
+                            android:maxLines="4"
+                            android:padding="18dp"
+                            android:scrollbars="vertical" />
+                    </com.google.android.material.textfield.TextInputLayout>
 
 
                     <!--<LinearLayout
@@ -805,6 +812,7 @@
                 </LinearLayout>
 
                 <FrameLayout
+                    android:layout_marginTop="10dp"
                     android:id="@+id/bottom"
                     android:layout_below="@+id/top"
                     android:layout_width="match_parent"

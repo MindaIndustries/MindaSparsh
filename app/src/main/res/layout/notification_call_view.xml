@@ -20,11 +20,12 @@
 
             <TextView
                 android:id="@+id/date"
-                android:textSize="12sp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
-                android:text="dfddfd" />
+                android:text=""
+                android:fontFamily="@font/museosans_300"
+                android:textSize="12sp" />
 
             <ImageView
                 android:id="@+id/bell"
@@ -39,7 +40,8 @@
                 android:layout_marginLeft="5dp"
                 android:layout_toRightOf="@+id/bell"
                 android:gravity="left|center"
-                android:text="sfsdsds"
+                android:text=""
+                android:fontFamily="@font/museosans_700"
                 android:layout_toLeftOf="@+id/date"
                 android:textColor="@color/colorPrimary"
                 android:textSize="16sp" />
@@ -50,10 +52,11 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/tv_notification"
                 android:layout_marginLeft="5dp"
+                android:fontFamily="@font/museosans_500"
                 android:layout_marginTop="5dp"
                 android:gravity="left|center"
                 android:layout_toRightOf="@+id/bell"
-                android:text="sdsdsdsdddjfjdshj djfjhdhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh"
+                android:text=""
                 android:textSize="14sp" />
 
 

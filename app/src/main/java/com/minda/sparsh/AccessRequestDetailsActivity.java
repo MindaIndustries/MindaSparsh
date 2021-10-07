@@ -13,6 +13,8 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.material.textfield.TextInputEditText;
+import com.google.android.material.textfield.TextInputLayout;
 import com.minda.sparsh.Adapter.ARPDAdapter;
 import com.minda.sparsh.Adapter.AccessRequestApproverDetailsAdapter;
 import com.minda.sparsh.Adapter.PlantDetailsAdapter;
@@ -41,17 +43,18 @@ public class AccessRequestDetailsActivity extends AppCompatActivity implements V
     private RecyclerView rv_plant_details, rv_approval_details, rv_processor_details;
     TextView tv_access_request_no, tv_request_on, tv_request_type, tv_access_type, tv_access_sub_type, tv_access_for,
             tv_access_for_name, tv_category, tv_sub_category, tv_user_authorisation_profile, tv_approval_status,
-            tv_access_requirement_details, tv_access_request_by, tv_source, tv_name, tv_organisation, tv_purpose,
-            tv_approve_unapprove_heading, tv_processor_detail, tv_scroll;
+            tv_access_requirement_details, tv_access_request_by, tv_source, tv_name, tv_organisation, tv_purpose, tv_processor_detail, tv_scroll;
     LinearLayout lay_access_request_by, lay_source, lay_name, lay_organisation, lay_purpose, lay_access_for_name, lay_sub_category,
             lay_user_authorisation_profile;
     Button btn_approve, btn_un_approve, btn_send_back;
-    EditText et_approve_unapprove;
+    TextInputEditText et_approve_unapprove;
     String approvalLevel_val, approvalId_val;
     HorizontalScrollView lay_processor_view;
     ImageView im_back;
 
     TextView tv_scroll_Approval_Details;
+
+    TextInputLayout tv_approve_unapprove_heading;
 
     HorizontalScrollView horizontalView;
 

@@ -56,7 +56,7 @@
         <activity
             android:name=".AccessRequestDetailsActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/spinnertheme" />
         <activity
             android:name=".ApproveListActivity"
             android:screenOrientation="portrait"
