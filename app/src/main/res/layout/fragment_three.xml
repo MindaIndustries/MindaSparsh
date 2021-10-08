@@ -81,7 +81,7 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="30dp"
+                        android:layout_marginTop="20dp"
                         android:gravity="center_horizontal"
                         android:orientation="horizontal"
                         android:visibility="visible">
@@ -127,10 +127,10 @@
                                                 android:text="Bottom Up Concern"
                                                 android:textColor="#4a4f54"
                                                 android:textSize="16sp"
+                                                android:visibility="visible"
                                                 app:autoSizeMaxTextSize="16sp"
                                                 app:autoSizeMinTextSize="12sp"
-                                                app:autoSizeTextType="uniform"
-                                                android:visibility="visible" />
+                                                app:autoSizeTextType="uniform" />
 
 
                                         </RelativeLayout>
@@ -157,8 +157,6 @@
                             </RelativeLayout>
 
                         </LinearLayout>
-
-
                         <LinearLayout
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
@@ -166,13 +164,13 @@
                             android:orientation="vertical">
 
                             <RelativeLayout
-                                android:id="@+id/card_container1"
+                                android:id="@+id/card_container3"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_centerInParent="true">
 
                                 <androidx.cardview.widget.CardView
-                                    android:id="@+id/card_view1"
+                                    android:id="@+id/card_view3"
                                     android:layout_width="match_parent"
                                     android:layout_height="match_parent"
                                     android:layout_marginTop="10dp"
@@ -187,9 +185,9 @@
                                         android:layout_height="wrap_content">
 
                                         <RelativeLayout
+
                                             android:layout_width="match_parent"
                                             android:layout_height="match_parent"
-                                            android:orientation="vertical"
                                             android:padding="30dp">
 
                                             <TextView
@@ -197,12 +195,16 @@
                                                 android:layout_height="wrap_content"
                                                 android:layout_marginTop="20dp"
                                                 android:fontFamily="@font/museosans_700"
-                                                android:text="Meetings"
+                                                android:text="Visitor Management"
                                                 android:textColor="#4a4f54"
                                                 android:textSize="16sp"
-                                                android:visibility="visible" />
+                                                android:visibility="visible"
+                                                app:autoSizeMaxTextSize="16sp"
+                                                app:autoSizeMinTextSize="12sp"
+                                                app:autoSizeTextType="uniform" />
 
                                         </RelativeLayout>
+
                                         <ImageView
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
@@ -217,21 +219,23 @@
                                 <ImageView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:layout_alignLeft="@+id/card_view1"
+                                    android:layout_alignLeft="@+id/card_view3"
                                     android:layout_marginLeft="20dp"
                                     android:elevation="10dp"
-                                    android:src="@drawable/meeting" />
+                                    android:src="@drawable/vistor" />
 
                             </RelativeLayout>
 
                         </LinearLayout>
+
+
 
                     </LinearLayout>
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="30dp"
+                        android:layout_marginTop="20dp"
                         android:gravity="center_horizontal"
                         android:orientation="horizontal"
                         android:visibility="visible">
@@ -304,7 +308,6 @@
 
                         </LinearLayout>
 
-
                         <LinearLayout
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
@@ -312,13 +315,14 @@
                             android:orientation="vertical">
 
                             <RelativeLayout
-                                android:id="@+id/card_container3"
+                                android:visibility="gone"
+                                android:id="@+id/card_container1"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_centerInParent="true">
 
                                 <androidx.cardview.widget.CardView
-                                    android:id="@+id/card_view3"
+                                    android:id="@+id/card_view1"
                                     android:layout_width="match_parent"
                                     android:layout_height="match_parent"
                                     android:layout_marginTop="10dp"
@@ -331,10 +335,11 @@
                                     <RelativeLayout
                                         android:layout_width="match_parent"
                                         android:layout_height="wrap_content">
-                                        <RelativeLayout
 
+                                        <RelativeLayout
                                             android:layout_width="match_parent"
                                             android:layout_height="match_parent"
+                                            android:orientation="vertical"
                                             android:padding="30dp">
 
                                             <TextView
@@ -342,12 +347,9 @@
                                                 android:layout_height="wrap_content"
                                                 android:layout_marginTop="20dp"
                                                 android:fontFamily="@font/museosans_700"
-                                                android:text="Visitor Management"
+                                                android:text="Meetings"
                                                 android:textColor="#4a4f54"
                                                 android:textSize="16sp"
-                                                app:autoSizeMaxTextSize="16sp"
-                                                app:autoSizeMinTextSize="12sp"
-                                                app:autoSizeTextType="uniform"
                                                 android:visibility="visible" />
 
                                         </RelativeLayout>
@@ -365,14 +367,15 @@
                                 <ImageView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:layout_alignLeft="@+id/card_view3"
+                                    android:layout_alignLeft="@+id/card_view1"
                                     android:layout_marginLeft="20dp"
                                     android:elevation="10dp"
-                                    android:src="@drawable/vistor" />
+                                    android:src="@drawable/meeting" />
 
                             </RelativeLayout>
 
                         </LinearLayout>
+
 
                     </LinearLayout>
 

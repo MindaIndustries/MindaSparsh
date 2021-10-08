@@ -46,6 +46,9 @@
         <item name="android:colorAccent">@color/colorPrimary</item>
         <item name="android:state_activated">@color/colorPrimary</item>
         <item name="android:textCursorDrawable">@drawable/cursor_drawable</item>
+        <item name="colorPrimary">#eb3045</item>
+        <item name="colorPrimaryDark">#eb3045</item>
+
 
     </style>
 

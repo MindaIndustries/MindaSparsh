@@ -5,6 +5,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/screen_bg">
 
+
     <RelativeLayout
         android:visibility="gone"
         android:layout_width="match_parent"
@@ -53,12 +54,27 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical">
-
-                <ImageView
+                <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="70dp"
-                    android:layout_marginTop="10dp"
-                    android:src="@drawable/minda_sparshlogo" />
+                    android:layout_height="wrap_content">
+                    <ImageView
+                        android:layout_alignParentLeft="true"
+                        android:layout_marginLeft="5dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="50dp"
+                        android:scaleType="fitStart"
+                        android:src="@drawable/login_logo" />
+
+
+                    <ImageView
+                        android:layout_centerHorizontal="true"
+                        android:layout_width="match_parent"
+                        android:layout_height="70dp"
+                        android:layout_marginTop="10dp"
+                        android:src="@drawable/minda_sparshlogo" />
+
+
+                </RelativeLayout>
 
                 <androidx.viewpager.widget.ViewPager
                     android:id="@+id/pager"

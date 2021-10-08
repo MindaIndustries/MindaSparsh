@@ -69,8 +69,11 @@ public class MainActivity extends AppCompatActivity {
                 hitGetPdfApi("Samwad");
             } else if (pdfType.equalsIgnoreCase("Engineering")) {
                 hitGetPdfApi("Engineering");
-            } else {
-                hitGetPdfApi("Manufacturing");
+            } else if(pdfType.equalsIgnoreCase("EHS")) {
+                hitGetPdfApi("EHS");
+            } else{
+                hitGetPdfApi("Materials");
+
             }
         } catch (Exception e) {
             e.printStackTrace();

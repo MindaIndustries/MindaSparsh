@@ -42,6 +42,8 @@ public class OneFragment extends Fragment {
         CardView card_view1 = view.findViewById(R.id.card_view1);
         CardView card_view2= view.findViewById(R.id.card_view2);
         CardView card_view3 = view.findViewById(R.id.card_view3);
+        CardView card_view4 = view.findViewById(R.id.card_view4);
+
 
         //  jagritiButton =  view.findViewById(R.id.jagriti_btn);
         ImageView im_left =  view.findViewById(R.id.im_left);
@@ -68,7 +70,12 @@ public class OneFragment extends Fragment {
         });
         card_view1.setOnClickListener(view15 -> {
             Intent intent = new Intent(getActivity(), MainActivity.class);
-            intent.putExtra("pdfType", "Manufacturing");
+            intent.putExtra("pdfType", "EHS");
+            startActivity(intent);
+        });
+        card_view4.setOnClickListener(view15 -> {
+            Intent intent = new Intent(getActivity(), MainActivity.class);
+            intent.putExtra("pdfType", "Materials");
             startActivity(intent);
         });
 

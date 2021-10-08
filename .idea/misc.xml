@@ -41,7 +41,7 @@
         <entry key="app/src/main/res/layout/activity_needhelp.xml" value="0.2" />
         <entry key="app/src/main/res/layout/activity_notification.xml" value="0.14959016393442623" />
         <entry key="app/src/main/res/layout/activity_request_for_access.xml" value="0.1" />
-        <entry key="app/src/main/res/layout/activity_sheed.xml" value="0.2" />
+        <entry key="app/src/main/res/layout/activity_sheed.xml" value="0.264" />
         <entry key="app/src/main/res/layout/activity_splash.xml" value="0.16" />
         <entry key="app/src/main/res/layout/activity_update_visitor_details.xml" value="0.14959016393442623" />
         <entry key="app/src/main/res/layout/activity_values.xml" value="0.14959016393442623" />
@@ -54,12 +54,12 @@
         <entry key="app/src/main/res/layout/arpd_cell_view.xml" value="0.1" />
         <entry key="app/src/main/res/layout/assign_concern.xml" value="0.1" />
         <entry key="app/src/main/res/layout/bottom_up_concern.xml" value="0.16" />
-        <entry key="app/src/main/res/layout/bottomup_view_row.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/bottomup_view_row.xml" value="0.16" />
         <entry key="app/src/main/res/layout/cc_list_row.xml" value="0.14959016393442623" />
         <entry key="app/src/main/res/layout/city_row.xml" value="0.14959016393442623" />
         <entry key="app/src/main/res/layout/cr.xml" value="0.18271857923497267" />
         <entry key="app/src/main/res/layout/create_ticket.xml" value="0.1" />
-        <entry key="app/src/main/res/layout/dashboard_content.xml" value="0.2" />
+        <entry key="app/src/main/res/layout/dashboard_content.xml" value="0.16" />
         <entry key="app/src/main/res/layout/domain_cell_view.xml" value="0.1" />
         <entry key="app/src/main/res/layout/ehs_initiate.xml" value="0.176" />
         <entry key="app/src/main/res/layout/ehs_layout.xml" value="0.2" />
@@ -73,7 +73,7 @@
         <entry key="app/src/main/res/layout/fragment_iamdetails.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_manufacturing.xml" value="0.16" />
         <entry key="app/src/main/res/layout/fragment_new_appointment.xml" value="0.1" />
-        <entry key="app/src/main/res/layout/fragment_one.xml" value="0.2" />
+        <entry key="app/src/main/res/layout/fragment_one.xml" value="0.16" />
         <entry key="app/src/main/res/layout/fragment_seven.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_six.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_three.xml" value="0.2" />
