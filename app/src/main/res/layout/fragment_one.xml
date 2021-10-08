@@ -436,7 +436,7 @@
                                 android:layout_alignLeft="@+id/card_view4"
                                 android:layout_marginLeft="20dp"
                                 android:elevation="10dp"
-                                android:src="@drawable/samwad" />
+                                android:src="@drawable/materials" />
 
                         </RelativeLayout>
 

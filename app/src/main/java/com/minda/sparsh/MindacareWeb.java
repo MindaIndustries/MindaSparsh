@@ -67,8 +67,11 @@ public class MindacareWeb extends AppCompatActivity {
     //    mindacareWebView.loadUrl(HttpConnection.mindacareUrl + "EmpCode=" + empcode + "&Dob=" + age);
       //  mindacareWebView.loadUrl(HttpConnection.itsurveyUrl+"?EmpCode="+ empcode+"&Level="+level);
         mindacareWebView.loadUrl(HttpConnection.itsurveyUrl+"EmpCode="+empcode+"&Level="+level);
-        WebSettings webSettings = mindacareWebView.getSettings();
-        webSettings.setJavaScriptEnabled(true);
+        mindacareWebView.clearCache(true);
+        mindacareWebView.clearHistory();
+        mindacareWebView.getSettings().setJavaScriptEnabled(true);
+        mindacareWebView.getSettings().setJavaScriptCanOpenWindowsAutomatically(true);
+
 
         mindacareWebView.setWebViewClient(new WebViewClient() {
             @Override

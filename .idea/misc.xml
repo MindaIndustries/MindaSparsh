@@ -21,6 +21,7 @@
         <entry key="app/src/main/res/drawable/roundcornercellviewwhite.xml" value="0.238671875" />
         <entry key="app/src/main/res/drawable/spinner_bg.xml" value="0.238671875" />
         <entry key="app/src/main/res/drawable/submitbuttonview.xml" value="0.238671875" />
+        <entry key="app/src/main/res/drawable/tab_color_selector.xml" value="0.238671875" />
         <entry key="app/src/main/res/layout/abnormality.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_abnormality_addressing.xml" value="0.2" />
         <entry key="app/src/main/res/layout/activity_abnormality_addressing2.xml" value="0.16" />
@@ -59,7 +60,7 @@
         <entry key="app/src/main/res/layout/city_row.xml" value="0.14959016393442623" />
         <entry key="app/src/main/res/layout/cr.xml" value="0.18271857923497267" />
         <entry key="app/src/main/res/layout/create_ticket.xml" value="0.1" />
-        <entry key="app/src/main/res/layout/dashboard_content.xml" value="0.16" />
+        <entry key="app/src/main/res/layout/dashboard_content.xml" value="0.1" />
         <entry key="app/src/main/res/layout/domain_cell_view.xml" value="0.1" />
         <entry key="app/src/main/res/layout/ehs_initiate.xml" value="0.176" />
         <entry key="app/src/main/res/layout/ehs_layout.xml" value="0.2" />
