@@ -1,9 +1,9 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
-    android:background="@color/screen_bg">
+    android:background="@color/screen_bg"
+    android:orientation="vertical">
     <!--<LinearLayout-->
     <!--android:layout_width="match_parent"-->
     <!--android:layout_height="wrap_content"-->
@@ -50,24 +50,15 @@
                         android:textSize="18sp" />
 
                     <View
-                        android:visibility="gone"
                         android:layout_width="match_parent"
                         android:layout_height="1.5dp"
-                        android:background="@drawable/gradientline" />
+                        android:background="@drawable/gradientline"
+                        android:visibility="gone" />
                 </LinearLayout>
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/museosans_300"
-                    android:gravity="center"
-                    android:padding="10dp"
-                    android:text="Sed ut Perspiciatis Under omnis iste natus error sit voluptatem accu santium doloremque laudantium, totam rem aperiam."
-                    android:textColor="#353434"
-                    android:textSize="12sp"
-                    android:visibility="gone" />
 
             </LinearLayout>
+
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -157,6 +148,7 @@
                             </RelativeLayout>
 
                         </LinearLayout>
+
                         <LinearLayout
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
@@ -229,7 +221,6 @@
                         </LinearLayout>
 
 
-
                     </LinearLayout>
 
                     <LinearLayout
@@ -280,11 +271,12 @@
                                                 android:text="Cost Saving Ideas"
                                                 android:textColor="#4a4f54"
                                                 android:textSize="16sp"
+                                                android:visibility="visible"
                                                 app:autoSizeMaxTextSize="16sp"
                                                 app:autoSizeMinTextSize="12sp"
-                                                app:autoSizeTextType="uniform"
-                                                android:visibility="visible" />
+                                                app:autoSizeTextType="uniform" />
                                         </RelativeLayout>
+
                                         <ImageView
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
@@ -315,11 +307,11 @@
                             android:orientation="vertical">
 
                             <RelativeLayout
-                                android:visibility="gone"
                                 android:id="@+id/card_container1"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_centerInParent="true">
+                                android:layout_centerInParent="true"
+                                android:visibility="gone">
 
                                 <androidx.cardview.widget.CardView
                                     android:id="@+id/card_view1"
@@ -353,6 +345,7 @@
                                                 android:visibility="visible" />
 
                                         </RelativeLayout>
+
                                         <ImageView
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
@@ -386,15 +379,14 @@
             </RelativeLayout>
 
 
-
             <ImageView
                 android:id="@+id/im_right"
                 android:layout_width="35dp"
                 android:layout_height="35dp"
                 android:layout_alignParentEnd="true"
                 android:layout_marginTop="20dp"
-                app:tint="@android:color/black"
-                android:src="@drawable/right_arrow" />
+                android:src="@drawable/right_arrow"
+                app:tint="@android:color/black" />
 
 
             <ImageView
@@ -403,8 +395,8 @@
                 android:layout_height="35dp"
                 android:layout_alignParentStart="true"
                 android:layout_marginTop="20dp"
-                app:tint="@android:color/black"
-                android:src="@drawable/left_arrow" />
+                android:src="@drawable/left_arrow"
+                app:tint="@android:color/black" />
 
 
         </RelativeLayout>

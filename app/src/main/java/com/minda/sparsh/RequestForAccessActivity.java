@@ -1087,7 +1087,7 @@ public class RequestForAccessActivity extends AppCompatActivity implements View.
             showProgress(true);
             Interface anInterface = RetrofitClient2.getClient().create(Interface.class);
             Call<List<IAMCreateRequestModel>> response = anInterface.IAMCreateRequest(RequestTypeId, AccessTypeId, AccessForTypeId, EmpCode, SourceTypeId, SourceEmpCode, Organization, Purpose, SourceName, AccessSubTypeId, CategoryId, SubCategoryId, CategoryName, SubCategoryName, ProfileId, ProfileName, RequirementDetail, CategoryList, UnitList, RetrofitClient2.CKEY, fileName, fileByte, Domains, BusinessID, DomainNames, BusinessIdName, PlantName, PlantCode, AccessSubTypeName, AccessTypeName, RequestTypeName);
-            response.enqueue(new Callback<List<IAMCreateRequestModel>>() {
+                response.enqueue(new Callback<List<IAMCreateRequestModel>>() {
                 @Override
                 public void onResponse(@NotNull Call<List<IAMCreateRequestModel>> call, @NotNull Response<List<IAMCreateRequestModel>> response) {
                     showProgress(false);
@@ -1146,7 +1146,7 @@ public class RequestForAccessActivity extends AppCompatActivity implements View.
         }*/ /*else if (sp_source.getSelectedItemPosition() == 0 && laySource.et_organisationgetVisibility() == View.VISIBLE) {
             Toast.makeText(RequestForAccessActivity.this, "Please Select Source", Toast.LENGTH_SHORT).show();
             return false;
-        }else*/  if (TextUtils.isEmpty(et_empCode.getText().toString()) && et_empCode.getVisibility() == View.VISIBLE) {
+        }else*/  if (TextUtils.isEmpty(et_empCode.getText().toString()) && emp.getVisibility() == View.VISIBLE) {
             Toast.makeText(RequestForAccessActivity.this, "Please Fill Employee Code", Toast.LENGTH_SHORT).show();
             return false;
         } else if (TextUtils.isEmpty(et_name.getText().toString()) && layNameOrgPur.getVisibility() == View.VISIBLE) {

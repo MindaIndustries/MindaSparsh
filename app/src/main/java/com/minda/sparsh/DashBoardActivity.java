@@ -186,7 +186,7 @@ public class DashBoardActivity extends BaseActivity implements View.OnClickListe
     public void HitMyorder(String UserId) {
         if (Utility.isOnline(DashBoardActivity.this)) {
             Interface loginInterface = RetrofitClient.getClient().create(Interface.class);
-            Call<List<NotificationModel>> loginResponse = loginInterface.GetPushNot(UserId, "mda@sPr$rZ#G!!");
+            Call<List<NotificationModel>> loginResponse = loginInterface.GetPushNot(UserId, RetrofitClient2.CKEY);
             loginResponse.enqueue(new Callback<List<NotificationModel>>() {
                 @Override
                 public void onResponse(@NotNull Call<List<NotificationModel>> call, @NotNull Response<List<NotificationModel>> response) {
@@ -390,7 +390,7 @@ public class DashBoardActivity extends BaseActivity implements View.OnClickListe
 
     public void getNotifcount(String UserId){
         Interface loginInterface = RetrofitClient2.getClient().create(Interface.class);
-        Call<java.util.List<NotiCount>> call = loginInterface.GetPushNotCount(UserId, "mda@sPr$rZ#G!!");
+        Call<java.util.List<NotiCount>> call = loginInterface.GetPushNotCount(UserId, RetrofitClient2.CKEY);
         call.enqueue(new Callback<List<NotiCount>>() {
             @Override
             public void onResponse(Call<List<NotiCount>> call, Response<List<NotiCount>> response) {

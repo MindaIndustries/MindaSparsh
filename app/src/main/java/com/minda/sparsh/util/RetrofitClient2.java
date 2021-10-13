@@ -65,9 +65,13 @@ public class RetrofitClient2 {
                     .protocols(Util.immutableListOf(Protocol.HTTP_1_1))
                     //.addInterceptor(logging)
                     .build();
+            Gson gson = new GsonBuilder()
+                    .setLenient()
+                    .create();
+
             retrofit = new Retrofit.Builder()
                     .baseUrl(BASE_URL)
-                    .addConverterFactory(GsonConverterFactory.create())
+                    .addConverterFactory(GsonConverterFactory.create(gson))
                     .client(okHttpClient)
                     .build();
         }

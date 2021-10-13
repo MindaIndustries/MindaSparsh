@@ -24,38 +24,22 @@
             android:layout_height="match_parent" />
 
     </RelativeLayout>
-
-    <LinearLayout
-        android:background="@color/screen_bg"
+    <RelativeLayout
         android:layout_marginTop="?android:attr/actionBarSize"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
-
-        <LinearLayout
+        android:background="@color/screen_bg"
+        >
+        <TextView
+            android:layout_centerInParent="true"
+            android:id="@+id/no_list"
+            android:textColor="#999999"
+            android:textSize="16sp"
             android:visibility="gone"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="@drawable/toolbar_gradient">
-
-            <ImageView
-                android:id="@+id/im_back"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_gravity="center"
-                android:src="@drawable/back"
-                android:layout_marginLeft="15dp" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:text="Notification"
-                android:textSize="20sp"
-                android:gravity="center"
-                android:layout_marginLeft="20dp"
-                android:textColor="#ffffff" />
-
-        </LinearLayout>
+            android:fontFamily="@font/museosans_500"
+            android:text="No new Notifications"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
 
         <ListView
             android:id="@+id/list_notification"
@@ -63,5 +47,41 @@
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
             android:divider="@null"/>
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="?android:attr/actionBarSize"
+        android:background="@color/screen_bg"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@drawable/toolbar_gradient"
+            android:visibility="gone">
+
+            <ImageView
+                android:id="@+id/im_back"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_marginLeft="15dp"
+                android:src="@drawable/back" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="20dp"
+                android:gravity="center"
+                android:text="Notification"
+                android:textColor="#ffffff"
+                android:textSize="20sp" />
+
+        </LinearLayout>
     </LinearLayout>
 </RelativeLayout>

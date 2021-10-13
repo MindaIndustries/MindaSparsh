@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -29,7 +30,7 @@ public class NotificationActivity extends AppCompatActivity {
     SharedPreferences myPref;
     ImageView im_back;
     Toolbar toolbar;
-    TextView title;
+    TextView title,no_list;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,6 +48,7 @@ public class NotificationActivity extends AppCompatActivity {
 
         im_back =  findViewById(R.id.im_back);
         list_notification =  findViewById(R.id.list_notification);
+        no_list = findViewById(R.id.no_list);
         myPref = getSharedPreferences("MyPref", Context.MODE_PRIVATE);
 
 
@@ -65,6 +67,10 @@ public class NotificationActivity extends AppCompatActivity {
                     List<NotificationModel> responseItem = response.body();
                     if (responseItem != null && responseItem.size() > 0) {
                         setadapter(responseItem);
+                        no_list.setVisibility(View.GONE);
+                    }
+                    else{
+                        no_list.setVisibility(View.VISIBLE);
                     }
 
 
