@@ -10,7 +10,6 @@ import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.graphics.Bitmap;
-import android.graphics.Color;
 import android.graphics.Matrix;
 import android.net.Uri;
 import android.os.Build;
@@ -22,15 +21,11 @@ import android.util.Base64;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.AutoCompleteTextView;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -38,15 +33,9 @@ import com.androidbuts.multispinnerfilter.KeyPairBoolData;
 import com.androidbuts.multispinnerfilter.MultiSpinnerSearch;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
-import com.minda.sparsh.Adapter.IAMGetAccessSubTypeAdapter;
-import com.minda.sparsh.Adapter.IAMGetAuthorizationProfileAdapter;
 import com.minda.sparsh.Adapter.IAMGetBusinessAdapter;
-import com.minda.sparsh.Adapter.IAMGetCategoryAdapter;
 import com.minda.sparsh.Adapter.IAMGetDomainAdapter;
 import com.minda.sparsh.Adapter.IAMGetPlantAdapter;
-import com.minda.sparsh.Adapter.IAMGetRequestTypeAdapter;
-import com.minda.sparsh.Adapter.IAMGetSubCategoryAdapter;
-import com.minda.sparsh.Adapter.IAMIAMGetAccessTypeAdapter;
 import com.minda.sparsh.model.IAMCreateRequestModel;
 import com.minda.sparsh.model.IAMGetAccessSubTypeModel;
 import com.minda.sparsh.model.IAMGetAccessTypeSpinnerModel;
@@ -73,8 +62,6 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -399,24 +386,21 @@ public class RequestForAccessActivity extends AppCompatActivity implements View.
             }
         });
 
-        sp_access_type.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                IAMGetAccessTypeSpinnerModel selectedItem = accessTypeModelList.get(i);
-                sp_access_sub_type.setText("");
-                if (!selectedItem.getAccessType().equalsIgnoreCase("Please Select Access Type")) {
-                    hitIAMGetAccessSubTypeApi(selectedItem.getAccessTypeId().toString());
-                    sp_access_type_id = selectedItem.getAccessTypeId().toString();
-                    AccessTypeName = selectedItem.getAccessType();
-                }
-                if (selectedItem.getAccessTypeId().equals(3)) {
-                    layAccessSubType.setVisibility(View.GONE);
-                } else {
-                    layAccessSubType.setVisibility(View.VISIBLE);
-
-                }
+        sp_access_type.setOnItemClickListener((adapterView, view, i, l) -> {
+            IAMGetAccessTypeSpinnerModel selectedItem = accessTypeModelList.get(i);
+            sp_access_sub_type.setText("");
+            if (!selectedItem.getAccessType().equalsIgnoreCase("Please Select Access Type")) {
+                hitIAMGetAccessSubTypeApi(selectedItem.getAccessTypeId().toString());
+                sp_access_type_id = selectedItem.getAccessTypeId().toString();
+                AccessTypeName = selectedItem.getAccessType();
+            }
+            if (selectedItem.getAccessTypeId().equals(3)) {
+                layAccessSubType.setVisibility(View.GONE);
+            } else {
+                layAccessSubType.setVisibility(View.VISIBLE);
 
             }
+
         });
 
 
@@ -444,18 +428,15 @@ public class RequestForAccessActivity extends AppCompatActivity implements View.
         });
 
 
-        sp_access_category.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                IAMGetCategorySpinnerModel selectedItem = accessCategoryModelList.get(i);
-                if (!selectedItem.getCategory().equalsIgnoreCase("Please Select Category")) {
-                    hitIAMGetSubCategoryApi(selectedItem.getCategoryId().toString());
-                    hitIAMGetAuthorizationProfileApi(selectedItem.getCategoryId().toString());
-                    sp_access_category_id = selectedItem.getCategoryId().toString();
-                    sp_access_category_value = selectedItem.getCategory();
-                }
-
+        sp_access_category.setOnItemClickListener((adapterView, view, i, l) -> {
+            IAMGetCategorySpinnerModel selectedItem = accessCategoryModelList.get(i);
+            if (!selectedItem.getCategory().equalsIgnoreCase("Please Select Category")) {
+                hitIAMGetSubCategoryApi(selectedItem.getCategoryId().toString());
+                hitIAMGetAuthorizationProfileApi(selectedItem.getCategoryId().toString());
+                sp_access_category_id = selectedItem.getCategoryId().toString();
+                sp_access_category_value = selectedItem.getCategory();
             }
+
         });
 
 
@@ -477,14 +458,11 @@ public class RequestForAccessActivity extends AppCompatActivity implements View.
             }
         });
 
-        sp_access_sub_category.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                IAMGetSubCategoryModel selectedItem = accessSubCategoryModelList.get(i);
-                if (!selectedItem.getSubCategory().equalsIgnoreCase("Please Select Sub Category")) {
-                    sp_access_sub_category_id = selectedItem.getSubCategoryId().toString();
-                    sp_access_sub_category_value = selectedItem.getSubCategory();
-                }
+        sp_access_sub_category.setOnItemClickListener((adapterView, view, i, l) -> {
+            IAMGetSubCategoryModel selectedItem = accessSubCategoryModelList.get(i);
+            if (!selectedItem.getSubCategory().equalsIgnoreCase("Please Select Sub Category")) {
+                sp_access_sub_category_id = selectedItem.getSubCategoryId().toString();
+                sp_access_sub_category_value = selectedItem.getSubCategory();
             }
         });
         sp_access_sub_category.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -504,16 +482,13 @@ public class RequestForAccessActivity extends AppCompatActivity implements View.
             }
         });
 
-        sp_access_sub_type.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                IAMGetAccessSubTypeModel selectedItem = accessSubTypeModelList.get(i);
-                if (!selectedItem.getAccessSubType().equalsIgnoreCase("Please Select Access Sub Type")) {
-                    sp_access_sub_type_id = selectedItem.getAccessSubTypeId().toString();
-                    AccessSubTypeName = selectedItem.getAccessSubType();
-                }
-
+        sp_access_sub_type.setOnItemClickListener((adapterView, view, i, l) -> {
+            IAMGetAccessSubTypeModel selectedItem = accessSubTypeModelList.get(i);
+            if (!selectedItem.getAccessSubType().equalsIgnoreCase("Please Select Access Sub Type")) {
+                sp_access_sub_type_id = selectedItem.getAccessSubTypeId().toString();
+                AccessSubTypeName = selectedItem.getAccessSubType();
             }
+
         });
         sp_access_sub_type.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -532,14 +507,11 @@ public class RequestForAccessActivity extends AppCompatActivity implements View.
             }
         });
 
-        sp_user_authorization_profile.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                IAMGetAuthorizationProfileModel selectedItem = accessAuthorizationModelList.get(i);
-                if (!selectedItem.getProfileName().equalsIgnoreCase("Please Select User Authorization Profile")) {
-                    sp_user_authorization_profile_id = selectedItem.getProfileId().toString();
-                    sp_user_authorization_profile_value = selectedItem.getProfileName();
-                }
+        sp_user_authorization_profile.setOnItemClickListener((adapterView, view, i, l) -> {
+            IAMGetAuthorizationProfileModel selectedItem = accessAuthorizationModelList.get(i);
+            if (!selectedItem.getProfileName().equalsIgnoreCase("Please Select User Authorization Profile")) {
+                sp_user_authorization_profile_id = selectedItem.getProfileId().toString();
+                sp_user_authorization_profile_value = selectedItem.getProfileName();
             }
         });
 
@@ -560,19 +532,16 @@ public class RequestForAccessActivity extends AppCompatActivity implements View.
             }
         });
 
-        sp_access_for.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                sp_access_for_id = String.valueOf(i);
-                if (i != 1) {
-                    laySource.setVisibility(View.GONE);
+        sp_access_for.setOnItemClickListener((adapterView, view, i, l) -> {
+            sp_access_for_id = String.valueOf(i+1);
+            if (i != 1) {
+                laySource.setVisibility(View.GONE);
 
-                } else {
-                    laySource.setVisibility(View.VISIBLE);
-                }
-
-
+            } else {
+                laySource.setVisibility(View.VISIBLE);
             }
+
+
         });
 
 
@@ -597,23 +566,20 @@ public class RequestForAccessActivity extends AppCompatActivity implements View.
         });
 */
 
-        sp_source.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                sp_source_id = String.valueOf(i);
-                if (i == 0) {
-                    emp.setVisibility(View.VISIBLE);
+        sp_source.setOnItemClickListener((adapterView, view, i, l) -> {
+            sp_source_id = String.valueOf(i);
+            if (i == 0) {
+                emp.setVisibility(View.VISIBLE);
 
-                } else {
-                    emp.setVisibility(View.GONE);
+            } else {
+                emp.setVisibility(View.GONE);
 
-                }
-                if (i == 1) {
-                    layNameOrgPur.setVisibility(View.VISIBLE);
+            }
+            if (i == 1) {
+                layNameOrgPur.setVisibility(View.VISIBLE);
 
-                } else {
-                    layNameOrgPur.setVisibility(View.GONE);
-                }
+            } else {
+                layNameOrgPur.setVisibility(View.GONE);
             }
         });
         sp_source.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {

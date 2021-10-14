@@ -78,6 +78,8 @@ public class RetrofitClient2 {
         return retrofit;
     }
 
+
+
     public static <S> S createServiceDashboardImages(Class<S> serviceClass) {
         OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
         httpClient.protocols(Util.immutableListOf(Protocol.HTTP_1_1));
@@ -112,6 +114,39 @@ public class RetrofitClient2 {
         return retrofit.create(serviceClass);
     }
 
+    public static <S> S createIAMBService(Class<S> serviceClass) {
+        OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
+        httpClient.protocols(Util.immutableListOf(Protocol.HTTP_1_1));
+        httpClient.addInterceptor(chain -> {
+            Request original = chain.request();
+
+            Request request = original.newBuilder()
+                    .addHeader("User", "MindaIBk%d5s85s85")
+                    .addHeader("Password", "6151BIdn25k529sd525siM")
+                    .method(original.method(), original.body())
+                    .build();
+            Response response = chain.proceed(request);
+            return response;
+        });
+
+        dispatcher1.setMaxRequests(3000);
+        httpClient.dispatcher(dispatcher1);
+
+        Gson gson = new GsonBuilder()
+                .setLenient()
+                .create();
+
+        OkHttpClient client = httpClient.readTimeout(60, TimeUnit.SECONDS)
+                .connectTimeout(60, TimeUnit.SECONDS).build();
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(BASE_URL)
+                .addConverterFactory(ScalarsConverterFactory.create())
+                .addConverterFactory(GsonConverterFactory.create(gson))
+                .client(client)
+                .build();
+
+        return retrofit.create(serviceClass);
+    }
 
 
 

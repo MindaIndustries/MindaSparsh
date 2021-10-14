@@ -22,12 +22,15 @@ import com.minda.sparsh.model.ARPDModel;
 import com.minda.sparsh.model.AccessRequestApproverDetailsModel;
 import com.minda.sparsh.model.AccessRequestDetailsModel;
 import com.minda.sparsh.model.AccessRequestPlantDetailModel;
+import com.minda.sparsh.model.IAMBModel;
 import com.minda.sparsh.util.RetrofitClient2;
 import com.minda.sparsh.util.Utility;
 
 import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
+
+import javax.net.ssl.HttpsURLConnection;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.DefaultItemAnimator;
@@ -57,6 +60,8 @@ public class AccessRequestDetailsActivity extends AppCompatActivity implements V
     TextInputLayout tv_approve_unapprove_heading;
 
     HorizontalScrollView horizontalView;
+    String IAMB;
+    String catID;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -96,26 +101,26 @@ public class AccessRequestDetailsActivity extends AppCompatActivity implements V
         tv_access_requirement_details = findViewById(R.id.tv_access_requirement_details);
 
         tv_access_request_by = findViewById(R.id.tv_access_request_by);
-        tv_source =  findViewById(R.id.tv_source);
-        tv_name =  findViewById(R.id.tv_name);
-        tv_organisation =  findViewById(R.id.tv_organisation);
-        tv_purpose =  findViewById(R.id.tv_purpose);
-        tv_approve_unapprove_heading =  findViewById(R.id.tv_approve_unapprove_heading);
-        tv_processor_detail =  findViewById(R.id.tv_processor_detail);
-        tv_scroll =  findViewById(R.id.tv_scroll);
+        tv_source = findViewById(R.id.tv_source);
+        tv_name = findViewById(R.id.tv_name);
+        tv_organisation = findViewById(R.id.tv_organisation);
+        tv_purpose = findViewById(R.id.tv_purpose);
+        tv_approve_unapprove_heading = findViewById(R.id.tv_approve_unapprove_heading);
+        tv_processor_detail = findViewById(R.id.tv_processor_detail);
+        tv_scroll = findViewById(R.id.tv_scroll);
 
-        lay_access_request_by =  findViewById(R.id.lay_access_request_by);
-        lay_source =  findViewById(R.id.lay_source);
-        lay_name =  findViewById(R.id.lay_name);
-        lay_organisation =  findViewById(R.id.lay_organisation);
-        lay_purpose =  findViewById(R.id.lay_purpose);
-        lay_access_for_name =  findViewById(R.id.lay_access_for_name);
-        lay_sub_category =  findViewById(R.id.lay_sub_category);
-        lay_user_authorisation_profile =  findViewById(R.id.lay_user_authorisation_profile);
+        lay_access_request_by = findViewById(R.id.lay_access_request_by);
+        lay_source = findViewById(R.id.lay_source);
+        lay_name = findViewById(R.id.lay_name);
+        lay_organisation = findViewById(R.id.lay_organisation);
+        lay_purpose = findViewById(R.id.lay_purpose);
+        lay_access_for_name = findViewById(R.id.lay_access_for_name);
+        lay_sub_category = findViewById(R.id.lay_sub_category);
+        lay_user_authorisation_profile = findViewById(R.id.lay_user_authorisation_profile);
 
-        rv_plant_details =  findViewById(R.id.rv_plant_details);
-        rv_approval_details =  findViewById(R.id.rv_approval_details);
-        rv_processor_details =  findViewById(R.id.rv_processor_details);
+        rv_plant_details = findViewById(R.id.rv_plant_details);
+        rv_approval_details = findViewById(R.id.rv_approval_details);
+        rv_processor_details = findViewById(R.id.rv_processor_details);
 
         tv_scroll_Approval_Details = findViewById(R.id.tv_scroll_Approval_Details);
 
@@ -162,7 +167,7 @@ public class AccessRequestDetailsActivity extends AppCompatActivity implements V
                             tv_sub_category.setText(accessRequestDetailsModels.get(0).getSubCategory() + "");
                             tv_user_authorisation_profile.setText(accessRequestDetailsModels.get(0).getProfileName() + "");
                             tv_approval_status.setText(accessRequestDetailsModels.get(0).getFlag());
-
+                            catID = String.valueOf(accessRequestDetailsModels.get(0).getCategoryId());
 
                            /* if(accessRequestDetailsModels.get(0).getFlag().contains("Pending")){
                                 btn_un_approve.setVisibility(View.VISIBLE);
@@ -341,6 +346,9 @@ public class AccessRequestDetailsActivity extends AppCompatActivity implements V
                                     }
                                 }
                             }
+                            HitGetIAMBStatus(myPref.getString("Id", "Id"),catID,approvalLevel_val);
+
+
 
                         } else {
                             Toast.makeText(getApplicationContext(), "Something went wrong", Toast.LENGTH_LONG).show();
@@ -368,9 +376,7 @@ public class AccessRequestDetailsActivity extends AppCompatActivity implements V
                 public void onResponse(@NotNull Call<List<ARPDModel>> call, @NotNull Response<List<ARPDModel>> response) {
                     dismissProgress();
                     List<ARPDModel> responses = response.body();
-
-                    assert responses != null;
-                    if (responses.size() != 0) {
+                    if (responses != null && responses.size() != 0) {
                         if (responses.get(0).getApprovalId() != null) {
                             tv_processor_detail.setVisibility(View.VISIBLE);
                             tv_scroll.setVisibility(View.VISIBLE);
@@ -444,8 +450,7 @@ public class AccessRequestDetailsActivity extends AppCompatActivity implements V
                     dismissProgress();
                     List<ARPDModel> responses = response.body();
 
-                    assert responses != null;
-                    if (responses.size() != 0) {
+                    if (responses != null && responses.size() != 0) {
                         if (responses.get(0).getApprovalId() != null) {
                             tv_processor_detail.setVisibility(View.VISIBLE);
                             tv_scroll.setVisibility(View.VISIBLE);
@@ -509,20 +514,20 @@ public class AccessRequestDetailsActivity extends AppCompatActivity implements V
     }
 
 
+
     //    for IAM Approve
     public void hitIAMApproveApi(String key, String approvalId, String accessRequestNo, String empCode, String approvalText, String attachment, String approvalLevel) {
         if (Utility.isOnline(getApplicationContext())) {
             showProgress();
             Interface anInterface = RetrofitClient2.getClient().create(Interface.class);
-            Call<String> response = anInterface.IAMApprove(key, approvalId, accessRequestNo, empCode, approvalText, attachment, approvalLevel);
+            Call<String> response = anInterface.IAMApprove(key, approvalId, accessRequestNo, empCode, approvalText, attachment, approvalLevel,IAMB);
             response.enqueue(new Callback<String>() {
                 @Override
                 public void onResponse(@NotNull Call<String> call, @NotNull Response<String> response) {
                     dismissProgress();
                     String responses = response.body();
 
-                    assert responses != null;
-                    if (responses.equalsIgnoreCase("Request Approved successfully")) {
+                    if (responses != null && responses.equalsIgnoreCase("Request Approved successfully")) {
                         Toast.makeText(AccessRequestDetailsActivity.this, responses, Toast.LENGTH_SHORT).show();
                         finish();
 
@@ -554,13 +559,9 @@ public class AccessRequestDetailsActivity extends AppCompatActivity implements V
                 public void onResponse(@NotNull Call<String> call, @NotNull Response<String> response) {
                     dismissProgress();
                     String responses = response.body();
-
-                    assert responses != null;
-                    if (responses.equalsIgnoreCase("Request Rejected successfully")) {
+                    if (responses != null && responses.equalsIgnoreCase("Request Rejected successfully")) {
                         Toast.makeText(AccessRequestDetailsActivity.this, responses, Toast.LENGTH_SHORT).show();
                         finish();
-
-
                     } else {
                         Toast.makeText(getApplicationContext(), "Something went wrong", Toast.LENGTH_LONG).show();
                     }
@@ -590,8 +591,7 @@ public class AccessRequestDetailsActivity extends AppCompatActivity implements V
                     dismissProgress();
                     String responses = response.body();
 
-                    assert responses != null;
-                    if (responses.equalsIgnoreCase("Request Send Back to Requestor successfully")) {
+                    if (responses != null && responses.equalsIgnoreCase("Request Send Back to Requestor successfully")) {
                         Toast.makeText(AccessRequestDetailsActivity.this, responses, Toast.LENGTH_SHORT).show();
                         finish();
                     } else {
@@ -665,5 +665,50 @@ public class AccessRequestDetailsActivity extends AppCompatActivity implements V
                 }
                 break;
         }
+    }
+
+    public void HitGetIAMBStatus(String empcode, String sCategoryId, String sApprovalLevel) {
+        if (Utility.isOnline(getApplicationContext())) {
+            showProgress();
+            Interface anInterface = RetrofitClient2.createIAMBService(Interface.class);
+            Call<List<IAMBModel>> response = anInterface.GetIAMBStatus(empcode, sCategoryId, sApprovalLevel);
+            response.enqueue(new Callback<List<IAMBModel>>() {
+                @Override
+                public void onResponse(Call<List<IAMBModel>> call, Response<List<IAMBModel>> response) {
+                    dismissProgress();
+                    if(response.code()== HttpsURLConnection.HTTP_OK){
+                        if(response!=null && response.body().size()>0){
+                            String status = response.body().get(0).getStatus();
+                            if(status!=null && status.length()>0){
+                                IAMB = status;
+                                if(IAMB.equalsIgnoreCase("PSA")){
+                                    btn_approve.setText("Yes SOD conflict observed");
+                                    btn_un_approve.setText("No SOD conflict observed");
+                                    btn_send_back.setVisibility(View.GONE);
+
+                                }
+                                else if(IAMB.equalsIgnoreCase("PSV")){
+                                    btn_un_approve.setText("SOD conflict observed, Send Back");
+                                    btn_approve.setText("No SOD conflict observed, Approve");
+                                    btn_send_back.setVisibility(View.GONE);
+
+                                }
+                               }
+                        }
+
+                    }
+
+                }
+
+                @Override
+                public void onFailure(Call<List<IAMBModel>> call, Throwable t) {
+                    dismissProgress();
+
+                }
+            });
+
+        } else
+            Toast.makeText(getApplicationContext(), "Please Check Your Network Connection", Toast.LENGTH_LONG).show();
+
     }
 }

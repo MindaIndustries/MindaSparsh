@@ -23,6 +23,7 @@ import com.minda.sparsh.model.Domain_Model;
 import com.minda.sparsh.model.DwmResponse;
 import com.minda.sparsh.model.GetAbnormalityImage_Model;
 import com.minda.sparsh.model.Group_Model;
+import com.minda.sparsh.model.IAMBModel;
 import com.minda.sparsh.model.IAMCreateRequestModel;
 import com.minda.sparsh.model.IAMGetAccessSubTypeModel;
 import com.minda.sparsh.model.IAMGetAccessTypeSpinnerModel;
@@ -404,10 +405,12 @@ public interface Interface {
     @GET("GetAccessRequestProcessorDetailExt")
     Call<List<ARPDModel>> GetAccessRequestProcessorDetailExt(@Query("CKey") String CKey, @Query("AccessRequestNo") String AccessRequestNo);
 
+    @GET("GetIAMBStatus")
+    Call<List<IAMBModel>> GetIAMBStatus(@Query("EmpCode") String EmpCode, @Query("sCategoryId") String sCategoryId, @Query("sApprovalLevel") String sApprovalLevel);
 
     @GET("IAMApprove")
     Call<String> IAMApprove(@Query("CKey") String CKey, @Query("ApprovalId") String ApprovalId, @Query("AccessRequestNo") String AccessRequestNo,
-                            @Query("EmpCode") String EmpCode, @Query("ApprovalText") String ApprovalText, @Query("Attachment") String Attachment, @Query("ApprovalLevel") String ApprovalLevel);
+                            @Query("EmpCode") String EmpCode, @Query("ApprovalText") String ApprovalText, @Query("Attachment") String Attachment, @Query("ApprovalLevel") String ApprovalLevel,@Query("IAMB") String IAMB);
 
     @GET("IAMUnApprove")
     Call<String> IAMUnApprove(@Query("CKey") String CKey, @Query("ApprovalId") String ApprovalId, @Query("AccessRequestNo") String AccessRequestNo,
