@@ -759,6 +759,8 @@ public class RequestForAccessActivity extends AppCompatActivity implements View.
 
     public void hiIAMGetCategoryApi(String requestType, final String type) {
         TYPE = type;
+        accessCategoryModelList.clear();
+        accessCategoryList.clear();
         if (Utility.isOnline(RequestForAccessActivity.this)) {
             showProgress(true);
             Interface anInterface = RetrofitClient2.getClient().create(Interface.class);
@@ -1088,31 +1090,31 @@ public class RequestForAccessActivity extends AppCompatActivity implements View.
     }
 
     boolean validateField() {
-      /*  if (sp_request_type.getSelectedItemPosition() == 0 && sp_request_type.getVisibility() == View.VISIBLE) {
+        if (sp_request_type.getText().toString().length()== 0) {
             Toast.makeText(RequestForAccessActivity.this, "Please Select Request Type", Toast.LENGTH_SHORT).show();
             return false;
-        } else*/ /*if (sp_access_type.getSelectedItemPosition() == 0 && sp_access_type.getVisibility() == View.VISIBLE) {
+        } else if (sp_access_type.getText().toString().length() == 0) {
             Toast.makeText(RequestForAccessActivity.this, "Please Select Access Type", Toast.LENGTH_SHORT).show();
             return false;
-        } else*/ /*if (TYPE != null && !TYPE.equals("3") && sp_access_category.getSelectedItemPosition() == 0 && sp_access_category.getVisibility() == View.VISIBLE) {
+        } else if (TYPE != null && !TYPE.equals("3") && sp_access_category.getText().toString().length() == 0 && sp_access_category.getVisibility() == View.VISIBLE) {
             Toast.makeText(RequestForAccessActivity.this, "Please Select Category", Toast.LENGTH_SHORT).show();
             return false;
-        } else*//* if (sp_access_sub_category.getSelectedItemPosition() == 0 && layAccessSubCategory.getVisibility() == View.VISIBLE) {
+        } else if (sp_access_sub_category.getText().toString().length() == 0 && layAccessSubCategory.getVisibility() == View.VISIBLE) {
             Toast.makeText(RequestForAccessActivity.this, "Please Select Sub Category", Toast.LENGTH_SHORT).show();
             return false;
-        }*//* else if (sp_access_sub_type.getSelectedItemPosition() == 0 && sp_access_sub_type.getVisibility() == View.VISIBLE) {
+        } else if (sp_access_sub_type.getText().toString().length() == 0 && sp_access_sub_type.getVisibility() == View.VISIBLE) {
             Toast.makeText(RequestForAccessActivity.this, "Please Select Access Sub Type", Toast.LENGTH_SHORT).show();
             return false;
-        }else*/  /*if (sp_user_authorization_profile.getSelectedItemPosition() == 0 && layUserAuthorisationProfile.getVisibility() == View.VISIBLE) {
+        }else  if (sp_user_authorization_profile.getText().toString().length() == 0 && layUserAuthorisationProfile.getVisibility() == View.VISIBLE) {
             Toast.makeText(RequestForAccessActivity.this, "Please Select User Authorization Profile", Toast.LENGTH_SHORT).show();
             return false;
-        }*//* else if (sp_access_for.getSelectedItemPosition() == 0 && sp_access_for.getVisibility() == View.VISIBLE) {
+        } else if (sp_access_for.getText().toString().length() == 0 && sp_access_for.getVisibility() == View.VISIBLE) {
             Toast.makeText(RequestForAccessActivity.this, "Please Select Access For", Toast.LENGTH_SHORT).show();
             return false;
-        }*/ /*else if (sp_source.getSelectedItemPosition() == 0 && laySource.et_organisationgetVisibility() == View.VISIBLE) {
+        } else if (sp_source.getText().toString().length() == 0 && laySource.getVisibility() == View.VISIBLE) {
             Toast.makeText(RequestForAccessActivity.this, "Please Select Source", Toast.LENGTH_SHORT).show();
             return false;
-        }else*/  if (TextUtils.isEmpty(et_empCode.getText().toString()) && emp.getVisibility() == View.VISIBLE) {
+        }else  if (TextUtils.isEmpty(et_empCode.getText().toString()) && emp.getVisibility() == View.VISIBLE) {
             Toast.makeText(RequestForAccessActivity.this, "Please Fill Employee Code", Toast.LENGTH_SHORT).show();
             return false;
         } else if (TextUtils.isEmpty(et_name.getText().toString()) && layNameOrgPur.getVisibility() == View.VISIBLE) {
