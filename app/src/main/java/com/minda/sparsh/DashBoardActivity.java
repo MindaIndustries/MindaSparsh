@@ -28,8 +28,6 @@ import com.minda.sparsh.util.RetrofitClient2;
 import com.minda.sparsh.util.Utility;
 
 import org.jetbrains.annotations.NotNull;
-
-import java.security.PublicKey;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -213,7 +211,7 @@ public class DashBoardActivity extends BaseActivity implements View.OnClickListe
 
                 @Override
                 public void onFailure(@NotNull Call<List<NotificationModel>> call, @NotNull Throwable t) {
-                    Toast.makeText(DashBoardActivity.this, "Something Wrong", Toast.LENGTH_LONG).show();
+                    Toast.makeText(DashBoardActivity.this, "Something went Wrong", Toast.LENGTH_LONG).show();
 
 
                 }
@@ -412,6 +410,7 @@ public class DashBoardActivity extends BaseActivity implements View.OnClickListe
 
             @Override
             public void onFailure(Call<List<NotiCount>> call, Throwable t) {
+                Toast.makeText(DashBoardActivity.this, "Something went Wrong", Toast.LENGTH_LONG).show();
 
             }
         });

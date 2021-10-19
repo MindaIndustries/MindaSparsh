@@ -304,44 +304,41 @@ public class RequestForAccessActivity extends AppCompatActivity implements View.
     }
 
     private void selectionListener() {
-        sp_request_type.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                IAMGetRequestTypeSpinnerModel selectedItem = requestmodelList.get(i);
-                sp_access_type.setText("");
-                sp_access_category.setText("");
-                if (!selectedItem.getRequestType().equalsIgnoreCase("Please Select Request Type")) {
-                    RequestTypeName = selectedItem.getRequestType();
+        sp_request_type.setOnItemClickListener((adapterView, view, i, l) -> {
+            IAMGetRequestTypeSpinnerModel selectedItem = requestmodelList.get(i);
+            sp_access_type.setText("");
+            sp_access_category.setText("");
+            if (!selectedItem.getRequestType().equalsIgnoreCase("Please Select Request Type")) {
+                RequestTypeName = selectedItem.getRequestType();
 
-                    if (selectedItem.getRequestTypeId().equals(3)) {
-                        sp_request_type_id = selectedItem.getRequestTypeId().toString();
-                        layAccessCategory.setVisibility(View.GONE);
-                        layMultiAccessCategory.setVisibility(View.VISIBLE);
-                        sp_source_data.clear();
-                        //  sp_source_data.add("Select Source");
-                        sp_source_data.add("Internal");
+                if (selectedItem.getRequestTypeId().equals(3)) {
+                    sp_request_type_id = selectedItem.getRequestTypeId().toString();
+                    layAccessCategory.setVisibility(View.GONE);
+                    layMultiAccessCategory.setVisibility(View.VISIBLE);
+                    sp_source_data.clear();
+                    //  sp_source_data.add("Select Source");
+                    sp_source_data.add("Internal");
 
-                        hitIAMGetAccessTypeApi(selectedItem.getRequestTypeId());
-                        hiIAMGetCategoryApi(selectedItem.getRequestTypeId().toString(), "3");
+                    hitIAMGetAccessTypeApi(selectedItem.getRequestTypeId());
+                    hiIAMGetCategoryApi(selectedItem.getRequestTypeId().toString(), "3");
 
-                    } else {
-                        sp_request_type_id = selectedItem.getRequestTypeId().toString();
-                        layAccessCategory.setVisibility(View.VISIBLE);
-                        layMultiAccessCategory.setVisibility(View.GONE);
-                        hitIAMGetAccessTypeApi(selectedItem.getRequestTypeId());
-                        hiIAMGetCategoryApi(selectedItem.getRequestTypeId().toString(), "1");
-                        sp_source_data.clear();
-                        //   sp_source_data.add("Select Source");
-                        sp_source_data.add("Internal");
-                        sp_source_data.add("External");
-                    }
-                    sp_source_adapter = new ArrayAdapter<String>(RequestForAccessActivity.this, android.R.layout.simple_spinner_item, sp_source_data);
-                    sp_source.setAdapter(sp_source_adapter);
-                    sp_source_adapter.notifyDataSetChanged();
-
+                } else {
+                    sp_request_type_id = selectedItem.getRequestTypeId().toString();
+                    layAccessCategory.setVisibility(View.VISIBLE);
+                    layMultiAccessCategory.setVisibility(View.GONE);
+                    hitIAMGetAccessTypeApi(selectedItem.getRequestTypeId());
+                    hiIAMGetCategoryApi(selectedItem.getRequestTypeId().toString(), "1");
+                    sp_source_data.clear();
+                    //   sp_source_data.add("Select Source");
+                    sp_source_data.add("Internal");
+                    sp_source_data.add("External");
                 }
+                sp_source_adapter = new ArrayAdapter<String>(RequestForAccessActivity.this, android.R.layout.simple_spinner_item, sp_source_data);
+                sp_source.setAdapter(sp_source_adapter);
+                sp_source_adapter.notifyDataSetChanged();
 
             }
+
         });
 
         sp_request_type.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {

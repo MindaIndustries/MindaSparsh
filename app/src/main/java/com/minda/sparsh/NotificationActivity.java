@@ -78,7 +78,7 @@ public class NotificationActivity extends AppCompatActivity {
 
                 @Override
                 public void onFailure(@NotNull Call<List<NotificationModel>> call, @NotNull Throwable t) {
-                    Toast.makeText(NotificationActivity.this, "Something Wrong", Toast.LENGTH_LONG).show();
+                    Toast.makeText(NotificationActivity.this, "Something went Wrong", Toast.LENGTH_LONG).show();
 
 
                 }

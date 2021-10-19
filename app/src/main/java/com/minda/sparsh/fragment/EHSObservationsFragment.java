@@ -34,7 +34,7 @@ public class EHSObservationsFragment extends Fragment {
     @BindView(R.id.observations)
     RecyclerView observations;
     EHSObsAdapter ehsObsAdapter;
-    List<EHSObsModel> myObservations = new ArrayList<EHSObsModel>();
+    List<EHSObsModel> myObservations = new ArrayList<>();
     String empCode;
     SharedPreferences myPref;
     @BindView(R.id.progressBar)
@@ -78,7 +78,7 @@ public class EHSObservationsFragment extends Fragment {
                 ehsObsAdapter.notifyDataSetChanged();
             } else {
                 if (getActivity() != null && isAdded()) {
-                    Toast.makeText(getActivity(), "Oops! Something went wrong.", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getActivity(), "Something went wrong.", Toast.LENGTH_LONG).show();
                 }
             }
             progressBar.setVisibility(View.GONE);

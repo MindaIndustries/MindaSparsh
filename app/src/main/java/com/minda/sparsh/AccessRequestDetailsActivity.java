@@ -6,7 +6,6 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.HorizontalScrollView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -347,9 +346,6 @@ public class AccessRequestDetailsActivity extends AppCompatActivity implements V
                                 }
                             }
                             HitGetIAMBStatus(myPref.getString("Id", "Id"),catID,approvalLevel_val);
-
-
-
                         } else {
                             Toast.makeText(getApplicationContext(), "Something went wrong", Toast.LENGTH_LONG).show();
                         }
