@@ -66,14 +66,11 @@ public class AccessRequestDetailsActivity extends AppCompatActivity implements V
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_access_request_details);
-
         myPref = getSharedPreferences("MyPref", MODE_PRIVATE);
-
         progress = new ProgressDialog(AccessRequestDetailsActivity.this);
         progress.setMessage("Please wait...");
         progress.setProgressStyle(ProgressDialog.STYLE_SPINNER);
         progress.setIndeterminate(true);
-
         im_back = findViewById(R.id.im_back);
         im_back.setOnClickListener(view -> finish());
         btn_approve = findViewById(R.id.btn_approve);
@@ -82,9 +79,7 @@ public class AccessRequestDetailsActivity extends AppCompatActivity implements V
         btn_approve.setOnClickListener(this);
         btn_un_approve.setOnClickListener(this);
         btn_send_back.setOnClickListener(this);
-
         lay_processor_view = findViewById(R.id.lay_processor_view);
-
         et_approve_unapprove = findViewById(R.id.et_approve_unapprove);
         tv_access_request_no = findViewById(R.id.tv_access_request_no);
         tv_request_on = findViewById(R.id.tv_request_on);
@@ -98,7 +93,6 @@ public class AccessRequestDetailsActivity extends AppCompatActivity implements V
         tv_user_authorisation_profile = findViewById(R.id.tv_user_authorisation_profile);
         tv_approval_status = findViewById(R.id.tv_approval_status);
         tv_access_requirement_details = findViewById(R.id.tv_access_requirement_details);
-
         tv_access_request_by = findViewById(R.id.tv_access_request_by);
         tv_source = findViewById(R.id.tv_source);
         tv_name = findViewById(R.id.tv_name);
@@ -107,7 +101,6 @@ public class AccessRequestDetailsActivity extends AppCompatActivity implements V
         tv_approve_unapprove_heading = findViewById(R.id.tv_approve_unapprove_heading);
         tv_processor_detail = findViewById(R.id.tv_processor_detail);
         tv_scroll = findViewById(R.id.tv_scroll);
-
         lay_access_request_by = findViewById(R.id.lay_access_request_by);
         lay_source = findViewById(R.id.lay_source);
         lay_name = findViewById(R.id.lay_name);
@@ -116,31 +109,20 @@ public class AccessRequestDetailsActivity extends AppCompatActivity implements V
         lay_access_for_name = findViewById(R.id.lay_access_for_name);
         lay_sub_category = findViewById(R.id.lay_sub_category);
         lay_user_authorisation_profile = findViewById(R.id.lay_user_authorisation_profile);
-
         rv_plant_details = findViewById(R.id.rv_plant_details);
         rv_approval_details = findViewById(R.id.rv_approval_details);
         rv_processor_details = findViewById(R.id.rv_processor_details);
-
         tv_scroll_Approval_Details = findViewById(R.id.tv_scroll_Approval_Details);
-
         horizontalView = findViewById(R.id.horizontalView);
-
         Intent intent = getIntent();
         if (intent != null) {
             String requestId = String.valueOf(intent.getIntExtra(Utility.REQUEST_ID, 0));
             hitGetAccessRequestDetailApi(RetrofitClient2.CKEY, requestId);
-
         }
-
         tv_scroll_Approval_Details.setOnClickListener(view -> horizontalView.postDelayed(() -> horizontalView.fullScroll(HorizontalScrollView.FOCUS_RIGHT), 100L));
-
         //for processor details
-
         tv_scroll.setOnClickListener(view -> lay_processor_view.postDelayed(() -> lay_processor_view.fullScroll(HorizontalScrollView.FOCUS_RIGHT), 100L));
-
     }
-
-
     public void hitGetAccessRequestDetailApi(String key, String requestId) {
         if (Utility.isOnline(getApplicationContext())) {
             showProgress();
@@ -151,10 +133,8 @@ public class AccessRequestDetailsActivity extends AppCompatActivity implements V
                 public void onResponse(@NotNull Call<List<AccessRequestDetailsModel>> call, @NotNull Response<List<AccessRequestDetailsModel>> response) {
                     dismissProgress();
                     List<AccessRequestDetailsModel> accessRequestDetailsModels = response.body();
-
                     if (accessRequestDetailsModels != null) {
                         if (accessRequestDetailsModels.get(0).getAccessRequestNo() != null) {
-
                             tv_access_request_no.setText(accessRequestDetailsModels.get(0).getAccessRequestNo());
                             tv_request_on.setText(accessRequestDetailsModels.get(0).getCreatedOn());
                             tv_request_type.setText(accessRequestDetailsModels.get(0).getRequestType());
@@ -182,10 +162,8 @@ public class AccessRequestDetailsActivity extends AppCompatActivity implements V
                             }
                            */
                             tv_access_requirement_details.setText(accessRequestDetailsModels.get(0).getRequirementDetail());
-
                             lay_access_request_by.setVisibility(View.VISIBLE);
                             tv_access_request_by.setText(accessRequestDetailsModels.get(0).getCreatedByName() + "(" + accessRequestDetailsModels.get(0).getCreatedBy() + ")");
-
                             if (accessRequestDetailsModels.get(0).getAccessForType() == 1) {
                                 tv_access_for.setText("Self");
                                 lay_source.setVisibility(View.GONE);
@@ -194,12 +172,10 @@ public class AccessRequestDetailsActivity extends AppCompatActivity implements V
                                 lay_name.setVisibility(View.GONE);
                                 lay_access_for_name.setVisibility(View.VISIBLE);
                                 tv_access_for_name.setText(accessRequestDetailsModels.get(0).getAccessForName() + "(" + accessRequestDetailsModels.get(0).getAccessFor() + ")");
-
                             } else {
                                 tv_access_for.setText("Other");
                                 lay_access_request_by.setVisibility(View.VISIBLE);
                                 lay_source.setVisibility(View.VISIBLE);
-
                                 if (accessRequestDetailsModels.get(0).getAccessForSubType() == 1) {
                                     tv_source.setText("Internal");
                                     lay_organisation.setVisibility(View.GONE);
@@ -207,7 +183,6 @@ public class AccessRequestDetailsActivity extends AppCompatActivity implements V
                                     lay_name.setVisibility(View.GONE);
                                     lay_access_for_name.setVisibility(View.VISIBLE);
                                     tv_access_for_name.setText(accessRequestDetailsModels.get(0).getAccessForName() + "(" + accessRequestDetailsModels.get(0).getAccessFor() + ")");
-
                                 } else {
                                     tv_source.setText("External");
                                     lay_organisation.setVisibility(View.VISIBLE);
@@ -217,9 +192,7 @@ public class AccessRequestDetailsActivity extends AppCompatActivity implements V
                                     tv_organisation.setText(accessRequestDetailsModels.get(0).getOrganisation());
                                     tv_name.setText(accessRequestDetailsModels.get(0).getExternalName());
                                     tv_purpose.setText(accessRequestDetailsModels.get(0).getPurpose());
-
                                 }
-
                             }
 
                             if (accessRequestDetailsModels.get(0).getSubCategoryId() == 0) {
@@ -227,28 +200,21 @@ public class AccessRequestDetailsActivity extends AppCompatActivity implements V
                             } else {
                                 lay_sub_category.setVisibility(View.VISIBLE);
                                 tv_sub_category.setText(accessRequestDetailsModels.get(0).getSubCategory() + "");
-
                             }
                             if (accessRequestDetailsModels.get(0).getProfileId() == 0) {
                                 lay_user_authorisation_profile.setVisibility(View.GONE);
                             } else {
                                 lay_user_authorisation_profile.setVisibility(View.VISIBLE);
                                 tv_user_authorisation_profile.setText(accessRequestDetailsModels.get(0).getProfileName() + "");
-
                             }
 
                             hitGetAccessRequestPlantDetailApi(RetrofitClient2.CKEY, accessRequestDetailsModels.get(0).getAccessRequestNo());
                             hitGetAccessRequestApproverDetailApi(RetrofitClient2.CKEY, accessRequestDetailsModels.get(0).getAccessRequestNo());
                             if (accessRequestDetailsModels.get(0).getCategoryId() == 1 & accessRequestDetailsModels.get(0).getAccessTypeId() == 1) {
-
                                 hitGetAccessRequestProcessorDetailExtApi(RetrofitClient2.CKEY, accessRequestDetailsModels.get(0).getAccessRequestNo());
-
                             } else {
                                 hitGetAccessRequestProcessorDetailApi(RetrofitClient2.CKEY, accessRequestDetailsModels.get(0).getAccessRequestNo(), String.valueOf(accessRequestDetailsModels.get(0).getCategoryId()));
-
                             }
-
-
                         } else {
                             Toast.makeText(getApplicationContext(), "Something went wrong", Toast.LENGTH_LONG).show();
                         }
@@ -283,8 +249,6 @@ public class AccessRequestDetailsActivity extends AppCompatActivity implements V
                             rv_plant_details.setLayoutManager(mLayoutManager);
                             rv_plant_details.setItemAnimator(new DefaultItemAnimator());
                             rv_plant_details.setAdapter(mAdapter);
-
-
                         } else {
                             Toast.makeText(getApplicationContext(), "Something went wrong", Toast.LENGTH_LONG).show();
                         }
@@ -311,7 +275,6 @@ public class AccessRequestDetailsActivity extends AppCompatActivity implements V
                 public void onResponse(@NotNull Call<List<AccessRequestApproverDetailsModel>> call, @NotNull Response<List<AccessRequestApproverDetailsModel>> response) {
                     dismissProgress();
                     List<AccessRequestApproverDetailsModel> responses = response.body();
-
                     if (responses != null) {
                         if (responses.get(0).getApprovalId() != null) {
                             AccessRequestApproverDetailsAdapter mAdapter = new AccessRequestApproverDetailsAdapter(response.body(), AccessRequestDetailsActivity.this);
@@ -339,19 +302,15 @@ public class AccessRequestDetailsActivity extends AppCompatActivity implements V
                                         // for api
                                         approvalLevel_val = responses.get(i).getApprovalLevel();
                                         approvalId_val = String.valueOf(responses.get(i).getApprovalId());
-
-
-                                        //
                                     }
                                 }
                             }
-                            HitGetIAMBStatus(myPref.getString("Id", "Id"),catID,approvalLevel_val);
+                            HitGetIAMBStatus(myPref.getString("Id", "Id"), catID, approvalLevel_val);
                         } else {
                             Toast.makeText(getApplicationContext(), "Something went wrong", Toast.LENGTH_LONG).show();
                         }
                     }
                 }
-
                 @Override
                 public void onFailure(@NotNull Call<List<AccessRequestApproverDetailsModel>> call, @NotNull Throwable t) {
                     dismissProgress();
@@ -360,7 +319,6 @@ public class AccessRequestDetailsActivity extends AppCompatActivity implements V
         } else
             Toast.makeText(getApplicationContext(), "Please Check Your Network Connection", Toast.LENGTH_LONG).show();
     }
-
 
     public void hitGetAccessRequestProcessorDetailApi(String key, String accessRequestNo, String categoryId) {
         if (Utility.isOnline(getApplicationContext())) {
@@ -401,14 +359,10 @@ public class AccessRequestDetailsActivity extends AppCompatActivity implements V
                                         tv_approve_unapprove_heading.setVisibility(View.VISIBLE);
                                         et_approve_unapprove.setVisibility(View.VISIBLE);
                                         btn_send_back.setVisibility(View.VISIBLE);
-
                                         // for api
                                         approvalLevel_val = responses.get(i).getApprovalLevel();
                                         approvalId_val = String.valueOf(responses.get(i).getApprovalId());
-
                                     }
-
-
                                     if (responses.get(i).getApprovalLevel().equalsIgnoreCase("Processor")) {
                                         // change button name
 // complete and reject respectivelly
@@ -425,7 +379,6 @@ public class AccessRequestDetailsActivity extends AppCompatActivity implements V
                         }
                     }
                 }
-
                 @Override
                 public void onFailure(@NotNull Call<List<ARPDModel>> call, @NotNull Throwable t) {
                     dismissProgress();
@@ -466,7 +419,6 @@ public class AccessRequestDetailsActivity extends AppCompatActivity implements V
                                         tv_approve_unapprove_heading.setVisibility(View.GONE);
                                         btn_send_back.setVisibility(View.GONE);
                                         et_approve_unapprove.setVisibility(View.GONE);
-
                                     } else {
                                         //show
                                         et_approve_unapprove.setVisibility(View.VISIBLE);
@@ -481,7 +433,6 @@ public class AccessRequestDetailsActivity extends AppCompatActivity implements V
                                         approvalId_val = String.valueOf(responses.get(i).getApprovalId());
 
                                     }
-
 
                                     if (responses.get(i).getApprovalLevel().equalsIgnoreCase("Processor")) {
                                         // change button name
@@ -508,15 +459,12 @@ public class AccessRequestDetailsActivity extends AppCompatActivity implements V
         } else
             Toast.makeText(getApplicationContext(), "Please Check Your Network Connection", Toast.LENGTH_LONG).show();
     }
-
-
-
     //    for IAM Approve
     public void hitIAMApproveApi(String key, String approvalId, String accessRequestNo, String empCode, String approvalText, String attachment, String approvalLevel) {
         if (Utility.isOnline(getApplicationContext())) {
             showProgress();
             Interface anInterface = RetrofitClient2.getClient().create(Interface.class);
-            Call<String> response = anInterface.IAMApprove(key, approvalId, accessRequestNo, empCode, approvalText, attachment, approvalLevel,IAMB);
+            Call<String> response = anInterface.IAMApprove(key, approvalId, accessRequestNo, empCode, approvalText, attachment, approvalLevel, IAMB);
             response.enqueue(new Callback<String>() {
                 @Override
                 public void onResponse(@NotNull Call<String> call, @NotNull Response<String> response) {
@@ -526,13 +474,10 @@ public class AccessRequestDetailsActivity extends AppCompatActivity implements V
                     if (responses != null && responses.equalsIgnoreCase("Request Approved successfully")) {
                         Toast.makeText(AccessRequestDetailsActivity.this, responses, Toast.LENGTH_SHORT).show();
                         finish();
-
-
                     } else {
                         Toast.makeText(getApplicationContext(), "Something went wrong", Toast.LENGTH_LONG).show();
                     }
                 }
-
 
                 @Override
                 public void onFailure(@NotNull Call<String> call, @NotNull Throwable t) {
@@ -541,7 +486,6 @@ public class AccessRequestDetailsActivity extends AppCompatActivity implements V
             });
         } else
             Toast.makeText(getApplicationContext(), "Please Check Your Network Connection", Toast.LENGTH_LONG).show();
-
     }
 
     //    for IAM Un Approve
@@ -562,7 +506,6 @@ public class AccessRequestDetailsActivity extends AppCompatActivity implements V
                         Toast.makeText(getApplicationContext(), "Something went wrong", Toast.LENGTH_LONG).show();
                     }
                 }
-
 
                 @Override
                 public void onFailure(@NotNull Call<String> call, @NotNull Throwable t) {
@@ -586,7 +529,6 @@ public class AccessRequestDetailsActivity extends AppCompatActivity implements V
                 public void onResponse(@NotNull Call<String> call, @NotNull Response<String> response) {
                     dismissProgress();
                     String responses = response.body();
-
                     if (responses != null && responses.equalsIgnoreCase("Request Send Back to Requestor successfully")) {
                         Toast.makeText(AccessRequestDetailsActivity.this, responses, Toast.LENGTH_SHORT).show();
                         finish();
@@ -594,8 +536,6 @@ public class AccessRequestDetailsActivity extends AppCompatActivity implements V
                         Toast.makeText(getApplicationContext(), "Something went wrong", Toast.LENGTH_LONG).show();
                     }
                 }
-
-
                 @Override
                 public void onFailure(@NotNull Call<String> call, @NotNull Throwable t) {
                     dismissProgress();
@@ -615,7 +555,6 @@ public class AccessRequestDetailsActivity extends AppCompatActivity implements V
             e.printStackTrace();
         }
     }
-
     private void dismissProgress() {
         try {
             if (progress != null)
@@ -638,7 +577,6 @@ public class AccessRequestDetailsActivity extends AppCompatActivity implements V
                 } else {
                     hitIAMApproveApi(RetrofitClient2.CKEY, approvalId_val, tv_access_request_no.getText().toString(), myPref.getString("Id", "Id"), et_approve_unapprove.getText().toString(), "", approvalLevel_val);
                 }
-
                 break;
             case R.id.btn_un_approve:
                 if (!et_approve_unapprove.getText().toString().equalsIgnoreCase("")) {
@@ -672,39 +610,32 @@ public class AccessRequestDetailsActivity extends AppCompatActivity implements V
                 @Override
                 public void onResponse(Call<List<IAMBModel>> call, Response<List<IAMBModel>> response) {
                     dismissProgress();
-                    if(response.code()== HttpsURLConnection.HTTP_OK){
-                        if(response!=null && response.body().size()>0){
+                    if (response.code() == HttpsURLConnection.HTTP_OK) {
+                        if (response != null && response.body().size() > 0) {
                             String status = response.body().get(0).getStatus();
-                            if(status!=null && status.length()>0){
+                            if (status != null && status.length() > 0) {
                                 IAMB = status;
-                                if(IAMB.equalsIgnoreCase("PSA")){
+                                if (IAMB.equalsIgnoreCase("PSA")) {
                                     btn_approve.setText("Yes SOD conflict observed");
                                     btn_un_approve.setText("No SOD conflict observed");
                                     btn_send_back.setVisibility(View.GONE);
 
-                                }
-                                else if(IAMB.equalsIgnoreCase("PSV")){
+                                } else if (IAMB.equalsIgnoreCase("PSV")) {
                                     btn_un_approve.setText("SOD conflict observed, Send Back");
                                     btn_approve.setText("No SOD conflict observed, Approve");
                                     btn_send_back.setVisibility(View.GONE);
-
                                 }
-                               }
+                            }
                         }
-
                     }
-
                 }
 
                 @Override
                 public void onFailure(Call<List<IAMBModel>> call, Throwable t) {
                     dismissProgress();
-
                 }
             });
-
         } else
             Toast.makeText(getApplicationContext(), "Please Check Your Network Connection", Toast.LENGTH_LONG).show();
-
     }
 }

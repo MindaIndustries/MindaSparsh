@@ -530,7 +530,7 @@ public class RequestForAccessActivity extends AppCompatActivity implements View.
         });
 
         sp_access_for.setOnItemClickListener((adapterView, view, i, l) -> {
-            sp_access_for_id = String.valueOf(i+1);
+            sp_access_for_id = String.valueOf((i+1));
             if (i != 1) {
                 laySource.setVisibility(View.GONE);
 

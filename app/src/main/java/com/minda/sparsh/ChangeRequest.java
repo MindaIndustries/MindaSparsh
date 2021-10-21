@@ -28,6 +28,7 @@ public class ChangeRequest extends AppCompatActivity {
     TextView title;
     String empcode, DOB;
     SharedPreferences myPref;
+    String url="https://itsupport.unominda.com/app/itdesk/";
 
 
     @Override
@@ -46,7 +47,11 @@ public class ChangeRequest extends AppCompatActivity {
         empcode = myPref.getString("Id", "Id");
         DOB = myPref.getString("DOB", "");
         long dob = Long.parseLong(DOB.replace("/Date", "").replace("/", "").replace("(", "").replace(")", ""));
+        if(getIntent()!=null && getIntent().getStringExtra("url")!=null){
+            url = getIntent().getStringExtra("url");
+            title.setText("");
 
+        }
         Calendar dob1 = Calendar.getInstance();
         dob1.setTimeInMillis(dob);
         String day, month;
@@ -63,7 +68,7 @@ public class ChangeRequest extends AppCompatActivity {
 
         String age = "" + day + month + dob1.get(Calendar.YEAR);
     //    mindacareWebView.loadUrl(HttpConnection.mindacareUrl + "EmpCode=" + empcode + "&Dob=" + age);
-        mindacareWebView.loadUrl("https://itsupport.unominda.com/app/itdesk/");
+        mindacareWebView.loadUrl(url);
 
         WebSettings webSettings = mindacareWebView.getSettings();
         webSettings.setJavaScriptEnabled(true);

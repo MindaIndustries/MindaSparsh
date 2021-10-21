@@ -230,7 +230,7 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
 
     public void showMsg() {
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
-        alertDialogBuilder.setMessage("are you sure?");
+        alertDialogBuilder.setMessage("Are you sure you want to Logout?");
 
         alertDialogBuilder.setPositiveButton("Sign out", (arg0, arg1) -> {
             SharedPreferences myPref = getSharedPreferences("MyPref", Context.MODE_PRIVATE);

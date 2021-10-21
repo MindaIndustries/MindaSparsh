@@ -10,6 +10,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.minda.sparsh.ChangeRequest;
 import com.minda.sparsh.DashBoardActivity;
 import com.minda.sparsh.Interface;
 import com.minda.sparsh.R;
@@ -228,6 +229,12 @@ public class TwoFragment extends Fragment {
         @Override
         public void onClick(int position) {
             // to be added
+            Intent in = new Intent(getActivity(), ChangeRequest.class);
+            if(banners.get(position).getUrl()!=null&& banners.get(position).getUrl().length()>0) {
+                in.putExtra("url", banners.get(position).getUrl());
+                startActivity(in);
+            }
+
         }
     };
 

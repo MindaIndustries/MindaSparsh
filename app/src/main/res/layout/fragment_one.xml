@@ -413,7 +413,7 @@
                                             android:layout_height="wrap_content"
                                             android:layout_marginTop="20dp"
                                             android:fontFamily="@font/museosans_700"
-                                            android:text="Materials"
+                                            android:text="Prayas"
                                             android:textColor="#4a4f54"
                                             android:textSize="16sp"
                                             android:visibility="visible" />

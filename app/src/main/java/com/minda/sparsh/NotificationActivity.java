@@ -59,7 +59,7 @@ public class NotificationActivity extends AppCompatActivity {
     public void HitMyorder(String UserId) {
         if (Utility.isOnline(NotificationActivity.this)) {
             Interface loginInterface = RetrofitClient2.getClient().create(Interface.class);
-            Call<java.util.List<NotificationModel>> loginResponse = loginInterface.GetPushNot(UserId, "mda@sPr$rZ#G!!");
+            Call<java.util.List<NotificationModel>> loginResponse = loginInterface.GetPushNot(UserId, RetrofitClient2.CKEY);
             loginResponse.enqueue(new Callback<List<NotificationModel>>() {
                 @Override
                 public void onResponse(@NotNull Call<List<NotificationModel>> call, @NotNull Response<List<NotificationModel>> response) {
