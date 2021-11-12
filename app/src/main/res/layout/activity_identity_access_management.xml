@@ -65,22 +65,22 @@
             >
 
             <Button
-                android:layout_alignRight="@+id/iv_approve_request"
-                android:layout_alignLeft="@+id/iv_approve_request"
-                android:text="Request Access"
-                android:textColor="#ffffff"
-                android:paddingLeft="20dp"
-                android:paddingRight="20dp"
-                android:paddingTop="5dp"
-                android:paddingBottom="5dp"
-                android:drawablePadding="10dp"
-                android:drawableLeft="@drawable/key"
-                android:textSize="14sp"
-                android:fontFamily="@font/museosans_700"
-                android:background="@drawable/btn_bg_round"
                 android:id="@+id/iv_access_request"
                 android:layout_width="wrap_content"
                 android:layout_height="60dp"
+                android:layout_alignLeft="@+id/iv_approve_request"
+                android:layout_alignRight="@+id/iv_approve_request"
+                android:background="@drawable/btn_bg_round"
+                android:drawableLeft="@drawable/key"
+                android:drawablePadding="10dp"
+                android:fontFamily="@font/museosans_700"
+                android:paddingLeft="20dp"
+                android:paddingTop="5dp"
+                android:paddingRight="20dp"
+                android:paddingBottom="5dp"
+                android:text="Request Access"
+                android:textColor="#ffffff"
+                android:textSize="14sp"
                 android:visibility="visible" />
 
             <ImageView
@@ -93,23 +93,22 @@
                 android:visibility="gone" />
 
             <Button
-                android:layout_below="@+id/iv_access_request"
-                android:paddingLeft="20dp"
-                android:paddingRight="20dp"
-                android:paddingTop="5dp"
-                android:paddingBottom="5dp"
-                android:drawablePadding="10dp"
-                android:text="Approve Request"
-                android:textColor="#ffffff"
-                android:textSize="14sp"
-                android:fontFamily="@font/museosans_700"
-                android:background="@drawable/btn_bg_round"
                 android:id="@+id/iv_approve_request"
                 android:layout_width="wrap_content"
                 android:layout_height="60dp"
+                android:layout_below="@+id/iv_access_request"
                 android:layout_marginTop="20dp"
+                android:background="@drawable/btn_bg_round"
                 android:drawableLeft="@drawable/approval"
-                 />
+                android:drawablePadding="10dp"
+                android:fontFamily="@font/museosans_700"
+                android:paddingLeft="20dp"
+                android:paddingTop="5dp"
+                android:paddingRight="20dp"
+                android:paddingBottom="5dp"
+                android:text="Approve Request"
+                android:textColor="#ffffff"
+                android:textSize="14sp" />
         </RelativeLayout>
 
     </LinearLayout>

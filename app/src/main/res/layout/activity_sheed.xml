@@ -86,12 +86,11 @@
             android:id="@+id/tv_dwm"
             android:layout_width="280dp"
             android:layout_height="100dp"
-            android:background="@drawable/btn_bg"
+            android:background="@color/white"
             android:fontFamily="@font/museosans_700"
             android:gravity="center"
             android:padding="10dp"
             android:text="Plant Head"
-            android:textColor="@color/white"
             android:textSize="18sp" />
 
 
@@ -101,12 +100,11 @@
             android:layout_width="280dp"
             android:layout_height="100dp"
             android:layout_marginTop="30dp"
-            android:background="@drawable/btn_bg"
+            android:background="@color/white"
             android:fontFamily="@font/museosans_700"
             android:gravity="center"
             android:padding="10dp"
             android:text="Manufacturing Head"
-            android:textColor="@color/white"
             android:textSize="18sp" />
 
 
@@ -115,12 +113,11 @@
             android:layout_width="280dp"
             android:layout_height="100dp"
             android:layout_marginTop="30dp"
-            android:background="@drawable/btn_bg"
+            android:background="@color/white"
             android:fontFamily="@font/museosans_700"
             android:gravity="center"
             android:padding="10dp"
             android:text="Operation Head"
-            android:textColor="@color/white"
             android:textSize="18sp" />
     </LinearLayout>
 

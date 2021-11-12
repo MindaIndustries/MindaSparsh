@@ -35,8 +35,6 @@ import android.widget.Toast;
 import com.minda.sparsh.Adapter.CCListAdapter;
 import com.minda.sparsh.Adapter.TicketHistoryAdapter;
 import com.minda.sparsh.customview.NoDefaultSpinner;
-import com.minda.sparsh.listener.CarotResponse;
-import com.minda.sparsh.listener.OnTaskComplete;
 import com.minda.sparsh.model.AssetLocResponse;
 import com.minda.sparsh.model.BindGroupResponse;
 import com.minda.sparsh.model.GroupAssigneeResponse;

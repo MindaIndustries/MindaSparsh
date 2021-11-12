@@ -100,6 +100,8 @@ public class NewConcernFragment extends Fragment {
     ImageView docView3;
     @BindView(R.id.progressBar)
     ProgressBar progressBar;
+    @BindView(R.id.assigned)
+    TextInputEditText assigned;
 
 
     String unitcode, depucode, empCode, username;
@@ -208,6 +210,7 @@ public class NewConcernFragment extends Fragment {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                     department = sixMs.get(i).getID();
+                    assigned.setText(sixMs.get(i).getVAl());
 
 
             }
@@ -370,7 +373,7 @@ public class NewConcernFragment extends Fragment {
                 }
 
             }
-        });
+        },unitcode);
     }
 
     public void initUnitSpinner() {

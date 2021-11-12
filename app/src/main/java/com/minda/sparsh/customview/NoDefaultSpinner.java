@@ -14,9 +14,6 @@ import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
-/**
- * Created by sachin on 28/8/15.
- */
 public class NoDefaultSpinner extends androidx.appcompat.widget.AppCompatSpinner {
 
     public NoDefaultSpinner(Context context) {

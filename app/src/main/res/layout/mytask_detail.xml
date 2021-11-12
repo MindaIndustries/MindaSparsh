@@ -79,13 +79,13 @@
                 android:padding="5dp" />
 
             <LinearLayout
-                android:layout_marginTop="5dp"
+                android:id="@+id/ll1"
                 android:layout_width="match_parent"
                 android:layout_height="2dp"
-                android:background="#414042"
                 android:layout_below="@+id/asset_loc"
-                android:orientation="horizontal"
-                android:id="@+id/ll1" />
+                android:layout_marginTop="5dp"
+                android:background="#414042"
+                android:orientation="horizontal" />
 
             <TextView
                 android:layout_marginTop="20dp"

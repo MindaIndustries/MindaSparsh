@@ -32,12 +32,12 @@
                     android:layout_height="1dp" />
 
                 <TextView
-                    android:fontFamily="@font/museosans_500"
                     android:id="@+id/heading"
-                    android:textSize="18sp"
-                    android:text="Bottom-up Concern Form"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/museosans_500"
+                    android:text="Bottom-up Concern Form"
+                    android:textSize="18sp" />
 
 
                 <TextView
@@ -158,36 +158,40 @@
                         android:editable="false"
                         tools:ignore="KeyboardInaccessibleWidget" />
                 </com.google.android.material.textfield.TextInputLayout>
-
-
-                <LinearLayout
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/assignLayout"
+                    android:layout_width="match_parent"
+                    style="@style/edittext"
                     android:visibility="gone"
                     android:layout_marginTop="10dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="2dp"
-                    android:background="#414042"
-                    android:layout_below="@+id/responsible"
-                    android:orientation="horizontal"
-                    android:id="@+id/ll3" />
-
-                <TextView
-                    android:layout_marginTop="30dp"
-                    android:id="@+id/msm_reference"
-                    android:text="MSM/Reference :"
-                    android:textSize="16sp"
-                    android:visibility="gone"
-                    android:textColor="@color/black"
-                    android:fontFamily="@font/museosans_500"
+                    android:layout_height="wrap_content"
                     android:layout_below="@+id/customerSpinnerLayout1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
+                    android:hint="Assigned To">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/assigned"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:gravity="left"
+                        android:hint=""
+                        android:enabled="false"
+                        android:imeOptions="actionNext"
+                        android:inputType="textMultiLine"
+                        android:maxLines="4"
+                        android:padding="18dp"
+                        android:scrollbars="vertical" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+
+
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/customerSpinnerLayout2"
                     android:layout_width="match_parent"
                     style="@style/edittext"
                     android:layout_marginTop="10dp"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/customerSpinnerLayout1"
+                    android:layout_below="@+id/assignLayout"
                     android:hint="MSM/Reference">
 
                 <com.google.android.material.textfield.TextInputEditText
@@ -254,8 +258,8 @@
                 <TextView
                     android:layout_marginTop="10dp"
                     android:layout_marginEnd="10dp"
-                    android:layout_alignBottom="@+id/attachment"
-                    android:layout_alignTop="@+id/attachment"
+                    android:layout_alignBottom="@+id/attachment1"
+                    android:layout_alignTop="@+id/attachment1"
                     android:layout_below="@+id/customerSpinnerLayout3"
                     android:id="@+id/attachtext1"
                     android:layout_width="wrap_content"
@@ -322,8 +326,8 @@
                 <TextView
                     android:layout_marginTop="10dp"
                     android:layout_marginEnd="10dp"
-                    android:layout_alignBottom="@+id/attachment"
-                    android:layout_alignTop="@+id/attachment"
+                    android:layout_alignBottom="@+id/attachment2"
+                    android:layout_alignTop="@+id/attachment2"
                     android:layout_below="@+id/customerSpinnerLayout4"
                     android:id="@+id/attachtext2"
                     android:layout_width="wrap_content"
@@ -377,9 +381,6 @@
                         android:padding="18dp"
                         android:scrollbars="vertical" />
                 </com.google.android.material.textfield.TextInputLayout>
-
-
-
                 <ImageView
                     android:layout_marginTop="10dp"
                     android:layout_alignParentEnd="true"
@@ -390,16 +391,16 @@
                     android:layout_height="wrap_content" />
 
                 <TextView
-                    android:layout_alignBottom="@+id/attachment3"
-                    android:layout_alignTop="@+id/attachment3"
-                    android:layout_below="@+id/customerSpinnerLayout5"
                     android:id="@+id/attachtext3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_below="@+id/customerSpinnerLayout5"
+                    android:layout_alignTop="@+id/attachment3"
+                    android:layout_alignBottom="@+id/attachment3"
                     android:layout_toStartOf="@+id/attachment3"
-                    android:text="Add attachment"
                     android:fontFamily="@font/museosans_500"
-                    android:singleLine="true" />
+                    android:singleLine="true"
+                    android:text="Add attachment" />
 
 
                 <ImageView
@@ -410,19 +411,77 @@
                     android:visibility="gone"
                     android:layout_margin="5dp" />
 
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/intangible_layout"
+                    android:layout_width="match_parent"
+                    style="@style/edittext"
+                    android:visibility="gone"
+                    android:layout_marginTop="10dp"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/attachtext3"
+                    android:hint="InTangible Benefit">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/_intangible_benefit_value"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:gravity="left"
+                        android:hint=""
+                        android:imeOptions="actionNext"
+                        android:inputType="textMultiLine"
+                        android:maxLines="4"
+                        android:padding="18dp"
+                        android:scrollbars="vertical" />
+                </com.google.android.material.textfield.TextInputLayout>
+                <ImageView
+                    android:visibility="gone"
+                    android:layout_marginTop="10dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_below="@+id/intangible_layout"
+                    android:src="@drawable/attach"
+                    android:id="@+id/attachment4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    android:visibility="gone"
+                    android:layout_alignBottom="@+id/attachment4"
+                    android:layout_alignTop="@+id/attachment4"
+                    android:layout_below="@+id/customerSpinnerLayout5"
+                    android:id="@+id/attachtext4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toStartOf="@+id/attachment3"
+                    android:text="Add attachment"
+                    android:fontFamily="@font/museosans_500"
+                    android:singleLine="true" />
+
+
+                <ImageView
+                    android:id="@+id/doc_view4"
+                    android:layout_below="@+id/customerSpinnerLayout5"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:visibility="gone"
+                    android:layout_margin="5dp" />
+
+
+
                 <android.widget.Button
                     android:id="@+id/save"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/doc_view3"
+                    android:layout_below="@+id/attachtext4"
                     android:layout_marginStart="10dp"
                     android:layout_marginTop="40dp"
-                    android:layout_toEndOf="@+id/view1"
+                    android:layout_toRightOf="@+id/view1"
                     android:background="@drawable/btn_bg"
-                    android:fontFamily="@font/museosans_500"
-                    android:text="Save"
                     android:drawableLeft="@drawable/done"
+                    android:fontFamily="@font/museosans_500"
                     android:paddingLeft="10dp"
+                    android:text="Save"
                     android:textColor="@color/white" />
 
 
@@ -430,15 +489,15 @@
                     android:id="@+id/reset"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/doc_view3"
+                    android:layout_below="@+id/attachtext4"
                     android:layout_marginTop="40dp"
                     android:layout_marginEnd="10dp"
-                    android:layout_toStartOf="@+id/view1"
+                    android:layout_toLeftOf="@+id/view1"
                     android:background="@drawable/btn_bg"
-                    android:fontFamily="@font/museosans_500"
-                    android:text="Reset"
                     android:drawableLeft="@drawable/reset"
+                    android:fontFamily="@font/museosans_500"
                     android:paddingLeft="10dp"
+                    android:text="Reset"
                     android:textColor="@color/white" />
 
                 <View

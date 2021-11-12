@@ -30,9 +30,9 @@ import retrofit2.Response;
 
 public class BottomUpConcernServices {
 
-    public void getSixM(final OnTaskComplete onTaskComplete) {
+    public void getSixM(final OnTaskComplete onTaskComplete, String unitcode) {
         BottomUpClient bottomUpClient = RetrofitClient2.createServiceBottomUponcern(BottomUpClient.class);
-        Call<List<SixMModel>> call = bottomUpClient.getSixM();
+        Call<List<SixMModel>> call = bottomUpClient.getSixM(unitcode);
         call.enqueue(new Callback<List<SixMModel>>() {
             @Override
             public void onResponse(@NotNull Call<List<SixMModel>> call, @NotNull Response<List<SixMModel>> response) {

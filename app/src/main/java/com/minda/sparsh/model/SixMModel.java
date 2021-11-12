@@ -7,6 +7,9 @@ public class SixMModel {
     String ID;
     @SerializedName("Name")
     String Name;
+    @SerializedName("VAl")
+    String VAl;
+
 
     public String getID() {
         return ID;
@@ -22,5 +25,13 @@ public class SixMModel {
 
     public void setName(String name) {
         Name = name;
+    }
+
+    public String getVAl() {
+        return VAl;
+    }
+
+    public void setVAl(String VAl) {
+        this.VAl = VAl;
     }
 }

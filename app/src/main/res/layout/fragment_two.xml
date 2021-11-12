@@ -123,7 +123,7 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_alignParentRight="true"
-                                    android:fontFamily="@font/museosans_500"
+                                    android:fontFamily="@font/museosans_700"
                                     android:text="71 "
                                     android:textColor="@color/colorPrimary"
                                     android:textSize="16sp" />
@@ -158,13 +158,14 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:src="@drawable/joint_venture" />
+
                                 <TextView
+                                    android:id="@+id/jv_value"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:text="18 "
                                     android:layout_alignParentRight="true"
-                                    android:id="@+id/jv_value"
-                                    android:fontFamily="@font/museosans_500"
+                                    android:fontFamily="@font/museosans_700"
+                                    android:text="18 "
                                     android:textColor="@color/colorPrimary"
                                     android:textSize="16sp" />
 
@@ -204,13 +205,14 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:src="@drawable/rnd" />
+
                                 <TextView
-                                    android:layout_alignParentRight="true"
+                                    android:id="@+id/rnd_center_value"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
+                                    android:layout_alignParentRight="true"
+                                    android:fontFamily="@font/museosans_700"
                                     android:text="15+ "
-                                    android:id="@+id/rnd_center_value"
-                                    android:fontFamily="@font/museosans_500"
                                     android:textColor="@color/colorPrimary"
                                     android:textSize="16sp" />
 
@@ -244,12 +246,12 @@
                                     android:src="@drawable/cart" />
 
                                 <TextView
+                                    android:id="@+id/product_lines_value"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:text="20+ "
                                     android:layout_alignParentRight="true"
-                                    android:id="@+id/product_lines_value"
-                                    android:fontFamily="@font/museosans_500"
+                                    android:fontFamily="@font/museosans_700"
+                                    android:text="20+ "
                                     android:textColor="@color/colorPrimary"
                                     android:textSize="16sp" />
 
@@ -288,13 +290,14 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:src="@drawable/group" />
+
                                 <TextView
+                                    android:id="@+id/product_patents_value"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:text="275+ "
                                     android:layout_alignParentRight="true"
-                                    android:id="@+id/product_patents_value"
-                                    android:fontFamily="@font/museosans_500"
+                                    android:fontFamily="@font/museosans_700"
+                                    android:text="275+ "
                                     android:textColor="@color/colorPrimary"
                                     android:textSize="16sp" />
 
@@ -326,13 +329,14 @@
                                     android:layout_height="wrap_content"
                                     android:src="@drawable/design"
                                     />
+
                                 <TextView
+                                    android:id="@+id/design_reg_value"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:text="250+ "
                                     android:layout_alignParentRight="true"
-                                    android:id="@+id/design_reg_value"
-                                    android:fontFamily="@font/museosans_500"
+                                    android:fontFamily="@font/museosans_700"
+                                    android:text="250+ "
                                     android:textColor="@color/colorPrimary"
                                     android:textSize="16sp" />
 
@@ -377,9 +381,9 @@
                                     android:id="@+id/trnover_value"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:text="74B"
                                     android:layout_alignParentRight="true"
-                                    android:fontFamily="@font/museosans_500"
+                                    android:fontFamily="@font/museosans_700"
+                                    android:text="74B"
                                     android:textColor="@color/colorPrimary"
                                     android:textSize="16sp" />
 
@@ -413,15 +417,14 @@
                                     android:src="@drawable/acq" />
 
                                 <TextView
+                                    android:id="@+id/acquis_value"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:text="6 "
                                     android:layout_alignParentRight="true"
-                                    android:id="@+id/acquis_value"
-                                    android:fontFamily="@font/museosans_500"
+                                    android:fontFamily="@font/museosans_700"
+                                    android:text="6 "
                                     android:textColor="@color/colorPrimary"
-                                    android:textSize="16sp"
-                                   />
+                                    android:textSize="16sp" />
 
                                 <TextView
                                     android:id="@+id/acquis"

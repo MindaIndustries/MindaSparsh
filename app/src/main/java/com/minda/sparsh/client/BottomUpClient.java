@@ -17,8 +17,8 @@ import retrofit2.http.Url;
 
 public interface BottomUpClient {
 
-    @GET("GetSixEmHeads")
-    Call<List<SixMModel>> getSixM();
+    @GET("GetSixEmHeads2")
+    Call<List<SixMModel>> getSixM(@Query("_UnitCode") String _UnitCode);
 
     @GET("GetConcerns")
     Call<List<BottomUpConcern>> getConcerns(@Query("EmpCode") String EmpCode);
