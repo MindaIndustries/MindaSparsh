@@ -25,7 +25,7 @@ public interface BottomUpClient {
 
     @FormUrlEncoded
     @POST("SaveBottomUp")
-    Call<String> saveConcern(@Field("RaisedBy") String RaisedBy, @Field("RaisedOn") String RaisedOn, @Field("Unit") String Unit, @Field("Department") String Department, @Field("ReferenceNo") String ReferenceNo, @Field("ExistingSystem") String ExistingSystem, @Field("ProposedSystem") String ProposedSystem, @Field("Benefit") String Benefit, @Field("ESFile") String ESFile, @Field("ESFileByte") String ESFileByte, @Field("PSFile") String PSFile, @Field("PSFileByte") String PSFileByte, @Field("BenFile") String BenFile, @Field("BenFileByte") String BenFileByte, @Field("FirstName") String FirstName);
+    Call<String> saveConcern(@Field("RaisedBy") String RaisedBy, @Field("RaisedOn") String RaisedOn, @Field("Unit") String Unit, @Field("Department") String Department, @Field("ReferenceNo") String ReferenceNo, @Field("ExistingSystem") String ExistingSystem, @Field("ProposedSystem") String ProposedSystem, @Field("Benefit") String Benefit, @Field("ESFile") String ESFile, @Field("ESFileByte") String ESFileByte, @Field("PSFile") String PSFile, @Field("PSFileByte") String PSFileByte, @Field("BenFile") String BenFile, @Field("BenFileByte") String BenFileByte, @Field("FirstName") String FirstName,@Field("InTangible") String InTangible, @Field("InTangibleDOC") String InTangibleDOC, @Field("InTangibleDOCByte") String InTangibleDOCByte);
 
     @GET
     Call<ResponseBody> downloadFileWithDynamicUrlSync(@Url String fileUrl);

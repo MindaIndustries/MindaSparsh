@@ -27,7 +27,7 @@ android {
         applicationId "com.minda.sparsh"
         minSdkVersion 19
         targetSdkVersion 30
-        versionCode 49
+        versionCode 53
         versionName "1.30"
         multiDexEnabled true
         testInstrumentationRunner = 'android.support.test.runner.AndroidJUnitRunner'
@@ -81,6 +81,9 @@ dependencies {
     implementation 'com.google.firebase:firebase-config:21.0.1'
     implementation 'com.synnapps:carouselview:0.1.4'
     implementation 'com.google.android.material:material:1.4.0'
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.4.21"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.4.32"
+
 
 
 }

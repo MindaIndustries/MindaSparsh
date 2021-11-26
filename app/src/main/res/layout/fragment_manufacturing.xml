@@ -142,7 +142,10 @@
                                             android:layout_width="match_parent"
                                             android:layout_height="match_parent"
                                             android:orientation="horizontal"
-                                            android:padding="30dp">
+                                            android:paddingLeft="20dp"
+                                            android:paddingRight="20dp"
+                                            android:paddingTop="30dp"
+                                            android:paddingBottom="30dp">
 
                                             <TextView
                                                 android:layout_width="wrap_content"
@@ -151,10 +154,11 @@
                                                 android:fontFamily="@font/museosans_700"
                                                 android:text="Daily Work Management"
                                                 android:textColor="#4a4f54"
-                                                android:textSize="16sp"
+                                                android:textSize="14sp"
                                                 android:visibility="visible"
-                                                app:autoSizeMaxTextSize="16sp"
+                                                app:autoSizeMaxTextSize="14sp"
                                                 app:autoSizeMinTextSize="12sp"
+                                                app:autoSizeStepGranularity="2sp"
                                                 app:autoSizeTextType="uniform" />
 
 
@@ -215,7 +219,10 @@
                                             android:layout_width="match_parent"
                                             android:layout_height="match_parent"
                                             android:orientation="vertical"
-                                            android:padding="30dp">
+                                            android:paddingLeft="20dp"
+                                            android:paddingRight="20dp"
+                                            android:paddingTop="30dp"
+                                            android:paddingBottom="30dp">
 
                                             <TextView
                                                 android:layout_width="wrap_content"
@@ -224,8 +231,12 @@
                                                 android:fontFamily="@font/museosans_700"
                                                 android:text="Abnormality"
                                                 android:textColor="#4a4f54"
-                                                android:textSize="16sp"
-                                                android:visibility="visible" />
+                                                android:textSize="14sp"
+                                                android:visibility="visible"
+                                                app:autoSizeMaxTextSize="14sp"
+                                                app:autoSizeMinTextSize="12sp"
+                                                app:autoSizeStepGranularity="2sp"
+                                                app:autoSizeTextType="uniform" />
 
                                         </RelativeLayout>
 
@@ -293,7 +304,10 @@
                                             android:layout_width="match_parent"
                                             android:layout_height="match_parent"
                                             android:layout_centerInParent="true"
-                                            android:padding="30dp">
+                                            android:paddingLeft="20dp"
+                                            android:paddingRight="20dp"
+                                            android:paddingTop="30dp"
+                                            android:paddingBottom="30dp">
 
                                             <TextView
                                                 android:layout_width="wrap_content"
@@ -302,10 +316,11 @@
                                                 android:fontFamily="@font/museosans_700"
                                                 android:text="Environment, Health &amp; Safety "
                                                 android:textColor="#4a4f54"
-                                                android:textSize="16sp"
+                                                android:textSize="14sp"
                                                 android:visibility="visible"
-                                                app:autoSizeMaxTextSize="16sp"
+                                                app:autoSizeMaxTextSize="14sp"
                                                 app:autoSizeMinTextSize="12sp"
+                                                app:autoSizeStepGranularity="2sp"
                                                 app:autoSizeTextType="uniform" />
                                         </RelativeLayout>
 

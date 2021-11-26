@@ -3,6 +3,9 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
     <RelativeLayout
         android:background="@color/screen_bg"
@@ -77,19 +80,23 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:orientation="vertical"
-                                android:padding="30dp">
+                                android:paddingLeft="20dp"
+                                android:paddingRight="20dp"
+                                android:paddingTop="30dp"
+                                android:paddingBottom="30dp">
 
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
+                                    android:layout_marginTop="20dp"
                                     android:fontFamily="@font/museosans_700"
                                     android:text="ID &amp; Access Management"
                                     android:textColor="#4a4f54"
                                     android:textSize="16sp"
-                                    android:layout_marginTop="20dp"
                                     android:visibility="visible"
                                     app:autoSizeMaxTextSize="16sp"
                                     app:autoSizeMinTextSize="12sp"
+                                    app:autoSizeStepGranularity="2sp"
                                     app:autoSizeTextType="uniform" />
 
                             </RelativeLayout>
@@ -141,7 +148,10 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:orientation="vertical"
-                                android:padding="30dp">
+                                android:paddingLeft="20dp"
+                                android:paddingTop="30dp"
+                                android:paddingRight="20dp"
+                                android:paddingBottom="30dp">
 
                                 <TextView
                                     android:layout_width="wrap_content"
@@ -154,6 +164,7 @@
                                     android:visibility="visible"
                                     app:autoSizeMaxTextSize="16sp"
                                     app:autoSizeMinTextSize="12sp"
+                                    app:autoSizeStepGranularity="2sp"
                                     app:autoSizeTextType="uniform" />
 
                             </RelativeLayout>
@@ -310,7 +321,10 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:orientation="vertical"
-                                android:padding="30dp">
+                                android:paddingLeft="20dp"
+                                android:paddingRight="20dp"
+                                android:paddingTop="30dp"
+                                android:paddingBottom="30dp">
 
                                 <TextView
                                     android:layout_width="wrap_content"
@@ -323,7 +337,9 @@
                                     android:visibility="visible"
                                     app:autoSizeMaxTextSize="16sp"
                                     app:autoSizeMinTextSize="12sp"
-                                    app:autoSizeTextType="uniform" />
+                                    app:autoSizeTextType="uniform"
+                                    app:autoSizeStepGranularity="2sp"
+                                    />
 
                             </RelativeLayout>
 
@@ -472,6 +488,7 @@
             android:layout_marginTop="20dp"
             android:src="@drawable/left_arrow" />
     </RelativeLayout>
+    </ScrollView>
 
 
 </LinearLayout>

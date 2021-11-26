@@ -92,16 +92,24 @@ public class NewConcernFragment extends Fragment {
     TextView attachtext2;
     @BindView(R.id.attachtext3)
     TextView attachtext3;
+    @BindView(R.id.attachtext4)
+    TextView attachtext4;
+
     @BindView(R.id.doc_view1)
     ImageView docView1;
     @BindView(R.id.doc_view2)
     ImageView docView2;
     @BindView(R.id.doc_view3)
     ImageView docView3;
+    @BindView(R.id.doc_view4)
+    ImageView doc_view4;
     @BindView(R.id.progressBar)
     ProgressBar progressBar;
     @BindView(R.id.assigned)
     TextInputEditText assigned;
+    @BindView(R.id._intangible_benefit_value)
+    TextInputEditText intangibleBenefitValue;
+
 
 
     String unitcode, depucode, empCode, username;
@@ -125,7 +133,7 @@ public class NewConcernFragment extends Fragment {
     Bitmap bmp;
     String attachmentName = "", attachmentType = "";
     TextView attachtext;
-    String esFilename = "", esFilebyte = "", psfilename = "", psfilebyte = "", benFilename = "", benfilebyte = "";
+    String esFilename = "", esFilebyte = "", psfilename = "", psfilebyte = "", benFilename = "", benfilebyte = "", intangibleDoc="", intangibleDocByte="";
 
 
     @Nullable
@@ -211,11 +219,8 @@ public class NewConcernFragment extends Fragment {
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                     department = sixMs.get(i).getID();
                     assigned.setText(sixMs.get(i).getVAl());
-
-
             }
         });
-
         return newConcern;
     }
 
@@ -243,8 +248,13 @@ public class NewConcernFragment extends Fragment {
             Toast.makeText(getActivity(), "Benefit needs to be filled", Toast.LENGTH_LONG).show();
             return;
         }
+        if(intangibleBenefitValue.getText().toString().length() ==0){
+            Toast.makeText(getActivity(), "Intangible Benefit needs to be filled", Toast.LENGTH_LONG).show();
+            return;
+
+        }
         if (Utility.isOnline(getActivity())) {
-            saveConcern(empCode, concernDateText.getText().toString(), unitcode, department, msmReferenceValue.getText().toString(), existingSystemValue.getText().toString(), proposedSystemValue.getText().toString(), benefitValue.getText().toString(), esFilename, esFilebyte, psfilename, psfilebyte, benFilename, benfilebyte, username);
+            saveConcern(empCode, concernDateText.getText().toString(), unitcode, department, msmReferenceValue.getText().toString(), existingSystemValue.getText().toString(), proposedSystemValue.getText().toString(), benefitValue.getText().toString(), esFilename, esFilebyte, psfilename, psfilebyte, benFilename, benfilebyte, username, intangibleBenefitValue.getText().toString(), intangibleDoc, intangibleDocByte);
         } else {
             Toast.makeText(getActivity(), "Please Check Your Network Connection", Toast.LENGTH_LONG).show();
         }
@@ -291,12 +301,23 @@ public class NewConcernFragment extends Fragment {
         attachtext = attachtext3;
         selectFile();
     }
+    @OnClick(R.id.attachtext4)
+    public void onClickattach4() {
+        attachtext = attachtext4;
+        selectFile();
+    }
 
     @OnClick(R.id.attachment3)
     public void onClickattcmnt3() {
         attachtext = attachtext3;
         selectFile();
 
+    }
+
+    @OnClick(R.id.attachment4)
+    public void onClickattachmnt4(){
+        attachtext =attachtext4;
+        selectFile();
     }
 
     public String getlogDate(long milliseconds) {
@@ -362,7 +383,7 @@ public class NewConcernFragment extends Fragment {
                 if (list != null && list.size() > 0) {
                     sixMs.addAll(list);
                     for (SixMModel sixM : sixMs) {
-                        if (sixM.getName().equalsIgnoreCase("Others") || sixM.getName().equalsIgnoreCase("Strategy")) {
+                        if (sixM.getName().equalsIgnoreCase("Others") || sixM.getName().equalsIgnoreCase("Strategy")|| sixM.getName().equalsIgnoreCase("Information Technology")) {
 
                         } else {
                             sixMNames.add(sixM.getName());
@@ -451,26 +472,32 @@ public class NewConcernFragment extends Fragment {
    //     responsibleSpinner.setSelection(0);
     }
 
-    public void saveConcern(String RaisedBy, String RaisedOn, String Unit, String Department, String ReferenceNo, String ExistingSystem, String ProposedSystem, String Benefit, String ESFile, String ESFileByte, String PSFile, String PSFileByte, String BenFile, String BenFileByte, String FirstName) {
+    public void saveConcern(String RaisedBy, String RaisedOn, String Unit, String Department, String ReferenceNo, String ExistingSystem, String ProposedSystem, String Benefit, String ESFile, String ESFileByte, String PSFile, String PSFileByte, String BenFile, String BenFileByte, String FirstName, String intangible, String intangibleDoc, String intangibleDocByte) {
         progressBar.setVisibility(View.VISIBLE);
         BottomUpConcernServices bottomUpConcernServices = new BottomUpConcernServices();
         bottomUpConcernServices.saveConcern(carotResponse -> {
             if (carotResponse.getStatuscode() == HttpsURLConnection.HTTP_OK) {
 
+                new Handler().postDelayed(() -> {
+
+                    if (getActivity() != null && isAdded()) {
+                        Toast.makeText(getActivity(), "Successfully submitted", Toast.LENGTH_LONG).show();
+                        Intent in = new Intent(getActivity(), BottomUpConcernActivity.class);
+                        in.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                        startActivity(in);
+                        getActivity().finish();
+                    }
+
+                }, 1000);
+            }
+            else{
+                Toast.makeText(getActivity(), "Oops! Something went wrong, Please try again.", Toast.LENGTH_LONG).show();
+
             }
             progressBar.setVisibility(View.GONE);
-            new Handler().postDelayed(() -> {
 
-                if (getActivity() != null && isAdded()) {
-                    Toast.makeText(getActivity(), "Successfully submitted", Toast.LENGTH_LONG).show();
-                    Intent in = new Intent(getActivity(), BottomUpConcernActivity.class);
-                    in.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                    startActivity(in);
-                    getActivity().finish();
-                }
-            }, 1000);
 
-        }, RaisedBy, RaisedOn, Unit, Department, ReferenceNo, ExistingSystem, ProposedSystem, Benefit, ESFile, ESFileByte, PSFile, PSFileByte, BenFile, BenFileByte, FirstName);
+        }, RaisedBy, RaisedOn, Unit, Department, ReferenceNo, ExistingSystem, ProposedSystem, Benefit, ESFile, ESFileByte, PSFile, PSFileByte, BenFile, BenFileByte, FirstName,intangible, intangibleDoc, intangibleDocByte);
 
     }
 
@@ -605,14 +632,19 @@ public class NewConcernFragment extends Fragment {
             docView2.setImageBitmap(thumbnail);
 
 
-        } else {
+        } else if(attachtext == attachtext3) {
             benFilename = attachmentName;
             attachtext3.setText(attachmentName);
             benfilebyte = Base64.encodeToString(bytes, Base64.NO_WRAP);
             docView3.setVisibility(View.VISIBLE);
             docView3.setImageBitmap(thumbnail);
-
-
+        }
+        else{
+            intangibleDoc = attachmentName;
+            attachtext4.setText(attachmentName);
+            doc_view4.setVisibility(View.VISIBLE);
+            doc_view4.setImageBitmap(thumbnail);
+            intangibleDocByte = Base64.encodeToString(bytes, Base64.NO_WRAP);
         }
 
 
@@ -699,12 +731,20 @@ public class NewConcernFragment extends Fragment {
             psfilebyte = Base64.encodeToString(bytes, Base64.NO_WRAP);
             docView2.setVisibility(View.VISIBLE);
             docView2.setImageBitmap(bm);
-        } else {
+        } else if(attachtext ==attachtext3) {
             benFilename = attachmentName;
             attachtext3.setText(attachmentName);
             benfilebyte = Base64.encodeToString(bytes, Base64.NO_WRAP);
             docView3.setVisibility(View.VISIBLE);
             docView3.setImageBitmap(bm);
+        }
+        else{
+            intangibleDoc = attachmentName;
+            attachtext4.setText(attachmentName);
+            intangibleDocByte = Base64.encodeToString(bytes, Base64.NO_WRAP);
+            doc_view4.setVisibility(View.VISIBLE);
+            doc_view4.setImageBitmap(bm);
+
         }
 
         //  addUserImage(fileName);

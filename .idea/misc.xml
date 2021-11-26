@@ -5,6 +5,7 @@
       <map>
         <entry key="../../../../../../layout/custom_preview.xml" value="0.15885416666666666" />
         <entry key="../../../../Android/Sdk/platforms/android-30/data/res/layout/simple_spinner_dropdown_item.xml" value="0.1875" />
+        <entry key="../../../../Android/Sdk/platforms/android-30/data/res/layout/simple_spinner_item.xml" value="0.2234375" />
         <entry key="app/src/main/res/drawable/about_us_bg.xml" value="0.238671875" />
         <entry key="app/src/main/res/drawable/border.xml" value="0.238671875" />
         <entry key="app/src/main/res/drawable/btn_bg.xml" value="0.238671875" />
@@ -16,6 +17,7 @@
         <entry key="app/src/main/res/drawable/circle.xml" value="0.23828125" />
         <entry key="app/src/main/res/drawable/comment2.xml" value="0.238671875" />
         <entry key="app/src/main/res/drawable/cursor_drawable.xml" value="0.238671875" />
+        <entry key="app/src/main/res/drawable/darkline.xml" value="0.238671875" />
         <entry key="app/src/main/res/drawable/gradientline.xml" value="0.238671875" />
         <entry key="app/src/main/res/drawable/notification_view.xml" value="0.238671875" />
         <entry key="app/src/main/res/drawable/rec_button.xml" value="0.238671875" />
@@ -68,17 +70,17 @@
         <entry key="app/src/main/res/layout/ehs_obs_row.xml" value="0.16700819672131148" />
         <entry key="app/src/main/res/layout/fragment_eight.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_five.xml" value="0.1" />
-        <entry key="app/src/main/res/layout/fragment_four.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/fragment_four.xml" value="0.16" />
         <entry key="app/src/main/res/layout/fragment_iam.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_iam_menu.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_iambase.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_iamdetails.xml" value="0.1" />
-        <entry key="app/src/main/res/layout/fragment_manufacturing.xml" value="0.16" />
+        <entry key="app/src/main/res/layout/fragment_manufacturing.xml" value="0.4" />
         <entry key="app/src/main/res/layout/fragment_new_appointment.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_one.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_seven.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_six.xml" value="0.1" />
-        <entry key="app/src/main/res/layout/fragment_three.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/fragment_three.xml" value="0.16" />
         <entry key="app/src/main/res/layout/fragment_two.xml" value="0.264" />
         <entry key="app/src/main/res/layout/fragment_view_appointment.xml" value="0.1" />
         <entry key="app/src/main/res/layout/haderabnormality.xml" value="0.1" />
@@ -94,7 +96,7 @@
         <entry key="app/src/main/res/layout/my_tickets_row.xml" value="0.1" />
         <entry key="app/src/main/res/layout/mytask_detail.xml" value="0.16" />
         <entry key="app/src/main/res/layout/nav_header_base.xml" value="0.1" />
-        <entry key="app/src/main/res/layout/new_concern.xml" value="0.264" />
+        <entry key="app/src/main/res/layout/new_concern.xml" value="0.2" />
         <entry key="app/src/main/res/layout/notification_call_view.xml" value="0.16" />
         <entry key="app/src/main/res/layout/plant_details_cell_view.xml" value="0.1" />
         <entry key="app/src/main/res/layout/privacy_policy.xml" value="0.1" />

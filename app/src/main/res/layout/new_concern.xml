@@ -162,7 +162,7 @@
                     android:id="@+id/assignLayout"
                     android:layout_width="match_parent"
                     style="@style/edittext"
-                    android:visibility="gone"
+                    android:visibility="visible"
                     android:layout_marginTop="10dp"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/customerSpinnerLayout1"
@@ -274,7 +274,7 @@
                     android:layout_below="@+id/customerSpinnerLayout3"
                     android:layout_width="100dp"
                     android:layout_height="100dp"
-                    android:visibility="gone"
+                    android:visibility="invisible"
                     android:layout_margin="5dp" />
 
 
@@ -296,7 +296,7 @@
                     style="@style/edittext"
                     android:layout_marginTop="10dp"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/attachment1"
+                    android:layout_below="@+id/doc_view1"
                     android:hint="Proposed System">
 
                     <com.google.android.material.textfield.TextInputEditText
@@ -342,7 +342,7 @@
                     android:layout_below="@+id/customerSpinnerLayout4"
                     android:layout_width="100dp"
                     android:layout_height="100dp"
-                    android:visibility="gone"
+                    android:visibility="invisible"
                     android:layout_margin="5dp" />
 
 
@@ -365,8 +365,8 @@
                     style="@style/edittext"
                     android:layout_marginTop="10dp"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/attachment2"
-                    android:hint="Benefit">
+                    android:layout_below="@+id/doc_view2"
+                    android:hint="Tangible Benefit">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/benefit_value"
@@ -408,7 +408,7 @@
                     android:layout_below="@+id/customerSpinnerLayout5"
                     android:layout_width="100dp"
                     android:layout_height="100dp"
-                    android:visibility="gone"
+                    android:visibility="invisible"
                     android:layout_margin="5dp" />
 
 
@@ -416,10 +416,10 @@
                     android:id="@+id/intangible_layout"
                     android:layout_width="match_parent"
                     style="@style/edittext"
-                    android:visibility="gone"
+                    android:visibility="visible"
                     android:layout_marginTop="10dp"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/attachtext3"
+                    android:layout_below="@+id/doc_view3"
                     android:hint="InTangible Benefit">
 
                     <com.google.android.material.textfield.TextInputEditText
@@ -436,7 +436,7 @@
                         android:scrollbars="vertical" />
                 </com.google.android.material.textfield.TextInputLayout>
                 <ImageView
-                    android:visibility="gone"
+                    android:visibility="visible"
                     android:layout_marginTop="10dp"
                     android:layout_alignParentEnd="true"
                     android:layout_below="@+id/intangible_layout"
@@ -446,25 +446,25 @@
                     android:layout_height="wrap_content" />
 
                 <TextView
-                    android:visibility="gone"
-                    android:layout_alignBottom="@+id/attachment4"
-                    android:layout_alignTop="@+id/attachment4"
-                    android:layout_below="@+id/customerSpinnerLayout5"
                     android:id="@+id/attachtext4"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_below="@+id/intangible_layout"
+                    android:layout_alignTop="@+id/attachment4"
+                    android:layout_alignBottom="@+id/attachment4"
                     android:layout_toStartOf="@+id/attachment3"
-                    android:text="Add attachment"
                     android:fontFamily="@font/museosans_500"
-                    android:singleLine="true" />
+                    android:singleLine="true"
+                    android:text="Add attachment"
+                    android:visibility="visible" />
 
 
                 <ImageView
                     android:id="@+id/doc_view4"
-                    android:layout_below="@+id/customerSpinnerLayout5"
+                    android:layout_below="@+id/intangible_layout"
                     android:layout_width="100dp"
                     android:layout_height="100dp"
-                    android:visibility="gone"
+                    android:visibility="invisible"
                     android:layout_margin="5dp" />
 
 
@@ -473,7 +473,7 @@
                     android:id="@+id/save"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/attachtext4"
+                    android:layout_below="@+id/doc_view4"
                     android:layout_marginStart="10dp"
                     android:layout_marginTop="40dp"
                     android:layout_toRightOf="@+id/view1"
@@ -489,7 +489,7 @@
                     android:id="@+id/reset"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/attachtext4"
+                    android:layout_below="@+id/doc_view4"
                     android:layout_marginTop="40dp"
                     android:layout_marginEnd="10dp"
                     android:layout_toLeftOf="@+id/view1"

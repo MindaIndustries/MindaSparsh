@@ -86,9 +86,9 @@ public class BottomUpConcernServices {
     }
 
 
-    public void saveConcern(final OnTaskComplete onTaskComplete, String RaisedBy, String RaisedOn, String Unit, String Department, String ReferenceNo, String ExistingSystem, String ProposedSystem, String Benefit, String ESFile, String ESFileByte, String PSFile, String PSFileByte, String BenFile, String BenFileByte, String FirstName) {
+    public void saveConcern(final OnTaskComplete onTaskComplete, String RaisedBy, String RaisedOn, String Unit, String Department, String ReferenceNo, String ExistingSystem, String ProposedSystem, String Benefit, String ESFile, String ESFileByte, String PSFile, String PSFileByte, String BenFile, String BenFileByte, String FirstName, String Intangible, String IntangibleDoc, String InTangibleDOCByte) {
         BottomUpClient bottomUpClient = RetrofitClient2.createServiceBottomUponcern(BottomUpClient.class);
-        Call<String> call = bottomUpClient.saveConcern(RaisedBy, RaisedOn, Unit, Department, ReferenceNo, ExistingSystem, ProposedSystem, Benefit, ESFile, ESFileByte, PSFile, PSFileByte, BenFile, BenFileByte, FirstName);
+        Call<String> call = bottomUpClient.saveConcern(RaisedBy, RaisedOn, Unit, Department, ReferenceNo, ExistingSystem, ProposedSystem, Benefit, ESFile, ESFileByte, PSFile, PSFileByte, BenFile, BenFileByte, FirstName, Intangible, IntangibleDoc, InTangibleDOCByte);
         call.enqueue(new Callback<String>() {
             @Override
             public void onResponse(@NotNull Call<String> call, @NotNull Response<String> response) {

@@ -444,6 +444,8 @@
                 android:layout_marginTop="10dp"
                 android:layout_marginEnd="10dp"
                 android:text=""
+                android:gravity="right"
+                android:layout_toRightOf="@+id/doc_view1"
                 android:textSize="14sp" />
 
 
@@ -484,7 +486,7 @@
                 android:scrollbars="vertical"
                 android:singleLine="false"
                 android:textColor="@color/black"
-                android:textSize="12sp"></TextView>
+                android:textSize="12sp"/>
 
             <TextView
                 android:id="@+id/attachtext2"
@@ -496,6 +498,8 @@
                 android:layout_marginEnd="10dp"
                 android:fontFamily="@font/museosans_500"
                 android:text=""
+                android:gravity="right"
+                android:layout_toRightOf="@+id/doc_view2"
                 android:textSize="12sp" />
 
 
@@ -515,7 +519,7 @@
                 android:layout_below="@+id/doc_view2"
                 android:layout_marginTop="10dp"
                 android:fontFamily="@font/museosans_500"
-                android:text="Benefit :"
+                android:text="Tangible Benefit :"
                 android:textColor="@color/black"
                 android:textSize="14sp" />
 
@@ -551,6 +555,8 @@
                 android:layout_marginEnd="10dp"
                 android:fontFamily="@font/museosans_500"
                 android:text=""
+                android:gravity="right"
+                android:layout_toRightOf="@+id/doc_view3"
                 android:textSize="12sp" />
 
 
@@ -563,7 +569,7 @@
                 android:visibility="gone" />
 
             <TextView
-                android:visibility="gone"
+                android:visibility="visible"
                 android:id="@+id/intangiblebenefit"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -575,7 +581,7 @@
                 android:textSize="14sp" />
 
             <TextView
-                android:visibility="gone"
+                android:visibility="visible"
                 android:id="@+id/in_benefit_value"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -605,8 +611,10 @@
                 android:layout_alignParentEnd="true"
                 android:layout_marginTop="10dp"
                 android:layout_marginEnd="10dp"
+                android:layout_toRightOf="@+id/doc_view4"
                 android:fontFamily="@font/museosans_500"
                 android:text=""
+                android:gravity="right"
                 android:textSize="12sp" />
 
 

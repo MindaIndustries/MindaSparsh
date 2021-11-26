@@ -116,6 +116,12 @@ public class BottomUpConcernDetailActivity extends BaseActivity {
     TextView target_date_value;
     @BindView(R.id.assign_to_value)
     AutoCompleteTextView assignToValue;
+    @BindView(R.id.in_benefit_value)
+    TextView in_benefit_value;
+    @BindView(R.id.doc_view4)
+    ImageView docView4;
+    @BindView(R.id.attachtext4)
+    TextView attachtext4;
 
     @BindView(R.id.target_dated_value)
     TextView targetDatedValue;
@@ -192,6 +198,9 @@ public class BottomUpConcernDetailActivity extends BaseActivity {
                     //    btnLayout.setVisibility(View.VISIBLE);
 
                 }
+            }
+            if(bottomUpConcern.getInTangibleBenefit()!=null && bottomUpConcern.getInTangibleBenefit().length()>0){
+                in_benefit_value.setText(bottomUpConcern.getInTangibleBenefit());
             }
 
             assignToValue.addTextChangedListener(new TextWatcher() {
@@ -271,6 +280,25 @@ public class BottomUpConcernDetailActivity extends BaseActivity {
         } else {
             docView3.setVisibility(View.GONE);
         }
+        if (bottomUpConcern.getInTanDocument() != null && bottomUpConcern.getInTanDocument().length() > 0) {
+            attachtext4.setText(bottomUpConcern.getInTanDocument());
+            docView4.setVisibility(View.VISIBLE);
+            if (bottomUpConcern.getInTanDocument().contains("png") || bottomUpConcern.getInTanDocument().contains("jpg") || bottomUpConcern.getBDocument().contains("jpeg")) {
+                Glide.with(BottomUpConcernDetailActivity.this).load(RetrofitClient2.bottomup_img + bottomUpConcern.getInTanDocument()).apply(new RequestOptions()
+                        .diskCacheStrategy(DiskCacheStrategy.ALL)
+                        .dontAnimate()
+                        .fitCenter()
+                        .dontTransform())
+                        .into(docView4);
+            }
+
+        } else {
+            docView4.setVisibility(View.GONE);
+        }
+
+
+
+
 
         registerReceiver();
 

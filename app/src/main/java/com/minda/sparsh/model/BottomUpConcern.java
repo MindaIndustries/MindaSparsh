@@ -73,6 +73,10 @@ public class BottomUpConcern implements Serializable {
     String AssignerEmpCode;
     @SerializedName("AssignedName")
     String AssignedName;
+    @SerializedName("InTangibleBenefit")
+    String InTangibleBenefit;
+    @SerializedName("InTanDocument")
+    String InTanDocument;
 
     public String getId() {
         return Id;
@@ -344,5 +348,21 @@ public class BottomUpConcern implements Serializable {
 
     public void setUnitName(String unitName) {
         UnitName = unitName;
+    }
+
+    public String getInTangibleBenefit() {
+        return InTangibleBenefit;
+    }
+
+    public void setInTangibleBenefit(String inTangibleBenefit) {
+        InTangibleBenefit = inTangibleBenefit;
+    }
+
+    public String getInTanDocument() {
+        return InTanDocument;
+    }
+
+    public void setInTanDocument(String inTanDocument) {
+        InTanDocument = inTanDocument;
     }
 }
