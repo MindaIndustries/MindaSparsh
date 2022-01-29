@@ -67,7 +67,7 @@ public class DashBoardActivity extends BaseActivity implements View.OnClickListe
         myPref = getSharedPreferences("MyPref", Context.MODE_PRIVATE);
         empCode = myPref.getString("Id", "Id");
         User = myPref.getString("username", "");
-        saveFirebaseToken(empCode);
+       // saveFirebaseToken(empCode);
         getAppVersion();
 
         viewPager.setOffscreenPageLimit(0);

@@ -26,7 +26,7 @@ public class ChangeRequest extends AppCompatActivity {
     Toolbar toolbar;
     @BindView(R.id.title)
     TextView title;
-    String empcode, DOB;
+    String empcode, DOB,dobnew;
     SharedPreferences myPref;
     String url="https://itsupport.unominda.com/app/itdesk/";
 
@@ -40,45 +40,50 @@ public class ChangeRequest extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setHomeAsUpIndicator(R.drawable.back);
-       // title.setText(getResources().getString(R.string.mindacare_selfDeclaration));
+        // title.setText(getResources().getString(R.string.mindacare_selfDeclaration));
         title.setText("Change Request");
 
-        myPref = getSharedPreferences("MyPref", MODE_PRIVATE);
-        empcode = myPref.getString("Id", "Id");
-        DOB = myPref.getString("DOB", "");
-        long dob = Long.parseLong(DOB.replace("/Date", "").replace("/", "").replace("(", "").replace(")", ""));
-        if(getIntent()!=null && getIntent().getStringExtra("url")!=null){
-            url = getIntent().getStringExtra("url");
-            title.setText("");
-
-        }
-        Calendar dob1 = Calendar.getInstance();
-        dob1.setTimeInMillis(dob);
-        String day, month;
-        if (dob1.get(Calendar.DAY_OF_MONTH) < 10) {
-            day = "0" + dob1.get(Calendar.DAY_OF_MONTH);
-        } else {
-            day = "" + dob1.get(Calendar.DAY_OF_MONTH);
-        }
-        if ((dob1.get(Calendar.MONTH) + 1) < 10) {
-            month = "0" + (dob1.get(Calendar.MONTH) + 1);
-        } else {
-            month = "" + (dob1.get(Calendar.MONTH) + 1);
-        }
-
-        String age = "" + day + month + dob1.get(Calendar.YEAR);
-    //    mindacareWebView.loadUrl(HttpConnection.mindacareUrl + "EmpCode=" + empcode + "&Dob=" + age);
-        mindacareWebView.loadUrl(url);
-
-        WebSettings webSettings = mindacareWebView.getSettings();
-        webSettings.setJavaScriptEnabled(true);
-
-        mindacareWebView.setWebViewClient(new WebViewClient() {
-            @Override
-            public boolean shouldOverrideUrlLoading(WebView view, String url) {
-                return false;
+        try {
+            myPref = getSharedPreferences("MyPref", MODE_PRIVATE);
+            empcode = myPref.getString("Id", "Id");
+            DOB = myPref.getString("DOB", "");
+           dobnew =  DOB.replace("/Date", "").replace("/", "").replace("(", "").replace(")", "");
+            long dob = Long.parseLong(dobnew);
+            if (getIntent() != null && getIntent().getStringExtra("url") != null) {
+                url = getIntent().getStringExtra("url");
+                title.setText("");
             }
-        });
+            Calendar dob1 = Calendar.getInstance();
+            dob1.setTimeInMillis(dob);
+            String day, month;
+            if (dob1.get(Calendar.DAY_OF_MONTH) < 10) {
+                day = "0" + dob1.get(Calendar.DAY_OF_MONTH);
+            } else {
+                day = "" + dob1.get(Calendar.DAY_OF_MONTH);
+            }
+            if ((dob1.get(Calendar.MONTH) + 1) < 10) {
+                month = "0" + (dob1.get(Calendar.MONTH) + 1);
+            } else {
+                month = "" + (dob1.get(Calendar.MONTH) + 1);
+            }
+
+            String age = "" + day + month + dob1.get(Calendar.YEAR);
+            //    mindacareWebView.loadUrl(HttpConnection.mindacareUrl + "EmpCode=" + empcode + "&Dob=" + age);
+            mindacareWebView.loadUrl(url);
+
+            WebSettings webSettings = mindacareWebView.getSettings();
+            webSettings.setJavaScriptEnabled(true);
+
+            mindacareWebView.setWebViewClient(new WebViewClient() {
+                @Override
+                public boolean shouldOverrideUrlLoading(WebView view, String url) {
+                    return false;
+                }
+            });
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }
     }
 
     @Override
