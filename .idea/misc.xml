@@ -10,19 +10,27 @@
         <entry key="app/src/main/res/drawable/about_us_bg.xml" value="0.238671875" />
         <entry key="app/src/main/res/drawable/border.xml" value="0.238671875" />
         <entry key="app/src/main/res/drawable/btn_bg.xml" value="0.238671875" />
+        <entry key="app/src/main/res/drawable/btn_bg_cvp.xml" value="0.25365665896843725" />
         <entry key="app/src/main/res/drawable/btn_bg_grey.xml" value="0.238671875" />
         <entry key="app/src/main/res/drawable/btn_bg_orange.xml" value="0.238671875" />
         <entry key="app/src/main/res/drawable/btn_bg_round.xml" value="0.23828125" />
         <entry key="app/src/main/res/drawable/btn_bg_sbmt.xml" value="0.238671875" />
+        <entry key="app/src/main/res/drawable/calendar_item_background.xml" value="0.257421875" />
         <entry key="app/src/main/res/drawable/cardview_bg.xml" value="0.238671875" />
+        <entry key="app/src/main/res/drawable/cell_shapedark.xml" value="0.19930555555555557" />
+        <entry key="app/src/main/res/drawable/cell_view.xml" value="0.19930555555555557" />
+        <entry key="app/src/main/res/drawable/cell_views.xml" value="0.19930555555555557" />
         <entry key="app/src/main/res/drawable/circle.xml" value="0.23828125" />
         <entry key="app/src/main/res/drawable/comment2.xml" value="0.238671875" />
         <entry key="app/src/main/res/drawable/cursor_drawable.xml" value="0.238671875" />
         <entry key="app/src/main/res/drawable/darkline.xml" value="0.238671875" />
         <entry key="app/src/main/res/drawable/gradientline.xml" value="0.238671875" />
+        <entry key="app/src/main/res/drawable/my_selector.xml" value="0.257421875" />
         <entry key="app/src/main/res/drawable/notification_view.xml" value="0.238671875" />
         <entry key="app/src/main/res/drawable/rec_button.xml" value="0.238671875" />
+        <entry key="app/src/main/res/drawable/red_dot.xml" value="0.257421875" />
         <entry key="app/src/main/res/drawable/roundcornercellviewwhite.xml" value="0.238671875" />
+        <entry key="app/src/main/res/drawable/selected_calendar_tem_background.xml" value="0.257421875" />
         <entry key="app/src/main/res/drawable/spinner_bg.xml" value="0.238671875" />
         <entry key="app/src/main/res/drawable/submitbuttonview.xml" value="0.238671875" />
         <entry key="app/src/main/res/drawable/tab_color_selector.xml" value="0.238671875" />
@@ -40,7 +48,7 @@
         <entry key="app/src/main/res/layout/activity_dwmoperation_head.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_identity_access_management.xml" value="0.2" />
         <entry key="app/src/main/res/layout/activity_identity_access_management1.xml" value="0.1" />
-        <entry key="app/src/main/res/layout/activity_login.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_login.xml" value="0.16" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_mission.xml" value="0.14959016393442623" />
         <entry key="app/src/main/res/layout/activity_needhelp.xml" value="0.2" />
@@ -60,16 +68,23 @@
         <entry key="app/src/main/res/layout/assign_concern.xml" value="0.1" />
         <entry key="app/src/main/res/layout/bottom_up_concern.xml" value="0.16" />
         <entry key="app/src/main/res/layout/bottomup_view_row.xml" value="0.16" />
+        <entry key="app/src/main/res/layout/calendar_booking.xml" value="0.11823035850495804" />
+        <entry key="app/src/main/res/layout/calendar_item.xml" value="0.1489071038251366" />
         <entry key="app/src/main/res/layout/cc_list_row.xml" value="0.14959016393442623" />
         <entry key="app/src/main/res/layout/city_row.xml" value="0.14959016393442623" />
         <entry key="app/src/main/res/layout/cr.xml" value="0.18271857923497267" />
         <entry key="app/src/main/res/layout/create_ticket.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/cvp_calendar.xml" value="0.1489071038251366" />
+        <entry key="app/src/main/res/layout/cvp_material.xml" value="0.264" />
+        <entry key="app/src/main/res/layout/cvp_plan_calendar.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/cvp_view_row.xml" value="0.2" />
+        <entry key="app/src/main/res/layout/cvp_viewcalendar.xml" value="0.2714535901926445" />
         <entry key="app/src/main/res/layout/dashboard_content.xml" value="0.1" />
         <entry key="app/src/main/res/layout/domain_cell_view.xml" value="0.1" />
         <entry key="app/src/main/res/layout/ehs_initiate.xml" value="0.176" />
         <entry key="app/src/main/res/layout/ehs_layout.xml" value="0.2" />
         <entry key="app/src/main/res/layout/ehs_obs_row.xml" value="0.16700819672131148" />
-        <entry key="app/src/main/res/layout/fragment_eight.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/fragment_eight.xml" value="0.264" />
         <entry key="app/src/main/res/layout/fragment_five.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_four.xml" value="0.16" />
         <entry key="app/src/main/res/layout/fragment_iam.xml" value="0.1" />
@@ -79,8 +94,8 @@
         <entry key="app/src/main/res/layout/fragment_manufacturing.xml" value="0.4" />
         <entry key="app/src/main/res/layout/fragment_new_appointment.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_one.xml" value="0.1" />
-        <entry key="app/src/main/res/layout/fragment_seven.xml" value="0.1" />
-        <entry key="app/src/main/res/layout/fragment_six.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/fragment_seven.xml" value="0.264" />
+        <entry key="app/src/main/res/layout/fragment_six.xml" value="0.264" />
         <entry key="app/src/main/res/layout/fragment_three.xml" value="0.16" />
         <entry key="app/src/main/res/layout/fragment_two.xml" value="0.264" />
         <entry key="app/src/main/res/layout/fragment_view_appointment.xml" value="0.1" />
@@ -89,6 +104,8 @@
         <entry key="app/src/main/res/layout/iam_spinner_cell_view.xml" value="0.1" />
         <entry key="app/src/main/res/layout/it_help_desk.xml" value="0.1" />
         <entry key="app/src/main/res/layout/item_page.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/marketing_dashboard.xml" value="0.1875" />
+        <entry key="app/src/main/res/layout/materialcalendar.xml" value="0.15505464480874318" />
         <entry key="app/src/main/res/layout/minda_care.xml" value="0.1" />
         <entry key="app/src/main/res/layout/minda_care_qn_row.xml" value="0.1" />
         <entry key="app/src/main/res/layout/mindacareweb.xml" value="0.1" />
@@ -101,9 +118,10 @@
         <entry key="app/src/main/res/layout/notification_call_view.xml" value="0.16" />
         <entry key="app/src/main/res/layout/plant_details_cell_view.xml" value="0.1" />
         <entry key="app/src/main/res/layout/privacy_policy.xml" value="0.1" />
-        <entry key="app/src/main/res/layout/profile_activity.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/profile_activity.xml" value="0.2" />
         <entry key="app/src/main/res/layout/progressbar_layout.xml" value="0.1" />
         <entry key="app/src/main/res/layout/salary_slip_laout.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/selected_calendar_item.xml" value="0.1489071038251366" />
         <entry key="app/src/main/res/layout/slidingimages_layout.xml" value="0.16700819672131148" />
         <entry key="app/src/main/res/layout/spinner_cell_view.xml" value="0.1" />
         <entry key="app/src/main/res/layout/spinner_row.xml" value="0.1" />
@@ -115,10 +133,12 @@
         <entry key="app/src/main/res/layout/tkt_detail_row.xml" value="0.1" />
         <entry key="app/src/main/res/layout/toolbar.xml" value="0.1" />
         <entry key="app/src/main/res/layout/toolbar1.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/view_agenda_drawable_event.xml" value="0.15505464480874318" />
         <entry key="app/src/main/res/layout/view_appointment_cell_view.xml" value="0.16" />
         <entry key="app/src/main/res/layout/view_bottom_up_detail.xml" value="0.1" />
         <entry key="app/src/main/res/layout/view_concern.xml" value="0.2" />
         <entry key="app/src/main/res/layout/view_ehs_img.xml" value="0.1" />
+        <entry key="app/src/main/res/menu/activity_base_drawer.xml" value="0.2421875" />
       </map>
     </option>
   </component>

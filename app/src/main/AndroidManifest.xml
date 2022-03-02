@@ -33,6 +33,16 @@
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
+        <activity
+            android:name=".SplashActivity"
+            android:theme="@style/AppThemeSplash"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
 
         <activity
             android:name=".ApproveListActivity1"
@@ -71,16 +81,6 @@
             android:name=".MainActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name=".SplashActivity"
-            android:theme="@style/AppThemeSplash"
-            android:screenOrientation="portrait">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
         <activity
             android:name=".LoginActivity"
             android:screenOrientation="portrait" />
@@ -154,6 +154,15 @@
             android:screenOrientation="portrait"
             android:theme="@style/spinnertheme" />
         <activity
+            android:name=".cvp.CVPPlanCalendar"
+            android:screenOrientation="portrait"
+            android:theme="@style/spinnertheme" />
+        <activity
+            android:name=".cvp.CVPViewCalendar"
+            android:screenOrientation="portrait"
+            android:theme="@style/spinnertheme" />
+
+        <activity
             android:name=".BottomUpConcernDetailActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
@@ -198,6 +207,10 @@
             android:name=".MyTaskDetail"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".MarketingDashboard"
+            android:screenOrientation="portrait"
+            android:theme="@style/spinnertheme"
+            />
 
         <meta-data
             android:name="io.fabric.ApiKey"

@@ -24,7 +24,7 @@ public class RetrofitClient2 {
     //master public static final String BASE_URL = "http://176.9.28.166/MindaSparshTest/Service.asmx/";
     // public static final String BASE_URL = "http://52.172.191.61/Test.mindasparsh.com/Service.asmx/";
     //dev
-  /*  public static final String BASE_URL = "https://dev.mindasparsh.com/Service.asmx/";
+    public static final String BASE_URL = "https://dev.mindasparsh.com/Service.asmx/";
     public static final String EHS_BASE_URL = "https://dev.mindasparsh.com/ServiceEHS.asmx/";
     public static final String ehs_img = "https://dev.mindasparsh.com/ehs/files/";
     public static final String bottomup_img = "https://dev.mindasparsh.com/bottomup/files/";
@@ -34,7 +34,8 @@ public class RetrofitClient2 {
     public static final String firebaseIDsaveUrl = "https://dev.mindasparsh.com/MindaFirePushService.asmx/";
     public static final String mindacareUrl = "https://dev.mindasparsh.com/MindaCare.asmx/";
     public static final String ithelpdeskBaseUrl = "https://dev.mindasparsh.com/ITHelpDeskM.asmx/";
- */   //prod
+    //prod
+/*
     public static final String BASE_URL = "https://app.mindasparsh.com/Service.asmx/";
     public static final String ehs_img = "https://app.mindasparsh.com/ehs/files/";
     public static final String EHS_BASE_URL = "https://app.mindasparsh.com/ServiceEHS.asmx/";
@@ -45,10 +46,12 @@ public class RetrofitClient2 {
     public static final String mindacareUrl = "https://app.mindasparsh.com/MindaCare.asmx/";
     public static final String ithelpdeskBaseUrl = "https://app.mindasparsh.com/ITHelpDeskM.asmx/";
     public static final String itHelpAttachment = "https://app.mindasparsh.com/ithelpdesk/Files/";
+*/
     //new CKey
- //    public static final String CKEY = "bWRhQHNQciRyWiNHISE=";
-   public static final String CKEY = "mda@sPr$rZ#G!!";
+     public static final String CKEY = "bWRhQHNQciRyWiNHISE=";
+ //  public static final String CKEY = "mda@sPr$rZ#G!!";
 
+    public static final String BASEURL = "https://qas.mindasparsh.com/API/CVP/";
     private static Retrofit retrofit = null;
     static Dispatcher dispatcher1 = new Dispatcher();
 
@@ -56,9 +59,6 @@ public class RetrofitClient2 {
         if (retrofit == null) {
             HttpLoggingInterceptor logging = new HttpLoggingInterceptor();
             logging.setLevel(HttpLoggingInterceptor.Level.BODY);
-
-
-
             final OkHttpClient okHttpClient = new OkHttpClient.Builder()
                     .readTimeout(60, TimeUnit.SECONDS)
                     .connectTimeout(60, TimeUnit.SECONDS)
@@ -78,8 +78,39 @@ public class RetrofitClient2 {
         return retrofit;
     }
 
+    public static <S> S getClientCVP(Class<S> serviceClass){
+        OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
+     //   httpClient.protocols(Util.immutableListOf(Protocol.HTTP_1_1));
+        httpClient.addInterceptor(chain -> {
+            Request original = chain.request();
 
+            Request request = original.newBuilder()
+                    .addHeader("Token", "mda@sPr$rZ#G!!")
+                    .method(original.method(), original.body())
+                    .build();
+            Response response = chain.proceed(request);
+            return response;
+        });
 
+        dispatcher1.setMaxRequests(3000);
+        httpClient.dispatcher(dispatcher1);
+
+        Gson gson = new GsonBuilder()
+                .setLenient()
+                .create();
+
+        OkHttpClient client = httpClient.readTimeout(60, TimeUnit.SECONDS)
+                .connectTimeout(60, TimeUnit.SECONDS).build();
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(BASEURL)
+                .addConverterFactory(ScalarsConverterFactory.create())
+                .addConverterFactory(GsonConverterFactory.create(gson))
+                .client(client)
+                .build();
+
+        return retrofit.create(serviceClass);
+
+    }
     public static <S> S createServiceDashboardImages(Class<S> serviceClass) {
         OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
         httpClient.protocols(Util.immutableListOf(Protocol.HTTP_1_1));

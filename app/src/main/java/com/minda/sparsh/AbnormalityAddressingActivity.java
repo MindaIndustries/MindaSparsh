@@ -335,18 +335,19 @@ public class AbnormalityAddressingActivity extends AppCompatActivity {
      */   sp_department.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Department_Model selectedItem = Departmentresponse.get(i);
-                department = selectedItem.getDEPARTMENT();
-                departmentselected = selectedItem.getDEPARTMENT();
-                sp_sdepartment.setText("");
-                adapterSubDepartment = new ArrayAdapter<>(AbnormalityAddressingActivity.this, android.R.layout.simple_spinner_item, subdepartments);
-                sp_sdepartment.setAdapter(adapterSubDepartment);
-                adapterSubDepartment.notifyDataSetChanged();
+                if(i>=0) {
+                    Department_Model selectedItem = Departmentresponse.get(i);
+                    department = selectedItem.getDEPARTMENT();
+                    departmentselected = selectedItem.getDEPARTMENT();
+                    sp_sdepartment.setText("");
+                    adapterSubDepartment = new ArrayAdapter<>(AbnormalityAddressingActivity.this, android.R.layout.simple_spinner_item, subdepartments);
+                    sp_sdepartment.setAdapter(adapterSubDepartment);
+                    adapterSubDepartment.notifyDataSetChanged();
 
-                hitSubdepartmentApi(selectedItem.getID());
-                hitGetAbnormalityDetailApi(plantid, String.valueOf(sub_department), domainid, businessid);
+                    hitSubdepartmentApi(selectedItem.getID());
+                    hitGetAbnormalityDetailApi(plantid, String.valueOf(sub_department), domainid, businessid);
 
-
+                }
 
              /*   if (!selectedItem.getDEPARTMENT().equalsIgnoreCase("Select Department")) {
 //                    hitDepartmentApi(sub_department);

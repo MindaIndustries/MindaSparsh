@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.google.android.material.navigation.NavigationView;
+import com.minda.sparsh.cvp.CVPPlanCalendar;
 
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AlertDialog;
@@ -148,6 +149,11 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
         if (id == R.id.profile) {
             Intent intent = new Intent(BaseActivity.this, ProfileActivity.class);
             startActivity(intent);
+        }
+        if(id == R.id.marketing){
+            Intent intent = new Intent(BaseActivity.this, MarketingDashboard.class);
+            startActivity(intent);
+
         }
 
         if (id == R.id.mindacare) {

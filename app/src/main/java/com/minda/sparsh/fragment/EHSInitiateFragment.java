@@ -645,13 +645,15 @@ public class EHSInitiateFragment extends Fragment {
         if (getArguments() != null && getArguments().getString("attachment") != null) {
             Intent in = new Intent(getActivity(), ViewEHSImage.class);
             in.putExtra("attachment", attachmentName);
-            getActivity().startActivity(in);
+            if(getActivity()!=null && isAdded())
+                getActivity().startActivity(in);
         } else if (bmp != null) {
             ByteArrayOutputStream stream = new ByteArrayOutputStream();
             bmp.compress(Bitmap.CompressFormat.PNG, 100, stream);
             byte[] byteArray = stream.toByteArray();
             Intent in = new Intent(getActivity(), ViewEHSImage.class);
             in.putExtra("bitmap", byteArray);
+            if(getActivity()!=null && isAdded())
             getActivity().startActivity(in);
 
         }

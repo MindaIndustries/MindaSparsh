@@ -505,4 +505,7 @@ public interface Interface {
 
     @GET("GetCategorys")
     Call<List<CategoryAbnormality>> getCategory(@Query("CKey") String CKey);
+
+    @GET("GetEmpDetails")
+            Call<String> getemp(@Query("UM_USER_ID") String UM_USER_ID);
 }
