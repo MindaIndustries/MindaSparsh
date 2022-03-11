@@ -11,7 +11,25 @@
         android:layout_height="wrap_content"
         android:id="@+id/cvp"
         android:layout_marginTop="?attr/actionBarSize"
-        android:text="Customer Visit Portal"
+        android:text="Customer Visit Portal-Plan"
         />
+
+    <TextView
+        android:layout_below="@+id/cvp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/cvp_viewCalendar"
+        android:layout_marginTop="?attr/actionBarSize"
+        android:text="Customer Visit Portal-View"
+        />
+    <TextView
+        android:layout_below="@+id/cvp_viewCalendar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/create_visit_report"
+        android:layout_marginTop="?attr/actionBarSize"
+        android:text="Create Visit Report"
+        />
+
 
 </RelativeLayout>

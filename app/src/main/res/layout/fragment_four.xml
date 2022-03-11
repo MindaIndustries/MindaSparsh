@@ -474,9 +474,10 @@
             android:id="@+id/im_right"
             android:layout_width="35dp"
             android:layout_height="35dp"
-            android:visibility="gone"
+            android:visibility="visible"
             android:layout_alignParentEnd="true"
             android:layout_marginTop="20dp"
+            app:tint="@android:color/black"
             android:src="@drawable/right_arrow" />
 
         <ImageView

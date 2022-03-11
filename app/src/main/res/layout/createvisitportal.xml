@@ -1,0 +1,262 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/screen_bg">
+    <include layout="@layout/toolbar" />
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="?attr/actionBarSize">
+
+        <RelativeLayout
+            android:layout_marginTop="10dp"
+            android:padding="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/customSpinnerLayout0"
+                android:layout_width="match_parent"
+                style="@style/edittext"
+                android:visibility="visible"
+                android:layout_marginTop="10dp"
+                android:layout_height="wrap_content"
+                android:hint="Date of Visit">
+
+                <com.google.android.material.textfield.MaterialAutoCompleteTextView
+                    android:id="@+id/date_of_visit"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="left"
+                    android:hint=""
+                    android:editable="false"
+                    android:focusedByDefault="true"
+                    android:imeOptions="actionNext"
+                    android:padding="18dp"
+                    /> </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/customSpinnerLayout1"
+                android:layout_width="match_parent"
+                style="@style/box"
+                android:layout_below="@+id/customSpinnerLayout0"
+                android:layout_marginTop="10dp"
+                android:layout_height="wrap_content"
+                android:hint="custom's Name">
+
+                <com.google.android.material.textfield.MaterialAutoCompleteTextView
+                    android:id="@+id/custom_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="left"
+                    android:hint=""
+                    android:editable="false"
+                    android:focusedByDefault="true"
+                    android:imeOptions="actionNext"
+                    android:padding="18dp"
+                    /> </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/customSpinnerLayout2"
+                android:layout_width="match_parent"
+                style="@style/box"
+                android:layout_below="@+id/customSpinnerLayout1"
+                android:layout_marginTop="10dp"
+                android:layout_height="wrap_content"
+                android:hint="custom's Location">
+
+                <com.google.android.material.textfield.MaterialAutoCompleteTextView
+                    android:id="@+id/location_spinner"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:clickable="true"
+                    android:editable="false"
+                    tools:ignore="KeyboardInaccessibleWidget" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/customSpinnerLayout3"
+                android:layout_width="match_parent"
+                style="@style/box"
+                android:layout_below="@+id/customSpinnerLayout2"
+                android:layout_marginTop="10dp"
+                android:layout_height="wrap_content"
+                android:hint="Plant">
+
+
+                <com.google.android.material.textfield.MaterialAutoCompleteTextView
+                    android:id="@+id/plant"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="left"
+                    android:hint=""
+                    android:focusedByDefault="true"
+                    android:editable="false"
+                    android:imeOptions="actionNext"
+                    android:padding="18dp"
+                    />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/customSpinnerLayout4"
+                android:layout_width="match_parent"
+                style="@style/edittext"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_toLeftOf="@+id/view"
+                android:layout_below="@+id/customSpinnerLayout3"
+                android:layout_height="wrap_content"
+                android:hint="Start Time">
+
+                <com.google.android.material.textfield.MaterialAutoCompleteTextView
+                    android:id="@+id/start_time_selector"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="left"
+                    android:hint=""
+                    android:focusedByDefault="true"
+                    android:editable="false"
+                    android:imeOptions="actionNext"
+                    android:padding="18dp"
+                    />
+            </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/customSpinnerLayout5"
+                android:layout_width="match_parent"
+                style="@style/edittext"
+                android:layout_marginTop="10dp"
+                android:layout_toRightOf="@+id/view"
+                android:layout_marginLeft="10dp"
+                android:layout_below="@+id/customSpinnerLayout3"
+                android:layout_height="wrap_content"
+                android:hint="End Time">
+
+                <com.google.android.material.textfield.MaterialAutoCompleteTextView
+                    android:id="@+id/end_time_selector"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="left"
+                    android:hint=""
+                    android:focusedByDefault="true"
+                    android:editable="false"
+                    android:imeOptions="actionNext"
+                    android:padding="18dp"
+                    />
+            </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/customSpinnerLayout6"
+                android:layout_width="match_parent"
+                style="@style/box"
+                android:layout_below="@+id/customSpinnerLayout4"
+                android:layout_marginTop="10dp"
+                android:layout_height="wrap_content"
+                android:hint="Business">
+
+                <com.google.android.material.textfield.MaterialAutoCompleteTextView
+                    android:id="@+id/business"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="left"
+                    android:hint=""
+                    android:focusedByDefault="true"
+                    android:editable="false"
+                    android:imeOptions="actionNext"
+                    android:padding="18dp"
+                    />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/customSpinnerLayout7"
+                android:layout_width="match_parent"
+                style="@style/box"
+                android:layout_below="@+id/customSpinnerLayout6"
+                android:layout_marginTop="10dp"
+                android:layout_height="wrap_content"
+                android:hint="Agenda">
+
+                <com.google.android.material.textfield.MaterialAutoCompleteTextView
+                    android:id="@+id/agenda_ed"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="left"
+                    android:hint=""
+                    android:focusedByDefault="true"
+                    android:editable="false"
+                    android:imeOptions="actionNext"
+                    android:padding="18dp"
+                    />
+            </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/customSpinnerLayout8"
+                android:layout_width="match_parent"
+                style="@style/box"
+                android:layout_below="@+id/customSpinnerLayout7"
+                android:layout_marginTop="10dp"
+                android:layout_height="wrap_content"
+                android:hint="Meeting Location">
+
+                <com.google.android.material.textfield.MaterialAutoCompleteTextView
+                    android:id="@+id/meeting_location"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="left"
+                    android:hint=""
+                    android:focusedByDefault="true"
+                    android:editable="false"
+                    android:imeOptions="actionNext"
+                    android:padding="18dp"
+                    />
+            </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/customSpinnerLayout9"
+                android:layout_width="match_parent"
+                style="@style/box"
+                android:layout_below="@+id/customSpinnerLayout8"
+                android:layout_marginTop="10dp"
+                android:layout_height="wrap_content"
+                android:hint="Mom Ref No">
+
+                <com.google.android.material.textfield.MaterialAutoCompleteTextView
+                    android:id="@+id/mom_ref_no"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="left"
+                    android:hint=""
+                    android:focusedByDefault="true"
+                    android:editable="false"
+                    android:imeOptions="actionNext"
+                    android:padding="18dp"
+                    />
+            </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/customSpinnerLayout10"
+                android:layout_width="match_parent"
+                style="@style/box"
+                android:layout_below="@+id/customSpinnerLayout9"
+                android:layout_marginTop="10dp"
+                android:layout_height="wrap_content"
+                android:hint="Calendar Update with Week No">
+
+                <com.google.android.material.textfield.MaterialAutoCompleteTextView
+                    android:id="@+id/calendar_weekNo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:clickable="true"
+                    android:editable="false"
+                    tools:ignore="KeyboardInaccessibleWidget" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <View
+                android:id="@+id/view"
+                android:layout_centerInParent="true"
+                android:layout_width="1dp"
+                android:layout_height="wrap_content"/>
+
+        </RelativeLayout>
+    </ScrollView>
+
+
+</RelativeLayout>

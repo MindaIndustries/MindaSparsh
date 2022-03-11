@@ -1004,6 +1004,8 @@ public class EHSInitiateFragment extends Fragment {
     }
 
     public void getCategories(String observationID) {
+        categories.clear();
+        ehsCategories.clear();
         EHSServices ehsServices = new EHSServices();
         ehsServices.getCategories(carotResponse -> {
             if (carotResponse.getStatuscode() == HttpsURLConnection.HTTP_OK) {

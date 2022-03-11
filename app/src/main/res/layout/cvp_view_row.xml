@@ -2,13 +2,46 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:descendantFocusability="afterDescendants"
     xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <TextView
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:text="weeks"
+        android:id="@+id/heading"
+        android:textSize="14sp"
+        android:visibility="gone"
+        android:fontFamily="@font/museosans_900"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:textSize="12sp"
+        android:visibility="gone"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="5dp"
+        android:layout_below="@+id/heading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/no_meeting"
+        android:text="No meetings"
+        android:layout_marginBottom="10dp"
+        android:fontFamily="@font/museosans_500"
+        />
+
     <androidx.cardview.widget.CardView
+        android:id="@+id/cardview"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:cardBackgroundColor="@color/white"
         app:cardCornerRadius="5dp"
         app:cardElevation="5dp"
+        android:focusable="true"
+        android:descendantFocusability="afterDescendants"
+        android:layout_marginBottom="10dp"
+        android:layout_below="@+id/heading"
         app:cardUseCompatPadding="true">
         <RelativeLayout
             android:layout_width="match_parent"
@@ -16,15 +49,15 @@
 
             <TextView
                 android:id="@+id/legend"
-                android:background="@drawable/btn_bg_cvp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
                 android:layout_marginRight="10dp"
-                android:padding="10dp"
+                android:background="@drawable/btn_bg_cvp"
                 android:fontFamily="@font/museosans_500"
-                android:textColor="@color/white"
-                android:text="available" />
+                android:padding="10dp"
+                android:text=""
+                android:textColor="@color/white" />
             <RelativeLayout
                 android:padding="10dp"
                 android:layout_below="@+id/legend"
@@ -74,6 +107,7 @@
                 android:layout_alignParentRight="true"
                 android:src="@drawable/delete_geo"
                 android:id="@+id/delete"
+                android:focusable="true"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
 

@@ -151,9 +151,7 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
             startActivity(intent);
         }
         if(id == R.id.marketing){
-            Intent intent = new Intent(BaseActivity.this, MarketingDashboard.class);
-            startActivity(intent);
-
+            viewPager.setCurrentItem(5, true);
         }
 
         if (id == R.id.mindacare) {

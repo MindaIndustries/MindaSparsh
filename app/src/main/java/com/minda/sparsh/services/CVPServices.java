@@ -6,6 +6,7 @@ import com.minda.sparsh.listener.OnTaskComplete;
 import com.minda.sparsh.model.CVPViewCalendarModel;
 import com.minda.sparsh.model.CalendarTypeModel;
 import com.minda.sparsh.model.CustomerModel;
+import com.minda.sparsh.model.EditCalendarModel;
 import com.minda.sparsh.model.LocationModel;
 import com.minda.sparsh.model.MeetingTypeModel;
 import com.minda.sparsh.model.SaveCalendarResponse;
@@ -205,9 +206,9 @@ public class CVPServices {
             }
         });
     }
-    public void getCalendarMeetings(OnTaskComplete onTaskComplete, String empCode, String Year, String Month, String CalendarType){
+    public void getCalendarMeetings(OnTaskComplete onTaskComplete, String empCode, String Year,  String CalendarType,String WeekId){
         CVPClient cvpClient = RetrofitClient2.getClientCVP(CVPClient.class);
-        Call<CVPViewCalendarModel> call = cvpClient.getMeetings(empCode,Year,Month,CalendarType);
+        Call<CVPViewCalendarModel> call = cvpClient.getMeetings(empCode,Year,CalendarType,WeekId);
         call.enqueue(new Callback<CVPViewCalendarModel>() {
             @Override
             public void onResponse(Call<CVPViewCalendarModel> call, Response<CVPViewCalendarModel> response) {
@@ -228,5 +229,80 @@ public class CVPServices {
                 onTaskComplete.onTaskComplte(carotResponse);
             }
         });
+    }
+
+    public void editCalendarBooking(OnTaskComplete onTaskComplete, String meetingId, String empcode){
+        CVPClient cvpClient = RetrofitClient2.getClientCVP(CVPClient.class);
+        Call<EditCalendarModel> call = cvpClient.editCalendar(meetingId,empcode);
+        call.enqueue(new Callback<EditCalendarModel>() {
+            @Override
+            public void onResponse(Call<EditCalendarModel> call, Response<EditCalendarModel> response) {
+                CarotResponse carotResponse = new CarotResponse();
+                carotResponse.setStatuscode(response.code());
+                if (response.code() == HttpsURLConnection.HTTP_OK) {
+                    carotResponse.setData(response.body());
+                }
+                onTaskComplete.onTaskComplte(carotResponse);
+            }
+
+            @Override
+            public void onFailure(Call<EditCalendarModel> call, Throwable t) {
+                CarotResponse carotResponse = new CarotResponse();
+                if (t instanceof IOException) {
+                    carotResponse.setMessage("Please hold on a moment, the internet connectivity seems to be slow");
+                }
+                onTaskComplete.onTaskComplte(carotResponse);
+            }
+        });
+    }
+    public void deleteCalendarBooking(OnTaskComplete onTaskComplete, String id, String empcode, String calendarType){
+        CVPClient cvpClient = RetrofitClient2.getClientCVP(CVPClient.class);
+        Call<SaveCalendarResponse> call = cvpClient.deleteCalendarBooking(id,empcode, calendarType);
+        call.enqueue(new Callback<SaveCalendarResponse>() {
+            @Override
+            public void onResponse(Call<SaveCalendarResponse> call, Response<SaveCalendarResponse> response) {
+                CarotResponse carotResponse = new CarotResponse();
+                carotResponse.setStatuscode(response.code());
+                if (response.code() == HttpsURLConnection.HTTP_OK) {
+                    carotResponse.setData(response.body());
+                }
+                onTaskComplete.onTaskComplte(carotResponse);
+            }
+
+            @Override
+            public void onFailure(Call<SaveCalendarResponse> call, Throwable t) {
+                CarotResponse carotResponse = new CarotResponse();
+                if (t instanceof IOException) {
+                    carotResponse.setMessage("Please hold on a moment, the internet connectivity seems to be slow");
+                }
+                onTaskComplete.onTaskComplte(carotResponse);
+            }
+        });
+
+    }
+    public void updateCalendarBooking(OnTaskComplete onTaskComplete, int id, int weekdayId, String empcode, String custLocationId, String meetingTypeId){
+        CVPClient cvpClient = RetrofitClient2.getClientCVP(CVPClient.class);
+        Call<SaveCalendarResponse> call = cvpClient.updateCalendarBooking(id,weekdayId,empcode,custLocationId, meetingTypeId);
+        call.enqueue(new Callback<SaveCalendarResponse>() {
+            @Override
+            public void onResponse(Call<SaveCalendarResponse> call, Response<SaveCalendarResponse> response) {
+                CarotResponse carotResponse = new CarotResponse();
+                carotResponse.setStatuscode(response.code());
+                if (response.code() == HttpsURLConnection.HTTP_OK) {
+                    carotResponse.setData(response.body());
+                }
+                onTaskComplete.onTaskComplte(carotResponse);
+            }
+
+            @Override
+            public void onFailure(Call<SaveCalendarResponse> call, Throwable t) {
+                CarotResponse carotResponse = new CarotResponse();
+                if (t instanceof IOException) {
+                    carotResponse.setMessage("Please hold on a moment, the internet connectivity seems to be slow");
+                }
+                onTaskComplete.onTaskComplte(carotResponse);
+            }
+        });
+
     }
 }

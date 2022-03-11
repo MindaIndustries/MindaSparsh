@@ -14,11 +14,9 @@ import androidx.appcompat.widget.Toolbar;
 
 import com.minda.sparsh.cvp.CVPPlanCalendar;
 import com.minda.sparsh.cvp.CVPViewCalendar;
-import com.minda.sparsh.model.NotificationModel;
+import com.minda.sparsh.cvp.CustomerVisitReport;
 
 import org.jetbrains.annotations.NotNull;
-
-import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -29,10 +27,14 @@ import retrofit2.Response;
 public class MarketingDashboard extends AppCompatActivity {
     @BindView(R.id.cvp)
     TextView cvp;
+    @BindView(R.id.cvp_viewCalendar)
+    TextView cvp_viewCalendar;
     @BindView(R.id.toolbar)
     Toolbar toolbar;
     @BindView(R.id.title)
     TextView title;
+    @BindView(R.id.create_visit_report)
+    TextView create_visit_report;
 
 
     @Override
@@ -46,11 +48,26 @@ public class MarketingDashboard extends AppCompatActivity {
         getSupportActionBar().setHomeAsUpIndicator(R.drawable.back);
         title.setText("Marketing");
 
-        gettest();
         cvp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(MarketingDashboard.this, CVPPlanCalendar.class);
+                startActivity(intent);
+
+            }
+        });
+        cvp_viewCalendar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MarketingDashboard.this, CVPViewCalendar.class);
+                startActivity(intent);
+
+            }
+        });
+        create_visit_report.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MarketingDashboard.this, CustomerVisitReport.class);
                 startActivity(intent);
 
             }

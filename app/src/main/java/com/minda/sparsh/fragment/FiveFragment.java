@@ -1,14 +1,18 @@
 package com.minda.sparsh.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
+import com.minda.sparsh.BaseActivity;
 import com.minda.sparsh.DashBoardActivity;
+import com.minda.sparsh.MarketingDashboard;
 import com.minda.sparsh.R;
 
+import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 
 
@@ -52,9 +56,18 @@ public class FiveFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_five, container, false);
         ImageView im_right =  view.findViewById(R.id.im_right);
         ImageView im_left =  view.findViewById(R.id.im_left);
+        CardView card_view = view.findViewById(R.id.card_view);
         final DashBoardActivity contaxt = (DashBoardActivity) getActivity();
         im_right.setOnClickListener(view1 -> contaxt.viewPager.setCurrentItem(contaxt.getItem(+1), true));
         im_left.setOnClickListener(view12 -> contaxt.viewPager.setCurrentItem(contaxt.getItem(-1), true));
+
+        card_view.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), MarketingDashboard.class);
+                startActivity(intent);
+            }
+        });
         // Inflate the layout for this fragment
         return view;
     }

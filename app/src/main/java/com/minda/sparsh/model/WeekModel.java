@@ -3,6 +3,7 @@ package com.minda.sparsh.model;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
+import java.util.Objects;
 
 public class WeekModel {
     @SerializedName("Data")
@@ -17,7 +18,7 @@ public class WeekModel {
     }
 
 
-    public class WeekData{
+    public static class WeekData{
         @SerializedName("Weeks")
         String Weeks;
         @SerializedName("Id")
@@ -57,6 +58,19 @@ public class WeekModel {
 
         public void setCName(String CName) {
             this.CName = CName;
+        }
+
+        @Override
+        public boolean equals(Object o) {
+            if (this == o) return true;
+            if (o == null || getClass() != o.getClass()) return false;
+            WeekData weekData = (WeekData) o;
+            return Objects.equals(Weeks, weekData.Weeks) ;
+        }
+
+        @Override
+        public int hashCode() {
+            return Objects.hash(Weeks, Id, Name, CName);
         }
     }
 }

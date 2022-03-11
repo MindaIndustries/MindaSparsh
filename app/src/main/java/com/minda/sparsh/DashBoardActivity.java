@@ -15,6 +15,7 @@ import android.widget.Toast;
 
 import com.google.android.material.tabs.TabLayout;
 import com.google.firebase.messaging.FirebaseMessaging;
+import com.minda.sparsh.fragment.FiveFragment;
 import com.minda.sparsh.fragment.FourFragment;
 import com.minda.sparsh.fragment.ManufacturingFragment;
 import com.minda.sparsh.fragment.OneFragment;
@@ -67,11 +68,9 @@ public class DashBoardActivity extends BaseActivity implements View.OnClickListe
         myPref = getSharedPreferences("MyPref", Context.MODE_PRIVATE);
         empCode = myPref.getString("Id", "Id");
         User = myPref.getString("username", "");
-       // saveFirebaseToken(empCode);
+        saveFirebaseToken(empCode);
         getAppVersion();
-
         viewPager.setOffscreenPageLimit(0);
-
         try {
             currentVersion = getPackageManager().getPackageInfo(getPackageName(), 0).versionName;
         } catch (PackageManager.NameNotFoundException e) {
@@ -88,6 +87,7 @@ public class DashBoardActivity extends BaseActivity implements View.OnClickListe
         adapter.addFragment(new ThreeFragment(), "HR/Admin");
 //        adapter.addFragment(new FiveFragment(), "Finance");
         adapter.addFragment(new FourFragment(), "IT");
+        adapter.addFragment(new FiveFragment(),"Marketing");
 //        adapter.addFragment(new SevenFragment(), "Survey");
 //        adapter.addFragment(new EightFragment(), "Abnormality");
 //        adapter.addFragment(new SixFragment(), "Support");

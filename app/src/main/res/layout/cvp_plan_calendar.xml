@@ -41,7 +41,7 @@
             android:visibility="visible"
             android:layout_marginTop="10dp"
             android:layout_height="wrap_content"
-            android:hint="Calendar">
+            android:hint="Calendar Type">
 
             <com.google.android.material.textfield.MaterialAutoCompleteTextView
                 android:id="@+id/calendar_type_spinner"
@@ -156,20 +156,20 @@
             android:textSize="14sp" />
 
         <android.widget.Button
-            android:textColor="@color/white"
-            android:layout_marginTop="20dp"
             android:id="@+id/submit"
-            android:background="@drawable/btn_bg"
-            android:layout_toEndOf="@+id/view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/customerSpinnerLayout3"
-            android:text="Submit"
+            android:layout_marginTop="20dp"
+            android:layout_toEndOf="@+id/view"
+            android:background="@drawable/btn_bg"
+            android:drawableLeft="@drawable/done"
+            android:fontFamily="@font/museosans_700"
             android:gravity="center"
             android:paddingLeft="10dp"
-            android:drawableLeft="@drawable/done"
-            android:textSize="14sp"
-            android:fontFamily="@font/museosans_700" />
+            android:text="Submit"
+            android:textColor="@color/white"
+            android:textSize="14sp" />
 
     </RelativeLayout>
 </RelativeLayout>

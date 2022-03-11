@@ -80,7 +80,7 @@ public class RetrofitClient2 {
 
     public static <S> S getClientCVP(Class<S> serviceClass){
         OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
-     //   httpClient.protocols(Util.immutableListOf(Protocol.HTTP_1_1));
+        httpClient.protocols(Util.immutableListOf(Protocol.HTTP_1_1));
         httpClient.addInterceptor(chain -> {
             Request original = chain.request();
 
