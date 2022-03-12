@@ -14,7 +14,6 @@
         android:layout_marginTop="?attr/actionBarSize"
         app:mcv_arrowColor="@color/colorPrimary"
         app:mcv_calendarMode="week"
-        app:mcv_firstDayOfWeek="monday"
         app:mcv_selectionColor="@color/colorPrimary" />
     <com.google.android.material.textfield.TextInputLayout
         android:layout_marginLeft="20dp"

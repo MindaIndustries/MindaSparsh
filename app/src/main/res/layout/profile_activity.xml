@@ -170,14 +170,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/unit"
-                android:textColor="@color/black"
-                android:layout_marginTop="8dp"
-                android:text="--"
-                android:textSize="13sp"
-                android:layout_toEndOf="@+id/view"
                 android:layout_alignParentStart="true"
+                android:layout_marginTop="8dp"
+                android:layout_toEndOf="@+id/view"
+                android:fontFamily="@font/museosans_300"
                 android:gravity="left|center"
-                android:fontFamily="@font/museosans_300" />
+                android:text="--"
+                android:textColor="@color/black"
+                android:textSize="13sp" />
 
 
             <TextView

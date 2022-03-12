@@ -56,6 +56,8 @@
         <item name="android:textCursorDrawable">@drawable/cursor_drawable</item>
         <item name="colorPrimary">#eb3045</item>
         <item name="colorPrimaryDark">#eb3045</item>
+        <item name="colorAccent">#eb3045</item>
+
 
 
     </style>

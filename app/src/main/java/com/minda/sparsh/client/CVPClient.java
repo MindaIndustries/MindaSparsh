@@ -7,6 +7,7 @@ import com.minda.sparsh.model.EditCalendarModel;
 import com.minda.sparsh.model.LocationModel;
 import com.minda.sparsh.model.MeetingTypeModel;
 import com.minda.sparsh.model.SaveCalendarResponse;
+import com.minda.sparsh.model.WeekByCustomerModel;
 import com.minda.sparsh.model.WeekModel;
 import com.minda.sparsh.model.YearModel;
 
@@ -56,4 +57,7 @@ public interface CVPClient {
     @FormUrlEncoded
     @PUT("UpdateCalenderBooking")
     Call<SaveCalendarResponse> updateCalendarBooking(@Field("Id") int Id, @Field("WeekDaysId") int weekDayId, @Field("EmpCode") String EmpCode,@Field("CustLocationId") String CustLocationId,@Field("MeetingTypeId") String MeetingTypeId);
+
+    @GET("GetWeekByCustomer")
+    Call<WeekByCustomerModel> getWeekByCustomer(@Query("CustomerId") String CustomerId, @Query("EmpCode") String EmpCode);
 }

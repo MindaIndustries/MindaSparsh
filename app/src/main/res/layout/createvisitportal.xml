@@ -45,7 +45,7 @@
                 android:layout_below="@+id/customSpinnerLayout0"
                 android:layout_marginTop="10dp"
                 android:layout_height="wrap_content"
-                android:hint="custom's Name">
+                android:hint="Customer's Name">
 
                 <com.google.android.material.textfield.MaterialAutoCompleteTextView
                     android:id="@+id/custom_name"
@@ -66,7 +66,7 @@
                 android:layout_below="@+id/customSpinnerLayout1"
                 android:layout_marginTop="10dp"
                 android:layout_height="wrap_content"
-                android:hint="custom's Location">
+                android:hint="Customer's Location">
 
                 <com.google.android.material.textfield.MaterialAutoCompleteTextView
                     android:id="@+id/location_spinner"
@@ -80,7 +80,7 @@
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/customSpinnerLayout3"
                 android:layout_width="match_parent"
-                style="@style/box"
+                style="@style/edittext"
                 android:layout_below="@+id/customSpinnerLayout2"
                 android:layout_marginTop="10dp"
                 android:layout_height="wrap_content"
@@ -171,7 +171,7 @@
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/customSpinnerLayout7"
                 android:layout_width="match_parent"
-                style="@style/box"
+                style="@style/edittext"
                 android:layout_below="@+id/customSpinnerLayout6"
                 android:layout_marginTop="10dp"
                 android:layout_height="wrap_content"
@@ -184,7 +184,6 @@
                     android:gravity="left"
                     android:hint=""
                     android:focusedByDefault="true"
-                    android:editable="false"
                     android:imeOptions="actionNext"
                     android:padding="18dp"
                     />
@@ -192,7 +191,7 @@
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/customSpinnerLayout8"
                 android:layout_width="match_parent"
-                style="@style/box"
+                style="@style/edittext"
                 android:layout_below="@+id/customSpinnerLayout7"
                 android:layout_marginTop="10dp"
                 android:layout_height="wrap_content"
@@ -205,7 +204,6 @@
                     android:gravity="left"
                     android:hint=""
                     android:focusedByDefault="true"
-                    android:editable="false"
                     android:imeOptions="actionNext"
                     android:padding="18dp"
                     />
@@ -213,7 +211,7 @@
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/customSpinnerLayout9"
                 android:layout_width="match_parent"
-                style="@style/box"
+                style="@style/edittext"
                 android:layout_below="@+id/customSpinnerLayout8"
                 android:layout_marginTop="10dp"
                 android:layout_height="wrap_content"
@@ -226,7 +224,6 @@
                     android:gravity="left"
                     android:hint=""
                     android:focusedByDefault="true"
-                    android:editable="false"
                     android:imeOptions="actionNext"
                     android:padding="18dp"
                     />

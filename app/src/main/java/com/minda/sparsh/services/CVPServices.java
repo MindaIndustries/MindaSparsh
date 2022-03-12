@@ -10,6 +10,7 @@ import com.minda.sparsh.model.EditCalendarModel;
 import com.minda.sparsh.model.LocationModel;
 import com.minda.sparsh.model.MeetingTypeModel;
 import com.minda.sparsh.model.SaveCalendarResponse;
+import com.minda.sparsh.model.WeekByCustomerModel;
 import com.minda.sparsh.model.WeekModel;
 import com.minda.sparsh.model.YearModel;
 import com.minda.sparsh.util.RetrofitClient2;
@@ -303,6 +304,29 @@ public class CVPServices {
                 onTaskComplete.onTaskComplte(carotResponse);
             }
         });
+    }
+    public void getWeekByCustomer(OnTaskComplete onTaskComplete, String customerId, String empcode) {
+        CVPClient cvpClient = RetrofitClient2.getClientCVP(CVPClient.class);
+        Call<WeekByCustomerModel> call = cvpClient.getWeekByCustomer(customerId,empcode);
+        call.enqueue(new Callback<WeekByCustomerModel>() {
+            @Override
+            public void onResponse(Call<WeekByCustomerModel> call, Response<WeekByCustomerModel> response) {
+                CarotResponse carotResponse = new CarotResponse();
+                carotResponse.setStatuscode(response.code());
+                if (response.code() == HttpsURLConnection.HTTP_OK) {
+                    carotResponse.setData(response.body());
+                }
+                onTaskComplete.onTaskComplte(carotResponse);
+            }
 
+            @Override
+            public void onFailure(Call<WeekByCustomerModel> call, Throwable t) {
+                CarotResponse carotResponse = new CarotResponse();
+                if (t instanceof IOException) {
+                    carotResponse.setMessage("Please hold on a moment, the internet connectivity seems to be slow");
+                }
+                onTaskComplete.onTaskComplte(carotResponse);
+            }
+        });
     }
 }
