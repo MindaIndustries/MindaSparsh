@@ -74,6 +74,9 @@ public class CVPViewCalendar extends AppCompatActivity implements OnDateSelected
     ArrayList<String> calendartypeList = new ArrayList<>();
     ArrayAdapter<String> calendarTypeAdapter;
     String weekId;
+    private boolean loading = true;
+    int pastVisiblesItems, visibleItemCount, totalItemCount;
+    int weekIdMin=1, weekIdMax=53;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -91,28 +94,92 @@ public class CVPViewCalendar extends AppCompatActivity implements OnDateSelected
         year = String.valueOf(Calendar.getInstance().get(Calendar.YEAR));
         month = Calendar.getInstance().getDisplayName(Calendar.MONTH, Calendar.LONG, Locale.getDefault());
         calendarView.setSelectionColor(getResources().getColor(R.color.colorPrimary));
-        calendarView.state().edit().setMinimumDate(Calendar.getInstance());
+       // calendarView.state().edit().setMinimumDate(Calendar.getInstance());
+        calendarView.state().edit().setFirstDayOfWeek(Calendar.MONDAY).commit();
+
+
         calendarView.addDecorators(
                 new MySelectorDecorator(this),
                 new HighlightWeekendsDecorator(),
                 oneDayDecorator
         );
         calendarView.setOnDateChangedListener(this);
+
+        initCalendarTypeSpinner();
+        getCalendarTypes();
         getWeek(year+"-"+(Calendar.getInstance().get(Calendar.MONTH)+1)+"-"+Calendar.getInstance().get(Calendar.DAY_OF_MONTH));
         viewCalendarAdapter = new ViewCalendarAdapter(CVPViewCalendar.this,meetings,calendartypeId);
         LinearLayoutManager mLayoutManager = new LinearLayoutManager(CVPViewCalendar.this, LinearLayoutManager.VERTICAL, false);
         meetingsRv.setLayoutManager(mLayoutManager);
         meetingsRv.setAdapter(viewCalendarAdapter);
         viewCalendarAdapter.setClickListener(this);
-        initCalendarTypeSpinner();
-        getCalendarTypes();
 
+      /*  meetingsRv.addOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrollStateChanged(@NonNull @NotNull RecyclerView recyclerView, int newState) {
+                super.onScrollStateChanged(recyclerView, newState);
+            }
+
+            @Override
+            public void onScrolled(@NonNull @NotNull RecyclerView recyclerView, int dx, int dy) {
+                super.onScrolled(recyclerView, dx, dy);
+                if (dy > 0) { //check for scroll down
+                    visibleItemCount = mLayoutManager.getChildCount();
+                    totalItemCount = mLayoutManager.getItemCount();
+                    pastVisiblesItems = mLayoutManager.findFirstVisibleItemPosition();
+
+                    if (loading) {
+                        if ((visibleItemCount + pastVisiblesItems) >= totalItemCount) {
+                            loading = false;
+                            Log.v("...", "Last Item Wow !");
+                            loading = true;
+                            if(weekIdMin <= weekIdMax)
+                            getCalendarMeetingsDynamicWeek(String.valueOf(weekIdMin));
+                        }
+                    }
+                }
+                else{
+                    Log.v("...", "First Item Wow !");
+
+                }
+            }
+        });
+*/
     }
 
-    public void getCalendarMeetings(){
+    public void getCalendarMeetingsCurrentWeek(){
         meetings.clear();
         meetingsRv.getRecycledViewPool().clear();
         viewCalendarAdapter.notifyDataSetChanged();
+        CVPServices cvpServices = new CVPServices();
+        cvpServices.getCalendarMeetings(new OnTaskComplete() {
+            @Override
+            public void onTaskComplte(CarotResponse carotResponse) {
+                if(carotResponse.getStatuscode() == HttpsURLConnection.HTTP_OK){
+                    CVPViewCalendarModel meetingTypeModel = (CVPViewCalendarModel) carotResponse.getData();
+                    if(meetingTypeModel!=null) {
+                        List<CVPViewCalendarModel.CVPViewCalendarData> list = meetingTypeModel.getData();
+                        if (list != null && list.size() > 0) {
+                            meetings.addAll(list);
+                        }
+                        if (list != null && list.size()>0 && list.size() < 3){
+                            int week = Integer.parseInt(weekId) + 1;
+                        weekId = "" + week;
+                        weekIdMin = Integer.parseInt(weekId);
+                   //     getCalendarMeetingsDynamicWeek(weekId);
+                    }
+
+                        viewCalendarAdapter.notifyDataSetChanged();
+                     //   heading.setText("Week " +meetings.get(0).getWeeks());
+                    }
+
+                }
+
+            }
+        },empcode,year,calendartypeId,weekId);
+    }
+
+    public void getCalendarMeetingsDynamicWeek(final String weekId){
         CVPServices cvpServices = new CVPServices();
         cvpServices.getCalendarMeetings(new OnTaskComplete() {
             @Override
@@ -124,8 +191,15 @@ public class CVPViewCalendar extends AppCompatActivity implements OnDateSelected
                         if(list!=null && list.size()>0){
                             meetings.addAll(list);
                         }
-                        viewCalendarAdapter.notifyDataSetChanged();
-                        heading.setText("Week " +meetings.get(0).getWeeks());
+                        if (list != null && list.size()>0 && list.size() < 3) {
+                            int week = Integer.parseInt(weekId) + 1;
+                            String weekid = String.valueOf(week);
+                            weekIdMin = Integer.parseInt(weekId);
+                            getCalendarMeetingsDynamicWeek(weekid);
+                         //   calendarView.goToNext();
+                        }
+                            viewCalendarAdapter.notifyDataSetChanged();
+                     //   heading.setText("Week " +meetings.get(0).getWeeks());
                     }
 
                 }
@@ -161,7 +235,7 @@ public class CVPViewCalendar extends AppCompatActivity implements OnDateSelected
                 if(i>=0){
                     calendartypeId = calendarTypes.get(i).getId();
                     viewCalendarAdapter.setCalendarTypeId(calendartypeId);
-                    getCalendarMeetings();
+                    getCalendarMeetingsCurrentWeek();
                     if(calendartypeList.get(i).equalsIgnoreCase("Monthly Calender")){
                     }
                 }
@@ -187,6 +261,10 @@ public class CVPViewCalendar extends AppCompatActivity implements OnDateSelected
                                     calendartypeList.add(calendarTypeData.getName());
                                 }
                             }
+                            calendarTypeSpinner.setText(""+calendartypeList.get(0));
+                            calendartypeId = calendarTypes.get(0).getId();
+                            calendarTypeAdapter.getFilter().filter(null);
+                          //  getCalendarMeetingsCurrentWeek();
                             calendarTypeAdapter.notifyDataSetChanged();
                         }
                     }
@@ -212,7 +290,9 @@ public class CVPViewCalendar extends AppCompatActivity implements OnDateSelected
                                 weeksList.add(weekData.getName());
                             }
                             weekId  = weeks.get(0).getId();
-                            getCalendarMeetings();
+
+
+                            getCalendarMeetingsCurrentWeek();
                         }
                     }
                 }
@@ -270,6 +350,5 @@ public class CVPViewCalendar extends AppCompatActivity implements OnDateSelected
         AlertDialog alertDialog = alertDialogBuilder.create();
         alertDialog.show();
     }
-
 
 }

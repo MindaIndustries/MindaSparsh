@@ -70,6 +70,17 @@ public class ViewCalendarAdapter extends RecyclerView.Adapter<ViewCalendarAdapte
         holder.meeting_type.setText(list.get(position).getMeetingType());
         holder.days.setText(list.get(position).getRangeDate());
         holder.heading.setText("Week "+list.get(position).getWeeks());
+        if(position>0) {
+            if (list.get(position).getWeeks().equals(list.get(position - 1).getWeeks())) {
+                holder.heading.setVisibility(View.GONE);
+            } else {
+                holder.heading.setVisibility(View.VISIBLE);
+            }
+        }
+        else{
+            holder.heading.setVisibility(View.VISIBLE);
+        }
+
         if(list.get(position).getIsDelete()==0){
             holder.delete.setVisibility(View.GONE);
         }
@@ -101,48 +112,43 @@ public class ViewCalendarAdapter extends RecyclerView.Adapter<ViewCalendarAdapte
                     holder.nomeeting.setVisibility(View.VISIBLE);
                 }
                 holder.legend.setText("Changes Not Permitted");
-                holder.legend.setBackgroundColor(Color.parseColor("#bfbfc1"));
+                holder.cardview.setBackgroundColor(Color.parseColor("#bfbfc1"));
                 break;
             case "Plan":
                 holder.nomeeting.setVisibility(View.GONE);
                 holder.cardview.setVisibility(View.VISIBLE);
                 holder.legend.setText("Meeting Planned");
-                holder.legend.setBackgroundColor(Color.parseColor("#00bfff"));
-
+                holder.cardview.setBackgroundColor(Color.parseColor("#00bfff"));
                 break;
             case "IComplete":
                 holder.nomeeting.setVisibility(View.GONE);
                 holder.cardview.setVisibility(View.VISIBLE);
                 holder.legend.setText("Meeting Not Done");
-                holder.legend.setBackgroundColor(Color.parseColor("#ff0000"));
-
+                holder.cardview.setBackgroundColor(Color.parseColor("#ff0000"));
                 break;
             case "Complete":
                 holder.nomeeting.setVisibility(View.GONE);
                 holder.cardview.setVisibility(View.VISIBLE);
                 holder.legend.setText("Planned Meeting Done with MOM");
-                holder.legend.setBackgroundColor(Color.parseColor("#008000"));
+                holder.cardview.setBackgroundColor(Color.parseColor("#008000"));
                 break;
             case "UnPlan":
                 holder.nomeeting.setVisibility(View.GONE);
                 holder.cardview.setVisibility(View.VISIBLE);
                 holder.legend.setText("Unplanned Meeting");
-                holder.legend.setBackgroundColor(Color.parseColor("#ffc0cb"));
+                holder.cardview.setBackgroundColor(Color.parseColor("#ffc0cb"));
                 break;
             case "UComplete":
                 holder.nomeeting.setVisibility(View.GONE);
                 holder.cardview.setVisibility(View.VISIBLE);
                 holder.legend.setText("Unplanned Meeting Done with MOM");
-                holder.legend.setBackgroundColor(Color.parseColor("#d82768"));
-
+                holder.cardview.setBackgroundColor(Color.parseColor("#d82768"));
                 break;
             case "":
                 holder.legend.setText("Available to Plan");
                 holder.nomeeting.setVisibility(View.VISIBLE);
                 holder.cardview.setVisibility(View.GONE);
-                holder.legend.setBackgroundColor(Color.parseColor("#717171"));
-
-
+                holder.cardview.setBackgroundColor(Color.parseColor("#717171"));
                 break;
         }
 

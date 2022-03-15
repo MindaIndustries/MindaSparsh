@@ -11,6 +11,7 @@ import android.widget.Toast;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.cardview.widget.CardView;
 
 import com.minda.sparsh.cvp.CVPPlanCalendar;
 import com.minda.sparsh.cvp.CVPViewCalendar;
@@ -25,16 +26,16 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class MarketingDashboard extends AppCompatActivity {
-    @BindView(R.id.cvp)
-    TextView cvp;
-    @BindView(R.id.cvp_viewCalendar)
-    TextView cvp_viewCalendar;
+    @BindView(R.id.card1)
+    CardView card1;
+    @BindView(R.id.card2)
+    CardView card2;
     @BindView(R.id.toolbar)
     Toolbar toolbar;
     @BindView(R.id.title)
     TextView title;
-    @BindView(R.id.create_visit_report)
-    TextView create_visit_report;
+    @BindView(R.id.card3)
+    CardView card3;
 
 
     @Override
@@ -46,9 +47,9 @@ public class MarketingDashboard extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setHomeAsUpIndicator(R.drawable.back);
-        title.setText("Marketing");
+        title.setText("Customer Visit Portal");
 
-        cvp.setOnClickListener(new View.OnClickListener() {
+        card1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(MarketingDashboard.this, CVPPlanCalendar.class);
@@ -56,7 +57,7 @@ public class MarketingDashboard extends AppCompatActivity {
 
             }
         });
-        cvp_viewCalendar.setOnClickListener(new View.OnClickListener() {
+        card2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(MarketingDashboard.this, CVPViewCalendar.class);
@@ -64,12 +65,11 @@ public class MarketingDashboard extends AppCompatActivity {
 
             }
         });
-        create_visit_report.setOnClickListener(new View.OnClickListener() {
+        card3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(MarketingDashboard.this, CustomerVisitReport.class);
                 startActivity(intent);
-
             }
         });
 
@@ -84,6 +84,7 @@ public class MarketingDashboard extends AppCompatActivity {
     }
 
 
+/*
     public void gettest() {
         Interface loginInterface = RetrofitClient.getClient1().create(Interface.class);
         Call<String> loginResponse = loginInterface.getemp("4667");
@@ -106,6 +107,7 @@ public class MarketingDashboard extends AppCompatActivity {
         });
 
 }
+*/
 
 
 }

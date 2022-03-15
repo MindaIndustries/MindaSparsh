@@ -11,7 +11,7 @@
         android:text="weeks"
         android:id="@+id/heading"
         android:textSize="14sp"
-        android:visibility="gone"
+        android:visibility="visible"
         android:fontFamily="@font/museosans_900"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
@@ -21,7 +21,7 @@
         android:visibility="gone"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="10dp"
         android:layout_below="@+id/heading"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -33,6 +33,7 @@
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardview"
+        android:layout_marginTop="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:cardBackgroundColor="@color/white"
@@ -53,13 +54,15 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
                 android:layout_marginRight="10dp"
-                android:background="@drawable/btn_bg_cvp"
-                android:fontFamily="@font/museosans_500"
+                android:fontFamily="@font/museosans_700"
                 android:padding="10dp"
                 android:text=""
                 android:textColor="@color/white" />
             <RelativeLayout
-                android:padding="10dp"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:paddingBottom="10dp"
+                android:paddingTop="5dp"
                 android:layout_below="@+id/legend"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
@@ -68,24 +71,24 @@
                 android:id="@+id/customer_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="ACE"
-                android:textColor="@color/black"
+                android:text=""
+                android:textColor="@color/white"
                 android:fontFamily="@font/museosans_900"
                 />
 
             <TextView
                 android:text="Formal"
                 android:fontFamily="@font/museosans_500"
-                android:textColor="@color/black"
+                android:textColor="@color/white"
                 android:layout_below="@+id/customer_name"
                 android:id="@+id/meeting_type"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
 
             <TextView
-                android:text="27-4"
+                android:text=""
                 android:fontFamily="@font/museosans_500"
-                android:textColor="@color/black"
+                android:textColor="@color/white"
                 android:layout_below="@+id/meeting_type"
                 android:id="@+id/days"
                 android:layout_width="wrap_content"
@@ -97,6 +100,7 @@
                 android:layout_alignParentRight="true"
                 android:id="@+id/edit"
                 android:src="@drawable/edit"
+                app:tint="@color/white"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
 
@@ -106,6 +110,7 @@
                 android:layout_below="@+id/edit"
                 android:layout_alignParentRight="true"
                 android:src="@drawable/delete_geo"
+                app:tint="@color/white"
                 android:id="@+id/delete"
                 android:focusable="true"
                 android:layout_width="wrap_content"

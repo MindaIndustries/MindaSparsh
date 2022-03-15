@@ -464,21 +464,21 @@
                 android:textSize="14sp" />
 
             <android.widget.Button
-                android:textColor="@color/white"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="10dp"
                 android:id="@+id/submit"
-                android:background="@drawable/btn_bg"
-                android:layout_toEndOf="@+id/view"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/customerSpinnerLayout8"
-                android:text="Submit"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_toEndOf="@+id/view"
+                android:background="@drawable/btn_bg"
+                android:drawableLeft="@drawable/done"
+                android:fontFamily="@font/museosans_700"
                 android:gravity="center"
                 android:paddingLeft="10dp"
-                android:drawableLeft="@drawable/done"
-                android:textSize="14sp"
-                android:fontFamily="@font/museosans_700" />
+                android:text="Submit"
+                android:textColor="@color/white"
+                android:textSize="14sp" />
 
             <include
                 layout="@layout/progressbar_layout"

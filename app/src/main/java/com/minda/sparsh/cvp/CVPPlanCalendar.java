@@ -105,6 +105,7 @@ public class CVPPlanCalendar extends AppCompatActivity implements OnDateSelected
     String currentDate;
     int meetingId;
 
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -119,7 +120,8 @@ public class CVPPlanCalendar extends AppCompatActivity implements OnDateSelected
         empcode = myPref.getString("Id", "Id");
         calendarView.setDateSelected(new Date(), true);
         calendarView.setSelectionColor(getResources().getColor(R.color.colorPrimary));
-        calendarView.state().edit().setMinimumDate(Calendar.getInstance());
+        calendarView.state().edit().setMinimumDate(Calendar.getInstance()).commit();
+        calendarView.state().edit().setFirstDayOfWeek(Calendar.MONDAY).commit();
         calendarView.addDecorators(
                 new MySelectorDecorator(this),
                 new HighlightWeekendsDecorator(),
@@ -303,7 +305,6 @@ public class CVPPlanCalendar extends AppCompatActivity implements OnDateSelected
                             }
                             customerAdapter.notifyDataSetChanged();
                         }
-
                     }
                 }
             }
@@ -326,7 +327,15 @@ public class CVPPlanCalendar extends AppCompatActivity implements OnDateSelected
                             for (LocationModel.LocationData locationData : list) {
                                 locationList.add(locationData.getLocation().trim());
                             }
+                            location_spinner.setText("");
+                            locationAdapter = new ArrayAdapter<String>(CVPPlanCalendar.this, android.R.layout.simple_spinner_item, locationList);
+                            location_spinner.setAdapter(locationAdapter);
                             locationAdapter.notifyDataSetChanged();
+
+                                   if(locationList.size()==1) {
+                                location_spinner.setText(locationList.get(0));
+                                locationAdapter.getFilter().filter(null);
+                            }
                             if (locationIdedit != null) {
                                 LocationModel.LocationData locationData = new LocationModel.LocationData();
                                 locationData.setID(locationIdedit);

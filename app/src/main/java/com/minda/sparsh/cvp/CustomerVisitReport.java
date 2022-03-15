@@ -1,15 +1,21 @@
 package com.minda.sparsh.cvp;
 
 import android.app.DatePickerDialog;
+import android.app.Dialog;
 import android.app.TimePickerDialog;
+import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.Window;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.DatePicker;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.TimePicker;
 
@@ -85,6 +91,16 @@ public class CustomerVisitReport extends AppCompatActivity {
     TextInputLayout customSpinnerLayout10;
     @BindView(R.id.calendar_weekNo)
     AppCompatAutoCompleteTextView calendarWeekNo;
+    @BindView(R.id.add_attendees)
+    TextView addAttendees;
+    @BindView(R.id.add_internal)
+    TextView add_internal;
+    @BindView(R.id.add_customer)
+    TextView add_customer;
+    @BindView(R.id.add)
+    ImageView add;
+    @BindView(R.id.add_rl)
+    RelativeLayout add_rl;
     DatePickerDialog datePicker;
     Calendar calendar;
     TimePickerDialog timePicker,timePicker1;
@@ -145,6 +161,27 @@ public class CustomerVisitReport extends AppCompatActivity {
                 }
                     return false;
             }
+        });
+        add.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(add_rl.getVisibility()== View.VISIBLE){
+                    add_rl.setVisibility(View.GONE);
+                    add.setImageDrawable(getResources().getDrawable(R.drawable.add));
+                }
+                else{
+                    add_rl.setVisibility(View.VISIBLE);
+                    add.setImageDrawable(getResources().getDrawable(R.drawable.minus));
+                }
+            }
+        });
+
+        add_internal.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                addAttendees();
+
+               }
         });
     }
     @Override
@@ -338,4 +375,14 @@ public class CustomerVisitReport extends AppCompatActivity {
         },customerId,empcode);
     }
 
+    public void addAttendees(){
+
+        Dialog dialog = new Dialog(CustomerVisitReport.this);
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.setCancelable(false);
+        dialog.setContentView(R.layout.addattendees);
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
+
+        dialog.show();
+    }
 }

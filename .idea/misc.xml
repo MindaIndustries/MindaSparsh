@@ -62,6 +62,7 @@
         <entry key="app/src/main/res/layout/activity_vision.xml" value="0.14959016393442623" />
         <entry key="app/src/main/res/layout/activity_visitor_management.xml" value="0.14959016393442623" />
         <entry key="app/src/main/res/layout/activity_visitor_management_list.xml" value="0.14959016393442623" />
+        <entry key="app/src/main/res/layout/addattendees.xml" value="0.21209016393442623" />
         <entry key="app/src/main/res/layout/approve_list_cell_view.xml" value="0.16" />
         <entry key="app/src/main/res/layout/approver_celll_view.xml" value="0.1" />
         <entry key="app/src/main/res/layout/arpd_cell_view.xml" value="0.1" />
@@ -134,6 +135,7 @@
         <entry key="app/src/main/res/layout/tkt_detail_row.xml" value="0.1" />
         <entry key="app/src/main/res/layout/toolbar.xml" value="0.1" />
         <entry key="app/src/main/res/layout/toolbar1.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/toolbar_dialog.xml" value="0.21209016393442623" />
         <entry key="app/src/main/res/layout/view_agenda_drawable_event.xml" value="0.15505464480874318" />
         <entry key="app/src/main/res/layout/view_appointment_cell_view.xml" value="0.16" />
         <entry key="app/src/main/res/layout/view_bottom_up_detail.xml" value="0.1" />
