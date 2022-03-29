@@ -42,6 +42,8 @@ public class CVPViewCalendarModel {
         int IsEdit;
         @SerializedName("IsDelete")
         int IsDelete;
+        @SerializedName("MomId")
+        String MomId;
 
         public String getRangeDate() {
             return RangeDate;
@@ -137,6 +139,14 @@ public class CVPViewCalendarModel {
 
         public void setIsDelete(int isDelete) {
             IsDelete = isDelete;
+        }
+
+        public String getMomId() {
+            return MomId;
+        }
+
+        public void setMomId(String momId) {
+            MomId = momId;
         }
     }
 }

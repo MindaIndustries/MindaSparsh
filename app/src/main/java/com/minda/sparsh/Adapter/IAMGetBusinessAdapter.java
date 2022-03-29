@@ -56,10 +56,10 @@ public class IAMGetBusinessAdapter extends RecyclerView.Adapter<IAMGetBusinessAd
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
         final IAMGetBusinessModel iamGetDomainModel = list.get(position);
-        holder.rb.setText(iamGetDomainModel.getBUSINESS());
+        holder.rb.setText(iamGetDomainModel.getBUSINESS().trim());
         holder.rb.setVisibility(View.GONE);
         holder.checkBox.setVisibility(View.VISIBLE);
-        holder.checkBox.setText(iamGetDomainModel.getBUSINESS());
+        holder.checkBox.setText(iamGetDomainModel.getBUSINESS().trim());
 
 
       /*  if (checkCondition.equalsIgnoreCase("7") || checkCondition.equalsIgnoreCase("8") || checkCondition.equalsIgnoreCase("48")) {

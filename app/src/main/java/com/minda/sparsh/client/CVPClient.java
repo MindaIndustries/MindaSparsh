@@ -1,5 +1,6 @@
 package com.minda.sparsh.client;
 
+import com.minda.sparsh.model.CVPDetailModel;
 import com.minda.sparsh.model.CVPViewCalendarModel;
 import com.minda.sparsh.model.CalendarTypeModel;
 import com.minda.sparsh.model.CustomerModel;
@@ -39,7 +40,7 @@ public interface CVPClient {
     Call<CalendarTypeModel> getCalendarTypes();
     @FormUrlEncoded
     @POST("SaveCalenderBooking")
-    Call<SaveCalendarResponse> saveCalendarBooking(@Field("WeekDaysId")int WeekDaysId, @Field("CustomerId") String CustomerId, @Field("CustLocationId") String CustLocationId, @Field("MeetingTypeId") int MeetingTypeId, @Field("Year") String Year, @Field("CreatedBy") String CreatedBy, @Field("CalenderType") int CalenderType);
+    Call<SaveCalendarResponse> saveCalendarBooking(@Field("WeekDaysId")int WeekDaysId, @Field("CustomerId") String CustomerId, @Field("CustLocationId") String CustLocationId, @Field("MeetingTypeId") int MeetingTypeId, @Field("Year") String Year, @Field("CreatedBy") String CreatedBy, @Field("CalenderType") int CalenderType, @Field("CalendarBookingDate") String CalendarBookingDate);
 
     @GET("GetYear")
     Call<YearModel> getYear();
@@ -56,8 +57,12 @@ public interface CVPClient {
 
     @FormUrlEncoded
     @PUT("UpdateCalenderBooking")
-    Call<SaveCalendarResponse> updateCalendarBooking(@Field("Id") int Id, @Field("WeekDaysId") int weekDayId, @Field("EmpCode") String EmpCode,@Field("CustLocationId") String CustLocationId,@Field("MeetingTypeId") String MeetingTypeId);
+    Call<SaveCalendarResponse> updateCalendarBooking(@Field("Id") int Id, @Field("WeekDaysId") int weekDayId, @Field("EmpCode") String EmpCode,@Field("CustLocationId") String CustLocationId,@Field("MeetingTypeId") String MeetingTypeId, @Field("CalendarBookingDate") String CalendarBookingDate);
 
     @GET("GetWeekByCustomer")
     Call<WeekByCustomerModel> getWeekByCustomer(@Query("CustomerId") String CustomerId, @Query("EmpCode") String EmpCode);
+
+    @GET("GetCvpDetailsReport")
+    Call<CVPDetailModel> getCvpDetail(@Query("MomId") String MomId);
+
 }

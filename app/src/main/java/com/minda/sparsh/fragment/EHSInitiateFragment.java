@@ -6,7 +6,6 @@ import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.content.ContentResolver;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
@@ -20,7 +19,6 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
 import android.provider.MediaStore;
-import android.text.method.KeyListener;
 import android.text.method.TextKeyListener;
 import android.util.Base64;
 import android.util.Base64OutputStream;
@@ -29,10 +27,8 @@ import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
@@ -44,7 +40,6 @@ import com.google.android.material.textfield.TextInputLayout;
 import com.minda.sparsh.EHS_Home;
 import com.minda.sparsh.R;
 import com.minda.sparsh.ViewEHSImage;
-import com.minda.sparsh.customview.NoDefaultSpinner;
 import com.minda.sparsh.model.EHSCategoryModel;
 import com.minda.sparsh.model.EHSIdentifiedLocationModel;
 import com.minda.sparsh.model.EHSObservationModel;
@@ -55,13 +50,10 @@ import com.minda.sparsh.services.EHSServices;
 import com.minda.sparsh.util.RetrofitClient2;
 import com.minda.sparsh.util.Utility;
 
-import org.jetbrains.annotations.NotNull;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -247,7 +239,6 @@ public class EHSInitiateFragment extends Fragment {
             if (getArguments().getString("incidenceAction") != null) {
                 actionTakenEt.setText("" + getArguments().getString("incidenceAction"));
             }
-
             if (getArguments().getString("attachment") != null) {
                 if (getArguments().getString("attachment").contains(".jpg") || getArguments().getString("attachment").contains(".png")) {
                     attachmentName = getArguments().getString("attachment");
@@ -335,16 +326,13 @@ public class EHSInitiateFragment extends Fragment {
             observationDateSpinner.setTextColor(Color.parseColor("#000000"));
         }
 
-        safetyOfficerSpinner.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
-                if (position == 0) {
-                    return;
-                }
-                if (officersName != null && officersName.size() > 0)
-                    safetyOfficer = safetyOfficers.get(position).getUnitOfficer();
-
+        safetyOfficerSpinner.setOnItemClickListener((adapterView, view, position, l) -> {
+            if (position == 0) {
+                return;
             }
+            if (officersName != null && officersName.size() > 0)
+                safetyOfficer = safetyOfficers.get(position).getUnitOfficer();
+
         });
 /*
         safetyOfficerSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -364,77 +352,77 @@ public class EHSInitiateFragment extends Fragment {
         });
 */
 
-        typeOfObservationSpinner.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
-                obstype = observationtypeNames.get(position);
-                if (observationTypes.size() > 0) {
-                    if (position >=0) {
-                        observationID = observationTypes.get(position).getId();
-                        ActID = observationTypes.get(position).getShortName() + "-" + unitcode + "-";
-                        if (observationID.equals("4")) {
-                            categories.clear();
-                            ehsCategories.clear();
-                         //   categories.add("Select");
-                            adapterCategory.notifyDataSetChanged();
-                            subCategorySpinner.setVisibility(View.GONE);
-                            customerSpinnerLayout5.setVisibility(View.GONE);
-                            subCategorytext.setVisibility(View.GONE);
-                        //    ll7.setVisibility(View.GONE);
-                         //   time.setVisibility(View.VISIBLE);
-                            timeSelector.setVisibility(View.VISIBLE);
-                            customerSpinnerLayout6.setVisibility(View.VISIBLE);
-                         //   ll8.setVisibility(View.VISIBLE);
-                            customerSpinnerLayout8.setVisibility(View.VISIBLE);
-                            actionTakenEt.setVisibility(View.VISIBLE);
-                        //    categoryText.setVisibility(View.VISIBLE);
-                            categorySpinner.setVisibility(View.VISIBLE);
-                         //   categorySpinner.setText("");
-                            customerSpinnerLayout4.setVisibility(View.VISIBLE);
-                        //    ll6.setVisibility(View.VISIBLE);
+        typeOfObservationSpinner.setOnItemClickListener((adapterView, view, position, l) -> {
+            obstype = observationtypeNames.get(position);
+            if (observationTypes.size() > 0) {
+                if (position >=0) {
+                    observationID = observationTypes.get(position).getId();
+                    ActID = observationTypes.get(position).getShortName() + "-" + unitcode + "-";
+                    if (observationID.equals("4")) {
+                        categories.clear();
+                        ehsCategories.clear();
+                     //   categories.add("Select");
+                        adapterCategory.notifyDataSetChanged();
+                        subCategorySpinner.setVisibility(View.GONE);
+                        customerSpinnerLayout5.setVisibility(View.GONE);
+                        subCategorytext.setVisibility(View.GONE);
+                    //    ll7.setVisibility(View.GONE);
+                     //   time.setVisibility(View.VISIBLE);
+                        timeSelector.setVisibility(View.VISIBLE);
+                        customerSpinnerLayout6.setVisibility(View.VISIBLE);
+                     //   ll8.setVisibility(View.VISIBLE);
+                        customerSpinnerLayout8.setVisibility(View.VISIBLE);
+                        actionTakenEt.setVisibility(View.VISIBLE);
+                    //    categoryText.setVisibility(View.VISIBLE);
+                        categorySpinner.setVisibility(View.VISIBLE);
+                     //   categorySpinner.setText("");
+                        customerSpinnerLayout4.setVisibility(View.VISIBLE);
+                    //    ll6.setVisibility(View.VISIBLE);
 
-                        } else if (observationID.equals("3")) {
-                            categoryText.setVisibility(View.GONE);
-                            categorySpinner.setVisibility(View.GONE);
-                            customerSpinnerLayout4.setVisibility(View.GONE);
-                            ll6.setVisibility(View.GONE);
-                            subCategorySpinner.setVisibility(View.GONE);
-                            customerSpinnerLayout5.setVisibility(View.GONE);
-                            subCategorytext.setVisibility(View.GONE);
-                            ll7.setVisibility(View.GONE);
-
-                        } else {
-                            categories.clear();
-                            ehsCategories.clear();
-                            //     categories.add("Select");
-                            adapterCategory.notifyDataSetChanged();
-                            subCategorySpinner.setVisibility(View.VISIBLE);
-                           // subCategorySpinner.setText("");
-                            customerSpinnerLayout5.setVisibility(View.VISIBLE);
-
-                            // subCategorytext.setVisibility(View.VISIBLE);
-                          //  ll7.setVisibility(View.VISIBLE);
-                         //   time.setVisibility(View.GONE);
-                            timeSelector.setVisibility(View.GONE);
-                            customerSpinnerLayout6.setVisibility(View.GONE);
-                          //  ll8.setVisibility(View.GONE);
-                            customerSpinnerLayout8.setVisibility(View.GONE);
-                            actionTakenEt.setVisibility(View.GONE);
-                       //     categoryText.setVisibility(View.VISIBLE);
-                            categorySpinner.setVisibility(View.VISIBLE);
-                       //     categorySpinner.setText("");
-                            customerSpinnerLayout4.setVisibility(View.VISIBLE);
-                            //   ll6.setVisibility(View.VISIBLE);
+                    } else if (observationID.equals("3")) {
+                        categoryText.setVisibility(View.GONE);
+                        categorySpinner.setVisibility(View.GONE);
+                        customerSpinnerLayout4.setVisibility(View.GONE);
+                        ll6.setVisibility(View.GONE);
+                        subCategorySpinner.setVisibility(View.GONE);
+                        customerSpinnerLayout5.setVisibility(View.GONE);
+                        subCategorytext.setVisibility(View.GONE);
+                        ll7.setVisibility(View.GONE);
+                        timeSelector.setVisibility(View.GONE);
+                        customerSpinnerLayout6.setVisibility(View.GONE);
 
 
-                        }
-                        getCategories(observationID);
+                    } else {
+                        categories.clear();
+                        ehsCategories.clear();
+                        //     categories.add("Select");
+                        adapterCategory.notifyDataSetChanged();
+                        subCategorySpinner.setVisibility(View.VISIBLE);
+                       // subCategorySpinner.setText("");
+                        customerSpinnerLayout5.setVisibility(View.VISIBLE);
+
+                        // subCategorytext.setVisibility(View.VISIBLE);
+                      //  ll7.setVisibility(View.VISIBLE);
+                     //   time.setVisibility(View.GONE);
+                        timeSelector.setVisibility(View.GONE);
+                        customerSpinnerLayout6.setVisibility(View.GONE);
+                      //  ll8.setVisibility(View.GONE);
+                        customerSpinnerLayout8.setVisibility(View.GONE);
+                        actionTakenEt.setVisibility(View.GONE);
+                   //     categoryText.setVisibility(View.VISIBLE);
+                        categorySpinner.setVisibility(View.VISIBLE);
+                   //     categorySpinner.setText("");
+                        customerSpinnerLayout4.setVisibility(View.VISIBLE);
+                        //   ll6.setVisibility(View.VISIBLE);
 
 
                     }
-                }
+                    getCategories(observationID);
 
+
+                }
             }
+
         });
 
 /*
@@ -505,16 +493,13 @@ public class EHSInitiateFragment extends Fragment {
         });
 */
 
-        identifiedLocationSpinner.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
-                identifiedLocation = identifiedLocations.get(position);
-                if (ehsIdentifiedLocations.size() > 0) {
-                    if (position >= 0)
-                        locationID = ehsIdentifiedLocations.get(position).getID();
-                }
-
+        identifiedLocationSpinner.setOnItemClickListener((adapterView, view, position, l) -> {
+            identifiedLocation = identifiedLocations.get(position);
+            if (ehsIdentifiedLocations.size() > 0) {
+                if (position >= 0)
+                    locationID = ehsIdentifiedLocations.get(position).getID();
             }
+
         });
       /*  identifiedLocationSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -532,16 +517,13 @@ public class EHSInitiateFragment extends Fragment {
             }
         });
       */
-        subCategorySpinner.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
-                subcategory = subCategories.get(position);
-                if (ehsSubCategories.size() > 1) {
-                    if (position >= 0)
-                        subCategoryID = ehsSubCategories.get(position).getID();
-                }
-
+        subCategorySpinner.setOnItemClickListener((adapterView, view, position, l) -> {
+            subcategory = subCategories.get(position);
+            if (ehsSubCategories.size() > 1) {
+                if (position >= 0)
+                    subCategoryID = ehsSubCategories.get(position).getID();
             }
+
         });
 
 /*
@@ -1034,21 +1016,18 @@ public class EHSInitiateFragment extends Fragment {
                     }
 
 
-                    categorySpinner.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                        @Override
-                        public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
-                            if (position >= 0) {
-                                catId = ehsCategories.get(position).getId();
-                                category = categories.get(position);
-                                subCategories.clear();
-                          //      subCategories.add("Select");
-                                initSubCategorySpinner();
-                                getSubCategories(catId);
-                            } else {
-                                subCategories.clear();
-                             //   subCategories.add("Select");
-                                adapterSubCategory.notifyDataSetChanged();
-                            }
+                    categorySpinner.setOnItemClickListener((adapterView, view, position, l) -> {
+                        if (position >= 0) {
+                            catId = ehsCategories.get(position).getId();
+                            category = categories.get(position);
+                            subCategories.clear();
+                      //      subCategories.add("Select");
+                            initSubCategorySpinner();
+                            getSubCategories(catId);
+                        } else {
+                            subCategories.clear();
+                         //   subCategories.add("Select");
+                            adapterSubCategory.notifyDataSetChanged();
                         }
                     });
 /*

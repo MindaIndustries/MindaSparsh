@@ -10,6 +10,7 @@
     <include layout="@layout/toolbar" />
 
     <ScrollView
+        android:layout_marginTop="?attr/actionBarSize"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:fillViewport="true">
@@ -17,7 +18,7 @@
     <RelativeLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_marginTop="?attr/actionBarSize">
+    >
 
         <com.prolificinteractive.materialcalendarview.MaterialCalendarView
             android:id="@+id/calendarView"
@@ -25,6 +26,8 @@
             android:layout_height="wrap_content"
             app:mcv_arrowColor="@color/colorPrimary"
             app:mcv_calendarMode="week"
+            app:mcv_firstDayOfWeek="monday"
+            android:visibility="gone"
             app:mcv_selectionColor="@color/colorPrimary" />
 
     <RelativeLayout
@@ -53,13 +56,34 @@
                 android:imeOptions="actionNext"
                 android:padding="18dp"
                 /> </com.google.android.material.textfield.TextInputLayout>
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/customSpinnerLayout1"
+            style="@style/edittext"
+            android:layout_below="@+id/customerSpinnerLayout0"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:hint="Date"
+            >
+
+            <com.google.android.material.textfield.MaterialAutoCompleteTextView
+                android:id="@+id/date"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:editable="false"
+                android:focusedByDefault="true"
+                android:gravity="left"
+                android:hint=""
+                android:imeOptions="actionNext"
+                android:padding="18dp" />
+        </com.google.android.material.textfield.TextInputLayout>
 
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/customerSpinnerLayout"
         android:layout_width="match_parent"
         style="@style/box"
-        android:layout_below="@+id/customerSpinnerLayout0"
+        android:layout_below="@+id/customSpinnerLayout1"
         android:layout_marginTop="10dp"
         android:layout_height="wrap_content"
         android:hint="Week">

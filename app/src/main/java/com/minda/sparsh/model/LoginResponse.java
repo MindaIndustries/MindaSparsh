@@ -241,7 +241,7 @@ public class LoginResponse {
     @SerializedName("InactiveDate")
     @Expose
     private String inactiveDate;
-    @SerializedName("FunctionID")
+    @SerializedName("FunctionID1")
     @Expose
     private Integer functionID;
     @SerializedName("Deleted")
@@ -304,6 +304,21 @@ public class LoginResponse {
     @SerializedName("CreatedOn")
     @Expose
     private String createdOn;
+    @SerializedName("CVPAccess")
+    boolean CVPAccess;
+    @SerializedName("BUSINESS")
+    String BUSINESS;
+    @SerializedName("BusinessId")
+    int BusinessId;
+    @SerializedName("DomainID")
+    int DomainID;
+    @SerializedName("DomainName")
+    String DomainName;
+    @SerializedName("FunctionID")
+    int FunctionID;
+    @SerializedName("FunctionName")
+    String FunctionName;
+
 
     public Integer getUserID() {
         return userID;
@@ -1103,5 +1118,21 @@ public class LoginResponse {
 
     public void setCreatedOn(String createdOn) {
         this.createdOn = createdOn;
+    }
+
+    public boolean isCVPAccess() {
+        return CVPAccess;
+    }
+
+    public void setCVPAccess(boolean CVPAccess) {
+        this.CVPAccess = CVPAccess;
+    }
+
+    public String getBUSINESS() {
+        return BUSINESS;
+    }
+
+    public void setBUSINESS(String BUSINESS) {
+        this.BUSINESS = BUSINESS;
     }
 }

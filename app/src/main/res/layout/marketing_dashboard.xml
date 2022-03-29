@@ -17,11 +17,20 @@
         android:layout_height="80dp">
 
         <RelativeLayout
-            android:gravity="center"
+            android:padding="10dp"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="20dp"
+                android:layout_toLeftOf="@+id/cvp"
+                android:src="@drawable/calendar" />
+
             <TextView
+                android:layout_centerInParent="true"
                 android:id="@+id/cvp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -40,11 +49,21 @@
             android:layout_height="80dp">
 
             <RelativeLayout
+                android:padding="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:gravity="center">
+                >
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="20dp"
+                    android:layout_toLeftOf="@+id/cvp_viewCalendar"
+                    android:src="@drawable/calendar_view" />
 
                 <TextView
+                    android:layout_centerInParent="true"
                     android:id="@+id/cvp_viewCalendar"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -54,6 +73,7 @@
             </RelativeLayout>
         </androidx.cardview.widget.CardView>
         <androidx.cardview.widget.CardView
+            android:visibility="gone"
             android:layout_marginTop="10dp"
             android:layout_below="@+id/card2"
             android:layout_width="match_parent"
@@ -61,16 +81,25 @@
             android:layout_height="80dp">
 
         <RelativeLayout
-            android:gravity="center"
+            android:layout_gravity="center"
+            android:padding="10dp"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="20dp"
+                android:layout_toLeftOf="@+id/create_visit_report"
+                android:src="@drawable/create_visit" />
 
             <TextView
                 android:id="@+id/create_visit_report"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
                 android:fontFamily="@font/museosans_900"
-                android:text="Create Visit Report"
+                android:text="Create Visit \nReport"
                 android:textSize="18sp" />
         </RelativeLayout>
         </androidx.cardview.widget.CardView>

@@ -19,10 +19,6 @@ import java.util.Date;
 import androidx.annotation.NonNull;
 import androidx.core.app.NotificationCompat;
 
-/**
- * Created by dmin on 2/23/2018.
- */
-
 public class MyFirebaseMessagingService extends FirebaseMessagingService {
     String TAG = "test";
     SharedPreferences myPref;

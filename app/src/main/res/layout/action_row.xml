@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="10dp"
+        android:stretchColumns="*">
+
+        <TableRow >
+
+            <TextView
+                android:id="@+id/sno"
+                android:layout_width="40dp"
+                style="@style/content_style"
+                android:layout_height="match_parent"
+                android:background="@drawable/border"
+                android:text="S.No" />
+
+            <TextView
+                android:id="@+id/business"
+                android:layout_width="100dp"
+                style="@style/content_style"
+                android:layout_height="match_parent"
+                android:background="@drawable/border"
+                android:text="Business" />
+
+            <TextView
+                android:id="@+id/plant"
+                style="@style/content_style"
+                android:layout_width="120dp"
+                android:layout_height="match_parent"
+                android:background="@drawable/border"
+                android:text="Plant" />
+
+            <TextView
+                android:id="@+id/sixm"
+                android:layout_width="100dp"
+                style="@style/content_style"
+                android:layout_height="match_parent"
+                android:background="@drawable/border"
+                android:text="6M" />
+
+            <TextView
+                android:id="@+id/actionpoint"
+                android:layout_width="100dp"
+                style="@style/content_style"
+                android:layout_height="match_parent"
+                android:background="@drawable/border"
+                android:text="Action Point" />
+
+            <TextView
+                android:id="@+id/responsible"
+                android:layout_width="120dp"
+                style="@style/content_style"
+                android:layout_height="match_parent"
+                android:background="@drawable/border"
+                android:text="Responsible Person" />
+
+            <TextView
+                android:id="@+id/target_date"
+                android:layout_width="100dp"
+                style="@style/content_style"
+                android:layout_height="match_parent"
+                android:background="@drawable/border"
+                android:text="Target Date" />
+            <TextView
+                android:id="@+id/remarks"
+                android:layout_width="100dp"
+                style="@style/content_style"
+                android:layout_height="match_parent"
+                android:background="@drawable/border"
+                android:text="Remarks" />
+            <TextView
+                android:id="@+id/actiontaken"
+                style="@style/content_style"
+                android:layout_width="100dp"
+                android:layout_height="match_parent"
+                android:background="@drawable/border"
+                android:text="Action Taken" />
+            <TextView
+                android:id="@+id/completed_date"
+                style="@style/content_style"
+                android:layout_width="100dp"
+                android:layout_height="match_parent"
+                android:background="@drawable/border"
+                android:text="Completed Date" />
+
+            <TextView
+                android:id="@+id/status"
+                style="@style/content_style"
+                android:layout_width="100dp"
+                android:layout_height="match_parent"
+                android:background="@drawable/border"
+                android:text="Status" />
+
+        </TableRow>
+
+
+    </TableLayout>
+
+
+</RelativeLayout>

@@ -60,11 +60,11 @@ public class IAMGetBusinessModel {
     }
 
     public String getBUSINESS() {
-        return bUSINESS;
+        return bUSINESS.trim();
     }
 
     public void setBUSINESS(String bUSINESS) {
-        this.bUSINESS = bUSINESS;
+        this.bUSINESS = bUSINESS.trim();
     }
 
     public String getCREATEDON() {

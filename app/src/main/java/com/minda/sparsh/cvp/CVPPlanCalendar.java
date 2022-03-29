@@ -1,16 +1,19 @@
 package com.minda.sparsh.cvp;
 
-import android.content.DialogInterface;
+
+import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.net.Uri;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -36,14 +39,11 @@ import com.minda.sparsh.model.MeetingTypeModel;
 import com.minda.sparsh.model.SaveCalendarResponse;
 import com.minda.sparsh.model.WeekModel;
 import com.minda.sparsh.services.CVPServices;
-import com.minda.sparsh.util.RetrofitClient2;
-import com.minda.sparsh.util.Utility;
 import com.prolificinteractive.materialcalendarview.CalendarDay;
 import com.prolificinteractive.materialcalendarview.MaterialCalendarView;
 import com.prolificinteractive.materialcalendarview.OnDateSelectedListener;
 
 import org.jetbrains.annotations.NotNull;
-import org.threeten.bp.LocalDate;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -86,6 +86,13 @@ public class CVPPlanCalendar extends AppCompatActivity implements OnDateSelected
     Button submit;
     @BindView(R.id.calendarView)
     MaterialCalendarView calendarView;
+    @BindView(R.id.customSpinnerLayout1)
+    TextInputLayout datelayout;
+    @BindView(R.id.date)
+    AppCompatAutoCompleteTextView date;
+    DatePickerDialog datePicker;
+    Calendar calendar;
+
     ArrayAdapter<String> weekAdapter, customerAdapter, locationAdapter, meetingTypeAdapter, calendarTypeAdapter;
     ArrayList<String> weeksList = new ArrayList<>();
     ArrayList<WeekModel.WeekData> weeks = new ArrayList<>();
@@ -104,6 +111,8 @@ public class CVPPlanCalendar extends AppCompatActivity implements OnDateSelected
     String calendartypeIdedit, weekIdedit, customerIdedit, locationIdedit, meetingtypeIdedit;
     String currentDate;
     int meetingId;
+    int currentWeekId;
+    String datesave;
 
 
     @Override
@@ -138,7 +147,14 @@ public class CVPPlanCalendar extends AppCompatActivity implements OnDateSelected
         getMeetingType();
         initCalendarTypeSpinner();
         getCalendarTypes();
-
+        initDatePicker();
+        date.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View view, MotionEvent motionEvent) {
+                datePicker.show();
+                return false;
+            }
+        });
         reset.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -169,14 +185,69 @@ public class CVPPlanCalendar extends AppCompatActivity implements OnDateSelected
                     Toast.makeText(CVPPlanCalendar.this, "Select Meeting Type", Toast.LENGTH_LONG).show();
                     return;
                 }
+                if (date.getText().toString().equals("")) {
+                    Toast.makeText(CVPPlanCalendar.this, "Select Date", Toast.LENGTH_LONG).show();
+                    return;
+                }
 
                 if (submit.getText().toString().equals("Submit")) {
-                    saveCalendarBooking(Integer.parseInt(weekdayId), customerId, custLocId, Integer.parseInt(meetingTypeId), year, empcode, Integer.parseInt(calendartypeId));
+                    saveCalendarBooking(Integer.parseInt(weekdayId), customerId, custLocId, Integer.parseInt(meetingTypeId), year, empcode, Integer.parseInt(calendartypeId), datesave);
                 } else {
-                    updateCalendarBooking(meetingId, Integer.parseInt(weekdayId), empcode, custLocId, meetingTypeId);
+                    updateCalendarBooking(meetingId, Integer.parseInt(weekdayId), empcode, custLocId, meetingTypeId, datesave);
                 }
             }
         });
+    }
+
+    public void initDatePicker() {
+        calendar = Calendar.getInstance();
+        calendar.setTimeInMillis(System.currentTimeMillis());
+        int mMonth = calendar.get(Calendar.MONTH) + 1;
+        String monthNo;
+        if (mMonth < 10) {
+            monthNo = "0" + mMonth;
+        } else {
+            monthNo = "" + mMonth;
+        }
+        String dayOfMonthStr;
+        if (calendar.get(Calendar.DAY_OF_MONTH) < 10) {
+            dayOfMonthStr = "0" + calendar.get(Calendar.DAY_OF_MONTH);
+        } else {
+            dayOfMonthStr = "" + calendar.get(Calendar.DAY_OF_MONTH);
+        }
+
+
+        date.setText(dayOfMonthStr + "-" + monthNo + "-" + calendar.get(Calendar.YEAR));
+        datesave = calendar.get(Calendar.YEAR) + "-" + monthNo + "-" + dayOfMonthStr;
+        datePicker = new DatePickerDialog(CVPPlanCalendar.this, new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker datePicker, int i, int i1, int i2) {
+                int mMonth = i1 + 1;
+                String monthNo;
+                if (mMonth < 10) {
+                    monthNo = "0" + mMonth;
+                } else {
+                    monthNo = "" + mMonth;
+                }
+                String dayOfMonthStr;
+                if (i2 < 10) {
+                    dayOfMonthStr = "0" + i2;
+                } else {
+                    dayOfMonthStr = "" + i2;
+                }
+                calendar.set(Calendar.DAY_OF_MONTH, i2);
+                calendar.set(Calendar.MONTH, i1);
+                calendar.set(Calendar.YEAR, i);
+                getWeek(i + "-" + monthNo + "-" + dayOfMonthStr);
+                date.setText("" + dayOfMonthStr + "-" + monthNo + "-" + i);
+                datesave = i +"-"+ monthNo +"-"+ dayOfMonthStr;
+
+            }
+        }, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH));
+        datePicker.getDatePicker().setMinDate(Calendar.getInstance().getTimeInMillis() - 10000);
+        datePicker.getDatePicker().setFirstDayOfWeek(Calendar.MONDAY);
+
+
     }
 
     @Override
@@ -272,13 +343,19 @@ public class CVPPlanCalendar extends AppCompatActivity implements OnDateSelected
                             for (WeekModel.WeekData weekData : list) {
                                 weeksList.add(weekData.getName());
                             }
-                            weekSpinner.setText("");
+                            // weekSpinner.setText("");
                             weekAdapter = new ArrayAdapter<String>(CVPPlanCalendar.this, android.R.layout.simple_spinner_item, weeksList);
                             weekSpinner.setAdapter(weekAdapter);
                             weekAdapter.notifyDataSetChanged();
                             if (weeksList.size() > 0) {
                                 weekSpinner.setText(weeksList.get(0));
                                 weekdayId = weeks.get(0).getWeeks();
+                                if (!date.equals("")) {
+                                    weekSpinner.setEnabled(false);
+                                    weekSpinner.setTextColor(Color.parseColor("#333333"));
+                                } else {
+                                    weekSpinner.setEnabled(true);
+                                }
                             }
                         }
                     }
@@ -286,6 +363,7 @@ public class CVPPlanCalendar extends AppCompatActivity implements OnDateSelected
             }
         }, date);
     }
+
 
     public void getCustomers(String empcode) {
         customer.clear();
@@ -332,8 +410,9 @@ public class CVPPlanCalendar extends AppCompatActivity implements OnDateSelected
                             location_spinner.setAdapter(locationAdapter);
                             locationAdapter.notifyDataSetChanged();
 
-                                   if(locationList.size()==1) {
+                            if (locationList.size() == 1) {
                                 location_spinner.setText(locationList.get(0));
+                                custLocId = locations.get(0).getID();
                                 locationAdapter.getFilter().filter(null);
                             }
                             if (locationIdedit != null) {
@@ -344,7 +423,6 @@ public class CVPPlanCalendar extends AppCompatActivity implements OnDateSelected
                                     location_spinner.setText(locationList.get(locationIndex));
                                     locationAdapter.getFilter().filter(null);
                                 }
-
                             }
                         }
                     }
@@ -405,6 +483,9 @@ public class CVPPlanCalendar extends AppCompatActivity implements OnDateSelected
                             }
 
                             calendarTypeAdapter.notifyDataSetChanged();
+                            calendarTypeSpinner.setText(calendartypeList.get(0));
+                            calendarTypeAdapter.getFilter().filter(null);
+                            calendartypeId = calendarTypes.get(0).getId();
                             if (getIntent().getExtras() != null && getIntent().getBooleanExtra("Edit", true)) {
                                 meetingId = getIntent().getIntExtra("MID", 0);
                                 calendartypeIdedit = getIntent().getStringExtra("calendartypeId");
@@ -429,7 +510,7 @@ public class CVPPlanCalendar extends AppCompatActivity implements OnDateSelected
         });
     }
 
-    public void saveCalendarBooking(int WeekDaysId, String CustomerId, String CustLocationId, int MeetingTypeId, String Year, String CreatedBy, int CalenderType) {
+    public void saveCalendarBooking(int WeekDaysId, String CustomerId, String CustLocationId, int MeetingTypeId, String Year, String CreatedBy, int CalenderType, String CalendarBookingDate) {
         calendarTypes.clear();
         calendartypeList.clear();
         CVPServices cvpServices = new CVPServices();
@@ -448,7 +529,7 @@ public class CVPPlanCalendar extends AppCompatActivity implements OnDateSelected
                     Toast.makeText(CVPPlanCalendar.this, "Something went wrong", Toast.LENGTH_LONG).show();
                 }
             }
-        }, WeekDaysId, CustomerId, CustLocationId, MeetingTypeId, Year, CreatedBy, CalenderType);
+        }, WeekDaysId, CustomerId, CustLocationId, MeetingTypeId, Year, CreatedBy, CalenderType, CalendarBookingDate);
     }
 
     public void showMsgUpdate(String title, String message) {
@@ -458,6 +539,10 @@ public class CVPPlanCalendar extends AppCompatActivity implements OnDateSelected
         alertDialogBuilder.setCancelable(false);
         alertDialogBuilder.setPositiveButton("OK", (arg0, arg1) -> {
             arg0.dismiss();
+            if(title.equals("Updated")){
+                finish();
+                startActivity(new Intent(CVPPlanCalendar.this,CVPViewCalendar.class));
+            }
         });
         AlertDialog alertDialog = alertDialogBuilder.create();
         alertDialog.show();
@@ -481,6 +566,7 @@ public class CVPPlanCalendar extends AppCompatActivity implements OnDateSelected
                                 int weekindex = weeks.indexOf(weekData);
                                 if (weekindex >= 0) {
                                     weekSpinner.setText(weeksList.get(weekindex));
+                                    weekAdapter.getFilter().filter(null);
                                 }
                             }
                             customerIdedit = String.valueOf(list.get(0).getCustomerID());
@@ -511,6 +597,14 @@ public class CVPPlanCalendar extends AppCompatActivity implements OnDateSelected
                                     meetingTypeAdapter.getFilter().filter(null);
                                 }
                             }
+                            if (list.get(0).getCalendarBookingDate() != null && list.get(0).getCalendarBookingDate().length() > 0) {
+                               String[] datevisit = list.get(0).getCalendarBookingDate().split("T");
+                               String dateT = datevisit[0];
+                               String[] dateTSplit = dateT.split("-");
+                               String viewDate = dateTSplit[2]+"-"+dateTSplit[1]+"-"+dateTSplit[0];
+
+                                date.setText("" + viewDate);
+                            }
 
 
                         }
@@ -521,7 +615,7 @@ public class CVPPlanCalendar extends AppCompatActivity implements OnDateSelected
         }, meetingId, empcode);
     }
 
-    public void updateCalendarBooking(int id, int weekdayid, String empcode, String custLocationId, String meetingTypeId) {
+    public void updateCalendarBooking(int id, int weekdayid, String empcode, String custLocationId, String meetingTypeId, String CalendarBookingDate) {
         CVPServices cvpServices = new CVPServices();
         cvpServices.updateCalendarBooking(new OnTaskComplete() {
             @Override
@@ -533,9 +627,8 @@ public class CVPPlanCalendar extends AppCompatActivity implements OnDateSelected
                     }
                 }
             }
-        }, id, weekdayid, empcode, custLocationId, meetingTypeId);
+        }, id, weekdayid, empcode, custLocationId, meetingTypeId, CalendarBookingDate);
     }
-
 
 
 }

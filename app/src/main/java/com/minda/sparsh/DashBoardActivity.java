@@ -116,7 +116,7 @@ public class DashBoardActivity extends BaseActivity implements View.OnClickListe
 
 
         tv_user_name.setOnClickListener(view -> {
-
+            tv_unread.setVisibility(View.GONE);
             Intent intent = new Intent(DashBoardActivity.this, NotificationActivity.class);
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
             startActivity(intent);
@@ -319,7 +319,7 @@ public class DashBoardActivity extends BaseActivity implements View.OnClickListe
 
 
                     }
-                }, empCode, deviceTokenFcm);
+                }, empCode, deviceTokenFcm,"Android");
 
             }
         });

@@ -308,6 +308,10 @@ public class RequestForAccessActivity extends AppCompatActivity implements View.
             IAMGetRequestTypeSpinnerModel selectedItem = requestmodelList.get(i);
             sp_access_type.setText("");
             sp_access_category.setText("");
+            sp_access_sub_type.setText("");
+            sp_access_sub_category.setText("");
+            sp_user_authorization_profile.setText("");
+            sp_access_for.setText("");
             if (!selectedItem.getRequestType().equalsIgnoreCase("Please Select Request Type")) {
                 RequestTypeName = selectedItem.getRequestType();
 
@@ -385,7 +389,12 @@ public class RequestForAccessActivity extends AppCompatActivity implements View.
 
         sp_access_type.setOnItemClickListener((adapterView, view, i, l) -> {
             IAMGetAccessTypeSpinnerModel selectedItem = accessTypeModelList.get(i);
+            sp_access_category.setText("");
             sp_access_sub_type.setText("");
+            sp_access_sub_category.setText("");
+            sp_user_authorization_profile.setText("");
+            sp_access_for.setText("");
+
             if (!selectedItem.getAccessType().equalsIgnoreCase("Please Select Access Type")) {
                 hitIAMGetAccessSubTypeApi(selectedItem.getAccessTypeId().toString());
                 sp_access_type_id = selectedItem.getAccessTypeId().toString();
@@ -395,7 +404,6 @@ public class RequestForAccessActivity extends AppCompatActivity implements View.
                 layAccessSubType.setVisibility(View.GONE);
             } else {
                 layAccessSubType.setVisibility(View.VISIBLE);
-
             }
 
         });
@@ -426,6 +434,8 @@ public class RequestForAccessActivity extends AppCompatActivity implements View.
 
 
         sp_access_category.setOnItemClickListener((adapterView, view, i, l) -> {
+            sp_access_for.setText("");
+            sp_user_authorization_profile.setText("");
             IAMGetCategorySpinnerModel selectedItem = accessCategoryModelList.get(i);
             if (!selectedItem.getCategory().equalsIgnoreCase("Please Select Category")) {
                 hitIAMGetSubCategoryApi(selectedItem.getCategoryId().toString());

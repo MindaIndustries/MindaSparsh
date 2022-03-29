@@ -9,13 +9,16 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.minda.sparsh.R;
 import com.minda.sparsh.cvp.CVPPlanCalendar;
+import com.minda.sparsh.cvp.ViewMOMDetails;
 import com.minda.sparsh.model.CVPViewCalendarModel;
 
 import org.jetbrains.annotations.NotNull;
@@ -69,7 +72,18 @@ public class ViewCalendarAdapter extends RecyclerView.Adapter<ViewCalendarAdapte
         holder.customer_name.setText(list.get(position).getCustomerName());
         holder.meeting_type.setText(list.get(position).getMeetingType());
         holder.days.setText(list.get(position).getRangeDate());
-        holder.heading.setText("Week "+list.get(position).getWeeks());
+      //  holder.heading.setText("Week "+list.get(position).getWeeks());
+        holder.cardview.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(holder.legend.getText().toString().contains("Done with MOM")){
+                    Intent in = new Intent(mContext, ViewMOMDetails.class);
+                    in.putExtra("mId",list.get(position).getMomId());
+                    mContext.startActivity(in);
+
+                }
+            }
+        });
         if(position>0) {
             if (list.get(position).getWeeks().equals(list.get(position - 1).getWeeks())) {
                 holder.heading.setVisibility(View.GONE);
@@ -101,6 +115,7 @@ public class ViewCalendarAdapter extends RecyclerView.Adapter<ViewCalendarAdapte
                 in.putExtra("Edit",true);
                 in.putExtra("calendartypeId",calendarTypeId);
                 mContext.startActivity(in);
+                ((AppCompatActivity)mContext).finish();
             }
         });
 

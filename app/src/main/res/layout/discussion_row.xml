@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:stretchColumns="*">
+
+        <TableRow >
+
+            <TextView
+                android:id="@+id/sno"
+                android:layout_width="40dp"
+                style="@style/content_style"
+                android:layout_height="match_parent"
+                android:background="@drawable/border"
+                android:text="S.No" />
+
+            <TextView
+                android:id="@+id/business"
+                style="@style/content_style"
+                android:layout_width="100dp"
+                android:layout_height="match_parent"
+                android:background="@drawable/border"
+                android:text="Business" />
+
+            <TextView
+                android:id="@+id/plant"
+                style="@style/content_style"
+                android:layout_width="120dp"
+                android:layout_height="match_parent"
+                android:background="@drawable/border"
+                android:text="Plant" />
+
+            <TextView
+                android:id="@+id/sixm"
+                style="@style/content_style"
+                android:layout_width="100dp"
+                android:layout_height="match_parent"
+                android:background="@drawable/border"
+                android:text="6M" />
+
+            <TextView
+                android:id="@+id/discussion"
+                style="@style/content_style"
+                android:layout_width="100dp"
+                android:layout_height="match_parent"
+                android:background="@drawable/border"
+                android:text="Discussions" />
+
+
+            <TextView
+                android:id="@+id/action"
+                style="@style/content_style"
+                android:layout_width="100dp"
+                android:layout_height="match_parent"
+                android:background="@drawable/border"
+                android:text="Action" />
+
+
+        </TableRow>
+
+
+    </TableLayout>
+
+</RelativeLayout>

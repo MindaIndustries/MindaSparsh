@@ -67,7 +67,7 @@ public class IAMGetDomainAdapter extends RecyclerView.Adapter<IAMGetDomainAdapte
        */
         holder.checkBox.setVisibility(View.GONE);
         holder.rb.setVisibility(View.VISIBLE);
-        holder.rb.setText(iamGetDomainModel.getDomainName());
+        holder.rb.setText(iamGetDomainModel.getDomainName().trim());
         //  }
 
         holder.rb.setOnClickListener(view -> {

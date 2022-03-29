@@ -47,7 +47,7 @@
 
 
 
-    <style name="spinnertheme" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+    <style name="spinnertheme" parent="Theme.MaterialComponents.Light.NoActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
         <item name="android:statusBarColor">#eb3045</item>

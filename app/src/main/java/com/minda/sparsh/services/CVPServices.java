@@ -3,6 +3,7 @@ package com.minda.sparsh.services;
 import com.minda.sparsh.client.CVPClient;
 import com.minda.sparsh.listener.CarotResponse;
 import com.minda.sparsh.listener.OnTaskComplete;
+import com.minda.sparsh.model.CVPDetailModel;
 import com.minda.sparsh.model.CVPViewCalendarModel;
 import com.minda.sparsh.model.CalendarTypeModel;
 import com.minda.sparsh.model.CustomerModel;
@@ -156,9 +157,9 @@ public class CVPServices {
 
     }
 
-    public void saveCalendarBooking(OnTaskComplete onTaskComplete,int WeekDaysId,String CustomerId, String CustLocationId, int MeetingTypeId, String Year, String CreatedBy, int CalenderType){
+    public void saveCalendarBooking(OnTaskComplete onTaskComplete,int WeekDaysId,String CustomerId, String CustLocationId, int MeetingTypeId, String Year, String CreatedBy, int CalenderType, String CalendarBookingDate){
         CVPClient cvpClient = RetrofitClient2.getClientCVP(CVPClient.class);
-        Call<SaveCalendarResponse> call = cvpClient.saveCalendarBooking(WeekDaysId,CustomerId,CustLocationId,MeetingTypeId,Year,CreatedBy,CalenderType);
+        Call<SaveCalendarResponse> call = cvpClient.saveCalendarBooking(WeekDaysId,CustomerId,CustLocationId,MeetingTypeId,Year,CreatedBy,CalenderType, CalendarBookingDate);
         call.enqueue(new Callback<SaveCalendarResponse>() {
             @Override
             public void onResponse(Call<SaveCalendarResponse> call, Response<SaveCalendarResponse> response) {
@@ -281,9 +282,9 @@ public class CVPServices {
         });
 
     }
-    public void updateCalendarBooking(OnTaskComplete onTaskComplete, int id, int weekdayId, String empcode, String custLocationId, String meetingTypeId){
+    public void updateCalendarBooking(OnTaskComplete onTaskComplete, int id, int weekdayId, String empcode, String custLocationId, String meetingTypeId, String CalendarBookingDate){
         CVPClient cvpClient = RetrofitClient2.getClientCVP(CVPClient.class);
-        Call<SaveCalendarResponse> call = cvpClient.updateCalendarBooking(id,weekdayId,empcode,custLocationId, meetingTypeId);
+        Call<SaveCalendarResponse> call = cvpClient.updateCalendarBooking(id,weekdayId,empcode,custLocationId, meetingTypeId,CalendarBookingDate);
         call.enqueue(new Callback<SaveCalendarResponse>() {
             @Override
             public void onResponse(Call<SaveCalendarResponse> call, Response<SaveCalendarResponse> response) {
@@ -328,5 +329,31 @@ public class CVPServices {
                 onTaskComplete.onTaskComplte(carotResponse);
             }
         });
+    }
+
+    public void getCvpDetail(OnTaskComplete onTaskComplete, String momId){
+        CVPClient cvpClient = RetrofitClient2.getClientCVP(CVPClient.class);
+        Call<CVPDetailModel> call = cvpClient.getCvpDetail(momId);
+        call.enqueue(new Callback<CVPDetailModel>() {
+            @Override
+            public void onResponse(Call<CVPDetailModel> call, Response<CVPDetailModel> response) {
+                CarotResponse carotResponse = new CarotResponse();
+                carotResponse.setStatuscode(response.code());
+                if (response.code() == HttpsURLConnection.HTTP_OK) {
+                    carotResponse.setData(response.body());
+                }
+                onTaskComplete.onTaskComplte(carotResponse);
+            }
+
+            @Override
+            public void onFailure(Call<CVPDetailModel> call, Throwable t) {
+                CarotResponse carotResponse = new CarotResponse();
+                if (t instanceof IOException) {
+                    carotResponse.setMessage("Please hold on a moment, the internet connectivity seems to be slow");
+                }
+                onTaskComplete.onTaskComplte(carotResponse);
+            }
+        });
+
     }
 }

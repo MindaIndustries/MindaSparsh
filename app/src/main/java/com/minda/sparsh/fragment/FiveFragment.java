@@ -1,13 +1,15 @@
 package com.minda.sparsh.fragment;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.Toast;
 
-import com.minda.sparsh.BaseActivity;
 import com.minda.sparsh.DashBoardActivity;
 import com.minda.sparsh.MarketingDashboard;
 import com.minda.sparsh.R;
@@ -25,7 +27,8 @@ public class FiveFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
-
+    SharedPreferences myPref;
+    boolean cvp;
 
     public FiveFragment() {
         // Required empty public constructor
@@ -60,12 +63,16 @@ public class FiveFragment extends Fragment {
         final DashBoardActivity contaxt = (DashBoardActivity) getActivity();
         im_right.setOnClickListener(view1 -> contaxt.viewPager.setCurrentItem(contaxt.getItem(+1), true));
         im_left.setOnClickListener(view12 -> contaxt.viewPager.setCurrentItem(contaxt.getItem(-1), true));
+        myPref = getActivity().getSharedPreferences("MyPref", Context.MODE_PRIVATE);
 
-        card_view.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+        card_view.setOnClickListener(view13 -> {
+            cvp = myPref.getBoolean("cvp",true);
+            if(cvp) {
                 Intent intent = new Intent(getActivity(), MarketingDashboard.class);
                 startActivity(intent);
+            }
+            else{
+                Toast.makeText(getActivity(),"You are not Authorized",Toast.LENGTH_LONG).show();
             }
         });
         // Inflate the layout for this fragment

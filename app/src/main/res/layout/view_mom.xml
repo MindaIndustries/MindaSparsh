@@ -1,0 +1,482 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/screen_bg">
+    <include layout="@layout/toolbar" />
+
+
+    <ScrollView
+        android:layout_marginTop="?attr/actionBarSize"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+        <RelativeLayout
+            android:id="@+id/main"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/card1"
+                app:cardCornerRadius="2dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="25dp">
+
+                    <TextView
+                        android:id="@+id/mom_id"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/museosans_900"
+                        android:text=""
+                        android:textSize="18sp" />
+
+                    <View
+                        android:id="@+id/view"
+                        android:layout_width="20dp"
+                        android:layout_height="1dp"
+                        android:layout_below="@+id/mom_id"
+                        android:layout_centerInParent="true" />
+
+                    <TextView
+                        android:id="@+id/customer"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/mom_id"
+                        android:layout_marginTop="10dp"
+                        android:fontFamily="@font/museosans_700"
+                        android:text="Customer:" />
+
+                    <TextView
+                        android:layout_marginLeft="10dp"
+                        android:id="@+id/customer_value"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/mom_id"
+                        android:layout_marginTop="10dp"
+                        android:layout_toLeftOf="@+id/view"
+                        android:layout_toRightOf="@+id/customer"
+                        android:fontFamily="@font/museosans_700"
+                        android:text="" />
+
+                    <TextView
+                        android:id="@+id/date"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/mom_id"
+                        android:layout_marginTop="10dp"
+                        android:layout_toRightOf="@+id/view"
+                        android:fontFamily="@font/museosans_700"
+                        android:text="Date of Visit:" />
+
+                    <TextView
+                        android:id="@+id/date_value"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/mom_id"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_toRightOf="@+id/date"
+                        android:fontFamily="@font/museosans_700"
+                        android:text="" />
+
+                    <TextView
+                        android:id="@+id/start_time"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/date_value"
+                        android:layout_marginTop="10dp"
+                        android:layout_toRightOf="@+id/view"
+                        android:fontFamily="@font/museosans_700"
+                        android:text="Start Time:" />
+
+                    <TextView
+                        android:id="@+id/start_time_value"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/date_value"
+                        android:layout_marginTop="10dp"
+                        android:layout_toRightOf="@+id/start_time"
+                        android:fontFamily="@font/museosans_700"
+                        android:text=""
+                        android:layout_marginLeft="10dp"
+                        />
+
+                    <TextView
+                        android:id="@+id/end_time"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/start_time_value"
+                        android:layout_marginTop="10dp"
+                        android:layout_toRightOf="@+id/view"
+                        android:fontFamily="@font/museosans_700"
+                        android:text="End Time:" />
+
+                    <TextView
+                        android:id="@+id/end_time_value"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/start_time_value"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_toRightOf="@+id/end_time"
+                        android:fontFamily="@font/museosans_700"
+                        android:text="" />
+
+                    <TextView
+                        android:id="@+id/agenda"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/customer_location_value"
+                        android:layout_marginTop="10dp"
+                        android:fontFamily="@font/museosans_700"
+                        android:text="Agenda:" />
+
+                    <TextView
+                        android:id="@+id/agenda_value"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/customer_location_value"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_toRightOf="@+id/agenda"
+                        android:fontFamily="@font/museosans_700"
+                        android:text="" />
+
+                    <TextView
+                        android:id="@+id/location"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/customer"
+                        android:layout_marginTop="10dp"
+                        android:fontFamily="@font/museosans_700"
+                        android:text="Location:" />
+
+                    <TextView
+                        android:id="@+id/location_value"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/customer_value"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_toLeftOf="@+id/view"
+                        android:layout_toRightOf="@+id/location"
+                        android:fontFamily="@font/museosans_700"
+                        android:text="" />
+
+                    <TextView
+                        android:id="@+id/customer_location"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/location_value"
+                        android:layout_marginTop="10dp"
+                        android:fontFamily="@font/museosans_700"
+                        android:text="Customer Location:" />
+
+                    <TextView
+                        android:id="@+id/customer_location_value"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/location_value"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_toLeftOf="@+id/view"
+                        android:layout_toRightOf="@+id/customer_location"
+                        android:fontFamily="@font/museosans_700"
+                        android:text="" />
+
+                    <LinearLayout
+                        android:id="@+id/part1"
+                        android:layout_width="match_parent"
+                        android:layout_height="2dp"
+                        android:layout_below="@+id/agenda_value"
+                        android:layout_marginTop="10dp"
+                        android:background="#cccccc"
+                        android:orientation="horizontal" />
+
+                    <TextView
+                        android:id="@+id/attendees"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/part1"
+                        android:layout_marginTop="10dp"
+                        android:fontFamily="@font/museosans_900"
+                        android:text="Attendees"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:id="@+id/uno"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/attendees"
+                        android:layout_marginTop="10dp"
+                        android:fontFamily="@font/museosans_700"
+                        android:text="UNO Minda:" />
+
+                    <TextView
+                        android:id="@+id/uno_attendees"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/attendees"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_toRightOf="@+id/uno"
+                        android:layout_toLeftOf="@+id/view"
+                        android:fontFamily="@font/museosans_700"
+                        android:text="" />
+
+                    <TextView
+                        android:id="@+id/customer_attendees"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/attendees"
+                        android:layout_marginTop="10dp"
+                        android:layout_toRightOf="@+id/view"
+                        android:fontFamily="@font/museosans_700"
+                        android:text="Customer:" />
+
+                    <TextView
+                        android:id="@+id/customer_attendees_value"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/attendees"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_toRightOf="@+id/customer_attendees"
+                        android:fontFamily="@font/museosans_700"
+                        android:text="" />
+
+
+                </RelativeLayout>
+            </androidx.cardview.widget.CardView>
+
+
+            <TextView
+                android:id="@+id/discussion_header"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/card1"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="20dp"
+                android:fontFamily="@font/museosans_900"
+                android:text="Overall Discussion Points"
+                android:textSize="16sp" />
+            <HorizontalScrollView
+                android:layout_marginTop="5dp"
+                android:layout_below="@+id/discussion_header"
+                android:id="@+id/horizontalView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:scrollbars="none">
+                <!--for table-->
+                <TableLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="10dp"
+                    android:stretchColumns="*">
+
+                    <TableRow android:background="@color/colorPrimary">
+
+                        <TextView
+                            style="@style/header_style"
+                            android:layout_width="40dp"
+                            android:layout_height="match_parent"
+                            android:background="@drawable/border"
+                            android:text="S.No" />
+
+                        <TextView
+                            style="@style/header_style"
+                            android:layout_width="100dp"
+                            android:layout_height="match_parent"
+                            android:background="@drawable/border"
+                            android:text="Business" />
+
+                        <TextView
+                            style="@style/header_style"
+                            android:layout_width="120dp"
+                            android:layout_height="match_parent"
+                            android:background="@drawable/border"
+                            android:text="Plant" />
+
+                        <TextView
+                            style="@style/header_style"
+                            android:layout_width="100dp"
+                            android:layout_height="match_parent"
+                            android:background="@drawable/border"
+                            android:text="6M" />
+
+                        <TextView
+                            style="@style/header_style"
+                            android:layout_width="100dp"
+                            android:layout_height="match_parent"
+                            android:background="@drawable/border"
+                            android:text="Discussions" />
+
+                        <TextView
+                            style="@style/header_style"
+                            android:layout_width="100dp"
+                            android:layout_height="match_parent"
+                            android:background="@drawable/border"
+                            android:text="Action" />
+
+
+                    </TableRow>
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/discussions"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+
+                </TableLayout>
+            </HorizontalScrollView>
+
+            <TextView
+                android:id="@+id/action_header"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/horizontalView"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="20dp"
+                android:fontFamily="@font/museosans_900"
+                android:text="Action Points"
+                android:textSize="16sp" />
+
+            <TextView
+                android:layout_below="@+id/horizontalView"
+                android:id="@+id/tv_scroll_Approval_Details"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="More details"
+                android:layout_marginTop="20dp"
+                android:textColor="@color/black"
+                android:textSize="10sp"
+                android:gravity="center|right"
+                android:drawableRight="@drawable/ic_next"
+                android:drawablePadding="10dp"
+                android:textStyle="bold" />
+
+            <HorizontalScrollView
+                android:id="@+id/horizontalView1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/action_header"
+                android:layout_marginTop="5dp"
+                android:scrollbars="none">
+                <!--for table-->
+                <TableLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="10dp"
+                    android:stretchColumns="*">
+
+                    <TableRow android:background="@color/colorPrimary">
+
+                        <TextView
+                            style="@style/header_style"
+                            android:layout_width="40dp"
+                            android:layout_height="match_parent"
+                            android:background="@drawable/border"
+                            android:text="S.No" />
+
+                        <TextView
+                            style="@style/header_style"
+                            android:layout_width="100dp"
+                            android:layout_height="match_parent"
+                            android:background="@drawable/border"
+                            android:text="Business" />
+
+                        <TextView
+                            style="@style/header_style"
+                            android:layout_width="120dp"
+                            android:layout_height="match_parent"
+                            android:background="@drawable/border"
+                            android:text="Plant" />
+
+                        <TextView
+                            style="@style/header_style"
+                            android:layout_width="100dp"
+                            android:layout_height="match_parent"
+                            android:background="@drawable/border"
+                            android:text="6M" />
+
+                        <TextView
+                            style="@style/header_style"
+                            android:layout_width="100dp"
+                            android:layout_height="match_parent"
+                            android:background="@drawable/border"
+                            android:text="Action Point" />
+
+                        <TextView
+                            style="@style/header_style"
+                            android:layout_width="120dp"
+                            android:layout_height="match_parent"
+                            android:background="@drawable/border"
+                            android:text="Responsible Person" />
+
+                        <TextView
+                            style="@style/header_style"
+                            android:layout_width="100dp"
+                            android:layout_height="match_parent"
+                            android:background="@drawable/border"
+                            android:text="Target Date" />
+
+                        <TextView
+                            style="@style/header_style"
+                            android:layout_width="100dp"
+                            android:layout_height="match_parent"
+                            android:background="@drawable/border"
+                            android:text="Remarks" />
+
+                        <TextView
+                            style="@style/header_style"
+                            android:layout_width="100dp"
+                            android:layout_height="match_parent"
+                            android:background="@drawable/border"
+                            android:text="Action Taken" />
+
+                        <TextView
+                            style="@style/header_style"
+                            android:layout_width="100dp"
+                            android:layout_height="match_parent"
+                            android:background="@drawable/border"
+                            android:text="Completed Date" />
+
+                        <TextView
+                            style="@style/header_style"
+                            android:layout_width="100dp"
+                            android:layout_height="match_parent"
+                            android:background="@drawable/border"
+                            android:text="Status" />
+
+                    </TableRow>
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/action_points"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+
+                </TableLayout>
+            </HorizontalScrollView>
+
+            <ImageView
+                android:id="@+id/download"
+                android:visibility="gone"
+                android:layout_below="@+id/horizontalView1"
+                android:src="@android:drawable/star_on"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+        </RelativeLayout>
+    </ScrollView>
+
+
+</RelativeLayout>

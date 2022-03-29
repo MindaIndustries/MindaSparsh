@@ -18,10 +18,10 @@ import retrofit2.Response;
 
 public class FirebaseService {
 
-    public void saveFirebaseID(OnTaskComplete onTaskComplete, String EmpCode, String firebaseToken) {
+    public void saveFirebaseID(OnTaskComplete onTaskComplete, String EmpCode, String firebaseToken, String LogInVia) {
 
         FireBaseClient fireBaseClient = RetrofitClient2.createServiceSaveFirebaseID(FireBaseClient.class);
-        Call<String> call = fireBaseClient.saveFirebaseID(EmpCode, firebaseToken);
+        Call<String> call = fireBaseClient.saveFirebaseID(EmpCode, firebaseToken,LogInVia);
         call.enqueue(new Callback<String>() {
             @Override
             public void onResponse(@NotNull Call<String> call, @NotNull Response<String> response) {

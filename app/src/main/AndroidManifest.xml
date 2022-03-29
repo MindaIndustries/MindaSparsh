@@ -25,7 +25,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
-        tools:replace="android:icon">
+        tools:replace="android:icon"
+        android:requestLegacyExternalStorage="true"
+        >
 
         <meta-data
             android:name="com.google.android.gms.version"
@@ -90,7 +92,8 @@
         <activity
             android:name=".DashBoardActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AppTheme.NoActionBar"
+            />
         <activity
             android:name=".BaseActivity"
             android:screenOrientation="portrait" />
@@ -215,6 +218,10 @@
             android:screenOrientation="portrait"
             android:theme="@style/spinnertheme"
             />
+        <activity android:name=".cvp.ViewMOMDetails"
+            android:screenOrientation="landscape"
+            android:theme="@style/spinnertheme"
+            />
 
 
         <meta-data
@@ -225,8 +232,10 @@
             android:name="androidx.core.content.FileProvider"
             android:authorities="com.minda.sparsh.provider"
             android:exported="false"
-            android:grantUriPermissions="true">
+            android:grantUriPermissions="true"
+            tools:replace="android:authorities">
             <meta-data
+                tools:replace="android:resource"
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/provider_paths" />
         </provider>

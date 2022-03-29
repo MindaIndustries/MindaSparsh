@@ -35,6 +35,8 @@ public class EditCalendarModel {
         String MeetingType1;
         @SerializedName("WeekDaysID")
         String WeekDaysID;
+        @SerializedName("CalendarBookingDate")
+        String CalendarBookingDate;
 
 
         public String getMeetingType() {
@@ -107,6 +109,14 @@ public class EditCalendarModel {
 
         public void setWeekDaysID(String weekDaysID) {
             WeekDaysID = weekDaysID;
+        }
+
+        public String getCalendarBookingDate() {
+            return CalendarBookingDate;
+        }
+
+        public void setCalendarBookingDate(String calendarBookingDate) {
+            CalendarBookingDate = calendarBookingDate;
         }
     }
 }

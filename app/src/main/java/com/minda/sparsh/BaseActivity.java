@@ -205,19 +205,20 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
         if (id == R.id.nav_manufacturing) {
             viewPager.setCurrentItem(2, true);
         }
-        if (id == R.id.nav_finance) {
+       /* if (id == R.id.nav_finance) {
             viewPager.setCurrentItem(4, true);
         }
-
+*/
         if (id == R.id.nav_it) {
-            viewPager.setCurrentItem(5, true);
+            viewPager.setCurrentItem(4, true);
         }
         if (id == R.id.nav_support) {
             viewPager.setCurrentItem(7, true);
         }
-        if (id == R.id.nav_setting) {
+       /* if (id == R.id.nav_setting) {
 
         }
+       */
         if (id == R.id.nav_signout) {
             showMsg();
         }
