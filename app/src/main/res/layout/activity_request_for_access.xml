@@ -463,17 +463,17 @@
                         android:layout_height="wrap_content" />
 
                     <TextView
-                        android:layout_marginTop="10dp"
-                        android:layout_marginEnd="10dp"
-                        android:layout_alignBottom="@+id/attachment1"
-                        android:layout_alignTop="@+id/attachment1"
                         android:id="@+id/attachtext1"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_alignTop="@+id/attachment1"
+                        android:layout_alignBottom="@+id/attachment1"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginEnd="10dp"
                         android:layout_toStartOf="@+id/attachment1"
-                        android:text="Add attachment"
+                        android:fontFamily="@font/museosans_500"
                         android:singleLine="true"
-                        android:fontFamily="@font/museosans_500" />
+                        android:text="Add attachment" />
 
                     <ImageView
                         android:id="@+id/doc_view"

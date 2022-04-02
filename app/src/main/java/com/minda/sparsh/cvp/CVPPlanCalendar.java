@@ -215,7 +215,7 @@ public class CVPPlanCalendar extends AppCompatActivity implements OnDateSelected
         } else {
             dayOfMonthStr = "" + calendar.get(Calendar.DAY_OF_MONTH);
         }
-
+        year = String.valueOf(calendar.get(Calendar.YEAR));
 
         date.setText(dayOfMonthStr + "-" + monthNo + "-" + calendar.get(Calendar.YEAR));
         datesave = calendar.get(Calendar.YEAR) + "-" + monthNo + "-" + dayOfMonthStr;
@@ -241,7 +241,7 @@ public class CVPPlanCalendar extends AppCompatActivity implements OnDateSelected
                 getWeek(i + "-" + monthNo + "-" + dayOfMonthStr);
                 date.setText("" + dayOfMonthStr + "-" + monthNo + "-" + i);
                 datesave = i +"-"+ monthNo +"-"+ dayOfMonthStr;
-
+                year = String.valueOf(i);
             }
         }, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH));
         datePicker.getDatePicker().setMinDate(Calendar.getInstance().getTimeInMillis() - 10000);

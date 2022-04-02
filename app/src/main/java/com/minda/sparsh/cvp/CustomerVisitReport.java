@@ -320,7 +320,6 @@ public class CustomerVisitReport extends AppCompatActivity {
                             }
                             locationAdapter = new ArrayAdapter<String>(CustomerVisitReport.this, android.R.layout.simple_spinner_item, locationList);
                             locationSpinner.setAdapter(locationAdapter);
-
                             locationAdapter.notifyDataSetChanged();
                           }
                     }

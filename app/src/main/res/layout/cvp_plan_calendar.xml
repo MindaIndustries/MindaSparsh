@@ -52,7 +52,6 @@
                 android:gravity="left"
                 android:hint=""
                 android:editable="false"
-                android:focusedByDefault="true"
                 android:imeOptions="actionNext"
                 android:padding="18dp"
                 /> </com.google.android.material.textfield.TextInputLayout>
@@ -95,7 +94,6 @@
             android:gravity="left"
             android:hint=""
             android:editable="false"
-            android:focusedByDefault="true"
             android:imeOptions="actionNext"
             android:padding="18dp"
             /> </com.google.android.material.textfield.TextInputLayout>
@@ -116,7 +114,6 @@
             android:gravity="left"
             android:hint=""
             android:editable="false"
-            android:focusedByDefault="true"
             android:imeOptions="actionNext"
             android:padding="18dp"/>
     </com.google.android.material.textfield.TextInputLayout>

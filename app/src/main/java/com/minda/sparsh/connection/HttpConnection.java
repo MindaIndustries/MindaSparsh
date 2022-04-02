@@ -18,16 +18,16 @@ public class HttpConnection {
     //public static String BASE_URL = "http://52.172.191.61/TestMinda.com/service.asmx/";
     //  public static String BASE_URL = "http://176.9.28.166/MindaSparshTest/service.asmx/";
     //dev environment
-    public static String BASE_URL = "https://dev.mindasparsh.com/service.asmx/";
+  /*  public static String BASE_URL = "https://dev.mindasparsh.com/service.asmx/";
     public static final String mindacareUrl = "https://dev.mindasparsh.com/mindacare/login.aspx?";
     public static final String itsurveyUrl = "https://dev.mindasparsh.com/itsurvey/defaulltM.aspx?";
     public static final String c_rurl = "https://dev.mindasparsh.com/ChangeRequest/ChangeRequestForm.aspx?";
-    //  prod environment
-  /*  public static String BASE_URL = "https://app.mindasparsh.com/service.asmx/";
+  */  //  prod environment
+    public static String BASE_URL = "https://app.mindasparsh.com/service.asmx/";
     public static final String mindacareUrl = "https://app.mindasparsh.com/mindacare/login.aspx?";
     public static final String itsurveyUrl = "https://app.mindasparsh.com/itsurvey/defaulltM.aspx?";
     public static final String cr_url = "https://app.mindasparsh.com/ChangeRequest/ChangeRequestForm.aspx?";
-  */  public String requestGetContent(String url) {
+    public String requestGetContent(String url) {
         HttpURLConnection urlConnection = null;
         String result = null;
         try {

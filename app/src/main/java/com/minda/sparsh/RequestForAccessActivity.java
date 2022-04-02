@@ -1215,7 +1215,7 @@ public class RequestForAccessActivity extends AppCompatActivity implements View.
     }
 
     private void selectImage() {
-        final CharSequence[] items = {"Take Photo", "Choose from Gallery", "Choose Document",
+        final CharSequence[] items = {"Take Photo", "Choose from Gallery", /*"Choose Document",*/
                 "Cancel"};
         AlertDialog.Builder builder = new AlertDialog.Builder(RequestForAccessActivity.this);
         builder.setTitle("Add Photo!");
@@ -1248,6 +1248,7 @@ public class RequestForAccessActivity extends AppCompatActivity implements View.
     }
 
     public void fileIntent() {
+        docView.setVisibility(View.GONE);
         String[] mimeTypes =
                 {"application/pdf", "application/msword", "application/vnd.ms-powerpoint", "application/vnd.ms-excel", "text/plain", "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", "application/vnd.openxmlformats-officedocument.wordprocessingml.document"};
 
@@ -1334,9 +1335,9 @@ public class RequestForAccessActivity extends AppCompatActivity implements View.
                 onSelectFromGalleryResult(data);
             else if (requestCode == CAPTURE_FROM_CAMERA)
                 onCaptureImageResult(data);
-            else if (requestCode == SELECT_FILE)
+           /* else if (requestCode == SELECT_FILE)
                 onSelectFile(data);
-        }
+      */  }
     }
 
     @RequiresApi(api = Build.VERSION_CODES.O)

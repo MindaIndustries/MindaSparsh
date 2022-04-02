@@ -518,10 +518,12 @@ public class EHSInitiateFragment extends Fragment {
         });
       */
         subCategorySpinner.setOnItemClickListener((adapterView, view, position, l) -> {
-            subcategory = subCategories.get(position);
-            if (ehsSubCategories.size() > 1) {
-                if (position >= 0)
-                    subCategoryID = ehsSubCategories.get(position).getID();
+            if(position>=0) {
+                subcategory = subCategories.get(position);
+                if (ehsSubCategories.size() > 1) {
+                    if (position >= 0)
+                        subCategoryID = ehsSubCategories.get(position).getID();
+                }
             }
 
         });
@@ -624,6 +626,7 @@ public class EHSInitiateFragment extends Fragment {
     @OnClick(R.id.doc_view)
     public void onClickViewDoc() {
 
+        try{
         if (getArguments() != null && getArguments().getString("attachment") != null) {
             Intent in = new Intent(getActivity(), ViewEHSImage.class);
             in.putExtra("attachment", attachmentName);
@@ -635,9 +638,13 @@ public class EHSInitiateFragment extends Fragment {
             byte[] byteArray = stream.toByteArray();
             Intent in = new Intent(getActivity(), ViewEHSImage.class);
             in.putExtra("bitmap", byteArray);
-            if(getActivity()!=null && isAdded())
-            getActivity().startActivity(in);
+            if (getActivity() != null && isAdded())
+                getActivity().startActivity(in);
 
+        }
+        }
+        catch (Exception e){
+            e.printStackTrace();
         }
     }
 

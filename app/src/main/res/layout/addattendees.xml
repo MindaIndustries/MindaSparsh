@@ -25,8 +25,6 @@
                 android:id="@+id/attendee"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:editable="false"
-                android:focusedByDefault="true"
                 android:gravity="left"
                 android:hint=""
                 android:imeOptions="actionNext"
@@ -35,12 +33,15 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <android.widget.Button
-
+            android:layout_marginTop="10dp"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/customSpinnerLayout0"
             android:background="@drawable/btn_bg"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-
-
+            android:text="ADD"
+            android:fontFamily="@font/museosans_500"
+            android:textColor="@color/white"
             />
 
     </RelativeLayout>

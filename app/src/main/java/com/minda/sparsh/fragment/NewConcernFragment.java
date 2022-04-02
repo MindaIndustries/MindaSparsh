@@ -544,7 +544,7 @@ public class NewConcernFragment extends Fragment {
     }
 
     private void selectImage() {
-        final CharSequence[] items = {"Take Photo", "Choose from Gallery", "Choose Document",
+        final CharSequence[] items = {"Take Photo", "Choose from Gallery", /*"Choose Document",*/
                 "Cancel"};
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         builder.setTitle("Add Photo!");

@@ -254,7 +254,11 @@ public class CVPViewCalendar extends AppCompatActivity implements OnDateSelected
     public void getCalendarMeetingsCurrentWeek(){
         ProgressDialog progressDialog = new ProgressDialog(CVPViewCalendar.this);
         progressDialog.setMessage("Loading...");
-        progressDialog.show();
+        if(!isFinishing()) {
+            if (!progressDialog.isShowing()) {
+                progressDialog.show();
+            }
+        }
         if(weekId!=null && weekId.length()>0) {
             meetings.clear();
             meetingsRv.getRecycledViewPool().clear();
@@ -281,7 +285,11 @@ public class CVPViewCalendar extends AppCompatActivity implements OnDateSelected
                     }
 
                 }
-                progressDialog.dismiss();
+                if(!isFinishing()) {
+                    if (progressDialog.isShowing()) {
+                        progressDialog.dismiss();
+                    }
+                }
 
             }, empcode, year, calendartypeId, weekId);
         }

@@ -5,9 +5,23 @@
     android:background="@color/screen_bg"
     >
     <include layout="@layout/toolbar" />
+    <LinearLayout
+        android:layout_marginTop="?attr/actionBarSize"
+        android:gravity="center"
+        android:id="@+id/logo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="70dp"
+            android:layout_marginTop="10dp"
+            android:src="@drawable/login_logo" />
+    </LinearLayout>
+
 
     <RelativeLayout
-        android:layout_marginTop="?attr/actionBarSize"
+        android:layout_below="@+id/logo"
         android:padding="20dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -30,10 +44,10 @@
                 android:src="@drawable/calendar" />
 
             <TextView
-                android:layout_centerInParent="true"
                 android:id="@+id/cvp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
                 android:fontFamily="@font/museosans_900"
                 android:text="Plan Calendar"
                 android:textSize="18sp" />
