@@ -54,6 +54,7 @@ public class DashBoardActivity extends BaseActivity implements View.OnClickListe
     public static Integer time = 0;
 
     String version = "";
+    String deviceTokenFcm;
 
 
     @Override
@@ -309,9 +310,10 @@ public class DashBoardActivity extends BaseActivity implements View.OnClickListe
 
 
     public void saveFirebaseToken(String empCode) {
-
         FirebaseMessaging.getInstance().getToken().addOnCompleteListener(task -> {
-            String deviceTokenFcm = task.getResult();
+            if(task.isSuccessful()) {
+                 deviceTokenFcm = task.getResult();
+            }
             if (Utility.isOnline(DashBoardActivity.this)) {
                 FirebaseService firebaseService = new FirebaseService();
                 firebaseService.saveFirebaseID(carotResponse -> {
@@ -319,9 +321,9 @@ public class DashBoardActivity extends BaseActivity implements View.OnClickListe
 
 
                     }
-                }, empCode, deviceTokenFcm,"Android");
-
+                }, empCode, deviceTokenFcm, "Android");
             }
+
         });
     }
 

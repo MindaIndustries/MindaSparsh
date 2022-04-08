@@ -120,6 +120,7 @@
         <entry key="app/src/main/res/layout/nav_header_base.xml" value="0.1" />
         <entry key="app/src/main/res/layout/new_concern.xml" value="0.2" />
         <entry key="app/src/main/res/layout/notification_call_view.xml" value="0.16" />
+        <entry key="app/src/main/res/layout/notification_url.xml" value="0.16666666666666666" />
         <entry key="app/src/main/res/layout/plant_details_cell_view.xml" value="0.264" />
         <entry key="app/src/main/res/layout/privacy_policy.xml" value="0.1" />
         <entry key="app/src/main/res/layout/profile_activity.xml" value="0.2" />

@@ -3,10 +3,6 @@ package com.minda.sparsh.model;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-/**
- * Created by dmin on 2/24/2018.
- */
-
 public class NotificationModel {
     @SerializedName("PushNotcID")
     @Expose
@@ -23,12 +19,16 @@ public class NotificationModel {
     @SerializedName("IsRead")
     @Expose
     private Boolean isRead;
-    @SerializedName("SentBy")
+  /*  @SerializedName("SentBy")
     @Expose
-    private Integer sentBy;
+    private Integer sentBy;*/
     @SerializedName("CreatedOn")
     @Expose
     private String createdOn;
+    @SerializedName("Url")
+    String Url;
+    @SerializedName("IsLink")
+    boolean IsLink;
 
     public Integer getPushNotcID() {
         return pushNotcID;
@@ -70,19 +70,35 @@ public class NotificationModel {
         this.isRead = isRead;
     }
 
-    public Integer getSentBy() {
+   /* public Integer getSentBy() {
         return sentBy;
     }
 
     public void setSentBy(Integer sentBy) {
         this.sentBy = sentBy;
     }
-
+*/
     public String getCreatedOn() {
         return createdOn;
     }
 
     public void setCreatedOn(String createdOn) {
         this.createdOn = createdOn;
+    }
+
+    public String getUrl() {
+        return Url;
+    }
+
+    public void setUrl(String url) {
+        Url = url;
+    }
+
+    public boolean isLink() {
+        return IsLink;
+    }
+
+    public void setLink(boolean link) {
+        IsLink = link;
     }
 }

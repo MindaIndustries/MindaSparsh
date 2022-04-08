@@ -14,6 +14,7 @@
         app:cardUseCompatPadding="true">
         <RelativeLayout
             android:padding="10dp"
+            android:id="@+id/row"
             android:layout_marginBottom="5dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
@@ -43,7 +44,7 @@
                 android:text=""
                 android:fontFamily="@font/museosans_700"
                 android:layout_toLeftOf="@+id/date"
-                android:textColor="@color/colorPrimary"
+                android:textColor="#ADD8E6"
                 android:textSize="16sp" />
 
             <TextView
@@ -53,7 +54,7 @@
                 android:layout_below="@+id/tv_notification"
                 android:layout_marginLeft="5dp"
                 android:fontFamily="@font/museosans_500"
-                android:layout_marginTop="5dp"
+                android:layout_marginTop="8dp"
                 android:gravity="left|center"
                 android:layout_toRightOf="@+id/bell"
                 android:text=""

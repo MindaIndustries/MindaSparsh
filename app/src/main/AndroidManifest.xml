@@ -192,6 +192,11 @@
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
+            android:name=".NotificationUrlWeb"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar" />
+
+        <activity
             android:name=".ChangeRequest"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
