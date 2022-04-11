@@ -1,7 +1,6 @@
 package com.minda.sparsh.fragment;
 
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -201,11 +200,13 @@ public class TwoFragment extends Fragment {
             public void onResponse(Call<List<DashboardImagesModel>> call, Response<List<DashboardImagesModel>> response) {
                 if(response.code()== HttpsURLConnection.HTTP_OK) {
                     List<DashboardImagesModel> list = response.body();
-                    banners.addAll(list);
-                    carouselView.setImageListener(imageListener);
-                    carouselView.setPageCount(banners.size());
-                    carouselView.setIndicatorVisibility(View.GONE);
-                    carouselView.setImageClickListener(imageClickListener);
+                    if(list!=null && list.size()>0) {
+                        banners.addAll(list);
+                        carouselView.setImageListener(imageListener);
+                        carouselView.setPageCount(banners.size());
+                        carouselView.setIndicatorVisibility(View.GONE);
+                        carouselView.setImageClickListener(imageClickListener);
+                    }
                 }
                 }
 

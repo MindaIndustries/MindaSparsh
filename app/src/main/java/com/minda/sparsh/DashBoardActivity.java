@@ -191,7 +191,6 @@ public class DashBoardActivity extends BaseActivity implements View.OnClickListe
                 public void onResponse(@NotNull Call<List<NotificationModel>> call, @NotNull Response<List<NotificationModel>> response) {
 
                     List<NotificationModel> responseItem = response.body();
-                    response.message();
                     if (responseItem != null && responseItem.size() > 0) {
 
                         for (int i = 0; i < responseItem.size(); i++) {

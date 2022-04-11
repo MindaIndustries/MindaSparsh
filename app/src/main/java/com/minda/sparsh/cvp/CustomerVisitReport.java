@@ -3,7 +3,6 @@ package com.minda.sparsh.cvp;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.app.TimePickerDialog;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -11,13 +10,11 @@ import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.Window;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.DatePicker;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.TimePicker;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -26,8 +23,6 @@ import androidx.appcompat.widget.Toolbar;
 
 import com.google.android.material.textfield.TextInputLayout;
 import com.minda.sparsh.R;
-import com.minda.sparsh.listener.CarotResponse;
-import com.minda.sparsh.listener.OnTaskComplete;
 import com.minda.sparsh.model.CustomerModel;
 import com.minda.sparsh.model.LocationModel;
 import com.minda.sparsh.model.WeekByCustomerModel;
@@ -135,54 +130,36 @@ public class CustomerVisitReport extends AppCompatActivity {
         getCustomers(empcode);
         initLocationSpinner();
         initCustomerWeekSpinner();
-        dateOfVisit.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View view, MotionEvent motionEvent) {
-                if(motionEvent.getAction()==MotionEvent.ACTION_UP){
-                    datePicker.show();
-                }
+        dateOfVisit.setOnTouchListener((view, motionEvent) -> {
+            if(motionEvent.getAction()==MotionEvent.ACTION_UP){
+                datePicker.show();
+            }
+            return false;
+        });
+        start_time_selector.setOnTouchListener((view, motionEvent) -> {
+            if(motionEvent.getAction()==MotionEvent.ACTION_UP) {
+                timePicker.show();
+            }
                 return false;
-            }
         });
-        start_time_selector.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View view, MotionEvent motionEvent) {
-                if(motionEvent.getAction()==MotionEvent.ACTION_UP) {
-                    timePicker.show();
-                }
-                    return false;
+        end_time_selector.setOnTouchListener((view, motionEvent) -> {
+            if(motionEvent.getAction()==MotionEvent.ACTION_UP) {
+                timePicker1.show();
             }
+                return false;
         });
-        end_time_selector.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View view, MotionEvent motionEvent) {
-                if(motionEvent.getAction()==MotionEvent.ACTION_UP) {
-                    timePicker1.show();
-                }
-                    return false;
+        add.setOnClickListener(view -> {
+            if(add_rl.getVisibility()== View.VISIBLE){
+                add_rl.setVisibility(View.GONE);
+                add.setImageDrawable(getResources().getDrawable(R.drawable.add));
             }
-        });
-        add.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if(add_rl.getVisibility()== View.VISIBLE){
-                    add_rl.setVisibility(View.GONE);
-                    add.setImageDrawable(getResources().getDrawable(R.drawable.add));
-                }
-                else{
-                    add_rl.setVisibility(View.VISIBLE);
-                    add.setImageDrawable(getResources().getDrawable(R.drawable.minus));
-                }
+            else{
+                add_rl.setVisibility(View.VISIBLE);
+                add.setImageDrawable(getResources().getDrawable(R.drawable.minus));
             }
         });
 
-        add_internal.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                addAttendees();
-
-               }
-        });
+        add_internal.setOnClickListener(view -> addAttendees());
     }
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -196,70 +173,61 @@ public class CustomerVisitReport extends AppCompatActivity {
     public void initDatePicker(){
         calendar = Calendar.getInstance();
         calendar.setTimeInMillis(System.currentTimeMillis());
-        datePicker = new DatePickerDialog(CustomerVisitReport.this, new DatePickerDialog.OnDateSetListener() {
-            @Override
-            public void onDateSet(DatePicker datePicker, int i, int i1, int i2) {
-                int mMonth = i1 + 1;
-                String monthNo;
-                if (mMonth < 10) {
-                    monthNo = "0" + mMonth;
-                } else {
-                    monthNo = "" + mMonth;
-                }
-                String dayOfMonthStr;
-                if (i2 < 10) {
-                    dayOfMonthStr = "0" + i2;
-                } else {
-                    dayOfMonthStr = "" + i2;
-                }
-                calendar.set(Calendar.DAY_OF_MONTH, i2);
-                calendar.set(Calendar.MONTH, i1);
-                calendar.set(Calendar.YEAR, i);
-                dateOfVisit.setText("" + dayOfMonthStr + "-" + monthNo + "-" + i);
+        datePicker = new DatePickerDialog(CustomerVisitReport.this, (datePicker, i, i1, i2) -> {
+            int mMonth = i1 + 1;
+            String monthNo;
+            if (mMonth < 10) {
+                monthNo = "0" + mMonth;
+            } else {
+                monthNo = "" + mMonth;
             }
+            String dayOfMonthStr;
+            if (i2 < 10) {
+                dayOfMonthStr = "0" + i2;
+            } else {
+                dayOfMonthStr = "" + i2;
+            }
+            calendar.set(Calendar.DAY_OF_MONTH, i2);
+            calendar.set(Calendar.MONTH, i1);
+            calendar.set(Calendar.YEAR, i);
+            dateOfVisit.setText("" + dayOfMonthStr + "-" + monthNo + "-" + i);
         },calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH));
         datePicker.getDatePicker().setMaxDate(Calendar.getInstance().getTimeInMillis() - 10000);
 
     }
     public void initTimePicker(){
-        timePicker = new TimePickerDialog(CustomerVisitReport.this, new TimePickerDialog.OnTimeSetListener() {
-            @Override
-            public void onTimeSet(TimePicker timePicker, int i, int i1) {
-                String minute_str,hour;
-                if (i1 < 10) {
-                    minute_str = "0" + i1;
-                } else {
-                    minute_str = "" + i1;
-                }
-                if(i<10){
-                   hour = "0"+i ;
-                }
-                else{
-                    hour ="" +i;
-                }
-                start_time_selector.setText(""+hour+":"+minute_str);
+        timePicker = new TimePickerDialog(CustomerVisitReport.this, (timePicker, i, i1) -> {
+            String minute_str,hour;
+            if (i1 < 10) {
+                minute_str = "0" + i1;
+            } else {
+                minute_str = "" + i1;
             }
+            if(i<10){
+               hour = "0"+i ;
+            }
+            else{
+                hour ="" +i;
+            }
+            start_time_selector.setText(""+hour+":"+minute_str);
         },calendar.get(Calendar.HOUR_OF_DAY),calendar.get(Calendar.MINUTE),false);
 
     }
     public void initTimePicker1(){
-        timePicker1 = new TimePickerDialog(CustomerVisitReport.this, new TimePickerDialog.OnTimeSetListener() {
-            @Override
-            public void onTimeSet(TimePicker timePicker, int i, int i1) {
-                String minute_str,hour;
-                if (i1 < 10) {
-                    minute_str = "0" + i1;
-                } else {
-                    minute_str = "" + i1;
-                }
-                if(i<10){
-                    hour = "0"+i ;
-                }
-                else{
-                    hour ="" +i;
-                }
-                end_time_selector.setText(""+hour+":"+minute_str);
+        timePicker1 = new TimePickerDialog(CustomerVisitReport.this, (timePicker, i, i1) -> {
+            String minute_str,hour;
+            if (i1 < 10) {
+                minute_str = "0" + i1;
+            } else {
+                minute_str = "" + i1;
             }
+            if(i<10){
+                hour = "0"+i ;
+            }
+            else{
+                hour ="" +i;
+            }
+            end_time_selector.setText(""+hour+":"+minute_str);
         },calendar.get(Calendar.HOUR_OF_DAY),calendar.get(Calendar.MINUTE),false);
 
     }
@@ -267,22 +235,19 @@ public class CustomerVisitReport extends AppCompatActivity {
         customer.clear();
         customerList.clear();
         CVPServices cvpServices = new CVPServices();
-        cvpServices.getCustomers(new OnTaskComplete() {
-            @Override
-            public void onTaskComplte(CarotResponse carotResponse) {
-                if (carotResponse.getStatuscode() == HttpsURLConnection.HTTP_OK) {
-                    CustomerModel customerModel = (CustomerModel) carotResponse.getData();
-                    if (customerModel != null) {
-                        List<CustomerModel.CustomerData> list = customerModel.getData();
-                        if (list != null && list.size() > 0) {
-                            customer.addAll(list);
-                            for (CustomerModel.CustomerData customerData : list) {
-                                customerList.add(customerData.getName());
-                            }
-                            customerAdapter.notifyDataSetChanged();
+        cvpServices.getCustomers(carotResponse -> {
+            if (carotResponse.getStatuscode() == HttpsURLConnection.HTTP_OK) {
+                CustomerModel customerModel = (CustomerModel) carotResponse.getData();
+                if (customerModel != null) {
+                    List<CustomerModel.CustomerData> list = customerModel.getData();
+                    if (list != null && list.size() > 0) {
+                        customer.addAll(list);
+                        for (CustomerModel.CustomerData customerData : list) {
+                            customerList.add(customerData.getName());
                         }
-
+                        customerAdapter.notifyDataSetChanged();
                     }
+
                 }
             }
         }, empcode);
@@ -290,15 +255,12 @@ public class CustomerVisitReport extends AppCompatActivity {
     public void initCustomerSpinner() {
         customerAdapter = new ArrayAdapter<String>(CustomerVisitReport.this, android.R.layout.simple_spinner_item, customerList);
         customer_spinner.setAdapter(customerAdapter);
-        customer_spinner.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                if (i >= 0)
-                {
-                    locationSpinner.setText("");
-                    getLocation(customer.get(i).getId());
-                    getWeekByCustomer(customer.get(i).getId(),empcode);
-                }
+        customer_spinner.setOnItemClickListener((adapterView, view, i, l) -> {
+            if (i >= 0)
+            {
+                locationSpinner.setText("");
+                getLocation(customer.get(i).getId());
+                getWeekByCustomer(customer.get(i).getId(),empcode);
             }
         });
     }
@@ -306,38 +268,32 @@ public class CustomerVisitReport extends AppCompatActivity {
         locations.clear();
         locationList.clear();
         CVPServices cvpServices = new CVPServices();
-        cvpServices.getLocation(new OnTaskComplete() {
-            @Override
-            public void onTaskComplte(CarotResponse carotResponse) {
-                if (carotResponse.getStatuscode() == HttpsURLConnection.HTTP_OK) {
-                    LocationModel locationModel = (LocationModel) carotResponse.getData();
-                    if (locationModel != null) {
-                        List<LocationModel.LocationData> list = locationModel.getData();
-                        if (list != null && list.size() > 0) {
-                            locations.addAll(list);
-                            for (LocationModel.LocationData locationData : list) {
-                                locationList.add(locationData.getLocation().trim());
-                            }
-                            locationAdapter = new ArrayAdapter<String>(CustomerVisitReport.this, android.R.layout.simple_spinner_item, locationList);
-                            locationSpinner.setAdapter(locationAdapter);
-                            locationAdapter.notifyDataSetChanged();
-                          }
-                    }
-
+        cvpServices.getLocation(carotResponse -> {
+            if (carotResponse.getStatuscode() == HttpsURLConnection.HTTP_OK) {
+                LocationModel locationModel = (LocationModel) carotResponse.getData();
+                if (locationModel != null) {
+                    List<LocationModel.LocationData> list = locationModel.getData();
+                    if (list != null && list.size() > 0) {
+                        locations.addAll(list);
+                        for (LocationModel.LocationData locationData : list) {
+                            locationList.add(locationData.getLocation().trim());
+                        }
+                        locationAdapter = new ArrayAdapter<String>(CustomerVisitReport.this, android.R.layout.simple_spinner_item, locationList);
+                        locationSpinner.setAdapter(locationAdapter);
+                        locationAdapter.notifyDataSetChanged();
+                      }
                 }
 
             }
+
         }, customerId);
     }
     public void initLocationSpinner() {
         locationAdapter = new ArrayAdapter<String>(CustomerVisitReport.this, android.R.layout.simple_spinner_item, locationList);
         locationSpinner.setAdapter(locationAdapter);
-        locationSpinner.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                if (i >= 0) {
+        locationSpinner.setOnItemClickListener((adapterView, view, i, l) -> {
+            if (i >= 0) {
 
-                }
             }
         });
     }
@@ -345,29 +301,23 @@ public class CustomerVisitReport extends AppCompatActivity {
     public void initCustomerWeekSpinner(){
         customerWeekAdapter = new ArrayAdapter<String>(CustomerVisitReport.this,android.R.layout.simple_spinner_item, customerWeekList);
         calendarWeekNo.setAdapter(customerWeekAdapter);
-        calendarWeekNo.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+        calendarWeekNo.setOnItemClickListener((adapterView, view, i, l) -> {
 
-            }
         });
     }
     public void getWeekByCustomer(String customerId, String empcode){
         CVPServices cvpServices = new CVPServices();
-        cvpServices.getWeekByCustomer(new OnTaskComplete() {
-            @Override
-            public void onTaskComplte(CarotResponse carotResponse) {
-                if(carotResponse.getStatuscode()==HttpsURLConnection.HTTP_OK){
-                    WeekByCustomerModel weekByCustomerModel = (WeekByCustomerModel) carotResponse.getData();
-                    if(weekByCustomerModel!=null){
-                        List<WeekByCustomerModel.WeekByCustomerData> list = weekByCustomerModel.getData();
-                        if(list!=null && list.size()>0){
-                            customerWeeks.addAll(list);
-                            for (WeekByCustomerModel.WeekByCustomerData weekByCustomerData : list) {
-                                customerWeekList.add(weekByCustomerData.getWeeks());
-                            }
-                            customerWeekAdapter.notifyDataSetChanged();
+        cvpServices.getWeekByCustomer(carotResponse -> {
+            if(carotResponse.getStatuscode()==HttpsURLConnection.HTTP_OK){
+                WeekByCustomerModel weekByCustomerModel = (WeekByCustomerModel) carotResponse.getData();
+                if(weekByCustomerModel!=null){
+                    List<WeekByCustomerModel.WeekByCustomerData> list = weekByCustomerModel.getData();
+                    if(list!=null && list.size()>0){
+                        customerWeeks.addAll(list);
+                        for (WeekByCustomerModel.WeekByCustomerData weekByCustomerData : list) {
+                            customerWeekList.add(weekByCustomerData.getWeeks());
                         }
+                        customerWeekAdapter.notifyDataSetChanged();
                     }
                 }
             }
@@ -375,12 +325,13 @@ public class CustomerVisitReport extends AppCompatActivity {
     }
 
     public void addAttendees(){
-
         Dialog dialog = new Dialog(CustomerVisitReport.this);
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialog.setCancelable(false);
         dialog.setContentView(R.layout.addattendees);
         dialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
+        AppCompatAutoCompleteTextView attendee = dialog.findViewById(R.id.attendee);
+        Button add = dialog.findViewById(R.id.add);
 
         dialog.show();
     }

@@ -33,16 +33,16 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <android.widget.Button
-            android:layout_marginTop="10dp"
-            android:layout_alignParentRight="true"
-            android:layout_below="@+id/customSpinnerLayout0"
-            android:background="@drawable/btn_bg"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="ADD"
+            android:layout_below="@+id/customSpinnerLayout0"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/btn_bg"
             android:fontFamily="@font/museosans_500"
-            android:textColor="@color/white"
-            />
+            android:text="ADD"
+            android:id="@+id/add"
+            android:textColor="@color/white" />
 
     </RelativeLayout>
 

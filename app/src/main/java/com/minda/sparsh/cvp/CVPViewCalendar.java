@@ -6,13 +6,9 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
-import android.view.MotionEvent;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.DatePicker;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -29,8 +25,6 @@ import com.minda.sparsh.R;
 import com.minda.sparsh.decorators.HighlightWeekendsDecorator;
 import com.minda.sparsh.decorators.MySelectorDecorator;
 import com.minda.sparsh.decorators.OneDayDecorator;
-import com.minda.sparsh.listener.CarotResponse;
-import com.minda.sparsh.listener.OnTaskComplete;
 import com.minda.sparsh.model.CVPViewCalendarModel;
 import com.minda.sparsh.model.CalendarTypeModel;
 import com.minda.sparsh.model.SaveCalendarResponse;
@@ -120,21 +114,15 @@ public class CVPViewCalendar extends AppCompatActivity implements OnDateSelected
         initDatePicker();
         getYear();
         initWeekSpinner();
-        calendarView.setOnTitleClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Log.d("test","test"+ view.getId());
-                 textView = (TextView) view;
-                 builder.build().show();
+        calendarView.setOnTitleClickListener(view -> {
+            Log.d("test","test"+ view.getId());
+             textView = (TextView) view;
+             builder.build().show();
 
-            }
         });
-        date.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View view, MotionEvent motionEvent) {
-                datePicker.show();
-                return false;
-            }
+        date.setOnTouchListener((view, motionEvent) -> {
+            datePicker.show();
+            return false;
         });
 
 
@@ -191,15 +179,12 @@ public class CVPViewCalendar extends AppCompatActivity implements OnDateSelected
     public void initWeekSpinner() {
         weekAdapter = new ArrayAdapter<String>(CVPViewCalendar.this, android.R.layout.simple_spinner_item, weeksList);
         weekSpinner.setAdapter(weekAdapter);
-        weekSpinner.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                if (i >= 0) {
-                    weekId = weeks.get(i).getWeeks();
-                }
-                getCalendarMeetingsCurrentWeek();
-
+        weekSpinner.setOnItemClickListener((adapterView, view, i, l) -> {
+            if (i >= 0) {
+                weekId = weeks.get(i).getWeeks();
             }
+            getCalendarMeetingsCurrentWeek();
+
         });
     }
     public void initDatePicker(){
@@ -222,29 +207,26 @@ public class CVPViewCalendar extends AppCompatActivity implements OnDateSelected
 
         date.setText(dayOfMonthStr+"-"+monthNo+"-"+calendar.get(Calendar.YEAR));
         getWeek(calendar.get(Calendar.YEAR)+"-"+monthNo+"-"+dayOfMonthStr);
-        datePicker = new DatePickerDialog(CVPViewCalendar.this, new DatePickerDialog.OnDateSetListener() {
-            @Override
-            public void onDateSet(DatePicker datePicker, int i, int i1, int i2) {
-                int mMonth = i1 + 1;
-                String monthNo;
-                if (mMonth < 10) {
-                    monthNo = "0" + mMonth;
-                } else {
-                    monthNo = "" + mMonth;
-                }
-                String dayOfMonthStr;
-                if (i2 < 10) {
-                    dayOfMonthStr = "0" + i2;
-                } else {
-                    dayOfMonthStr = "" + i2;
-                }
-                calendar.set(Calendar.DAY_OF_MONTH, i2);
-                calendar.set(Calendar.MONTH, i1);
-                calendar.set(Calendar.YEAR, i);
-                year = String.valueOf(calendar.get(Calendar.YEAR));
-                getWeek(i+"-"+monthNo+"-"+dayOfMonthStr);
-                date.setText("" + dayOfMonthStr + "-" + monthNo + "-" + i);
+        datePicker = new DatePickerDialog(CVPViewCalendar.this, (datePicker, i, i1, i2) -> {
+            int mMonth1 = i1 + 1;
+            String monthNo1;
+            if (mMonth1 < 10) {
+                monthNo1 = "0" + mMonth1;
+            } else {
+                monthNo1 = "" + mMonth1;
             }
+            String dayOfMonthStr1;
+            if (i2 < 10) {
+                dayOfMonthStr1 = "0" + i2;
+            } else {
+                dayOfMonthStr1 = "" + i2;
+            }
+            calendar.set(Calendar.DAY_OF_MONTH, i2);
+            calendar.set(Calendar.MONTH, i1);
+            calendar.set(Calendar.YEAR, i);
+            year = String.valueOf(calendar.get(Calendar.YEAR));
+            getWeek(i+"-"+ monthNo1 +"-"+ dayOfMonthStr1);
+            date.setText("" + dayOfMonthStr1 + "-" + monthNo1 + "-" + i);
         },calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH));
 
       //  datePicker.getDatePicker().setMinDate(Calendar.getInstance().getTimeInMillis() - 10000);
@@ -413,19 +395,16 @@ public class CVPViewCalendar extends AppCompatActivity implements OnDateSelected
     }
     public void getWeekSelected(String date){
         CVPServices cvpServices = new CVPServices();
-        cvpServices.getWeekData(new OnTaskComplete() {
-            @Override
-            public void onTaskComplte(CarotResponse carotResponse) {
-                if (carotResponse.getStatuscode() == HttpsURLConnection.HTTP_OK) {
-                    WeekModel weekModel = (WeekModel) carotResponse.getData();
-                    if (weekModel != null) {
-                        List<WeekModel.WeekData> list = weekModel.getData();
-                        if (list != null && list.size() > 0) {
-                            weekSpinner.setText(list.get(0).getName());
-                            weekId = list.get(0).getWeeks();
-                            weekAdapter.getFilter().filter(null);
-                            getCalendarMeetingsCurrentWeek();
-                        }
+        cvpServices.getWeekData(carotResponse -> {
+            if (carotResponse.getStatuscode() == HttpsURLConnection.HTTP_OK) {
+                WeekModel weekModel = (WeekModel) carotResponse.getData();
+                if (weekModel != null) {
+                    List<WeekModel.WeekData> list = weekModel.getData();
+                    if (list != null && list.size() > 0) {
+                        weekSpinner.setText(list.get(0).getName());
+                        weekId = list.get(0).getWeeks();
+                        weekAdapter.getFilter().filter(null);
+                        getCalendarMeetingsCurrentWeek();
                     }
                 }
             }
@@ -477,24 +456,21 @@ public class CVPViewCalendar extends AppCompatActivity implements OnDateSelected
 
     public void initMonthPicker(int minYear, int maxYear){
         Calendar today = Calendar.getInstance();
-         builder = new MonthPickerDialog.Builder(CVPViewCalendar.this, new MonthPickerDialog.OnDateSetListener() {
-            @Override
-            public void onDateSet(int selectedMonth, int selectedYear) {
-                Log.d("TAG", "selectedMonth : " + selectedMonth + " selectedYear : " + selectedYear);
-               // Toast.makeText(CVPViewCalendar.this, "Date set with month" + selectedMonth + " year " + selectedYear, Toast.LENGTH_SHORT).show();
-                Calendar mcal = Calendar.getInstance();
-                mcal.set(Calendar.MONTH,selectedMonth);
-                mcal.set(Calendar.YEAR,selectedYear);
-                mcal.set(Calendar.DAY_OF_WEEK,Calendar.MONDAY);
-                calendarView.setCurrentDate(CalendarDay.from(new Date(mcal.getTimeInMillis())),true);
-                calendarView.setDateSelected(new Date(mcal.getTimeInMillis()),true);
-                textView.setText(mcal.getDisplayName(Calendar.MONTH, Calendar.LONG, Locale.getDefault()) +" "+ mcal.get(Calendar.YEAR));
+         builder = new MonthPickerDialog.Builder(CVPViewCalendar.this, (selectedMonth, selectedYear) -> {
+             Log.d("TAG", "selectedMonth : " + selectedMonth + " selectedYear : " + selectedYear);
+            // Toast.makeText(CVPViewCalendar.this, "Date set with month" + selectedMonth + " year " + selectedYear, Toast.LENGTH_SHORT).show();
+             Calendar mcal = Calendar.getInstance();
+             mcal.set(Calendar.MONTH,selectedMonth);
+             mcal.set(Calendar.YEAR,selectedYear);
+             mcal.set(Calendar.DAY_OF_WEEK,Calendar.MONDAY);
+             calendarView.setCurrentDate(CalendarDay.from(new Date(mcal.getTimeInMillis())),true);
+             calendarView.setDateSelected(new Date(mcal.getTimeInMillis()),true);
+             textView.setText(mcal.getDisplayName(Calendar.MONTH, Calendar.LONG, Locale.getDefault()) +" "+ mcal.get(Calendar.YEAR));
 
-                year = String.valueOf(selectedYear);
-                getWeek(year+"-"+(selectedMonth+1)+"-"+mcal.get(Calendar.DAY_OF_MONTH));
+             year = String.valueOf(selectedYear);
+             getWeek(year+"-"+(selectedMonth+1)+"-"+mcal.get(Calendar.DAY_OF_MONTH));
 
-                 }
-        }, today.get(Calendar.YEAR), today.get(Calendar.MONTH));
+              }, today.get(Calendar.YEAR), today.get(Calendar.MONTH));
 
         builder.setActivatedMonth(today.get(Calendar.MONTH))
                 .setMinYear(minYear)
@@ -508,19 +484,13 @@ public class CVPViewCalendar extends AppCompatActivity implements OnDateSelected
                 // .setMonthAndYearRange(Calendar.FEBRUARY, Calendar.OCTOBER, 1890, 1890)
                 //.showMonthOnly()
                 // .showYearOnly()
-                .setOnMonthChangedListener(new MonthPickerDialog.OnMonthChangedListener() {
-                    @Override
-                    public void onMonthChanged(int selectedMonth) {
-                        Log.d("TAG1", "Selected month : " + selectedMonth);
-                        // Toast.makeText(MainActivity.this, " Selected month : " + selectedMonth, Toast.LENGTH_SHORT).show();
-                    }
+                .setOnMonthChangedListener(selectedMonth -> {
+                    Log.d("TAG1", "Selected month : " + selectedMonth);
+                    // Toast.makeText(MainActivity.this, " Selected month : " + selectedMonth, Toast.LENGTH_SHORT).show();
                 })
-                .setOnYearChangedListener(new MonthPickerDialog.OnYearChangedListener() {
-                    @Override
-                    public void onYearChanged(int selectedYear) {
-                        Log.d("TAG3", "Selected year : " + selectedYear);
-                        // Toast.makeText(MainActivity.this, " Selected year : " + selectedYear, Toast.LENGTH_SHORT).show();
-                    }
+                .setOnYearChangedListener(selectedYear -> {
+                    Log.d("TAG3", "Selected year : " + selectedYear);
+                    // Toast.makeText(MainActivity.this, " Selected year : " + selectedYear, Toast.LENGTH_SHORT).show();
                 });
     }
 
@@ -528,35 +498,32 @@ public class CVPViewCalendar extends AppCompatActivity implements OnDateSelected
     public void getYear(){
         years.clear();
         CVPServices cvpServices = new CVPServices();
-        cvpServices.getYear(new OnTaskComplete() {
-            @Override
-            public void onTaskComplte(CarotResponse carotResponse) {
-                if(carotResponse.getStatuscode() == HttpsURLConnection.HTTP_OK){
-                    YearModel yearModel = (YearModel) carotResponse.getData();
-                    if(yearModel!=null){
-                        List<YearModel.YearModelData> list = yearModel.getData();
-                        if(list!=null && list.size()>0){
-                            years.addAll(list);
-                            Calendar calendar = Calendar.getInstance();
-                            Calendar calendar1 = Calendar.getInstance();
-                            calendar.set(Calendar.DAY_OF_MONTH,1);
-                            calendar.set(Calendar.MONTH,0);
-                            calendar.set(Calendar.YEAR, Integer.parseInt(years.get(0).getYear()));
-                            calendar1.set(Calendar.YEAR, Integer.parseInt(years.get(years.size()-1).getYear()));
-                            calendar1.set(Calendar.DAY_OF_MONTH,31);
-                            calendar1.set(Calendar.MONTH,11);
+        cvpServices.getYear(carotResponse -> {
+            if(carotResponse.getStatuscode() == HttpsURLConnection.HTTP_OK){
+                YearModel yearModel = (YearModel) carotResponse.getData();
+                if(yearModel!=null){
+                    List<YearModel.YearModelData> list = yearModel.getData();
+                    if(list!=null && list.size()>0){
+                        years.addAll(list);
+                        Calendar calendar = Calendar.getInstance();
+                        Calendar calendar1 = Calendar.getInstance();
+                        calendar.set(Calendar.DAY_OF_MONTH,1);
+                        calendar.set(Calendar.MONTH,0);
+                        calendar.set(Calendar.YEAR, Integer.parseInt(years.get(0).getYear()));
+                        calendar1.set(Calendar.YEAR, Integer.parseInt(years.get(years.size()-1).getYear()));
+                        calendar1.set(Calendar.DAY_OF_MONTH,31);
+                        calendar1.set(Calendar.MONTH,11);
 
-                            datePicker.getDatePicker().setMinDate(calendar.getTimeInMillis()-10000);
-                            datePicker.getDatePicker().setMaxDate(calendar1.getTimeInMillis()-10000);
-                            datePicker.getDatePicker().setFirstDayOfWeek(Calendar.MONDAY);
+                        datePicker.getDatePicker().setMinDate(calendar.getTimeInMillis()-10000);
+                        datePicker.getDatePicker().setMaxDate(calendar1.getTimeInMillis()-10000);
+                        datePicker.getDatePicker().setFirstDayOfWeek(Calendar.MONDAY);
 
-                          //  initMonthPicker(Integer.parseInt(years.get(0).getYear()),Integer.parseInt(years.get(years.size()-1).getYear()));
+                      //  initMonthPicker(Integer.parseInt(years.get(0).getYear()),Integer.parseInt(years.get(years.size()-1).getYear()));
 
-                        }
                     }
                 }
-
             }
+
         });
 
     }

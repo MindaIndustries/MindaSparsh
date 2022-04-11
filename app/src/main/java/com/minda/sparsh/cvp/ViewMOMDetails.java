@@ -3,8 +3,6 @@ package com.minda.sparsh.cvp;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
-import android.graphics.Color;
-import android.graphics.Paint;
 import android.graphics.pdf.PdfDocument;
 import android.net.Uri;
 import android.os.Build;
@@ -20,7 +18,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
-import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -33,8 +30,6 @@ import com.minda.sparsh.listener.CarotResponse;
 import com.minda.sparsh.listener.OnTaskComplete;
 import com.minda.sparsh.model.CVPDetailModel;
 import com.minda.sparsh.services.CVPServices;
-import com.nativess.xmllayouttopdflibrary.PDFBuilder;
-import com.nativess.xmllayouttopdflibrary.PDFGenerator;
 
 import java.io.File;
 import java.io.FileOutputStream;

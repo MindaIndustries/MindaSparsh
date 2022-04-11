@@ -10,7 +10,6 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
-import com.minda.sparsh.connection.HttpConnection;
 import com.minda.sparsh.util.RetrofitClient2;
 
 import butterknife.BindView;
@@ -36,7 +35,7 @@ public class NotificationUrlWeb extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setHomeAsUpIndicator(R.drawable.back);
-        title.setText("Notification Detail");
+        title.setText("Notification Details");
         url = getIntent().getStringExtra("url");
         isLink = getIntent().getBooleanExtra("isLink",false);
         if(isLink){
@@ -50,6 +49,8 @@ public class NotificationUrlWeb extends AppCompatActivity {
         webview.clearHistory();
         webview.getSettings().setJavaScriptEnabled(true);
         webview.getSettings().setJavaScriptCanOpenWindowsAutomatically(true);
+        webview.getSettings().setLoadWithOverviewMode(true);
+        webview.getSettings().setUseWideViewPort(true);
 
         webview.setWebViewClient(new WebViewClient() {
             @Override
