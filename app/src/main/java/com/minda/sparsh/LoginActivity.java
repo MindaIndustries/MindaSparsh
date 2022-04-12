@@ -510,8 +510,10 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 */
-        AlertDialog alertDialog = alertDialogBuilder.create();
-        alertDialog.show();
+        if(!isFinishing()) {
+            AlertDialog alertDialog = alertDialogBuilder.create();
+            alertDialog.show();
+        }
     }
 
 }

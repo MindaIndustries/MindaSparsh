@@ -64,7 +64,7 @@ public class ManufacturingFragment extends Fragment {
         //ehs = convertView.findViewById(R.id.ehs);
         cardView = convertView.findViewById(R.id.card_view);
         cardView1 = convertView.findViewById(R.id.card_view1);
-        cardView2 = convertView.findViewById(R.id.card_view2);
+      //  cardView2 = convertView.findViewById(R.id.card_view2);
 
 
 
@@ -81,12 +81,12 @@ public class ManufacturingFragment extends Fragment {
         im_right.setOnClickListener(view -> contaxt.viewPager.setCurrentItem(contaxt.getItem(+1), true));
         im_left.setOnClickListener(view -> contaxt.viewPager.setCurrentItem(contaxt.getItem(-1), true));
 
-        cardView2.setOnClickListener(v -> {
+      /*  cardView2.setOnClickListener(v -> {
             Intent in = new Intent(getActivity(), EHS_Home.class);
             startActivity(in);
 
         });
-        // Inflate the layout for this fragment
+      */  // Inflate the layout for this fragment
 
         cardView.setOnClickListener(v -> {
 

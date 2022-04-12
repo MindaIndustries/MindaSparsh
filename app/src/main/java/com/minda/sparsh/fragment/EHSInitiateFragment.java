@@ -565,7 +565,7 @@ public class EHSInitiateFragment extends Fragment {
             Toast.makeText(getActivity(), "Type of Observation not selected", Toast.LENGTH_LONG).show();
             return;
         }
-        if (category != null && category.equals("Select") || category == null) {
+        if ((category != null && category.equals("Select")) || category == null) {
             if (!obstype.equals("Near Miss Reporting")) {
                 Toast.makeText(getActivity(), "Category not selected", Toast.LENGTH_LONG).show();
                 return;
@@ -1016,6 +1016,7 @@ public class EHSInitiateFragment extends Fragment {
                         for (int i = 0; i < ehsCategories.size(); i++) {
                             if (getArguments().getString("catId").equals(ehsCategories.get(i).getId())) {
                                 categorySpinner.setText(categories.get(i));
+                                category = categories.get(i);
                                 catId = ehsCategories.get(i).getId();
                                 getSubCategories(catId);
                             }

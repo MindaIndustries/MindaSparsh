@@ -11,6 +11,7 @@ import android.widget.Toast;
 
 import com.minda.sparsh.BottomUpConcernActivity;
 import com.minda.sparsh.DashBoardActivity;
+import com.minda.sparsh.EHS_Home;
 import com.minda.sparsh.R;
 import com.minda.sparsh.SuggestionBox;
 import com.minda.sparsh.VisitorManagementActivity;
@@ -64,7 +65,14 @@ public class ThreeFragment extends Fragment {
         CardView cardView1 = convertView.findViewById(R.id.card_view1);
         CardView cardView2 = convertView.findViewById(R.id.card_view2);
         CardView cardView3 = convertView.findViewById(R.id.card_view3);
+        CardView cardView4 = convertView.findViewById(R.id.card_view4);
 
+
+        cardView4.setOnClickListener(v -> {
+            Intent in = new Intent(getActivity(), EHS_Home.class);
+            startActivity(in);
+
+        });
 
         final DashBoardActivity contaxt = (DashBoardActivity) getActivity();
         im_right.setOnClickListener(view -> contaxt.viewPager.setCurrentItem(contaxt.getItem(+1), true));
