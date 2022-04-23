@@ -93,7 +93,7 @@ public class CVPViewCalendar extends AppCompatActivity implements OnDateSelected
     MonthPickerDialog.Builder builder;
     ArrayList<YearModel.YearModelData> years = new ArrayList<>();
     int currentWeekId;
-
+    ProgressDialog progressDialog;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -110,6 +110,8 @@ public class CVPViewCalendar extends AppCompatActivity implements OnDateSelected
         month = Calendar.getInstance().getDisplayName(Calendar.MONTH, Calendar.LONG, Locale.getDefault());
         calendarView.setSelectionColor(getResources().getColor(R.color.colorPrimary));
        // calendarView.state().edit().setMinimumDate(Calendar.getInstance());
+        progressDialog = new ProgressDialog(CVPViewCalendar.this);
+        progressDialog.setMessage("Loading...");
         calendarView.state().edit().setFirstDayOfWeek(Calendar.MONDAY).commit();
         initDatePicker();
         getYear();
@@ -234,11 +236,12 @@ public class CVPViewCalendar extends AppCompatActivity implements OnDateSelected
     }
 
     public void getCalendarMeetingsCurrentWeek(){
-        ProgressDialog progressDialog = new ProgressDialog(CVPViewCalendar.this);
-        progressDialog.setMessage("Loading...");
         if(!isFinishing()) {
             if (!progressDialog.isShowing()) {
                 progressDialog.show();
+            }
+            else{
+                progressDialog.dismiss();
             }
         }
         if(weekId!=null && weekId.length()>0) {

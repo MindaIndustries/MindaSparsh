@@ -33,6 +33,8 @@ public class EHSObsModel {
     String CreatedOn;
     @SerializedName("Attachment")
     String Attachment;
+    @SerializedName("AttachmentType")
+    String AttachmentType;
     @SerializedName("Status")
     String Status;
     @SerializedName("SubCategoryID")
@@ -224,5 +226,13 @@ public class EHSObsModel {
 
     public void setAssigned(String assigned) {
         Assigned = assigned;
+    }
+
+    public String getAttachmentType() {
+        return AttachmentType;
+    }
+
+    public void setAttachmentType(String attachmentType) {
+        AttachmentType = attachmentType;
     }
 }

@@ -6,6 +6,8 @@ import android.app.TimePickerDialog;
 import android.content.SharedPreferences;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
@@ -23,6 +25,9 @@ import androidx.appcompat.widget.Toolbar;
 
 import com.google.android.material.textfield.TextInputLayout;
 import com.minda.sparsh.R;
+import com.minda.sparsh.listener.CarotResponse;
+import com.minda.sparsh.listener.OnTaskComplete;
+import com.minda.sparsh.model.CVPEmpNameModel;
 import com.minda.sparsh.model.CustomerModel;
 import com.minda.sparsh.model.LocationModel;
 import com.minda.sparsh.model.WeekByCustomerModel;
@@ -106,6 +111,10 @@ public class CustomerVisitReport extends AppCompatActivity {
     ArrayList<String> locationList = new ArrayList<>();
     ArrayList<WeekByCustomerModel.WeekByCustomerData> customerWeeks = new ArrayList<>();
     ArrayList<String> customerWeekList = new ArrayList<>();
+    ArrayList<CVPEmpNameModel> employeeName = new ArrayList<>();
+    ArrayList<String> employees = new ArrayList<>();
+    ArrayAdapter<String> employeeAdapter;
+
     SharedPreferences myPref;
     String empcode;
 
@@ -264,7 +273,11 @@ public class CustomerVisitReport extends AppCompatActivity {
             }
         });
     }
-    public void getLocation(String customerId) {
+
+    /*public void initEmployeeSpinner(){
+        employeeAdapter = new ArrayAdapter<>(CustomerVisitReport.this, android.R.layout)
+    }
+   */ public void getLocation(String customerId) {
         locations.clear();
         locationList.clear();
         CVPServices cvpServices = new CVPServices();
@@ -327,12 +340,39 @@ public class CustomerVisitReport extends AppCompatActivity {
     public void addAttendees(){
         Dialog dialog = new Dialog(CustomerVisitReport.this);
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-        dialog.setCancelable(false);
+      //  dialog.setCancelable(false);
         dialog.setContentView(R.layout.addattendees);
         dialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
         AppCompatAutoCompleteTextView attendee = dialog.findViewById(R.id.attendee);
         Button add = dialog.findViewById(R.id.add);
+        attendee.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
 
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                getEmpName(charSequence.toString());
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
         dialog.show();
+    }
+
+    public void getEmpName(String empName){
+        CVPServices cvpServices = new CVPServices();
+        cvpServices.getEmpName(new OnTaskComplete() {
+            @Override
+            public void onTaskComplte(CarotResponse carotResponse) {
+                if(carotResponse.getStatuscode()==HttpsURLConnection.HTTP_OK){
+
+                }
+            }
+        },empName);
     }
 }

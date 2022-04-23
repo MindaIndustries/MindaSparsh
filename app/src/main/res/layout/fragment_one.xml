@@ -420,8 +420,8 @@
                                         android:layout_width="match_parent"
                                         android:layout_height="match_parent"
                                         android:paddingLeft="20dp"
-                                        android:paddingRight="20dp"
                                         android:paddingTop="30dp"
+                                        android:paddingRight="20dp"
                                         android:paddingBottom="30dp">
 
                                         <TextView
@@ -466,7 +466,7 @@
                         android:orientation="vertical">
 
                         <RelativeLayout
-                            android:visibility="gone"
+                            android:visibility="visible"
                             android:id="@+id/card_container5"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -488,7 +488,6 @@
                                     android:layout_height="wrap_content">
 
                                     <RelativeLayout
-
                                         android:layout_width="match_parent"
                                         android:layout_height="match_parent"
                                         android:padding="30dp">
@@ -498,7 +497,7 @@
                                             android:layout_height="wrap_content"
                                             android:layout_marginTop="20dp"
                                             android:fontFamily="@font/museosans_700"
-                                            android:text="Engineering"
+                                            android:text="Manufacturing"
                                             android:textColor="#4a4f54"
                                             android:textSize="16sp"
                                             android:visibility="visible"
@@ -524,7 +523,7 @@
                                 android:layout_alignLeft="@+id/card_view5"
                                 android:layout_marginLeft="20dp"
                                 android:elevation="10dp"
-                                android:src="@drawable/engineering" />
+                                android:src="@drawable/manu" />
 
                         </RelativeLayout>
 

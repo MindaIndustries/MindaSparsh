@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Minda Sparsh</string>
+    <string name="app_name">MindaSparsh</string>
     <string name="horizontal">Horizontal Flip</string>
     <string name="vertical">Vertical Flip</string>
     <string name="type">Flip type</string>

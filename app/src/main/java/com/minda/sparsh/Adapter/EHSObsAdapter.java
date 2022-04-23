@@ -87,6 +87,7 @@ public class EHSObsAdapter extends RecyclerView.Adapter<EHSObsAdapter.ViewHolder
                 bundle.putString("attachment", myObservations.get(i).getAttachment());
                 bundle.putString("status", myObservations.get(i).getStatus());
                 bundle.putString("assigned", myObservations.get(i).getAssigned());
+                bundle.putString("attachmentType",myObservations.get(i).getAttachmentType());
                 EHSInitiateFragment ehsInitiateFragment = new EHSInitiateFragment();
                 ehsInitiateFragment.setArguments(bundle);
                 ((AppCompatActivity) mContext).getSupportFragmentManager().beginTransaction()
@@ -114,6 +115,8 @@ public class EHSObsAdapter extends RecyclerView.Adapter<EHSObsAdapter.ViewHolder
                 bundle.putString("attachment", myObservations.get(i).getAttachment());
                 bundle.putString("status", myObservations.get(i).getStatus());
                 bundle.putString("assigned", myObservations.get(i).getAssigned());
+                bundle.putString("attachmentType",myObservations.get(i).getAttachmentType());
+
                 EHSInitiateFragment ehsInitiateFragment = new EHSInitiateFragment();
                 ehsInitiateFragment.setArguments(bundle);
                 ((AppCompatActivity) mContext).getSupportFragmentManager().beginTransaction()

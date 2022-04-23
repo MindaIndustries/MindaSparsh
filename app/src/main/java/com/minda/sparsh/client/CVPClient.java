@@ -1,6 +1,7 @@
 package com.minda.sparsh.client;
 
 import com.minda.sparsh.model.CVPDetailModel;
+import com.minda.sparsh.model.CVPEmpNameModel;
 import com.minda.sparsh.model.CVPViewCalendarModel;
 import com.minda.sparsh.model.CalendarTypeModel;
 import com.minda.sparsh.model.CustomerModel;
@@ -11,8 +12,6 @@ import com.minda.sparsh.model.SaveCalendarResponse;
 import com.minda.sparsh.model.WeekByCustomerModel;
 import com.minda.sparsh.model.WeekModel;
 import com.minda.sparsh.model.YearModel;
-
-import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.http.Field;
@@ -64,5 +63,8 @@ public interface CVPClient {
 
     @GET("GetCvpDetailsReport")
     Call<CVPDetailModel> getCvpDetail(@Query("MomId") String MomId);
+
+    @GET("GetEmployeeName")
+    Call<CVPEmpNameModel> getEmpName(@Query("Empcode") String empcode);
 
 }

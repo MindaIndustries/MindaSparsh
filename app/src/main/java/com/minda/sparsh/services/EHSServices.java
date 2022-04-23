@@ -233,9 +233,9 @@ public class EHSServices {
 
     }
 
-    public void saveEHS(final OnTaskComplete onTaskComplete, final String EmpCode, String ActNo, String ActDate, String HOD, String UnitSafetyOfficer, String UnitCode, String Description, String Attachment, String AttachmentType, String LocationID, String CategoryID, String SubCategoryID, String ObservationID, String IncidenceHour, String IncidenceMin, String IncidenceZone, String IncidenceActionTaken, final String ObservationName, final String LocationName) {
+    public void saveEHS(final OnTaskComplete onTaskComplete, final String EmpCode, String ActNo, String ActDate, String HOD, String UnitSafetyOfficer, String UnitCode, String Description, String Attachment, String AttachmentType, String LocationID, String CategoryID, String SubCategoryID, String ObservationID, String IncidenceHour, String IncidenceMin, String IncidenceZone, String IncidenceActionTaken, final String ObservationName, final String LocationName, String filebytes) {
         EHSClient ehsClient = RetrofitClient2.createServiceEHS(EHSClient.class);
-        Call<String> call = ehsClient.submitEHS(EmpCode, ActNo, ActDate, HOD, UnitSafetyOfficer, UnitCode, Description, Attachment, AttachmentType, LocationID, CategoryID, SubCategoryID, ObservationID, IncidenceHour, IncidenceMin, IncidenceZone, IncidenceActionTaken, ObservationName, LocationName);
+        Call<String> call = ehsClient.submitEHS(EmpCode, ActNo, ActDate, HOD, UnitSafetyOfficer, UnitCode, Description, Attachment, AttachmentType, LocationID, CategoryID, SubCategoryID, ObservationID, IncidenceHour, IncidenceMin, IncidenceZone, IncidenceActionTaken, ObservationName, LocationName,filebytes);
         call.enqueue(new Callback<String>() {
             @Override
             public void onResponse(@NotNull Call<String> call, @NotNull Response<String> response) {
@@ -259,9 +259,9 @@ public class EHSServices {
 
     }
 
-    public void update(final OnTaskComplete onTaskComplete, String ActID, String EmpCode, String ActNo, String ActDate, String HOD, String UnitSafetyOfficer, String UnitCode, String Description, String Attachment, String AttachmentType, String LocationID, String CategoryID, String SubCategoryID, String ObservationID, String IncidenceHour, String IncidenceMin, String IncidenceZone, String IncidenceActionTaken) {
+    public void update(final OnTaskComplete onTaskComplete, String ActID, String EmpCode, String ActNo, String ActDate, String HOD, String UnitSafetyOfficer, String UnitCode, String Description, String Attachment, String AttachmentType, String LocationID, String CategoryID, String SubCategoryID, String ObservationID, String IncidenceHour, String IncidenceMin, String IncidenceZone, String IncidenceActionTaken,String ObservationName,  String LocationName,  String bytes) {
         EHSClient ehsClient = RetrofitClient2.createServiceEHS(EHSClient.class);
-        Call<String> call = ehsClient.updateEhs(ActID, EmpCode, ActNo, ActDate, HOD, UnitSafetyOfficer, UnitCode, Description, Attachment, AttachmentType, LocationID, CategoryID, SubCategoryID, ObservationID, IncidenceHour, IncidenceMin, IncidenceZone, IncidenceActionTaken);
+        Call<String> call = ehsClient.updateEhs(ActID, EmpCode, ActNo, ActDate, HOD, UnitSafetyOfficer, UnitCode, Description, Attachment, AttachmentType, LocationID, CategoryID, SubCategoryID, ObservationID, IncidenceHour, IncidenceMin, IncidenceZone, IncidenceActionTaken,ObservationName,LocationName,bytes);
         call.enqueue(new Callback<String>() {
             @Override
             public void onResponse(@NotNull Call<String> call, @NotNull Response<String> response) {

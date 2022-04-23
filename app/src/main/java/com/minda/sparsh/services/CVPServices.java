@@ -4,6 +4,7 @@ import com.minda.sparsh.client.CVPClient;
 import com.minda.sparsh.listener.CarotResponse;
 import com.minda.sparsh.listener.OnTaskComplete;
 import com.minda.sparsh.model.CVPDetailModel;
+import com.minda.sparsh.model.CVPEmpNameModel;
 import com.minda.sparsh.model.CVPViewCalendarModel;
 import com.minda.sparsh.model.CalendarTypeModel;
 import com.minda.sparsh.model.CustomerModel;
@@ -347,6 +348,30 @@ public class CVPServices {
 
             @Override
             public void onFailure(Call<CVPDetailModel> call, Throwable t) {
+                CarotResponse carotResponse = new CarotResponse();
+                if (t instanceof IOException) {
+                    carotResponse.setMessage("Please hold on a moment, the internet connectivity seems to be slow");
+                }
+                onTaskComplete.onTaskComplte(carotResponse);
+            }
+        });
+    }
+    public void getEmpName(OnTaskComplete onTaskComplete, String empCode){
+        CVPClient cvpClient = RetrofitClient2.getClientCVP(CVPClient.class);
+        Call<CVPEmpNameModel> call = cvpClient.getEmpName(empCode);
+        call.enqueue(new Callback<CVPEmpNameModel>() {
+            @Override
+            public void onResponse(Call<CVPEmpNameModel> call, Response<CVPEmpNameModel> response) {
+                CarotResponse carotResponse = new CarotResponse();
+                carotResponse.setStatuscode(response.code());
+                if (response.code() == HttpsURLConnection.HTTP_OK) {
+                    carotResponse.setData(response.body());
+                }
+                onTaskComplete.onTaskComplte(carotResponse);
+            }
+
+            @Override
+            public void onFailure(Call<CVPEmpNameModel> call, Throwable t) {
                 CarotResponse carotResponse = new CarotResponse();
                 if (t instanceof IOException) {
                     carotResponse.setMessage("Please hold on a moment, the internet connectivity seems to be slow");

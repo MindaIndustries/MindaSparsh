@@ -43,6 +43,7 @@ public class OneFragment extends Fragment {
         CardView card_view2= view.findViewById(R.id.card_view2);
         CardView card_view3 = view.findViewById(R.id.card_view3);
         CardView card_view4 = view.findViewById(R.id.card_view4);
+        CardView card_view5 = view.findViewById(R.id.card_view5);
 
 
         //  jagritiButton =  view.findViewById(R.id.jagriti_btn);
@@ -77,6 +78,14 @@ public class OneFragment extends Fragment {
             Intent intent = new Intent(getActivity(), MainActivity.class);
             intent.putExtra("pdfType", "Materials");
             startActivity(intent);
+        });
+        card_view5.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), MainActivity.class);
+                intent.putExtra("pdfType","Manufacturing");
+                startActivity(intent);
+            }
         });
 
         // Inflate the layout for this fragment

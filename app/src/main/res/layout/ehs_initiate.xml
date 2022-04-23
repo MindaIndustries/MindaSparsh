@@ -402,16 +402,16 @@
                 android:layout_height="wrap_content" />
 
             <TextView
-                android:layout_marginEnd="10dp"
-                android:layout_alignBottom="@+id/attachment"
-                android:layout_alignTop="@+id/attachment"
-                android:layout_below="@+id/customerSpinnerLayout7"
                 android:id="@+id/attachtext"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_below="@+id/customerSpinnerLayout7"
+                android:layout_alignTop="@+id/attachment"
+                android:layout_alignBottom="@+id/attachment"
+                android:layout_marginEnd="10dp"
                 android:layout_toStartOf="@+id/attachment"
-                android:text="Add attachment"
-                android:gravity="center" />
+                android:gravity="center"
+                android:text="Add attachment" />
 
 
             <ImageView

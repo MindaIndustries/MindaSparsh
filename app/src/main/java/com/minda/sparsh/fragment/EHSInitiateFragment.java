@@ -172,7 +172,7 @@ public class EHSInitiateFragment extends Fragment {
     String attachmentName = "", attachmentType = "";
     String incidencehr = "0", incidencemin = "0", incidencezone = "";
 
-    String imgString;
+    String imgString="";
     Bitmap bmp;
 
     @Nullable
@@ -240,11 +240,18 @@ public class EHSInitiateFragment extends Fragment {
                 actionTakenEt.setText("" + getArguments().getString("incidenceAction"));
             }
             if (getArguments().getString("attachment") != null) {
+                attachmentName = getArguments().getString("attachment");
                 if (getArguments().getString("attachment").contains(".jpg") || getArguments().getString("attachment").contains(".png")) {
                     attachmentName = getArguments().getString("attachment");
                     Glide.with(getActivity()).load(RetrofitClient2.ehs_img + getArguments().getString("attachment")).into(docView);
                 }
                 attachtext.setText("" + getArguments().getString("attachment"));
+            }
+            if(getArguments().getString("attachmentType")!=null){
+                attachmentType = getArguments().getString("attachmentType");
+            }
+            if(getArguments().getString("identifiedLoc")!=null){
+                identifiedLocation = getArguments().getString("identifiedLoc");
             }
 
 
@@ -557,7 +564,7 @@ public class EHSInitiateFragment extends Fragment {
 
     @OnClick(R.id.submit)
     public void onClickSubmit() {
-        if (safetyOfficer != null && safetyOfficer.equals("Select") || safetyOfficer == null) {
+        if ((safetyOfficer != null && safetyOfficer.equals("Select")) || safetyOfficer == null) {
             Toast.makeText(getActivity(), "Safety Officer not selected", Toast.LENGTH_LONG).show();
             return;
         }
@@ -603,7 +610,7 @@ public class EHSInitiateFragment extends Fragment {
         if (submit.getText().equals("Submit")) {
             String[] ActDate = observationDateSpinner.getText().toString().split("/");
             String newActDate = ActDate[2] + "/" + ActDate[1] + "/" + ActDate[0];
-            saveEHS(empCode, newActDate, "", safetyOfficer, unitcode, descriptionEdit.getText().toString(), attachmentName, attachmentType, locationID, catId, subCategoryID, observationID, incidencehr, incidencemin, incidencezone, actionTakenEt.getText().toString(), obstype, identifiedLocation);
+            saveEHS(empCode, newActDate, "", safetyOfficer, unitcode, descriptionEdit.getText().toString(), attachmentName, attachmentType, locationID, catId, subCategoryID, observationID, incidencehr, incidencemin, incidencezone, actionTakenEt.getText().toString(), obstype, identifiedLocation,imgString);
         } else {
 
             String[] ActDate = observationDateSpinner.getText().toString().split("/");
@@ -614,7 +621,7 @@ public class EHSInitiateFragment extends Fragment {
             incidencemin = min_am[0];
             incidencezone = min_am[1];
           */
-            updateEHS(actId, empCode, actNo, newActDate, "", getArguments().getString("safetyOfficer"), unitcode, descriptionEdit.getText().toString(), attachmentName, attachmentType, locationID, catId, subCategoryID, observationID, incidencehr, incidencemin, incidencezone, actionTakenEt.getText().toString());
+            updateEHS(actId, empCode, actNo, newActDate, "", getArguments().getString("safetyOfficer"), unitcode, descriptionEdit.getText().toString(), attachmentName, attachmentType, locationID, catId, subCategoryID, observationID, incidencehr, incidencemin, incidencezone, actionTakenEt.getText().toString(),obstype,identifiedLocation,imgString);
         }
     }
 
@@ -993,51 +1000,53 @@ public class EHSInitiateFragment extends Fragment {
     }
 
     public void getCategories(String observationID) {
+
         categories.clear();
         ehsCategories.clear();
         EHSServices ehsServices = new EHSServices();
         ehsServices.getCategories(carotResponse -> {
             if (carotResponse.getStatuscode() == HttpsURLConnection.HTTP_OK) {
-                List<EHSCategoryModel> list = (List<EHSCategoryModel>) carotResponse.getData();
-                if (list != null && list.size() > 0) {
-                    ehsCategories.addAll(list);
-                    for (EHSCategoryModel ehsCategory : ehsCategories) {
-                        categories.add(ehsCategory.getName());
-                    }
-                    categorySpinner.setText("");
-                    subCategorySpinner.setText("");
-                    subCategoryID = "0";
-                    catId = "0";
-                    adapterCategory = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_item, categories);
-                    categorySpinner.setAdapter(adapterCategory);
-                    adapterCategory.notifyDataSetChanged();
+                if (getActivity() != null && isAdded()) {
+                    List<EHSCategoryModel> list = (List<EHSCategoryModel>) carotResponse.getData();
+                    if (list != null && list.size() > 0) {
+                        ehsCategories.addAll(list);
+                        for (EHSCategoryModel ehsCategory : ehsCategories) {
+                            categories.add(ehsCategory.getName());
+                        }
+                        categorySpinner.setText("");
+                        subCategorySpinner.setText("");
+                        subCategoryID = "0";
+                        catId = "0";
+                        adapterCategory = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_item, categories);
+                        categorySpinner.setAdapter(adapterCategory);
+                        adapterCategory.notifyDataSetChanged();
 
-                    if (getArguments() != null && getArguments().getString("catId") != null) {
-                        for (int i = 0; i < ehsCategories.size(); i++) {
-                            if (getArguments().getString("catId").equals(ehsCategories.get(i).getId())) {
-                                categorySpinner.setText(categories.get(i));
-                                category = categories.get(i);
-                                catId = ehsCategories.get(i).getId();
-                                getSubCategories(catId);
+                        if (getArguments() != null && getArguments().getString("catId") != null) {
+                            for (int i = 0; i < ehsCategories.size(); i++) {
+                                if (getArguments().getString("catId").equals(ehsCategories.get(i).getId())) {
+                                    categorySpinner.setText(categories.get(i));
+                                    category = categories.get(i);
+                                    catId = ehsCategories.get(i).getId();
+                                    getSubCategories(catId);
+                                }
                             }
                         }
-                    }
 
 
-                    categorySpinner.setOnItemClickListener((adapterView, view, position, l) -> {
-                        if (position >= 0) {
-                            catId = ehsCategories.get(position).getId();
-                            category = categories.get(position);
-                            subCategories.clear();
-                      //      subCategories.add("Select");
-                            initSubCategorySpinner();
-                            getSubCategories(catId);
-                        } else {
-                            subCategories.clear();
-                         //   subCategories.add("Select");
-                            adapterSubCategory.notifyDataSetChanged();
-                        }
-                    });
+                        categorySpinner.setOnItemClickListener((adapterView, view, position, l) -> {
+                            if (position >= 0) {
+                                catId = ehsCategories.get(position).getId();
+                                category = categories.get(position);
+                                subCategories.clear();
+                                //      subCategories.add("Select");
+                                initSubCategorySpinner();
+                                getSubCategories(catId);
+                            } else {
+                                subCategories.clear();
+                                //   subCategories.add("Select");
+                                adapterSubCategory.notifyDataSetChanged();
+                            }
+                        });
 /*
                     categorySpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                         @Override
@@ -1063,46 +1072,49 @@ public class EHSInitiateFragment extends Fragment {
                         }
                     });
 */
-                }
+                    }
 
+                }
             }
 
         }, observationID);
     }
 
     public void getSubCategories(String catId) {
-        subCategories.clear();
-      //  subCategories.add("Select");
-        ehsSubCategories.clear();
-        EHSServices ehsServices = new EHSServices();
-        ehsServices.getSubCategories(carotResponse -> {
-            if (carotResponse.getStatuscode() == HttpsURLConnection.HTTP_OK) {
-                List<EHSSubCategoryModel> list = (List<EHSSubCategoryModel>) carotResponse.getData();
-                if (list != null && list.size() > 0) {
-                    ehsSubCategories.addAll(list);
-                    for (EHSSubCategoryModel ehsSubCategory : ehsSubCategories) {
-                        subCategories.add(ehsSubCategory.getName());
-                    }
-                    subCategorySpinner.setText("");
-                    subCategoryID = "0";
-                    adapterSubCategory = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_item, subCategories);
-                    subCategorySpinner.setAdapter(adapterSubCategory);
-                    adapterSubCategory.notifyDataSetChanged();
-                    try {
-                        if (getArguments() != null && getArguments().getString("subCategory") != null) {
-                            EHSSubCategoryModel ehsSubCategoryModel = new EHSSubCategoryModel();
-                            ehsSubCategoryModel.setID(getArguments().getString("subCategory"));
-                            int i = ehsSubCategories.indexOf(ehsSubCategoryModel);
-                            subCategoryID = getArguments().getString("subCategory");
-                            subCategorySpinner.setText(subCategories.get(i));
+        if(getActivity()!=null && isAdded()) {
+            subCategories.clear();
+            //  subCategories.add("Select");
+            ehsSubCategories.clear();
+            EHSServices ehsServices = new EHSServices();
+            ehsServices.getSubCategories(carotResponse -> {
+                if (carotResponse.getStatuscode() == HttpsURLConnection.HTTP_OK) {
+                    List<EHSSubCategoryModel> list = (List<EHSSubCategoryModel>) carotResponse.getData();
+                    if (list != null && list.size() > 0) {
+                        ehsSubCategories.addAll(list);
+                        for (EHSSubCategoryModel ehsSubCategory : ehsSubCategories) {
+                            subCategories.add(ehsSubCategory.getName());
                         }
-                    }catch (Exception e){
-                        e.printStackTrace();
+                        subCategorySpinner.setText("");
+                        subCategoryID = "0";
+                        adapterSubCategory = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_item, subCategories);
+                        subCategorySpinner.setAdapter(adapterSubCategory);
+                        adapterSubCategory.notifyDataSetChanged();
+                        try {
+                            if (getArguments() != null && getArguments().getString("subCategory") != null) {
+                                EHSSubCategoryModel ehsSubCategoryModel = new EHSSubCategoryModel();
+                                ehsSubCategoryModel.setID(getArguments().getString("subCategory"));
+                                int i = ehsSubCategories.indexOf(ehsSubCategoryModel);
+                                subCategoryID = getArguments().getString("subCategory");
+                                subCategorySpinner.setText(subCategories.get(i));
+                            }
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
                     }
-                }
 
-            }
-        }, catId);
+                }
+            }, catId);
+        }
     }
 
     public void initUnitSpinner() {
@@ -1329,41 +1341,72 @@ public class EHSInitiateFragment extends Fragment {
 
     }
 
-    public void saveEHS(final String EmpCode, String ActDate, String HOD, String UnitSafetyOfficer, String UnitCode, final String Description, String Attachment, String AttachmentType, String LocationID, String CategoryID, String SubCategoryID, String ObservationID, String IncidenceHour, String IncidenceMin, String IncidenceZone, String IncidenceActionTaken, final String ObservationName, final String LocationName) {
+    public void saveEHS(final String EmpCode, String ActDate, String HOD, String UnitSafetyOfficer, String UnitCode, final String Description, String Attachment, String AttachmentType, String LocationID, String CategoryID, String SubCategoryID, String ObservationID, String IncidenceHour, String IncidenceMin, String IncidenceZone, String IncidenceActionTaken, final String ObservationName, final String LocationName,String imgString) {
 
         progressBar.setVisibility(View.VISIBLE);
         EHSServices ehsServices = new EHSServices();
         ehsServices.saveEHS(carotResponse -> {
             if (carotResponse.getStatuscode() == HttpsURLConnection.HTTP_OK) {
-                String[] response;
+                if (getActivity() != null && isAdded()) {
+                    progressBar.setVisibility(View.GONE);
+                    if(carotResponse.getData()!=null && carotResponse.getData().toString().contains("<HTML>")){
+                        Toast.makeText(getActivity(),""+ carotResponse.getData(), Toast.LENGTH_LONG).show();
+                        return;
+                    }
+
+                    if(carotResponse.getData()!=null && carotResponse.getData().equals("Already Exists")){
+                        Toast.makeText(getActivity(),""+ carotResponse.getData(), Toast.LENGTH_LONG).show();
+
+                    }
+                    else {
+
+                        Toast.makeText(getActivity(), "Successfully submitted", Toast.LENGTH_LONG).show();
+
+                        Intent in = new Intent(getActivity(), EHS_Home.class);
+                        in.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                        startActivity(in);
+                        getActivity().finish();
+                    }
+                }
+
+               /* String[] response;
 
                 if (((String) carotResponse.getData()).contains("/")) {
                     response = ((String) carotResponse.getData()).split("/");
-                    uploadFile(response[1], imgString);
-                    sendMail(EmpCode, ObservationName, LocationName, Description, ((String) carotResponse.getData()).split("/")[0], unitcode);
+                  //  uploadFile(response[1], imgString);
+                ///    sendMail(EmpCode, ObservationName, LocationName, Description, ((String) carotResponse.getData()).split("/")[0], unitcode);
 
                 } else {
-                    sendMail(EmpCode, ObservationName, LocationName, Description, (String) carotResponse.getData(), unitcode);
+                 //   sendMail(EmpCode, ObservationName, LocationName, Description, (String) carotResponse.getData(), unitcode);
                 }
-            }
+         */   }
             progressBar.setVisibility(View.GONE);
 
-        }, EmpCode, ActID, ActDate, HOD, UnitSafetyOfficer, UnitCode, Description, Attachment, AttachmentType, LocationID, CategoryID, SubCategoryID, ObservationID, IncidenceHour, IncidenceMin, IncidenceZone, IncidenceActionTaken, ObservationName, LocationName);
+        }, EmpCode, ActID, ActDate, HOD, UnitSafetyOfficer, UnitCode, Description, Attachment, AttachmentType, LocationID, CategoryID, SubCategoryID, ObservationID, IncidenceHour, IncidenceMin, IncidenceZone, IncidenceActionTaken, ObservationName, LocationName,imgString);
     }
 
-    public void updateEHS(String ActID, final String EmpCode, final String ActNo, String ActDate, String HOD, String UnitSafetyOfficer, String UnitCode, final String Description, String Attachment, String AttachmentType, String LocationID, String CategoryID, String SubCategoryID, String ObservationID, String IncidenceHour, String IncidenceMin, String IncidenceZone, String IncidenceActionTaken) {
+    public void updateEHS(String ActID, final String EmpCode, final String ActNo, String ActDate, String HOD, String UnitSafetyOfficer, String UnitCode, final String Description, String Attachment, String AttachmentType, String LocationID, String CategoryID, String SubCategoryID, String ObservationID, String IncidenceHour, String IncidenceMin, String IncidenceZone, String IncidenceActionTaken, final String ObservationName, final String LocationName,String imgString) {
         EHSServices ehsServices = new EHSServices();
         progressBar.setVisibility(View.VISIBLE);
         ehsServices.update(carotResponse -> {
             if (carotResponse.getStatuscode() == HttpsURLConnection.HTTP_OK) {
-                if (carotResponse.getData() != null) {
+                if (getActivity() != null && isAdded()) {
+                    progressBar.setVisibility(View.GONE);
+                    Toast.makeText(getActivity(), "Successfully Updated", Toast.LENGTH_LONG).show();
+                    Intent in = new Intent(getActivity(), EHS_Home.class);
+                    in.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    startActivity(in);
+                    getActivity().finish();
+                }
+
+               /* if (carotResponse.getData() != null) {
                     uploadFile(carotResponse.getData().toString(), imgString);
                     sendMail(EmpCode, obstype, identifiedLocation, Description, ActNo, unitcode);
-                }
+                }*/
             }
             progressBar.setVisibility(View.GONE);
 
-        }, ActID, EmpCode, ActNo, ActDate, HOD, UnitSafetyOfficer, UnitCode, Description, Attachment, AttachmentType, LocationID, CategoryID, SubCategoryID, ObservationID, IncidenceHour, IncidenceMin, IncidenceZone, IncidenceActionTaken);
+        }, ActID, EmpCode, ActNo, ActDate, HOD, UnitSafetyOfficer, UnitCode, Description, Attachment, AttachmentType, LocationID, CategoryID, SubCategoryID, ObservationID, IncidenceHour, IncidenceMin, IncidenceZone, IncidenceActionTaken,ObservationName,LocationName,imgString);
 
     }
 
