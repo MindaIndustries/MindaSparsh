@@ -74,6 +74,7 @@ public class MarketingDashboard extends AppCompatActivity {
         });
 
     }
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == android.R.id.home) {
@@ -82,32 +83,6 @@ public class MarketingDashboard extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
-
-
-/*
-    public void gettest() {
-        Interface loginInterface = RetrofitClient.getClient1().create(Interface.class);
-        Call<String> loginResponse = loginInterface.getemp("4667");
-        loginResponse.enqueue(new Callback<String>() {
-            @Override
-            public void onResponse(@NotNull Call<String> call, @NotNull Response<String> response) {
-
-                if (response.body() != null) {
-                    Log.d("response", String.valueOf(response));
-
-                }
-            }
-
-            @Override
-            public void onFailure(@NotNull Call<String> call, @NotNull Throwable t) {
-                 Toast.makeText(MarketingDashboard.this, "Something Wrong", Toast.LENGTH_LONG).show();
-
-            }
-
-        });
-
-}
-*/
 
 
 }

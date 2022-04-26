@@ -26,8 +26,6 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.DatePicker;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListAdapter;
@@ -36,15 +34,10 @@ import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.google.android.material.textfield.TextInputEditText;
 import com.minda.sparsh.Adapter.AbnormalityAdapter;
-import com.minda.sparsh.Adapter.AbnormalityCategoryAdapter;
 import com.minda.sparsh.Adapter.BusinessSpinnerAdapter;
-import com.minda.sparsh.Adapter.DepartmentSpinnerAdapter;
 import com.minda.sparsh.Adapter.DomainSpinnerAdapter;
-import com.minda.sparsh.Adapter.GroupSpinnerAdapter;
-import com.minda.sparsh.Adapter.PlantSpinnerAdapter;
 import com.minda.sparsh.model.AbnormalityView_Model;
 import com.minda.sparsh.model.AddAbnormality_Model;
 import com.minda.sparsh.model.Business_Model;
@@ -58,9 +51,7 @@ import com.minda.sparsh.model.UserDetail_Model;
 import com.minda.sparsh.util.AbnormalityDashboard;
 import com.minda.sparsh.util.RetrofitClient2;
 import com.minda.sparsh.util.Utility;
-
 import org.jetbrains.annotations.NotNull;
-
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
@@ -245,14 +236,11 @@ public class AbnormalityAddressingActivity extends AppCompatActivity {
             }
         });
 
-        sp_category.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                CategoryAbnormality categoryAbnormality = categorymodelList.get(i);
-                category_id = categoryAbnormality.getId();
-                categoryselected = categoryAbnormality.getCategory();
-                hitGetAbnormalityDetailApi(plantid, String.valueOf(sub_department), domainid, businessid);
-            }
+        sp_category.setOnItemClickListener((adapterView, view, i, l) -> {
+            CategoryAbnormality categoryAbnormality = categorymodelList.get(i);
+            category_id = categoryAbnormality.getId();
+            categoryselected = categoryAbnormality.getCategory();
+            hitGetAbnormalityDetailApi(plantid, String.valueOf(sub_department), domainid, businessid);
         });
 
         sp_business.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -288,14 +276,11 @@ public class AbnormalityAddressingActivity extends AppCompatActivity {
             }
         });
 
-        sp_sdepartment.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Sub_Department_Model selectedItem = Subdepartmentresponse.get(i);
-                sub_department = selectedItem.getID();
-                sub_departmentselected = selectedItem.getDEPARTMENTDETAIL();
-                hitGetAbnormalityDetailApi(plantid, String.valueOf(sub_department), domainid, businessid);
-            }
+        sp_sdepartment.setOnItemClickListener((adapterView, view, i, l) -> {
+            Sub_Department_Model selectedItem = Subdepartmentresponse.get(i);
+            sub_department = selectedItem.getID();
+            sub_departmentselected = selectedItem.getDEPARTMENTDETAIL();
+            hitGetAbnormalityDetailApi(plantid, String.valueOf(sub_department), domainid, businessid);
         });
      /*   sp_sdepartment.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -332,38 +317,35 @@ public class AbnormalityAddressingActivity extends AppCompatActivity {
 
             }
         });
-     */   sp_department.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                if(i>=0) {
-                    Department_Model selectedItem = Departmentresponse.get(i);
-                    department = selectedItem.getDEPARTMENT();
-                    departmentselected = selectedItem.getDEPARTMENT();
-                    sp_sdepartment.setText("");
-                    adapterSubDepartment = new ArrayAdapter<>(AbnormalityAddressingActivity.this, android.R.layout.simple_spinner_item, subdepartments);
-                    sp_sdepartment.setAdapter(adapterSubDepartment);
-                    adapterSubDepartment.notifyDataSetChanged();
+     */   sp_department.setOnItemClickListener((adapterView, view, i, l) -> {
+         if(i>=0) {
+             Department_Model selectedItem = Departmentresponse.get(i);
+             department = selectedItem.getDEPARTMENT();
+             departmentselected = selectedItem.getDEPARTMENT();
+             sp_sdepartment.setText("");
+             adapterSubDepartment = new ArrayAdapter<>(AbnormalityAddressingActivity.this, android.R.layout.simple_spinner_item, subdepartments);
+             sp_sdepartment.setAdapter(adapterSubDepartment);
+             adapterSubDepartment.notifyDataSetChanged();
 
-                    hitSubdepartmentApi(selectedItem.getID());
-                    hitGetAbnormalityDetailApi(plantid, String.valueOf(sub_department), domainid, businessid);
+             hitSubdepartmentApi(selectedItem.getID());
+             hitGetAbnormalityDetailApi(plantid, String.valueOf(sub_department), domainid, businessid);
 
-                }
+         }
 
-             /*   if (!selectedItem.getDEPARTMENT().equalsIgnoreCase("Select Department")) {
+      /*   if (!selectedItem.getDEPARTMENT().equalsIgnoreCase("Select Department")) {
 //                    hitDepartmentApi(sub_department);
-                    hitSubdepartmentApi(selectedItem.getID());
-                } else {
-                    List<Sub_Department_Model> list = new ArrayList<>();
-                    Sub_Department_Model sub_department_model = new Sub_Department_Model();
-                    sub_department_model.setDEPARTMENTDETAIL("Select SubDepartment");
-                    sub_department_model.setID(0);
-                    list.add(0, sub_department_model);
-                    GroupSpinnerAdapter departmentSpinnerAdapter = new GroupSpinnerAdapter(AbnormalityAddressingActivity.this, list);
-                    sp_sdepartment.setAdapter(departmentSpinnerAdapter);
-                }*/
+             hitSubdepartmentApi(selectedItem.getID());
+         } else {
+             List<Sub_Department_Model> list = new ArrayList<>();
+             Sub_Department_Model sub_department_model = new Sub_Department_Model();
+             sub_department_model.setDEPARTMENTDETAIL("Select SubDepartment");
+             sub_department_model.setID(0);
+             list.add(0, sub_department_model);
+             GroupSpinnerAdapter departmentSpinnerAdapter = new GroupSpinnerAdapter(AbnormalityAddressingActivity.this, list);
+             sp_sdepartment.setAdapter(departmentSpinnerAdapter);
+         }*/
 //
-            }
-        });
+     });
 
     /*    sp_department.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -421,32 +403,29 @@ public class AbnormalityAddressingActivity extends AppCompatActivity {
             }
         });
 */
-        sp_plant.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                //  Plant_Model selectedItem = (Plant_Model) adapterView.getSelectedItem();
-                plant = Plantresponse.get(i).getUnitName();
-                plantid = Plantresponse.get(i).getUnitCode();
-                plantselected = Plantresponse.get(i).getUnitName();
-                hitDepartmentApi();
-                hitGetAbnormalityDetailApi(plantid, String.valueOf(sub_department), domainid, businessid);
+        sp_plant.setOnItemClickListener((adapterView, view, i, l) -> {
+            //  Plant_Model selectedItem = (Plant_Model) adapterView.getSelectedItem();
+            plant = Plantresponse.get(i).getUnitName();
+            plantid = Plantresponse.get(i).getUnitCode();
+            plantselected = Plantresponse.get(i).getUnitName();
+            hitDepartmentApi();
+            hitGetAbnormalityDetailApi(plantid, String.valueOf(sub_department), domainid, businessid);
 
 
-              /*  if (!plant.equalsIgnoreCase("Select Plant")) {
+          /*  if (!plant.equalsIgnoreCase("Select Plant")) {
 //                    hitSubdepartmentApi();
-                } else {
-                    List<Department_Model> list = new ArrayList<>();
-                    Department_Model department_model = new Department_Model();
-                    department_model.setID("0");
-                    department_model.setDEPARTMENT("Select Department");
-                    list.add(0, department_model);
-                    DepartmentSpinnerAdapter departmentSpinnerAdapter = new DepartmentSpinnerAdapter(AbnormalityAddressingActivity.this, list);
-                    sp_department.setAdapter(departmentSpinnerAdapter);
+            } else {
+                List<Department_Model> list = new ArrayList<>();
+                Department_Model department_model = new Department_Model();
+                department_model.setID("0");
+                department_model.setDEPARTMENT("Select Department");
+                list.add(0, department_model);
+                DepartmentSpinnerAdapter departmentSpinnerAdapter = new DepartmentSpinnerAdapter(AbnormalityAddressingActivity.this, list);
+                sp_department.setAdapter(departmentSpinnerAdapter);
 
 
-                }
-*///
             }
+*///
         });
 //        sp_group.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
 //            @Override
@@ -1272,26 +1251,22 @@ public class AbnormalityAddressingActivity extends AppCompatActivity {
 
 
         DatePickerDialog datePickerDialog = new DatePickerDialog(this,
-                new DatePickerDialog.OnDateSetListener() {
+                (view, year, monthOfYear, dayOfMonth) -> {
+                    if (monthOfYear >= 0 && monthOfYear < 12)
+                        try {
+                            Calendar calendar = Calendar.getInstance();
+                            calendar.set(Calendar.MONTH, monthOfYear);
 
-                    @Override
-                    public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
-                        if (monthOfYear >= 0 && monthOfYear < 12)
-                            try {
-                                Calendar calendar = Calendar.getInstance();
-                                calendar.set(Calendar.MONTH, monthOfYear);
+                            SimpleDateFormat simpleDateFormat = new SimpleDateFormat("MMM");
+                            simpleDateFormat.setCalendar(calendar);
 
-                                SimpleDateFormat simpleDateFormat = new SimpleDateFormat("MMM");
-                                simpleDateFormat.setCalendar(calendar);
-
-                            } catch (Exception e) {
-                                if (e != null)
-                                    e.printStackTrace();
-                            }
-                        et_finddate.setText("0" + dayOfMonth + "-" + mMonth + "-" + year);
+                        } catch (Exception e) {
+                            if (e != null)
+                                e.printStackTrace();
+                        }
+                    et_finddate.setText("0" + dayOfMonth + "-" + mMonth + "-" + year);
 
 
-                    }
                 }, mYear, mMonth, mDay);
         datePickerDialog.getDatePicker().setMinDate(System.currentTimeMillis());
         datePickerDialog.show();

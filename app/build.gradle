@@ -27,8 +27,8 @@ android {
         applicationId "com.minda.sparsh"
         minSdkVersion 21
         targetSdkVersion 30
-        versionCode 54
-        versionName "1.31"
+        versionCode 55
+        versionName "1.32"
         multiDexEnabled true
         testInstrumentationRunner = 'android.support.test.runner.AndroidJUnitRunner'
     }

@@ -1,7 +1,9 @@
 package com.minda.sparsh;
 
+import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.TextView;
@@ -25,6 +27,8 @@ public class NotificationUrlWeb extends AppCompatActivity {
     WebView webview;
     String url;
     boolean isLink;
+    private ProgressDialog progress = null;
+
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -38,28 +42,30 @@ public class NotificationUrlWeb extends AppCompatActivity {
         title.setText("Notification Details");
         url = getIntent().getStringExtra("url");
         isLink = getIntent().getBooleanExtra("isLink",false);
+        progress = new ProgressDialog(this);
+        progress.setMessage("Please wait...");
+        progress.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+        progress.setIndeterminate(true);
+
         if(isLink){
             url = url;
         }
         else{
             url = RetrofitClient2.notifUrl+url;
         }
-        webview.loadUrl(url);
-        webview.clearCache(true);
-        webview.clearHistory();
-        webview.getSettings().setJavaScriptEnabled(true);
+     //   webview.clearCache(true);
+       // webview.clearHistory();
+       /* webview.getSettings().setJavaScriptEnabled(true);
         webview.getSettings().setJavaScriptCanOpenWindowsAutomatically(true);
         webview.getSettings().setLoadWithOverviewMode(true);
         webview.getSettings().setUseWideViewPort(true);
+*/
 
-        webview.setWebViewClient(new WebViewClient() {
-            @Override
-            public boolean shouldOverrideUrlLoading(WebView view, String url) {
-                return false;
-            }
-        });
-
-
+        webview.getSettings().setJavaScriptEnabled(true);
+        webview.getSettings().setLoadWithOverviewMode(true);
+        webview.getSettings().setUseWideViewPort(true);
+        webview.getSettings().setBuiltInZoomControls(true);
+        webView(url);
     }
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -69,4 +75,48 @@ public class NotificationUrlWeb extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
+
+    private void showProgress(boolean b) {
+        try {
+            if (b)
+                progress.show();
+            else
+                progress.dismiss();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    void webView(String url) {
+        webview.getSettings().setJavaScriptEnabled(true);
+        webview.getSettings().setLoadWithOverviewMode(true);
+        webview.getSettings().setUseWideViewPort(true);
+        webview.getSettings().setBuiltInZoomControls(true);
+        showProgress(true);
+        webview.setWebViewClient(new WebViewClient() {
+
+            @Override
+            public boolean shouldOverrideUrlLoading(WebView view, String url) {
+                view.loadUrl(url);
+                return true;
+            }
+
+            @Override
+            public void onLoadResource(WebView view, String url) {
+                super.onLoadResource(view, url);
+            }
+
+            @Override
+            public void onPageFinished(WebView view, final String url) {
+                showProgress(false);
+            }
+        });
+        if (url.contains("AppPdf")) {
+            webview.loadUrl("http://drive.google.com/viewerng/viewer?embedded=true&url=" + url);
+        } else {
+            webview.loadUrl(url);
+        }
+
+    }
+
+
 }
