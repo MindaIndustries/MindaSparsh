@@ -72,8 +72,7 @@ public class MainActivity extends AppCompatActivity {
             } else if(pdfType.equalsIgnoreCase("EHS")) {
                 hitGetPdfApi("EHS");
             } else if(pdfType.equalsIgnoreCase("Manufacturing")){
-                hitGetPdfApi("Manufacturing"
-                );
+                hitGetPdfApi("Manufacturing");
             } else{
                 hitGetPdfApi("Materials");
 

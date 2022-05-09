@@ -7,7 +7,11 @@ import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
+import android.text.Html;
 import android.view.View;
+import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -21,14 +25,17 @@ import com.minda.sparsh.fragment.ManufacturingFragment;
 import com.minda.sparsh.fragment.OneFragment;
 import com.minda.sparsh.fragment.ThreeFragment;
 import com.minda.sparsh.fragment.TwoFragment;
+import com.minda.sparsh.model.GuidelineModel;
 import com.minda.sparsh.model.NotiCount;
 import com.minda.sparsh.model.NotificationModel;
+import com.minda.sparsh.model.UpdateGuideLine;
 import com.minda.sparsh.model.VersionModel;
 import com.minda.sparsh.services.FirebaseService;
 import com.minda.sparsh.util.RetrofitClient2;
 import com.minda.sparsh.util.Utility;
 
 import org.jetbrains.annotations.NotNull;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -38,6 +45,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -55,6 +63,8 @@ public class DashBoardActivity extends BaseActivity implements View.OnClickListe
 
     String version = "";
     String deviceTokenFcm;
+    String Description, title;
+    int applicableId;
 
 
     @Override
@@ -77,6 +87,7 @@ public class DashBoardActivity extends BaseActivity implements View.OnClickListe
         } catch (PackageManager.NameNotFoundException e) {
             e.printStackTrace();
         }
+        getGuidelineDetails();
       /*  GetVersionCode getVersionCode = new GetVersionCode();
         getVersionCode.execute();
 */
@@ -88,7 +99,7 @@ public class DashBoardActivity extends BaseActivity implements View.OnClickListe
         adapter.addFragment(new ThreeFragment(), "HR/Admin");
 //        adapter.addFragment(new FiveFragment(), "Finance");
         adapter.addFragment(new FourFragment(), "IT");
-        adapter.addFragment(new FiveFragment(),"Marketing");
+        adapter.addFragment(new FiveFragment(), "Marketing");
 //        adapter.addFragment(new SevenFragment(), "Survey");
 //        adapter.addFragment(new EightFragment(), "Abnormality");
 //        adapter.addFragment(new SixFragment(), "Support");
@@ -310,8 +321,8 @@ public class DashBoardActivity extends BaseActivity implements View.OnClickListe
 
     public void saveFirebaseToken(String empCode) {
         FirebaseMessaging.getInstance().getToken().addOnCompleteListener(task -> {
-            if(task.isSuccessful()) {
-                 deviceTokenFcm = task.getResult();
+            if (task.isSuccessful()) {
+                deviceTokenFcm = task.getResult();
             }
             if (Utility.isOnline(DashBoardActivity.this)) {
                 FirebaseService firebaseService = new FirebaseService();
@@ -361,6 +372,38 @@ public class DashBoardActivity extends BaseActivity implements View.OnClickListe
         });
     }
 
+    public void getGuidelineDetails() {
+        Interface aninterface = RetrofitClient2.getClient().create(Interface.class);
+        Call<List<GuidelineModel>> call = aninterface.getGuidelinePending(empCode, RetrofitClient2.CKEY);
+        call.enqueue(new Callback<List<GuidelineModel>>() {
+            @Override
+            public void onResponse(Call<List<GuidelineModel>> call, Response<List<GuidelineModel>> response) {
+                if (response.code() == HttpsURLConnection.HTTP_OK) {
+                    List<GuidelineModel> list = response.body();
+                    if (list != null && list.size() > 0) {
+                        if (list.get(0).getDescription() != null) {
+                            Description = list.get(0).getDescription();
+                        }
+                        if (list.get(0).getTitle() != null) {
+                            title = list.get(0).getTitle();
+                        }
+                        if (list.get(0).getApplicableID() != 0) {
+                            applicableId = list.get(0).getApplicableID();
+                        }
+                        showAlertForGuideLines();
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<GuidelineModel>> call, Throwable t) {
+                System.out.println("Api failed");
+            }
+        });
+
+
+    }
+
 
     public void showMsgUpdate() {
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(DashBoardActivity.this, R.style.AlertDialogCustom);
@@ -383,26 +426,26 @@ public class DashBoardActivity extends BaseActivity implements View.OnClickListe
             }
         });
 */
-        AlertDialog alertDialog = alertDialogBuilder.create();
-        alertDialog.show();
+        if (!isFinishing()) {
+            AlertDialog alertDialog = alertDialogBuilder.create();
+            alertDialog.show();
+        }
     }
 
-    public void getNotifcount(String UserId){
+    public void getNotifcount(String UserId) {
         Interface loginInterface = RetrofitClient2.getClient().create(Interface.class);
         Call<java.util.List<NotiCount>> call = loginInterface.GetPushNotCount(UserId, RetrofitClient2.CKEY);
         call.enqueue(new Callback<List<NotiCount>>() {
             @Override
             public void onResponse(Call<List<NotiCount>> call, Response<List<NotiCount>> response) {
-                if(response.code()==HttpsURLConnection.HTTP_OK){
+                if (response.code() == HttpsURLConnection.HTTP_OK) {
                     List<NotiCount> list = response.body();
-                    if(list!=null && list.size()>0){
-                        if(list.get(0).getVal()>0) {
+                    if (list != null && list.size() > 0) {
+                        if (list.get(0).getVal() > 0) {
                             tv_unread.setText("" + list.get(0).getVal());
                             tv_unread.setVisibility(View.VISIBLE);
-                        }
-                        else{
+                        } else {
                             tv_unread.setVisibility(View.GONE);
-
                         }
                     }
                 }
@@ -419,5 +462,70 @@ public class DashBoardActivity extends BaseActivity implements View.OnClickListe
     }
 
 
+    public void showAlertForGuideLines() {
+        AlertDialog.Builder builder
+                = new AlertDialog.Builder(this);
+        final View customLayout
+                = getLayoutInflater()
+                .inflate(R.layout.guidelines_layout, null);
+        builder.setView(customLayout);
+        AlertDialog dialog
+                = builder.create();
+        dialog.setCancelable(false);
+        TextView textView = customLayout.findViewById(R.id.textView);
+        TextView title1 = customLayout.findViewById(R.id.title);
+        CheckBox chkbox = customLayout.findViewById(R.id.check);
+        Button accept = customLayout.findViewById(R.id.accept);
+        title1.setText(title);
+        chkbox.setText("I agree and accept above " + title);
+        textView.setText(Html.fromHtml(Description));
+        chkbox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                if (b) {
+                    accept.setVisibility(View.VISIBLE);
+                } else {
+                    accept.setVisibility(View.INVISIBLE);
+                }
+            }
+        });
+        accept.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (Utility.isOnline(DashBoardActivity.this)) {
+                    updateGuideLine(dialog);
+                }
+            }
+        });
+
+        dialog.show();
+    }
+
+    public void updateGuideLine(AlertDialog alertDialog) {
+        Interface anInterface = RetrofitClient2.getClient().create(Interface.class);
+        Call<List<UpdateGuideLine>> call = anInterface.updatePendingGuidLine(empCode, applicableId, RetrofitClient2.CKEY);
+        call.enqueue(new Callback<List<UpdateGuideLine>>() {
+            @Override
+            public void onResponse(Call<List<UpdateGuideLine>> call, Response<List<UpdateGuideLine>> response) {
+                if (response.code() == HttpsURLConnection.HTTP_OK) {
+                    List<UpdateGuideLine> updateGuideLine = (List<UpdateGuideLine>) response.body();
+                    if (updateGuideLine != null && updateGuideLine.size() > 0) {
+                        if (updateGuideLine.get(0).getColumn1() != null) {
+                            if (updateGuideLine.get(0).getColumn1().equalsIgnoreCase("Success")) {
+                                alertDialog.dismiss();
+                            }
+                        }
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<UpdateGuideLine>> call, Throwable t) {
+                Toast.makeText(DashBoardActivity.this, "Something went Wrong", Toast.LENGTH_LONG).show();
+
+            }
+        });
+
+    }
 }
 

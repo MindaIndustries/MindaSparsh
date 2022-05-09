@@ -1,9 +1,11 @@
 package com.minda.sparsh;
 
+import android.Manifest;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -11,13 +13,17 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.google.android.material.navigation.NavigationView;
-import com.minda.sparsh.cvp.CVPPlanCalendar;
+import com.minda.sparsh.services.CVPServices;
 
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.app.ActivityCompat;
 import androidx.core.app.TaskStackBuilder;
+import androidx.core.content.ContextCompat;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.viewpager.widget.ViewPager;
@@ -34,7 +40,11 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
     private ProgressDialog progressDialog;
     public ViewPager viewPager;
     SharedPreferences myPref;
+    ActivityResultLauncher activityResultLauncher;
+    String empcode, randomNumber;
 
+
+    public static final int MY_PERMISSIONS_REQUEST_CAMERA = 1234;
 
     protected boolean useToolbar() {
         return true;
@@ -57,6 +67,17 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        myPref = getSharedPreferences("MyPref", Context.MODE_PRIVATE);
+        empcode = myPref.getString("Id", "Id");
+
+        activityResultLauncher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), result -> {
+            if (result.getResultCode() == RESULT_OK && result.getData() != null) {
+                Bundle bundle = result.getData().getExtras();
+                randomNumber = bundle.getString("S.NO.");
+                updateRandomNumber();
+            }
+        });
+
     }
 
 
@@ -149,6 +170,13 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
         if (id == R.id.profile) {
             Intent intent = new Intent(BaseActivity.this, ProfileActivity.class);
             startActivity(intent);
+        }
+        if(id == R.id.scan){
+            requestCameraPermission();
+            if (hasCameraPermission()) {
+                Intent intent = new Intent(BaseActivity.this, QRCodeScanner.class);
+                activityResultLauncher.launch(intent);
+            }
         }
         if(id == R.id.marketing){
             viewPager.setCurrentItem(5, true);
@@ -291,5 +319,24 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
     public void setCurrentContext(Context context) {
         this.context = context;
     }
+
+    private void requestCameraPermission() {
+
+        ActivityCompat.requestPermissions(this,
+                new String[]{Manifest.permission.CAMERA}, MY_PERMISSIONS_REQUEST_CAMERA); // your request code
+    }
+
+    private boolean hasCameraPermission() {
+        return (ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED);
+
+    }
+
+    public void updateRandomNumber(){
+        CVPServices cvpServices = new CVPServices();
+        cvpServices.updateRandomNumber(carotResponse -> {
+
+        },empcode, randomNumber);
+    }
+
 
 }//end BaseActivity

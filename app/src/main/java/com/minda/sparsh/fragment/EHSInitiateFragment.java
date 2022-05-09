@@ -579,7 +579,7 @@ public class EHSInitiateFragment extends Fragment {
             }
 
         }
-        if (subcategory != null && subcategory.equals("Select")) {
+        if ((subcategory != null && subcategory.equals("Select")) || subcategory ==null) {
             if (!obstype.equals("Near Miss Reporting")) {
                 Toast.makeText(getActivity(), "Sub Category not selected", Toast.LENGTH_LONG).show();
                 return;

@@ -135,9 +135,11 @@ public class LoginActivity extends AppCompatActivity {
         });
         view_pass.setOnClickListener(view -> {
             if(ispassvisible){
+                view_pass.setImageResource(R.drawable.visibility_off);
                 input_password.setTransformationMethod(new PasswordTransformationMethod());
             }
             else{
+                view_pass.setImageResource(R.drawable.pass_view);
                 input_password.setTransformationMethod(null);
             }
 

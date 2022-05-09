@@ -23,6 +23,7 @@ import com.minda.sparsh.model.Domain_Model;
 import com.minda.sparsh.model.DwmResponse;
 import com.minda.sparsh.model.GetAbnormalityImage_Model;
 import com.minda.sparsh.model.Group_Model;
+import com.minda.sparsh.model.GuidelineModel;
 import com.minda.sparsh.model.IAMBModel;
 import com.minda.sparsh.model.IAMCreateRequestModel;
 import com.minda.sparsh.model.IAMGetAccessSubTypeModel;
@@ -40,6 +41,7 @@ import com.minda.sparsh.model.NotiCount;
 import com.minda.sparsh.model.NotificationModel;
 import com.minda.sparsh.model.Plant_Model;
 import com.minda.sparsh.model.Sub_Department_Model;
+import com.minda.sparsh.model.UpdateGuideLine;
 import com.minda.sparsh.model.UserDetail_Model;
 import com.minda.sparsh.model.VersionModel;
 import com.minda.sparsh.model.ViewAppointmentModel;
@@ -59,6 +61,14 @@ public interface Interface {
 
     @GET("GetAppVersion")
     Call<List<VersionModel>> getAppVersion();
+
+    @GET("GetGuideLinePending")
+    Call<List<GuidelineModel>> getGuidelinePending(@Query("Empcode") String Empcode, @Query("CKey") String Ckey);
+
+    @FormUrlEncoded
+    @POST("UpdatePendingGuildLine")
+    Call<List<UpdateGuideLine>> updatePendingGuidLine(@Field("Empcode") String Empcode, @Field("ApplicableID") int ApplicableID, @Field("CKey") String Ckey);
+
 
     @GET("GetAboutUs")
     Call<List<AboutUsDetails>> getAboutDetails();

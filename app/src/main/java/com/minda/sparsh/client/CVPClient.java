@@ -23,6 +23,10 @@ import retrofit2.http.Query;
 
 public interface CVPClient {
 
+    @FormUrlEncoded
+    @POST("QrCode/UpdateRandomNumber")
+    Call<String> updateRandomNumber(@Field("EmpCode") String EmpCode, @Field("RandomNumber") String RandomNumber);
+
     @GET("GetWeeks")
     Call<WeekModel> getWeeks(@Query("date") String date);
 

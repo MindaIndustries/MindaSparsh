@@ -28,6 +28,34 @@ import retrofit2.http.Field;
 
 public class CVPServices {
 
+    public void updateRandomNumber(OnTaskComplete onTaskComplete, String empcode, String randomNumber){
+        CVPClient cvpClient = RetrofitClient2.getClientScanQR(CVPClient.class);
+        Call<String> call = cvpClient.updateRandomNumber(empcode,randomNumber);
+        call.enqueue(new Callback<String>() {
+            @Override
+            public void onResponse(Call<String> call, Response<String> response) {
+                CarotResponse carotResponse = new CarotResponse();
+                carotResponse.setStatuscode(response.code());
+                if (response.code() == HttpsURLConnection.HTTP_OK) {
+                    carotResponse.setData(response.body());
+                }
+                onTaskComplete.onTaskComplte(carotResponse);
+            }
+
+            @Override
+            public void onFailure(Call<String> call, Throwable t) {
+                CarotResponse carotResponse = new CarotResponse();
+                if (t instanceof IOException) {
+                    carotResponse.setMessage("Please hold on a moment, the internet connectivity seems to be slow");
+                }
+                onTaskComplete.onTaskComplte(carotResponse);
+
+            }
+        });
+
+
+    }
+
     public void getWeekData(OnTaskComplete onTaskComplete, String date){
         CVPClient cvpClient = RetrofitClient2.getClientCVP(CVPClient.class);
         Call<WeekModel> call = cvpClient.getWeeks(date);

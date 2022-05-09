@@ -10,6 +10,13 @@
             android:title="Profile"
             android:textColor="#000000" />
     </group>
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/scan"
+            android:title="Link Device"
+            android:textColor="#000000" />
+    </group>
+
 
 
     <group android:checkableBehavior="single"

@@ -87,7 +87,7 @@
                             android:layout_alignParentRight="true"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:src="@drawable/pass_view"
+                            android:src="@drawable/visibility_off"
                             />
 
 

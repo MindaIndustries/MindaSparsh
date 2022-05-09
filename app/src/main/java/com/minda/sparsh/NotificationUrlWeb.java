@@ -110,7 +110,7 @@ public class NotificationUrlWeb extends AppCompatActivity {
                 showProgress(false);
             }
         });
-        if (url.contains("AppPdf")) {
+        if (!isLink && !url.contains("EmpBirthday.aspx")) {
             webview.loadUrl("http://drive.google.com/viewerng/viewer?embedded=true&url=" + url);
         } else {
             webview.loadUrl(url);
