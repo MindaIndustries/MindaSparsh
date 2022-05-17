@@ -14,7 +14,9 @@
         <item
             android:id="@+id/scan"
             android:title="Link Device"
-            android:textColor="#000000" />
+            android:textColor="#000000"
+            android:visible="false"
+            />
     </group>
 
 

@@ -1463,7 +1463,12 @@ public class EHSInitiateFragment extends Fragment {
         Utility.saveFileToSdCard(mDestinationFile, thumbnail);
         String fileName = mDestinationFile.getName();
         System.out.println("fileName" + fileName);
-        bytes = getBytesFromBitmap(thumbnail);
+        try {
+            bytes = getBytesFromBitmap(thumbnail);
+        }
+        catch (Exception e){
+
+        }
         imgString = Base64.encodeToString(bytes,
                 Base64.NO_WRAP);
         attachmentName = fileName;
@@ -1501,7 +1506,12 @@ public class EHSInitiateFragment extends Fragment {
         attachmentName = fileName;
         attachmentType = "jpg";
         attachtext.setText(attachmentName);
-        bytes = getBytesFromBitmap(bm);
+        try {
+            bytes = getBytesFromBitmap(bm);
+        }
+        catch (Exception e){
+
+        }
         imgString = Base64.encodeToString(bytes, Base64.NO_WRAP);
         bmp = bm;
 

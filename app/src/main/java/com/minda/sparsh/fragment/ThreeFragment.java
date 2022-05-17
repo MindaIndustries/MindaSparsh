@@ -12,6 +12,7 @@ import android.widget.Toast;
 import com.minda.sparsh.BottomUpConcernActivity;
 import com.minda.sparsh.DashBoardActivity;
 import com.minda.sparsh.EHS_Home;
+import com.minda.sparsh.MeetingRoomActivity;
 import com.minda.sparsh.R;
 import com.minda.sparsh.SuggestionBox;
 import com.minda.sparsh.VisitorManagementActivity;
@@ -86,7 +87,10 @@ public class ThreeFragment extends Fragment {
 
         });
 
-        cardView1.setOnClickListener(v -> Toast.makeText(getActivity(), "Coming Soon!", Toast.LENGTH_LONG).show());
+        cardView1.setOnClickListener(v -> {
+            Intent in =new Intent(getActivity(),MeetingRoomActivity.class);
+            startActivity(in);
+        });
 
         cardView.setOnClickListener(v -> {
             if (Utility.isOnline(getActivity())) {

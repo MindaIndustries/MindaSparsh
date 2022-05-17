@@ -497,8 +497,9 @@ public class DashBoardActivity extends BaseActivity implements View.OnClickListe
                 }
             }
         });
-
-        dialog.show();
+        if(!isFinishing()) {
+            dialog.show();
+        }
     }
 
     public void updateGuideLine(AlertDialog alertDialog) {

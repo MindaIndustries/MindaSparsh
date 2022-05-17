@@ -111,6 +111,8 @@
         <entry key="app/src/main/res/layout/item_page.xml" value="0.1" />
         <entry key="app/src/main/res/layout/marketing_dashboard.xml" value="0.2" />
         <entry key="app/src/main/res/layout/materialcalendar.xml" value="0.15505464480874318" />
+        <entry key="app/src/main/res/layout/meeting_room_row.xml" value="0.2" />
+        <entry key="app/src/main/res/layout/meeting_rooms.xml" value="0.2" />
         <entry key="app/src/main/res/layout/minda_care.xml" value="0.1" />
         <entry key="app/src/main/res/layout/minda_care_qn_row.xml" value="0.1" />
         <entry key="app/src/main/res/layout/mindacareweb.xml" value="0.1" />
@@ -147,6 +149,7 @@
         <entry key="app/src/main/res/layout/view_concern.xml" value="0.2" />
         <entry key="app/src/main/res/layout/view_ehs_img.xml" value="0.1" />
         <entry key="app/src/main/res/layout/view_mom.xml" value="0.264" />
+        <entry key="app/src/main/res/layout/wc_cell_view.xml" value="0.17862021857923496" />
         <entry key="app/src/main/res/menu/activity_base_drawer.xml" value="0.2421875" />
         <entry key="app/src/main/res/mipmap-anydpi-v26/mfg.xml" value="0.257421875" />
       </map>

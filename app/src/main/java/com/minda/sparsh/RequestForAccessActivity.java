@@ -315,20 +315,23 @@ public class RequestForAccessActivity extends AppCompatActivity implements View.
             if (!selectedItem.getRequestType().equalsIgnoreCase("Please Select Request Type")) {
                 RequestTypeName = selectedItem.getRequestType();
 
-                if (selectedItem.getRequestTypeId().equals(3)) {
+                if (selectedItem.getRequestTypeId().equals(3) ) {
                     sp_request_type_id = selectedItem.getRequestTypeId().toString();
                     layAccessCategory.setVisibility(View.GONE);
                     layMultiAccessCategory.setVisibility(View.VISIBLE);
                     sp_source_data.clear();
                     //  sp_source_data.add("Select Source");
                     sp_source_data.add("Internal");
-
                     hitIAMGetAccessTypeApi(selectedItem.getRequestTypeId());
                     hiIAMGetCategoryApi(selectedItem.getRequestTypeId().toString(), "3");
 
                 } else {
                     sp_request_type_id = selectedItem.getRequestTypeId().toString();
                     layAccessCategory.setVisibility(View.VISIBLE);
+
+                    if(selectedItem.getRequestTypeId()==6){
+                        layAccessCategory.setVisibility(View.GONE);
+                    }
                     layMultiAccessCategory.setVisibility(View.GONE);
                     hitIAMGetAccessTypeApi(selectedItem.getRequestTypeId());
                     hiIAMGetCategoryApi(selectedItem.getRequestTypeId().toString(), "1");
@@ -366,6 +369,9 @@ public class RequestForAccessActivity extends AppCompatActivity implements View.
                     } else {
                         sp_request_type_id = selectedItem.getRequestTypeId().toString();
                         layAccessCategory.setVisibility(View.VISIBLE);
+                        if(selectedItem.getRequestTypeId()==6){
+                            layAccessCategory.setVisibility(View.GONE);
+                        }
                         layMultiAccessCategory.setVisibility(View.GONE);
                         hitIAMGetAccessTypeApi(selectedItem.getRequestTypeId());
                         hiIAMGetCategoryApi(selectedItem.getRequestTypeId().toString(), "1");
@@ -702,14 +708,25 @@ public class RequestForAccessActivity extends AppCompatActivity implements View.
                     showProgress(false);
                     List<IAMGetAccessTypeSpinnerModel> responseList = response.body();
                     if(responseList!=null && responseList.size()>0){
-                        accessTypeModelList.addAll(responseList);
+                        if(id==6){
+                            for (IAMGetAccessTypeSpinnerModel iamGetAccessTypeSpinnerModel : responseList) {
+                                if(iamGetAccessTypeSpinnerModel.getAccessType().trim().equalsIgnoreCase("Access Revocation")){
+                                    accessTypeModelList.add(iamGetAccessTypeSpinnerModel);
+                                }
+                            }
+
+                        }
+                        else {
+                            accessTypeModelList.addAll(responseList);
+                        }
                         for (IAMGetAccessTypeSpinnerModel iamGetAccessTypeSpinnerModel : accessTypeModelList) {
-                            accessTypeList.add(iamGetAccessTypeSpinnerModel.getAccessType());
+                                accessTypeList.add(iamGetAccessTypeSpinnerModel.getAccessType());
                         }
                         if (id == 3) {
                             accessTypeModelList.remove(accessTypeModelList.size() - 1);
                             accessTypeList.remove(accessTypeList.size()-1);
                         }
+
                         accessTypeAdapter = new ArrayAdapter<>(RequestForAccessActivity.this, android.R.layout.simple_spinner_item,accessTypeList);
                         sp_access_type.setAdapter(accessTypeAdapter);
                         accessTypeAdapter.notifyDataSetChanged();
@@ -785,7 +802,6 @@ public class RequestForAccessActivity extends AppCompatActivity implements View.
                                 for (IAMGetCategorySpinnerModel iamGetCategorySpinnerModel : accessCategoryModelList) {
                                     accessCategoryList.add(iamGetCategorySpinnerModel.getCategory());
                                 }
-
                                 accessCategoryAdapter = new ArrayAdapter<>(RequestForAccessActivity.this, android.R.layout.simple_spinner_item, accessCategoryList);
                                 sp_access_category.setAdapter(accessCategoryAdapter);
                                 accessCategoryAdapter.notifyDataSetChanged();
@@ -1103,7 +1119,7 @@ public class RequestForAccessActivity extends AppCompatActivity implements View.
         } else if (sp_access_type.getText().toString().length() == 0) {
             Toast.makeText(RequestForAccessActivity.this, "Please Select Access Type", Toast.LENGTH_SHORT).show();
             return false;
-        } else if (TYPE != null && !TYPE.equals("3") && sp_access_category.getText().toString().length() == 0 && sp_access_category.getVisibility() == View.VISIBLE) {
+        } else if (TYPE != null && !TYPE.equals("3") && sp_access_category.getText().toString().length() == 0 && sp_access_category.getVisibility() == View.VISIBLE &&(sp_request_type_id!="6" && TYPE!="1")) {
             Toast.makeText(RequestForAccessActivity.this, "Please Select Category", Toast.LENGTH_SHORT).show();
             return false;
         } else if (sp_access_sub_category.getText().toString().length() == 0 && layAccessSubCategory.getVisibility() == View.VISIBLE) {

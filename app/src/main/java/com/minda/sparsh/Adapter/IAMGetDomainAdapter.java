@@ -79,6 +79,7 @@ public class IAMGetDomainAdapter extends RecyclerView.Adapter<IAMGetDomainAdapte
 
         if (iamGetDomainModel.isChecked()) {
             holder.rb.setChecked(true);
+
         } else {
             holder.rb.setChecked(false);
         }

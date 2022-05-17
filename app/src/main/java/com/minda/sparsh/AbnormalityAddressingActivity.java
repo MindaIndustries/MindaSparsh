@@ -1,5 +1,6 @@
 package com.minda.sparsh;
 
+import android.Manifest;
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.app.DatePickerDialog;
@@ -13,10 +14,15 @@ import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.content.res.Configuration;
+import android.database.Cursor;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.Matrix;
+import android.media.ExifInterface;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Environment;
 import android.os.Parcelable;
 import android.provider.MediaStore;
 import android.util.Base64;
@@ -34,6 +40,8 @@ import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.bumptech.glide.Glide;
 import com.google.android.material.textfield.TextInputEditText;
 import com.minda.sparsh.Adapter.AbnormalityAdapter;
 import com.minda.sparsh.Adapter.BusinessSpinnerAdapter;
@@ -49,6 +57,7 @@ import com.minda.sparsh.model.Plant_Model;
 import com.minda.sparsh.model.Sub_Department_Model;
 import com.minda.sparsh.model.UserDetail_Model;
 import com.minda.sparsh.util.AbnormalityDashboard;
+import com.minda.sparsh.util.FileCompressor;
 import com.minda.sparsh.util.RetrofitClient2;
 import com.minda.sparsh.util.Utility;
 import org.jetbrains.annotations.NotNull;
@@ -66,10 +75,14 @@ import java.util.Locale;
 
 import javax.net.ssl.HttpsURLConnection;
 
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatAutoCompleteTextView;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.core.content.FileProvider;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -126,6 +139,16 @@ public class AbnormalityAddressingActivity extends AppCompatActivity {
     ArrayAdapter<String> adapterCategory;
     ArrayAdapter<String> adapterSubDepartment;
     String plantselected, departmentselected ,sub_departmentselected, categoryselected;
+    ActivityResultLauncher<String> cameraPermission;
+    ActivityResultLauncher<Intent> startCamera,openGallery;
+    File mPhotoFile;
+    FileCompressor mCompressor;
+    String fileName;
+    byte[] bytes;
+    private File mDestinationFile;
+    public static final int MY_PERMISSIONS_REQUEST_READ_EXTERNAL_STORAGE = 123;
+    public static final int MY_PERMISSIONS_REQUEST_CAMERA = 1234;
+    String mUserChoosenTask = "";
 
 
     @Override
@@ -185,6 +208,40 @@ public class AbnormalityAddressingActivity extends AppCompatActivity {
         sp_sdepartment.setAdapter(adapterSubDepartment);
 
         hitCategoryApi();
+
+        cameraPermission = registerForActivityResult(new ActivityResultContracts.RequestPermission(), result -> {
+            if(result){
+                cameraIntent();
+            }
+            else{
+                cameraPermission.launch(Manifest.permission.CAMERA);
+            }
+        });
+
+        startCamera = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), result -> {
+            if (result.getResultCode() == RESULT_OK) {
+                // onCaptureImageResult(result.getData());
+                try {
+                    mPhotoFile = mCompressor.compressToFile(mPhotoFile);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                Im_capture.setVisibility(View.VISIBLE);
+                fileName = mPhotoFile.getName();
+
+                BitmapFactory.Options bmOptions = new BitmapFactory.Options();
+                Bitmap bitmap = BitmapFactory.decodeFile(mPhotoFile.getPath(),bmOptions);
+                bytes = getBytesFromBitmap(bitmap);
+                sImage = Base64.encodeToString(bytes, Base64.NO_WRAP);
+                Glide.with(this).load(mPhotoFile).into(Im_capture);
+            }
+        });
+
+        openGallery = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), result -> {
+            if (result.getResultCode() == RESULT_OK) {
+                onSelectFromGalleryResult(result.getData());
+            }
+        });
 
         im_back.setOnClickListener(view -> finish());
         if (getIntent().getExtras() != null) {
@@ -473,7 +530,9 @@ public class AbnormalityAddressingActivity extends AppCompatActivity {
             }
         });
         Im_capture.setOnClickListener(view -> {
-            if (Utility.checkPermission(AbnormalityAddressingActivity.this)) {
+            selectFile();
+
+          /*  if (Utility.checkPermission(AbnormalityAddressingActivity.this)) {
                 startActivityForResult(getPickImageChooserIntent(), 200);
                 permissions.add(CAMERA);
                 permissionsToRequest = findUnAskedPermissions(permissions);
@@ -484,7 +543,7 @@ public class AbnormalityAddressingActivity extends AppCompatActivity {
                         requestPermissions(permissionsToRequest.toArray(new String[permissionsToRequest.size()]), ALL_PERMISSIONS_RESULT);
                 }
             }
-        });
+*/        });
         tv_submit.setOnClickListener(view -> {
             description = et_descripton.getText().toString();
             abnormalitydate = et_finddate.getText().toString();
@@ -495,6 +554,208 @@ public class AbnormalityAddressingActivity extends AppCompatActivity {
             }
         });
 
+    }
+    private void onSelectFromGalleryResult(Intent data) {
+        Bitmap bm = null;
+        File f = null;
+        if (mDestinationFile != null) {
+            mDestinationFile.delete();
+        }
+        if (data != null) {
+            try {
+                bm = MediaStore.Images.Media.getBitmap(getContentResolver(), data.getData());
+                Uri selectedImageUri = data.getData();
+                final String path = getPathFromURI(selectedImageUri);
+                if (path != null) {
+                    f = new File(path);
+                    selectedImageUri = Uri.fromFile(f);
+                }
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        mDestinationFile = new File(Environment.getExternalStorageDirectory(),
+                System.currentTimeMillis() + ".jpg");
+
+
+        try {
+            bm = modifyOrientation( bm, f.getAbsolutePath());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        Utility.saveFileToSdCard(f, bm);
+        fileName = f.getName();
+        System.out.println("fileName" + fileName);
+        //attachmentName = fileName;
+        //attachmentType = "jpg";
+        bytes = getBytesFromBitmap(bm);
+        sImage = Base64.encodeToString(bytes, Base64.NO_WRAP);
+        //   bmp = bm;
+        Im_capture.setImageBitmap(bm);
+        Im_capture.setVisibility(View.VISIBLE);
+
+
+//        newSingleThreadExecutor();
+    }
+
+    public void selectFile() {
+        requestAppPermissions();
+    }
+    private boolean hasReadPermissions() {
+        return (ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED);
+    }
+
+    private boolean hasWritePermissions() {
+        return (ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED);
+    }
+    private void requestAppPermissions() {
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP) {
+            selectImage();
+            return;
+        }
+
+        if (hasReadPermissions() && hasWritePermissions()) {
+            selectImage();
+            return;
+        }
+
+        ActivityCompat.requestPermissions(this,
+                new String[]{
+                        android.Manifest.permission.READ_EXTERNAL_STORAGE,
+                        Manifest.permission.WRITE_EXTERNAL_STORAGE
+                }, MY_PERMISSIONS_REQUEST_READ_EXTERNAL_STORAGE); // your request code
+    }
+
+    private void selectImage() {
+        final CharSequence[] items = {"Take Photo", "Choose from Gallery",/*"Choose Document",*/
+                "Cancel"};
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Add Warranty Card");
+        builder.setItems(items, (dialog, item) -> {
+            boolean result = Utility.checkPermission(this);
+            if (items[item].equals("Take Photo")) {
+                mUserChoosenTask = "Take Photo";
+                if (result) {
+                    cameraPermission.launch(Manifest.permission.CAMERA);
+                    //  requestCameraPermission();
+                  /*  if (hasCameraPermission())
+                        Toast.makeText(getActivity(),"Place your camera closer to warranty card",Toast.LENGTH_LONG).show();
+                        cameraIntent();
+               */ }
+            } else if (items[item].equals("Choose from Gallery")) {
+                mUserChoosenTask = "Choose from Gallery";
+                if (result) {
+                    galleryIntent();
+                }
+            } else if (items[item].equals("Cancel")) {
+                dialog.dismiss();
+            }
+        });
+        builder.show();
+    }
+    private void galleryIntent() {
+        Intent pickPhoto = new Intent(Intent.ACTION_PICK,
+                MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+        openGallery.launch(pickPhoto);
+        //   getActivity().startActivityForResult(pickPhoto, SELECT_FROM_GALLERY);
+    }
+    public static Bitmap modifyOrientation(Bitmap bitmap, String image_absolute_path) throws IOException {
+        ExifInterface ei = new ExifInterface(image_absolute_path);
+        int orientation = ei.getAttributeInt(ExifInterface.TAG_ORIENTATION, ExifInterface.ORIENTATION_NORMAL);
+
+        switch (orientation) {
+            case ExifInterface.ORIENTATION_ROTATE_90:
+                return rotate(bitmap, 90);
+
+            case ExifInterface.ORIENTATION_ROTATE_180:
+                return rotate(bitmap, 180);
+
+            case ExifInterface.ORIENTATION_ROTATE_270:
+                return rotate(bitmap, 270);
+
+            case ExifInterface.ORIENTATION_FLIP_HORIZONTAL:
+                return flip(bitmap, true, false);
+
+            case ExifInterface.ORIENTATION_FLIP_VERTICAL:
+                return flip(bitmap, false, true);
+
+            default:
+                return bitmap;
+        }
+    }
+    public static Bitmap flip(Bitmap bitmap, boolean horizontal, boolean vertical) {
+        Matrix matrix = new Matrix();
+        matrix.preScale(horizontal ? -1 : 1, vertical ? -1 : 1);
+        return Bitmap.createBitmap(bitmap, 0, 0, bitmap.getWidth(), bitmap.getHeight(), matrix, true);
+    }
+
+    public static Bitmap rotate(Bitmap bitmap, float degrees) {
+        Matrix matrix = new Matrix();
+        matrix.postRotate(degrees);
+        return Bitmap.createBitmap(bitmap, 0, 0, bitmap.getWidth(), bitmap.getHeight(), matrix, true);
+    }
+
+
+    public String getPathFromURI(Uri contentUri) {
+        String res = null;
+        String[] proj = {MediaStore.Images.Media.DATA};
+        Cursor cursor = getContentResolver().query(contentUri, proj, null, null, null);
+        if (cursor.moveToFirst()) {
+            int column_index = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
+            res = cursor.getString(column_index);
+        }
+        cursor.close();
+        return res;
+    }
+
+    public byte[] getBytesFromBitmap(Bitmap bitmap) {
+        ByteArrayOutputStream stream = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.JPEG, 70, stream);
+        return stream.toByteArray();
+    }
+
+    private void cameraIntent() {
+        dispatchTakePictureIntent();
+    }
+    private void dispatchTakePictureIntent() {
+        Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        if (takePictureIntent.resolveActivity(this.getPackageManager()) != null) {
+            // Create the File where the photo should go
+            File photoFile = null;
+            try {
+                photoFile = createImageFile();
+            } catch (Exception ex) {
+                ex.printStackTrace();
+                // Error occurred while creating the File
+            }
+            if (photoFile != null) {
+                Uri photoURI = FileProvider.getUriForFile(AbnormalityAddressingActivity.this,
+                        "com.minda.sparsh.provider",
+                        photoFile);
+
+                mPhotoFile = photoFile;
+                takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, photoURI);
+
+                startCamera.launch(takePictureIntent);
+
+                //    startActivityForResult(takePictureIntent, REQUEST_TAKE_PHOTO);
+
+            }
+        }
+    }
+    private File createImageFile() {
+        // Create an image file name
+        String timeStamp = new SimpleDateFormat("yyyyMMddHHmmss").format(new Date());
+        String mFileName = "JPEG_" + timeStamp + "_";
+        File storageDir = getExternalFilesDir(Environment.DIRECTORY_PICTURES);
+        File mFile = null;
+        try {
+            mFile = File.createTempFile(mFileName, ".jpg", storageDir);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return mFile;
     }
 
     public Intent getPickImageChooserIntent() {
@@ -663,7 +924,7 @@ public class AbnormalityAddressingActivity extends AppCompatActivity {
         return encImage;
     }
 
-    @Override
+   /* @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 
         super.onActivityResult(requestCode, resultCode, data);
@@ -685,7 +946,7 @@ public class AbnormalityAddressingActivity extends AppCompatActivity {
                     Im_capture.setImageBitmap(myBitmap);
                     sImage = getStringImage(myBitmap);
                     tv_upload.setText(getResources().getString(R.string.uploaded));
-                   /* if (AppUtils.isNetworkAvailable(SuggestUsActivity.this)) {
+                   *//* if (AppUtils.isNetworkAvailable(SuggestUsActivity.this)) {
 
                         try{
                             submitWorkDetails(sessionManager.getShopName(), sessionManager.getWorkshpName(), sessionManager.getLocation(), sessionManager.getStateCode(), sessionManager.getCityCode(), sessionManager.getMobile(), sessionManager.getZoneCode());
@@ -695,7 +956,7 @@ public class AbnormalityAddressingActivity extends AppCompatActivity {
                             // handle your exception here!
                         }
 
-                    }*/
+                    }*//*
 
 
                 } catch (IOException e) {
@@ -717,12 +978,12 @@ public class AbnormalityAddressingActivity extends AppCompatActivity {
                 sImage = getStringImage(myBitmap);
                 tv_upload.setText(getResources().getString(R.string.uploaded));
 
-               /* if (connectionDetector.isConnectingToInternet()) {
+               *//* if (connectionDetector.isConnectingToInternet()) {
                     submitWorkDetails(sessionManager.getShopName(), sessionManager.getWorkshpName(), sessionManager.getLocation(), sessionManager.getStateCode(), sessionManager.getCityCode(), sessionManager.getMobile(), sessionManager.getZoneCode());
 
 
                 }
-*/
+*//*
 
 
             }
@@ -730,7 +991,7 @@ public class AbnormalityAddressingActivity extends AppCompatActivity {
         }
 
     }
-
+*/
     public Uri getPickImageResultUri(Intent data) {
         boolean isCamera = true;
         if (data != null) {

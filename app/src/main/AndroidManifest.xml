@@ -16,7 +16,14 @@
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.CALL_PHONE" />
-
+<queries>
+    <intent>
+        <action android:name="android.media.action.IMAGE_CAPTURE" />
+    </intent>
+    <intent>
+        <action android:name="android.intent.action.GET_CONTENT" />
+    </intent>
+</queries>
 
     <application
         android:icon="@mipmap/ic_launcher"
@@ -28,6 +35,7 @@
         tools:replace="android:icon"
         android:requestLegacyExternalStorage="true"
         >
+
 
         <meta-data
             android:name="com.google.android.gms.version"
@@ -228,6 +236,10 @@
             android:theme="@style/spinnertheme"
             />
         <activity android:name=".QRCodeScanner"
+            android:screenOrientation="portrait"
+            android:theme="@style/spinnertheme"
+            />
+        <activity android:name=".MeetingRoomActivity"
             android:screenOrientation="portrait"
             android:theme="@style/spinnertheme"
             />
