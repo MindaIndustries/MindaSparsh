@@ -27,6 +27,7 @@
         <entry key="app/src/main/res/drawable/gradientline.xml" value="0.238671875" />
         <entry key="app/src/main/res/drawable/my_selector.xml" value="0.257421875" />
         <entry key="app/src/main/res/drawable/notification_view.xml" value="0.238671875" />
+        <entry key="app/src/main/res/drawable/projector.xml" value="0.21640625" />
         <entry key="app/src/main/res/drawable/rec_button.xml" value="0.238671875" />
         <entry key="app/src/main/res/drawable/red_dot.xml" value="0.257421875" />
         <entry key="app/src/main/res/drawable/roundcornercellviewwhite.xml" value="0.238671875" />
@@ -68,6 +69,7 @@
         <entry key="app/src/main/res/layout/approver_celll_view.xml" value="0.128" />
         <entry key="app/src/main/res/layout/arpd_cell_view.xml" value="0.1" />
         <entry key="app/src/main/res/layout/assign_concern.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/bookroom.xml" value="0.264" />
         <entry key="app/src/main/res/layout/bottom_up_concern.xml" value="0.16" />
         <entry key="app/src/main/res/layout/bottomup_view_row.xml" value="0.16" />
         <entry key="app/src/main/res/layout/calendar_booking.xml" value="0.11823035850495804" />
@@ -100,19 +102,23 @@
         <entry key="app/src/main/res/layout/fragment_one.xml" value="0.264" />
         <entry key="app/src/main/res/layout/fragment_seven.xml" value="0.264" />
         <entry key="app/src/main/res/layout/fragment_six.xml" value="0.264" />
-        <entry key="app/src/main/res/layout/fragment_three.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/fragment_three.xml" value="0.16" />
         <entry key="app/src/main/res/layout/fragment_two.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_view_appointment.xml" value="0.1" />
         <entry key="app/src/main/res/layout/guidelines_layout.xml" value="0.264" />
         <entry key="app/src/main/res/layout/haderabnormality.xml" value="0.1" />
         <entry key="app/src/main/res/layout/iam_cell_view.xml" value="0.1" />
         <entry key="app/src/main/res/layout/iam_spinner_cell_view.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/internal_attendee_row.xml" value="0.22643442622950818" />
         <entry key="app/src/main/res/layout/it_help_desk.xml" value="0.1" />
         <entry key="app/src/main/res/layout/item_page.xml" value="0.1" />
         <entry key="app/src/main/res/layout/marketing_dashboard.xml" value="0.2" />
         <entry key="app/src/main/res/layout/materialcalendar.xml" value="0.15505464480874318" />
-        <entry key="app/src/main/res/layout/meeting_room_row.xml" value="0.2" />
+        <entry key="app/src/main/res/layout/meeting_room_detail.xml" value="0.264" />
+        <entry key="app/src/main/res/layout/meeting_room_row.xml" value="0.264" />
         <entry key="app/src/main/res/layout/meeting_rooms.xml" value="0.2" />
+        <entry key="app/src/main/res/layout/meeting_row.xml" value="0.16734972677595628" />
+        <entry key="app/src/main/res/layout/meeting_slot_row.xml" value="0.2" />
         <entry key="app/src/main/res/layout/minda_care.xml" value="0.1" />
         <entry key="app/src/main/res/layout/minda_care_qn_row.xml" value="0.1" />
         <entry key="app/src/main/res/layout/mindacareweb.xml" value="0.1" />
@@ -151,6 +157,7 @@
         <entry key="app/src/main/res/layout/view_mom.xml" value="0.264" />
         <entry key="app/src/main/res/layout/wc_cell_view.xml" value="0.17862021857923496" />
         <entry key="app/src/main/res/menu/activity_base_drawer.xml" value="0.2421875" />
+        <entry key="app/src/main/res/mipmap-anydpi-v26/chair.xml" value="0.257421875" />
         <entry key="app/src/main/res/mipmap-anydpi-v26/mfg.xml" value="0.257421875" />
       </map>
     </option>

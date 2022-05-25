@@ -243,7 +243,14 @@
             android:screenOrientation="portrait"
             android:theme="@style/spinnertheme"
             />
-
+        <activity android:name=".MeetingRoomDetailActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/spinnertheme"
+            />
+        <activity android:name=".BookMeetingRoom"
+            android:screenOrientation="portrait"
+            android:theme="@style/spinnertheme"
+            />
 
         <meta-data
             android:name="io.fabric.ApiKey"

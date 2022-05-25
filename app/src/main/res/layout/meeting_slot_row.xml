@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:id="@+id/slot_row"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:background="#49ba8e"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:textSize="14sp"
+            android:fontFamily="@font/museosans_700"
+            android:layout_centerHorizontal="true"
+            android:textColor="@color/white"
+            android:id="@+id/time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=""
+            />
+        <TextView
+            android:textSize="14sp"
+            android:fontFamily="@font/museosans_700"
+            android:layout_centerHorizontal="true"
+            android:textColor="@color/white"
+            android:layout_marginTop="5dp"
+            android:layout_below="@+id/time"
+            android:id="@+id/booking_status"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:singleLine="true"
+            />
+    </RelativeLayout>
+
+
+</RelativeLayout>

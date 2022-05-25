@@ -270,8 +270,8 @@
                                             android:layout_height="match_parent"
                                             android:layout_centerInParent="true"
                                             android:paddingLeft="20dp"
-                                            android:paddingRight="20dp"
                                             android:paddingTop="30dp"
+                                            android:paddingRight="20dp"
                                             android:paddingBottom="30dp">
 
                                             <TextView
@@ -394,7 +394,7 @@
                         android:layout_marginTop="20dp"
                         android:gravity="center_horizontal"
                         android:orientation="horizontal"
-                        android:visibility="gone"
+                        android:visibility="visible"
                         >
 
                         <LinearLayout

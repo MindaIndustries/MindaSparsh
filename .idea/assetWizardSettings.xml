@@ -68,6 +68,17 @@
                                 <PersistentState>
                                   <option name="children">
                                     <map>
+                                      <entry key="backgroundImage">
+                                        <value>
+                                          <PersistentState>
+                                            <option name="values">
+                                              <map>
+                                                <entry key="trimmed" value="true" />
+                                              </map>
+                                            </option>
+                                          </PersistentState>
+                                        </value>
+                                      </entry>
                                       <entry key="foregroundClipArt">
                                         <value>
                                           <PersistentState>
@@ -87,7 +98,8 @@
                                             <option name="values">
                                               <map>
                                                 <entry key="color" value="000000" />
-                                                <entry key="imagePath" value="$USER_HOME$/Downloads/mfg.png" />
+                                                <entry key="imagePath" value="$PROJECT_DIR$/app/src/main/res/drawable-xxxhdpi/chair.png" />
+                                                <entry key="scalingPercent" value="40" />
                                                 <entry key="trimmed" value="true" />
                                               </map>
                                             </option>
@@ -122,9 +134,10 @@
                                   </option>
                                   <option name="values">
                                     <map>
-                                      <entry key="generatePlayStoreIcon" value="false" />
-                                      <entry key="generateRoundIcon" value="false" />
-                                      <entry key="outputName" value="mfg" />
+                                      <entry key="backgroundColor" value="000000" />
+                                      <entry key="legacyIconShape" value="NONE" />
+                                      <entry key="outputName" value="chair" />
+                                      <entry key="previewDensity" value="XXXHIGH" />
                                     </map>
                                   </option>
                                 </PersistentState>
@@ -288,6 +301,11 @@
                                           </PersistentState>
                                         </value>
                                       </entry>
+                                    </map>
+                                  </option>
+                                  <option name="values">
+                                    <map>
+                                      <entry key="previewDensity" value="XXXHIGH" />
                                     </map>
                                   </option>
                                 </PersistentState>

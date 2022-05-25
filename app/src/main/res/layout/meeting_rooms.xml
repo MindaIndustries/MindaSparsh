@@ -2,7 +2,9 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/screen_bg"
+    >
 
 
     <include layout="@layout/toolbar" />
@@ -10,7 +12,7 @@
 
     <RelativeLayout
         android:layout_marginTop="?attr/actionBarSize"
-        android:padding="20dp"
+        android:padding="15dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -36,7 +38,6 @@
             android:id="@+id/city_spinner"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:clickable="true"
             android:editable="false"
             tools:ignore="KeyboardInaccessibleWidget" />
     </com.google.android.material.textfield.TextInputLayout>
@@ -53,17 +54,40 @@
                 android:id="@+id/unit_spinner"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:clickable="true"
                 android:editable="false"
                 tools:ignore="KeyboardInaccessibleWidget" />
         </com.google.android.material.textfield.TextInputLayout>
+        <ToggleButton
+            android:id="@+id/toggle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/customerSpinnerLayout1"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="10dp"
+            android:background="@null"
+            android:button="@drawable/toggle_off"
+            android:checked="false" />
 
+        <TextView
+            android:id="@+id/toggle_text"
+            android:gravity="center_horizontal"
+            android:layout_alignTop="@+id/toggle"
+            android:layout_alignBottom="@+id/toggle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/customerSpinnerLayout1"
+            android:layout_marginTop="20dp"
+            android:layout_toLeftOf="@+id/toggle"
+            android:fontFamily="@font/museosans_500"
+            android:text="VC Room"
+            android:layout_marginRight="10dp"
+            android:textColor="#222222" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/roomsList"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_below="@+id/customerSpinnerLayout1"
+            android:layout_below="@+id/toggle"
             android:layout_marginTop="10dp" />
 
     </RelativeLayout>

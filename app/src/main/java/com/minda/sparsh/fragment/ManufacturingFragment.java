@@ -14,7 +14,6 @@ import android.widget.Toast;
 
 import com.minda.sparsh.AbnormalityAddressingActivity;
 import com.minda.sparsh.DashBoardActivity;
-import com.minda.sparsh.EHS_Home;
 import com.minda.sparsh.Interface;
 import com.minda.sparsh.R;
 import com.minda.sparsh.SheedActivity;
@@ -139,6 +138,7 @@ public class ManufacturingFragment extends Fragment {
 
                     showProgress(false);
                     if (t instanceof IOException) {
+                        if(getActivity()!=null && isAdded())
                         Toast.makeText(getActivity(), "Please hold on a moment, the internet connectivity seems to be slow", Toast.LENGTH_LONG).show();
                     }
 

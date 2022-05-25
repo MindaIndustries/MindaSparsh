@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/screen_bg">
+    <include layout="@layout/toolbar" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="?attr/actionBarSize"
+        android:padding="15dp">
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/dateLayout"
+            style="@style/edittext"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:hint="Date*"
+            android:visibility="visible">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/date"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:enabled="false"
+                android:gravity="left"
+                android:hint=""
+                android:fontFamily="@font/museosans_500"
+                android:imeOptions="actionNext"
+                android:inputType="textMultiLine"
+                android:maxLines="4"
+                android:padding="18dp"
+                android:scrollbars="vertical" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/agendalayout"
+            style="@style/edittext"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/dateLayout"
+            android:layout_marginTop="10dp"
+            android:hint="Agenda*">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/agenda"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:gravity="left"
+                android:hint=""
+                android:fontFamily="@font/museosans_500"
+                android:imeOptions="actionNext"
+                android:inputType="textMultiLine"
+                android:maxLines="4"
+                android:padding="18dp"
+                android:scrollbars="vertical" />
+        </com.google.android.material.textfield.TextInputLayout>
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/customerSpinnerLayout1"
+            style="@style/edittext"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/agendalayout"
+            android:layout_marginTop="10dp"
+            android:hint="Internal Attendees*">
+
+            <com.google.android.material.textfield.MaterialAutoCompleteTextView
+                android:id="@+id/internal_att"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:gravity="left"
+                android:hint=""
+                android:fontFamily="@font/museosans_500"
+                android:imeOptions="actionNext"
+                android:inputType="textMultiLine"
+                android:maxLines="4"
+                android:padding="18dp"
+                android:scrollbars="vertical" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/internalattList"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/customerSpinnerLayout1" />
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/customerSpinnerLayout2"
+            style="@style/edittext"
+            android:layout_below="@+id/internalattList"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:hint="External Attendees email IDs (separated with semicolon (;))">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/external_att"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:gravity="left"
+                android:hint=""
+                android:fontFamily="@font/museosans_500"
+                android:imeOptions="actionNext"
+                android:inputType="textMultiLine"
+                android:maxLines="4"
+                android:padding="18dp"
+                android:scrollbars="vertical" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <android.widget.Button
+            android:id="@+id/confirm_book"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/customerSpinnerLayout2"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/btn_bg"
+            android:fontFamily="@font/museosans_700"
+            android:inputType="textCapSentences"
+            android:padding="10dp"
+            android:text="Confirm Booking"
+            android:textColor="@color/white"
+            android:textSize="14sp" />
+    </RelativeLayout>
+</RelativeLayout>

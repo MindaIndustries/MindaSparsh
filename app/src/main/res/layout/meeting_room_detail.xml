@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/screen_bg">
+
+    <include layout="@layout/toolbar" />
+    <RelativeLayout
+        android:layout_marginTop="?attr/actionBarSize"
+        android:padding="15dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/customSpinnerLayout1"
+            style="@style/edittext"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:hint="Date"
+            >
+
+            <com.google.android.material.textfield.MaterialAutoCompleteTextView
+                android:id="@+id/date"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:editable="false"
+                android:focusedByDefault="true"
+                android:gravity="left"
+                android:hint=""
+                android:imeOptions="actionNext"
+                android:padding="18dp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <GridView
+            android:id="@+id/gridview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@+id/book"
+            android:layout_below="@+id/customSpinnerLayout1"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:horizontalSpacing="5dp"
+            android:numColumns="3"
+            android:verticalSpacing="5dp" />
+
+        <android.widget.Button
+            android:id="@+id/book"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/btn_bg"
+            android:inputType="textCapSentences"
+            android:padding="10dp"
+            android:text="Book Selected Time Slots"
+            android:textColor="@color/white" />
+
+    </RelativeLayout>
+</RelativeLayout>

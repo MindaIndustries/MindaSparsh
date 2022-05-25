@@ -24,7 +24,7 @@ public class RetrofitClient2 {
     //master public static final String BASE_URL = "http://176.9.28.166/MindaSparshTest/Service.asmx/";
     // public static final String BASE_URL = "http://52.172.191.61/Test.mindasparsh.com/Service.asmx/";
     //dev
-   /* public static final String notifUrl="https://dev.mindasparsh.com";
+    public static final String notifUrl="https://dev.mindasparsh.com";
     public static final String BASE_URL = "https://dev.mindasparsh.com/Service.asmx/";
     public static final String EHS_BASE_URL = "https://dev.mindasparsh.com/ServiceEHS.asmx/";
     public static final String ehs_img = "https://dev.mindasparsh.com/ehs/files/";
@@ -37,8 +37,8 @@ public class RetrofitClient2 {
     public static final String ithelpdeskBaseUrl = "https://dev.mindasparsh.com/ITHelpDeskM.asmx/";
     public static final String BASEURL = "https://qas.mindasparsh.com/API/CVP/";
     public static final String baseurlqr = "https://qas.mindasparsh.com/API/";
-   */ //prod
-     public static final String notifUrl="https://app.mindasparsh.com";
+    //prod
+   /* public static final String notifUrl="https://app.mindasparsh.com";
     public static final String BASE_URL = "https://app.mindasparsh.com/Service.asmx/";
     public static final String ehs_img = "https://app.mindasparsh.com/ehs/files/";
     public static final String EHS_BASE_URL = "https://app.mindasparsh.com/ServiceEHS.asmx/";
@@ -51,9 +51,9 @@ public class RetrofitClient2 {
     public static final String itHelpAttachment = "https://app.mindasparsh.com/ithelpdesk/Files/";
     public static final String BASEURL="https://services.mindasparsh.com/API/CVP/";
     public static final String baseurlqr = "https://services.mindasparsh.com/API/";
-    //new CKey
- //    public static final String CKEY = "bWRhQHNQciRyWiNHISE=";
-    public static final String CKEY = "mda@sPr$rZ#G!!";
+*/    //new CKey
+    public static final String CKEY = "bWRhQHNQciRyWiNHISE=";
+ //   public static final String CKEY = "mda@sPr$rZ#G!!";
 
     private static Retrofit retrofit = null;
     static Dispatcher dispatcher1 = new Dispatcher();
@@ -147,7 +147,6 @@ public class RetrofitClient2 {
         return retrofit.create(serviceClass);
 
     }
-
     public static <S> S createServiceDashboardImages(Class<S> serviceClass) {
         OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
         httpClient.protocols(Util.immutableListOf(Protocol.HTTP_1_1));
@@ -174,6 +173,41 @@ public class RetrofitClient2 {
                 .connectTimeout(60, TimeUnit.SECONDS).build();
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(BASE_URL)
+                .addConverterFactory(ScalarsConverterFactory.create())
+                .addConverterFactory(GsonConverterFactory.create(gson))
+                .client(client)
+                .build();
+
+        return retrofit.create(serviceClass);
+    }
+
+
+    public static <S> S createServiceMR(Class<S> serviceClass) {
+        OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
+        httpClient.protocols(Util.immutableListOf(Protocol.HTTP_1_1));
+        httpClient.addInterceptor(chain -> {
+            Request original = chain.request();
+
+            Request request = original.newBuilder()
+                    .addHeader("User", "MindaSugg56$#45#@")
+                    .addHeader("Password", "985Sugg656$#AtadniM")
+                    .method(original.method(), original.body())
+                    .build();
+            Response response = chain.proceed(request);
+            return response;
+        });
+
+        dispatcher1.setMaxRequests(3000);
+        httpClient.dispatcher(dispatcher1);
+
+        Gson gson = new GsonBuilder()
+                .setLenient()
+                .create();
+
+        OkHttpClient client = httpClient.readTimeout(60, TimeUnit.SECONDS)
+                .connectTimeout(60, TimeUnit.SECONDS).build();
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(baseurlqr)
                 .addConverterFactory(ScalarsConverterFactory.create())
                 .addConverterFactory(GsonConverterFactory.create(gson))
                 .client(client)
