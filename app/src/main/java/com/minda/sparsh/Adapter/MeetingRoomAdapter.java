@@ -89,7 +89,8 @@ public class MeetingRoomAdapter extends RecyclerView.Adapter<MeetingRoomAdapter.
             Intent in = new Intent(mContext, MeetingRoomDetailActivity.class);
             in.putExtra("meetingRoomId",list.get(position).getMeetingRoomID());
             in.putExtra("meetingRoomName", list.get(position).getMeetingRoom());
-            in.putExtra("vc",list.get(position).isVideoConference());
+          //  in.putExtra("vc",list.get(position).isVideoConference());
+            in.putExtra("roomUnitCode",list.get(position).getUnitIDS());
             mContext.startActivity(in);
         });
 

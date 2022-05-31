@@ -55,6 +55,17 @@
             android:padding="10dp"
             android:text="Book Selected Time Slots"
             android:textColor="@color/white" />
+        <TextView
+            android:id="@+id/msg"
+            android:padding="10dp"
+            android:textColor="@color/red"
+            android:fontFamily="@font/museosans_700"
+            android:text="Contact to your counterpart in the unit to book this room."
+            android:layout_alignParentBottom="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            />
 
     </RelativeLayout>
 </RelativeLayout>

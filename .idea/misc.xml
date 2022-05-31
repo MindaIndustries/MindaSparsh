@@ -24,8 +24,10 @@
         <entry key="app/src/main/res/drawable/comment2.xml" value="0.238671875" />
         <entry key="app/src/main/res/drawable/cursor_drawable.xml" value="0.238671875" />
         <entry key="app/src/main/res/drawable/darkline.xml" value="0.238671875" />
+        <entry key="app/src/main/res/drawable/et_bg.xml" value="0.257421875" />
         <entry key="app/src/main/res/drawable/gradientline.xml" value="0.238671875" />
         <entry key="app/src/main/res/drawable/my_selector.xml" value="0.257421875" />
+        <entry key="app/src/main/res/drawable/name_bg.xml" value="0.257421875" />
         <entry key="app/src/main/res/drawable/notification_view.xml" value="0.238671875" />
         <entry key="app/src/main/res/drawable/projector.xml" value="0.21640625" />
         <entry key="app/src/main/res/drawable/rec_button.xml" value="0.238671875" />
@@ -69,6 +71,7 @@
         <entry key="app/src/main/res/layout/approver_celll_view.xml" value="0.128" />
         <entry key="app/src/main/res/layout/arpd_cell_view.xml" value="0.1" />
         <entry key="app/src/main/res/layout/assign_concern.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/booked_meeting_row.xml" value="0.264" />
         <entry key="app/src/main/res/layout/bookroom.xml" value="0.264" />
         <entry key="app/src/main/res/layout/bottom_up_concern.xml" value="0.16" />
         <entry key="app/src/main/res/layout/bottomup_view_row.xml" value="0.16" />
@@ -117,6 +120,7 @@
         <entry key="app/src/main/res/layout/meeting_room_detail.xml" value="0.264" />
         <entry key="app/src/main/res/layout/meeting_room_row.xml" value="0.264" />
         <entry key="app/src/main/res/layout/meeting_rooms.xml" value="0.2" />
+        <entry key="app/src/main/res/layout/meeting_rooms_booked.xml" value="0.20394736842105263" />
         <entry key="app/src/main/res/layout/meeting_row.xml" value="0.16734972677595628" />
         <entry key="app/src/main/res/layout/meeting_slot_row.xml" value="0.2" />
         <entry key="app/src/main/res/layout/minda_care.xml" value="0.1" />
@@ -157,6 +161,8 @@
         <entry key="app/src/main/res/layout/view_mom.xml" value="0.264" />
         <entry key="app/src/main/res/layout/wc_cell_view.xml" value="0.17862021857923496" />
         <entry key="app/src/main/res/menu/activity_base_drawer.xml" value="0.2421875" />
+        <entry key="app/src/main/res/menu/main_menu.xml" value="0.2421875" />
+        <entry key="app/src/main/res/menu/meeting_room_menu.xml" value="0.2421875" />
         <entry key="app/src/main/res/mipmap-anydpi-v26/chair.xml" value="0.257421875" />
         <entry key="app/src/main/res/mipmap-anydpi-v26/mfg.xml" value="0.257421875" />
       </map>

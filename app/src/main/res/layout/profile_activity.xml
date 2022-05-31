@@ -154,15 +154,15 @@
                 android:fontFamily="@font/museosans_300" />
 
             <TextView
-                android:layout_below="@+id/emp_code"
-                android:textColor="@color/black"
                 android:id="@+id/unit"
-                android:layout_marginTop="15dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_below="@+id/emp_code"
+                android:layout_marginTop="15dp"
+                android:fontFamily="@font/museosans_500"
                 android:text="Unit :"
-                android:textSize="15sp"
-                android:fontFamily="@font/museosans_500" />
+                android:textColor="@color/black"
+                android:textSize="15sp" />
 
 
             <TextView

@@ -22,7 +22,9 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/museosans_500"
             android:text="Book Meeting Room"
-            android:textSize="18sp" />
+            android:textSize="18sp"
+            android:visibility="gone"
+            />
 
 
         <com.google.android.material.textfield.TextInputLayout

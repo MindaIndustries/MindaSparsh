@@ -1,7 +1,9 @@
 package com.minda.sparsh;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
@@ -59,10 +61,11 @@ public class MeetingRoomActivity extends AppCompatActivity {
     ArrayList<String> units = new ArrayList<>();
     ArrayList<MeetingRoomModel.MeetingRoomModelData> unitModels = new ArrayList<>();
     ArrayAdapter<String> cityAdapter, unitAdapter;
-    String city,unitCode;
+    String city, unitCode,userunitCode;
     MeetingRoomAdapter meetingRoomAdapter;
     ArrayList<MeetingRoomListModel.MeetingRoomListModelData> meetingRooms = new ArrayList<>();
     boolean roomType;
+    String userCity,unitName;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -76,30 +79,34 @@ public class MeetingRoomActivity extends AppCompatActivity {
         title.setText("Book Meeting Room");
         myPref = getSharedPreferences("MyPref", MODE_PRIVATE);
         EmpCode = myPref.getString("Id", "Id");
+        userunitCode =myPref.getString("Um_div_code","");
+        unitName =myPref.getString("UM_MASCOM_CODE", "");
+        unitSpinner.setText(unitName+" ("+userunitCode+")");
         initCityAdapter();
         initUnitAdapter();
-        getCity(EmpCode);
-        meetingRoomAdapter = new MeetingRoomAdapter(MeetingRoomActivity.this,meetingRooms);
+        getCityWithEmpCode(EmpCode);
+        getCity("");
+        meetingRoomAdapter = new MeetingRoomAdapter(MeetingRoomActivity.this, meetingRooms);
         LinearLayoutManager mLayoutManager = new LinearLayoutManager(MeetingRoomActivity.this, LinearLayoutManager.VERTICAL, false);
         roomsList.setLayoutManager(mLayoutManager);
         roomsList.setAdapter(meetingRoomAdapter);
+        myPref.edit().putBoolean("roomType",roomType);
 
 
         toggleButton.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                if(!b){
+                if (!b) {
                     roomType = false;
                     compoundButton.setButtonDrawable(getResources().getDrawable(R.drawable.toggle_off));
-                    compoundButton.setButtonTintList(ContextCompat.getColorStateList(MeetingRoomActivity.this,R.color.black));
-
-                }
-                else{
+                    compoundButton.setButtonTintList(ContextCompat.getColorStateList(MeetingRoomActivity.this, R.color.black));
+                } else {
                     roomType = true;
                     compoundButton.setButtonDrawable(getResources().getDrawable(R.drawable.toggle_on));
-                    compoundButton.setButtonTintList(ContextCompat.getColorStateList(MeetingRoomActivity.this,R.color.red));
+                    compoundButton.setButtonTintList(ContextCompat.getColorStateList(MeetingRoomActivity.this, R.color.red));
                 }
-                getMeetingRooms(EmpCode,roomType);
+                myPref.edit().putBoolean("roomType",roomType);
+                getMeetingRooms(EmpCode, roomType);
             }
         });
 
@@ -113,6 +120,7 @@ public class MeetingRoomActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 city = cities.get(i);
+                myPref.edit().putString("user_city", city).commit();
                 unitSpinner.setText("");
                 unitAdapter = new ArrayAdapter<String>(MeetingRoomActivity.this, android.R.layout.simple_spinner_item, units);
                 unitSpinner.setAdapter(unitAdapter);
@@ -128,10 +136,17 @@ public class MeetingRoomActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 unitCode = unitModels.get(i).getUnitCode();
-                getMeetingRooms(EmpCode,roomType);
+                myPref.edit().putString("selected_unit", unitModels.get(i).getUnitName()).commit();
+                getMeetingRooms(EmpCode, roomType);
             }
         });
 
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.meeting_room_menu, menu);
+        return true;
     }
 
     @Override
@@ -140,11 +155,15 @@ public class MeetingRoomActivity extends AppCompatActivity {
             onBackPressed();
             return true;
         }
+        else if(item.getItemId() == R.id.view){
+            Intent in = new Intent(MeetingRoomActivity.this,MeetingRoomBookings.class);
+            startActivity(in);
+        }
         return super.onOptionsItemSelected(item);
     }
 
 
-    public void getCity(String EmpCode) {
+    public void getCity(String empCode) {
         cityModels.clear();
         cities.clear();
         cityAdapter.notifyDataSetChanged();
@@ -157,15 +176,44 @@ public class MeetingRoomActivity extends AppCompatActivity {
                     List<CityModel.City> citylist = cityModel.getData();
                     if (citylist != null && citylist.size() > 0) {
                         cityModels.addAll(citylist);
+                            cityAdapter = new ArrayAdapter<String>(MeetingRoomActivity.this, android.R.layout.simple_spinner_item, cities);
+                            citySpinner.setAdapter(cityAdapter);
+                            citySpinner.dismissDropDown();
                         for (CityModel.City model : cityModels) {
                             cities.add(model.getCity());
                         }
                         cityAdapter.notifyDataSetChanged();
-                          }
+                        getMeetingRooms(EmpCode, roomType);
+
+                        // }
+                    }
 
                 }
             }
-        }, "");
+        }, empCode);
+    }
+    public void getCityWithEmpCode(String empCode) {
+        cityModels.clear();
+        cities.clear();
+        cityAdapter.notifyDataSetChanged();
+        MeetingRoomServices meetingRoomServices = new MeetingRoomServices();
+        meetingRoomServices.getCity(new OnTaskComplete() {
+            @Override
+            public void onTaskComplte(CarotResponse carotResponse) {
+                if (carotResponse.getStatuscode() == HttpsURLConnection.HTTP_OK) {
+                    CityModel cityModel = (CityModel) carotResponse.getData();
+                    List<CityModel.City> citylist = cityModel.getData();
+                    if (citylist != null && citylist.size() > 0) {
+                        userCity = citylist.get(0).getCity();
+                        citySpinner.setText(userCity);
+                        cityAdapter.getFilter().filter(null);
+                        getUnitByCity(userCity);
+
+                    }
+
+                }
+            }
+        }, empCode);
     }
 
     public void getUnitByCity(String city) {
@@ -183,9 +231,10 @@ public class MeetingRoomActivity extends AppCompatActivity {
                         if (list != null && list.size() > 0) {
                             unitModels.addAll(list);
                             for (MeetingRoomModel.MeetingRoomModelData unitModel : unitModels) {
-                                units.add(unitModel.getUnitName());
+                                units.add(unitModel.getUnitName()+ " ("+unitModel.getUnitCode()+")");
                             }
                             unitAdapter.notifyDataSetChanged();
+
                         }
                     }
 
@@ -194,7 +243,7 @@ public class MeetingRoomActivity extends AppCompatActivity {
         }, city);
     }
 
-    public void getMeetingRooms(String EmpCode, boolean roomType){
+    public void getMeetingRooms(String EmpCode, boolean roomType) {
 
         meetingRooms.clear();
         roomsList.getRecycledViewPool().clear();
@@ -203,10 +252,10 @@ public class MeetingRoomActivity extends AppCompatActivity {
         meetingRoomServices.getMeetingRooms(new OnTaskComplete() {
             @Override
             public void onTaskComplte(CarotResponse carotResponse) {
-                if(carotResponse.getStatuscode()==HttpsURLConnection.HTTP_OK){
+                if (carotResponse.getStatuscode() == HttpsURLConnection.HTTP_OK) {
                     MeetingRoomListModel meetingRoomListModel = (MeetingRoomListModel) carotResponse.getData();
                     List<MeetingRoomListModel.MeetingRoomListModelData> list = meetingRoomListModel.getMeetingRoomListModelData();
-                    if(list!=null && list.size()>0){
+                    if (list != null && list.size() > 0) {
                         meetingRooms.addAll(list);
                     }
                     meetingRoomAdapter.notifyDataSetChanged();
@@ -214,7 +263,7 @@ public class MeetingRoomActivity extends AppCompatActivity {
                 }
 
             }
-        },EmpCode,roomType,unitCode);
+        }, EmpCode, roomType, unitCode);
 
     }
 
