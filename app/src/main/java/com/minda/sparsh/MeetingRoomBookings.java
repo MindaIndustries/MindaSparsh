@@ -4,6 +4,7 @@ import android.app.ProgressDialog;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -36,6 +37,8 @@ public class MeetingRoomBookings extends AppCompatActivity {
     TextView title;
     @BindView(R.id.bookings)
     RecyclerView bookings;
+    @BindView(R.id.no_bookings)
+    TextView no_bookings;
     ArrayList<MeetingRoomBookData.MeetingRoomBookDataModel> bookingsList = new ArrayList<>();
     MeetingRoomBookingAdapter meetingRoomBookingAdapter;
     SharedPreferences myPref;
@@ -86,6 +89,9 @@ public class MeetingRoomBookings extends AppCompatActivity {
                         List<MeetingRoomBookData.MeetingRoomBookDataModel> list = (List<MeetingRoomBookData.MeetingRoomBookDataModel>) meetingRoomBookData.getData();
                         if(list!=null && list.size()>0) {
                             bookingsList.addAll(list);
+                        }
+                        else{
+                            no_bookings.setVisibility(View.VISIBLE);
                         }
                         meetingRoomBookingAdapter.notifyDataSetChanged();
                     }

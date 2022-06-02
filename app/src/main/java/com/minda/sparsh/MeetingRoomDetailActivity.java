@@ -18,6 +18,8 @@ import androidx.appcompat.widget.AppCompatAutoCompleteTextView;
 import androidx.appcompat.widget.Toolbar;
 
 import com.minda.sparsh.Adapter.MeetingRoomDetailAdapter;
+import com.minda.sparsh.listener.CarotResponse;
+import com.minda.sparsh.model.MeetingBookResponse;
 import com.minda.sparsh.model.MeetingRoomDetailData;
 import com.minda.sparsh.services.MeetingRoomServices;
 
@@ -60,6 +62,7 @@ public class MeetingRoomDetailActivity extends AppCompatActivity {
     ProgressDialog progressDialog;
     int slotId;
     String roomUnitCode;
+    String meetingId="";
 
 
 
@@ -108,10 +111,10 @@ public class MeetingRoomDetailActivity extends AppCompatActivity {
                     in.putExtra("dateforapi", datesave);
                     in.putExtra("slotId", slotId);
                     in.putExtra("meetingRoomId", meetingRoomId);
-                 //   in.putExtra("vc", roomType);
+                    in.putExtra("meetingId", meetingId);
+                    in.putExtra("vc", roomType);
                     in.putExtra("release", false);
                     startActivity(in);
-
                 }
         });
 
@@ -120,7 +123,7 @@ public class MeetingRoomDetailActivity extends AppCompatActivity {
             meetingRoomId = slots.get(i).getMeetingRoomID();
             if(slots.get(i).getBkngStatus().equals("Ready to Book")){
                 progressDialog.show();
-                takeActionForMeetingRoom(""+slots.get(i).getMeetingTimeLnkID(),slots.get(i).getMeetingRoomID(),EmpCode,datesave,"","","","Ready to Book","",unitCode,roomType);
+                takeActionForMeetingRoom(""+slots.get(i).getMeetingTimeLnkID(),slots.get(i).getMeetingRoomID(),EmpCode,datesave,"","","","Ready to Book",meetingId,unitCode,roomType);
             }
             else if(slots.get(i).getBkngStatus().equals("Reserved")){
                 takeActionForMeetingRoom(""+slots.get(i).getMeetingTimeLnkID(),slots.get(i).getMeetingRoomID(),EmpCode,datesave,"","","","Reserved","",unitCode,roomType);
@@ -137,7 +140,7 @@ public class MeetingRoomDetailActivity extends AppCompatActivity {
                     startActivity(in);
                // }
 
-                //takeActionForMeetingRoom(""+slots.get(i).getMeetingTimeLnkID(),slots.get(i).getMeetingRoomID(),EmpCode,datesave,"","","","Release","",unitCode,roomType);
+                //takeActionForMeetingRoom(""+slots.ge3t(i).getMeetingTimeLnkID(),slots.get(i).getMeetingRoomID(),EmpCode,datesave,"","","","Release","",unitCode,roomType);
 
             }
             else if(slots.get(i).getBkngStatus().equals("Booked")){
@@ -261,6 +264,10 @@ public class MeetingRoomDetailActivity extends AppCompatActivity {
         meetingRoomServices.takeActionForMeetingRoom(carotResponse -> {
             gridView.setEnabled(true);
             if(carotResponse.getStatuscode() == HttpsURLConnection.HTTP_OK){
+                MeetingBookResponse meetingBookResponse = (MeetingBookResponse) carotResponse.getData();
+                if(meetingBookResponse!=null && meetingBookResponse.getMeetingId()!=null){
+                    meetingId = meetingBookResponse.getMeetingId();
+                }
                 getMeetingRoomDetail(EmpCode,"",datesave,meetingRoomId);
             }
             else if(carotResponse.getStatuscode() == 406){

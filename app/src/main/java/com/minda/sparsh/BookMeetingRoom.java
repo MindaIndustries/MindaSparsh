@@ -86,6 +86,7 @@ public class BookMeetingRoom extends AppCompatActivity implements InternalEmploy
     boolean vc,release;
     String city,selected_unit;
     ProgressDialog progressDialog;
+    String meetingId="";
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -111,6 +112,7 @@ public class BookMeetingRoom extends AppCompatActivity implements InternalEmploy
             dateforapi = getIntent().getStringExtra("dateforapi");
             slotId = getIntent().getIntExtra("slotId",0);
             meetingRoomID = getIntent().getIntExtra("meetingRoomId",0);
+            meetingId = getIntent().getStringExtra("meetingId");
             vc = getIntent().getBooleanExtra("vc",false);
             release = getIntent().getBooleanExtra("release",false);
             date.setText(datestr);
@@ -172,7 +174,11 @@ public class BookMeetingRoom extends AppCompatActivity implements InternalEmploy
                     }
                 } else {
                     if (agenda.getText().toString().length() > 0) {
-                        confirmBooking("" + slotId, meetingRoomID, EmpCode, dateforapi, agenda.getText().toString(), autoNamesInternalEmpcode.toString().replace("[", "").replace("]", "").replace(" ", ""), external_Att.getText().toString(), "Booked", "", unitCode, vc);
+                        if (internalAtt.getText().toString().length() > 0) {
+                            Toast.makeText(BookMeetingRoom.this, "Enter a valid internal attendee details", Toast.LENGTH_LONG).show();
+                        } else {
+                            confirmBooking("" + slotId, meetingRoomID, EmpCode, dateforapi, agenda.getText().toString(), autoNamesInternalEmpcode.toString().replace("[", "").replace("]", "").replace(" ", ""), external_Att.getText().toString(), "Booked", meetingId, unitCode, vc);
+                        }
                     }
                     else {
                         Toast.makeText(BookMeetingRoom.this, "Enter Agenda", Toast.LENGTH_LONG).show();
@@ -189,9 +195,11 @@ public class BookMeetingRoom extends AppCompatActivity implements InternalEmploy
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 if(autoNames.size()>0) {
-                    autoNamesInternal.add(autoNames.get(i));
-                    autoNamesInternalEmpcode.add(autoNames.get(i).getEmpCode());
-                    internalEmployeeAdapter.notifyDataSetChanged();
+                    if(!autoNamesInternal.contains(autoNames.get(i))) {
+                        autoNamesInternal.add(autoNames.get(i));
+                        autoNamesInternalEmpcode.add(autoNames.get(i).getEmpCode());
+                        internalEmployeeAdapter.notifyDataSetChanged();
+                    }
                     internalAtt.setText("");
                 }
             }

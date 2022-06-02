@@ -3,6 +3,7 @@ package com.minda.sparsh.model;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
+import java.util.Objects;
 
 public class AutoNameModel {
     @SerializedName("data")
@@ -17,7 +18,7 @@ public class AutoNameModel {
     }
 
 
-    public class AutoNameModelData{
+    public static class AutoNameModelData{
         @SerializedName("Value")
         String Value;
         @SerializedName("EmpCode")
@@ -37,6 +38,19 @@ public class AutoNameModel {
 
         public void setEmpCode(String empCode) {
             EmpCode = empCode;
+        }
+
+        @Override
+        public boolean equals(Object o) {
+            if (this == o) return true;
+            if (o == null || getClass() != o.getClass()) return false;
+            AutoNameModelData that = (AutoNameModelData) o;
+            return Objects.equals(Value, that.Value) && Objects.equals(EmpCode, that.EmpCode);
+        }
+
+        @Override
+        public int hashCode() {
+            return Objects.hash(Value, EmpCode);
         }
     }
 }

@@ -105,7 +105,7 @@ public class MeetingRoomActivity extends AppCompatActivity {
                     compoundButton.setButtonDrawable(getResources().getDrawable(R.drawable.toggle_on));
                     compoundButton.setButtonTintList(ContextCompat.getColorStateList(MeetingRoomActivity.this, R.color.red));
                 }
-                myPref.edit().putBoolean("roomType",roomType);
+                myPref.edit().putBoolean("roomType",roomType).commit();
                 getMeetingRooms(EmpCode, roomType);
             }
         });
