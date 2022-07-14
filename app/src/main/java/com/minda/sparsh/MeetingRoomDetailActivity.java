@@ -18,7 +18,6 @@ import androidx.appcompat.widget.AppCompatAutoCompleteTextView;
 import androidx.appcompat.widget.Toolbar;
 
 import com.minda.sparsh.Adapter.MeetingRoomDetailAdapter;
-import com.minda.sparsh.listener.CarotResponse;
 import com.minda.sparsh.model.MeetingBookResponse;
 import com.minda.sparsh.model.MeetingRoomDetailData;
 import com.minda.sparsh.services.MeetingRoomServices;
@@ -63,6 +62,7 @@ public class MeetingRoomDetailActivity extends AppCompatActivity {
     int slotId;
     String roomUnitCode;
     String meetingId="";
+    ArrayList<String> slotR = new ArrayList<>();
 
 
 
@@ -103,19 +103,35 @@ public class MeetingRoomDetailActivity extends AppCompatActivity {
 
 
             bookSelectedSlots.setOnClickListener(view -> {
-                if (slotId == 0) {
-                    checkReservedRoom(EmpCode, datesave, String.valueOf(meetingRoomId));
-                } else {
-                    Intent in = new Intent(MeetingRoomDetailActivity.this, BookMeetingRoom.class);
-                    in.putExtra("date", date.getText().toString());
-                    in.putExtra("dateforapi", datesave);
-                    in.putExtra("slotId", slotId);
-                    in.putExtra("meetingRoomId", meetingRoomId);
-                    in.putExtra("meetingId", meetingId);
-                    in.putExtra("vc", roomType);
-                    in.putExtra("release", false);
-                    startActivity(in);
-                }
+              //  if(btnEnable) {
+                    if (slotId == 0) {
+                        checkReservedRoom(EmpCode, datesave, String.valueOf(meetingRoomId));
+                    } else {
+                        if (slotR.size() > 0) {
+                            if(btnEnable) {
+                                Intent in = new Intent(MeetingRoomDetailActivity.this, BookMeetingRoom.class);
+                                in.putExtra("date", date.getText().toString());
+                                in.putExtra("dateforapi", datesave);
+                                in.putExtra("slotId", slotId);
+                                in.putExtra("meetingRoomId", meetingRoomId);
+                                in.putExtra("meetingId", meetingId);
+                                in.putExtra("vc", roomType);
+                                in.putExtra("release", false);
+                                startActivity(in);
+                            }
+                            else{
+                                showMsgUpdate("Error","Please select atleast one slot");
+                            }
+                        }
+                        else{
+                            showMsgUpdate("Error","Please select atleast one slot");
+                        }
+                    }
+
+                /*}
+                else{
+                    showMsgUpdate("Error","Please select atleast one slot");
+                }*/
         });
 
         gridView.setOnItemClickListener((adapterView, view, i, l) -> {
@@ -127,6 +143,7 @@ public class MeetingRoomDetailActivity extends AppCompatActivity {
             }
             else if(slots.get(i).getBkngStatus().equals("Reserved")){
                 takeActionForMeetingRoom(""+slots.get(i).getMeetingTimeLnkID(),slots.get(i).getMeetingRoomID(),EmpCode,datesave,"","","","Reserved","",unitCode,roomType);
+
             }
             else if(slots.get(i).getBkngStatus().equals("Release")){
                // if(btnEnable) {
@@ -162,6 +179,7 @@ public class MeetingRoomDetailActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         slotId = 0;
+        slotR.clear();
         getMeetingRoomDetail(EmpCode,"DateChng",datesave,meetingRoomId);
     }
 
@@ -180,6 +198,47 @@ public class MeetingRoomDetailActivity extends AppCompatActivity {
 
     }
 
+    public void getMeetingRoomDetailNew(String EmpCode, String ActType, String BookingDate, int MeetingRoomID,String MeetingRoomSlotID){
+        MeetingRoomServices meetingRoomServices = new MeetingRoomServices();
+        meetingRoomServices.getMeetingRoomDetail(carotResponse -> {
+            if(carotResponse.getStatuscode() == HttpsURLConnection.HTTP_OK){
+                MeetingRoomDetailData meetingRoomDetailData = (MeetingRoomDetailData) carotResponse.getData();
+                if(meetingRoomDetailData!=null) {
+                    List<MeetingRoomDetailData.MeetingRoomDetailDataModel> list = meetingRoomDetailData.getData();
+                    if (list != null && list.size() > 0) {
+                           /* MeetingRoomDetailData.MeetingRoomDetailDataModel meetingRoomDetailDataModel1 = new MeetingRoomDetailData.MeetingRoomDetailDataModel();
+                            meetingRoomDetailDataModel1.setMeetingTimeLnkID(Integer.parseInt(MeetingRoomSlotID));
+                            int index = list.indexOf(meetingRoomDetailDataModel1);
+                            if(index>=0){
+                                slots.get(index).setBkngStatus(list.get(index).getBkngStatus());
+                            }
+*/
+
+
+                        for (MeetingRoomDetailData.MeetingRoomDetailDataModel meetingRoomDetailDataModel : list) {
+                           int index =  slots.indexOf(meetingRoomDetailDataModel);
+                           if(index>=0){
+                               slots.get(index).setBkngStatus(meetingRoomDetailDataModel.getBkngStatus());
+                           }
+                        }
+                    }
+                    meetingRoomDetailAdapter.notifyDataSetChanged();
+                }
+            }
+            for(int i=0;i<slots.size();i++){
+                if(!slots.get(i).getBkngStatus().equals("Reserved")){
+                    btnEnable = false;
+                }
+                else{
+                    btnEnable = true;
+                    checkReservedRoom1(EmpCode,datesave, String.valueOf(meetingRoomId));
+                    return;
+                }
+            }
+        },EmpCode,ActType,BookingDate,MeetingRoomID,roomUnitCode);
+
+    }
+
     public void getMeetingRoomDetail(String EmpCode, String ActType, String BookingDate, int MeetingRoomID){
         slots.clear();
         meetingRoomDetailAdapter.notifyDataSetChanged();
@@ -195,16 +254,17 @@ public class MeetingRoomDetailActivity extends AppCompatActivity {
                     meetingRoomDetailAdapter.notifyDataSetChanged();
                 }
             }
-           /* for(int i=0;i<slots.size();i++){
+         /*   for(int i=0;i<slots.size();i++){
                 if(!slots.get(i).getBkngStatus().equals("Reserved")){
                     btnEnable = false;
                   }
                 else{
                     btnEnable = true;
+                    checkReservedRoom1(EmpCode,datesave, String.valueOf(meetingRoomId));
                     return;
                 }
-            }*/
-        },EmpCode,ActType,BookingDate,MeetingRoomID,roomUnitCode);
+            }
+*/        },EmpCode,ActType,BookingDate,MeetingRoomID,roomUnitCode);
 
     }
     public void initDatePicker() {
@@ -262,13 +322,29 @@ public class MeetingRoomDetailActivity extends AppCompatActivity {
         gridView.setEnabled(false);
         MeetingRoomServices meetingRoomServices = new MeetingRoomServices();
         meetingRoomServices.takeActionForMeetingRoom(carotResponse -> {
+          //  Toast.makeText(MeetingRoomDetailActivity.this, ""+carotResponse.getStatuscode()+", ",Toast.LENGTH_LONG).show();
             gridView.setEnabled(true);
             if(carotResponse.getStatuscode() == HttpsURLConnection.HTTP_OK){
                 MeetingBookResponse meetingBookResponse = (MeetingBookResponse) carotResponse.getData();
                 if(meetingBookResponse!=null && meetingBookResponse.getMeetingId()!=null){
                     meetingId = meetingBookResponse.getMeetingId();
                 }
-                getMeetingRoomDetail(EmpCode,"",datesave,meetingRoomId);
+
+                if(ActType.equals("Ready to Book")){
+                    slotR.add(MeetingRoomSlotID);
+                }
+                else{
+                    slotR.remove(MeetingRoomSlotID);
+                    if(meetingBookResponse!=null && meetingBookResponse.getData()!=null && meetingBookResponse.getData().equals("Partially UnReserved")){
+                        btnEnable = true;
+                    }
+                    else{
+                        btnEnable = false;
+                    }
+                }
+                getMeetingRoomDetailNew(EmpCode,"",datesave,meetingRoomId,MeetingRoomSlotID);
+              //   getMeetingRoomDetail(EmpCode,"",datesave,meetingRoomId);
+
             }
             else if(carotResponse.getStatuscode() == 406){
                 showMsgUpdate("Error",""+carotResponse.getData());
@@ -281,9 +357,7 @@ public class MeetingRoomDetailActivity extends AppCompatActivity {
         alertDialogBuilder.setTitle(title);
         alertDialogBuilder.setMessage(message);
         alertDialogBuilder.setCancelable(false);
-        alertDialogBuilder.setPositiveButton("OK", (arg0, arg1) -> {
-                 arg0.dismiss();
-        });
+        alertDialogBuilder.setPositiveButton("OK", (arg0, arg1) -> arg0.dismiss());
         AlertDialog alertDialog = alertDialogBuilder.create();
         alertDialog.show();
     }
@@ -310,4 +384,27 @@ public class MeetingRoomDetailActivity extends AppCompatActivity {
 
         },EmpCode,BookingDate,MeetingRoomId);
     }
+    public void checkReservedRoom1(String EmpCode, String BookingDate, String MeetingRoomId){
+        MeetingRoomServices meetingRoomServices = new MeetingRoomServices();
+        meetingRoomServices.checkReservedRoom(carotResponse -> {
+            if(carotResponse.getStatuscode()==HttpsURLConnection.HTTP_OK){
+                btnEnable = true;
+              /*  Intent in = new Intent(MeetingRoomDetailActivity.this, BookMeetingRoom.class);
+                in.putExtra("date",date.getText().toString());
+                in.putExtra("dateforapi",datesave);
+                in.putExtra("slotId",slotId);
+                in.putExtra("meetingRoomId",meetingRoomId);
+                in.putExtra("vc",roomType);
+                in.putExtra("release",false);
+                startActivity(in);
+*/
+            }
+            else if(carotResponse.getStatuscode()==406 || carotResponse.getStatuscode()==400){
+                btnEnable = false;
+             //   showMsgUpdate("Error",""+carotResponse.getData());
+            }
+
+        },EmpCode,BookingDate,MeetingRoomId);
+    }
+
 }

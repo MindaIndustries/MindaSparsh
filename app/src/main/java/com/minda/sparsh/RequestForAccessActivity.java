@@ -444,7 +444,7 @@ public class RequestForAccessActivity extends AppCompatActivity implements View.
             sp_user_authorization_profile.setText("");
             IAMGetCategorySpinnerModel selectedItem = accessCategoryModelList.get(i);
             if (!selectedItem.getCategory().equalsIgnoreCase("Please Select Category")) {
-                hitIAMGetSubCategoryApi(selectedItem.getCategoryId().toString());
+                hitIAMGetSubCategoryApi(selectedItem.getCategoryId().toString(),sp_request_type_id,sp_access_type_id);
                 hitIAMGetAuthorizationProfileApi(selectedItem.getCategoryId().toString());
                 sp_access_category_id = selectedItem.getCategoryId().toString();
                 sp_access_category_value = selectedItem.getCategory();
@@ -458,7 +458,7 @@ public class RequestForAccessActivity extends AppCompatActivity implements View.
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 IAMGetCategorySpinnerModel selectedItem = (IAMGetCategorySpinnerModel) adapterView.getSelectedItem();
                 if (!selectedItem.getCategory().equalsIgnoreCase("Please Select Category")) {
-                    hitIAMGetSubCategoryApi(selectedItem.getCategoryId().toString());
+                    hitIAMGetSubCategoryApi(selectedItem.getCategoryId().toString(),sp_request_type_id,sp_access_type_id);
                     hitIAMGetAuthorizationProfileApi(selectedItem.getCategoryId().toString());
                     sp_access_category_id = selectedItem.getCategoryId().toString();
                     sp_access_category_value = selectedItem.getCategory();
@@ -846,14 +846,14 @@ public class RequestForAccessActivity extends AppCompatActivity implements View.
             Toast.makeText(RequestForAccessActivity.this, "Please Check Your Network Connection", Toast.LENGTH_LONG).show();
     }
 
-    public void hitIAMGetSubCategoryApi(String categoryId) {
+    public void hitIAMGetSubCategoryApi(String categoryId, String requestTypeId,String accessTypeId) {
         accessSubCategoryList.clear();
         accessSubCategoryModelList.clear();
         sp_access_sub_category.setText("");
         if (Utility.isOnline(RequestForAccessActivity.this)) {
             showProgress(true);
             Interface anInterface = RetrofitClient2.getClient().create(Interface.class);
-            Call<List<IAMGetSubCategoryModel>> response = anInterface.IAMGetSubCategory(categoryId, RetrofitClient2.CKEY);
+            Call<List<IAMGetSubCategoryModel>> response = anInterface.IAMGetSubCategoryV2(categoryId,requestTypeId,accessTypeId, RetrofitClient2.CKEY);
             response.enqueue(new Callback<List<IAMGetSubCategoryModel>>() {
                 @Override
                 public void onResponse(@NotNull Call<List<IAMGetSubCategoryModel>> call, @NotNull Response<List<IAMGetSubCategoryModel>> response) {

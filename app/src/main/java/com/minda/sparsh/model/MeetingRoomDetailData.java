@@ -3,6 +3,7 @@ package com.minda.sparsh.model;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
+import java.util.Objects;
 
 public class MeetingRoomDetailData {
     @SerializedName("data")
@@ -16,7 +17,7 @@ public class MeetingRoomDetailData {
         this.data = data;
     }
 
-    public class MeetingRoomDetailDataModel{
+    public static class MeetingRoomDetailDataModel{
         @SerializedName("TimeStart")
         String TimeStart;
         @SerializedName("TimeEnd")
@@ -87,6 +88,20 @@ public class MeetingRoomDetailData {
 
         public void setMeetingRoomID(int meetingRoomID) {
             MeetingRoomID = meetingRoomID;
+        }
+
+
+        @Override
+        public boolean equals(Object o) {
+            if (this == o) return true;
+            if (!(o instanceof MeetingRoomDetailDataModel)) return false;
+            MeetingRoomDetailDataModel that = (MeetingRoomDetailDataModel) o;
+            return getMeetingTimeLnkID() == that.getMeetingTimeLnkID();
+        }
+
+        @Override
+        public int hashCode() {
+            return Objects.hash(getTimeSlotID());
         }
     }
 }

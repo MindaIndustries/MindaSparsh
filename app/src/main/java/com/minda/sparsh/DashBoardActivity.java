@@ -11,7 +11,6 @@ import android.text.Html;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
-import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -479,22 +478,16 @@ public class DashBoardActivity extends BaseActivity implements View.OnClickListe
         title1.setText(title);
         chkbox.setText("I agree and accept above " + title);
         textView.setText(Html.fromHtml(Description));
-        chkbox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                if (b) {
-                    accept.setVisibility(View.VISIBLE);
-                } else {
-                    accept.setVisibility(View.INVISIBLE);
-                }
+        chkbox.setOnCheckedChangeListener((compoundButton, b) -> {
+            if (b) {
+                accept.setVisibility(View.VISIBLE);
+            } else {
+                accept.setVisibility(View.INVISIBLE);
             }
         });
-        accept.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (Utility.isOnline(DashBoardActivity.this)) {
-                    updateGuideLine(dialog);
-                }
+        accept.setOnClickListener(view -> {
+            if (Utility.isOnline(DashBoardActivity.this)) {
+                updateGuideLine(dialog);
             }
         });
         if(!isFinishing()) {

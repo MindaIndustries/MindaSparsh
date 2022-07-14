@@ -7,7 +7,6 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.TextView;
@@ -25,8 +24,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 import com.minda.sparsh.Adapter.InternalEmployeeAdapter;
-import com.minda.sparsh.listener.CarotResponse;
-import com.minda.sparsh.listener.OnTaskComplete;
 import com.minda.sparsh.model.AutoNameModel;
 import com.minda.sparsh.model.MeetingBookResponse;
 import com.minda.sparsh.model.MeetingDetailModel;
@@ -72,21 +69,21 @@ public class BookMeetingRoom extends AppCompatActivity implements InternalEmploy
     TextInputLayout locationlayout;
     @BindView(R.id.releasereason)
     TextInputLayout releasereasonlayout;
-    String datestr,dateforapi;
+    String datestr, dateforapi;
     List<AutoNameModel.AutoNameModelData> autoNames = new ArrayList<>();
     ArrayList<String> names = new ArrayList<>();
     ArrayAdapter<String> autoNameAdapter;
-    int slotId,meetingRoomID;
-    String EmpCode,unitCode;
+    int slotId, meetingRoomID;
+    String EmpCode, unitCode;
     SharedPreferences myPref;
     InternalEmployeeAdapter internalEmployeeAdapter;
     ArrayList<AutoNameModel.AutoNameModelData> autoNamesInternal = new ArrayList<>();
     ArrayList<String> autoNamesInternalEmpcode = new ArrayList<>();
 
-    boolean vc,release;
-    String city,selected_unit;
+    boolean vc, release;
+    String city, selected_unit;
     ProgressDialog progressDialog;
-    String meetingId="";
+    String meetingId = "";
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -100,32 +97,31 @@ public class BookMeetingRoom extends AppCompatActivity implements InternalEmploy
         title.setText("Book Meeting Room");
         myPref = getSharedPreferences("MyPref", MODE_PRIVATE);
         EmpCode = myPref.getString("Id", "");
-        unitCode =myPref.getString("Um_div_code","");
-        city = myPref.getString("user_city","");
-        selected_unit = myPref.getString("selected_unit","");
+        unitCode = myPref.getString("Um_div_code", "");
+        city = myPref.getString("user_city", "");
+        selected_unit = myPref.getString("selected_unit", "");
         progressDialog = new ProgressDialog(this);
         progressDialog.setMessage("Loading...");
         progressDialog.setCancelable(false);
 
-        if(getIntent()!=null && getIntent().getStringExtra("date")!=null){
+        if (getIntent() != null && getIntent().getStringExtra("date") != null) {
             datestr = getIntent().getStringExtra("date");
             dateforapi = getIntent().getStringExtra("dateforapi");
-            slotId = getIntent().getIntExtra("slotId",0);
-            meetingRoomID = getIntent().getIntExtra("meetingRoomId",0);
+            slotId = getIntent().getIntExtra("slotId", 0);
+            meetingRoomID = getIntent().getIntExtra("meetingRoomId", 0);
             meetingId = getIntent().getStringExtra("meetingId");
-            vc = getIntent().getBooleanExtra("vc",false);
-            release = getIntent().getBooleanExtra("release",false);
+            vc = getIntent().getBooleanExtra("vc", false);
+            release = getIntent().getBooleanExtra("release", false);
             date.setText(datestr);
-            if(getIntent().getBooleanExtra("booked",false)){
+            if (getIntent().getBooleanExtra("booked", false)) {
                 confirm_book.setVisibility(View.GONE);
-            }
-            else{
+            } else {
                 confirm_book.setVisibility(View.VISIBLE);
 
             }
 
         }
-        if(release){
+        if (release) {
             bookedbylayout.setVisibility(View.VISIBLE);
             releasereasonlayout.setVisibility(View.VISIBLE);
             locationlayout.setVisibility(View.VISIBLE);
@@ -134,7 +130,7 @@ public class BookMeetingRoom extends AppCompatActivity implements InternalEmploy
 
         getMeetingDetails();
 
-        internalEmployeeAdapter = new InternalEmployeeAdapter(BookMeetingRoom.this,autoNamesInternal);
+        internalEmployeeAdapter = new InternalEmployeeAdapter(BookMeetingRoom.this, autoNamesInternal);
         LinearLayoutManager mLayoutManager = new LinearLayoutManager(BookMeetingRoom.this, LinearLayoutManager.VERTICAL, false);
         internalattList.setLayoutManager(mLayoutManager);
         internalattList.setAdapter(internalEmployeeAdapter);
@@ -148,12 +144,11 @@ public class BookMeetingRoom extends AppCompatActivity implements InternalEmploy
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                if(charSequence.length()>0) {
-                    if(Utility.isOnline(BookMeetingRoom.this)) {
+                if (charSequence.length() > 0) {
+                    if (Utility.isOnline(BookMeetingRoom.this)) {
                         getAutoName(charSequence.toString());
-                    }
-                    else{
-                        Toast.makeText(BookMeetingRoom.this,"Please Check Your Network Connection",Toast.LENGTH_LONG).show();
+                    } else {
+                        Toast.makeText(BookMeetingRoom.this, "Please Check Your Network Connection", Toast.LENGTH_LONG).show();
                     }
                 }
             }
@@ -163,48 +158,42 @@ public class BookMeetingRoom extends AppCompatActivity implements InternalEmploy
 
             }
         });
-        confirm_book.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (release) {
-                    if (releasereason.getText().toString().length() > 0) {
-                        confirmBooking("" + slotId, meetingRoomID, EmpCode, dateforapi, releasereason.getText().toString(), autoNamesInternalEmpcode.toString().replace("[", "").replace("]", "").replace(" ", ""), external_Att.getText().toString(), "Release", "", unitCode, vc);
+        confirm_book.setOnClickListener(view -> {
+            if (release) {
+                if (releasereason.getText().toString().length() > 0) {
+                    confirmBooking("" + slotId, meetingRoomID, EmpCode, dateforapi, releasereason.getText().toString(), autoNamesInternalEmpcode.toString().replace("[", "").replace("]", "").replace(" ", ""), external_Att.getText().toString(), "Release", "", unitCode, vc);
+                } else {
+                    Toast.makeText(BookMeetingRoom.this, "Enter Release Reason", Toast.LENGTH_LONG).show();
+                }
+            } else {
+                if (agenda.getText().toString().length() > 0) {
+                    if (internalAtt.getText().toString().length() > 0) {
+                        Toast.makeText(BookMeetingRoom.this, "Enter a valid internal attendee details", Toast.LENGTH_LONG).show();
                     } else {
-                        Toast.makeText(BookMeetingRoom.this, "Enter Release Reason", Toast.LENGTH_LONG).show();
+                        confirmBooking("" + slotId, meetingRoomID, EmpCode, dateforapi, agenda.getText().toString(), autoNamesInternalEmpcode.toString().replace("[", "").replace("]", "").replace(" ", ""), external_Att.getText().toString(), "Booked", meetingId, unitCode, vc);
                     }
                 } else {
-                    if (agenda.getText().toString().length() > 0) {
-                        if (internalAtt.getText().toString().length() > 0) {
-                            Toast.makeText(BookMeetingRoom.this, "Enter a valid internal attendee details", Toast.LENGTH_LONG).show();
-                        } else {
-                            confirmBooking("" + slotId, meetingRoomID, EmpCode, dateforapi, agenda.getText().toString(), autoNamesInternalEmpcode.toString().replace("[", "").replace("]", "").replace(" ", ""), external_Att.getText().toString(), "Booked", meetingId, unitCode, vc);
-                        }
-                    }
-                    else {
-                        Toast.makeText(BookMeetingRoom.this, "Enter Agenda", Toast.LENGTH_LONG).show();
-                    }
+                    Toast.makeText(BookMeetingRoom.this, "Enter Agenda", Toast.LENGTH_LONG).show();
                 }
             }
         });
     }
 
-    public void initAutoNameAdapter(){
-        autoNameAdapter  = new ArrayAdapter<String>(BookMeetingRoom.this,android.R.layout.simple_spinner_item,names);
+    public void initAutoNameAdapter() {
+        autoNameAdapter = new ArrayAdapter<>(BookMeetingRoom.this, android.R.layout.simple_spinner_item, names);
         internalAtt.setAdapter(autoNameAdapter);
-        internalAtt.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                if(autoNames.size()>0) {
-                    if(!autoNamesInternal.contains(autoNames.get(i))) {
-                        autoNamesInternal.add(autoNames.get(i));
-                        autoNamesInternalEmpcode.add(autoNames.get(i).getEmpCode());
-                        internalEmployeeAdapter.notifyDataSetChanged();
-                    }
-                    internalAtt.setText("");
+        internalAtt.setOnItemClickListener((adapterView, view, i, l) -> {
+            if (autoNames.size() > 0) {
+                if (!autoNamesInternal.contains(autoNames.get(i))) {
+                    autoNamesInternal.add(autoNames.get(i));
+                    autoNamesInternalEmpcode.add(autoNames.get(i).getEmpCode());
+                    internalEmployeeAdapter.notifyDataSetChanged();
                 }
+                internalAtt.setText("");
             }
         });
     }
+
     @Override
     public boolean onOptionsItemSelected(@NonNull @NotNull MenuItem item) {
         if (item.getItemId() == android.R.id.home) {
@@ -214,56 +203,48 @@ public class BookMeetingRoom extends AppCompatActivity implements InternalEmploy
         return super.onOptionsItemSelected(item);
     }
 
-    public void getAutoName(String prefixText){
+    public void getAutoName(String prefixText) {
         MeetingRoomServices meetingRoomServices = new MeetingRoomServices();
-        meetingRoomServices.getAutoName(new OnTaskComplete() {
-            @Override
-            public void onTaskComplte(CarotResponse carotResponse) {
-                autoNames.clear();
-                names.clear();
-                autoNameAdapter.notifyDataSetChanged();
-                if(carotResponse.getStatuscode() == HttpsURLConnection.HTTP_OK){
-                    AutoNameModel autoNameModel = (AutoNameModel) carotResponse.getData();
-                    if(autoNameModel!=null){
-                        List<AutoNameModel.AutoNameModelData> list = autoNameModel.getData();
-                        if(list!=null && list.size()>0){
-                            autoNames.addAll(list);
-                            for (AutoNameModel.AutoNameModelData autoName : autoNames) {
-                                names.add(autoName.getValue());
-                            }
-                            autoNameAdapter  = new ArrayAdapter<String>(BookMeetingRoom.this,android.R.layout.simple_spinner_item,names);
-                            internalAtt.setAdapter(autoNameAdapter);
-                            autoNameAdapter.notifyDataSetChanged();
+        meetingRoomServices.getAutoName(carotResponse -> {
+            autoNames.clear();
+            names.clear();
+            autoNameAdapter.notifyDataSetChanged();
+            if (carotResponse.getStatuscode() == HttpsURLConnection.HTTP_OK) {
+                AutoNameModel autoNameModel = (AutoNameModel) carotResponse.getData();
+                if (autoNameModel != null) {
+                    List<AutoNameModel.AutoNameModelData> list = autoNameModel.getData();
+                    if (list != null && list.size() > 0) {
+                        autoNames.addAll(list);
+                        for (AutoNameModel.AutoNameModelData autoName : autoNames) {
+                            names.add(autoName.getValue());
                         }
+                        autoNameAdapter = new ArrayAdapter<String>(BookMeetingRoom.this, android.R.layout.simple_spinner_item, names);
+                        internalAtt.setAdapter(autoNameAdapter);
+                        autoNameAdapter.notifyDataSetChanged();
                     }
                 }
             }
-        },prefixText);
+        }, prefixText);
     }
 
-    public void confirmBooking(String MeetingRoomSlotId,int MeetingRoomId,String EmpCode,String BookingDate,String Purpose,String AttendeeInt,String AttendeeExt,String ActType,String MeetingId,String UnitCode,boolean RoomType){
+    public void confirmBooking(String MeetingRoomSlotId, int MeetingRoomId, String EmpCode, String BookingDate, String Purpose, String AttendeeInt, String AttendeeExt, String ActType, String MeetingId, String UnitCode, boolean RoomType) {
         progressDialog.show();
         MeetingRoomServices meetingRoomServices = new MeetingRoomServices();
-        meetingRoomServices.takeActionForMeetingRoom(new OnTaskComplete() {
-            @Override
-            public void onTaskComplte(CarotResponse carotResponse) {
-                progressDialog.dismiss();
-                if(carotResponse.getStatuscode() == HttpsURLConnection.HTTP_OK) {
-                    MeetingBookResponse meetingBookResponse = (MeetingBookResponse) carotResponse.getData();
-                    if (meetingBookResponse.getData().equals("Cancelled")) {
-                        showMsgUpdate("Success", "Released successfully");
-                    } else {
-                        showMsgUpdate("Success", "" + meetingBookResponse.getData());
-                    }
+        meetingRoomServices.takeActionForMeetingRoom(carotResponse -> {
+            progressDialog.dismiss();
+            if (carotResponse.getStatuscode() == HttpsURLConnection.HTTP_OK) {
+                MeetingBookResponse meetingBookResponse = (MeetingBookResponse) carotResponse.getData();
+                if (meetingBookResponse.getData().equals("Cancelled")) {
+                    showMsgUpdate("Success", "Released successfully");
+                } else {
+                    showMsgUpdate("Success", "" + meetingBookResponse.getData());
                 }
-                else if(carotResponse.getStatuscode() == 406){
-                    showMsgUpdate("Error",""+carotResponse.getData());
-                }
-                else{
-                    Toast.makeText(BookMeetingRoom.this,"Oops! Something went wrong.",Toast.LENGTH_LONG).show();
-                }
+            } else if (carotResponse.getStatuscode() == 406) {
+                showMsgUpdate("Error", "" + carotResponse.getData());
+            } else {
+                Toast.makeText(BookMeetingRoom.this, "Oops! Something went wrong.", Toast.LENGTH_LONG).show();
             }
-        },MeetingRoomSlotId,MeetingRoomId,EmpCode,BookingDate,Purpose,AttendeeInt.trim(),AttendeeExt,ActType,MeetingId,UnitCode,RoomType);
+        }, MeetingRoomSlotId, MeetingRoomId, EmpCode, BookingDate, Purpose, AttendeeInt.trim(), AttendeeExt, ActType, MeetingId, UnitCode, RoomType);
     }
 
     @Override
@@ -272,6 +253,7 @@ public class BookMeetingRoom extends AppCompatActivity implements InternalEmploy
         autoNamesInternalEmpcode.remove(position);
         internalEmployeeAdapter.notifyDataSetChanged();
     }
+
     public void showMsgUpdate(String title, String message) {
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
         alertDialogBuilder.setTitle(title);
@@ -279,40 +261,38 @@ public class BookMeetingRoom extends AppCompatActivity implements InternalEmploy
         alertDialogBuilder.setCancelable(false);
         alertDialogBuilder.setPositiveButton("OK", (arg0, arg1) -> {
             arg0.dismiss();
-            if(title.equals("Success")){
+            if (title.equals("Success")) {
                 onBackPressed();
             }
         });
         AlertDialog alertDialog = alertDialogBuilder.create();
         alertDialog.show();
     }
-    public void getMeetingDetails(){
+
+    public void getMeetingDetails() {
         MeetingRoomServices meetingRoomServices = new MeetingRoomServices();
-        meetingRoomServices.getMeetingDetails(new OnTaskComplete() {
-            @Override
-            public void onTaskComplte(CarotResponse carotResponse) {
-                if(carotResponse.getStatuscode()==HttpsURLConnection.HTTP_OK){
-                    MeetingDetailModel meetingDetailModel = (MeetingDetailModel) carotResponse.getData();
-                    if(meetingDetailModel!=null ){
-                        List<MeetingDetailModel.MeetingDetailModelData> list = meetingDetailModel.getData();
-                        if(list!=null && list.size()>0){
-                            if(list.get(0).getPurpose()!=null){
-                                agenda.setText(list.get(0).getPurpose());
-                                agenda.setEnabled(false);
-                                internalAtt.setText(list.get(0).getAttendeeInternal());
-                                internalAtt.setEnabled(false);
-                                external_Att.setText(list.get(0).getAttendeeExt());
-                                external_Att.setEnabled(false);
-                                date.setText(list.get(0).getBookingDate()+" at "+list.get(0).getTimeSlot());
-                                bookedby.setText(""+list.get(0).getUM_USER_DESC());
-                                bookedbylayout.setVisibility(View.VISIBLE);
-                                location.setText(""+list.get(0).getMeetingRoom() +" at "+selected_unit+" ("+list.get(0).getDivID()+" )");
-                            }
+        meetingRoomServices.getMeetingDetails(carotResponse -> {
+            if (carotResponse.getStatuscode() == HttpsURLConnection.HTTP_OK) {
+                MeetingDetailModel meetingDetailModel = (MeetingDetailModel) carotResponse.getData();
+                if (meetingDetailModel != null) {
+                    List<MeetingDetailModel.MeetingDetailModelData> list = meetingDetailModel.getData();
+                    if (list != null && list.size() > 0) {
+                        if (list.get(0).getPurpose() != null) {
+                            agenda.setText(list.get(0).getPurpose());
+                            agenda.setEnabled(false);
+                            internalAtt.setText(list.get(0).getAttendeeInternal());
+                            internalAtt.setEnabled(false);
+                            external_Att.setText(list.get(0).getAttendeeExt());
+                            external_Att.setEnabled(false);
+                            date.setText(list.get(0).getBookingDate() + " at " + list.get(0).getTimeSlot());
+                            bookedby.setText("" + list.get(0).getUM_USER_DESC());
+                            bookedbylayout.setVisibility(View.VISIBLE);
+                            location.setText("" + list.get(0).getMeetingRoom() + " at " + selected_unit + " (" + list.get(0).getDivID() + " )");
                         }
                     }
                 }
             }
-        }, String.valueOf(slotId),dateforapi);
+        }, String.valueOf(slotId), dateforapi);
 
     }
 

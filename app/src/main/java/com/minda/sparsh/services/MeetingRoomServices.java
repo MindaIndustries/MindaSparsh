@@ -142,7 +142,6 @@ public class MeetingRoomServices {
                         e.printStackTrace();
                     }
                 }
-
                 onTaskComplete.onTaskComplte(carotResponse);
             }
 

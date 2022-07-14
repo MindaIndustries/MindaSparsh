@@ -2,11 +2,8 @@ package com.minda.sparsh;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -17,13 +14,9 @@ import com.minda.sparsh.cvp.CVPPlanCalendar;
 import com.minda.sparsh.cvp.CVPViewCalendar;
 import com.minda.sparsh.cvp.CustomerVisitReport;
 
-import org.jetbrains.annotations.NotNull;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 public class MarketingDashboard extends AppCompatActivity {
     @BindView(R.id.card1)
@@ -49,28 +42,19 @@ public class MarketingDashboard extends AppCompatActivity {
         getSupportActionBar().setHomeAsUpIndicator(R.drawable.back);
         title.setText("Customer Visit Portal");
 
-        card1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(MarketingDashboard.this, CVPPlanCalendar.class);
-                startActivity(intent);
+        card1.setOnClickListener(view -> {
+            Intent intent = new Intent(MarketingDashboard.this, CVPPlanCalendar.class);
+            startActivity(intent);
 
-            }
         });
-        card2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(MarketingDashboard.this, CVPViewCalendar.class);
-                startActivity(intent);
+        card2.setOnClickListener(view -> {
+            Intent intent = new Intent(MarketingDashboard.this, CVPViewCalendar.class);
+            startActivity(intent);
 
-            }
         });
-        card3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(MarketingDashboard.this, CustomerVisitReport.class);
-                startActivity(intent);
-            }
+        card3.setOnClickListener(view -> {
+            Intent intent = new Intent(MarketingDashboard.this, CustomerVisitReport.class);
+            startActivity(intent);
         });
 
     }

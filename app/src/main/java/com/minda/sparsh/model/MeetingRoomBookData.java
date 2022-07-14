@@ -17,7 +17,7 @@ public class MeetingRoomBookData {
     }
 
 
-    public class MeetingRoomBookDataModel{
+    public static class MeetingRoomBookDataModel{
         @SerializedName("MeetingID")
         String MeetingID;
         @SerializedName("CreatedDate")
@@ -34,6 +34,12 @@ public class MeetingRoomBookData {
         String Purpose;
         @SerializedName("BkngStatus")
         String BkngStatus;
+        @SerializedName("BookingDate")
+        String BookingDate;
+        @SerializedName("ReleasedReason")
+        String ReleasedReason;
+        @SerializedName("TimeSlot")
+        String TimeSlot;
 
         public String getMeetingID() {
             return MeetingID;
@@ -97,6 +103,30 @@ public class MeetingRoomBookData {
 
         public void setBkngStatus(String bkngStatus) {
             BkngStatus = bkngStatus;
+        }
+
+        public String getBookingDate() {
+            return BookingDate;
+        }
+
+        public void setBookingDate(String bookingDate) {
+            BookingDate = bookingDate;
+        }
+
+        public String getReleasedReason() {
+            return ReleasedReason;
+        }
+
+        public void setReleasedReason(String releasedReason) {
+            ReleasedReason = releasedReason;
+        }
+
+        public String getTimeSlot() {
+            return TimeSlot;
+        }
+
+        public void setTimeSlot(String timeSlot) {
+            TimeSlot = timeSlot;
         }
     }
 }

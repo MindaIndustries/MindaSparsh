@@ -22,8 +22,11 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatAutoCompleteTextView;
 import androidx.appcompat.widget.Toolbar;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.textfield.TextInputLayout;
+import com.minda.sparsh.Adapter.MOMDiscussionAdapter;
 import com.minda.sparsh.R;
 import com.minda.sparsh.listener.CarotResponse;
 import com.minda.sparsh.listener.OnTaskComplete;
@@ -95,25 +98,31 @@ public class CustomerVisitReport extends AppCompatActivity {
     TextView addAttendees;
     @BindView(R.id.add_internal)
     TextView add_internal;
-    @BindView(R.id.add_customer)
-    TextView add_customer;
+    @BindView(R.id.add_external)
+    TextView add_external;
     @BindView(R.id.add)
     ImageView add;
     @BindView(R.id.add_rl)
     RelativeLayout add_rl;
+    @BindView(R.id.internal_rv)
+    RecyclerView internal_rv;
+    @BindView(R.id.external_rv)
+    RecyclerView external_rv;
     DatePickerDialog datePicker;
     Calendar calendar;
-    TimePickerDialog timePicker,timePicker1;
-    ArrayAdapter<String> customerAdapter,locationAdapter, customerWeekAdapter;
+    TimePickerDialog timePicker, timePicker1;
+    ArrayAdapter<String> customerAdapter, locationAdapter, customerWeekAdapter;
     ArrayList<CustomerModel.CustomerData> customer = new ArrayList<>();
     ArrayList<String> customerList = new ArrayList<>();
     ArrayList<LocationModel.LocationData> locations = new ArrayList<>();
     ArrayList<String> locationList = new ArrayList<>();
     ArrayList<WeekByCustomerModel.WeekByCustomerData> customerWeeks = new ArrayList<>();
     ArrayList<String> customerWeekList = new ArrayList<>();
-    ArrayList<CVPEmpNameModel> employeeName = new ArrayList<>();
+    ArrayList<CVPEmpNameModel.CVPEmpNameData> employeeName = new ArrayList<>();
     ArrayList<String> employees = new ArrayList<>();
     ArrayAdapter<String> employeeAdapter;
+
+    ArrayList<String> extenalAttendee = new ArrayList<>();
 
     SharedPreferences myPref;
     String empcode;
@@ -130,7 +139,7 @@ public class CustomerVisitReport extends AppCompatActivity {
         getSupportActionBar().setHomeAsUpIndicator(R.drawable.back);
         myPref = getSharedPreferences("MyPref", MODE_PRIVATE);
         empcode = myPref.getString("Id", "Id");
-        plant.setText(myPref.getString("UM_MASCOM_CODE",""));
+        plant.setText(myPref.getString("UM_MASCOM_CODE", ""));
         title.setText("Customer Visit Report");
         initDatePicker();
         initTimePicker();
@@ -139,30 +148,30 @@ public class CustomerVisitReport extends AppCompatActivity {
         getCustomers(empcode);
         initLocationSpinner();
         initCustomerWeekSpinner();
+
         dateOfVisit.setOnTouchListener((view, motionEvent) -> {
-            if(motionEvent.getAction()==MotionEvent.ACTION_UP){
+            if (motionEvent.getAction() == MotionEvent.ACTION_UP) {
                 datePicker.show();
             }
             return false;
         });
         start_time_selector.setOnTouchListener((view, motionEvent) -> {
-            if(motionEvent.getAction()==MotionEvent.ACTION_UP) {
+            if (motionEvent.getAction() == MotionEvent.ACTION_UP) {
                 timePicker.show();
             }
-                return false;
+            return false;
         });
         end_time_selector.setOnTouchListener((view, motionEvent) -> {
-            if(motionEvent.getAction()==MotionEvent.ACTION_UP) {
+            if (motionEvent.getAction() == MotionEvent.ACTION_UP) {
                 timePicker1.show();
             }
-                return false;
+            return false;
         });
         add.setOnClickListener(view -> {
-            if(add_rl.getVisibility()== View.VISIBLE){
+            if (add_rl.getVisibility() == View.VISIBLE) {
                 add_rl.setVisibility(View.GONE);
                 add.setImageDrawable(getResources().getDrawable(R.drawable.add));
-            }
-            else{
+            } else {
                 add_rl.setVisibility(View.VISIBLE);
                 add.setImageDrawable(getResources().getDrawable(R.drawable.minus));
             }
@@ -170,6 +179,7 @@ public class CustomerVisitReport extends AppCompatActivity {
 
         add_internal.setOnClickListener(view -> addAttendees());
     }
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == android.R.id.home) {
@@ -179,7 +189,7 @@ public class CustomerVisitReport extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    public void initDatePicker(){
+    public void initDatePicker() {
         calendar = Calendar.getInstance();
         calendar.setTimeInMillis(System.currentTimeMillis());
         datePicker = new DatePickerDialog(CustomerVisitReport.this, (datePicker, i, i1, i2) -> {
@@ -200,46 +210,47 @@ public class CustomerVisitReport extends AppCompatActivity {
             calendar.set(Calendar.MONTH, i1);
             calendar.set(Calendar.YEAR, i);
             dateOfVisit.setText("" + dayOfMonthStr + "-" + monthNo + "-" + i);
-        },calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH));
+        }, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH));
         datePicker.getDatePicker().setMaxDate(Calendar.getInstance().getTimeInMillis() - 10000);
 
     }
-    public void initTimePicker(){
+
+    public void initTimePicker() {
         timePicker = new TimePickerDialog(CustomerVisitReport.this, (timePicker, i, i1) -> {
-            String minute_str,hour;
+            String minute_str, hour;
             if (i1 < 10) {
                 minute_str = "0" + i1;
             } else {
                 minute_str = "" + i1;
             }
-            if(i<10){
-               hour = "0"+i ;
+            if (i < 10) {
+                hour = "0" + i;
+            } else {
+                hour = "" + i;
             }
-            else{
-                hour ="" +i;
-            }
-            start_time_selector.setText(""+hour+":"+minute_str);
-        },calendar.get(Calendar.HOUR_OF_DAY),calendar.get(Calendar.MINUTE),false);
+            start_time_selector.setText("" + hour + ":" + minute_str);
+        }, calendar.get(Calendar.HOUR_OF_DAY), calendar.get(Calendar.MINUTE), false);
 
     }
-    public void initTimePicker1(){
+
+    public void initTimePicker1() {
         timePicker1 = new TimePickerDialog(CustomerVisitReport.this, (timePicker, i, i1) -> {
-            String minute_str,hour;
+            String minute_str, hour;
             if (i1 < 10) {
                 minute_str = "0" + i1;
             } else {
                 minute_str = "" + i1;
             }
-            if(i<10){
-                hour = "0"+i ;
+            if (i < 10) {
+                hour = "0" + i;
+            } else {
+                hour = "" + i;
             }
-            else{
-                hour ="" +i;
-            }
-            end_time_selector.setText(""+hour+":"+minute_str);
-        },calendar.get(Calendar.HOUR_OF_DAY),calendar.get(Calendar.MINUTE),false);
+            end_time_selector.setText("" + hour + ":" + minute_str);
+        }, calendar.get(Calendar.HOUR_OF_DAY), calendar.get(Calendar.MINUTE), false);
 
     }
+
     public void getCustomers(String empcode) {
         customer.clear();
         customerList.clear();
@@ -261,15 +272,15 @@ public class CustomerVisitReport extends AppCompatActivity {
             }
         }, empcode);
     }
+
     public void initCustomerSpinner() {
         customerAdapter = new ArrayAdapter<String>(CustomerVisitReport.this, android.R.layout.simple_spinner_item, customerList);
         customer_spinner.setAdapter(customerAdapter);
         customer_spinner.setOnItemClickListener((adapterView, view, i, l) -> {
-            if (i >= 0)
-            {
+            if (i >= 0) {
                 locationSpinner.setText("");
                 getLocation(customer.get(i).getId());
-                getWeekByCustomer(customer.get(i).getId(),empcode);
+                getWeekByCustomer(customer.get(i).getId(), empcode);
             }
         });
     }
@@ -277,7 +288,8 @@ public class CustomerVisitReport extends AppCompatActivity {
     /*public void initEmployeeSpinner(){
         employeeAdapter = new ArrayAdapter<>(CustomerVisitReport.this, android.R.layout)
     }
-   */ public void getLocation(String customerId) {
+   */
+    public void getLocation(String customerId) {
         locations.clear();
         locationList.clear();
         CVPServices cvpServices = new CVPServices();
@@ -294,13 +306,14 @@ public class CustomerVisitReport extends AppCompatActivity {
                         locationAdapter = new ArrayAdapter<String>(CustomerVisitReport.this, android.R.layout.simple_spinner_item, locationList);
                         locationSpinner.setAdapter(locationAdapter);
                         locationAdapter.notifyDataSetChanged();
-                      }
+                    }
                 }
 
             }
 
         }, customerId);
     }
+
     public void initLocationSpinner() {
         locationAdapter = new ArrayAdapter<String>(CustomerVisitReport.this, android.R.layout.simple_spinner_item, locationList);
         locationSpinner.setAdapter(locationAdapter);
@@ -311,21 +324,22 @@ public class CustomerVisitReport extends AppCompatActivity {
         });
     }
 
-    public void initCustomerWeekSpinner(){
-        customerWeekAdapter = new ArrayAdapter<String>(CustomerVisitReport.this,android.R.layout.simple_spinner_item, customerWeekList);
+    public void initCustomerWeekSpinner() {
+        customerWeekAdapter = new ArrayAdapter<String>(CustomerVisitReport.this, android.R.layout.simple_spinner_item, customerWeekList);
         calendarWeekNo.setAdapter(customerWeekAdapter);
         calendarWeekNo.setOnItemClickListener((adapterView, view, i, l) -> {
 
         });
     }
-    public void getWeekByCustomer(String customerId, String empcode){
+
+    public void getWeekByCustomer(String customerId, String empcode) {
         CVPServices cvpServices = new CVPServices();
         cvpServices.getWeekByCustomer(carotResponse -> {
-            if(carotResponse.getStatuscode()==HttpsURLConnection.HTTP_OK){
+            if (carotResponse.getStatuscode() == HttpsURLConnection.HTTP_OK) {
                 WeekByCustomerModel weekByCustomerModel = (WeekByCustomerModel) carotResponse.getData();
-                if(weekByCustomerModel!=null){
+                if (weekByCustomerModel != null) {
                     List<WeekByCustomerModel.WeekByCustomerData> list = weekByCustomerModel.getData();
-                    if(list!=null && list.size()>0){
+                    if (list != null && list.size() > 0) {
                         customerWeeks.addAll(list);
                         for (WeekByCustomerModel.WeekByCustomerData weekByCustomerData : list) {
                             customerWeekList.add(weekByCustomerData.getWeeks());
@@ -334,17 +348,18 @@ public class CustomerVisitReport extends AppCompatActivity {
                     }
                 }
             }
-        },customerId,empcode);
+        }, customerId, empcode);
     }
 
-    public void addAttendees(){
+    public void addAttendees() {
         Dialog dialog = new Dialog(CustomerVisitReport.this);
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-      //  dialog.setCancelable(false);
+        //  dialog.setCancelable(false);
         dialog.setContentView(R.layout.addattendees);
         dialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
         AppCompatAutoCompleteTextView attendee = dialog.findViewById(R.id.attendee);
         Button add = dialog.findViewById(R.id.add);
+
         attendee.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
@@ -361,18 +376,40 @@ public class CustomerVisitReport extends AppCompatActivity {
 
             }
         });
+
+        add.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (attendee.getText().toString().length() > 0) {
+                    employees.add(attendee.getText().toString());
+                }
+            }
+        });
+
+        add_external.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (attendee.getText().toString().length() > 0) {
+                    extenalAttendee.add(attendee.getText().toString());
+                }
+            }
+        });
         dialog.show();
     }
 
-    public void getEmpName(String empName){
+    public void getEmpName(String empName) {
+        employeeName.clear();
         CVPServices cvpServices = new CVPServices();
         cvpServices.getEmpName(new OnTaskComplete() {
             @Override
             public void onTaskComplte(CarotResponse carotResponse) {
-                if(carotResponse.getStatuscode()==HttpsURLConnection.HTTP_OK){
-
+                if (carotResponse.getStatuscode() == HttpsURLConnection.HTTP_OK) {
+                    List<CVPEmpNameModel.CVPEmpNameData> list = (List<CVPEmpNameModel.CVPEmpNameData>) carotResponse.getData();
+                    if(list!=null && list.size()>0){
+                        employeeName.addAll(list);
+                    }
                 }
             }
-        },empName);
+        }, empName);
     }
 }

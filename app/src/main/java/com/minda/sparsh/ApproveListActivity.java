@@ -152,7 +152,6 @@ public class ApproveListActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         hitGetApprovalListApi(RetrofitClient2.CKEY, myPref.getString("Id", "Id"));
-
         super.onResume();
     }
 }

@@ -16,8 +16,6 @@ import com.minda.sparsh.model.AutoNameModel;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
-import java.util.List;
-
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
@@ -82,6 +80,6 @@ public class InternalEmployeeAdapter extends RecyclerView.Adapter<InternalEmploy
         }
     }
     public interface OnItemClickListener {
-        public void onClick(View view, int position);
+         void onClick(View view, int position);
     }
 }

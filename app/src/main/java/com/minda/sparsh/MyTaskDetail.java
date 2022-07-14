@@ -49,6 +49,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Collections;
 import java.util.List;
 
 import javax.net.ssl.HttpsURLConnection;
@@ -327,9 +328,7 @@ public class MyTaskDetail extends BaseActivity {
         if (myTicket != null && myTicket.getFiles() != null) {
             recyclerview_list.clear();
             String[] files = myTicket.getFiles().split(",");
-            for (String file : files) {
-                recyclerview_list.add(file);
-            }
+            Collections.addAll(recyclerview_list, files);
             ccListAdapter.notifyDataSetChanged();
 
 

@@ -78,8 +78,8 @@ public class DWMMfgHeadActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dwmmfg_head);
-        tv_submit =  findViewById(R.id.tv_submit);
-        tv_select_date =  findViewById(R.id.tv_select_date);
+        tv_submit = findViewById(R.id.tv_submit);
+        tv_select_date = findViewById(R.id.tv_select_date);
 
         String day, month;
 
@@ -99,120 +99,120 @@ public class DWMMfgHeadActivity extends BaseActivity {
         tv_select_date.setText(day + "-" + month + "-" + mYear);
 
 
-        H_1_1 =  findViewById(R.id.H_1_1);
-        C_1_1 =  findViewById(R.id.C_1_1);
+        H_1_1 = findViewById(R.id.H_1_1);
+        C_1_1 = findViewById(R.id.C_1_1);
 
-        H_2_1 =  findViewById(R.id.H_2_1);
-        H_2_2 =  findViewById(R.id.H_2_2);
-        H_2_3 =  findViewById(R.id.H_2_3);
-        H_2_4 =  findViewById(R.id.H_2_4);
-        H_2_5 =  findViewById(R.id.H_2_5);
-        H_2_6 =  findViewById(R.id.H_2_6);
-        H_2_7 =  findViewById(R.id.H_2_7);
-        H_2_8 =  findViewById(R.id.H_2_8);
-        H_2_9 =  findViewById(R.id.H_2_9);
+        H_2_1 = findViewById(R.id.H_2_1);
+        H_2_2 = findViewById(R.id.H_2_2);
+        H_2_3 = findViewById(R.id.H_2_3);
+        H_2_4 = findViewById(R.id.H_2_4);
+        H_2_5 = findViewById(R.id.H_2_5);
+        H_2_6 = findViewById(R.id.H_2_6);
+        H_2_7 = findViewById(R.id.H_2_7);
+        H_2_8 = findViewById(R.id.H_2_8);
+        H_2_9 = findViewById(R.id.H_2_9);
 
-        C_2_1 =  findViewById(R.id.C_2_1);
-        C_2_2 =  findViewById(R.id.C_2_2);
-        C_2_3 =  findViewById(R.id.C_2_3);
-        C_2_4 =  findViewById(R.id.C_2_4);
-        C_2_5 =  findViewById(R.id.C_2_5);
-        C_2_6 =  findViewById(R.id.C_2_6);
-        C_2_7 =  findViewById(R.id.C_2_7);
-        C_2_8 =  findViewById(R.id.C_2_8);
-        C_2_9 =  findViewById(R.id.C_2_9);
+        C_2_1 = findViewById(R.id.C_2_1);
+        C_2_2 = findViewById(R.id.C_2_2);
+        C_2_3 = findViewById(R.id.C_2_3);
+        C_2_4 = findViewById(R.id.C_2_4);
+        C_2_5 = findViewById(R.id.C_2_5);
+        C_2_6 = findViewById(R.id.C_2_6);
+        C_2_7 = findViewById(R.id.C_2_7);
+        C_2_8 = findViewById(R.id.C_2_8);
+        C_2_9 = findViewById(R.id.C_2_9);
 
-        H_3_1 =  findViewById(R.id.H_3_1);
-        H_3_2 =  findViewById(R.id.H_3_2);
-        H_3_3 =  findViewById(R.id.H_3_3);
-        H_3_4 =  findViewById(R.id.H_3_4);
-        H_3_5 =  findViewById(R.id.H_3_5);
-        H_3_6 =  findViewById(R.id.H_3_6);
-        H_3_7 =  findViewById(R.id.H_3_7);
-        C_3_1 =  findViewById(R.id.C_3_1);
-        C_3_2 =  findViewById(R.id.C_3_2);
-        C_3_3 =  findViewById(R.id.C_3_3);
-        C_3_4 =  findViewById(R.id.C_3_4);
-        C_3_5 =  findViewById(R.id.C_3_5);
-        C_3_6 =  findViewById(R.id.C_3_6);
-        C_3_7 =  findViewById(R.id.C_3_7);
+        H_3_1 = findViewById(R.id.H_3_1);
+        H_3_2 = findViewById(R.id.H_3_2);
+        H_3_3 = findViewById(R.id.H_3_3);
+        H_3_4 = findViewById(R.id.H_3_4);
+        H_3_5 = findViewById(R.id.H_3_5);
+        H_3_6 = findViewById(R.id.H_3_6);
+        H_3_7 = findViewById(R.id.H_3_7);
+        C_3_1 = findViewById(R.id.C_3_1);
+        C_3_2 = findViewById(R.id.C_3_2);
+        C_3_3 = findViewById(R.id.C_3_3);
+        C_3_4 = findViewById(R.id.C_3_4);
+        C_3_5 = findViewById(R.id.C_3_5);
+        C_3_6 = findViewById(R.id.C_3_6);
+        C_3_7 = findViewById(R.id.C_3_7);
 
-        check_C_4_1 =  findViewById(R.id.check_C_4_1);
-        check_4_1 =  findViewById(R.id.check_4_1);
+        check_C_4_1 = findViewById(R.id.check_C_4_1);
+        check_4_1 = findViewById(R.id.check_4_1);
 
-        H_4_1 =  findViewById(R.id.H_4_1);
-        C_4_1 =  findViewById(R.id.C_4_1);
-
-
-        H_5_1 =  findViewById(R.id.H_5_1);
-        C_5_1 =  findViewById(R.id.C_5_1);
-
-        H_6_1 =  findViewById(R.id.H_6_1);
-        H_6_2 =  findViewById(R.id.H_6_2);
-        H_6_3 =  findViewById(R.id.H_6_3);
-        H_6_4 =  findViewById(R.id.H_6_4);
-        C_6_1 =  findViewById(R.id.C_6_1);
-        C_6_2 =  findViewById(R.id.C_6_2);
-        C_6_3 =  findViewById(R.id.C_6_3);
-        C_6_4 =  findViewById(R.id.C_6_4);
-
-        H_7_1 =  findViewById(R.id.H_7_1);
-        H_7_2 =  findViewById(R.id.H_7_2);
-        H_7_3 =  findViewById(R.id.H_7_3);
-        C_7_1 =  findViewById(R.id.C_7_1);
-        C_7_2 =  findViewById(R.id.C_7_2);
-        C_7_3 =  findViewById(R.id.C_7_3);
-
-        H_8_1 =  findViewById(R.id.H_8_1);
-        C_8_1 =  findViewById(R.id.C_8_1);
-        H_8_2 =  findViewById(R.id.H_8_2);
-        C_8_2 =  findViewById(R.id.C_8_2);
-
-        H_9_1 =  findViewById(R.id.H_9_1);
-        H_9_2 =  findViewById(R.id.H_9_2);
-        H_9_3 =  findViewById(R.id.H_9_3);
-        H_9_4 =  findViewById(R.id.H_9_4);
-        H_9_5 =  findViewById(R.id.H_9_5);
-        H_9_6 =  findViewById(R.id.H_9_6);
-        H_9_7 =  findViewById(R.id.H_9_7);
-        H_9_8 =  findViewById(R.id.H_9_8);
-        C_9_1 =  findViewById(R.id.C_9_1);
-        C_9_2 =  findViewById(R.id.C_9_2);
-        C_9_3 =  findViewById(R.id.C_9_3);
-        C_9_4 =  findViewById(R.id.C_9_4);
-        C_9_5 =  findViewById(R.id.C_9_5);
-        C_9_6 =  findViewById(R.id.C_9_6);
-        C_9_7 =  findViewById(R.id.C_9_7);
-        C_9_8 =  findViewById(R.id.C_9_8);
+        H_4_1 = findViewById(R.id.H_4_1);
+        C_4_1 = findViewById(R.id.C_4_1);
 
 
-        H_10_1 =  findViewById(R.id.H_10_1);
-        H_10_2 =  findViewById(R.id.H_10_2);
-        H_10_3 =  findViewById(R.id.H_10_3);
-        C_10_1 =  findViewById(R.id.C_10_1);
-        C_10_2 =  findViewById(R.id.C_10_2);
-        C_10_3 =  findViewById(R.id.C_10_3);
+        H_5_1 = findViewById(R.id.H_5_1);
+        C_5_1 = findViewById(R.id.C_5_1);
+
+        H_6_1 = findViewById(R.id.H_6_1);
+        H_6_2 = findViewById(R.id.H_6_2);
+        H_6_3 = findViewById(R.id.H_6_3);
+        H_6_4 = findViewById(R.id.H_6_4);
+        C_6_1 = findViewById(R.id.C_6_1);
+        C_6_2 = findViewById(R.id.C_6_2);
+        C_6_3 = findViewById(R.id.C_6_3);
+        C_6_4 = findViewById(R.id.C_6_4);
+
+        H_7_1 = findViewById(R.id.H_7_1);
+        H_7_2 = findViewById(R.id.H_7_2);
+        H_7_3 = findViewById(R.id.H_7_3);
+        C_7_1 = findViewById(R.id.C_7_1);
+        C_7_2 = findViewById(R.id.C_7_2);
+        C_7_3 = findViewById(R.id.C_7_3);
+
+        H_8_1 = findViewById(R.id.H_8_1);
+        C_8_1 = findViewById(R.id.C_8_1);
+        H_8_2 = findViewById(R.id.H_8_2);
+        C_8_2 = findViewById(R.id.C_8_2);
+
+        H_9_1 = findViewById(R.id.H_9_1);
+        H_9_2 = findViewById(R.id.H_9_2);
+        H_9_3 = findViewById(R.id.H_9_3);
+        H_9_4 = findViewById(R.id.H_9_4);
+        H_9_5 = findViewById(R.id.H_9_5);
+        H_9_6 = findViewById(R.id.H_9_6);
+        H_9_7 = findViewById(R.id.H_9_7);
+        H_9_8 = findViewById(R.id.H_9_8);
+        C_9_1 = findViewById(R.id.C_9_1);
+        C_9_2 = findViewById(R.id.C_9_2);
+        C_9_3 = findViewById(R.id.C_9_3);
+        C_9_4 = findViewById(R.id.C_9_4);
+        C_9_5 = findViewById(R.id.C_9_5);
+        C_9_6 = findViewById(R.id.C_9_6);
+        C_9_7 = findViewById(R.id.C_9_7);
+        C_9_8 = findViewById(R.id.C_9_8);
 
 
-        H_11_1 =  findViewById(R.id.H_11_1);
-        H_11_2 =  findViewById(R.id.H_11_2);
-        H_11_3 =  findViewById(R.id.H_11_3);
-        H_11_4 =  findViewById(R.id.H_11_4);
-        H_11_5 =  findViewById(R.id.H_11_5);
-        H_11_6 =  findViewById(R.id.H_11_6);
-        H_11_7 =  findViewById(R.id.H_11_7);
-        H_11_8 =  findViewById(R.id.H_11_8);
-        C_11_1 =  findViewById(R.id.C_11_1);
-        C_11_2 =  findViewById(R.id.C_11_2);
-        C_11_3 =  findViewById(R.id.C_11_3);
-        C_11_4 =  findViewById(R.id.C_11_4);
-        C_11_5 =  findViewById(R.id.C_11_5);
-        C_11_6 =  findViewById(R.id.C_11_6);
-        C_11_7 =  findViewById(R.id.C_11_7);
-        C_11_8 =  findViewById(R.id.C_11_8);
+        H_10_1 = findViewById(R.id.H_10_1);
+        H_10_2 = findViewById(R.id.H_10_2);
+        H_10_3 = findViewById(R.id.H_10_3);
+        C_10_1 = findViewById(R.id.C_10_1);
+        C_10_2 = findViewById(R.id.C_10_2);
+        C_10_3 = findViewById(R.id.C_10_3);
 
-        tv_total =  findViewById(R.id.tv_total);
-        user_name =  findViewById(R.id.user_name);
+
+        H_11_1 = findViewById(R.id.H_11_1);
+        H_11_2 = findViewById(R.id.H_11_2);
+        H_11_3 = findViewById(R.id.H_11_3);
+        H_11_4 = findViewById(R.id.H_11_4);
+        H_11_5 = findViewById(R.id.H_11_5);
+        H_11_6 = findViewById(R.id.H_11_6);
+        H_11_7 = findViewById(R.id.H_11_7);
+        H_11_8 = findViewById(R.id.H_11_8);
+        C_11_1 = findViewById(R.id.C_11_1);
+        C_11_2 = findViewById(R.id.C_11_2);
+        C_11_3 = findViewById(R.id.C_11_3);
+        C_11_4 = findViewById(R.id.C_11_4);
+        C_11_5 = findViewById(R.id.C_11_5);
+        C_11_6 = findViewById(R.id.C_11_6);
+        C_11_7 = findViewById(R.id.C_11_7);
+        C_11_8 = findViewById(R.id.C_11_8);
+
+        tv_total = findViewById(R.id.tv_total);
+        user_name = findViewById(R.id.user_name);
         myPref = getSharedPreferences("MyPref", Context.MODE_PRIVATE);
         user_name.setText(myPref.getString("username", ""));
 
@@ -299,7 +299,9 @@ public class DWMMfgHeadActivity extends BaseActivity {
 //                            finish();
                         }
                     } else {
-                        Toast.makeText(getApplicationContext(), Responsedata.get(0).getColumn1(), Toast.LENGTH_LONG).show();
+                        if (Responsedata != null && Responsedata.get(0) != null && Responsedata.get(0).getColumn1() != null) {
+                            Toast.makeText(getApplicationContext(), Responsedata.get(0).getColumn1(), Toast.LENGTH_LONG).show();
+                        }
                     }
 
                 }

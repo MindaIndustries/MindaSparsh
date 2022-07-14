@@ -24,6 +24,8 @@ public class MeetingRoomListModel {
         int MeetingRoomID;
         @SerializedName("Status")
         boolean Status;
+        @SerializedName("DivID")
+        String DivID;
         @SerializedName("MeetingRoomID1")
         int MeetingRoomID1;
         @SerializedName("MeetingRoom")
@@ -248,6 +250,14 @@ public class MeetingRoomListModel {
 
         public void setPanaText(String panaText) {
             PanaText = panaText;
+        }
+
+        public String getDivID() {
+            return DivID;
+        }
+
+        public void setDivID(String divID) {
+            DivID = divID;
         }
     }
 }

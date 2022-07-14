@@ -5,18 +5,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.minda.sparsh.R;
 import com.minda.sparsh.model.MeetingRoomBookData;
-
 import org.jetbrains.annotations.NotNull;
-import org.w3c.dom.Text;
-
 import java.util.ArrayList;
-
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
@@ -44,11 +38,21 @@ public class MeetingRoomBookingAdapter extends RecyclerView.Adapter<MeetingRoomB
     public void onBindViewHolder(@NonNull @NotNull MeetingRoomBookingAdapter.ViewHolder holder, int position) {
 
         holder.status.setText(list.get(position).getBkngStatus());
-        holder.date.setText(list.get(position).getCreatedDate());
+        if(list.get(position).getBkngStatus().equals("Release")){
+            holder.status.setText("Booked");
+        }
+        holder.date.setText(list.get(position).getBookingDate()+ " | "+list.get(position).getTimeSlot());
         holder.location.setText(list.get(position).getMeetingRoom()+" | "+ list.get(position).getUnitName());
         holder.internal.setText(list.get(position).getAttendeeInt());
         holder.external.setText(list.get(position).getAttendeeExt());
-        holder.agenda.setText(list.get(position).getPurpose());
+        holder.agenda.setText("Agenda: "+list.get(position).getPurpose());
+        if(list.get(position).getReleasedReason()!=null) {
+            holder.releasereason.setText("Release Reason: " + list.get(position).getReleasedReason());
+            holder.releasereason.setVisibility(View.VISIBLE);
+        }
+        else{
+            holder.releasereason.setVisibility(View.GONE);
+        }
     }
     @Override
     public int getItemViewType(int position) {
@@ -61,7 +65,7 @@ public class MeetingRoomBookingAdapter extends RecyclerView.Adapter<MeetingRoomB
         return list.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder{
+    public static class ViewHolder extends RecyclerView.ViewHolder{
         @BindView(R.id.status)
         TextView status;
         @BindView(R.id.date)
@@ -74,6 +78,8 @@ public class MeetingRoomBookingAdapter extends RecyclerView.Adapter<MeetingRoomB
         TextView internal;
         @BindView(R.id.external)
         TextView external;
+        @BindView(R.id.releasereason)
+        TextView releasereason;
 
 
         public ViewHolder(@NonNull @NotNull View itemView) {

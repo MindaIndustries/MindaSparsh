@@ -10,47 +10,65 @@
         app:cardBackgroundColor="@color/white"
         app:cardCornerRadius="5dp"
         app:cardUseCompatPadding="true">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
         <TextView
-            android:background="@color/red"
+            android:background="@color/colorPrimary"
             android:id="@+id/status"
             android:padding="10dp"
             android:textColor="@color/white"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/museosans_700"
-            android:text="Status" />
-
-        <RelativeLayout
-            android:labelFor="@+id/status"
-            android:padding="20dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-
+            android:text="Status"
+            />
             <TextView
+                android:padding="10dp"
+                android:layout_marginLeft="10dp"
                 android:id="@+id/date"
+                android:gravity="right"
+                android:layout_toRightOf="@+id/status"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
                 android:fontFamily="@font/museosans_700"
                 android:text="Date" />
 
+
+            <RelativeLayout
+            android:padding="20dp"
+            android:layout_below="@+id/status"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+
+
             <TextView
                 android:id="@+id/agenda"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/date"
                 android:layout_marginTop="10dp"
-                android:fontFamily="@font/museosans_500"
+                android:fontFamily="@font/museosans_700"
                 android:text="Agenda" />
 
             <TextView
-                android:id="@+id/location"
-                android:fontFamily="@font/museosans_500"
+                android:id="@+id/releasereason"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/agenda"
                 android:layout_marginTop="10dp"
+                android:fontFamily="@font/museosans_500"
+                android:text="" />
+
+
+            <TextView
+                android:id="@+id/location"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/releasereason"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/museosans_500"
                 android:text="Location" />
             <TextView
                 android:id="@+id/internal"
@@ -69,7 +87,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
 
-
+        </RelativeLayout>
         </RelativeLayout>
     </androidx.cardview.widget.CardView>
 

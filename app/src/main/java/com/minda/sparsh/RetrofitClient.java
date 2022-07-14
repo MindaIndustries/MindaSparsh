@@ -5,7 +5,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class RetrofitClient {
     public static final String BASE_URL = "https://dev.mindasparsh.com/service.asmx/";
-    public static final String baseurl = "http://203.112.156.124/mindaapi.com/API/CabBooking/";
+    //public static final String baseurl = "http://203.112.156.124/mindaapi.com/API/CabBooking/";
     private static Retrofit retrofit = null;
 
 
@@ -18,13 +18,4 @@ public class RetrofitClient {
         }
         return retrofit;
     }
-    public static Retrofit getClient1() {
-        if (retrofit == null) {
-            retrofit = new Retrofit.Builder()
-                    .baseUrl(baseurl)
-                    .addConverterFactory(GsonConverterFactory.create())
-                    .build();
-        }
-        return retrofit;
-    }
-} 
+}

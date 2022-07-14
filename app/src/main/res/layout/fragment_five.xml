@@ -90,7 +90,7 @@
                                             android:layout_height="wrap_content"
                                             android:layout_marginTop="20dp"
                                             android:fontFamily="@font/museosans_700"
-                                            android:text="Customer Visit Portal"
+                                            android:text="Customer Visit Calendar Plan"
                                             android:textColor="#4a4f54"
                                             android:textSize="16sp"
                                             android:visibility="visible"
@@ -190,10 +190,6 @@
                                 android:src="@drawable/it_survey" />
 
                         </RelativeLayout>
-
-
-
-
                     </LinearLayout>
 
                     <LinearLayout

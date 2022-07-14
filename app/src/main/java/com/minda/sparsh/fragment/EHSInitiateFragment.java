@@ -34,6 +34,7 @@ import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import com.bumptech.glide.Glide;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
@@ -69,6 +70,7 @@ import androidx.appcompat.widget.AppCompatAutoCompleteTextView;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -172,7 +174,7 @@ public class EHSInitiateFragment extends Fragment {
     String attachmentName = "", attachmentType = "";
     String incidencehr = "0", incidencemin = "0", incidencezone = "";
 
-    String imgString="";
+    String imgString = "";
     Bitmap bmp;
 
     @Nullable
@@ -247,10 +249,10 @@ public class EHSInitiateFragment extends Fragment {
                 }
                 attachtext.setText("" + getArguments().getString("attachment"));
             }
-            if(getArguments().getString("attachmentType")!=null){
+            if (getArguments().getString("attachmentType") != null) {
                 attachmentType = getArguments().getString("attachmentType");
             }
-            if(getArguments().getString("identifiedLoc")!=null){
+            if (getArguments().getString("identifiedLoc") != null) {
                 identifiedLocation = getArguments().getString("identifiedLoc");
             }
 
@@ -300,7 +302,8 @@ public class EHSInitiateFragment extends Fragment {
                    /*     actionTakenEt.setFocusableInTouchMode(false);
                         actionTakenEt.clearFocus();
                   //      actionTakenEt.setEnabled(false);
-                   */     attachtext.setEnabled(false);
+                   */
+                        attachtext.setEnabled(false);
                         attachment.setEnabled(false);
                         timeSelector.setEnabled(false);
 
@@ -319,7 +322,8 @@ public class EHSInitiateFragment extends Fragment {
                     actionTakenEt.clearFocus();
 
                     //   actionTakenEt.setEnabled(false);
-                  */  attachtext.setEnabled(false);
+                  */
+                    attachtext.setEnabled(false);
                     attachment.setEnabled(false);
                     timeSelector.setEnabled(false);
                 }
@@ -362,29 +366,29 @@ public class EHSInitiateFragment extends Fragment {
         typeOfObservationSpinner.setOnItemClickListener((adapterView, view, position, l) -> {
             obstype = observationtypeNames.get(position);
             if (observationTypes.size() > 0) {
-                if (position >=0) {
+                if (position >= 0) {
                     observationID = observationTypes.get(position).getId();
                     ActID = observationTypes.get(position).getShortName() + "-" + unitcode + "-";
                     if (observationID.equals("4")) {
                         categories.clear();
                         ehsCategories.clear();
-                     //   categories.add("Select");
+                        //   categories.add("Select");
                         adapterCategory.notifyDataSetChanged();
                         subCategorySpinner.setVisibility(View.GONE);
                         customerSpinnerLayout5.setVisibility(View.GONE);
                         subCategorytext.setVisibility(View.GONE);
-                    //    ll7.setVisibility(View.GONE);
-                     //   time.setVisibility(View.VISIBLE);
+                        //    ll7.setVisibility(View.GONE);
+                        //   time.setVisibility(View.VISIBLE);
                         timeSelector.setVisibility(View.VISIBLE);
                         customerSpinnerLayout6.setVisibility(View.VISIBLE);
-                     //   ll8.setVisibility(View.VISIBLE);
+                        //   ll8.setVisibility(View.VISIBLE);
                         customerSpinnerLayout8.setVisibility(View.VISIBLE);
                         actionTakenEt.setVisibility(View.VISIBLE);
-                    //    categoryText.setVisibility(View.VISIBLE);
+                        //    categoryText.setVisibility(View.VISIBLE);
                         categorySpinner.setVisibility(View.VISIBLE);
-                     //   categorySpinner.setText("");
+                        //   categorySpinner.setText("");
                         customerSpinnerLayout4.setVisibility(View.VISIBLE);
-                    //    ll6.setVisibility(View.VISIBLE);
+                        //    ll6.setVisibility(View.VISIBLE);
 
                     } else if (observationID.equals("3")) {
                         categoryText.setVisibility(View.GONE);
@@ -405,20 +409,20 @@ public class EHSInitiateFragment extends Fragment {
                         //     categories.add("Select");
                         adapterCategory.notifyDataSetChanged();
                         subCategorySpinner.setVisibility(View.VISIBLE);
-                       // subCategorySpinner.setText("");
+                        // subCategorySpinner.setText("");
                         customerSpinnerLayout5.setVisibility(View.VISIBLE);
 
                         // subCategorytext.setVisibility(View.VISIBLE);
-                      //  ll7.setVisibility(View.VISIBLE);
-                     //   time.setVisibility(View.GONE);
+                        //  ll7.setVisibility(View.VISIBLE);
+                        //   time.setVisibility(View.GONE);
                         timeSelector.setVisibility(View.GONE);
                         customerSpinnerLayout6.setVisibility(View.GONE);
-                      //  ll8.setVisibility(View.GONE);
+                        //  ll8.setVisibility(View.GONE);
                         customerSpinnerLayout8.setVisibility(View.GONE);
                         actionTakenEt.setVisibility(View.GONE);
-                   //     categoryText.setVisibility(View.VISIBLE);
+                        //     categoryText.setVisibility(View.VISIBLE);
                         categorySpinner.setVisibility(View.VISIBLE);
-                   //     categorySpinner.setText("");
+                        //     categorySpinner.setText("");
                         customerSpinnerLayout4.setVisibility(View.VISIBLE);
                         //   ll6.setVisibility(View.VISIBLE);
 
@@ -525,7 +529,7 @@ public class EHSInitiateFragment extends Fragment {
         });
       */
         subCategorySpinner.setOnItemClickListener((adapterView, view, position, l) -> {
-            if(position>=0) {
+            if (position >= 0) {
                 subcategory = subCategories.get(position);
                 if (ehsSubCategories.size() > 1) {
                     if (position >= 0)
@@ -579,7 +583,7 @@ public class EHSInitiateFragment extends Fragment {
             }
 
         }
-        if ((subcategory != null && subcategory.equals("Select")) || subcategory ==null) {
+        if ((subcategory != null && subcategory.equals("Select")) || subcategory == null) {
             if (!obstype.equals("Near Miss Reporting")) {
                 Toast.makeText(getActivity(), "Sub Category not selected", Toast.LENGTH_LONG).show();
                 return;
@@ -610,7 +614,7 @@ public class EHSInitiateFragment extends Fragment {
         if (submit.getText().equals("Submit")) {
             String[] ActDate = observationDateSpinner.getText().toString().split("/");
             String newActDate = ActDate[2] + "/" + ActDate[1] + "/" + ActDate[0];
-            saveEHS(empCode, newActDate, "", safetyOfficer, unitcode, descriptionEdit.getText().toString(), attachmentName, attachmentType, locationID, catId, subCategoryID, observationID, incidencehr, incidencemin, incidencezone, actionTakenEt.getText().toString(), obstype, identifiedLocation,imgString);
+            saveEHS(empCode, newActDate, "", safetyOfficer, unitcode, descriptionEdit.getText().toString(), attachmentName, attachmentType, locationID, catId, subCategoryID, observationID, incidencehr, incidencemin, incidencezone, actionTakenEt.getText().toString(), obstype, identifiedLocation, imgString);
         } else {
 
             String[] ActDate = observationDateSpinner.getText().toString().split("/");
@@ -621,7 +625,7 @@ public class EHSInitiateFragment extends Fragment {
             incidencemin = min_am[0];
             incidencezone = min_am[1];
           */
-            updateEHS(actId, empCode, actNo, newActDate, "", getArguments().getString("safetyOfficer"), unitcode, descriptionEdit.getText().toString(), attachmentName, attachmentType, locationID, catId, subCategoryID, observationID, incidencehr, incidencemin, incidencezone, actionTakenEt.getText().toString(),obstype,identifiedLocation,imgString);
+            updateEHS(actId, empCode, actNo, newActDate, "", getArguments().getString("safetyOfficer"), unitcode, descriptionEdit.getText().toString(), attachmentName, attachmentType, locationID, catId, subCategoryID, observationID, incidencehr, incidencemin, incidencezone, actionTakenEt.getText().toString(), obstype, identifiedLocation, imgString);
         }
     }
 
@@ -633,24 +637,23 @@ public class EHSInitiateFragment extends Fragment {
     @OnClick(R.id.doc_view)
     public void onClickViewDoc() {
 
-        try{
-        if (getArguments() != null && getArguments().getString("attachment") != null) {
-            Intent in = new Intent(getActivity(), ViewEHSImage.class);
-            in.putExtra("attachment", attachmentName);
-            if(getActivity()!=null && isAdded())
-                getActivity().startActivity(in);
-        } else if (bmp != null) {
-            ByteArrayOutputStream stream = new ByteArrayOutputStream();
-            bmp.compress(Bitmap.CompressFormat.PNG, 100, stream);
-            byte[] byteArray = stream.toByteArray();
-            Intent in = new Intent(getActivity(), ViewEHSImage.class);
-            in.putExtra("bitmap", byteArray);
-            if (getActivity() != null && isAdded())
-                getActivity().startActivity(in);
+        try {
+            if (getArguments() != null && getArguments().getString("attachment") != null) {
+                Intent in = new Intent(getActivity(), ViewEHSImage.class);
+                in.putExtra("attachment", attachmentName);
+                if (getActivity() != null && isAdded())
+                    getActivity().startActivity(in);
+            } else if (bmp != null) {
+                ByteArrayOutputStream stream = new ByteArrayOutputStream();
+                bmp.compress(Bitmap.CompressFormat.PNG, 100, stream);
+                byte[] byteArray = stream.toByteArray();
+                Intent in = new Intent(getActivity(), ViewEHSImage.class);
+                in.putExtra("bitmap", byteArray);
+                if (getActivity() != null && isAdded())
+                    getActivity().startActivity(in);
 
-        }
-        }
-        catch (Exception e){
+            }
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
@@ -850,8 +853,8 @@ public class EHSInitiateFragment extends Fragment {
                     }
                     if (getArguments() != null && getArguments().getString("unit") != null) {
                         int i = unitsName.indexOf(getArguments().getString("unit"));
-                        if(i>=0)
-                        unitSpinner.setText(unitsName.get(i));
+                        if (i >= 0)
+                            unitSpinner.setText(unitsName.get(i));
 
                     }
                 }
@@ -879,8 +882,8 @@ public class EHSInitiateFragment extends Fragment {
                     }
                     if (getArguments() != null && getArguments().getString("safetyOfficer") != null && getArguments().getString("safetyOfficer").length() > 0) {
                         int i = officersName.indexOf(getArguments().getString("safetyOfficer"));
-                        if(i>=0)
-                        safetyOfficerSpinner.setText(officersName.get(i));
+                        if (i >= 0)
+                            safetyOfficerSpinner.setText(officersName.get(i));
                     }
                 }
             }
@@ -905,7 +908,7 @@ public class EHSInitiateFragment extends Fragment {
                         observationID = observationTypes.get(i).getId();
                         obstype = observationtypeNames.get(i);
                         if (observationTypes.size() > 0) {
-                            if (i >=0) {
+                            if (i >= 0) {
                                 observationID = observationTypes.get(i).getId();
                                 ActID = observationTypes.get(i).getShortName() + "-" + unitcode + "-";
                                 if (observationID.equals("4")) {
@@ -925,7 +928,7 @@ public class EHSInitiateFragment extends Fragment {
                                     actionTakenEt.setVisibility(View.VISIBLE);
                                     //    categoryText.setVisibility(View.VISIBLE);
                                     categorySpinner.setVisibility(View.VISIBLE);
-                                //    categorySpinner.setText("");
+                                    //    categorySpinner.setText("");
                                     customerSpinnerLayout4.setVisibility(View.VISIBLE);
                                     //    ll6.setVisibility(View.VISIBLE);
 
@@ -945,7 +948,7 @@ public class EHSInitiateFragment extends Fragment {
                                     //     categories.add("Select");
                                     adapterCategory.notifyDataSetChanged();
                                     subCategorySpinner.setVisibility(View.VISIBLE);
-                               //     subCategorySpinner.setText("");
+                                    //     subCategorySpinner.setText("");
                                     customerSpinnerLayout5.setVisibility(View.VISIBLE);
 
                                     // subCategorytext.setVisibility(View.VISIBLE);
@@ -958,7 +961,7 @@ public class EHSInitiateFragment extends Fragment {
                                     actionTakenEt.setVisibility(View.GONE);
                                     //     categoryText.setVisibility(View.VISIBLE);
                                     categorySpinner.setVisibility(View.VISIBLE);
-                             //       categorySpinner.setText("");
+                                    //       categorySpinner.setText("");
                                     customerSpinnerLayout4.setVisibility(View.VISIBLE);
                                     //   ll6.setVisibility(View.VISIBLE);
 
@@ -990,7 +993,7 @@ public class EHSInitiateFragment extends Fragment {
                     adapterIdentifiedLocation.notifyDataSetChanged();
                     if (getArguments() != null && getArguments().getString("identifiedLoc") != null) {
                         int i = identifiedLocations.indexOf(getArguments().getString("identifiedLoc"));
-                       // identifiedLocationSpinner.setSelection(i);
+                        // identifiedLocationSpinner.setSelection(i);
                         identifiedLocationSpinner.setText(identifiedLocations.get(i));
                         locationID = ehsIdentifiedLocations.get(i).getID();
                     }
@@ -1081,7 +1084,7 @@ public class EHSInitiateFragment extends Fragment {
     }
 
     public void getSubCategories(String catId) {
-        if(getActivity()!=null && isAdded()) {
+        if (getActivity() != null && isAdded()) {
             subCategories.clear();
             //  subCategories.add("Select");
             ehsSubCategories.clear();
@@ -1096,9 +1099,11 @@ public class EHSInitiateFragment extends Fragment {
                         }
                         subCategorySpinner.setText("");
                         subCategoryID = "0";
-                        adapterSubCategory = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_item, subCategories);
-                        subCategorySpinner.setAdapter(adapterSubCategory);
-                        adapterSubCategory.notifyDataSetChanged();
+                        if (getActivity() != null && isAdded()) {
+                            adapterSubCategory = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_item, subCategories);
+                            subCategorySpinner.setAdapter(adapterSubCategory);
+                            adapterSubCategory.notifyDataSetChanged();
+                        }
                         try {
                             if (getArguments() != null && getArguments().getString("subCategory") != null) {
                                 EHSSubCategoryModel ehsSubCategoryModel = new EHSSubCategoryModel();
@@ -1119,7 +1124,7 @@ public class EHSInitiateFragment extends Fragment {
 
     public void initUnitSpinner() {
         unitsName.clear();
-   //     unitsName.add("Select");
+        //     unitsName.add("Select");
         adapterUnit = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_item, unitsName);/* {
             @Override
             public boolean isEnabled(int position) {
@@ -1149,15 +1154,15 @@ public class EHSInitiateFragment extends Fragment {
             }
         };
 */
-    //    adapterUnit.setDropDownViewResource(R.layout.spinner_row);
+        //    adapterUnit.setDropDownViewResource(R.layout.spinner_row);
         unitSpinner.setAdapter(adapterUnit);
-       // unitSpinner.setSelection(0);
+        // unitSpinner.setSelection(0);
 
     }
 
     public void initSafetyOfficerSpinner() {
         officersName.clear();
-     //   officersName.add("Select");
+        //   officersName.add("Select");
         adapterSafetyOfficer = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_item, officersName); /*{
             @Override
             public boolean isEnabled(int position) {
@@ -1189,13 +1194,13 @@ public class EHSInitiateFragment extends Fragment {
 
         adapterSafetyOfficer.setDropDownViewResource(R.layout.spinner_row);*/
         safetyOfficerSpinner.setAdapter(adapterSafetyOfficer);
-      //  safetyOfficerSpinner.setSelection(0);
+        //  safetyOfficerSpinner.setSelection(0);
 
     }
 
     public void initObservationTypeSpinner() {
         observationtypeNames.clear();
-      //  observationtypeNames.add("Select");
+        //  observationtypeNames.add("Select");
         adapterObservationType = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_item, observationtypeNames);/* {
             @Override
             public boolean isEnabled(int position) {
@@ -1225,15 +1230,15 @@ public class EHSInitiateFragment extends Fragment {
             }
         };*/
 
-      //  adapterObservationType.setDropDownViewResource(android.R.layout.simple_spinner_item);
+        //  adapterObservationType.setDropDownViewResource(android.R.layout.simple_spinner_item);
         typeOfObservationSpinner.setAdapter(adapterObservationType);
-     //   typeOfObservationSpinner.setSelection(0);
+        //   typeOfObservationSpinner.setSelection(0);
 
     }
 
     public void initIdentifiedLocationSpinner() {
         identifiedLocations.clear();
-       // identifiedLocations.add("Select");
+        // identifiedLocations.add("Select");
         adapterIdentifiedLocation = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_item, identifiedLocations);/* {
             @Override
             public boolean isEnabled(int position) {
@@ -1265,13 +1270,13 @@ public class EHSInitiateFragment extends Fragment {
 
         adapterIdentifiedLocation.setDropDownViewResource(R.layout.spinner_row);*/
         identifiedLocationSpinner.setAdapter(adapterIdentifiedLocation);
-      //  identifiedLocationSpinner.setSelection(0);
+        //  identifiedLocationSpinner.setSelection(0);
 
     }
 
     public void initCategorySpinner() {
         categories.clear();
-      //  categories.add("Select");
+        //  categories.add("Select");
         adapterCategory = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_item, categories);/* {
             @Override
             public boolean isEnabled(int position) {
@@ -1337,11 +1342,12 @@ public class EHSInitiateFragment extends Fragment {
         };
 
         adapterSubCategory.setDropDownViewResource(R.layout.spinner_row);
-*/        subCategorySpinner.setAdapter(adapterSubCategory);
+*/
+        subCategorySpinner.setAdapter(adapterSubCategory);
 
     }
 
-    public void saveEHS(final String EmpCode, String ActDate, String HOD, String UnitSafetyOfficer, String UnitCode, final String Description, String Attachment, String AttachmentType, String LocationID, String CategoryID, String SubCategoryID, String ObservationID, String IncidenceHour, String IncidenceMin, String IncidenceZone, String IncidenceActionTaken, final String ObservationName, final String LocationName,String imgString) {
+    public void saveEHS(final String EmpCode, String ActDate, String HOD, String UnitSafetyOfficer, String UnitCode, final String Description, String Attachment, String AttachmentType, String LocationID, String CategoryID, String SubCategoryID, String ObservationID, String IncidenceHour, String IncidenceMin, String IncidenceZone, String IncidenceActionTaken, final String ObservationName, final String LocationName, String imgString) {
 
         progressBar.setVisibility(View.VISIBLE);
         EHSServices ehsServices = new EHSServices();
@@ -1349,16 +1355,15 @@ public class EHSInitiateFragment extends Fragment {
             if (carotResponse.getStatuscode() == HttpsURLConnection.HTTP_OK) {
                 if (getActivity() != null && isAdded()) {
                     progressBar.setVisibility(View.GONE);
-                    if(carotResponse.getData()!=null && carotResponse.getData().toString().contains("<HTML>")){
-                        Toast.makeText(getActivity(),""+ carotResponse.getData(), Toast.LENGTH_LONG).show();
+                    if (carotResponse.getData() != null && carotResponse.getData().toString().contains("<HTML>")) {
+                        Toast.makeText(getActivity(), "" + carotResponse.getData(), Toast.LENGTH_LONG).show();
                         return;
                     }
 
-                    if(carotResponse.getData()!=null && carotResponse.getData().equals("Already Exists")){
-                        Toast.makeText(getActivity(),""+ carotResponse.getData(), Toast.LENGTH_LONG).show();
+                    if (carotResponse.getData() != null && carotResponse.getData().equals("Already Exists")) {
+                        Toast.makeText(getActivity(), "" + carotResponse.getData(), Toast.LENGTH_LONG).show();
 
-                    }
-                    else {
+                    } else {
 
                         Toast.makeText(getActivity(), "Successfully submitted", Toast.LENGTH_LONG).show();
 
@@ -1379,13 +1384,14 @@ public class EHSInitiateFragment extends Fragment {
                 } else {
                  //   sendMail(EmpCode, ObservationName, LocationName, Description, (String) carotResponse.getData(), unitcode);
                 }
-         */   }
+         */
+            }
             progressBar.setVisibility(View.GONE);
 
-        }, EmpCode, ActID, ActDate, HOD, UnitSafetyOfficer, UnitCode, Description, Attachment, AttachmentType, LocationID, CategoryID, SubCategoryID, ObservationID, IncidenceHour, IncidenceMin, IncidenceZone, IncidenceActionTaken, ObservationName, LocationName,imgString);
+        }, EmpCode, ActID, ActDate, HOD, UnitSafetyOfficer, UnitCode, Description, Attachment, AttachmentType, LocationID, CategoryID, SubCategoryID, ObservationID, IncidenceHour, IncidenceMin, IncidenceZone, IncidenceActionTaken, ObservationName, LocationName, imgString);
     }
 
-    public void updateEHS(String ActID, final String EmpCode, final String ActNo, String ActDate, String HOD, String UnitSafetyOfficer, String UnitCode, final String Description, String Attachment, String AttachmentType, String LocationID, String CategoryID, String SubCategoryID, String ObservationID, String IncidenceHour, String IncidenceMin, String IncidenceZone, String IncidenceActionTaken, final String ObservationName, final String LocationName,String imgString) {
+    public void updateEHS(String ActID, final String EmpCode, final String ActNo, String ActDate, String HOD, String UnitSafetyOfficer, String UnitCode, final String Description, String Attachment, String AttachmentType, String LocationID, String CategoryID, String SubCategoryID, String ObservationID, String IncidenceHour, String IncidenceMin, String IncidenceZone, String IncidenceActionTaken, final String ObservationName, final String LocationName, String imgString) {
         EHSServices ehsServices = new EHSServices();
         progressBar.setVisibility(View.VISIBLE);
         ehsServices.update(carotResponse -> {
@@ -1406,7 +1412,7 @@ public class EHSInitiateFragment extends Fragment {
             }
             progressBar.setVisibility(View.GONE);
 
-        }, ActID, EmpCode, ActNo, ActDate, HOD, UnitSafetyOfficer, UnitCode, Description, Attachment, AttachmentType, LocationID, CategoryID, SubCategoryID, ObservationID, IncidenceHour, IncidenceMin, IncidenceZone, IncidenceActionTaken,ObservationName,LocationName,imgString);
+        }, ActID, EmpCode, ActNo, ActDate, HOD, UnitSafetyOfficer, UnitCode, Description, Attachment, AttachmentType, LocationID, CategoryID, SubCategoryID, ObservationID, IncidenceHour, IncidenceMin, IncidenceZone, IncidenceActionTaken, ObservationName, LocationName, imgString);
 
     }
 
@@ -1465,8 +1471,7 @@ public class EHSInitiateFragment extends Fragment {
         System.out.println("fileName" + fileName);
         try {
             bytes = getBytesFromBitmap(thumbnail);
-        }
-        catch (Exception e){
+        } catch (Exception e) {
 
         }
         imgString = Base64.encodeToString(bytes,
@@ -1508,8 +1513,7 @@ public class EHSInitiateFragment extends Fragment {
         attachtext.setText(attachmentName);
         try {
             bytes = getBytesFromBitmap(bm);
-        }
-        catch (Exception e){
+        } catch (Exception e) {
 
         }
         imgString = Base64.encodeToString(bytes, Base64.NO_WRAP);

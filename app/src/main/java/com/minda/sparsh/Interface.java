@@ -464,6 +464,10 @@ public interface Interface {
     @GET("IAMGetSubCategory")
     Call<List<IAMGetSubCategoryModel>> IAMGetSubCategory(@Query("CategoryId") String CategoryId, @Query("CKey") String CKey);
 
+    @GET("IAMGetSubCategoryV2")
+    Call<List<IAMGetSubCategoryModel>> IAMGetSubCategoryV2(@Query("CategoryId") String CategoryId, @Query("RequestTypeId") String RequestTypeId, @Query("AccessTypeID") String AccessTypeID,@Query("CKey") String CKey);
+
+
     @GET("IAMGetDomain")
     Call<List<IAMGetDomainModel>> IAMGetDomain(@Query("CKey") String CKey);
 

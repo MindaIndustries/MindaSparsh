@@ -48,12 +48,6 @@ public class MeetingRoomAdapter extends RecyclerView.Adapter<MeetingRoomAdapter.
     @Override
     public void onBindViewHolder(@NonNull @NotNull ViewHolder holder, int position) {
         holder.room_name.setText(list.get(position).getMeetingRoom());
-       /* if(list.get(position).isSeats()) {
-            holder.chair.setImageTintList(ContextCompat.getColorStateList(mContext, R.color.colorPrimary));
-        }
-        else{
-            holder.chair.setImageTintList(ContextCompat.getColorStateList(mContext, android.R.color.darker_gray));
-        }*/
         if (list.get(position).isAC()) {
             holder.ac.setImageTintList(ContextCompat.getColorStateList(mContext, R.color.colorPrimary));
         } else {
@@ -90,7 +84,7 @@ public class MeetingRoomAdapter extends RecyclerView.Adapter<MeetingRoomAdapter.
             in.putExtra("meetingRoomId",list.get(position).getMeetingRoomID());
             in.putExtra("meetingRoomName", list.get(position).getMeetingRoom());
           //  in.putExtra("vc",list.get(position).isVideoConference());
-            in.putExtra("roomUnitCode",list.get(position).getUnitIDS());
+            in.putExtra("roomUnitCode",list.get(position).getDivID());
             mContext.startActivity(in);
         });
 
