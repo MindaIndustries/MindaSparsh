@@ -47,9 +47,9 @@
         <entry key="app/src/main/res/layout/activity_approve_list1.xml" value="0.1046875" />
         <entry key="app/src/main/res/layout/activity_base.xml" value="0.1046875" />
         <entry key="app/src/main/res/layout/activity_dash_board.xml" value="0.2" />
-        <entry key="app/src/main/res/layout/activity_dwm.xml" value="0.1" />
-        <entry key="app/src/main/res/layout/activity_dwmmfg_head.xml" value="0.1557377049180328" />
-        <entry key="app/src/main/res/layout/activity_dwmoperation_head.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_dwm.xml" value="0.19878706199460916" />
+        <entry key="app/src/main/res/layout/activity_dwmmfg_head.xml" value="0.34183082271147164" />
+        <entry key="app/src/main/res/layout/activity_dwmoperation_head.xml" value="0.264" />
         <entry key="app/src/main/res/layout/activity_identity_access_management.xml" value="0.2" />
         <entry key="app/src/main/res/layout/activity_identity_access_management1.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.16" />

@@ -81,13 +81,14 @@
                     android:layout_width="match_parent"
                     android:layout_height="70dp"
                     android:layout_marginTop="10dp"
-                    android:src="@drawable/login_logo" />
+                    android:src="@drawable/unomindanewlogo" />
             </LinearLayout>
 
             <LinearLayout
                 android:id="@+id/lay_out"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp">
 

@@ -55,7 +55,7 @@
             android:layout_centerHorizontal="true"
             android:adjustViewBounds="true"
             android:scaleType="fitCenter"
-            android:src="@drawable/login_logo_new" />
+            android:src="@drawable/unomindanewlogo" />
 
     </RelativeLayout>
 </RelativeLayout>
