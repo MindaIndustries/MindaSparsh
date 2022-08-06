@@ -500,7 +500,7 @@
                         android:layout_marginLeft="20dp"
                         android:layout_marginTop="20dp"
                         android:layout_marginRight="20dp"
-                        android:hint="@string/abnormality_description">
+                        android:hint="Date">
 
                         <com.google.android.material.textfield.TextInputEditText
                             android:id="@+id/et_finddate"

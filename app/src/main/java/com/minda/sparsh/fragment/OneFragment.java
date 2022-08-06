@@ -79,13 +79,10 @@ public class OneFragment extends Fragment {
             intent.putExtra("pdfType", "Materials");
             startActivity(intent);
         });
-        card_view5.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getActivity(), MainActivity.class);
-                intent.putExtra("pdfType","Manufacturing");
-                startActivity(intent);
-            }
+        card_view5.setOnClickListener(view16 -> {
+            Intent intent = new Intent(getActivity(), MainActivity.class);
+            intent.putExtra("pdfType","Manufacturing");
+            startActivity(intent);
         });
 
         // Inflate the layout for this fragment
