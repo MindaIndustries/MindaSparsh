@@ -2,14 +2,19 @@ package com.minda.sparsh.Adapter;
 
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
+import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.drawable.ColorDrawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
+import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
 import android.widget.LinearLayout;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -45,6 +50,7 @@ public class AbnormalityAdapter extends BaseAdapter {
     AbnormalityAdapter.ViewHolder holder;
     private final ProgressDialog progress;
     long time, time_target, time_update, time_abnormility, oneday = 86400000;
+    private String mUserChoosenTask = "";
 
 
     public AbnormalityAdapter(Context applicationContext, List<AbnormalityView_Model> venueData) {
@@ -85,25 +91,25 @@ public class AbnormalityAdapter extends BaseAdapter {
             final ViewHolder holder = new ViewHolder();
             this.holder = holder;
             convertView = inflater.inflate(R.layout.abnormality, null);
-            holder.tv_result =  convertView.findViewById(R.id.tv_result);
-            holder.tv_status =  convertView.findViewById(R.id.tv_status);
-            holder.tv_Actual_date =  convertView.findViewById(R.id.tv_Actual_date);
-            holder.tv_test_date =  convertView.findViewById(R.id.tv_test_date);
-            holder.tv_uplodedBy =  convertView.findViewById(R.id.tv_uplodedBy);
-            holder.tv_action =  convertView.findViewById(R.id.tv_action);
-            holder.tv_updatedby =  convertView.findViewById(R.id.tv_updatedby);
+            holder.tv_result = convertView.findViewById(R.id.tv_result);
+            holder.tv_status = convertView.findViewById(R.id.tv_status);
+            holder.tv_Actual_date = convertView.findViewById(R.id.tv_Actual_date);
+            holder.tv_test_date = convertView.findViewById(R.id.tv_test_date);
+            holder.tv_uplodedBy = convertView.findViewById(R.id.tv_uplodedBy);
+            holder.tv_action = convertView.findViewById(R.id.tv_action);
+            holder.tv_updatedby = convertView.findViewById(R.id.tv_updatedby);
 
-            holder.tv_department =  convertView.findViewById(R.id.tv_department);
-            holder.tv_plant =  convertView.findViewById(R.id.tv_plant);
-            holder.tv_business =  convertView.findViewById(R.id.tv_business);
-            holder.tv_domain =  convertView.findViewById(R.id.tv_domain);
-            holder.tv_category =  convertView.findViewById(R.id.tv_category);
-            holder.tv_date =  convertView.findViewById(R.id.tv_date);
-            holder.tv_abnormality =  convertView.findViewById(R.id.tv_abnormality);
-            holder.tv_sn =  convertView.findViewById(R.id.tv_sn);
-            holder.laycellview =  convertView.findViewById(R.id.laycellview);
-            holder.tv_update =  convertView.findViewById(R.id.tv_update);
-            holder.tv_view =  convertView.findViewById(R.id.tv_view);
+            holder.tv_department = convertView.findViewById(R.id.tv_department);
+            holder.tv_plant = convertView.findViewById(R.id.tv_plant);
+            holder.tv_business = convertView.findViewById(R.id.tv_business);
+            holder.tv_domain = convertView.findViewById(R.id.tv_domain);
+            holder.tv_category = convertView.findViewById(R.id.tv_category);
+            holder.tv_date = convertView.findViewById(R.id.tv_date);
+            holder.tv_abnormality = convertView.findViewById(R.id.tv_abnormality);
+            holder.tv_sn = convertView.findViewById(R.id.tv_sn);
+            holder.laycellview = convertView.findViewById(R.id.laycellview);
+            holder.tv_update = convertView.findViewById(R.id.tv_update);
+            holder.tv_view = convertView.findViewById(R.id.tv_view);
             holder.tv_updatedby.setText(homeData.get(position).getUploadedBy());
 
             convertView.setTag(holder);
@@ -193,7 +199,7 @@ public class AbnormalityAdapter extends BaseAdapter {
                     holder.tv_status.setBackgroundResource(R.color.white);
                 }
             }
-            
+
             holder.tv_Actual_date.setText(homeData.get(position).getImplementationDate());
 //            holder.tv_test_date.setText(homeData.get(position).getAbnormalityDate());
             holder.tv_action.setText(homeData.get(position).getAction());
@@ -224,6 +230,8 @@ public class AbnormalityAdapter extends BaseAdapter {
             });
 
             holder.tv_update.setOnClickListener(view -> {
+                //editing to be done
+               // showUpdateOptions();
                 if (AbnormalityAddressingActivity.Role.equalsIgnoreCase("C")) {
                     if (holder.tv_test_date.getText().toString() != null && holder.tv_test_date.getText().toString().length() > 0 && !holder.tv_test_date.getText().toString().equalsIgnoreCase("Add Date")/*get(position).getTargetDate() != null*/) {
                         Intent intent = new Intent(mContext, AbnormalityAddressing2Activity.class);
@@ -242,6 +250,7 @@ public class AbnormalityAdapter extends BaseAdapter {
                     Snackbar.make(view, "You are not Authorized", Snackbar.LENGTH_LONG).show();
                 }
             });
+
             holder.tv_view.setOnClickListener(view -> {
                 Intent intent = new Intent(mContext, ViewImageActivity.class);
                 intent.putExtra("ID", homeData.get(position).getID());
@@ -325,21 +334,16 @@ public class AbnormalityAdapter extends BaseAdapter {
                     List<AddTargetDate_Model> AddDateresponse = response.body();
                     textView.setText(date);
                     notifyDataSetChanged();
-
                     if (AddDateresponse != null) {
-
                         Toast.makeText(mContext, AddDateresponse.get(0).getColumn1(), Toast.LENGTH_LONG).show();
                         AbnormalityAddressingActivity contxt = (AbnormalityAddressingActivity) mContext;
                         contxt.hitSubdepartmentApi(department);
                     }
-
                 }
 
                 @Override
                 public void onFailure(@NotNull Call<List<AddTargetDate_Model>> call, @NotNull Throwable t) {
-
                     showProgress(false);
-
                 }
             });
         } else
@@ -376,5 +380,26 @@ public class AbnormalityAdapter extends BaseAdapter {
         return str;
     }
 
+    public void showUpdateOptions() {
+        final CharSequence[] items = {"View", "Assign", "Send Back", "Update", "Cancel"};
+        AlertDialog.Builder builder = new AlertDialog.Builder(mContext);
+        builder.setTitle("Select Option");
+        builder.setItems(items, (dialog, item) -> {
+            if(items[item].equals("View")){
+
+            }else if(items[item].equals("Assign")){
+
+            }else if(items[item].equals("Send Back")){
+
+            }else if(items[item].equals("Update")){
+
+            }else if(items[item].equals("Cancel")){
+
+            }
+
+        });
+        builder.show();
+
+    }
 
 } 
