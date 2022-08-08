@@ -145,7 +145,7 @@ public class AbnormalityAddressingActivity extends AppCompatActivity {
     byte[] bytes;
     private File mDestinationFile;
     public static final int MY_PERMISSIONS_REQUEST_READ_EXTERNAL_STORAGE = 123;
-    public static final int MY_PERMISSIONS_REQUEST_CAMERA = 1234;
+   // public static final int MY_PERMISSIONS_REQUEST_CAMERA = 1234;
     String mUserChoosenTask = "";
 
 
