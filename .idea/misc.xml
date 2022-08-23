@@ -38,10 +38,11 @@
         <entry key="app/src/main/res/drawable/submitbuttonview.xml" value="0.238671875" />
         <entry key="app/src/main/res/drawable/tab_color_selector.xml" value="0.238671875" />
         <entry key="app/src/main/res/layout/abnormality.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/abnormality_assign.xml" value="0.18545081967213115" />
         <entry key="app/src/main/res/layout/action_layout_dialog.xml" value="0.19569672131147542" />
         <entry key="app/src/main/res/layout/action_row.xml" value="0.19296448087431695" />
         <entry key="app/src/main/res/layout/activity_abnormality_addressing.xml" value="0.264" />
-        <entry key="app/src/main/res/layout/activity_abnormality_addressing2.xml" value="0.16" />
+        <entry key="app/src/main/res/layout/activity_abnormality_addressing2.xml" value="0.264" />
         <entry key="app/src/main/res/layout/activity_abnormality_dashboard.xml" value="0.1046875" />
         <entry key="app/src/main/res/layout/activity_access_request_details.xml" value="0.2" />
         <entry key="app/src/main/res/layout/activity_approve_list.xml" value="0.1046875" />
@@ -63,7 +64,7 @@
         <entry key="app/src/main/res/layout/activity_splash.xml" value="0.264" />
         <entry key="app/src/main/res/layout/activity_update_visitor_details.xml" value="0.14959016393442623" />
         <entry key="app/src/main/res/layout/activity_values.xml" value="0.14959016393442623" />
-        <entry key="app/src/main/res/layout/activity_view_image.xml" value="0.14959016393442623" />
+        <entry key="app/src/main/res/layout/activity_view_image.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_vision.xml" value="0.14959016393442623" />
         <entry key="app/src/main/res/layout/activity_visitor_management.xml" value="0.14959016393442623" />
         <entry key="app/src/main/res/layout/activity_visitor_management_list.xml" value="0.14959016393442623" />

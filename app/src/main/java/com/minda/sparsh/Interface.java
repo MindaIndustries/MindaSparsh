@@ -522,4 +522,9 @@ public interface Interface {
 
     @GET("GetEmpDetails")
             Call<String> getemp(@Query("UM_USER_ID") String UM_USER_ID);
+
+
+    //abnormality phase2
+
+
 }

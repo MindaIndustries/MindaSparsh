@@ -39,6 +39,8 @@ public class RetrofitClient2 {
     public static final String ithelpdeskBaseUrl = "https://dev.mindasparsh.com/ITHelpDeskM.asmx/";
     public static final String BASEURL = "https://qas.mindasparsh.com/API/CVP/";
     public static final String baseurlqr = "https://qas.mindasparsh.com/API/";
+
+    //https://qas.mindasparsh.com/Api/service/GetAutoNameAbnormlaity?prefixText=Ravi&val=4
     //prod
    /* public static final String notifUrl="https://app.mindasparsh.com";
     public static final String BASE_URL = "https://app.mindasparsh.com/Service.asmx/";

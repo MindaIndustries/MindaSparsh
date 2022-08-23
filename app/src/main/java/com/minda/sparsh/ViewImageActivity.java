@@ -1,25 +1,46 @@
 package com.minda.sparsh;
 
+import android.app.DatePickerDialog;
 import android.app.ProgressDialog;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Base64;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.material.textfield.MaterialAutoCompleteTextView;
+import com.google.android.material.textfield.TextInputLayout;
+import com.minda.sparsh.cvp.CVPViewCalendar;
+import com.minda.sparsh.listener.CarotResponse;
+import com.minda.sparsh.listener.OnTaskComplete;
+import com.minda.sparsh.model.AbnormalityNameModel;
 import com.minda.sparsh.model.GetAbnormalityImage_Model;
+import com.minda.sparsh.services.AbnormalityServices;
 import com.minda.sparsh.util.RetrofitClient2;
 import com.minda.sparsh.util.Utility;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatAutoCompleteTextView;
+import androidx.appcompat.widget.AppCompatSpinner;
+
+import javax.net.ssl.HttpsURLConnection;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -31,6 +52,21 @@ public class ViewImageActivity extends AppCompatActivity {
     TextView tv_discription, tv_action;
     LinearLayout lay_afterimage;
 
+    ArrayAdapter<String> actionArrayAdapter;
+    ArrayList<String> actionName = new ArrayList<>();
+    AppCompatAutoCompleteTextView actionSpinner;
+    MaterialAutoCompleteTextView targetDate;
+    TextInputLayout assignto;
+    AppCompatAutoCompleteTextView assignedto;
+
+    DatePickerDialog datePicker;
+    Calendar calendar;
+    String year,empCode;
+    SharedPreferences myPref;
+    ArrayList<String> names = new ArrayList<>();
+    List<AbnormalityNameModel.NameEmpcode> nameEmpcodes = new ArrayList<>();
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,6 +77,19 @@ public class ViewImageActivity extends AppCompatActivity {
         tv_discription =  findViewById(R.id.tv_discription);
         lay_afterimage =  findViewById(R.id.lay_afterimage);
         tv_action =  findViewById(R.id.tv_action);
+        actionSpinner = findViewById(R.id.action_spinner);
+        targetDate = findViewById(R.id.date);
+        assignto = findViewById(R.id.assigned_to);
+        assignedto = findViewById(R.id.assignedto);
+        myPref = getSharedPreferences("MyPref", Context.MODE_PRIVATE);
+        empCode = myPref.getString("Id", "Id");
+
+        initDatePicker();
+        targetDate.setOnTouchListener((view, motionEvent) -> {
+            datePicker.show();
+            return false;
+        });
+
 
         progress = new ProgressDialog(this);
         progress.setMessage("Please wait...");
@@ -50,8 +99,86 @@ public class ViewImageActivity extends AppCompatActivity {
             AbnormalID = getIntent().getIntExtra("ID", 0);
         }
         hitgetimageApi(AbnormalID);
+        actionName.add("Assign");
+        actionName.add("Send Back");
+        actionName.add("Update");
+        actionName.add("Cancel");
+        actionArrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item,actionName);
+        actionSpinner.setAdapter(actionArrayAdapter);
         im_back.setOnClickListener(view -> finish());
+        assignedto.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                getAutoNameAbnormality(charSequence.toString(),empCode);
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
+        actionSpinner.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                if(actionName.get(i).equals("Assign")){
+                    assignto.setVisibility(View.VISIBLE);
+                }
+                else{
+                    assignto.setVisibility(View.GONE);
+                }
+            }
+        });
+
     }
+    public void initDatePicker(){
+        calendar = Calendar.getInstance();
+        calendar.setTimeInMillis(System.currentTimeMillis());
+        int mMonth = calendar.get(Calendar.MONTH) + 1;
+        String monthNo;
+        if (mMonth < 10) {
+            monthNo = "0" + mMonth;
+        } else {
+            monthNo = "" + mMonth;
+        }
+        String dayOfMonthStr;
+        if (calendar.get(Calendar.DAY_OF_MONTH) < 10) {
+            dayOfMonthStr = "0" + calendar.get(Calendar.DAY_OF_MONTH);
+        } else {
+            dayOfMonthStr = "" + calendar.get(Calendar.DAY_OF_MONTH);
+        }
+        year = String.valueOf(calendar.get(Calendar.YEAR));
+
+        targetDate.setText(dayOfMonthStr+"-"+monthNo+"-"+calendar.get(Calendar.YEAR));
+        datePicker = new DatePickerDialog(ViewImageActivity.this, (datePicker, i, i1, i2) -> {
+            int mMonth1 = i1 + 1;
+            String monthNo1;
+            if (mMonth1 < 10) {
+                monthNo1 = "0" + mMonth1;
+            } else {
+                monthNo1 = "" + mMonth1;
+            }
+            String dayOfMonthStr1;
+            if (i2 < 10) {
+                dayOfMonthStr1 = "0" + i2;
+            } else {
+                dayOfMonthStr1 = "" + i2;
+            }
+            calendar.set(Calendar.DAY_OF_MONTH, i2);
+            calendar.set(Calendar.MONTH, i1);
+            calendar.set(Calendar.YEAR, i);
+            year = String.valueOf(calendar.get(Calendar.YEAR));
+            targetDate.setText("" + dayOfMonthStr1 + "-" + monthNo1 + "-" + i);
+        },calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH));
+
+        //  datePicker.getDatePicker().setMinDate(Calendar.getInstance().getTimeInMillis() - 10000);
+
+    }
+
 
     public void hitgetimageApi(int id) {
         if (Utility.isOnline(ViewImageActivity.this)) {
@@ -111,4 +238,30 @@ public class ViewImageActivity extends AppCompatActivity {
             return null;
         }
     }
+
+    public void getAutoNameAbnormality(String prefix, String val){
+        nameEmpcodes.clear();
+        AbnormalityServices abnormalityServices = new AbnormalityServices();
+        abnormalityServices.getAutoNameAbnormality(new OnTaskComplete() {
+            @Override
+            public void onTaskComplte(CarotResponse carotResponse) {
+                if(carotResponse.getStatuscode()== HttpsURLConnection.HTTP_OK){
+
+                    AbnormalityNameModel abnormalityNameModel = (AbnormalityNameModel) carotResponse.getData();
+                    if(abnormalityNameModel!=null) {
+                        List<AbnormalityNameModel.NameEmpcode> list = abnormalityNameModel.getList();
+                        if(list!=null && list.size()>0){
+                            nameEmpcodes.addAll(list);
+                        }
+
+                    }
+
+                }
+
+
+            }
+        },prefix,val);
+
+    }
+
 }

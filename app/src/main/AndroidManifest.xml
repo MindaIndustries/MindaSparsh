@@ -127,7 +127,10 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".ViewImageActivity"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/spinnertheme"
+            android:screenOrientation="portrait"
+
+            />
         <activity
             android:name=".util.AbnormalityDashboard"
             android:screenOrientation="portrait"

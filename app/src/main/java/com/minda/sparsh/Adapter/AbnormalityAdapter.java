@@ -6,15 +6,11 @@ import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.drawable.ColorDrawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.Window;
-import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
 import android.widget.LinearLayout;
-import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -230,7 +226,7 @@ public class AbnormalityAdapter extends BaseAdapter {
             });
 
             holder.tv_update.setOnClickListener(view -> {
-                //editing to be done
+
                // showUpdateOptions();
                 if (AbnormalityAddressingActivity.Role.equalsIgnoreCase("C")) {
                     if (holder.tv_test_date.getText().toString() != null && holder.tv_test_date.getText().toString().length() > 0 && !holder.tv_test_date.getText().toString().equalsIgnoreCase("Add Date")/*get(position).getTargetDate() != null*/) {
@@ -381,7 +377,7 @@ public class AbnormalityAdapter extends BaseAdapter {
     }
 
     public void showUpdateOptions() {
-        final CharSequence[] items = {"View", "Assign", "Send Back", "Update", "Cancel"};
+        final CharSequence[] items = {"View", "Assign", "Send Back", /*"Update",*/ "Cancel"};
         AlertDialog.Builder builder = new AlertDialog.Builder(mContext);
         builder.setTitle("Select Option");
         builder.setItems(items, (dialog, item) -> {
@@ -391,9 +387,9 @@ public class AbnormalityAdapter extends BaseAdapter {
 
             }else if(items[item].equals("Send Back")){
 
-            }else if(items[item].equals("Update")){
+            }/*else if(items[item].equals("Update")){
 
-            }else if(items[item].equals("Cancel")){
+            }*/else if(items[item].equals("Cancel")){
 
             }
 
