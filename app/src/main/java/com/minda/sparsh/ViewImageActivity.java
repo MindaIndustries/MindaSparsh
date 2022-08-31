@@ -13,17 +13,19 @@ import android.util.Base64;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.textfield.MaterialAutoCompleteTextView;
+import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
-import com.minda.sparsh.cvp.CVPViewCalendar;
 import com.minda.sparsh.listener.CarotResponse;
 import com.minda.sparsh.listener.OnTaskComplete;
 import com.minda.sparsh.model.AbnormalityNameModel;
+import com.minda.sparsh.model.AssignResponseModel;
 import com.minda.sparsh.model.GetAbnormalityImage_Model;
 import com.minda.sparsh.services.AbnormalityServices;
 import com.minda.sparsh.util.RetrofitClient2;
@@ -37,7 +39,6 @@ import java.util.List;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatAutoCompleteTextView;
-import androidx.appcompat.widget.AppCompatSpinner;
 
 import javax.net.ssl.HttpsURLConnection;
 
@@ -58,31 +59,39 @@ public class ViewImageActivity extends AppCompatActivity {
     MaterialAutoCompleteTextView targetDate;
     TextInputLayout assignto;
     AppCompatAutoCompleteTextView assignedto;
+    Button submit;
 
     DatePickerDialog datePicker;
     Calendar calendar;
-    String year,empCode;
+    String year, empCode;
     SharedPreferences myPref;
     ArrayList<String> names = new ArrayList<>();
     List<AbnormalityNameModel.NameEmpcode> nameEmpcodes = new ArrayList<>();
+    ArrayAdapter<String> autoNameAdapter;
+    String role;
+    TextInputEditText remarks;
+    String assignedEmp,action;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_image);
-        Im_before =  findViewById(R.id.Im_before);
-        Im_after =  findViewById(R.id.Im_after);
-        im_back =  findViewById(R.id.im_back);
-        tv_discription =  findViewById(R.id.tv_discription);
-        lay_afterimage =  findViewById(R.id.lay_afterimage);
-        tv_action =  findViewById(R.id.tv_action);
+        Im_before = findViewById(R.id.Im_before);
+        Im_after = findViewById(R.id.Im_after);
+        im_back = findViewById(R.id.im_back);
+        tv_discription = findViewById(R.id.tv_discription);
+        lay_afterimage = findViewById(R.id.lay_afterimage);
+        tv_action = findViewById(R.id.tv_action);
         actionSpinner = findViewById(R.id.action_spinner);
         targetDate = findViewById(R.id.date);
         assignto = findViewById(R.id.assigned_to);
         assignedto = findViewById(R.id.assignedto);
+        submit = findViewById(R.id.submit);
+        remarks = findViewById(R.id.remarks);
         myPref = getSharedPreferences("MyPref", Context.MODE_PRIVATE);
         empCode = myPref.getString("Id", "Id");
+
 
         initDatePicker();
         targetDate.setOnTouchListener((view, motionEvent) -> {
@@ -101,11 +110,12 @@ public class ViewImageActivity extends AppCompatActivity {
         hitgetimageApi(AbnormalID);
         actionName.add("Assign");
         actionName.add("Send Back");
-        actionName.add("Update");
-        actionName.add("Cancel");
-        actionArrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item,actionName);
+         //  actionName.add("Verify & Close");
+        //   actionName.add("Update");
+        actionArrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, actionName);
         actionSpinner.setAdapter(actionArrayAdapter);
         im_back.setOnClickListener(view -> finish());
+        initAutoNameAdapter();
         assignedto.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
@@ -114,7 +124,9 @@ public class ViewImageActivity extends AppCompatActivity {
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                getAutoNameAbnormality(charSequence.toString(),empCode);
+                if (charSequence.toString().length() > 2) {
+                    getAutoNameAbnormality(charSequence.toString(), empCode);
+                }
             }
 
             @Override
@@ -125,17 +137,49 @@ public class ViewImageActivity extends AppCompatActivity {
         actionSpinner.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                if(actionName.get(i).equals("Assign")){
+                action = actionName.get(i);
+                if (actionName.get(i).equals("Assign")) {
                     assignto.setVisibility(View.VISIBLE);
-                }
-                else{
+                } else {
                     assignto.setVisibility(View.GONE);
                 }
             }
         });
 
+        submit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(targetDate.getText().toString().length()==0){
+                    Toast.makeText(ViewImageActivity.this, "Enter Target Date", Toast.LENGTH_LONG).show();
+
+                    return;
+                }
+                if (action.equals("Assign")) {
+                    assignAbnormality(String.valueOf(AbnormalID), empCode, targetDate.getText().toString(), remarks.getText().toString(), assignedEmp);
+                }
+                else{
+                    sendBackToUser(String.valueOf(AbnormalID),empCode);
+                }
+            }
+        });
+
     }
-    public void initDatePicker(){
+
+    public void initAutoNameAdapter() {
+        autoNameAdapter = new ArrayAdapter<>(ViewImageActivity.this, android.R.layout.simple_spinner_item, names);
+        assignedto.setAdapter(autoNameAdapter);
+        assignedto.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                if (nameEmpcodes.size() > 0) {
+                    assignedEmp = nameEmpcodes.get(i).getEmpCode();
+                }
+            }
+        });
+
+    }
+
+    public void initDatePicker() {
         calendar = Calendar.getInstance();
         calendar.setTimeInMillis(System.currentTimeMillis());
         int mMonth = calendar.get(Calendar.MONTH) + 1;
@@ -153,7 +197,7 @@ public class ViewImageActivity extends AppCompatActivity {
         }
         year = String.valueOf(calendar.get(Calendar.YEAR));
 
-        targetDate.setText(dayOfMonthStr+"-"+monthNo+"-"+calendar.get(Calendar.YEAR));
+        targetDate.setText(dayOfMonthStr + "-" + monthNo + "-" + calendar.get(Calendar.YEAR));
         datePicker = new DatePickerDialog(ViewImageActivity.this, (datePicker, i, i1, i2) -> {
             int mMonth1 = i1 + 1;
             String monthNo1;
@@ -173,7 +217,7 @@ public class ViewImageActivity extends AppCompatActivity {
             calendar.set(Calendar.YEAR, i);
             year = String.valueOf(calendar.get(Calendar.YEAR));
             targetDate.setText("" + dayOfMonthStr1 + "-" + monthNo1 + "-" + i);
-        },calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH));
+        }, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH));
 
         //  datePicker.getDatePicker().setMinDate(Calendar.getInstance().getTimeInMillis() - 10000);
 
@@ -239,19 +283,28 @@ public class ViewImageActivity extends AppCompatActivity {
         }
     }
 
-    public void getAutoNameAbnormality(String prefix, String val){
-        nameEmpcodes.clear();
+    public void getAutoNameAbnormality(String prefix, String val) {
         AbnormalityServices abnormalityServices = new AbnormalityServices();
         abnormalityServices.getAutoNameAbnormality(new OnTaskComplete() {
             @Override
             public void onTaskComplte(CarotResponse carotResponse) {
-                if(carotResponse.getStatuscode()== HttpsURLConnection.HTTP_OK){
+                nameEmpcodes.clear();
+                names.clear();
+                autoNameAdapter.notifyDataSetChanged();
 
+                if (carotResponse.getStatuscode() == HttpsURLConnection.HTTP_OK) {
                     AbnormalityNameModel abnormalityNameModel = (AbnormalityNameModel) carotResponse.getData();
-                    if(abnormalityNameModel!=null) {
+                    if (abnormalityNameModel != null) {
                         List<AbnormalityNameModel.NameEmpcode> list = abnormalityNameModel.getList();
-                        if(list!=null && list.size()>0){
+                        if (list != null && list.size() > 0) {
                             nameEmpcodes.addAll(list);
+                            for (AbnormalityNameModel.NameEmpcode autoName : nameEmpcodes) {
+                                names.add(autoName.getValue());
+                            }
+                            autoNameAdapter = new ArrayAdapter<String>(ViewImageActivity.this, android.R.layout.simple_spinner_item, names);
+                            assignedto.setAdapter(autoNameAdapter);
+                            autoNameAdapter.notifyDataSetChanged();
+
                         }
 
                     }
@@ -260,8 +313,50 @@ public class ViewImageActivity extends AppCompatActivity {
 
 
             }
-        },prefix,val);
+        }, prefix, val);
 
     }
 
+    public void assignAbnormality(String id, String empCode, String targetDate, String remark, String assignTo) {
+        AbnormalityServices abnormalityServices = new AbnormalityServices();
+        abnormalityServices.assignAbnormality(new OnTaskComplete() {
+            @Override
+            public void onTaskComplte(CarotResponse carotResponse) {
+                if (carotResponse.getStatuscode() == HttpsURLConnection.HTTP_OK) {
+                    AssignResponseModel assignResponseModel = (AssignResponseModel) carotResponse.getData();
+                    if (assignResponseModel != null) {
+                        if (assignResponseModel.getMessage() != null && assignResponseModel.getMessage().equals("Sucess")) {
+                            Toast.makeText(ViewImageActivity.this, "Assigned Successfully", Toast.LENGTH_LONG).show();
+                        }
+                    }
+                }
+                else{
+                    Toast.makeText(ViewImageActivity.this, "Oops! Something went wrong.", Toast.LENGTH_LONG).show();
+                }
+
+            }
+        }, id, empCode, targetDate, remark, assignTo);
+    }
+
+    public void sendBackToUser(String id, String empCode){
+        AbnormalityServices abnormalityServices = new AbnormalityServices();
+        abnormalityServices.sendBackToUser(new OnTaskComplete() {
+            @Override
+            public void onTaskComplte(CarotResponse carotResponse) {
+                if (carotResponse.getStatuscode() ==HttpsURLConnection.HTTP_OK){
+
+                    AssignResponseModel assignResponseModel = (AssignResponseModel) carotResponse.getData();
+                    if (assignResponseModel != null) {
+                        if (assignResponseModel.getMessage() != null && assignResponseModel.getMessage().equals("Sucess")) {
+                            Toast.makeText(ViewImageActivity.this, "Successfully Sent Back to User", Toast.LENGTH_LONG).show();
+                        }
+                    }
+                }
+                else{
+                    Toast.makeText(ViewImageActivity.this, "Oops! Something went wrong.", Toast.LENGTH_LONG).show();
+                }
+
+            }
+        },id,empCode);
+    }
 }

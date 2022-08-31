@@ -221,7 +221,8 @@ public class TwoFragment extends Fragment {
         @Override
         public void setImageForPosition(int position, ImageView imageView) {
             imageView.setAdjustViewBounds(true);
-            imageView.setScaleType(ImageView.ScaleType.FIT_XY);
+            imageView.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
+        //    imageView.setAdjustViewBounds(true);
             Glide.with(getActivity()).load(banners.get(position).getImgsrc()).into(imageView);
         }
     };

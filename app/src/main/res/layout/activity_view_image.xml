@@ -153,7 +153,8 @@
                         android:id="@+id/action_spinner"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                         />
+                        android:editable="false"
+                        />
 
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -204,7 +205,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:hint="Target Date:"
+                    android:hint="Target Date: *"
                     >
 
                     <com.google.android.material.textfield.MaterialAutoCompleteTextView
@@ -219,9 +220,22 @@
                         android:padding="18dp" />
                 </com.google.android.material.textfield.TextInputLayout>
 
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/customSpinnerLayout1"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/btn_bg"
+                    android:text="Submit"
+                    android:id="@+id/submit"
+                    android:textColor="@color/white" />
             </RelativeLayout>
 
         </LinearLayout>
+
+
 
     </LinearLayout>
 

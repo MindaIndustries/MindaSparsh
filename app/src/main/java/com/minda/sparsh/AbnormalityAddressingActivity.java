@@ -101,7 +101,7 @@ public class AbnormalityAddressingActivity extends AppCompatActivity {
     int mYear, mMonth, mDay;
     private ArrayList<String> permissionsToRequest;
     private final ArrayList<String> permissionsRejected = new ArrayList<>();
-    private final ArrayList<String> permissions = new ArrayList<>();
+   // private final ArrayList<String> permissions = new ArrayList<>();
     private final static int ALL_PERMISSIONS_RESULT = 107;
     boolean pic_uploaded = false;
     private ProgressDialog progress = null;
@@ -820,6 +820,7 @@ public class AbnormalityAddressingActivity extends AppCompatActivity {
         return outputFileUri;
     }
 
+/*
     private ArrayList<String> findUnAskedPermissions(ArrayList<String> wanted) {
         ArrayList<String> result = new ArrayList<>();
 
@@ -831,6 +832,7 @@ public class AbnormalityAddressingActivity extends AppCompatActivity {
 
         return result;
     }
+*/
 
     private boolean hasPermission(String permission) {
         if (canMakeSmores()) {
@@ -1265,7 +1267,6 @@ public class AbnormalityAddressingActivity extends AppCompatActivity {
                     department_model.setDEPARTMENT("Select Department");
                     Departmentresponse.add(0, department_model);
                    */
-
                     Departmentresponse.addAll(response.body());
                     for (Department_Model department_model : Departmentresponse) {
                         departments.add(department_model.getDEPARTMENT());
@@ -1360,19 +1361,15 @@ public class AbnormalityAddressingActivity extends AppCompatActivity {
                 if (list1 != null && list1.size() > 0) {
                     categorymodelList.addAll(list1);
 
-                    Collections.sort(categorymodelList, new Comparator<CategoryAbnormality>() {
-
-                        @Override
-                        public int compare(CategoryAbnormality o1, CategoryAbnormality o2) {
-                            if (o2.getId() < o1.getId()) {
-                                return 1;
-                            } else if (o2.getId() > o1.getId()) {
-                                return -1;
-                            } else {
-                                return 0;
-                            }
-
+                    Collections.sort(categorymodelList, (o1, o2) -> {
+                        if (o2.getId() < o1.getId()) {
+                            return 1;
+                        } else if (o2.getId() > o1.getId()) {
+                            return -1;
+                        } else {
+                            return 0;
                         }
+
                     });
                     for (CategoryAbnormality categoryAbnormality : categorymodelList) {
                         categories.add(categoryAbnormality.getCategory());
