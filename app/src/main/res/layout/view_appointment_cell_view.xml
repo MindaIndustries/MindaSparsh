@@ -275,7 +275,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:background="@drawable/rec_button"
+                    android:background="@drawable/btn_bg"
                     android:gravity="center"
                     android:padding="10dp"
                     android:fontFamily="@font/museosans_500"
@@ -283,11 +283,12 @@
                     android:textColor="@color/white" />
 
                 <TextView
+                    android:layout_marginLeft="10dp"
                     android:id="@+id/tv_cancel"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:background="@drawable/rec_button"
+                    android:background="@drawable/btn_bg"
                     android:gravity="center"
                     android:fontFamily="@font/museosans_500"
                     android:padding="10dp"
