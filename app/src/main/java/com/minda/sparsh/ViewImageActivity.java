@@ -11,7 +11,6 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Base64;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -22,8 +21,6 @@ import android.widget.Toast;
 import com.google.android.material.textfield.MaterialAutoCompleteTextView;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
-import com.minda.sparsh.listener.CarotResponse;
-import com.minda.sparsh.listener.OnTaskComplete;
 import com.minda.sparsh.model.AbnormalityNameModel;
 import com.minda.sparsh.model.AssignResponseModel;
 import com.minda.sparsh.model.GetAbnormalityImage_Model;
@@ -70,7 +67,7 @@ public class ViewImageActivity extends AppCompatActivity {
     ArrayAdapter<String> autoNameAdapter;
     String role;
     TextInputEditText remarks;
-    String assignedEmp,action;
+    String assignedEmp,action,level;
 
 
     @Override
@@ -106,10 +103,26 @@ public class ViewImageActivity extends AppCompatActivity {
         progress.setIndeterminate(true);
         if (getIntent().getExtras() != null) {
             AbnormalID = getIntent().getIntExtra("ID", 0);
+            level = getIntent().getStringExtra("Level");
+
         }
         hitgetimageApi(AbnormalID);
-        actionName.add("Assign");
-        actionName.add("Send Back");
+        actionName.clear();
+        if(level.equalsIgnoreCase("Pending at HOD")){
+            actionName.add("Update");
+        }
+        else if(level.equalsIgnoreCase("Pending at Best Cordinator - L1")){
+            actionName.add("Assign");
+            actionName.add("Send Back to Initiator");
+        }
+        else if(level.equalsIgnoreCase("Pending at Best Cordinator - L2")){
+            actionName.add("Verify & Close");
+            actionName.add("Send Back to HOD");
+
+        }
+        else if(level.equalsIgnoreCase("Pending at User")){
+            actionName.add("Update");
+        }
          //  actionName.add("Verify & Close");
         //   actionName.add("Update");
         actionArrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, actionName);
@@ -134,32 +147,34 @@ public class ViewImageActivity extends AppCompatActivity {
 
             }
         });
-        actionSpinner.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                action = actionName.get(i);
-                if (actionName.get(i).equals("Assign")) {
-                    assignto.setVisibility(View.VISIBLE);
-                } else {
-                    assignto.setVisibility(View.GONE);
-                }
+        actionSpinner.setOnItemClickListener((adapterView, view, i, l) -> {
+            action = actionName.get(i);
+            if (actionName.get(i).equalsIgnoreCase("Assign")) {
+                assignto.setVisibility(View.VISIBLE);
+            }
+            else if(actionName.get(i).equalsIgnoreCase("closed")){
+
+            }
+            else {
+                assignto.setVisibility(View.GONE);
             }
         });
 
-        submit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if(targetDate.getText().toString().length()==0){
-                    Toast.makeText(ViewImageActivity.this, "Enter Target Date", Toast.LENGTH_LONG).show();
-
-                    return;
-                }
-                if (action.equals("Assign")) {
-                    assignAbnormality(String.valueOf(AbnormalID), empCode, targetDate.getText().toString(), remarks.getText().toString(), assignedEmp);
-                }
-                else{
-                    sendBackToUser(String.valueOf(AbnormalID),empCode);
-                }
+        submit.setOnClickListener(view -> {
+            if(targetDate.getText().toString().length()==0){
+                Toast.makeText(ViewImageActivity.this, "Enter Target Date", Toast.LENGTH_LONG).show();
+                return;
+            }
+          /*  if(remarks.getText().toString().length()==0){
+                Toast.makeText(ViewImageActivity.this, "Enter Target Date", Toast.LENGTH_LONG).show();
+            }
+          */
+            if (action.equals("Assign")) {
+                assignAbnormality(String.valueOf(AbnormalID), empCode, targetDate.getText().toString(), remarks.getText().toString(), assignedEmp);
+            }
+            else{
+                sendBackToUser(String.valueOf(AbnormalID),empCode);
+                //or sendBackToHOD()
             }
         });
 
@@ -168,12 +183,9 @@ public class ViewImageActivity extends AppCompatActivity {
     public void initAutoNameAdapter() {
         autoNameAdapter = new ArrayAdapter<>(ViewImageActivity.this, android.R.layout.simple_spinner_item, names);
         assignedto.setAdapter(autoNameAdapter);
-        assignedto.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                if (nameEmpcodes.size() > 0) {
-                    assignedEmp = nameEmpcodes.get(i).getEmpCode();
-                }
+        assignedto.setOnItemClickListener((adapterView, view, i, l) -> {
+            if (nameEmpcodes.size() > 0) {
+                assignedEmp = nameEmpcodes.get(i).getEmpCode();
             }
         });
 
@@ -285,78 +297,87 @@ public class ViewImageActivity extends AppCompatActivity {
 
     public void getAutoNameAbnormality(String prefix, String val) {
         AbnormalityServices abnormalityServices = new AbnormalityServices();
-        abnormalityServices.getAutoNameAbnormality(new OnTaskComplete() {
-            @Override
-            public void onTaskComplte(CarotResponse carotResponse) {
-                nameEmpcodes.clear();
-                names.clear();
-                autoNameAdapter.notifyDataSetChanged();
+        abnormalityServices.getAutoNameAbnormality(carotResponse -> {
+            nameEmpcodes.clear();
+            names.clear();
+            autoNameAdapter.notifyDataSetChanged();
 
-                if (carotResponse.getStatuscode() == HttpsURLConnection.HTTP_OK) {
-                    AbnormalityNameModel abnormalityNameModel = (AbnormalityNameModel) carotResponse.getData();
-                    if (abnormalityNameModel != null) {
-                        List<AbnormalityNameModel.NameEmpcode> list = abnormalityNameModel.getList();
-                        if (list != null && list.size() > 0) {
-                            nameEmpcodes.addAll(list);
-                            for (AbnormalityNameModel.NameEmpcode autoName : nameEmpcodes) {
-                                names.add(autoName.getValue());
-                            }
-                            autoNameAdapter = new ArrayAdapter<String>(ViewImageActivity.this, android.R.layout.simple_spinner_item, names);
-                            assignedto.setAdapter(autoNameAdapter);
-                            autoNameAdapter.notifyDataSetChanged();
-
+            if (carotResponse.getStatuscode() == HttpsURLConnection.HTTP_OK) {
+                AbnormalityNameModel abnormalityNameModel = (AbnormalityNameModel) carotResponse.getData();
+                if (abnormalityNameModel != null) {
+                    List<AbnormalityNameModel.NameEmpcode> list = abnormalityNameModel.getList();
+                    if (list != null && list.size() > 0) {
+                        nameEmpcodes.addAll(list);
+                        for (AbnormalityNameModel.NameEmpcode autoName : nameEmpcodes) {
+                            names.add(autoName.getValue());
                         }
+                        autoNameAdapter = new ArrayAdapter<String>(ViewImageActivity.this, android.R.layout.simple_spinner_item, names);
+                        assignedto.setAdapter(autoNameAdapter);
+                        autoNameAdapter.notifyDataSetChanged();
 
                     }
 
                 }
 
-
             }
+
+
         }, prefix, val);
 
     }
 
     public void assignAbnormality(String id, String empCode, String targetDate, String remark, String assignTo) {
         AbnormalityServices abnormalityServices = new AbnormalityServices();
-        abnormalityServices.assignAbnormality(new OnTaskComplete() {
-            @Override
-            public void onTaskComplte(CarotResponse carotResponse) {
-                if (carotResponse.getStatuscode() == HttpsURLConnection.HTTP_OK) {
-                    AssignResponseModel assignResponseModel = (AssignResponseModel) carotResponse.getData();
-                    if (assignResponseModel != null) {
-                        if (assignResponseModel.getMessage() != null && assignResponseModel.getMessage().equals("Sucess")) {
-                            Toast.makeText(ViewImageActivity.this, "Assigned Successfully", Toast.LENGTH_LONG).show();
-                        }
+        abnormalityServices.assignAbnormality(carotResponse -> {
+            if (carotResponse.getStatuscode() == HttpsURLConnection.HTTP_OK) {
+                AssignResponseModel assignResponseModel = (AssignResponseModel) carotResponse.getData();
+                if (assignResponseModel != null) {
+                    if (assignResponseModel.getMessage() != null && assignResponseModel.getMessage().equals("Sucess")) {
+                        Toast.makeText(ViewImageActivity.this, "Assigned Successfully", Toast.LENGTH_LONG).show();
                     }
                 }
-                else{
-                    Toast.makeText(ViewImageActivity.this, "Oops! Something went wrong.", Toast.LENGTH_LONG).show();
-                }
-
             }
+            else{
+                Toast.makeText(ViewImageActivity.this, "Oops! Something went wrong.", Toast.LENGTH_LONG).show();
+            }
+
         }, id, empCode, targetDate, remark, assignTo);
     }
 
     public void sendBackToUser(String id, String empCode){
         AbnormalityServices abnormalityServices = new AbnormalityServices();
-        abnormalityServices.sendBackToUser(new OnTaskComplete() {
-            @Override
-            public void onTaskComplte(CarotResponse carotResponse) {
-                if (carotResponse.getStatuscode() ==HttpsURLConnection.HTTP_OK){
-
-                    AssignResponseModel assignResponseModel = (AssignResponseModel) carotResponse.getData();
-                    if (assignResponseModel != null) {
-                        if (assignResponseModel.getMessage() != null && assignResponseModel.getMessage().equals("Sucess")) {
-                            Toast.makeText(ViewImageActivity.this, "Successfully Sent Back to User", Toast.LENGTH_LONG).show();
-                        }
+        abnormalityServices.sendBackToUser(carotResponse -> {
+            if (carotResponse.getStatuscode() ==HttpsURLConnection.HTTP_OK){
+                AssignResponseModel assignResponseModel = (AssignResponseModel) carotResponse.getData();
+                if (assignResponseModel != null) {
+                    if (assignResponseModel.getMessage() != null && assignResponseModel.getMessage().equals("Sucess")) {
+                        Toast.makeText(ViewImageActivity.this, "Successfully Sent Back to User", Toast.LENGTH_LONG).show();
                     }
                 }
-                else{
-                    Toast.makeText(ViewImageActivity.this, "Oops! Something went wrong.", Toast.LENGTH_LONG).show();
-                }
-
             }
+            else{
+                Toast.makeText(ViewImageActivity.this, "Oops! Something went wrong.", Toast.LENGTH_LONG).show();
+            }
+
         },id,empCode);
+    }
+
+    public void sendBackToHOD(String id, String empCode){
+        AbnormalityServices abnormalityServices = new AbnormalityServices();
+        abnormalityServices.sendBackToHOD(carotResponse -> {
+            if (carotResponse.getStatuscode() ==HttpsURLConnection.HTTP_OK){
+                AssignResponseModel assignResponseModel = (AssignResponseModel) carotResponse.getData();
+                if (assignResponseModel != null) {
+                    if (assignResponseModel.getMessage() != null && assignResponseModel.getMessage().equals("Sucess")) {
+                        Toast.makeText(ViewImageActivity.this, "Successfully Sent Back to HOD", Toast.LENGTH_LONG).show();
+                    }
+                }
+            }
+            else{
+                Toast.makeText(ViewImageActivity.this, "Oops! Something went wrong.", Toast.LENGTH_LONG).show();
+            }
+
+        },id,empCode);
+
     }
 }

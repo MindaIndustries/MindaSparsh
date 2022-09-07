@@ -146,7 +146,7 @@ public class AbnormalityAddressingActivity extends AppCompatActivity {
     private File mDestinationFile;
     public static final int MY_PERMISSIONS_REQUEST_READ_EXTERNAL_STORAGE = 123;
     public static final int MY_PERMISSIONS_REQUEST_CAMERA = 1234;
-    String mUserChoosenTask = "";
+    String mUserChoosenTask = "", id = "0";
 
 
     @Override
@@ -548,7 +548,7 @@ public class AbnormalityAddressingActivity extends AppCompatActivity {
             benefits = "";
             et_descripton.setText("");
             if (isvalid()) {
-                hitAddAbnormalityApi(group, domainid, businessid, plantid, String.valueOf(sub_department), sImage, description, benefits, abnormalitydate, myPref.getString("Id", ""), category_id);
+                hitAddAbnormalityApi(id,group, domainid, businessid, plantid, String.valueOf(sub_department), sImage, description, benefits, abnormalitydate, myPref.getString("Id", ""), category_id);
             }
         });
 
@@ -1298,12 +1298,12 @@ public class AbnormalityAddressingActivity extends AppCompatActivity {
             Toast.makeText(AbnormalityAddressingActivity.this, "Please Check Your Network Connection", Toast.LENGTH_LONG).show();
     }
 
-    public void hitAddAbnormalityApi(String group, String domain, String business, String plant, String department, String imagepath, String description, String benefits, String abnormalitydate, String UploadedBy, int category) {
+    public void hitAddAbnormalityApi(String id,String group, String domain, String business, String plant, String department, String imagepath, String description, String benefits, String abnormalitydate, String UploadedBy, int category) {
         if (Utility.isOnline(AbnormalityAddressingActivity.this)) {
             progressBar.setVisibility(View.VISIBLE);
             //   showProgress(true);
             Interface promotingMyinterface = RetrofitClient2.getClient().create(Interface.class);
-            Call<List<AddAbnormality_Model>> response = promotingMyinterface.AddAbnormality(RetrofitClient2.CKEY, group, domain, business, plant, department, imagepath, description, benefits, abnormalitydate, UploadedBy, category);
+            Call<List<AddAbnormality_Model>> response = promotingMyinterface.AddAbnormality(id,RetrofitClient2.CKEY, group, domain, business, plant, department, imagepath, description, benefits, abnormalitydate, UploadedBy, category);
             response.enqueue(new Callback<List<AddAbnormality_Model>>() {
                 @Override
                 public void onResponse(@NotNull Call<List<AddAbnormality_Model>> call, @NotNull Response<List<AddAbnormality_Model>> response) {

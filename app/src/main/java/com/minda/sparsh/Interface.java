@@ -126,7 +126,7 @@ public interface Interface {
 
     @FormUrlEncoded
     @POST("AddAbnormalityNew")
-    Call<List<AddAbnormality_Model>> AddAbnormality(@Field("CKey") String CKey, @Field("group") String group, @Field("domain") String domain,
+    Call<List<AddAbnormality_Model>> AddAbnormality(@Field("AID") String AID,@Field("CKey") String CKey, @Field("group") String group, @Field("domain") String domain,
                                                     @Field("business") String business, @Field("plant") String plant, @Field("department") String department,
                                                     @Field("imagepath") String imagepath, @Field("description") String description, @Field("benefits") String benefits,
                                                     @Field("abnormalitydate") String abnormalitydate, @Field("UploadedBy") String UploadedBy, @Field("Category") int Categeory);

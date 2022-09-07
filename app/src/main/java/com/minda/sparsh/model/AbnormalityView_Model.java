@@ -71,6 +71,8 @@ public class AbnormalityView_Model {
     @SerializedName("PlantName")
     @Expose
     private String PlantName;
+    @SerializedName("Flag")
+    String Flag;
 
     public String getUpdatedBy() {
         return UpdatedBy;
@@ -238,5 +240,13 @@ public class AbnormalityView_Model {
 
     public void setCategory(String category) {
         Category = category;
+    }
+
+    public String getFlag() {
+        return Flag;
+    }
+
+    public void setFlag(String flag) {
+        Flag = flag;
     }
 }

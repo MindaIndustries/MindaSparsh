@@ -461,7 +461,7 @@
                 android:layout_margin="20dp"
                 android:gravity="center">
 
-                <TextView
+                <android.widget.Button
                     android:id="@+id/tv_submit"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -474,6 +474,27 @@
                     android:textStyle="bold" />
 
             </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp"
+                android:gravity="center">
+
+                <android.widget.Button
+                    android:id="@+id/verify_close"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/btn_bg"
+                    android:gravity="center"
+                    android:padding="5dp"
+                    android:text="Verify &amp; Close"
+                    android:textColor="#FFFFFF"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
         </LinearLayout>
     </LinearLayout>
 

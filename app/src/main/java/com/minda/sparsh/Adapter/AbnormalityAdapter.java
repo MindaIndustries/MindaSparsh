@@ -2,7 +2,6 @@ package com.minda.sparsh.Adapter;
 
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
-import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
@@ -61,7 +60,7 @@ public class AbnormalityAdapter extends BaseAdapter {
     }
 
     public static class ViewHolder {
-        public TextView tv_result, tv_status, tv_Actual_date, tv_test_date, tv_action, tv_plant, tv_business, tv_domain, tv_category, tv_date, tv_abnormality, tv_sn, tv_update, tv_view, tv_uplodedBy, tv_department, tv_updatedby;
+        public TextView level, tv_result, tv_status, tv_Actual_date, tv_test_date, tv_action, tv_plant, tv_business, tv_domain, tv_category, tv_date, tv_abnormality, tv_sn, tv_update, tv_view, tv_uplodedBy, tv_department, tv_updatedby;
         public LinearLayout laycellview;
     }
 
@@ -87,6 +86,7 @@ public class AbnormalityAdapter extends BaseAdapter {
             final ViewHolder holder = new ViewHolder();
             this.holder = holder;
             convertView = inflater.inflate(R.layout.abnormality, null);
+            holder.level = convertView.findViewById(R.id.level);
             holder.tv_result = convertView.findViewById(R.id.tv_result);
             holder.tv_status = convertView.findViewById(R.id.tv_status);
             holder.tv_Actual_date = convertView.findViewById(R.id.tv_Actual_date);
@@ -107,6 +107,7 @@ public class AbnormalityAdapter extends BaseAdapter {
             holder.tv_update = convertView.findViewById(R.id.tv_update);
             holder.tv_view = convertView.findViewById(R.id.tv_view);
             holder.tv_updatedby.setText(homeData.get(position).getUploadedBy());
+            holder.level.setText(homeData.get(position).getFlag());
 
             convertView.setTag(holder);
             if (homeData.get(position).getTargetDate() != null && !homeData.get(position).getTargetDate().equalsIgnoreCase("")) {
@@ -227,7 +228,7 @@ public class AbnormalityAdapter extends BaseAdapter {
 
             holder.tv_update.setOnClickListener(view -> {
 
-               // showUpdateOptions();
+                // showUpdateOptions();
                 if (AbnormalityAddressingActivity.Role.equalsIgnoreCase("C")) {
                     if (holder.tv_test_date.getText().toString() != null && holder.tv_test_date.getText().toString().length() > 0 && !holder.tv_test_date.getText().toString().equalsIgnoreCase("Add Date")/*get(position).getTargetDate() != null*/) {
                         Intent intent = new Intent(mContext, AbnormalityAddressing2Activity.class);
@@ -250,6 +251,7 @@ public class AbnormalityAdapter extends BaseAdapter {
             holder.tv_view.setOnClickListener(view -> {
                 Intent intent = new Intent(mContext, ViewImageActivity.class);
                 intent.putExtra("ID", homeData.get(position).getID());
+                intent.putExtra("Level",homeData.get(position).getFlag());
                 mContext.startActivity(intent);
             });
 
@@ -268,9 +270,19 @@ public class AbnormalityAdapter extends BaseAdapter {
                     Snackbar.make(view, "You are not Authorized", Snackbar.LENGTH_LONG).show();
                 }
             });
-
-
             //"\n" + promotionData.get(position).getEventDate());
+
+            switch(homeData.get(position).getFlag()){
+                case "Pending at HOD":
+                    break;
+                case "Pending at Best Cordinator":
+                    break;
+                case "Pending at User":
+                    break;
+                case "Closed":
+                    break;
+
+            }
 
         }
 
@@ -381,15 +393,15 @@ public class AbnormalityAdapter extends BaseAdapter {
         AlertDialog.Builder builder = new AlertDialog.Builder(mContext);
         builder.setTitle("Select Option");
         builder.setItems(items, (dialog, item) -> {
-            if(items[item].equals("View")){
+            if (items[item].equals("View")) {
 
-            }else if(items[item].equals("Assign")){
+            } else if (items[item].equals("Assign")) {
 
-            }else if(items[item].equals("Send Back")){
+            } else if (items[item].equals("Send Back")) {
 
             }/*else if(items[item].equals("Update")){
 
-            }*/else if(items[item].equals("Cancel")){
+            }*/ else if (items[item].equals("Cancel")) {
 
             }
 

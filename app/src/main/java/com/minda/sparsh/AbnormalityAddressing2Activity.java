@@ -24,6 +24,7 @@ import android.os.Parcelable;
 import android.provider.MediaStore;
 import android.util.Base64;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -66,8 +67,9 @@ public class AbnormalityAddressing2Activity extends AppCompatActivity {
 
     ListView list_abnormalty;
     LinearLayout lay_out;
-    TextView tv_submit, tv_upload, tv_Department, tv_plant, tv_business, tv_domain, et_finddate;
+    TextView  tv_upload, tv_Department, tv_plant, tv_business, tv_domain, et_finddate;
     ImageView Im_capture, im_back;
+    Button tv_submit;
     Uri picUri = null;
     Bitmap myBitmap;
     String sImage = "";
