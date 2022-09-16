@@ -126,10 +126,10 @@ public interface Interface {
 
     @FormUrlEncoded
     @POST("AddAbnormalityNew")
-    Call<List<AddAbnormality_Model>> AddAbnormality(@Field("AID") String AID,@Field("CKey") String CKey, @Field("group") String group, @Field("domain") String domain,
+    Call<List<AddAbnormality_Model>> AddAbnormality(@Field("AbnormalID") String AID,@Field("CKey") String CKey, @Field("group") String group, @Field("domain") String domain,
                                                     @Field("business") String business, @Field("plant") String plant, @Field("department") String department,
                                                     @Field("imagepath") String imagepath, @Field("description") String description, @Field("benefits") String benefits,
-                                                    @Field("abnormalitydate") String abnormalitydate, @Field("UploadedBy") String UploadedBy, @Field("Category") int Categeory);
+                                                    @Field("abnormalitydate") String abnormalitydate, @Field("UploadedBy") String UploadedBy, @Field("Category") int Categeory, @Field("functionId") int funcId);
 
     @FormUrlEncoded
     @POST("UpdateAbnormalityNew")
@@ -158,7 +158,7 @@ public interface Interface {
     @GET("GetAbnormality")
     Call<List<AbnormalityView_Model>> GetAbnormalityDetail(@Query("CKey") String CKey, @Query("plant") String plant,
                                                            @Query("department") String department, @Query("Domain") String Domain,
-                                                           @Query("Business") String Business, @Query("Category") int Category);
+                                                           @Query("Business") String Business, @Query("Category") int Category, @Query("EmpCode") String EmpCode);
 
 
     @GET("GetDashboard")

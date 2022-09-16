@@ -3,6 +3,8 @@ package com.minda.sparsh.model;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import java.util.Objects;
+
 /**
  * Created by dmin on 6/13/2018.
  */
@@ -48,7 +50,19 @@ public class Sub_Department_Model {
         this.dEPARTMENTDETAIL = dEPARTMENTDETAIL;
     }
 
-//    public String getCREATEDON() {
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Sub_Department_Model)) return false;
+        Sub_Department_Model that = (Sub_Department_Model) o;
+        return Objects.equals(iD, that.iD) ;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(iD, dEPARTMENTID, dEPARTMENTDETAIL);
+    }
+    //    public String getCREATEDON() {
 //        return cREATEDON;
 //    }
 //

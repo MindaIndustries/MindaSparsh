@@ -21,6 +21,8 @@ import android.widget.Toast;
 import com.google.android.material.textfield.MaterialAutoCompleteTextView;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
+import com.minda.sparsh.listener.CarotResponse;
+import com.minda.sparsh.listener.OnTaskComplete;
 import com.minda.sparsh.model.AbnormalityNameModel;
 import com.minda.sparsh.model.AssignResponseModel;
 import com.minda.sparsh.model.GetAbnormalityImage_Model;
@@ -57,6 +59,7 @@ public class ViewImageActivity extends AppCompatActivity {
     TextInputLayout assignto;
     AppCompatAutoCompleteTextView assignedto;
     Button submit;
+    LinearLayout action_layout;
 
     DatePickerDialog datePicker;
     Calendar calendar;
@@ -67,7 +70,10 @@ public class ViewImageActivity extends AppCompatActivity {
     ArrayAdapter<String> autoNameAdapter;
     String role;
     TextInputEditText remarks;
-    String assignedEmp,action,level;
+    String assignedEmp, action, level;
+    String username;
+    String uploadedby,assigntovalue;
+
 
 
     @Override
@@ -86,8 +92,10 @@ public class ViewImageActivity extends AppCompatActivity {
         assignedto = findViewById(R.id.assignedto);
         submit = findViewById(R.id.submit);
         remarks = findViewById(R.id.remarks);
+        action_layout = findViewById(R.id.action_layout);
         myPref = getSharedPreferences("MyPref", Context.MODE_PRIVATE);
         empCode = myPref.getString("Id", "Id");
+        username = myPref.getString("username", "");
 
 
         initDatePicker();
@@ -104,26 +112,61 @@ public class ViewImageActivity extends AppCompatActivity {
         if (getIntent().getExtras() != null) {
             AbnormalID = getIntent().getIntExtra("ID", 0);
             level = getIntent().getStringExtra("Level");
+            if(getIntent().getStringExtra("uploadedby")!=null){
+                uploadedby = getIntent().getStringExtra("uploadedby");
+            }
+
+            if(getIntent().getStringExtra("assignedto")!=null){
+                assigntovalue = getIntent().getStringExtra("assignedto");
+            }
 
         }
         hitgetimageApi(AbnormalID);
         actionName.clear();
-        if(level.equalsIgnoreCase("Pending at HOD")){
-            actionName.add("Update");
-        }
-        else if(level.equalsIgnoreCase("Pending at Best Cordinator - L1")){
-            actionName.add("Assign");
-            actionName.add("Send Back to Initiator");
-        }
-        else if(level.equalsIgnoreCase("Pending at Best Cordinator - L2")){
-            actionName.add("Verify & Close");
-            actionName.add("Send Back to HOD");
+        if (level.equalsIgnoreCase("Pending at HOD")) {
+            if (AbnormalityAddressingActivity.Role.equalsIgnoreCase("HOD") && assignto.equals(empCode)) {
+                actionName.add("Update");
+                action_layout.setVisibility(View.VISIBLE);
 
+            } else {
+                action_layout.setVisibility(View.GONE);
+            }
+        } else if (level.equalsIgnoreCase("Pending at Best Cordinator - L1")) {
+            if (AbnormalityAddressingActivity.Role.equalsIgnoreCase("C")) {
+                action_layout.setVisibility(View.VISIBLE);
+                actionName.add("Assign");
+                actionName.add("Send Back to Initiator");
+            }
+            else{
+                action_layout.setVisibility(View.GONE);
+
+            }
+        } else if (level.equalsIgnoreCase("Pending at Best Cordinator - L2")) {
+            if (AbnormalityAddressingActivity.Role.equalsIgnoreCase("C")) {
+                actionName.add("Verify & Close");
+                actionName.add("Send Back to HOD");
+                action_layout.setVisibility(View.VISIBLE);
+            }
+            else{
+                action_layout.setVisibility(View.GONE);
+            }
+
+        } else if (level.equalsIgnoreCase("Pending at User")) {
+            if(username.equalsIgnoreCase(uploadedby)) {
+                actionName.add("Update");
+                action_layout.setVisibility(View.VISIBLE);
+
+            }
+            else{
+                action_layout.setVisibility(View.GONE);
+
+            }
+        } else if (level.equalsIgnoreCase("closed")) {
+            action_layout.setVisibility(View.GONE);
+        } else {
+            action_layout.setVisibility(View.VISIBLE);
         }
-        else if(level.equalsIgnoreCase("Pending at User")){
-            actionName.add("Update");
-        }
-         //  actionName.add("Verify & Close");
+        //  actionName.add("Verify & Close");
         //   actionName.add("Update");
         actionArrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, actionName);
         actionSpinner.setAdapter(actionArrayAdapter);
@@ -151,17 +194,15 @@ public class ViewImageActivity extends AppCompatActivity {
             action = actionName.get(i);
             if (actionName.get(i).equalsIgnoreCase("Assign")) {
                 assignto.setVisibility(View.VISIBLE);
-            }
-            else if(actionName.get(i).equalsIgnoreCase("closed")){
+            } else if (actionName.get(i).equalsIgnoreCase("closed")) {
 
-            }
-            else {
+            } else {
                 assignto.setVisibility(View.GONE);
             }
         });
 
         submit.setOnClickListener(view -> {
-            if(targetDate.getText().toString().length()==0){
+            if (targetDate.getText().toString().length() == 0) {
                 Toast.makeText(ViewImageActivity.this, "Enter Target Date", Toast.LENGTH_LONG).show();
                 return;
             }
@@ -169,12 +210,17 @@ public class ViewImageActivity extends AppCompatActivity {
                 Toast.makeText(ViewImageActivity.this, "Enter Target Date", Toast.LENGTH_LONG).show();
             }
           */
-            if (action.equals("Assign")) {
+            if (action.equalsIgnoreCase("Assign")) {
                 assignAbnormality(String.valueOf(AbnormalID), empCode, targetDate.getText().toString(), remarks.getText().toString(), assignedEmp);
             }
-            else{
-                sendBackToUser(String.valueOf(AbnormalID),empCode);
-                //or sendBackToHOD()
+          else if (action.equalsIgnoreCase("Verify & Close")) {
+                verifyclose(String.valueOf(AbnormalID), empCode);
+            }
+          else if(action.equalsIgnoreCase("Send Back to HOD")){
+                sendBackToHOD(String.valueOf(AbnormalID), empCode);
+            }
+          else {
+                sendBackToUser(String.valueOf(AbnormalID), empCode);
             }
         });
 
@@ -334,50 +380,79 @@ public class ViewImageActivity extends AppCompatActivity {
                 if (assignResponseModel != null) {
                     if (assignResponseModel.getMessage() != null && assignResponseModel.getMessage().equals("Sucess")) {
                         Toast.makeText(ViewImageActivity.this, "Assigned Successfully", Toast.LENGTH_LONG).show();
+                        onBackPressed();
+                    } else {
+                        Toast.makeText(ViewImageActivity.this, "Oops! Something went wrong.", Toast.LENGTH_LONG).show();
                     }
                 }
-            }
-            else{
+            } else {
                 Toast.makeText(ViewImageActivity.this, "Oops! Something went wrong.", Toast.LENGTH_LONG).show();
             }
 
         }, id, empCode, targetDate, remark, assignTo);
     }
 
-    public void sendBackToUser(String id, String empCode){
+    public void sendBackToUser(String id, String empCode) {
         AbnormalityServices abnormalityServices = new AbnormalityServices();
         abnormalityServices.sendBackToUser(carotResponse -> {
-            if (carotResponse.getStatuscode() ==HttpsURLConnection.HTTP_OK){
+            if (carotResponse.getStatuscode() == HttpsURLConnection.HTTP_OK) {
                 AssignResponseModel assignResponseModel = (AssignResponseModel) carotResponse.getData();
                 if (assignResponseModel != null) {
                     if (assignResponseModel.getMessage() != null && assignResponseModel.getMessage().equals("Sucess")) {
                         Toast.makeText(ViewImageActivity.this, "Successfully Sent Back to User", Toast.LENGTH_LONG).show();
+                        onBackPressed();
+                    } else {
+                        Toast.makeText(ViewImageActivity.this, "Oops! Something went wrong.", Toast.LENGTH_LONG).show();
                     }
                 }
-            }
-            else{
+            } else {
                 Toast.makeText(ViewImageActivity.this, "Oops! Something went wrong.", Toast.LENGTH_LONG).show();
             }
 
-        },id,empCode);
+        }, id, empCode);
     }
 
-    public void sendBackToHOD(String id, String empCode){
+    public void sendBackToHOD(String id, String empCode) {
         AbnormalityServices abnormalityServices = new AbnormalityServices();
         abnormalityServices.sendBackToHOD(carotResponse -> {
-            if (carotResponse.getStatuscode() ==HttpsURLConnection.HTTP_OK){
+            if (carotResponse.getStatuscode() == HttpsURLConnection.HTTP_OK) {
                 AssignResponseModel assignResponseModel = (AssignResponseModel) carotResponse.getData();
                 if (assignResponseModel != null) {
                     if (assignResponseModel.getMessage() != null && assignResponseModel.getMessage().equals("Sucess")) {
                         Toast.makeText(ViewImageActivity.this, "Successfully Sent Back to HOD", Toast.LENGTH_LONG).show();
+                        onBackPressed();
+                    } else {
+                        Toast.makeText(ViewImageActivity.this, "Oops! Something went wrong.", Toast.LENGTH_LONG).show();
                     }
                 }
-            }
-            else{
+            } else {
                 Toast.makeText(ViewImageActivity.this, "Oops! Something went wrong.", Toast.LENGTH_LONG).show();
             }
 
-        },id,empCode);
+        }, id, empCode);
 
+    }
+
+    public void verifyclose(String id, String empCode) {
+        AbnormalityServices abnormalityServices = new AbnormalityServices();
+        abnormalityServices.verifyclose(new OnTaskComplete() {
+            @Override
+            public void onTaskComplte(CarotResponse carotResponse) {
+                if (carotResponse.getStatuscode() == HttpsURLConnection.HTTP_OK) {
+                    AssignResponseModel assignResponseModel = (AssignResponseModel) carotResponse.getData();
+                    if (assignResponseModel != null) {
+                        if (assignResponseModel.getMessage() != null && assignResponseModel.getMessage().equals("Sucess")) {
+                            Toast.makeText(ViewImageActivity.this, "Successfully verified & closed", Toast.LENGTH_LONG).show();
+                            onBackPressed();
+                        } else {
+                            Toast.makeText(ViewImageActivity.this, "Oops! Something went wrong.", Toast.LENGTH_LONG).show();
+                        }
+                    }
+                } else {
+                    Toast.makeText(ViewImageActivity.this, "Oops! Something went wrong.", Toast.LENGTH_LONG).show();
+                }
+
+            }
+        }, id, empCode);
     }
 }

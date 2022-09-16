@@ -51,6 +51,7 @@ import com.minda.sparsh.model.Business_Model;
 import com.minda.sparsh.model.CategoryAbnormality;
 import com.minda.sparsh.model.Department_Model;
 import com.minda.sparsh.model.Domain_Model;
+import com.minda.sparsh.model.GetAbnormalityImage_Model;
 import com.minda.sparsh.model.Group_Model;
 import com.minda.sparsh.model.Plant_Model;
 import com.minda.sparsh.model.Sub_Department_Model;
@@ -147,7 +148,8 @@ public class AbnormalityAddressingActivity extends AppCompatActivity {
     public static final int MY_PERMISSIONS_REQUEST_READ_EXTERNAL_STORAGE = 123;
     public static final int MY_PERMISSIONS_REQUEST_CAMERA = 1234;
     String mUserChoosenTask = "", id = "0";
-
+    AbnormalityView_Model abnormalityView_model;
+    int funcId,subdep_id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -186,6 +188,20 @@ public class AbnormalityAddressingActivity extends AppCompatActivity {
         progress.setIndeterminate(true);
         myPref = getSharedPreferences("MyPref", Context.MODE_PRIVATE);
         empCode = myPref.getString("Id", "Id");
+        if(getIntent().getParcelableExtra("ab")!=null){
+            abnormalityView_model = getIntent().getParcelableExtra("ab");
+            description = abnormalityView_model.getDescription();
+            et_descripton.setText(description);
+            et_finddate.setText(abnormalityView_model.getAbnormalityDate());
+            id = String.valueOf(abnormalityView_model.getID());
+            hitgetimageApi(abnormalityView_model.getID());
+            tv_submit.setText("UPDATE");
+        }
+        else{
+            tv_submit.setText("SUBMIT");
+
+        }
+
         if (getIntent().getStringExtra("EDOMAIN") != null && getIntent().getStringExtra("EDOMAIN").length() > 0) {
             domainid = getIntent().getStringExtra("EDOMAIN");
         } else if (getIntent().getStringExtra("EBUSINESS") != null && getIntent().getStringExtra("EBUSINESS").length() > 0) {
@@ -195,7 +211,7 @@ public class AbnormalityAddressingActivity extends AppCompatActivity {
             plantid = getIntent().getStringExtra("EPLANT");
 
         }
-        hitGetAbnormalityDetailApi(plantid, String.valueOf(sub_department), domainid, businessid);
+        hitGetAbnormalityDetailApi(plantid, String.valueOf(sub_department), domainid, businessid,empCode);
         adapterUnit = new ArrayAdapter<>(AbnormalityAddressingActivity.this, android.R.layout.simple_spinner_item,plants);
         sp_plant.setAdapter(adapterUnit);
         adapterDepartment = new ArrayAdapter<>(AbnormalityAddressingActivity.this, android.R.layout.simple_spinner_item,departments);
@@ -295,7 +311,7 @@ public class AbnormalityAddressingActivity extends AppCompatActivity {
             CategoryAbnormality categoryAbnormality = categorymodelList.get(i);
             category_id = categoryAbnormality.getId();
             categoryselected = categoryAbnormality.getCategory();
-            hitGetAbnormalityDetailApi(plantid, String.valueOf(sub_department), domainid, businessid);
+            hitGetAbnormalityDetailApi(plantid, String.valueOf(sub_department), domainid, businessid,empCode);
         });
 
         sp_business.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -335,7 +351,7 @@ public class AbnormalityAddressingActivity extends AppCompatActivity {
             Sub_Department_Model selectedItem = Subdepartmentresponse.get(i);
             sub_department = selectedItem.getID();
             sub_departmentselected = selectedItem.getDEPARTMENTDETAIL();
-            hitGetAbnormalityDetailApi(plantid, String.valueOf(sub_department), domainid, businessid);
+            hitGetAbnormalityDetailApi(plantid, String.valueOf(sub_department), domainid, businessid,empCode);
         });
      /*   sp_sdepartment.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -378,12 +394,13 @@ public class AbnormalityAddressingActivity extends AppCompatActivity {
              department = selectedItem.getDEPARTMENT();
              departmentselected = selectedItem.getDEPARTMENT();
              sp_sdepartment.setText("");
+             funcId = Integer.parseInt(selectedItem.getID());
              adapterSubDepartment = new ArrayAdapter<>(AbnormalityAddressingActivity.this, android.R.layout.simple_spinner_item, subdepartments);
              sp_sdepartment.setAdapter(adapterSubDepartment);
              adapterSubDepartment.notifyDataSetChanged();
 
              hitSubdepartmentApi(selectedItem.getID());
-             hitGetAbnormalityDetailApi(plantid, String.valueOf(sub_department), domainid, businessid);
+             hitGetAbnormalityDetailApi(plantid, String.valueOf(sub_department), domainid, businessid,empCode);
 
          }
 
@@ -464,7 +481,7 @@ public class AbnormalityAddressingActivity extends AppCompatActivity {
             plantid = Plantresponse.get(i).getUnitCode();
             plantselected = Plantresponse.get(i).getUnitName();
             hitDepartmentApi();
-            hitGetAbnormalityDetailApi(plantid, String.valueOf(sub_department), domainid, businessid);
+            hitGetAbnormalityDetailApi(plantid, String.valueOf(sub_department), domainid, businessid,empCode);
 
 
           /*  if (!plant.equalsIgnoreCase("Select Plant")) {
@@ -548,7 +565,7 @@ public class AbnormalityAddressingActivity extends AppCompatActivity {
             benefits = "";
             et_descripton.setText("");
             if (isvalid()) {
-                hitAddAbnormalityApi(id,group, domainid, businessid, plantid, String.valueOf(sub_department), sImage, description, benefits, abnormalitydate, myPref.getString("Id", ""), category_id);
+                hitAddAbnormalityApi(id,group, domainid, businessid, plantid, String.valueOf(sub_department), sImage, description, benefits, abnormalitydate, myPref.getString("Id", ""), category_id, funcId);
             }
         });
 
@@ -1274,6 +1291,16 @@ public class AbnormalityAddressingActivity extends AppCompatActivity {
                     adapterDepartment = new ArrayAdapter<>(AbnormalityAddressingActivity.this, android.R.layout.simple_spinner_item,departments);
                     sp_department.setAdapter(adapterDepartment);
                     adapterDepartment.notifyDataSetChanged();
+                    if(abnormalityView_model!=null){
+                        if(abnormalityView_model.getFunctionId()!=null) {
+                            funcId = Integer.parseInt(abnormalityView_model.getFunctionId());
+                            departmentselected = Departmentresponse.get(funcId-1).getDEPARTMENT();
+                            sp_department.setText(Departmentresponse.get(funcId-1).getDEPARTMENT());
+                            adapterDepartment.getFilter().filter(null);
+                            hitSubdepartmentApi(String.valueOf(funcId));
+                        }
+
+                    }
 //                    Department_Model department_model=new Department_Model();
 //                    department_model.setDEPARTMENT("Select Department");
 //                    Departmentresponse.add(0,department_model);
@@ -1298,12 +1325,12 @@ public class AbnormalityAddressingActivity extends AppCompatActivity {
             Toast.makeText(AbnormalityAddressingActivity.this, "Please Check Your Network Connection", Toast.LENGTH_LONG).show();
     }
 
-    public void hitAddAbnormalityApi(String id,String group, String domain, String business, String plant, String department, String imagepath, String description, String benefits, String abnormalitydate, String UploadedBy, int category) {
+    public void hitAddAbnormalityApi(String id,String group, String domain, String business, String plant, String department, String imagepath, String description, String benefits, String abnormalitydate, String UploadedBy, int category, int funcId) {
         if (Utility.isOnline(AbnormalityAddressingActivity.this)) {
             progressBar.setVisibility(View.VISIBLE);
             //   showProgress(true);
             Interface promotingMyinterface = RetrofitClient2.getClient().create(Interface.class);
-            Call<List<AddAbnormality_Model>> response = promotingMyinterface.AddAbnormality(id,RetrofitClient2.CKEY, group, domain, business, plant, department, imagepath, description, benefits, abnormalitydate, UploadedBy, category);
+            Call<List<AddAbnormality_Model>> response = promotingMyinterface.AddAbnormality(id,RetrofitClient2.CKEY, group, domain, business, plant, department, imagepath, description, benefits, abnormalitydate, UploadedBy, category,funcId);
             response.enqueue(new Callback<List<AddAbnormality_Model>>() {
                 @Override
                 public void onResponse(@NotNull Call<List<AddAbnormality_Model>> call, @NotNull Response<List<AddAbnormality_Model>> response) {
@@ -1377,6 +1404,17 @@ public class AbnormalityAddressingActivity extends AppCompatActivity {
                     adapterCategory = new ArrayAdapter<>(AbnormalityAddressingActivity.this, android.R.layout.simple_spinner_item,categories);
                     sp_category.setAdapter(adapterCategory);
                     adapterCategory.notifyDataSetChanged();
+                    if(abnormalityView_model!=null && abnormalityView_model.getCategory()!=null){
+                        CategoryAbnormality categoryAbnormality = new CategoryAbnormality();
+                        categoryAbnormality.setCategory(abnormalityView_model.getCategory());
+                        int index = categorymodelList.indexOf(categoryAbnormality);
+                        if(index>=0){
+                            category_id = categorymodelList.get(index).getId();
+                            categoryselected = abnormalityView_model.getCategory();
+                            sp_category.setText(abnormalityView_model.getCategory());
+                            adapterSubDepartment.getFilter().filter(null);
+                        }
+                       }
 
                  /*   AbnormalityCategoryAdapter departmentSpinnerAdapter = new AbnormalityCategoryAdapter(AbnormalityAddressingActivity.this, list);
                     sp_category.setAdapter(departmentSpinnerAdapter);
@@ -1394,13 +1432,13 @@ public class AbnormalityAddressingActivity extends AppCompatActivity {
 
     }
 
-    public void hitGetAbnormalityDetailApi(String plant, String department, String domain, String business) {
+    public void hitGetAbnormalityDetailApi(String plant, String department, String domain, String business,String empCode) {
         if (!getIntent().getBooleanExtra("ADD", false)) {
 
             if (Utility.isOnline(AbnormalityAddressingActivity.this)) {
                 showProgress(true);
                 Interface promotingMyinterface = RetrofitClient2.getClient().create(Interface.class);
-                Call<List<AbnormalityView_Model>> response = promotingMyinterface.GetAbnormalityDetail(RetrofitClient2.CKEY, plant, department, domain, business, category_id);
+                Call<List<AbnormalityView_Model>> response = promotingMyinterface.GetAbnormalityDetail(RetrofitClient2.CKEY, plant, department, domain, business, category_id,empCode);
                 response.enqueue(new Callback<List<AbnormalityView_Model>>() {
                     @Override
                     public void onResponse(@NotNull Call<List<AbnormalityView_Model>> call, @NotNull Response<List<AbnormalityView_Model>> response) {
@@ -1587,6 +1625,20 @@ public class AbnormalityAddressingActivity extends AppCompatActivity {
                             subdepartments.add(sub_department_model.getDEPARTMENTDETAIL());
                         }
                         adapterSubDepartment.notifyDataSetChanged();
+                        if(abnormalityView_model!=null && abnormalityView_model.getDepartment()!=null) {
+                            subdep_id = Integer.parseInt(abnormalityView_model.getDepartment());
+                            Sub_Department_Model sub_department_model = new Sub_Department_Model();
+                            sub_department_model.setID(subdep_id);
+                            int index = Subdepartmentresponse.indexOf(sub_department_model);
+                            if (index >= 0) {
+
+                                sub_department = subdep_id;
+                                sp_sdepartment.setText(Subdepartmentresponse.get(index).getDEPARTMENTDETAIL());
+                                adapterSubDepartment.getFilter().filter(null);
+                                sub_departmentselected = Subdepartmentresponse.get(index).getDEPARTMENTDETAIL();
+
+                            }
+                        }
                     }
 
 
@@ -1723,4 +1775,53 @@ public class AbnormalityAddressingActivity extends AppCompatActivity {
     public void onBackPressed() {
         finish();
     }
+    public Bitmap StringToBitMap(String encodedString) {
+        try {
+            byte[] encodeByte = Base64.decode(encodedString, Base64.DEFAULT);
+            Bitmap bitmap = BitmapFactory.decodeByteArray(encodeByte, 0, encodeByte.length);
+            return bitmap;
+        } catch (Exception e) {
+            e.getMessage();
+            return null;
+        }
+    }
+
+    public void hitgetimageApi(int id) {
+        if (Utility.isOnline(AbnormalityAddressingActivity.this)) {
+            showProgress(true);
+            Interface promotingMyinterface = RetrofitClient2.getClient().create(Interface.class);
+            Call<List<GetAbnormalityImage_Model>> response = promotingMyinterface.GetAbnormalityImage(RetrofitClient2.CKEY, id);
+            response.enqueue(new Callback<List<GetAbnormalityImage_Model>>() {
+                @Override
+                public void onResponse(@NotNull Call<List<GetAbnormalityImage_Model>> call, @NotNull Response<List<GetAbnormalityImage_Model>> response) {
+                    showProgress(false);
+                    List<GetAbnormalityImage_Model> images = response.body();
+
+                    if (images != null) {
+                        sImage = String.valueOf(images.get(0).getImagePath());
+                        Im_capture.setImageBitmap(StringToBitMap(images.get(0).getImagePath().replace(" ", "+")));
+                     //   tv_discription.setText(images.get(0).getDescription());
+                    }
+                /*    if (images.get(0).getImagePathAfter() != null && images.get(0).getImagePathAfter().length() != 0) {
+                        Im_after.setImageBitmap(StringToBitMap(images.get(0).getImagePathAfter().replace(" ", "+")));
+                        if (images.get(0).getAction() != null) {
+                            tv_action.setText(images.get(0).getAction());
+                        }
+                    } else {
+                        lay_afterimage.setVisibility(View.GONE);
+                    }
+*/
+                }
+
+                @Override
+                public void onFailure(@NotNull Call<List<GetAbnormalityImage_Model>> call, @NotNull Throwable t) {
+
+                    showProgress(false);
+
+                }
+            });
+        } else
+            Toast.makeText(AbnormalityAddressingActivity.this, "Please Check Your Network Connection", Toast.LENGTH_LONG).show();
+    }
+
 }

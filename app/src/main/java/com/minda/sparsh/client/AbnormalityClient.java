@@ -4,7 +4,6 @@ import com.minda.sparsh.model.AbnormalityNameModel;
 import com.minda.sparsh.model.AssignResponseModel;
 
 import retrofit2.Call;
-import retrofit2.http.Body;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
@@ -26,6 +25,11 @@ public interface AbnormalityClient {
     @FormUrlEncoded
     @POST("service/SendBackTOHOD")
     Call<AssignResponseModel> sendBacktoHOD(@Field("ConcernNo") String ConcernNo, @Field("EmpCode") String EmpCode);
+
+    @FormUrlEncoded
+    @POST("service/VerifyClosed")
+    Call<AssignResponseModel> verifyClose(@Field("ConcernNo") String ConcernNo, @Field("EmpCode") String EmpCode);
+
 
 
 }

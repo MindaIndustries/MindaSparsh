@@ -5,6 +5,8 @@ import android.app.DatePickerDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.os.Parcelable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -46,6 +48,9 @@ public class AbnormalityAdapter extends BaseAdapter {
     private final ProgressDialog progress;
     long time, time_target, time_update, time_abnormility, oneday = 86400000;
     private String mUserChoosenTask = "";
+    String username,empcode;
+
+    SharedPreferences myPref;
 
 
     public AbnormalityAdapter(Context applicationContext, List<AbnormalityView_Model> venueData) {
@@ -57,6 +62,10 @@ public class AbnormalityAdapter extends BaseAdapter {
         progress.setProgressStyle(ProgressDialog.STYLE_SPINNER);
         progress.setIndeterminate(true);
         time = System.currentTimeMillis();
+        myPref = applicationContext.getSharedPreferences("MyPref", Context.MODE_PRIVATE);
+        username = myPref.getString("username", "");
+        empcode = myPref.getString("Id", "Id");
+
     }
 
     public static class ViewHolder {
@@ -249,10 +258,90 @@ public class AbnormalityAdapter extends BaseAdapter {
             });
 
             holder.tv_view.setOnClickListener(view -> {
-                Intent intent = new Intent(mContext, ViewImageActivity.class);
+               /* Intent intent = new Intent(mContext, ViewImageActivity.class);
                 intent.putExtra("ID", homeData.get(position).getID());
                 intent.putExtra("Level",homeData.get(position).getFlag());
                 mContext.startActivity(intent);
+          */
+                switch(homeData.get(position).getFlag()){
+                    case "Pending at HOD":
+                        if (AbnormalityAddressingActivity.Role.equalsIgnoreCase("HOD") && homeData.get(position).getAssignedto().equals(empcode)) {
+                            if (holder.tv_test_date.getText().toString() != null && holder.tv_test_date.getText().toString().length() > 0 && !holder.tv_test_date.getText().toString().equalsIgnoreCase("Add Date")/*get(position).getTargetDate() != null*/) {
+                                Intent intent = new Intent(mContext, AbnormalityAddressing2Activity.class);
+                                intent.putExtra("ID", homeData.get(position).getID());
+                                intent.putExtra("domain", homeData.get(position).getDomain());
+                                intent.putExtra("business", homeData.get(position).getBusinessName());
+                                intent.putExtra("plant", homeData.get(position).getPlantName());
+                                intent.putExtra("department", homeData.get(position).getDepartmentName());
+                                mContext.startActivity(intent);
+                                AbnormalityAddressingActivity context = (AbnormalityAddressingActivity) mContext;
+                                context.finish();
+                            }
+
+                            else{
+                                Intent intent = new Intent(mContext, ViewImageActivity.class);
+                                intent.putExtra("ID", homeData.get(position).getID());
+                                intent.putExtra("Level",homeData.get(position).getFlag());
+                                intent.putExtra("assignedto", homeData.get(position).getAssignedto());
+                                mContext.startActivity(intent);
+
+                            }
+
+                        }else {
+                            Intent intent = new Intent(mContext, ViewImageActivity.class);
+                            intent.putExtra("ID", homeData.get(position).getID());
+                            intent.putExtra("Level",homeData.get(position).getFlag());
+                            mContext.startActivity(intent);
+
+                            // Snackbar.make(view, "Please Set Target Date First", Snackbar.LENGTH_LONG).show();
+                        }
+                        break;
+                    case "Pending at Best Cordinator - L1":
+                        Intent intent = new Intent(mContext, ViewImageActivity.class);
+                        intent.putExtra("ID", homeData.get(position).getID());
+                        intent.putExtra("Level",homeData.get(position).getFlag());
+                        mContext.startActivity(intent);
+                        break;
+                    case "Pending at Best Cordinator - L2":
+
+                        if(AbnormalityAddressingActivity.Role.equalsIgnoreCase("C")) {
+                            Intent intent1 = new Intent(mContext, ViewImageActivity.class);
+                            intent1.putExtra("ID", homeData.get(position).getID());
+                            intent1.putExtra("Level", homeData.get(position).getFlag());
+                            mContext.startActivity(intent1);
+                        }
+                        else{
+                            Intent intent1 = new Intent(mContext, ViewImageActivity.class);
+                            intent1.putExtra("ID", homeData.get(position).getID());
+                            intent1.putExtra("Level", homeData.get(position).getFlag());
+                            mContext.startActivity(intent1);
+
+                        }
+                        break;
+                    case "Pending at User":
+                        if(username.equalsIgnoreCase(homeData.get(position).getUploadedBy())){
+                            Intent intent4 = new Intent(mContext, AbnormalityAddressingActivity.class);
+                            intent4.putExtra("ab", (Parcelable) homeData.get(position));
+                            intent4.putExtra("ADD", true);
+                            mContext.startActivity(intent4);
+                        }
+                        else{
+                            Intent intent3 = new Intent(mContext, ViewImageActivity.class);
+                            intent3.putExtra("ID", homeData.get(position).getID());
+                            intent3.putExtra("Level",homeData.get(position).getFlag());
+                            intent3.putExtra("uploadedby",homeData.get(position).getUploadedBy());
+                            mContext.startActivity(intent3);
+                        }
+                        break;
+                    case "Closed":
+                        Intent intent3 = new Intent(mContext, ViewImageActivity.class);
+                        intent3.putExtra("ID", homeData.get(position).getID());
+                        intent3.putExtra("Level",homeData.get(position).getFlag());
+                        mContext.startActivity(intent3);
+                        break;
+
+                }
+
             });
 
             holder.tv_test_date.setOnClickListener(view -> {
@@ -272,17 +361,6 @@ public class AbnormalityAdapter extends BaseAdapter {
             });
             //"\n" + promotionData.get(position).getEventDate());
 
-            switch(homeData.get(position).getFlag()){
-                case "Pending at HOD":
-                    break;
-                case "Pending at Best Cordinator":
-                    break;
-                case "Pending at User":
-                    break;
-                case "Closed":
-                    break;
-
-            }
 
         }
 
