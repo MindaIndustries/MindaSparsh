@@ -72,8 +72,7 @@ public class ViewImageActivity extends AppCompatActivity {
     TextInputEditText remarks;
     String assignedEmp, action, level;
     String username;
-    String uploadedby,assigntovalue;
-
+    String uploadedby, assigntovalue;
 
 
     @Override
@@ -112,11 +111,11 @@ public class ViewImageActivity extends AppCompatActivity {
         if (getIntent().getExtras() != null) {
             AbnormalID = getIntent().getIntExtra("ID", 0);
             level = getIntent().getStringExtra("Level");
-            if(getIntent().getStringExtra("uploadedby")!=null){
+            if (getIntent().getStringExtra("uploadedby") != null) {
                 uploadedby = getIntent().getStringExtra("uploadedby");
             }
 
-            if(getIntent().getStringExtra("assignedto")!=null){
+            if (getIntent().getStringExtra("assignedto") != null) {
                 assigntovalue = getIntent().getStringExtra("assignedto");
             }
 
@@ -131,33 +130,30 @@ public class ViewImageActivity extends AppCompatActivity {
             } else {
                 action_layout.setVisibility(View.GONE);
             }
-        } else if (level.equalsIgnoreCase("Pending at Best Cordinator - L1")) {
+        } else if (level.equalsIgnoreCase("Pending for assigning at BEST Coordinator")) {
             if (AbnormalityAddressingActivity.Role.equalsIgnoreCase("C")) {
                 action_layout.setVisibility(View.VISIBLE);
                 actionName.add("Assign");
                 actionName.add("Send Back to Initiator");
-            }
-            else{
+            } else {
                 action_layout.setVisibility(View.GONE);
 
             }
-        } else if (level.equalsIgnoreCase("Pending at Best Cordinator - L2")) {
+        } else if (level.equalsIgnoreCase("Pending for approval at BEST Coordinator to be defined")) {
             if (AbnormalityAddressingActivity.Role.equalsIgnoreCase("C")) {
                 actionName.add("Verify & Close");
                 actionName.add("Send Back to HOD");
                 action_layout.setVisibility(View.VISIBLE);
-            }
-            else{
+            } else {
                 action_layout.setVisibility(View.GONE);
             }
 
         } else if (level.equalsIgnoreCase("Pending at User")) {
-            if(username.equalsIgnoreCase(uploadedby)) {
+            if (username.equalsIgnoreCase(uploadedby)) {
                 actionName.add("Update");
                 action_layout.setVisibility(View.VISIBLE);
 
-            }
-            else{
+            } else {
                 action_layout.setVisibility(View.GONE);
 
             }
@@ -212,14 +208,11 @@ public class ViewImageActivity extends AppCompatActivity {
           */
             if (action.equalsIgnoreCase("Assign")) {
                 assignAbnormality(String.valueOf(AbnormalID), empCode, targetDate.getText().toString(), remarks.getText().toString(), assignedEmp);
-            }
-          else if (action.equalsIgnoreCase("Verify & Close")) {
+            } else if (action.equalsIgnoreCase("Verify & Close")) {
                 verifyclose(String.valueOf(AbnormalID), empCode);
-            }
-          else if(action.equalsIgnoreCase("Send Back to HOD")){
+            } else if (action.equalsIgnoreCase("Send Back to HOD")) {
                 sendBackToHOD(String.valueOf(AbnormalID), empCode);
-            }
-          else {
+            } else {
                 sendBackToUser(String.valueOf(AbnormalID), empCode);
             }
         });

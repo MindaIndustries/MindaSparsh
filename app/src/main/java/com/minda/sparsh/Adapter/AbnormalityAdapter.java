@@ -296,13 +296,13 @@ public class AbnormalityAdapter extends BaseAdapter {
                             // Snackbar.make(view, "Please Set Target Date First", Snackbar.LENGTH_LONG).show();
                         }
                         break;
-                    case "Pending at Best Cordinator - L1":
+                    case "Pending for assigning at BEST Coordinator":
                         Intent intent = new Intent(mContext, ViewImageActivity.class);
                         intent.putExtra("ID", homeData.get(position).getID());
                         intent.putExtra("Level",homeData.get(position).getFlag());
                         mContext.startActivity(intent);
                         break;
-                    case "Pending at Best Cordinator - L2":
+                    case "Pending for approval at BEST Coordinator to be defined":
 
                         if(AbnormalityAddressingActivity.Role.equalsIgnoreCase("C")) {
                             Intent intent1 = new Intent(mContext, ViewImageActivity.class);
