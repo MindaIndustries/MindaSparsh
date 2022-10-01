@@ -20,16 +20,19 @@ public interface AbnormalityClient {
 
     @FormUrlEncoded
     @POST("service/SendBackTOUser")
-    Call<AssignResponseModel> sendBacktoUser(@Field("ConcernNo") String ConcernNo, @Field("EmpCode") String EmpCode);
+    Call<AssignResponseModel> sendBacktoUser(@Field("ConcernNo") String ConcernNo, @Field("EmpCode") String EmpCode, @Field("Remark") String Remark );
 
     @FormUrlEncoded
     @POST("service/SendBackTOHOD")
-    Call<AssignResponseModel> sendBacktoHOD(@Field("ConcernNo") String ConcernNo, @Field("EmpCode") String EmpCode);
+    Call<AssignResponseModel> sendBacktoHOD(@Field("ConcernNo") String ConcernNo, @Field("EmpCode") String EmpCode, @Field("Remark") String Remark);
 
     @FormUrlEncoded
     @POST("service/VerifyClosed")
-    Call<AssignResponseModel> verifyClose(@Field("ConcernNo") String ConcernNo, @Field("EmpCode") String EmpCode);
+    Call<AssignResponseModel> verifyClose(@Field("ConcernNo") String ConcernNo, @Field("EmpCode") String EmpCode, @Field("Remark") String Remark);
 
+    @FormUrlEncoded
+    @POST("service/DeleteConcern")
+    Call<AssignResponseModel> deleteAbnormality(@Field("Empcode") String Empcode, @Field("concernno") String concerno);
 
 
 }

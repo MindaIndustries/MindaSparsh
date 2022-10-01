@@ -45,8 +45,11 @@ import com.google.android.material.textfield.TextInputEditText;
 import com.minda.sparsh.Adapter.AbnormalityAdapter;
 import com.minda.sparsh.Adapter.BusinessSpinnerAdapter;
 import com.minda.sparsh.Adapter.DomainSpinnerAdapter;
+import com.minda.sparsh.listener.CarotResponse;
+import com.minda.sparsh.listener.OnTaskComplete;
 import com.minda.sparsh.model.AbnormalityView_Model;
 import com.minda.sparsh.model.AddAbnormality_Model;
+import com.minda.sparsh.model.AssignResponseModel;
 import com.minda.sparsh.model.Business_Model;
 import com.minda.sparsh.model.CategoryAbnormality;
 import com.minda.sparsh.model.Department_Model;
@@ -56,6 +59,7 @@ import com.minda.sparsh.model.Group_Model;
 import com.minda.sparsh.model.Plant_Model;
 import com.minda.sparsh.model.Sub_Department_Model;
 import com.minda.sparsh.model.UserDetail_Model;
+import com.minda.sparsh.services.AbnormalityServices;
 import com.minda.sparsh.util.AbnormalityDashboard;
 import com.minda.sparsh.util.FileCompressor;
 import com.minda.sparsh.util.RetrofitClient2;
@@ -93,7 +97,7 @@ public class AbnormalityAddressingActivity extends AppCompatActivity {
     LinearLayout lay_two, lay_one, lay_out;
     TextView tv_view, tv_add, tv_upload;
     TextInputEditText et_finddate;
-    Button tv_submit;
+    Button tv_submit,tv_delete;
     ImageView Im_capture, im_back;
     Uri picUri = null;
     Bitmap myBitmap;
@@ -146,7 +150,7 @@ public class AbnormalityAddressingActivity extends AppCompatActivity {
     private File mDestinationFile;
     public static final int MY_PERMISSIONS_REQUEST_READ_EXTERNAL_STORAGE = 123;
     public static final int MY_PERMISSIONS_REQUEST_CAMERA = 1234;
-    String mUserChoosenTask = "", id = "0";
+    String mUserChoosenTask = "", AbnormalID = "0";
     AbnormalityView_Model abnormalityView_model;
     int funcId,subdep_id;
 
@@ -180,6 +184,7 @@ public class AbnormalityAddressingActivity extends AppCompatActivity {
         et_finddate = findViewById(R.id.et_finddate);
         et_descripton = findViewById(R.id.et_descripton);
         tv_submit = findViewById(R.id.tv_submit);
+        tv_delete = findViewById(R.id.tv_delete);
         im_back = findViewById(R.id.im_back);
         progress = new ProgressDialog(this);
         progress.setMessage("Please wait...");
@@ -187,17 +192,19 @@ public class AbnormalityAddressingActivity extends AppCompatActivity {
         progress.setIndeterminate(true);
         myPref = getSharedPreferences("MyPref", Context.MODE_PRIVATE);
         empCode = myPref.getString("Id", "Id");
-        if(getIntent().getParcelableExtra("ab")!=null){
+       /* if(getIntent().getParcelableExtra("ab")!=null){
             abnormalityView_model = getIntent().getParcelableExtra("ab");
             description = abnormalityView_model.getDescription();
             et_descripton.setText(description);
             et_finddate.setText(abnormalityView_model.getAbnormalityDate());
-            id = String.valueOf(abnormalityView_model.getID());
+            AbnormalID = String.valueOf(abnormalityView_model.getID());
             hitgetimageApi(abnormalityView_model.getID());
             tv_submit.setText("UPDATE");
+            tv_delete.setVisibility(View.VISIBLE);
         }
         else{
             tv_submit.setText("SUBMIT");
+            tv_delete.setVisibility(View.GONE);
 
         }
 
@@ -211,7 +218,7 @@ public class AbnormalityAddressingActivity extends AppCompatActivity {
 
         }
         hitGetAbnormalityDetailApi(plantid, String.valueOf(sub_department), domainid, businessid,empCode);
-        adapterUnit = new ArrayAdapter<>(AbnormalityAddressingActivity.this, android.R.layout.simple_spinner_item,plants);
+       */ adapterUnit = new ArrayAdapter<>(AbnormalityAddressingActivity.this, android.R.layout.simple_spinner_item,plants);
         sp_plant.setAdapter(adapterUnit);
         adapterDepartment = new ArrayAdapter<>(AbnormalityAddressingActivity.this, android.R.layout.simple_spinner_item,departments);
         sp_department.setAdapter(adapterDepartment);
@@ -407,13 +414,19 @@ public class AbnormalityAddressingActivity extends AppCompatActivity {
         Im_capture.setOnClickListener(view -> {
             selectFile();
         });
+        tv_delete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                showdialog();
+            }
+        });
         tv_submit.setOnClickListener(view -> {
             description = et_descripton.getText().toString();
             abnormalitydate = et_finddate.getText().toString();
             benefits = "";
             et_descripton.setText("");
             if (isvalid()) {
-                hitAddAbnormalityApi(id,group, domainid, businessid, plantid, String.valueOf(sub_department), sImage, description, benefits, abnormalitydate, myPref.getString("Id", ""), category_id, funcId);
+                hitAddAbnormalityApi(AbnormalID,group, domainid, businessid, plantid, String.valueOf(sub_department), sImage, description, benefits, abnormalitydate, myPref.getString("Id", ""), category_id, funcId);
             }
         });
 
@@ -811,6 +824,40 @@ public class AbnormalityAddressingActivity extends AppCompatActivity {
             width = (int) (height * bitmapRatio);
         }
         return Bitmap.createScaledBitmap(image, width, height, true);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        myPref = getSharedPreferences("MyPref", Context.MODE_PRIVATE);
+        empCode = myPref.getString("Id", "Id");
+        if(getIntent().getParcelableExtra("ab")!=null){
+            abnormalityView_model = getIntent().getParcelableExtra("ab");
+            description = abnormalityView_model.getDescription();
+            et_descripton.setText(description);
+            et_finddate.setText(abnormalityView_model.getAbnormalityDate());
+            AbnormalID = String.valueOf(abnormalityView_model.getID());
+            hitgetimageApi(abnormalityView_model.getID());
+            tv_submit.setText("UPDATE");
+            tv_delete.setVisibility(View.VISIBLE);
+        }
+        else{
+            tv_submit.setText("SUBMIT");
+            tv_delete.setVisibility(View.GONE);
+
+        }
+
+        if (getIntent().getStringExtra("EDOMAIN") != null && getIntent().getStringExtra("EDOMAIN").length() > 0) {
+            domainid = getIntent().getStringExtra("EDOMAIN");
+        } else if (getIntent().getStringExtra("EBUSINESS") != null && getIntent().getStringExtra("EBUSINESS").length() > 0) {
+            businessid = getIntent().getStringExtra("EBUSINESS");
+
+        } else {
+            plantid = getIntent().getStringExtra("EPLANT");
+
+        }
+        hitGetAbnormalityDetailApi(plantid, String.valueOf(sub_department), domainid, businessid,empCode);
+
     }
 
     public void hitGroupApi() {
@@ -1355,23 +1402,20 @@ public class AbnormalityAddressingActivity extends AppCompatActivity {
 
     public void showdialog() {
         final AlertDialog.Builder builder1 = new AlertDialog.Builder(AbnormalityAddressingActivity.this);
-        builder1.setMessage("Select View Or Add For Move Ahead");
+        builder1.setMessage("Do you want to delete this abnormality?");
         builder1.setTitle("Abnormality");
         builder1.setOnCancelListener(dialogInterface -> finish());
 
         builder1.setPositiveButton(
-                "Add",
+                "Yes",
                 (dialog, id) -> {
-                    setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-                    checkorentation();
-                    dialog.dismiss();
+                   deleteAbnormality(empCode, AbnormalID);
+                       dialog.dismiss();
                 });
 
         builder1.setNegativeButton(
-                "View",
+                "No",
                 (dialog, id) -> {
-                    setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
-                    checkorentation();
                     dialog.dismiss();
                 });
 
@@ -1453,4 +1497,27 @@ public class AbnormalityAddressingActivity extends AppCompatActivity {
             Toast.makeText(AbnormalityAddressingActivity.this, "Please Check Your Network Connection", Toast.LENGTH_LONG).show();
     }
 
+
+    public void deleteAbnormality(String Empcode, String concernNo){
+        AbnormalityServices abnormalityServices = new AbnormalityServices();
+        abnormalityServices.deleteAbnormality(new OnTaskComplete() {
+            @Override
+            public void onTaskComplte(CarotResponse carotResponse) {
+                if(carotResponse.getStatuscode() == HttpsURLConnection.HTTP_OK){
+                    AssignResponseModel assignResponseModel = (AssignResponseModel) carotResponse.getData();
+                    if (assignResponseModel != null) {
+                        if (assignResponseModel.getMessage() != null && assignResponseModel.getMessage().equals("Sucess")) {
+                            Toast.makeText(AbnormalityAddressingActivity.this, "Successfully Deleted", Toast.LENGTH_LONG).show();
+                            onBackPressed();
+                        } else {
+                            Toast.makeText(AbnormalityAddressingActivity.this, "Oops! Something went wrong.", Toast.LENGTH_LONG).show();
+                        }
+                    }
+                } else {
+                    Toast.makeText(AbnormalityAddressingActivity.this, "Oops! Something went wrong.", Toast.LENGTH_LONG).show();
+            }
+            }
+        },Empcode,concernNo);
+
+    }
 }

@@ -34,6 +34,7 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.minda.sparsh.model.AddAbnormality_Model;
+import com.minda.sparsh.model.GetAbnormalityImage_Model;
 import com.minda.sparsh.util.FileCompressor;
 import com.minda.sparsh.util.RetrofitClient2;
 import com.minda.sparsh.util.Utility;
@@ -93,6 +94,8 @@ public class AbnormalityAddressing2Activity extends AppCompatActivity {
     public static final int MY_PERMISSIONS_REQUEST_READ_EXTERNAL_STORAGE = 123;
     public static final int MY_PERMISSIONS_REQUEST_CAMERA = 1234;
     String mUserChoosenTask = "";
+    ImageView Im_before;
+    TextView tv_discription;
 
 
     @Override
@@ -100,6 +103,9 @@ public class AbnormalityAddressing2Activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_abnormality_addressing2);
         tv_upload =  findViewById(R.id.tv_upload);
+        Im_before = findViewById(R.id.Im_before);
+        tv_discription = findViewById(R.id.tv_discription);
+
         tv_Department =  findViewById(R.id.tv_Department);
         tv_plant =  findViewById(R.id.tv_plant);
         tv_business =  findViewById(R.id.tv_business);
@@ -113,7 +119,7 @@ public class AbnormalityAddressing2Activity extends AppCompatActivity {
             tv_plant.setText(getIntent().getStringExtra("plant"));
             tv_business.setText(getIntent().getStringExtra("business"));
             tv_domain.setText(getIntent().getStringExtra("domain"));
-
+            hitgetimageApi(AbnormalID);
         }
         cameraPermission = registerForActivityResult(new ActivityResultContracts.RequestPermission(), result -> {
             if(result){
@@ -203,6 +209,55 @@ public class AbnormalityAddressing2Activity extends AppCompatActivity {
 
         });
     }
+
+    public Bitmap StringToBitMap(String encodedString) {
+        try {
+            byte[] encodeByte = Base64.decode(encodedString, Base64.DEFAULT);
+            Bitmap bitmap = BitmapFactory.decodeByteArray(encodeByte, 0, encodeByte.length);
+            return bitmap;
+        } catch (Exception e) {
+            e.getMessage();
+            return null;
+        }
+    }
+
+    public void hitgetimageApi(int id) {
+        if (Utility.isOnline(AbnormalityAddressing2Activity.this)) {
+            showProgress(true);
+            Interface promotingMyinterface = RetrofitClient2.getClient().create(Interface.class);
+            Call<List<GetAbnormalityImage_Model>> response = promotingMyinterface.GetAbnormalityImage(RetrofitClient2.CKEY, id);
+            response.enqueue(new Callback<List<GetAbnormalityImage_Model>>() {
+                @Override
+                public void onResponse(@NotNull Call<List<GetAbnormalityImage_Model>> call, @NotNull Response<List<GetAbnormalityImage_Model>> response) {
+                    showProgress(false);
+                    List<GetAbnormalityImage_Model> images = response.body();
+
+                    if (images != null) {
+                        Im_before.setImageBitmap(StringToBitMap(images.get(0).getImagePath().replace(" ", "+")));
+                        tv_discription.setText(images.get(0).getDescription());
+                    }
+                    if (images.get(0).getImagePathAfter() != null && images.get(0).getImagePathAfter().length() != 0) {
+                  //      Im_after.setImageBitmap(StringToBitMap(images.get(0).getImagePathAfter().replace(" ", "+")));
+                        if (images.get(0).getAction() != null) {
+                   //         tv_action.setText(images.get(0).getAction());
+                        }
+                    } else {
+                     //   lay_afterimage.setVisibility(View.GONE);
+                    }
+
+                }
+
+                @Override
+                public void onFailure(@NotNull Call<List<GetAbnormalityImage_Model>> call, @NotNull Throwable t) {
+
+                    showProgress(false);
+
+                }
+            });
+        } else
+            Toast.makeText(AbnormalityAddressing2Activity.this, "Please Check Your Network Connection", Toast.LENGTH_LONG).show();
+    }
+
     private void onSelectFromGalleryResult(Intent data) {
         Bitmap bm = null;
         File f = null;

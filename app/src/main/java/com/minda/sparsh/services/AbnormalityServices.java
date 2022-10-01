@@ -66,9 +66,9 @@ public class AbnormalityServices {
             }
         });
     }
-    public void sendBackToUser(OnTaskComplete onTaskComplete, String ConcernNo, String EmpCode){
+    public void sendBackToUser(OnTaskComplete onTaskComplete, String ConcernNo, String EmpCode, String remark){
         AbnormalityClient abnormalityClient = RetrofitClient2.getClientScanQR(AbnormalityClient.class);
-        Call<AssignResponseModel> call = abnormalityClient.sendBacktoUser(ConcernNo,EmpCode);
+        Call<AssignResponseModel> call = abnormalityClient.sendBacktoUser(ConcernNo,EmpCode, remark);
         call.enqueue(new Callback<AssignResponseModel>() {
             @Override
             public void onResponse(Call<AssignResponseModel> call, Response<AssignResponseModel> response) {
@@ -90,34 +90,9 @@ public class AbnormalityServices {
             }
         });
     }
-    public void sendBackToHOD(OnTaskComplete onTaskComplete, String ConcernNo, String EmpCode){
+    public void sendBackToHOD(OnTaskComplete onTaskComplete, String ConcernNo, String EmpCode, String remark){
         AbnormalityClient abnormalityClient = RetrofitClient2.getClientScanQR(AbnormalityClient.class);
-        Call<AssignResponseModel> call = abnormalityClient.sendBacktoHOD(ConcernNo,EmpCode);
-        call.enqueue(new Callback<AssignResponseModel>() {
-            @Override
-            public void onResponse(Call<AssignResponseModel> call, Response<AssignResponseModel> response) {
-                CarotResponse carotResponse = new CarotResponse();
-                carotResponse.setStatuscode(response.code());
-                if (response.code() == HttpsURLConnection.HTTP_OK) {
-                    carotResponse.setData(response.body());
-                }
-                onTaskComplete.onTaskComplte(carotResponse);
-            }
-
-            @Override
-            public void onFailure(Call<AssignResponseModel> call, Throwable t) {
-                CarotResponse carotResponse = new CarotResponse();
-                if (t instanceof IOException) {
-                    carotResponse.setMessage("Please hold on a moment, the internet connectivity seems to be slow");
-                }
-                onTaskComplete.onTaskComplte(carotResponse);
-            }
-        });
-    }
-
-    public void verifyclose(OnTaskComplete onTaskComplete, String ConcernNo, String EmpCode){
-        AbnormalityClient abnormalityClient = RetrofitClient2.getClientScanQR(AbnormalityClient.class);
-        Call<AssignResponseModel> call = abnormalityClient.verifyClose(ConcernNo,EmpCode);
+        Call<AssignResponseModel> call = abnormalityClient.sendBacktoHOD(ConcernNo,EmpCode, remark);
         call.enqueue(new Callback<AssignResponseModel>() {
             @Override
             public void onResponse(Call<AssignResponseModel> call, Response<AssignResponseModel> response) {
@@ -140,4 +115,53 @@ public class AbnormalityServices {
         });
     }
 
+    public void verifyclose(OnTaskComplete onTaskComplete, String ConcernNo, String EmpCode, String remark){
+        AbnormalityClient abnormalityClient = RetrofitClient2.getClientScanQR(AbnormalityClient.class);
+        Call<AssignResponseModel> call = abnormalityClient.verifyClose(ConcernNo,EmpCode,remark);
+        call.enqueue(new Callback<AssignResponseModel>() {
+            @Override
+            public void onResponse(Call<AssignResponseModel> call, Response<AssignResponseModel> response) {
+                CarotResponse carotResponse = new CarotResponse();
+                carotResponse.setStatuscode(response.code());
+                if (response.code() == HttpsURLConnection.HTTP_OK) {
+                    carotResponse.setData(response.body());
+                }
+                onTaskComplete.onTaskComplte(carotResponse);
+            }
+
+            @Override
+            public void onFailure(Call<AssignResponseModel> call, Throwable t) {
+                CarotResponse carotResponse = new CarotResponse();
+                if (t instanceof IOException) {
+                    carotResponse.setMessage("Please hold on a moment, the internet connectivity seems to be slow");
+                }
+                onTaskComplete.onTaskComplte(carotResponse);
+            }
+        });
+    }
+
+    public void deleteAbnormality(OnTaskComplete onTaskComplete, String Empcode, String concerno){
+        AbnormalityClient abnormalityClient = RetrofitClient2.getClientScanQR(AbnormalityClient.class);
+        Call<AssignResponseModel> call = abnormalityClient.deleteAbnormality(Empcode, concerno);
+        call.enqueue(new Callback<AssignResponseModel>() {
+            @Override
+            public void onResponse(Call<AssignResponseModel> call, Response<AssignResponseModel> response) {
+                CarotResponse carotResponse = new CarotResponse();
+                carotResponse.setStatuscode(response.code());
+                if (response.code() == HttpsURLConnection.HTTP_OK) {
+                    carotResponse.setData(response.body());
+                }
+                onTaskComplete.onTaskComplte(carotResponse);
+            }
+
+            @Override
+            public void onFailure(Call<AssignResponseModel> call, Throwable t) {
+                CarotResponse carotResponse = new CarotResponse();
+                if (t instanceof IOException) {
+                    carotResponse.setMessage("Please hold on a moment, the internet connectivity seems to be slow");
+                }
+                onTaskComplete.onTaskComplte(carotResponse);
+            }
+        });
+    }
 }

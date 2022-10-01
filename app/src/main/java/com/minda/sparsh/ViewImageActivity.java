@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.opengl.Visibility;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -59,6 +60,7 @@ public class ViewImageActivity extends AppCompatActivity {
     TextInputLayout assignto;
     AppCompatAutoCompleteTextView assignedto;
     Button submit;
+    TextInputLayout customSpinnerLayout1;
     LinearLayout action_layout;
 
     DatePickerDialog datePicker;
@@ -73,7 +75,7 @@ public class ViewImageActivity extends AppCompatActivity {
     String assignedEmp, action, level;
     String username;
     String uploadedby, assigntovalue;
-
+    TextView tv_action_dt, benefits;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -85,6 +87,8 @@ public class ViewImageActivity extends AppCompatActivity {
         tv_discription = findViewById(R.id.tv_discription);
         lay_afterimage = findViewById(R.id.lay_afterimage);
         tv_action = findViewById(R.id.tv_action);
+        benefits = findViewById(R.id.benefits);
+        tv_action_dt = findViewById(R.id.tv_action_dt);
         actionSpinner = findViewById(R.id.action_spinner);
         targetDate = findViewById(R.id.date);
         assignto = findViewById(R.id.assigned_to);
@@ -95,7 +99,7 @@ public class ViewImageActivity extends AppCompatActivity {
         myPref = getSharedPreferences("MyPref", Context.MODE_PRIVATE);
         empCode = myPref.getString("Id", "Id");
         username = myPref.getString("username", "");
-
+        customSpinnerLayout1 = findViewById(R.id.customSpinnerLayout1);
 
         initDatePicker();
         targetDate.setOnTouchListener((view, motionEvent) -> {
@@ -190,9 +194,17 @@ public class ViewImageActivity extends AppCompatActivity {
             action = actionName.get(i);
             if (actionName.get(i).equalsIgnoreCase("Assign")) {
                 assignto.setVisibility(View.VISIBLE);
+                targetDate.setVisibility(View.VISIBLE);
+                customSpinnerLayout1.setVisibility(View.VISIBLE);
             } else if (actionName.get(i).equalsIgnoreCase("closed")) {
 
-            } else {
+            }
+            else if(actionName.get(i).contains("Send Back")){
+                targetDate.setVisibility(View.GONE);
+                customSpinnerLayout1.setVisibility(View.GONE);
+                assignto.setVisibility(View.GONE);
+            }
+            else {
                 assignto.setVisibility(View.GONE);
             }
         });
@@ -202,18 +214,18 @@ public class ViewImageActivity extends AppCompatActivity {
                 Toast.makeText(ViewImageActivity.this, "Enter Target Date", Toast.LENGTH_LONG).show();
                 return;
             }
-          /*  if(remarks.getText().toString().length()==0){
+            if(remarks.getVisibility() == View.VISIBLE &&remarks.getText().toString().length()==0){
                 Toast.makeText(ViewImageActivity.this, "Enter Target Date", Toast.LENGTH_LONG).show();
+                return;
             }
-          */
             if (action.equalsIgnoreCase("Assign")) {
                 assignAbnormality(String.valueOf(AbnormalID), empCode, targetDate.getText().toString(), remarks.getText().toString(), assignedEmp);
             } else if (action.equalsIgnoreCase("Verify & Close")) {
-                verifyclose(String.valueOf(AbnormalID), empCode);
+                verifyclose(String.valueOf(AbnormalID), empCode, remarks.getText().toString());
             } else if (action.equalsIgnoreCase("Send Back to HOD")) {
-                sendBackToHOD(String.valueOf(AbnormalID), empCode);
+                sendBackToHOD(String.valueOf(AbnormalID), empCode,remarks.getText().toString());
             } else {
-                sendBackToUser(String.valueOf(AbnormalID), empCode);
+                sendBackToUser(String.valueOf(AbnormalID), empCode, remarks.getText().toString());
             }
         });
 
@@ -294,6 +306,8 @@ public class ViewImageActivity extends AppCompatActivity {
                         Im_after.setImageBitmap(StringToBitMap(images.get(0).getImagePathAfter().replace(" ", "+")));
                         if (images.get(0).getAction() != null) {
                             tv_action.setText(images.get(0).getAction());
+                            tv_action_dt.setText(images.get(0).getImplementationDate());
+                            benefits.setText(images.get(0).getBenefits());
                         }
                     } else {
                         lay_afterimage.setVisibility(View.GONE);
@@ -385,7 +399,7 @@ public class ViewImageActivity extends AppCompatActivity {
         }, id, empCode, targetDate, remark, assignTo);
     }
 
-    public void sendBackToUser(String id, String empCode) {
+    public void sendBackToUser(String id, String empCode, String remarks) {
         AbnormalityServices abnormalityServices = new AbnormalityServices();
         abnormalityServices.sendBackToUser(carotResponse -> {
             if (carotResponse.getStatuscode() == HttpsURLConnection.HTTP_OK) {
@@ -402,10 +416,10 @@ public class ViewImageActivity extends AppCompatActivity {
                 Toast.makeText(ViewImageActivity.this, "Oops! Something went wrong.", Toast.LENGTH_LONG).show();
             }
 
-        }, id, empCode);
+        }, id, empCode, remarks);
     }
 
-    public void sendBackToHOD(String id, String empCode) {
+    public void sendBackToHOD(String id, String empCode, String remarks) {
         AbnormalityServices abnormalityServices = new AbnormalityServices();
         abnormalityServices.sendBackToHOD(carotResponse -> {
             if (carotResponse.getStatuscode() == HttpsURLConnection.HTTP_OK) {
@@ -422,11 +436,11 @@ public class ViewImageActivity extends AppCompatActivity {
                 Toast.makeText(ViewImageActivity.this, "Oops! Something went wrong.", Toast.LENGTH_LONG).show();
             }
 
-        }, id, empCode);
+        }, id, empCode, remarks);
 
     }
 
-    public void verifyclose(String id, String empCode) {
+    public void verifyclose(String id, String empCode, String remarks) {
         AbnormalityServices abnormalityServices = new AbnormalityServices();
         abnormalityServices.verifyclose(new OnTaskComplete() {
             @Override
@@ -446,6 +460,6 @@ public class ViewImageActivity extends AppCompatActivity {
                 }
 
             }
-        }, id, empCode);
+        }, id, empCode, remarks);
     }
 }
