@@ -775,13 +775,13 @@ public class AbnormalityAddressing2Activity extends AppCompatActivity {
 
                     if (Departmentresponse != null && Departmentresponse.size() > 0) {
                         if (Departmentresponse.get(0).getColumn1().equalsIgnoreCase("success")) {
-                            Toast.makeText(AbnormalityAddressing2Activity.this, "Date Save Successfully", Toast.LENGTH_LONG).show();
-
-                            Intent intent = new Intent(AbnormalityAddressing2Activity.this, AbnormalityAddressingActivity.class);
+                         //   Toast.makeText(AbnormalityAddressing2Activity.this, "Date Save Successfully", Toast.LENGTH_LONG).show();
+                            showMsg("Abnormaity Updated Successfully","Success");
+                         /*   Intent intent = new Intent(AbnormalityAddressing2Activity.this, AbnormalityAddressingActivity.class);
                             intent.putExtra("ADD", false);
                             startActivity(intent);
                             finish();
-
+*/
 
                         } else {
                             Toast.makeText(AbnormalityAddressing2Activity.this, "Something went wrong", Toast.LENGTH_LONG).show();
@@ -802,4 +802,20 @@ public class AbnormalityAddressing2Activity extends AppCompatActivity {
         } else
             Toast.makeText(AbnormalityAddressing2Activity.this, "Please Check Your Network Connection", Toast.LENGTH_LONG).show();
     }
+    public void showMsg(String msg, String title) {
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
+        alertDialogBuilder.setMessage(msg);
+        alertDialogBuilder.setTitle(title);
+
+        alertDialogBuilder.setPositiveButton("Ok", (arg0, arg1) -> {
+            arg0.dismiss();
+            onBackPressed();
+        });
+
+        //alertDialogBuilder.setNegativeButton("Cancel", (dialog, which) -> dialog.dismiss());
+
+        AlertDialog alertDialog = alertDialogBuilder.create();
+        alertDialog.show();
+    }
+
 }

@@ -1107,9 +1107,9 @@ public class AbnormalityAddressingActivity extends AppCompatActivity {
 
                     if (Departmentresponse != null) {
                         if (Departmentresponse.get(0).getColumn1().equalsIgnoreCase("success")) {
-                            Toast.makeText(AbnormalityAddressingActivity.this, "Data saved successfully", Toast.LENGTH_LONG).show();
+                  //          Toast.makeText(AbnormalityAddressingActivity.this, "Data saved successfully", Toast.LENGTH_LONG).show();
 //                            finish();
-
+                            showMsg("Abnormality submitted successfully.", "Success");
                             Im_capture.setImageResource(R.drawable.demoimage);
                             tv_upload.setText("Upload Image");
                             et_descripton.setText("");
@@ -1507,7 +1507,8 @@ public class AbnormalityAddressingActivity extends AppCompatActivity {
                     AssignResponseModel assignResponseModel = (AssignResponseModel) carotResponse.getData();
                     if (assignResponseModel != null) {
                         if (assignResponseModel.getMessage() != null && assignResponseModel.getMessage().equals("Sucess")) {
-                            Toast.makeText(AbnormalityAddressingActivity.this, "Successfully Deleted", Toast.LENGTH_LONG).show();
+                         //   Toast.makeText(AbnormalityAddressingActivity.this, "Successfully Deleted", Toast.LENGTH_LONG).show();
+                            showMsg("Successfully Deleted.","Success");
                             onBackPressed();
                         } else {
                             Toast.makeText(AbnormalityAddressingActivity.this, "Oops! Something went wrong.", Toast.LENGTH_LONG).show();
@@ -1520,4 +1521,21 @@ public class AbnormalityAddressingActivity extends AppCompatActivity {
         },Empcode,concernNo);
 
     }
+
+    public void showMsg(String msg, String title) {
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
+        alertDialogBuilder.setMessage(msg);
+        alertDialogBuilder.setTitle(title);
+
+        alertDialogBuilder.setPositiveButton("Ok", (arg0, arg1) -> {
+            arg0.dismiss();
+            onBackPressed();
+        });
+
+        //alertDialogBuilder.setNegativeButton("Cancel", (dialog, which) -> dialog.dismiss());
+
+        AlertDialog alertDialog = alertDialogBuilder.create();
+        alertDialog.show();
+    }
+
 }

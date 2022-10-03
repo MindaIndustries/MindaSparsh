@@ -37,6 +37,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatAutoCompleteTextView;
 
@@ -302,7 +303,7 @@ public class ViewImageActivity extends AppCompatActivity {
                         Im_before.setImageBitmap(StringToBitMap(images.get(0).getImagePath().replace(" ", "+")));
                         tv_discription.setText(images.get(0).getDescription());
                     }
-                    if (images.get(0).getImagePathAfter() != null && images.get(0).getImagePathAfter().length() != 0) {
+                    if (images!=null && images.get(0).getImagePathAfter() != null && images.get(0).getImagePathAfter().length() != 0) {
                         Im_after.setImageBitmap(StringToBitMap(images.get(0).getImagePathAfter().replace(" ", "+")));
                         if (images.get(0).getAction() != null) {
                             tv_action.setText(images.get(0).getAction());
@@ -386,8 +387,9 @@ public class ViewImageActivity extends AppCompatActivity {
                 AssignResponseModel assignResponseModel = (AssignResponseModel) carotResponse.getData();
                 if (assignResponseModel != null) {
                     if (assignResponseModel.getMessage() != null && assignResponseModel.getMessage().equals("Sucess")) {
-                        Toast.makeText(ViewImageActivity.this, "Assigned Successfully", Toast.LENGTH_LONG).show();
-                        onBackPressed();
+                     //   Toast.makeText(ViewImageActivity.this, "Assigned Successfully", Toast.LENGTH_LONG).show();
+                        showMsg("Assigned Successfully"," Success");
+                      //  onBackPressed();
                     } else {
                         Toast.makeText(ViewImageActivity.this, "Oops! Something went wrong.", Toast.LENGTH_LONG).show();
                     }
@@ -406,7 +408,9 @@ public class ViewImageActivity extends AppCompatActivity {
                 AssignResponseModel assignResponseModel = (AssignResponseModel) carotResponse.getData();
                 if (assignResponseModel != null) {
                     if (assignResponseModel.getMessage() != null && assignResponseModel.getMessage().equals("Sucess")) {
-                        Toast.makeText(ViewImageActivity.this, "Successfully Sent Back to User", Toast.LENGTH_LONG).show();
+                        //Toast.makeText(ViewImageActivity.this, "Successfully Sent Back to User", Toast.LENGTH_LONG).show();
+                        showMsg("Successfully Sent Back to User"," Success");
+
                         onBackPressed();
                     } else {
                         Toast.makeText(ViewImageActivity.this, "Oops! Something went wrong.", Toast.LENGTH_LONG).show();
@@ -426,7 +430,9 @@ public class ViewImageActivity extends AppCompatActivity {
                 AssignResponseModel assignResponseModel = (AssignResponseModel) carotResponse.getData();
                 if (assignResponseModel != null) {
                     if (assignResponseModel.getMessage() != null && assignResponseModel.getMessage().equals("Sucess")) {
-                        Toast.makeText(ViewImageActivity.this, "Successfully Sent Back to HOD", Toast.LENGTH_LONG).show();
+                     //   Toast.makeText(ViewImageActivity.this, "Successfully Sent Back to HOD", Toast.LENGTH_LONG).show();
+                        showMsg("Successfully Sent Back to HOD"," Success");
+
                         onBackPressed();
                     } else {
                         Toast.makeText(ViewImageActivity.this, "Oops! Something went wrong.", Toast.LENGTH_LONG).show();
@@ -439,6 +445,22 @@ public class ViewImageActivity extends AppCompatActivity {
         }, id, empCode, remarks);
 
     }
+    public void showMsg(String msg, String title) {
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
+        alertDialogBuilder.setMessage(msg);
+        alertDialogBuilder.setTitle(title);
+
+        alertDialogBuilder.setPositiveButton("Ok", (arg0, arg1) -> {
+            arg0.dismiss();
+            onBackPressed();
+        });
+
+        //alertDialogBuilder.setNegativeButton("Cancel", (dialog, which) -> dialog.dismiss());
+
+        AlertDialog alertDialog = alertDialogBuilder.create();
+        alertDialog.show();
+    }
+
 
     public void verifyclose(String id, String empCode, String remarks) {
         AbnormalityServices abnormalityServices = new AbnormalityServices();
@@ -449,8 +471,9 @@ public class ViewImageActivity extends AppCompatActivity {
                     AssignResponseModel assignResponseModel = (AssignResponseModel) carotResponse.getData();
                     if (assignResponseModel != null) {
                         if (assignResponseModel.getMessage() != null && assignResponseModel.getMessage().equals("Sucess")) {
-                            Toast.makeText(ViewImageActivity.this, "Successfully verified & closed", Toast.LENGTH_LONG).show();
-                            onBackPressed();
+                           // Toast.makeText(ViewImageActivity.this, "Successfully verified & closed", Toast.LENGTH_LONG).show();
+                            showMsg("Successfully verified & closed","Success");
+                            //   onBackPressed();
                         } else {
                             Toast.makeText(ViewImageActivity.this, "Oops! Something went wrong.", Toast.LENGTH_LONG).show();
                         }

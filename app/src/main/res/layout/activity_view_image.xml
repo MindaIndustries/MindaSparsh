@@ -55,6 +55,7 @@
                 android:id="@+id/Im_before"
                 android:layout_width="150dp"
                 android:layout_height="180dp"
+                android:layout_marginTop="10dp"
                 android:src="@drawable/demoimage" />
 
             <LinearLayout
@@ -66,7 +67,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:text="Description :"
+                    android:text="Description: "
                     android:textColor="#000000"
                     android:textSize="18sp"
                     android:fontFamily="@font/museosans_700"
