@@ -211,22 +211,31 @@ public class ViewImageActivity extends AppCompatActivity {
         });
 
         submit.setOnClickListener(view -> {
-            if (targetDate.getText().toString().length() == 0) {
+            if (targetDate.getVisibility() == View.VISIBLE && targetDate.getText().toString().length() == 0) {
                 Toast.makeText(ViewImageActivity.this, "Enter Target Date", Toast.LENGTH_LONG).show();
                 return;
             }
             if(remarks.getVisibility() == View.VISIBLE &&remarks.getText().toString().length()==0){
-                Toast.makeText(ViewImageActivity.this, "Enter Target Date", Toast.LENGTH_LONG).show();
+                Toast.makeText(ViewImageActivity.this, "Enter Remarks", Toast.LENGTH_LONG).show();
                 return;
             }
-            if (action.equalsIgnoreCase("Assign")) {
-                assignAbnormality(String.valueOf(AbnormalID), empCode, targetDate.getText().toString(), remarks.getText().toString(), assignedEmp);
-            } else if (action.equalsIgnoreCase("Verify & Close")) {
-                verifyclose(String.valueOf(AbnormalID), empCode, remarks.getText().toString());
-            } else if (action.equalsIgnoreCase("Send Back to HOD")) {
-                sendBackToHOD(String.valueOf(AbnormalID), empCode,remarks.getText().toString());
-            } else {
-                sendBackToUser(String.valueOf(AbnormalID), empCode, remarks.getText().toString());
+            if(assignto.getVisibility() == View.VISIBLE && assignedto.getText().toString().length()==0){
+                Toast.makeText(ViewImageActivity.this, "Enter Assign to", Toast.LENGTH_LONG).show();
+                return;
+            }if(action!= null) {
+                if (action.equalsIgnoreCase("Assign")) {
+                    assignAbnormality(String.valueOf(AbnormalID), empCode, targetDate.getText().toString(), remarks.getText().toString(), assignedEmp);
+                } else if (action.equalsIgnoreCase("Verify & Close")) {
+                    verifyclose(String.valueOf(AbnormalID), empCode, remarks.getText().toString());
+                } else if (action.equalsIgnoreCase("Send Back to HOD")) {
+                    sendBackToHOD(String.valueOf(AbnormalID), empCode, remarks.getText().toString());
+                } else {
+                    sendBackToUser(String.valueOf(AbnormalID), empCode, remarks.getText().toString());
+                }
+            }
+            else{
+                Toast.makeText(ViewImageActivity.this, "Select Action", Toast.LENGTH_LONG).show();
+
             }
         });
 
@@ -410,8 +419,6 @@ public class ViewImageActivity extends AppCompatActivity {
                     if (assignResponseModel.getMessage() != null && assignResponseModel.getMessage().equals("Sucess")) {
                         //Toast.makeText(ViewImageActivity.this, "Successfully Sent Back to User", Toast.LENGTH_LONG).show();
                         showMsg("Successfully Sent Back to User"," Success");
-
-                        onBackPressed();
                     } else {
                         Toast.makeText(ViewImageActivity.this, "Oops! Something went wrong.", Toast.LENGTH_LONG).show();
                     }

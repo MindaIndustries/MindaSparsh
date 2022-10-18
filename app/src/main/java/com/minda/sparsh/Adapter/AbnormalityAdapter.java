@@ -69,7 +69,7 @@ public class AbnormalityAdapter extends BaseAdapter {
     }
 
     public static class ViewHolder {
-        public TextView level, tv_result, tv_status, tv_Actual_date, tv_test_date, tv_action, tv_plant, tv_business, tv_domain, tv_category, tv_date, tv_abnormality, tv_sn, tv_update, tv_view, tv_uplodedBy, tv_department, tv_updatedby;
+        public TextView level, tv_result, tv_status, tv_Actual_date, tv_test_date, tv_action, tv_plant, tv_business, tv_domain, tv_category, tv_date, tv_abnormality, tv_sn, tv_update, tv_view, tv_uplodedBy, tv_department, tv_updatedby, remark;
         public LinearLayout laycellview;
     }
 
@@ -115,10 +115,30 @@ public class AbnormalityAdapter extends BaseAdapter {
             holder.laycellview = convertView.findViewById(R.id.laycellview);
             holder.tv_update = convertView.findViewById(R.id.tv_update);
             holder.tv_view = convertView.findViewById(R.id.tv_view);
+            holder.remark = convertView.findViewById(R.id.remark);
             holder.tv_updatedby.setText(homeData.get(position).getUploadedBy());
             holder.level.setText(homeData.get(position).getFlag());
+            //
 
             convertView.setTag(holder);
+            switch(homeData.get(position).getFlag()){
+                case "Pending for assigning at BEST Coordinator":
+                    holder.remark.setText("NA");
+                    break;
+                case "Pending at HOD":
+                    holder.remark.setText(""+homeData.get(position).getAssignRemark());
+                    break;
+                case "Pending at User":
+                    holder.remark.setText(""+homeData.get(position).getSendBackRemark());
+                    break;
+                case "Pending for approval at BEST Coordinator to be defined":
+                    holder.remark.setText("NA");
+                    break;
+                case "Closed":
+                    holder.remark.setText(""+homeData.get(position).getCloserRemark());
+                    break;
+
+            }
             if (homeData.get(position).getTargetDate() != null && !homeData.get(position).getTargetDate().equalsIgnoreCase("")) {
                 holder.tv_test_date.setText(homeData.get(position).getTargetDate());
             }

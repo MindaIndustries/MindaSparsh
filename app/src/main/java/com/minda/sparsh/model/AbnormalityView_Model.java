@@ -80,6 +80,12 @@ public class AbnormalityView_Model implements Parcelable {
     String functionId;
     @SerializedName("Assignedto")
     String Assignedto;
+    @SerializedName("AssignRemark")
+    String AssignRemark;
+    @SerializedName("CloserRemark")
+    String CloserRemark;
+    @SerializedName("SendBackRemark")
+    String SendBackRemark;
 
     protected AbnormalityView_Model(Parcel in) {
         UploadedBy = in.readString();
@@ -352,5 +358,29 @@ public class AbnormalityView_Model implements Parcelable {
 
     public void setAssignedto(String assignedto) {
         Assignedto = assignedto;
+    }
+
+    public String getAssignRemark() {
+        return AssignRemark;
+    }
+
+    public void setAssignRemark(String assignRemark) {
+        AssignRemark = assignRemark;
+    }
+
+    public String getCloserRemark() {
+        return CloserRemark;
+    }
+
+    public void setCloserRemark(String closerRemark) {
+        CloserRemark = closerRemark;
+    }
+
+    public String getSendBackRemark() {
+        return SendBackRemark;
+    }
+
+    public void setSendBackRemark(String sendBackRemark) {
+        SendBackRemark = sendBackRemark;
     }
 }

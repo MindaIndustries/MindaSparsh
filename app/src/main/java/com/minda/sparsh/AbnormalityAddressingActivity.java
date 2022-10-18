@@ -424,7 +424,6 @@ public class AbnormalityAddressingActivity extends AppCompatActivity {
             description = et_descripton.getText().toString();
             abnormalitydate = et_finddate.getText().toString();
             benefits = "";
-            et_descripton.setText("");
             if (isvalid()) {
                 hitAddAbnormalityApi(AbnormalID,group, domainid, businessid, plantid, String.valueOf(sub_department), sImage, description, benefits, abnormalitydate, myPref.getString("Id", ""), category_id, funcId);
             }
@@ -1094,6 +1093,7 @@ public class AbnormalityAddressingActivity extends AppCompatActivity {
     public void hitAddAbnormalityApi(String id,String group, String domain, String business, String plant, String department, String imagepath, String description, String benefits, String abnormalitydate, String UploadedBy, int category, int funcId) {
         if (Utility.isOnline(AbnormalityAddressingActivity.this)) {
             progressBar.setVisibility(View.VISIBLE);
+            et_descripton.setText("");
             //   showProgress(true);
             Interface promotingMyinterface = RetrofitClient2.getClient().create(Interface.class);
             Call<List<AddAbnormality_Model>> response = promotingMyinterface.AddAbnormality(id,RetrofitClient2.CKEY, group, domain, business, plant, department, imagepath, description, benefits, abnormalitydate, UploadedBy, category,funcId);
