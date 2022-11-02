@@ -19,6 +19,7 @@ import com.google.android.material.snackbar.Snackbar;
 import com.minda.sparsh.AbnormalityAddressing2Activity;
 import com.minda.sparsh.AbnormalityAddressingActivity;
 import com.minda.sparsh.Interface;
+import com.minda.sparsh.LoginActivity;
 import com.minda.sparsh.R;
 import com.minda.sparsh.ViewImageActivity;
 import com.minda.sparsh.model.AbnormalityView_Model;
@@ -118,6 +119,14 @@ public class AbnormalityAdapter extends BaseAdapter {
             holder.remark = convertView.findViewById(R.id.remark);
             holder.tv_updatedby.setText(homeData.get(position).getUploadedBy());
             holder.level.setText(homeData.get(position).getFlag());
+            holder.remark.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    if(holder.remark.getText().toString()!=null && !holder.remark.getText().toString().equals("NA")  ) {
+                        showRemarks(holder.remark.getText().toString());
+                    }
+                }
+            });
             //
 
             convertView.setTag(holder);
@@ -126,16 +135,22 @@ public class AbnormalityAdapter extends BaseAdapter {
                     holder.remark.setText("NA");
                     break;
                 case "Pending at HOD":
-                    holder.remark.setText(""+homeData.get(position).getAssignRemark());
+                    if(homeData.get(position).getAssignRemark()!=null) {
+                        holder.remark.setText("" + homeData.get(position).getAssignRemark());
+                    }
                     break;
                 case "Pending at User":
-                    holder.remark.setText(""+homeData.get(position).getSendBackRemark());
+                    if(homeData.get(position).getSendBackRemark()!=null) {
+                        holder.remark.setText("" + homeData.get(position).getSendBackRemark());
+                    }
                     break;
                 case "Pending for approval at BEST Coordinator to be defined":
                     holder.remark.setText("NA");
                     break;
                 case "Closed":
-                    holder.remark.setText(""+homeData.get(position).getCloserRemark());
+                    if(homeData.get(position).getCloserRemark()!=null) {
+                        holder.remark.setText("" + homeData.get(position).getCloserRemark());
+                    }
                     break;
 
             }
@@ -486,25 +501,19 @@ public class AbnormalityAdapter extends BaseAdapter {
         return str;
     }
 
-    public void showUpdateOptions() {
-        final CharSequence[] items = {"View", "Assign", "Send Back", /*"Update",*/ "Cancel"};
-        AlertDialog.Builder builder = new AlertDialog.Builder(mContext);
-        builder.setTitle("Select Option");
-        builder.setItems(items, (dialog, item) -> {
-            if (items[item].equals("View")) {
-
-            } else if (items[item].equals("Assign")) {
-
-            } else if (items[item].equals("Send Back")) {
-
-            }/*else if(items[item].equals("Update")){
-
-            }*/ else if (items[item].equals("Cancel")) {
-
-            }
+    public void showRemarks(String remarks) {
+        androidx.appcompat.app.AlertDialog.Builder alertDialogBuilder = new androidx.appcompat.app.AlertDialog.Builder(mContext);
+        alertDialogBuilder.setMessage(remarks);
+        alertDialogBuilder.setTitle("Remarks");
+        alertDialogBuilder.setPositiveButton("OK", (arg0, arg1) -> {
+            arg0.dismiss();
 
         });
-        builder.show();
+
+        alertDialogBuilder.setNegativeButton("Cancel", (dialog, which) -> dialog.dismiss());
+
+        androidx.appcompat.app.AlertDialog alertDialog = alertDialogBuilder.create();
+        alertDialog.show();
 
     }
 

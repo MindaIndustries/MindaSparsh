@@ -440,7 +440,6 @@ public class ViewImageActivity extends AppCompatActivity {
                      //   Toast.makeText(ViewImageActivity.this, "Successfully Sent Back to HOD", Toast.LENGTH_LONG).show();
                         showMsg("Successfully Sent Back to HOD"," Success");
 
-                        onBackPressed();
                     } else {
                         Toast.makeText(ViewImageActivity.this, "Oops! Something went wrong.", Toast.LENGTH_LONG).show();
                     }
