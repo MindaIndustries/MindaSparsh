@@ -414,12 +414,7 @@ public class AbnormalityAddressingActivity extends AppCompatActivity {
         Im_capture.setOnClickListener(view -> {
             selectFile();
         });
-        tv_delete.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                showdialog();
-            }
-        });
+        tv_delete.setOnClickListener(view -> showdialog());
         tv_submit.setOnClickListener(view -> {
             description = et_descripton.getText().toString();
             abnormalitydate = et_finddate.getText().toString();
@@ -1109,7 +1104,12 @@ public class AbnormalityAddressingActivity extends AppCompatActivity {
                         if (Departmentresponse.get(0).getColumn1().equalsIgnoreCase("success")) {
                   //          Toast.makeText(AbnormalityAddressingActivity.this, "Data saved successfully", Toast.LENGTH_LONG).show();
 //                            finish();
-                            showMsg("Abnormality submitted successfully.", "Success");
+                            if(tv_submit.getText().toString().equals("UPDATE")){
+                                showMsg("Abnormality updated successfully.", "Success");
+                            }
+                            else {
+                                showMsg("Abnormality submitted successfully.", "Success");
+                            }
                             Im_capture.setImageResource(R.drawable.demoimage);
                             tv_upload.setText("Upload Image");
                             et_descripton.setText("");
@@ -1179,6 +1179,10 @@ public class AbnormalityAddressingActivity extends AppCompatActivity {
                             categoryselected = abnormalityView_model.getCategory();
                             sp_category.setText(abnormalityView_model.getCategory());
                             adapterSubDepartment.getFilter().filter(null);
+                            adapterCategory = new ArrayAdapter<>(AbnormalityAddressingActivity.this, android.R.layout.simple_spinner_item,categories);
+                            sp_category.setAdapter(adapterCategory);
+                            adapterCategory.notifyDataSetChanged();
+
                         }
                        }
 
@@ -1501,24 +1505,21 @@ public class AbnormalityAddressingActivity extends AppCompatActivity {
 
     public void deleteAbnormality(String Empcode, String concernNo){
         AbnormalityServices abnormalityServices = new AbnormalityServices();
-        abnormalityServices.deleteAbnormality(new OnTaskComplete() {
-            @Override
-            public void onTaskComplte(CarotResponse carotResponse) {
-                if(carotResponse.getStatuscode() == HttpsURLConnection.HTTP_OK){
-                    AssignResponseModel assignResponseModel = (AssignResponseModel) carotResponse.getData();
-                    if (assignResponseModel != null) {
-                        if (assignResponseModel.getMessage() != null && assignResponseModel.getMessage().equals("Sucess")) {
-                         //   Toast.makeText(AbnormalityAddressingActivity.this, "Successfully Deleted", Toast.LENGTH_LONG).show();
-                            showMsg("Successfully Deleted.","Success");
-                            onBackPressed();
-                        } else {
-                            Toast.makeText(AbnormalityAddressingActivity.this, "Oops! Something went wrong.", Toast.LENGTH_LONG).show();
-                        }
+        abnormalityServices.deleteAbnormality(carotResponse -> {
+            if(carotResponse.getStatuscode() == HttpsURLConnection.HTTP_OK){
+                AssignResponseModel assignResponseModel = (AssignResponseModel) carotResponse.getData();
+                if (assignResponseModel != null) {
+                    if (assignResponseModel.getMessage() != null && assignResponseModel.getMessage().equals("Sucess")) {
+                     //   Toast.makeText(AbnormalityAddressingActivity.this, "Successfully Deleted", Toast.LENGTH_LONG).show();
+                        showMsg("Successfully Deleted.","Success");
+                        onBackPressed();
+                    } else {
+                        Toast.makeText(AbnormalityAddressingActivity.this, "Oops! Something went wrong.", Toast.LENGTH_LONG).show();
                     }
-                } else {
-                    Toast.makeText(AbnormalityAddressingActivity.this, "Oops! Something went wrong.", Toast.LENGTH_LONG).show();
-            }
-            }
+                }
+            } else {
+                Toast.makeText(AbnormalityAddressingActivity.this, "Oops! Something went wrong.", Toast.LENGTH_LONG).show();
+        }
         },Empcode,concernNo);
 
     }

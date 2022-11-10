@@ -2,7 +2,6 @@ package com.minda.sparsh;
 
 import android.Manifest;
 import android.annotation.TargetApi;
-import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.ComponentName;
 import android.content.Context;
@@ -61,8 +60,6 @@ import androidx.core.content.FileProvider;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-
-import static android.Manifest.permission.CAMERA;
 
 public class AbnormalityAddressing2Activity extends AppCompatActivity {
 

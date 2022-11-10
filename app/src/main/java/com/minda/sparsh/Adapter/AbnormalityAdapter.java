@@ -119,12 +119,9 @@ public class AbnormalityAdapter extends BaseAdapter {
             holder.remark = convertView.findViewById(R.id.remark);
             holder.tv_updatedby.setText(homeData.get(position).getUploadedBy());
             holder.level.setText(homeData.get(position).getFlag());
-            holder.remark.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    if(holder.remark.getText().toString()!=null && !holder.remark.getText().toString().equals("NA")  ) {
-                        showRemarks(holder.remark.getText().toString());
-                    }
+            holder.remark.setOnClickListener(view -> {
+                if(holder.remark.getText().toString()!=null && !holder.remark.getText().toString().equals("NA")  ) {
+                    showRemarks(holder.remark.getText().toString());
                 }
             });
             //
@@ -144,7 +141,7 @@ public class AbnormalityAdapter extends BaseAdapter {
                         holder.remark.setText("" + homeData.get(position).getSendBackRemark());
                     }
                     break;
-                case "Pending for approval at BEST Coordinator to be defined":
+                case "Pending for approval at BEST Coordinator":
                     holder.remark.setText("NA");
                     break;
                 case "Closed":
@@ -337,7 +334,7 @@ public class AbnormalityAdapter extends BaseAdapter {
                         intent.putExtra("Level",homeData.get(position).getFlag());
                         mContext.startActivity(intent);
                         break;
-                    case "Pending for approval at BEST Coordinator to be defined":
+                    case "Pending for approval at BEST Coordinator":
 
                         if(AbnormalityAddressingActivity.Role.equalsIgnoreCase("C")) {
                             Intent intent1 = new Intent(mContext, ViewImageActivity.class);

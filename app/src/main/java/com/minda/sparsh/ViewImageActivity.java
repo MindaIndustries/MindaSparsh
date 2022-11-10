@@ -128,7 +128,7 @@ public class ViewImageActivity extends AppCompatActivity {
         hitgetimageApi(AbnormalID);
         actionName.clear();
         if (level.equalsIgnoreCase("Pending at HOD")) {
-            if (AbnormalityAddressingActivity.Role.equalsIgnoreCase("HOD") && assignto.equals(empCode)) {
+            if (AbnormalityAddressingActivity.Role.equalsIgnoreCase("HOD") && assigntovalue.equals(empCode)) {
                 actionName.add("Update");
                 action_layout.setVisibility(View.VISIBLE);
 
@@ -144,7 +144,7 @@ public class ViewImageActivity extends AppCompatActivity {
                 action_layout.setVisibility(View.GONE);
 
             }
-        } else if (level.equalsIgnoreCase("Pending for approval at BEST Coordinator to be defined")) {
+        } else if (level.equalsIgnoreCase("Pending for approval at BEST Coordinator")) {
             if (AbnormalityAddressingActivity.Role.equalsIgnoreCase("C")) {
                 actionName.add("Verify & Close");
                 actionName.add("Send Back to HOD");
@@ -291,8 +291,7 @@ public class ViewImageActivity extends AppCompatActivity {
             year = String.valueOf(calendar.get(Calendar.YEAR));
             targetDate.setText("" + dayOfMonthStr1 + "-" + monthNo1 + "-" + i);
         }, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH));
-
-        //  datePicker.getDatePicker().setMinDate(Calendar.getInstance().getTimeInMillis() - 10000);
+        datePicker.getDatePicker().setMinDate(Calendar.getInstance().getTimeInMillis() - 10000);
 
     }
 
@@ -470,25 +469,22 @@ public class ViewImageActivity extends AppCompatActivity {
 
     public void verifyclose(String id, String empCode, String remarks) {
         AbnormalityServices abnormalityServices = new AbnormalityServices();
-        abnormalityServices.verifyclose(new OnTaskComplete() {
-            @Override
-            public void onTaskComplte(CarotResponse carotResponse) {
-                if (carotResponse.getStatuscode() == HttpsURLConnection.HTTP_OK) {
-                    AssignResponseModel assignResponseModel = (AssignResponseModel) carotResponse.getData();
-                    if (assignResponseModel != null) {
-                        if (assignResponseModel.getMessage() != null && assignResponseModel.getMessage().equals("Sucess")) {
-                           // Toast.makeText(ViewImageActivity.this, "Successfully verified & closed", Toast.LENGTH_LONG).show();
-                            showMsg("Successfully verified & closed","Success");
-                            //   onBackPressed();
-                        } else {
-                            Toast.makeText(ViewImageActivity.this, "Oops! Something went wrong.", Toast.LENGTH_LONG).show();
-                        }
+        abnormalityServices.verifyclose(carotResponse -> {
+            if (carotResponse.getStatuscode() == HttpsURLConnection.HTTP_OK) {
+                AssignResponseModel assignResponseModel = (AssignResponseModel) carotResponse.getData();
+                if (assignResponseModel != null) {
+                    if (assignResponseModel.getMessage() != null && assignResponseModel.getMessage().equals("Sucess")) {
+                       // Toast.makeText(ViewImageActivity.this, "Successfully verified & closed", Toast.LENGTH_LONG).show();
+                        showMsg("Successfully verified & closed","Success");
+                        //   onBackPressed();
+                    } else {
+                        Toast.makeText(ViewImageActivity.this, "Oops! Something went wrong.", Toast.LENGTH_LONG).show();
                     }
-                } else {
-                    Toast.makeText(ViewImageActivity.this, "Oops! Something went wrong.", Toast.LENGTH_LONG).show();
                 }
-
+            } else {
+                Toast.makeText(ViewImageActivity.this, "Oops! Something went wrong.", Toast.LENGTH_LONG).show();
             }
+
         }, id, empCode, remarks);
     }
 }
