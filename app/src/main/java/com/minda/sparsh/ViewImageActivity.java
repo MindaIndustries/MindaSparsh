@@ -128,7 +128,7 @@ public class ViewImageActivity extends AppCompatActivity {
         hitgetimageApi(AbnormalID);
         actionName.clear();
         if (level.equalsIgnoreCase("Pending at HOD")) {
-            if (AbnormalityAddressingActivity.Role.equalsIgnoreCase("HOD") && assigntovalue.equals(empCode)) {
+            if (AbnormalityAddressingActivity.Role.equalsIgnoreCase("HOD") && assigntovalue!=null && assigntovalue.equals(empCode)) {
                 actionName.add("Update");
                 action_layout.setVisibility(View.VISIBLE);
 

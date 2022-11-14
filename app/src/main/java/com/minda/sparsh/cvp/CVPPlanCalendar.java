@@ -153,7 +153,7 @@ public class CVPPlanCalendar extends AppCompatActivity implements OnDateSelected
         initDatePicker();
         initDatePicker2();
         date.setOnTouchListener((view, motionEvent) -> {
-            if(calendartypeId.equals("2")){
+            if(calendartypeId!=null && calendartypeId.equals("2")){
                 datepicker2.show();
             }
             else {

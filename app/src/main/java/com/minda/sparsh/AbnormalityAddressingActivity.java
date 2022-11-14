@@ -153,7 +153,7 @@ public class AbnormalityAddressingActivity extends AppCompatActivity {
     String mUserChoosenTask = "", AbnormalID = "0";
     AbnormalityView_Model abnormalityView_model;
     int funcId,subdep_id;
-
+    String EDOMAIN,EBUSINESS,EPLANT;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -192,6 +192,10 @@ public class AbnormalityAddressingActivity extends AppCompatActivity {
         progress.setIndeterminate(true);
         myPref = getSharedPreferences("MyPref", Context.MODE_PRIVATE);
         empCode = myPref.getString("Id", "Id");
+        EDOMAIN = myPref.getString("EDOMAIN","");
+        EBUSINESS = myPref.getString("EBUSINESS","");
+        EPLANT = myPref.getString("EPLANT","");
+
        /* if(getIntent().getParcelableExtra("ab")!=null){
             abnormalityView_model = getIntent().getParcelableExtra("ab");
             description = abnormalityView_model.getDescription();
@@ -393,9 +397,9 @@ public class AbnormalityAddressingActivity extends AppCompatActivity {
             if (getResources().getConfiguration().orientation != Configuration.ORIENTATION_PORTRAIT) {
                 finish();
                 Intent intent = new Intent(AbnormalityAddressingActivity.this, AbnormalityAddressingActivity.class);
-                intent.putExtra("EDOMAIN", getIntent().getStringExtra("EDOMAIN"));
-                intent.putExtra("EBUSINESS", getIntent().getStringExtra("EBUSINESS"));
-                intent.putExtra("EPLANT", getIntent().getStringExtra("EPLANT"));
+                intent.putExtra("EDOMAIN", EDOMAIN);
+                intent.putExtra("EBUSINESS", EBUSINESS);
+                intent.putExtra("EPLANT", EPLANT);
                 intent.putExtra("ADD", true);
                 startActivity(intent);
             }
@@ -405,9 +409,9 @@ public class AbnormalityAddressingActivity extends AppCompatActivity {
             if (getResources().getConfiguration().orientation != Configuration.ORIENTATION_LANDSCAPE) {
                 finish();
                 Intent intent = new Intent(AbnormalityAddressingActivity.this, AbnormalityDashboard.class);
-                intent.putExtra("EDOMAIN", getIntent().getStringExtra("EDOMAIN"));
-                intent.putExtra("EBUSINESS", getIntent().getStringExtra("EBUSINESS"));
-                intent.putExtra("EPLANT", getIntent().getStringExtra("EPLANT"));
+                intent.putExtra("EDOMAIN", EDOMAIN);
+                intent.putExtra("EBUSINESS", EBUSINESS);
+                intent.putExtra("EPLANT", EPLANT);
                 startActivity(intent);
             }
         });
@@ -617,7 +621,7 @@ public class AbnormalityAddressingActivity extends AppCompatActivity {
         File storageDir = getExternalFilesDir(Environment.DIRECTORY_PICTURES);
         File mFile = null;
         try {
-            mFile = File.createTempFile(mFileName, ".jpg", storageDir);
+            mFile = File.createTempFile(mFileName, ".jp g", storageDir);
         } catch (IOException e) {
             e.printStackTrace();
         }
