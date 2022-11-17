@@ -45,8 +45,6 @@ import com.google.android.material.textfield.TextInputEditText;
 import com.minda.sparsh.Adapter.AbnormalityAdapter;
 import com.minda.sparsh.Adapter.BusinessSpinnerAdapter;
 import com.minda.sparsh.Adapter.DomainSpinnerAdapter;
-import com.minda.sparsh.listener.CarotResponse;
-import com.minda.sparsh.listener.OnTaskComplete;
 import com.minda.sparsh.model.AbnormalityView_Model;
 import com.minda.sparsh.model.AddAbnormality_Model;
 import com.minda.sparsh.model.AssignResponseModel;
@@ -415,9 +413,7 @@ public class AbnormalityAddressingActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-        Im_capture.setOnClickListener(view -> {
-            selectFile();
-        });
+        Im_capture.setOnClickListener(view -> selectFile());
         tv_delete.setOnClickListener(view -> showdialog());
         tv_submit.setOnClickListener(view -> {
             description = et_descripton.getText().toString();
@@ -854,7 +850,9 @@ public class AbnormalityAddressingActivity extends AppCompatActivity {
             plantid = getIntent().getStringExtra("EPLANT");
 
         }
-        hitGetAbnormalityDetailApi(plantid, String.valueOf(sub_department), domainid, businessid,empCode);
+        if(!getIntent().getBooleanExtra("ADD",false)) {
+            hitGetAbnormalityDetailApi(plantid, String.valueOf(sub_department), domainid, businessid, empCode);
+        }
 
     }
 
@@ -1423,9 +1421,7 @@ public class AbnormalityAddressingActivity extends AppCompatActivity {
 
         builder1.setNegativeButton(
                 "No",
-                (dialog, id) -> {
-                    dialog.dismiss();
-                });
+                (dialog, id) -> dialog.dismiss());
 
 
         builder1.show();

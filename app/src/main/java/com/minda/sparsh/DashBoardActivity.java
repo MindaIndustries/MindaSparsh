@@ -64,6 +64,7 @@ public class DashBoardActivity extends BaseActivity implements View.OnClickListe
     String deviceTokenFcm;
     String Description, title;
     int applicableId;
+    AlertDialog alertDialog;
    /* String[] arr = new String[]{"9355689701", "9818427076",
             "9958050362",
             "7082007046",
@@ -569,8 +570,16 @@ public class DashBoardActivity extends BaseActivity implements View.OnClickListe
         });
 */
         if (!isFinishing()) {
-            AlertDialog alertDialog = alertDialogBuilder.create();
+            alertDialog = alertDialogBuilder.create();
             alertDialog.show();
+        }
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if ( alertDialog!=null && alertDialog.isShowing() ){
+            alertDialog.cancel();
         }
     }
 

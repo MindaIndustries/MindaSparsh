@@ -333,10 +333,10 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
 
     public void updateRandomNumber(){
         CVPServices cvpServices = new CVPServices();
-        cvpServices.updateRandomNumber(carotResponse -> {
+        /*cvpServices.updateRandomNumber(carotResponse -> {
 
         },empcode, randomNumber);
-    }
+   */ }
 
 
 }//end BaseActivity

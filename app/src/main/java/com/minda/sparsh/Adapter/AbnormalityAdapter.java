@@ -167,8 +167,10 @@ public class AbnormalityAdapter extends BaseAdapter {
                 try {
                     Date mDate = sdf.parse(tergetdate);
                     time_target = mDate.getTime();
-                    Date mDate1 = sdf.parse(updatedate);
-                    time_update = mDate1.getTime();
+                    if(homeData.get(position).getImplementationDate()!=null) {
+                        Date mDate1 = sdf.parse(updatedate);
+                        time_update = mDate1.getTime();
+                    }
                     Date mDate2 = sdf.parse(abnormilitydate);
                     time_abnormility = mDate2.getTime();
 

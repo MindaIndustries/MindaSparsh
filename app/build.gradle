@@ -20,15 +20,15 @@ android {
         targetCompatibility JavaVersion.VERSION_1_8
     }
 
-    compileSdkVersion 30
+    compileSdkVersion 31
     buildToolsVersion '28.0.3'
 
     defaultConfig {
         applicationId "com.minda.sparsh"
         minSdkVersion 21
-        targetSdkVersion 30
-        versionCode 68
-        versionName "1.38"
+        targetSdkVersion 31
+        versionCode 70
+        versionName "1.39"
         multiDexEnabled true
         testInstrumentationRunner = 'android.support.test.runner.AndroidJUnitRunner'
     }
