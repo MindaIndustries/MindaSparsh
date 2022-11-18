@@ -33,7 +33,6 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
         tools:replace="android:icon"
-
         android:requestLegacyExternalStorage="true"
         >
 
