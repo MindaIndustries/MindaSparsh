@@ -20,6 +20,10 @@ public class GetAbnormalityImage_Model {
     @SerializedName("Action")
     @Expose
     private String Action;
+    @SerializedName("ImplementationDate")
+    String ImplementationDate;
+    @SerializedName("Benefits")
+    String Benefits;
 
 
     public String getAction() {
@@ -53,5 +57,21 @@ public class GetAbnormalityImage_Model {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public String getImplementationDate() {
+        return ImplementationDate;
+    }
+
+    public void setImplementationDate(String implementationDate) {
+        ImplementationDate = implementationDate;
+    }
+
+    public String getBenefits() {
+        return Benefits;
+    }
+
+    public void setBenefits(String benefits) {
+        Benefits = benefits;
     }
 }

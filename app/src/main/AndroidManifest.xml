@@ -46,7 +46,8 @@
         <activity
             android:name=".SplashActivity"
             android:theme="@style/AppThemeSplash"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -106,6 +107,7 @@
             android:name=".BaseActivity"
             android:screenOrientation="portrait" />
         <activity
+            android:exported="true"
             android:name=".NotificationActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar">
@@ -127,7 +129,10 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".ViewImageActivity"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/spinnertheme"
+            android:screenOrientation="portrait"
+
+            />
         <activity
             android:name=".util.AbnormalityDashboard"
             android:screenOrientation="portrait"
@@ -272,7 +277,7 @@
                 android:resource="@xml/provider_paths" />
         </provider>
 
-        <service android:name=".MyFirebaseMessagingService">
+        <service android:exported="true" android:name=".MyFirebaseMessagingService">
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>

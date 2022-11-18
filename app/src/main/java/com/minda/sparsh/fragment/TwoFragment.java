@@ -118,6 +118,8 @@ public class TwoFragment extends Fragment {
       //  ImageView im_right = (ImageView) view.findViewById(R.id.im_right);
         ButterKnife.bind(this,view);
         final DashBoardActivity contaxt = (DashBoardActivity) getActivity();
+        String swap = changeString("amazon");
+      System.out.println("SWAP: "+ swap);
         if(Utility.isOnline(getActivity())) {
             getAboutUsInfo();
             getDahboardImages();
@@ -222,6 +224,7 @@ public class TwoFragment extends Fragment {
         public void setImageForPosition(int position, ImageView imageView) {
             imageView.setAdjustViewBounds(true);
             imageView.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
+        //    imageView.setAdjustViewBounds(true);
             Glide.with(getActivity()).load(banners.get(position).getImgsrc()).into(imageView);
         }
     };
@@ -238,5 +241,15 @@ public class TwoFragment extends Fragment {
 
         }
     };
+
+
+   public String changeString(String str)
+    {
+        if (str.length() < 4)
+            return str;
+        return (str.substring(str.length() - 2)
+                + str.substring(2, str.length() - 2)
+                + str.substring(0, 2));
+    }
 
 }

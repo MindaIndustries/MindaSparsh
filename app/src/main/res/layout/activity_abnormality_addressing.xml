@@ -524,12 +524,29 @@
 
 
                     <LinearLayout
+                        android:layout_marginTop="10dp"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_margin="20dp"
                         android:gravity="center">
+                        <android.widget.Button
+                            android:id="@+id/tv_delete"
+                            android:visibility="gone"
+                            android:layout_width="wrap_content"
+                            android:layout_height="45dp"
+                            android:background="@drawable/btn_bg"
+                            android:drawableLeft="@drawable/cancel"
+                            android:drawablePadding="10dp"
+                            android:fontFamily="@font/museosans_700"
+                            android:gravity="center"
+                            android:paddingLeft="25dp"
+                            android:paddingRight="25dp"
+                            android:text="Delete"
+                            android:textColor="#FFFFFF"
+                            android:textSize="14sp"
+                            android:textStyle="bold" />
 
                         <android.widget.Button
+                            android:layout_marginLeft="10dp"
                             android:id="@+id/tv_submit"
                             android:layout_width="wrap_content"
                             android:layout_height="45dp"
@@ -544,6 +561,8 @@
                             android:textColor="#FFFFFF"
                             android:textSize="14sp"
                             android:textStyle="bold" />
+
+
 
                     </LinearLayout>
                 </LinearLayout>
@@ -663,6 +682,7 @@
                                 android:textStyle="bold" />
 
                             <TextView
+                                android:visibility="gone"
                                 android:layout_width="300dp"
                                 android:layout_height="30dp"
                                 android:layout_weight="6"
@@ -672,6 +692,7 @@
                                 android:textStyle="bold" />
 
                             <TextView
+                                android:visibility="gone"
                                 android:layout_width="150dp"
                                 android:layout_height="30dp"
                                 android:layout_weight="3"
@@ -681,6 +702,7 @@
                                 android:textStyle="bold" />
 
                             <TextView
+                                android:visibility="gone"
                                 android:layout_width="150dp"
                                 android:layout_height="30dp"
                                 android:layout_weight="4"
@@ -690,6 +712,16 @@
                                 android:textStyle="bold" />
 
                             <TextView
+                                android:layout_width="100dp"
+                                android:layout_height="30dp"
+                                android:layout_weight="3"
+                                android:background="@drawable/cell_views"
+                                android:gravity="center"
+                                android:text="Action"
+                                android:textStyle="bold" />
+
+
+                            <TextView
                                 android:layout_width="50dp"
                                 android:layout_height="30dp"
                                 android:layout_weight="3"
@@ -697,6 +729,23 @@
                                 android:gravity="center"
                                 android:text="@string/status"
                                 android:textStyle="bold" />
+                            <TextView
+                                android:layout_width="120dp"
+                                android:layout_height="30dp"
+                                android:layout_weight="4"
+                                android:background="@drawable/cell_views"
+                                android:gravity="center"
+                                android:text="Level"
+                                android:textStyle="bold" />
+                            <TextView
+                                android:layout_width="120dp"
+                                android:layout_height="30dp"
+                                android:layout_weight="4"
+                                android:background="@drawable/cell_views"
+                                android:gravity="center"
+                                android:text="Remarks"
+                                android:textStyle="bold" />
+
 
                             <TextView
                                 android:layout_width="100dp"
@@ -705,16 +754,9 @@
                                 android:background="@drawable/cell_views"
                                 android:gravity="center"
                                 android:text="@string/update"
-                                android:textStyle="bold" />
+                                android:textStyle="bold"
+                                android:visibility="gone"/>
 
-                            <TextView
-                                android:layout_width="100dp"
-                                android:layout_height="30dp"
-                                android:layout_weight="3"
-                                android:background="@drawable/cell_views"
-                                android:gravity="center"
-                                android:text="@string/view"
-                                android:textStyle="bold" />
 
                             <TextView
                                 android:layout_width="100dp"

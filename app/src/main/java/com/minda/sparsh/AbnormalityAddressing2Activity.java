@@ -2,7 +2,6 @@ package com.minda.sparsh;
 
 import android.Manifest;
 import android.annotation.TargetApi;
-import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.ComponentName;
 import android.content.Context;
@@ -24,6 +23,7 @@ import android.os.Parcelable;
 import android.provider.MediaStore;
 import android.util.Base64;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -33,6 +33,7 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.minda.sparsh.model.AddAbnormality_Model;
+import com.minda.sparsh.model.GetAbnormalityImage_Model;
 import com.minda.sparsh.util.FileCompressor;
 import com.minda.sparsh.util.RetrofitClient2;
 import com.minda.sparsh.util.Utility;
@@ -60,14 +61,13 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-import static android.Manifest.permission.CAMERA;
-
 public class AbnormalityAddressing2Activity extends AppCompatActivity {
 
     ListView list_abnormalty;
     LinearLayout lay_out;
-    TextView tv_submit, tv_upload, tv_Department, tv_plant, tv_business, tv_domain, et_finddate;
+    TextView  tv_upload, tv_Department, tv_plant, tv_business, tv_domain, et_finddate;
     ImageView Im_capture, im_back;
+    Button tv_submit;
     Uri picUri = null;
     Bitmap myBitmap;
     String sImage = "";
@@ -91,6 +91,8 @@ public class AbnormalityAddressing2Activity extends AppCompatActivity {
     public static final int MY_PERMISSIONS_REQUEST_READ_EXTERNAL_STORAGE = 123;
     public static final int MY_PERMISSIONS_REQUEST_CAMERA = 1234;
     String mUserChoosenTask = "";
+    ImageView Im_before;
+    TextView tv_discription;
 
 
     @Override
@@ -98,6 +100,9 @@ public class AbnormalityAddressing2Activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_abnormality_addressing2);
         tv_upload =  findViewById(R.id.tv_upload);
+        Im_before = findViewById(R.id.Im_before);
+        tv_discription = findViewById(R.id.tv_discription);
+
         tv_Department =  findViewById(R.id.tv_Department);
         tv_plant =  findViewById(R.id.tv_plant);
         tv_business =  findViewById(R.id.tv_business);
@@ -111,7 +116,7 @@ public class AbnormalityAddressing2Activity extends AppCompatActivity {
             tv_plant.setText(getIntent().getStringExtra("plant"));
             tv_business.setText(getIntent().getStringExtra("business"));
             tv_domain.setText(getIntent().getStringExtra("domain"));
-
+            hitgetimageApi(AbnormalID);
         }
         cameraPermission = registerForActivityResult(new ActivityResultContracts.RequestPermission(), result -> {
             if(result){
@@ -201,6 +206,55 @@ public class AbnormalityAddressing2Activity extends AppCompatActivity {
 
         });
     }
+
+    public Bitmap StringToBitMap(String encodedString) {
+        try {
+            byte[] encodeByte = Base64.decode(encodedString, Base64.DEFAULT);
+            Bitmap bitmap = BitmapFactory.decodeByteArray(encodeByte, 0, encodeByte.length);
+            return bitmap;
+        } catch (Exception e) {
+            e.getMessage();
+            return null;
+        }
+    }
+
+    public void hitgetimageApi(int id) {
+        if (Utility.isOnline(AbnormalityAddressing2Activity.this)) {
+            showProgress(true);
+            Interface promotingMyinterface = RetrofitClient2.getClient().create(Interface.class);
+            Call<List<GetAbnormalityImage_Model>> response = promotingMyinterface.GetAbnormalityImage(RetrofitClient2.CKEY, id);
+            response.enqueue(new Callback<List<GetAbnormalityImage_Model>>() {
+                @Override
+                public void onResponse(@NotNull Call<List<GetAbnormalityImage_Model>> call, @NotNull Response<List<GetAbnormalityImage_Model>> response) {
+                    showProgress(false);
+                    List<GetAbnormalityImage_Model> images = response.body();
+
+                    if (images != null) {
+                        Im_before.setImageBitmap(StringToBitMap(images.get(0).getImagePath().replace(" ", "+")));
+                        tv_discription.setText(images.get(0).getDescription());
+                    }
+                    if (images.get(0).getImagePathAfter() != null && images.get(0).getImagePathAfter().length() != 0) {
+                  //      Im_after.setImageBitmap(StringToBitMap(images.get(0).getImagePathAfter().replace(" ", "+")));
+                        if (images.get(0).getAction() != null) {
+                   //         tv_action.setText(images.get(0).getAction());
+                        }
+                    } else {
+                     //   lay_afterimage.setVisibility(View.GONE);
+                    }
+
+                }
+
+                @Override
+                public void onFailure(@NotNull Call<List<GetAbnormalityImage_Model>> call, @NotNull Throwable t) {
+
+                    showProgress(false);
+
+                }
+            });
+        } else
+            Toast.makeText(AbnormalityAddressing2Activity.this, "Please Check Your Network Connection", Toast.LENGTH_LONG).show();
+    }
+
     private void onSelectFromGalleryResult(Intent data) {
         Bitmap bm = null;
         File f = null;
@@ -718,13 +772,13 @@ public class AbnormalityAddressing2Activity extends AppCompatActivity {
 
                     if (Departmentresponse != null && Departmentresponse.size() > 0) {
                         if (Departmentresponse.get(0).getColumn1().equalsIgnoreCase("success")) {
-                            Toast.makeText(AbnormalityAddressing2Activity.this, "Date Save Successfully", Toast.LENGTH_LONG).show();
-
-                            Intent intent = new Intent(AbnormalityAddressing2Activity.this, AbnormalityAddressingActivity.class);
+                         //   Toast.makeText(AbnormalityAddressing2Activity.this, "Date Save Successfully", Toast.LENGTH_LONG).show();
+                            showMsg("Abnormaity Updated Successfully","Success");
+                         /*   Intent intent = new Intent(AbnormalityAddressing2Activity.this, AbnormalityAddressingActivity.class);
                             intent.putExtra("ADD", false);
                             startActivity(intent);
                             finish();
-
+*/
 
                         } else {
                             Toast.makeText(AbnormalityAddressing2Activity.this, "Something went wrong", Toast.LENGTH_LONG).show();
@@ -745,4 +799,20 @@ public class AbnormalityAddressing2Activity extends AppCompatActivity {
         } else
             Toast.makeText(AbnormalityAddressing2Activity.this, "Please Check Your Network Connection", Toast.LENGTH_LONG).show();
     }
+    public void showMsg(String msg, String title) {
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
+        alertDialogBuilder.setMessage(msg);
+        alertDialogBuilder.setTitle(title);
+
+        alertDialogBuilder.setPositiveButton("Ok", (arg0, arg1) -> {
+            arg0.dismiss();
+            onBackPressed();
+        });
+
+        //alertDialogBuilder.setNegativeButton("Cancel", (dialog, which) -> dialog.dismiss());
+
+        AlertDialog alertDialog = alertDialogBuilder.create();
+        alertDialog.show();
+    }
+
 }

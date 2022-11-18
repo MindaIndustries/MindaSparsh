@@ -1,5 +1,8 @@
 package com.minda.sparsh.model;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
@@ -7,7 +10,7 @@ import com.google.gson.annotations.SerializedName;
  * Created by dmin on 6/7/2018.
  */
 
-public class AbnormalityView_Model {
+public class AbnormalityView_Model implements Parcelable {
     @SerializedName("UploadedBy")
     @Expose
     private String UploadedBy;
@@ -71,6 +74,99 @@ public class AbnormalityView_Model {
     @SerializedName("PlantName")
     @Expose
     private String PlantName;
+    @SerializedName("Flag")
+    String Flag;
+    @SerializedName("functionId")
+    String functionId;
+    @SerializedName("Assignedto")
+    String Assignedto;
+    @SerializedName("AssignRemark")
+    String AssignRemark;
+    @SerializedName("CloserRemark")
+    String CloserRemark;
+    @SerializedName("SendBackRemark")
+    String SendBackRemark;
+
+    protected AbnormalityView_Model(Parcel in) {
+        UploadedBy = in.readString();
+        UpdatedBy = in.readString();
+        if (in.readByte() == 0) {
+            iD = null;
+        } else {
+            iD = in.readInt();
+        }
+        groups = in.readString();
+        domain = in.readString();
+        Category = in.readString();
+        TargetDate = in.readString();
+        business = in.readString();
+        ImplementationDate = in.readString();
+        plant = in.readString();
+        department = in.readString();
+        imagePath = in.readString();
+        description = in.readString();
+        benefits = in.readString();
+        abnormalityDate = in.readString();
+        byte tmpIsActive = in.readByte();
+        isActive = tmpIsActive == 0 ? null : tmpIsActive == 1;
+        byte tmpStatus = in.readByte();
+        Status = tmpStatus == 0 ? null : tmpStatus == 1;
+        Action = in.readString();
+        BusinessName = in.readString();
+        DepartmentName = in.readString();
+        PlantName = in.readString();
+        Flag = in.readString();
+        functionId = in.readString();
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(UploadedBy);
+        dest.writeString(UpdatedBy);
+        if (iD == null) {
+            dest.writeByte((byte) 0);
+        } else {
+            dest.writeByte((byte) 1);
+            dest.writeInt(iD);
+        }
+        dest.writeString(groups);
+        dest.writeString(domain);
+        dest.writeString(Category);
+        dest.writeString(TargetDate);
+        dest.writeString(business);
+        dest.writeString(ImplementationDate);
+        dest.writeString(plant);
+        dest.writeString(department);
+        dest.writeString(imagePath);
+        dest.writeString(description);
+        dest.writeString(benefits);
+        dest.writeString(abnormalityDate);
+        dest.writeByte((byte) (isActive == null ? 0 : isActive ? 1 : 2));
+        dest.writeByte((byte) (Status == null ? 0 : Status ? 1 : 2));
+        dest.writeString(Action);
+        dest.writeString(BusinessName);
+        dest.writeString(DepartmentName);
+        dest.writeString(PlantName);
+        dest.writeString(Flag);
+        dest.writeString(functionId);
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    public static final Creator<AbnormalityView_Model> CREATOR = new Creator<AbnormalityView_Model>() {
+        @Override
+        public AbnormalityView_Model createFromParcel(Parcel in) {
+            return new AbnormalityView_Model(in);
+        }
+
+        @Override
+        public AbnormalityView_Model[] newArray(int size) {
+            return new AbnormalityView_Model[size];
+        }
+    };
 
     public String getUpdatedBy() {
         return UpdatedBy;
@@ -238,5 +334,53 @@ public class AbnormalityView_Model {
 
     public void setCategory(String category) {
         Category = category;
+    }
+
+    public String getFlag() {
+        return Flag;
+    }
+
+    public void setFlag(String flag) {
+        Flag = flag;
+    }
+
+    public String getFunctionId() {
+        return functionId;
+    }
+
+    public void setFunctionId(String functionId) {
+        this.functionId = functionId;
+    }
+
+    public String getAssignedto() {
+        return Assignedto;
+    }
+
+    public void setAssignedto(String assignedto) {
+        Assignedto = assignedto;
+    }
+
+    public String getAssignRemark() {
+        return AssignRemark;
+    }
+
+    public void setAssignRemark(String assignRemark) {
+        AssignRemark = assignRemark;
+    }
+
+    public String getCloserRemark() {
+        return CloserRemark;
+    }
+
+    public void setCloserRemark(String closerRemark) {
+        CloserRemark = closerRemark;
+    }
+
+    public String getSendBackRemark() {
+        return SendBackRemark;
+    }
+
+    public void setSendBackRemark(String sendBackRemark) {
+        SendBackRemark = sendBackRemark;
     }
 }

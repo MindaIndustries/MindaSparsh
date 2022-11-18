@@ -5,6 +5,8 @@ import android.app.DatePickerDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.os.Parcelable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,6 +19,7 @@ import com.google.android.material.snackbar.Snackbar;
 import com.minda.sparsh.AbnormalityAddressing2Activity;
 import com.minda.sparsh.AbnormalityAddressingActivity;
 import com.minda.sparsh.Interface;
+import com.minda.sparsh.LoginActivity;
 import com.minda.sparsh.R;
 import com.minda.sparsh.ViewImageActivity;
 import com.minda.sparsh.model.AbnormalityView_Model;
@@ -45,6 +48,10 @@ public class AbnormalityAdapter extends BaseAdapter {
     AbnormalityAdapter.ViewHolder holder;
     private final ProgressDialog progress;
     long time, time_target, time_update, time_abnormility, oneday = 86400000;
+    private String mUserChoosenTask = "";
+    String username,empcode;
+
+    SharedPreferences myPref;
 
 
     public AbnormalityAdapter(Context applicationContext, List<AbnormalityView_Model> venueData) {
@@ -56,10 +63,14 @@ public class AbnormalityAdapter extends BaseAdapter {
         progress.setProgressStyle(ProgressDialog.STYLE_SPINNER);
         progress.setIndeterminate(true);
         time = System.currentTimeMillis();
+        myPref = applicationContext.getSharedPreferences("MyPref", Context.MODE_PRIVATE);
+        username = myPref.getString("username", "");
+        empcode = myPref.getString("Id", "Id");
+
     }
 
     public static class ViewHolder {
-        public TextView tv_result, tv_status, tv_Actual_date, tv_test_date, tv_action, tv_plant, tv_business, tv_domain, tv_category, tv_date, tv_abnormality, tv_sn, tv_update, tv_view, tv_uplodedBy, tv_department, tv_updatedby;
+        public TextView level, tv_result, tv_status, tv_Actual_date, tv_test_date, tv_action, tv_plant, tv_business, tv_domain, tv_category, tv_date, tv_abnormality, tv_sn, tv_update, tv_view, tv_uplodedBy, tv_department, tv_updatedby, remark;
         public LinearLayout laycellview;
     }
 
@@ -85,28 +96,61 @@ public class AbnormalityAdapter extends BaseAdapter {
             final ViewHolder holder = new ViewHolder();
             this.holder = holder;
             convertView = inflater.inflate(R.layout.abnormality, null);
-            holder.tv_result =  convertView.findViewById(R.id.tv_result);
-            holder.tv_status =  convertView.findViewById(R.id.tv_status);
-            holder.tv_Actual_date =  convertView.findViewById(R.id.tv_Actual_date);
-            holder.tv_test_date =  convertView.findViewById(R.id.tv_test_date);
-            holder.tv_uplodedBy =  convertView.findViewById(R.id.tv_uplodedBy);
-            holder.tv_action =  convertView.findViewById(R.id.tv_action);
-            holder.tv_updatedby =  convertView.findViewById(R.id.tv_updatedby);
+            holder.level = convertView.findViewById(R.id.level);
+            holder.tv_result = convertView.findViewById(R.id.tv_result);
+            holder.tv_status = convertView.findViewById(R.id.tv_status);
+            holder.tv_Actual_date = convertView.findViewById(R.id.tv_Actual_date);
+            holder.tv_test_date = convertView.findViewById(R.id.tv_test_date);
+            holder.tv_uplodedBy = convertView.findViewById(R.id.tv_uplodedBy);
+            holder.tv_action = convertView.findViewById(R.id.tv_action);
+            holder.tv_updatedby = convertView.findViewById(R.id.tv_updatedby);
 
-            holder.tv_department =  convertView.findViewById(R.id.tv_department);
-            holder.tv_plant =  convertView.findViewById(R.id.tv_plant);
-            holder.tv_business =  convertView.findViewById(R.id.tv_business);
-            holder.tv_domain =  convertView.findViewById(R.id.tv_domain);
-            holder.tv_category =  convertView.findViewById(R.id.tv_category);
-            holder.tv_date =  convertView.findViewById(R.id.tv_date);
-            holder.tv_abnormality =  convertView.findViewById(R.id.tv_abnormality);
-            holder.tv_sn =  convertView.findViewById(R.id.tv_sn);
-            holder.laycellview =  convertView.findViewById(R.id.laycellview);
-            holder.tv_update =  convertView.findViewById(R.id.tv_update);
-            holder.tv_view =  convertView.findViewById(R.id.tv_view);
+            holder.tv_department = convertView.findViewById(R.id.tv_department);
+            holder.tv_plant = convertView.findViewById(R.id.tv_plant);
+            holder.tv_business = convertView.findViewById(R.id.tv_business);
+            holder.tv_domain = convertView.findViewById(R.id.tv_domain);
+            holder.tv_category = convertView.findViewById(R.id.tv_category);
+            holder.tv_date = convertView.findViewById(R.id.tv_date);
+            holder.tv_abnormality = convertView.findViewById(R.id.tv_abnormality);
+            holder.tv_sn = convertView.findViewById(R.id.tv_sn);
+            holder.laycellview = convertView.findViewById(R.id.laycellview);
+            holder.tv_update = convertView.findViewById(R.id.tv_update);
+            holder.tv_view = convertView.findViewById(R.id.tv_view);
+            holder.remark = convertView.findViewById(R.id.remark);
             holder.tv_updatedby.setText(homeData.get(position).getUploadedBy());
+            holder.level.setText(homeData.get(position).getFlag());
+            holder.remark.setOnClickListener(view -> {
+                if(holder.remark.getText().toString()!=null && !holder.remark.getText().toString().equals("NA")  ) {
+                    showRemarks(holder.remark.getText().toString());
+                }
+            });
+            //
 
             convertView.setTag(holder);
+            switch(homeData.get(position).getFlag()){
+                case "Pending for assigning at BEST Coordinator":
+                    holder.remark.setText("NA");
+                    break;
+                case "Pending at HOD":
+                    if(homeData.get(position).getAssignRemark()!=null) {
+                        holder.remark.setText("" + homeData.get(position).getAssignRemark());
+                    }
+                    break;
+                case "Pending at User":
+                    if(homeData.get(position).getSendBackRemark()!=null) {
+                        holder.remark.setText("" + homeData.get(position).getSendBackRemark());
+                    }
+                    break;
+                case "Pending for approval at BEST Coordinator":
+                    holder.remark.setText("NA");
+                    break;
+                case "Closed":
+                    if(homeData.get(position).getCloserRemark()!=null) {
+                        holder.remark.setText("" + homeData.get(position).getCloserRemark());
+                    }
+                    break;
+
+            }
             if (homeData.get(position).getTargetDate() != null && !homeData.get(position).getTargetDate().equalsIgnoreCase("")) {
                 holder.tv_test_date.setText(homeData.get(position).getTargetDate());
             }
@@ -123,8 +167,10 @@ public class AbnormalityAdapter extends BaseAdapter {
                 try {
                     Date mDate = sdf.parse(tergetdate);
                     time_target = mDate.getTime();
-                    Date mDate1 = sdf.parse(updatedate);
-                    time_update = mDate1.getTime();
+                    if(homeData.get(position).getImplementationDate()!=null) {
+                        Date mDate1 = sdf.parse(updatedate);
+                        time_update = mDate1.getTime();
+                    }
                     Date mDate2 = sdf.parse(abnormilitydate);
                     time_abnormility = mDate2.getTime();
 
@@ -193,7 +239,7 @@ public class AbnormalityAdapter extends BaseAdapter {
                     holder.tv_status.setBackgroundResource(R.color.white);
                 }
             }
-            
+
             holder.tv_Actual_date.setText(homeData.get(position).getImplementationDate());
 //            holder.tv_test_date.setText(homeData.get(position).getAbnormalityDate());
             holder.tv_action.setText(homeData.get(position).getAction());
@@ -224,6 +270,8 @@ public class AbnormalityAdapter extends BaseAdapter {
             });
 
             holder.tv_update.setOnClickListener(view -> {
+
+                // showUpdateOptions();
                 if (AbnormalityAddressingActivity.Role.equalsIgnoreCase("C")) {
                     if (holder.tv_test_date.getText().toString() != null && holder.tv_test_date.getText().toString().length() > 0 && !holder.tv_test_date.getText().toString().equalsIgnoreCase("Add Date")/*get(position).getTargetDate() != null*/) {
                         Intent intent = new Intent(mContext, AbnormalityAddressing2Activity.class);
@@ -242,10 +290,92 @@ public class AbnormalityAdapter extends BaseAdapter {
                     Snackbar.make(view, "You are not Authorized", Snackbar.LENGTH_LONG).show();
                 }
             });
+
             holder.tv_view.setOnClickListener(view -> {
-                Intent intent = new Intent(mContext, ViewImageActivity.class);
+               /* Intent intent = new Intent(mContext, ViewImageActivity.class);
                 intent.putExtra("ID", homeData.get(position).getID());
+                intent.putExtra("Level",homeData.get(position).getFlag());
                 mContext.startActivity(intent);
+          */
+                switch(homeData.get(position).getFlag()){
+                    case "Pending at HOD":
+                        if (AbnormalityAddressingActivity.Role.equalsIgnoreCase("HOD") && homeData.get(position).getAssignedto().equals(empcode)) {
+                            if (holder.tv_test_date.getText().toString() != null && holder.tv_test_date.getText().toString().length() > 0 && !holder.tv_test_date.getText().toString().equalsIgnoreCase("Add Date")/*get(position).getTargetDate() != null*/) {
+                                Intent intent = new Intent(mContext, AbnormalityAddressing2Activity.class);
+                                intent.putExtra("ID", homeData.get(position).getID());
+                                intent.putExtra("domain", homeData.get(position).getDomain());
+                                intent.putExtra("business", homeData.get(position).getBusinessName());
+                                intent.putExtra("plant", homeData.get(position).getPlantName());
+                                intent.putExtra("department", homeData.get(position).getDepartmentName());
+                                mContext.startActivity(intent);
+                                AbnormalityAddressingActivity context = (AbnormalityAddressingActivity) mContext;
+                                context.finish();
+                            }
+
+                            else{
+                                Intent intent = new Intent(mContext, ViewImageActivity.class);
+                                intent.putExtra("ID", homeData.get(position).getID());
+                                intent.putExtra("Level",homeData.get(position).getFlag());
+                                intent.putExtra("assignedto", homeData.get(position).getAssignedto());
+                                mContext.startActivity(intent);
+
+                            }
+
+                        }else {
+                            Intent intent = new Intent(mContext, ViewImageActivity.class);
+                            intent.putExtra("ID", homeData.get(position).getID());
+                            intent.putExtra("Level",homeData.get(position).getFlag());
+                            mContext.startActivity(intent);
+
+                            // Snackbar.make(view, "Please Set Target Date First", Snackbar.LENGTH_LONG).show();
+                        }
+                        break;
+                    case "Pending for assigning at BEST Coordinator":
+                        Intent intent = new Intent(mContext, ViewImageActivity.class);
+                        intent.putExtra("ID", homeData.get(position).getID());
+                        intent.putExtra("Level",homeData.get(position).getFlag());
+                        mContext.startActivity(intent);
+                        break;
+                    case "Pending for approval at BEST Coordinator":
+
+                        if(AbnormalityAddressingActivity.Role.equalsIgnoreCase("C")) {
+                            Intent intent1 = new Intent(mContext, ViewImageActivity.class);
+                            intent1.putExtra("ID", homeData.get(position).getID());
+                            intent1.putExtra("Level", homeData.get(position).getFlag());
+                            mContext.startActivity(intent1);
+                        }
+                        else{
+                            Intent intent1 = new Intent(mContext, ViewImageActivity.class);
+                            intent1.putExtra("ID", homeData.get(position).getID());
+                            intent1.putExtra("Level", homeData.get(position).getFlag());
+                            mContext.startActivity(intent1);
+
+                        }
+                        break;
+                    case "Pending at User":
+                        if(username.equalsIgnoreCase(homeData.get(position).getUploadedBy())){
+                            Intent intent4 = new Intent(mContext, AbnormalityAddressingActivity.class);
+                            intent4.putExtra("ab", (Parcelable) homeData.get(position));
+                            intent4.putExtra("ADD", true);
+                            mContext.startActivity(intent4);
+                        }
+                        else{
+                            Intent intent3 = new Intent(mContext, ViewImageActivity.class);
+                            intent3.putExtra("ID", homeData.get(position).getID());
+                            intent3.putExtra("Level",homeData.get(position).getFlag());
+                            intent3.putExtra("uploadedby",homeData.get(position).getUploadedBy());
+                            mContext.startActivity(intent3);
+                        }
+                        break;
+                    case "Closed":
+                        Intent intent3 = new Intent(mContext, ViewImageActivity.class);
+                        intent3.putExtra("ID", homeData.get(position).getID());
+                        intent3.putExtra("Level",homeData.get(position).getFlag());
+                        mContext.startActivity(intent3);
+                        break;
+
+                }
+
             });
 
             holder.tv_test_date.setOnClickListener(view -> {
@@ -263,9 +393,8 @@ public class AbnormalityAdapter extends BaseAdapter {
                     Snackbar.make(view, "You are not Authorized", Snackbar.LENGTH_LONG).show();
                 }
             });
-
-
             //"\n" + promotionData.get(position).getEventDate());
+
 
         }
 
@@ -325,21 +454,16 @@ public class AbnormalityAdapter extends BaseAdapter {
                     List<AddTargetDate_Model> AddDateresponse = response.body();
                     textView.setText(date);
                     notifyDataSetChanged();
-
                     if (AddDateresponse != null) {
-
                         Toast.makeText(mContext, AddDateresponse.get(0).getColumn1(), Toast.LENGTH_LONG).show();
                         AbnormalityAddressingActivity contxt = (AbnormalityAddressingActivity) mContext;
                         contxt.hitSubdepartmentApi(department);
                     }
-
                 }
 
                 @Override
                 public void onFailure(@NotNull Call<List<AddTargetDate_Model>> call, @NotNull Throwable t) {
-
                     showProgress(false);
-
                 }
             });
         } else
@@ -376,5 +500,20 @@ public class AbnormalityAdapter extends BaseAdapter {
         return str;
     }
 
+    public void showRemarks(String remarks) {
+        androidx.appcompat.app.AlertDialog.Builder alertDialogBuilder = new androidx.appcompat.app.AlertDialog.Builder(mContext);
+        alertDialogBuilder.setMessage(remarks);
+        alertDialogBuilder.setTitle("Remarks");
+        alertDialogBuilder.setPositiveButton("OK", (arg0, arg1) -> {
+            arg0.dismiss();
+
+        });
+
+        alertDialogBuilder.setNegativeButton("Cancel", (dialog, which) -> dialog.dismiss());
+
+        androidx.appcompat.app.AlertDialog alertDialog = alertDialogBuilder.create();
+        alertDialog.show();
+
+    }
 
 } 

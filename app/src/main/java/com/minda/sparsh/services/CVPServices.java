@@ -30,6 +30,7 @@ import retrofit2.http.Field;
 
 public class CVPServices {
 
+/*
     public void updateRandomNumber(OnTaskComplete onTaskComplete, String empcode, String randomNumber){
         CVPClient cvpClient = RetrofitClient2.getClientScanQR(CVPClient.class);
         Call<String> call = cvpClient.updateRandomNumber(empcode,randomNumber);
@@ -57,6 +58,7 @@ public class CVPServices {
 
 
     }
+*/
 
     public void getWeekData(OnTaskComplete onTaskComplete, String date){
         CVPClient cvpClient = RetrofitClient2.getClientCVP(CVPClient.class);

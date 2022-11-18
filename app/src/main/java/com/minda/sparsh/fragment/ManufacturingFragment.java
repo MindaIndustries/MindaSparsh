@@ -125,6 +125,10 @@ public class ManufacturingFragment extends Fragment {
                         intent.putExtra("EBUSINESS", userDetail_models.get(0).getBUSINESS());
                         intent.putExtra("EPLANT", userDetail_models.get(0).getUNITCODE());
                         intent.putExtra("ADD", true);
+                        myPref.edit().putString("EDOMAIN",userDetail_models.get(0).getDOMAIN());
+                        myPref.edit().putString("EBUSINESS", userDetail_models.get(0).getBUSINESS());
+                        myPref.edit().putString("EPLANT",userDetail_models.get(0).getUNITCODE());
+                        myPref.edit().apply();
                         startActivity(intent);
                     } else {
                         Toast.makeText(getActivity(), "You Are Not Authorized", Toast.LENGTH_LONG).show();
