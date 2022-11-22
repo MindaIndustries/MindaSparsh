@@ -572,14 +572,16 @@
             <LinearLayout
                 android:id="@+id/lay_two"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="500dp"
                 android:layout_marginTop="30dp"
                 android:orientation="vertical"
                 android:visibility="gone">
 
                 <HorizontalScrollView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:nestedScrollingEnabled="true"
+                    android:fillViewport="true"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
                     android:scrollbars="none">
 
                     <LinearLayout
@@ -773,9 +775,10 @@
 
                         <ListView
                             android:id="@+id/list_abnormalty"
-                            android:layout_width="wrap_content"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:divider="@null" />
+                            android:divider="@null"
+                            android:nestedScrollingEnabled="true"/>
                     </LinearLayout>
                 </HorizontalScrollView>
 

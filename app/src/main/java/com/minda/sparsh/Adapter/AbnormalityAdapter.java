@@ -72,6 +72,31 @@ public class AbnormalityAdapter extends BaseAdapter {
     public static class ViewHolder {
         public TextView level, tv_result, tv_status, tv_Actual_date, tv_test_date, tv_action, tv_plant, tv_business, tv_domain, tv_category, tv_date, tv_abnormality, tv_sn, tv_update, tv_view, tv_uplodedBy, tv_department, tv_updatedby, remark;
         public LinearLayout laycellview;
+
+        public ViewHolder(View view) {
+            level = view.findViewById(R.id.level);
+            tv_result = view.findViewById(R.id.tv_result);
+            tv_status = view.findViewById(R.id.tv_status);
+            tv_Actual_date = view.findViewById(R.id.tv_Actual_date);
+            tv_test_date = view.findViewById(R.id.tv_test_date);
+            tv_uplodedBy = view.findViewById(R.id.tv_uplodedBy);
+            tv_action = view.findViewById(R.id.tv_action);
+            tv_updatedby = view.findViewById(R.id.tv_updatedby);
+
+            tv_department = view.findViewById(R.id.tv_department);
+            tv_plant = view.findViewById(R.id.tv_plant);
+            tv_business = view.findViewById(R.id.tv_business);
+            tv_domain = view.findViewById(R.id.tv_domain);
+            tv_category = view.findViewById(R.id.tv_category);
+            tv_date = view.findViewById(R.id.tv_date);
+            tv_abnormality = view.findViewById(R.id.tv_abnormality);
+            tv_sn = view.findViewById(R.id.tv_sn);
+            laycellview = view.findViewById(R.id.laycellview);
+            tv_update = view.findViewById(R.id.tv_update);
+            tv_view = view.findViewById(R.id.tv_view);
+            remark = view.findViewById(R.id.remark);
+
+        }
     }
 
     @Override
@@ -92,41 +117,24 @@ public class AbnormalityAdapter extends BaseAdapter {
     @Override
     public View getView(final int position, View convertView, ViewGroup viewGroup) {
 
-        if (convertView == null) {
-            final ViewHolder holder = new ViewHolder();
-            this.holder = holder;
-            convertView = inflater.inflate(R.layout.abnormality, null);
-            holder.level = convertView.findViewById(R.id.level);
-            holder.tv_result = convertView.findViewById(R.id.tv_result);
-            holder.tv_status = convertView.findViewById(R.id.tv_status);
-            holder.tv_Actual_date = convertView.findViewById(R.id.tv_Actual_date);
-            holder.tv_test_date = convertView.findViewById(R.id.tv_test_date);
-            holder.tv_uplodedBy = convertView.findViewById(R.id.tv_uplodedBy);
-            holder.tv_action = convertView.findViewById(R.id.tv_action);
-            holder.tv_updatedby = convertView.findViewById(R.id.tv_updatedby);
+        ViewHolder holder;
 
-            holder.tv_department = convertView.findViewById(R.id.tv_department);
-            holder.tv_plant = convertView.findViewById(R.id.tv_plant);
-            holder.tv_business = convertView.findViewById(R.id.tv_business);
-            holder.tv_domain = convertView.findViewById(R.id.tv_domain);
-            holder.tv_category = convertView.findViewById(R.id.tv_category);
-            holder.tv_date = convertView.findViewById(R.id.tv_date);
-            holder.tv_abnormality = convertView.findViewById(R.id.tv_abnormality);
-            holder.tv_sn = convertView.findViewById(R.id.tv_sn);
-            holder.laycellview = convertView.findViewById(R.id.laycellview);
-            holder.tv_update = convertView.findViewById(R.id.tv_update);
-            holder.tv_view = convertView.findViewById(R.id.tv_view);
-            holder.remark = convertView.findViewById(R.id.remark);
-            holder.tv_updatedby.setText(homeData.get(position).getUploadedBy());
+        if (convertView == null) {
+            convertView = LayoutInflater.from(mContext).inflate(R.layout.abnormality, viewGroup, false);
+            holder = new ViewHolder(convertView);
+            convertView.setTag(holder);
+        } else {
+            holder = (ViewHolder) convertView.getTag();
+        }
+
+                holder.tv_updatedby.setText(homeData.get(position).getUploadedBy());
             holder.level.setText(homeData.get(position).getFlag());
             holder.remark.setOnClickListener(view -> {
                 if(holder.remark.getText().toString()!=null && !holder.remark.getText().toString().equals("NA")  ) {
                     showRemarks(holder.remark.getText().toString());
                 }
             });
-            //
 
-            convertView.setTag(holder);
             switch(homeData.get(position).getFlag()){
                 case "Pending for assigning at BEST Coordinator":
                     holder.remark.setText("NA");
@@ -331,6 +339,7 @@ public class AbnormalityAdapter extends BaseAdapter {
                         }
                         break;
                     case "Pending for assigning at BEST Coordinator":
+                    case "Closed":
                         Intent intent = new Intent(mContext, ViewImageActivity.class);
                         intent.putExtra("ID", homeData.get(position).getID());
                         intent.putExtra("Level",homeData.get(position).getFlag());
@@ -367,12 +376,6 @@ public class AbnormalityAdapter extends BaseAdapter {
                             mContext.startActivity(intent3);
                         }
                         break;
-                    case "Closed":
-                        Intent intent3 = new Intent(mContext, ViewImageActivity.class);
-                        intent3.putExtra("ID", homeData.get(position).getID());
-                        intent3.putExtra("Level",homeData.get(position).getFlag());
-                        mContext.startActivity(intent3);
-                        break;
 
                 }
 
@@ -396,7 +399,7 @@ public class AbnormalityAdapter extends BaseAdapter {
             //"\n" + promotionData.get(position).getEventDate());
 
 
-        }
+
 
 
         return convertView;

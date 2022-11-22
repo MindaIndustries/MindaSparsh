@@ -67,12 +67,20 @@ public class ThreeFragment extends Fragment {
         CardView cardView2 = convertView.findViewById(R.id.card_view2);
         CardView cardView3 = convertView.findViewById(R.id.card_view3);
         CardView cardView4 = convertView.findViewById(R.id.card_view4);
+        CardView cardView6 = convertView.findViewById(R.id.card_view6);
 
 
         cardView4.setOnClickListener(v -> {
             Intent in = new Intent(getActivity(), EHS_Home.class);
             startActivity(in);
 
+        });
+        cardView6.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+
+            }
         });
 
         final DashBoardActivity contaxt = (DashBoardActivity) getActivity();

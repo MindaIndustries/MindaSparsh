@@ -26,6 +26,7 @@ import android.os.Parcelable;
 import android.provider.MediaStore;
 import android.util.Base64;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -188,11 +189,13 @@ public class AbnormalityAddressingActivity extends AppCompatActivity {
         progress.setMessage("Please wait...");
         progress.setProgressStyle(ProgressDialog.STYLE_SPINNER);
         progress.setIndeterminate(true);
+        progress.setCancelable(false);
         myPref = getSharedPreferences("MyPref", Context.MODE_PRIVATE);
         empCode = myPref.getString("Id", "Id");
         EDOMAIN = myPref.getString("EDOMAIN","");
         EBUSINESS = myPref.getString("EBUSINESS","");
         EPLANT = myPref.getString("EPLANT","");
+
 
        /* if(getIntent().getParcelableExtra("ab")!=null){
             abnormalityView_model = getIntent().getParcelableExtra("ab");
@@ -1089,8 +1092,9 @@ public class AbnormalityAddressingActivity extends AppCompatActivity {
 
     public void hitAddAbnormalityApi(String id,String group, String domain, String business, String plant, String department, String imagepath, String description, String benefits, String abnormalitydate, String UploadedBy, int category, int funcId) {
         if (Utility.isOnline(AbnormalityAddressingActivity.this)) {
-            progressBar.setVisibility(View.VISIBLE);
+          //  progressBar.setVisibility(View.VISIBLE);
             et_descripton.setText("");
+            progress.show();
             //   showProgress(true);
             Interface promotingMyinterface = RetrofitClient2.getClient().create(Interface.class);
             Call<List<AddAbnormality_Model>> response = promotingMyinterface.AddAbnormality(id,RetrofitClient2.CKEY, group, domain, business, plant, department, imagepath, description, benefits, abnormalitydate, UploadedBy, category,funcId);
@@ -1098,7 +1102,8 @@ public class AbnormalityAddressingActivity extends AppCompatActivity {
                 @Override
                 public void onResponse(@NotNull Call<List<AddAbnormality_Model>> call, @NotNull Response<List<AddAbnormality_Model>> response) {
                     //   showProgress(false);
-                    progressBar.setVisibility(View.GONE);
+                    progress.dismiss();
+                //    progressBar.setVisibility(View.GONE);
 
                     List<AddAbnormality_Model> Departmentresponse = response.body();
 
@@ -1127,7 +1132,8 @@ public class AbnormalityAddressingActivity extends AppCompatActivity {
 
                 @Override
                 public void onFailure(@NotNull Call<List<AddAbnormality_Model>> call, @NotNull Throwable t) {
-                    progressBar.setVisibility(View.GONE);
+                //    progressBar.setVisibility(View.GONE);
+                    progress.dismiss();
 
 
                     //   showProgress(false);
@@ -1135,8 +1141,8 @@ public class AbnormalityAddressingActivity extends AppCompatActivity {
                 }
             });
         } else {
-            progressBar.setVisibility(View.GONE);
-
+            //progressBar.setVisibility(View.GONE);
+            progress.dismiss();
             Toast.makeText(AbnormalityAddressingActivity.this, "Please Check Your Network Connection", Toast.LENGTH_LONG).show();
         }
 
@@ -1201,6 +1207,7 @@ public class AbnormalityAddressingActivity extends AppCompatActivity {
     }
 
     public void hitGetAbnormalityDetailApi(String plant, String department, String domain, String business,String empCode) {
+        //progress.show();
         if (!getIntent().getBooleanExtra("ADD", false)) {
 
             if (Utility.isOnline(AbnormalityAddressingActivity.this)) {
@@ -1210,14 +1217,37 @@ public class AbnormalityAddressingActivity extends AppCompatActivity {
                 response.enqueue(new Callback<List<AbnormalityView_Model>>() {
                     @Override
                     public void onResponse(@NotNull Call<List<AbnormalityView_Model>> call, @NotNull Response<List<AbnormalityView_Model>> response) {
-                        showProgress(false);
-
-                        List<AbnormalityView_Model> AbnormalityDetail = response.body();
+                      /*  if (!AbnormalityAddressingActivity.this.isFinishing() && progress != null) {
+                            progress.dismiss();
+                        }
+                      */  List<AbnormalityView_Model> AbnormalityDetail = response.body();
 
                         if (AbnormalityDetail != null) {
                             AbnormalityAdapter abnormalityAdapter = new AbnormalityAdapter(AbnormalityAddressingActivity.this, AbnormalityDetail);
                             list_abnormalty.setAdapter(abnormalityAdapter);
-                            setListViewHeightBasedOnChildren(list_abnormalty);
+                            abnormalityAdapter.notifyDataSetChanged();
+                            list_abnormalty.setOnTouchListener(new ListView.OnTouchListener() {
+                                @Override
+                                public boolean onTouch(View v, MotionEvent event) {
+                                    int action = event.getAction();
+                                    switch (action) {
+                                        case MotionEvent.ACTION_DOWN:
+                                            // Disallow ScrollView to intercept touch events.
+                                            v.getParent().requestDisallowInterceptTouchEvent(true);
+                                            break;
+
+                                        case MotionEvent.ACTION_UP:
+                                            // Allow ScrollView to intercept touch events.
+                                            v.getParent().requestDisallowInterceptTouchEvent(false);
+                                            break;
+                                    }
+
+                                    // Handle ListView touch events.
+                                    v.onTouchEvent(event);
+                                    return true;
+                                }
+                            });
+                           // setListViewHeightBasedOnChildren(list_abnormalty);
 
 
                         }
