@@ -19,7 +19,6 @@ public class SplashActivity extends Activity {
         setContentView(R.layout.activity_splash);
 
         new Handler().postDelayed(() -> {
-
             SharedPreferences myPref = getSharedPreferences("MyPref", Context.MODE_PRIVATE);
 
             Intent i;

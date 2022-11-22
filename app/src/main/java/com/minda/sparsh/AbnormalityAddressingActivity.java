@@ -1211,6 +1211,7 @@ public class AbnormalityAddressingActivity extends AppCompatActivity {
                     @Override
                     public void onResponse(@NotNull Call<List<AbnormalityView_Model>> call, @NotNull Response<List<AbnormalityView_Model>> response) {
                         showProgress(false);
+
                         List<AbnormalityView_Model> AbnormalityDetail = response.body();
 
                         if (AbnormalityDetail != null) {
