@@ -80,6 +80,8 @@ public class ThreeFragment extends Fragment {
             public void onClick(View view) {
 
 
+                // learning hub tile
+
             }
         });
 
