@@ -80,6 +80,11 @@
             android:screenOrientation="portrait"
             android:theme="@style/spinnertheme" />
         <activity
+            android:name=".AccessRequestDetailsActivity1"
+            android:screenOrientation="portrait"
+            android:theme="@style/spinnertheme" />
+
+        <activity
             android:name=".ApproveListActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
@@ -260,6 +265,14 @@
         <activity android:name=".MeetingRoomBookings"
             android:screenOrientation="portrait"
             android:theme="@style/spinnertheme"
+            />
+        <activity android:name=".IAMViewStatusActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"
+            />
+        <activity android:name=".ALMSCalendarActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"
             />
 
         <meta-data

@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white">
+
+    <RelativeLayout
+        android:padding="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    <TextView
+        android:id="@+id/heading"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Upload Attachment"
+        android:textSize="20sp"
+        />
+
+
+        <RelativeLayout
+            android:layout_marginTop="20dp"
+            android:layout_below="@+id/heading"
+            android:id="@+id/attach_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:adjustViewBounds="true"
+                android:scaleType="centerInside"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="10dp"
+                android:src="@drawable/demoimage"
+                android:id="@+id/attachment1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:visibility="gone"
+                android:id="@+id/attachtext1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@+id/attachment1"
+                android:layout_alignBottom="@+id/attachment1"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_toStartOf="@+id/attachment1"
+                android:fontFamily="@font/museosans_500"
+                android:singleLine="true"
+                android:text="Add attachment" />
+
+            <ImageView
+                android:id="@+id/doc_view"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:visibility="gone"
+                android:layout_margin="5dp" />
+
+        </RelativeLayout>
+        <Button
+            android:padding="10dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp"
+            android:layout_below="@+id/attach_layout"
+            android:id="@+id/send"
+            android:background="@drawable/btn_bg"
+            android:text="Send to Processor"
+            android:textColor="@color/white"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+    </RelativeLayout>
+</RelativeLayout>

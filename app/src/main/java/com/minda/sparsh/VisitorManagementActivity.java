@@ -751,7 +751,7 @@ public class VisitorManagementActivity extends AppCompatActivity implements View
                             et_purpose.setEnabled(false);
 
                         } else {
-                            Toast.makeText(getApplicationContext(), "Something went wrong", Toast.LENGTH_LONG).show();
+                         //   Toast.makeText(getApplicationContext(), "Something went wrong", Toast.LENGTH_LONG).show();
                         }
 
                     } catch (Exception e) {

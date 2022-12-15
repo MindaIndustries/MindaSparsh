@@ -45,6 +45,8 @@ import com.prolificinteractive.materialcalendarview.MaterialCalendarView;
 import com.prolificinteractive.materialcalendarview.OnDateSelectedListener;
 
 import org.jetbrains.annotations.NotNull;
+import org.threeten.bp.DayOfWeek;
+import org.threeten.bp.LocalDate;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -130,10 +132,10 @@ public class CVPPlanCalendar extends AppCompatActivity implements OnDateSelected
         title.setText("Add a Plan");
         myPref = getSharedPreferences("MyPref", MODE_PRIVATE);
         empcode = myPref.getString("Id", "Id");
-        calendarView.setDateSelected(new Date(), true);
+        calendarView.setDateSelected(CalendarDay.from(LocalDate.now()),true);
         calendarView.setSelectionColor(getResources().getColor(R.color.colorPrimary));
-        calendarView.state().edit().setMinimumDate(Calendar.getInstance()).commit();
-        calendarView.state().edit().setFirstDayOfWeek(Calendar.MONDAY).commit();
+        calendarView.state().edit().setMinimumDate(LocalDate.now()).commit();
+        calendarView.state().edit().setFirstDayOfWeek(DayOfWeek.MONDAY).commit();
         calendarView.addDecorators(
                 new MySelectorDecorator(this),
                 new HighlightWeekendsDecorator(),

@@ -38,6 +38,8 @@ import com.prolificinteractive.materialcalendarview.OnDateSelectedListener;
 import com.whiteelephant.monthpicker.MonthPickerDialog;
 
 import org.jetbrains.annotations.NotNull;
+import org.threeten.bp.DayOfWeek;
+import org.threeten.bp.LocalDate;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -106,13 +108,13 @@ public class CVPViewCalendar extends AppCompatActivity implements OnDateSelected
         title.setText("Meetings");
         myPref = getSharedPreferences("MyPref", MODE_PRIVATE);
         empcode = myPref.getString("Id", "Id");
-        calendarView.setDateSelected(new Date(),true);
+        calendarView.setDateSelected(CalendarDay.from(LocalDate.now()),true);
         month = Calendar.getInstance().getDisplayName(Calendar.MONTH, Calendar.LONG, Locale.getDefault());
         calendarView.setSelectionColor(getResources().getColor(R.color.colorPrimary));
        // calendarView.state().edit().setMinimumDate(Calendar.getInstance());
         progressDialog = new ProgressDialog(CVPViewCalendar.this);
         progressDialog.setMessage("Loading...");
-        calendarView.state().edit().setFirstDayOfWeek(Calendar.MONDAY).commit();
+        calendarView.state().edit().setFirstDayOfWeek(DayOfWeek.MONDAY).commit();
         initDatePicker();
         getYear();
         initWeekSpinner();
@@ -457,6 +459,7 @@ public class CVPViewCalendar extends AppCompatActivity implements OnDateSelected
         alertDialog.show();
     }
 
+/*
     public void initMonthPicker(int minYear, int maxYear){
         Calendar today = Calendar.getInstance();
          builder = new MonthPickerDialog.Builder(CVPViewCalendar.this, (selectedMonth, selectedYear) -> {
@@ -466,6 +469,7 @@ public class CVPViewCalendar extends AppCompatActivity implements OnDateSelected
              mcal.set(Calendar.MONTH,selectedMonth);
              mcal.set(Calendar.YEAR,selectedYear);
              mcal.set(Calendar.DAY_OF_WEEK,Calendar.MONDAY);
+             LocalDate localDate =
              calendarView.setCurrentDate(CalendarDay.from(new Date(mcal.getTimeInMillis())),true);
              calendarView.setDateSelected(new Date(mcal.getTimeInMillis()),true);
              textView.setText(mcal.getDisplayName(Calendar.MONTH, Calendar.LONG, Locale.getDefault()) +" "+ mcal.get(Calendar.YEAR));
@@ -496,6 +500,7 @@ public class CVPViewCalendar extends AppCompatActivity implements OnDateSelected
                     // Toast.makeText(MainActivity.this, " Selected year : " + selectedYear, Toast.LENGTH_SHORT).show();
                 });
     }
+*/
 
 
     public void getYear(){

@@ -116,7 +116,7 @@ This policy is effective as of 2020-08-25
 
 \n\nIf you have any questions or suggestions about our Privacy Policy, do not hesitate to contact us at rmanchanda@mindagroup.com.</string>
     <string name="mindacare_selfDeclaration"><![CDATA[Attendance & Self Declaration]]></string>
-    <string name="bottom_up_concern">BOTTOM UP CONCERN</string>
+    <string name="bottom_up_concern">Bottom-up Concern</string>
     <string name="environment_healthnSafety"><![CDATA[Environment Health & Safety]]></string>
     <string name="notifications">Notifications</string>
     <string name="my_profile">My Profile</string>
@@ -155,5 +155,6 @@ This policy is effective as of 2020-08-25
     <string name="assigned">Assigned</string>
     <string name="pending">Pending</string>
     <string name="approve_request">Approve Request</string>
+    <string name="deleted_iam_req">Request has been deleted successfully</string>
 
 </resources>

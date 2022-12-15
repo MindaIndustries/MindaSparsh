@@ -57,8 +57,8 @@ public class RetrofitClient2 {
     public static final String baseurlqr = "https://services.mindasparsh.com/MeetingRoom/API/";
     public static final String baseurlAbnormalityNew = "https://bridge.mindasparsh.com/API/";
     //new CKey
-   // public static final String CKEY = "bWRhQHNQciRyWiNHISE=";
-   public static final String CKEY = "mda@sPr$rZ#G!!";
+  //  public static final String CKEY = "bWRhQHNQciRyWiNHISE=";
+  public static final String CKEY = "mda@sPr$rZ#G!!";
 
     private static Retrofit retrofit = null;
     static Dispatcher dispatcher1 = new Dispatcher();

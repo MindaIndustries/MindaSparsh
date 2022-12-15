@@ -111,6 +111,10 @@ public class UriUtils {
                 } else if ("audio".equals(type)) {
                     contentUri = MediaStore.Audio.Media.EXTERNAL_CONTENT_URI;
                 }
+               /* else if("document".equals(type)){
+                    contentUri = Uri.parse(MediaStore.Files.FileColumns.MEDIA_TYPE+ "="
+                            + MediaStore.Files.FileColumns.MEDIA_TYPE_NONE);
+                }*/
                 selection = "_id=?";
                 selectionArgs = new String[]{split[1]};
 

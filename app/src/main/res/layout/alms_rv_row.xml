@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    >
+
+    <RelativeLayout
+        android:id="@+id/row"
+        android:background="@drawable/rec_alms_row"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:weightSum="3"
+            android:padding="10dp"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <RelativeLayout
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp"
+                android:background="@drawable/rec_button"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:fontFamily="@font/museosans_700"
+                    android:gravity="center"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/date"
+                    android:textSize="20sp"
+                    android:text="12"
+                    android:layout_marginTop="5dp"
+                    android:textColor="@color/black"
+                    />
+
+                <TextView
+                    android:fontFamily="@font/museosans_700"
+                    android:gravity="center"
+                    android:layout_marginTop="20dp"
+                    android:layout_below="@+id/date"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/day"
+                    android:text="MON"
+                    android:textColor="@color/black"
+                    android:textSize="20sp"
+                    />
+
+            </RelativeLayout>
+            <RelativeLayout
+                android:gravity="center"
+                android:layout_marginLeft="10dp"
+                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/punch_in"
+                    android:text="Punch in"
+                    android:textSize="18sp"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/museosans_500"
+                    android:layout_marginTop="8dp"
+                    />
+                <TextView
+                    android:layout_below="@+id/punch_in"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/punch_in_time"
+                    android:text="8:30 AM"
+                    android:textColor="#808080"
+                    android:textSize="18sp"
+                    android:fontFamily="@font/museosans_500"
+                    android:layout_marginTop="20dp"
+                    />
+            </RelativeLayout>
+            <RelativeLayout
+                android:layout_marginLeft="10dp"
+                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/punch_out"
+                    android:text="Punch out"
+                    android:textSize="18sp"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/museosans_500"
+                    android:layout_marginTop="8dp"
+                    />
+                <TextView
+                    android:layout_below="@+id/punch_out"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/punch_out_time"
+                    android:text="5:30 PM"
+                    android:textSize="18sp"
+                    android:textColor="#808080"
+                    android:fontFamily="@font/museosans_500"
+                    android:layout_marginTop="20dp"
+                    />
+
+
+            </RelativeLayout>
+
+
+
+        </LinearLayout>
+
+
+
+
+    </RelativeLayout>
+
+
+    <View
+        android:layout_below="@+id/row"
+        android:background="#f0f0f0"
+        android:layout_width="match_parent"
+        android:layout_height="20dp"/>
+</RelativeLayout>

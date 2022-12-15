@@ -109,6 +109,25 @@
                 android:text="Approve Request"
                 android:textColor="#ffffff"
                 android:textSize="14sp" />
+
+            <Button
+                android:id="@+id/view_status"
+                android:layout_width="wrap_content"
+                android:layout_height="60dp"
+                android:layout_below="@+id/iv_approve_request"
+                android:layout_alignLeft="@+id/iv_approve_request"
+                android:layout_alignRight="@+id/iv_approve_request"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/btn_bg_round"
+                android:drawableLeft="@drawable/view_iam1"
+                android:fontFamily="@font/museosans_700"
+                android:paddingLeft="20dp"
+                android:paddingTop="5dp"
+                android:paddingRight="20dp"
+                android:paddingBottom="5dp"
+                android:text="View Status"
+                android:textColor="#ffffff"
+                android:textSize="14sp" />
         </RelativeLayout>
 
     </LinearLayout>

@@ -13,7 +13,7 @@ import androidx.appcompat.widget.Toolbar;
 
 public class IdentityAccessManagementActivity extends AppCompatActivity implements View.OnClickListener {
     ImageView im_back,  iv_view_access_request;
-    Button iv_approve_request,iv_access_request;
+    Button iv_approve_request,iv_access_request, view_status;
     Toolbar toolbar;
     TextView title;
 
@@ -23,6 +23,7 @@ public class IdentityAccessManagementActivity extends AppCompatActivity implemen
         setContentView(R.layout.activity_identity_access_management);
         toolbar =  findViewById(R.id.toolbar);
         title =  findViewById(R.id.title);
+        view_status = findViewById(R.id.view_status);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
@@ -36,6 +37,7 @@ public class IdentityAccessManagementActivity extends AppCompatActivity implemen
         iv_access_request.setOnClickListener(this);
         iv_view_access_request =  findViewById(R.id.iv_view_access_request);
         im_back.setOnClickListener(view -> finish());
+        view_status.setOnClickListener(this);
 
 //        intiUiSetup();
     }
@@ -77,6 +79,10 @@ public class IdentityAccessManagementActivity extends AppCompatActivity implemen
             case R.id.iv_access_request:
                 Intent iv_access_requestIntent = new Intent(getApplicationContext(), RequestForAccessActivity.class);
                 startActivity(iv_access_requestIntent);
+                break;
+            case R.id.view_status:
+                Intent viewStatus = new Intent(getApplicationContext(), IAMViewStatusActivity.class);
+                startActivity(viewStatus);
                 break;
         }
     }

@@ -62,7 +62,6 @@ public class ApproveListActivity extends AppCompatActivity {
         mSwipeRefreshLayout =  findViewById(R.id.swipeToRefresh);
         mSwipeRefreshLayout.setOnRefreshListener(() -> {
             hitGetApprovalListApi(RetrofitClient2.CKEY, myPref.getString("Id", "Id"));
-
             mSwipeRefreshLayout.setRefreshing(false);
         });
         im_back =  findViewById(R.id.im_back);

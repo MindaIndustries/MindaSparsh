@@ -9,6 +9,7 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.minda.sparsh.ALMSCalendarActivity;
 import com.minda.sparsh.BottomUpConcernActivity;
 import com.minda.sparsh.DashBoardActivity;
 import com.minda.sparsh.EHS_Home;
@@ -56,7 +57,7 @@ public class ThreeFragment extends Fragment {
         View convertView = inflater.inflate(R.layout.fragment_three, container, false);
         ImageView im_right =  convertView.findViewById(R.id.im_right);
         ImageView im_left =  convertView.findViewById(R.id.im_left);
-        ImageButton Ib_visitor = convertView.findViewById(R.id.Ib_visitor);
+       // ImageButton Ib_visitor = convertView.findViewById(R.id.Ib_visitor);
      /*   ImageButton bottom_up =  convertView.findViewById(R.id.bottom_up);
         ImageButton suggestion_box =  convertView.findViewById(R.id.suggestion_box);
 
@@ -68,8 +69,17 @@ public class ThreeFragment extends Fragment {
         CardView cardView3 = convertView.findViewById(R.id.card_view3);
         CardView cardView4 = convertView.findViewById(R.id.card_view4);
         CardView cardView6 = convertView.findViewById(R.id.card_view6);
+        CardView card_view_alms = convertView.findViewById(R.id.card_view_alms);
 
 
+        card_view_alms.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent in = new Intent(getActivity(), ALMSCalendarActivity.class);
+                startActivity(in);
+
+            }
+        });
         cardView4.setOnClickListener(v -> {
             Intent in = new Intent(getActivity(), EHS_Home.class);
             startActivity(in);

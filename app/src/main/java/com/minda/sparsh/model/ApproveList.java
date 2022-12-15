@@ -68,6 +68,10 @@ public class ApproveList {
     @SerializedName("ExternalName")
     @Expose
     private String externalName;
+    @SerializedName("CategoryId")
+    Integer CategoryId;
+    @SerializedName("AccessTypeId")
+    Integer AccessTypeId;
 
     public Integer getApprovalId() {
         return approvalId;
@@ -235,5 +239,21 @@ public class ApproveList {
 
     public void setExternalName(String externalName) {
         this.externalName = externalName;
+    }
+
+    public Integer getCategoryId() {
+        return CategoryId;
+    }
+
+    public void setCategoryId(Integer categoryId) {
+        CategoryId = categoryId;
+    }
+
+    public Integer getAccessTypeId() {
+        return AccessTypeId;
+    }
+
+    public void setAccessTypeId(Integer accessTypeId) {
+        AccessTypeId = accessTypeId;
     }
 }

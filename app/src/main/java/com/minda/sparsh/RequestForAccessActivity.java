@@ -16,6 +16,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
+import android.provider.OpenableColumns;
 import android.text.TextUtils;
 import android.util.Base64;
 import android.util.Log;
@@ -58,6 +59,9 @@ import org.jsoup.helper.StringUtil;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -1231,7 +1235,7 @@ public class RequestForAccessActivity extends AppCompatActivity implements View.
     }
 
     private void selectImage() {
-        final CharSequence[] items = {"Take Photo", "Choose from Gallery", /*"Choose Document",*/
+        final CharSequence[] items = {"Take Photo", "Choose from Gallery", "Choose Document",
                 "Cancel"};
         AlertDialog.Builder builder = new AlertDialog.Builder(RequestForAccessActivity.this);
         builder.setTitle("Add Photo!");
@@ -1351,15 +1355,54 @@ public class RequestForAccessActivity extends AppCompatActivity implements View.
                 onSelectFromGalleryResult(data);
             else if (requestCode == CAPTURE_FROM_CAMERA)
                 onCaptureImageResult(data);
-           /* else if (requestCode == SELECT_FILE)
+            else if (requestCode == SELECT_FILE)
                 onSelectFile(data);
-      */  }
+        }
     }
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     private void onSelectFile(Intent data) {
-
         Uri fileUri = data.getData();
+
+        File file = new File(fileUri.getPath());
+        String mimeType = getContentResolver().getType(fileUri);
+        fileType = mimeType.replace("application/", "");
+
+        //  fileName = /*file.getName()*/"Test.txt";
+        Cursor returnCursor =
+                getContentResolver().query(fileUri, null, null, null, null);
+        assert returnCursor != null;
+        int nameIndex = returnCursor.getColumnIndex(OpenableColumns.DISPLAY_NAME);
+        returnCursor.moveToFirst();
+        fileName = returnCursor.getString(nameIndex);
+        returnCursor.close();
+        attachtext.setText(fileName);
+        attachtext.setVisibility(View.VISIBLE);
+        docView.setVisibility(View.GONE);
+
+        try {
+            InputStream is = getContentResolver().openInputStream(fileUri);
+            byte[] bytesArray = new byte[is.available()];
+            is.read(bytesArray);
+
+            //write to sdcard
+            /*
+            File myPdf=new File(Environment.getExternalStorageDirectory(), "myPdf.pdf");
+            FileOutputStream fos=new FileOutputStream(myPdf.getPath());
+            fos.write(bytesArray);
+            fos.close();*/
+
+            System.out.println(bytesArray);
+            fileByte = Base64.encodeToString(bytesArray, Base64.NO_WRAP);
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+
+       /* Uri fileUri = data.getData();
         String mimeType = getContentResolver().getType(fileUri);
 
         String fullFilePath = UriUtils.getPathFromUri(RequestForAccessActivity.this, fileUri);
@@ -1380,7 +1423,7 @@ public class RequestForAccessActivity extends AppCompatActivity implements View.
         }
 
         fileByte = Base64.encodeToString(bytes, Base64.NO_WRAP);
-
+*/
     }
 
     private void requestCameraPermission() {

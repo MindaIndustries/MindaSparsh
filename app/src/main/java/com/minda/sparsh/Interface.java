@@ -399,6 +399,16 @@ public interface Interface {
     @GET("GetApprovalList")
     Call<List<ApproveList>> GetApprovalList(@Query("CKey") String CKey, @Query("EmpCode") String EmpCode);
 
+    @GET("IAMViewSTATUS")
+    Call<List<ApproveList>> IAMViewSTATUS (@Query("CKey") String CKey, @Query("EmpCode") String EmpCode);
+
+    @GET("IAMViewDELETE")
+    Call<String> IAMViewDelete(@Query("EmpCode") String EmpCode, @Query("RequestId") String RequestId, @Query("AccessRequestNo")String AccessRequestNo, @Query("CKey") String CKey);
+
+    @FormUrlEncoded
+    @POST("IAMViewEDIT")
+    Call<String> IAMViewEDIT(@Field("EmpCode") String EmpCode, @Field("RequestId") String RequestId, @Field("AccessRequestNo") String AccessRequestNo, @Field("CategoryId") String CategoryId, @Field("AccessTypeId") String AccessTypeId, @Field("Attachment") String Attachment, @Field("Files") String Files, @Field("CKey") String CKey);
+
     @GET("GetAccessRequestDetail")
     Call<List<AccessRequestDetailsModel>> GetAccessRequestDetail(@Query("CKey") String CKey, @Query("RequestId") String RequestId);
 
