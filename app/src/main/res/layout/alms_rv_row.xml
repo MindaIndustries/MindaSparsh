@@ -17,7 +17,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <RelativeLayout
-                android:layout_marginLeft="20dp"
+                android:layout_marginLeft="10dp"
                 android:layout_marginRight="20dp"
                 android:paddingTop="10dp"
                 android:paddingBottom="10dp"
@@ -49,6 +49,7 @@
                     android:layout_height="wrap_content"
                     android:id="@+id/day"
                     android:text="MON"
+                    android:maxLength="3"
                     android:textColor="@color/black"
                     android:textSize="20sp"
                     />
@@ -127,5 +128,5 @@
         android:layout_below="@+id/row"
         android:background="#f0f0f0"
         android:layout_width="match_parent"
-        android:layout_height="20dp"/>
+        android:layout_height="10dp"/>
 </RelativeLayout>

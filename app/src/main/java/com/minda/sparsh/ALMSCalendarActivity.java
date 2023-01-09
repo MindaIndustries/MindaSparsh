@@ -1,5 +1,9 @@
 package com.minda.sparsh;
 
+import android.app.DatePickerDialog;
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.Menu;
@@ -12,29 +16,54 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.minda.sparsh.Adapter.ALMSRecyclerViewAdapter;
 import com.minda.sparsh.decorators.EventDecorator;
+import com.minda.sparsh.listener.CarotResponse;
+import com.minda.sparsh.listener.OnTaskComplete;
+import com.minda.sparsh.model.AlmsReportModel;
+import com.minda.sparsh.services.AlmsServices;
+import com.nambimobile.widgets.efab.FabOption;
 import com.prolificinteractive.materialcalendarview.CalendarDay;
 import com.prolificinteractive.materialcalendarview.MaterialCalendarView;
+import com.prolificinteractive.materialcalendarview.OnDateSelectedListener;
+import com.prolificinteractive.materialcalendarview.OnMonthChangedListener;
 
 import org.jetbrains.annotations.NotNull;
 import org.threeten.bp.LocalDate;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.List;
+
+import javax.net.ssl.HttpsURLConnection;
 
 
 public class ALMSCalendarActivity extends AppCompatActivity {
 
-    MaterialCalendarView calendar_view;
+    MaterialCalendarView calendar_view, calendar2;
     Toolbar toolbar;
-    TextView title;
+    TextView title, date_current, date, day, punch_in_time, punch_out_time, total_days_count, present_day_count, absent_day_count;
     RelativeLayout calendarLayout, listLayout, main_container;
     RecyclerView attendance_rv;
     ALMSRecyclerViewAdapter almsRecyclerViewAdapter;
-    ArrayList<String> almsList=new ArrayList<>();
+    String empCode, fromDate, toDate;
+    SharedPreferences myPref;
+    ArrayList<AlmsReportModel> attendanceReport = new ArrayList<>();
+    ArrayList<CalendarDay> presentList = new ArrayList<>();
+    ArrayList<CalendarDay> absentList = new ArrayList<>();
+    ArrayList<CalendarDay> wolist = new ArrayList<>();
+    DatePickerDialog datePicker;
+    Calendar calendar;
+    String year;
+    CardView punch_details;
+    Calendar calendar1;
+    String month_name;
+    FabOption leave_req_btn;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -46,30 +75,79 @@ public class ALMSCalendarActivity extends AppCompatActivity {
         listLayout = findViewById(R.id.list_layout);
         main_container = findViewById(R.id.main_container);
         attendance_rv = findViewById(R.id.attendance_rv);
+        date_current = findViewById(R.id.date_current);
+        punch_details = findViewById(R.id.punch_details);
+        date = findViewById(R.id.date);
+        day = findViewById(R.id.day);
+        punch_in_time = findViewById(R.id.punch_in_time);
+        punch_out_time = findViewById(R.id.punch_out_time);
+        total_days_count = findViewById(R.id.total_days_count);
+        present_day_count = findViewById(R.id.present_day_count);
+        absent_day_count = findViewById(R.id.absent_day_count);
+        leave_req_btn = findViewById(R.id.leave_req_btn);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setHomeAsUpIndicator(R.drawable.back);
-        title.setText("Attendance");
-
+        title.setText("My Attendance");
+        myPref = getSharedPreferences("MyPref", Context.MODE_PRIVATE);
+        empCode = myPref.getString("Id", "Id");
         calendar_view = findViewById(R.id.calendar_view);
-        LocalDate temp = LocalDate.now();
-        final ArrayList<CalendarDay> dates = new ArrayList<>();
-        for (int i = 0; i < 30; i++) {
-            final CalendarDay day = CalendarDay.from(temp);
-            dates.add(day);
-            temp = temp.plusDays(5);
-        }
-
-        calendar_view.addDecorator(new EventDecorator(Color.RED, dates));
-        almsRecyclerViewAdapter = new ALMSRecyclerViewAdapter(ALMSCalendarActivity.this, almsList);
+        calendar2 = findViewById(R.id.calendar2);
+        almsRecyclerViewAdapter = new ALMSRecyclerViewAdapter(ALMSCalendarActivity.this, attendanceReport);
         LinearLayoutManager mLayoutManager = new LinearLayoutManager(ALMSCalendarActivity.this, LinearLayoutManager.VERTICAL, false);
         attendance_rv.setLayoutManager(mLayoutManager);
         attendance_rv.setAdapter(almsRecyclerViewAdapter);
+        calendar_view.getCurrentDate();
+        fromDate = "21." + (calendar_view.getCurrentDate().getMonth() - 1) + "." + calendar_view.getCurrentDate().getYear();
+        toDate = "20." + (calendar_view.getCurrentDate().getMonth()) + "." + calendar_view.getCurrentDate().getYear();
+        initDatePicker();
+        date_current.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                datePicker.show();
 
+            }
+        });
+        calendar1 = Calendar.getInstance();
+        getConsolidatedReport(empCode, fromDate, toDate);
+        //calendar_view.state().edit().setMaximumDate(CalendarDay.from(calendar1.get(Calendar.YEAR), calendar1.get(Calendar.MONTH)+1,calendar1.get(Calendar.DAY_OF_MONTH))).commit();
+        calendar_view.setOnDateChangedListener(new OnDateSelectedListener() {
+            @Override
+            public void onDateSelected(@NonNull @NotNull MaterialCalendarView widget, @NonNull @NotNull CalendarDay date, boolean selected) {
+                //  punch_details.setVisibility(View.VISIBLE);
+                fromDate = date.getDay() + "." + (date.getMonth() - 1) + "." + date.getYear();
+                toDate = date.getDay() + "." + (date.getMonth()) + "." + date.getYear();
+                getConsolidatedReport1(empCode, fromDate, toDate);
 
+            }
+        });
+        leave_req_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent in = new Intent(ALMSCalendarActivity.this, LeaveRequestActivity.class);
+                startActivity(in);
+            }
+        });
 
+        calendar_view.setOnMonthChangedListener(new OnMonthChangedListener() {
+            @Override
+            public void onMonthChanged(MaterialCalendarView widget, CalendarDay date) {
+                fromDate = "21." + (date.getMonth() - 1) + "." + date.getYear();
+                toDate = "20." + (date.getMonth()) + "." + date.getYear();
+                getConsolidatedReport(empCode, fromDate, toDate);
+            }
+        });
+        calendar2.setOnMonthChangedListener(new OnMonthChangedListener() {
+            @Override
+            public void onMonthChanged(MaterialCalendarView widget, CalendarDay date) {
+                fromDate = "21." + (date.getMonth() - 1) + "." + date.getYear();
+                toDate = "20." + (date.getMonth()) + "." + date.getYear();
+                getConsolidatedReport(empCode, fromDate, toDate);
+            }
+        });
     }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.alms_menu, menu);
@@ -82,20 +160,133 @@ public class ALMSCalendarActivity extends AppCompatActivity {
         if (item.getItemId() == android.R.id.home) {
             onBackPressed();
             return true;
-        }
-        else if(item.getItemId() == R.id.listview){
-            if(calendarLayout.getVisibility()== View.VISIBLE){
+        } else if (item.getItemId() == R.id.listview) {
+            if (calendarLayout.getVisibility() == View.VISIBLE) {
                 listLayout.setVisibility(View.VISIBLE);
                 calendarLayout.setVisibility(View.GONE);
                 item.setIcon(R.drawable.calendar_white);
 
-                }
-            else{
+            } else {
                 listLayout.setVisibility(View.GONE);
                 calendarLayout.setVisibility(View.VISIBLE);
-                item.setIcon(R.drawable.listview_icon) ;
+                item.setIcon(R.drawable.listview_icon);
             }
         }
         return super.onOptionsItemSelected(item);
     }
+
+    public void getConsolidatedReport(String empcode, String fromDate, String toDate) {
+
+        attendanceReport.clear();
+        attendance_rv.getRecycledViewPool().clear();
+        AlmsServices almsServices = new AlmsServices();
+        almsRecyclerViewAdapter.notifyDataSetChanged();
+        almsServices.getConsolidatedReport(new OnTaskComplete() {
+            @Override
+            public void onTaskComplte(CarotResponse carotResponse) {
+                if (carotResponse.getStatuscode() == HttpsURLConnection.HTTP_OK) {
+                    List<AlmsReportModel> list = (List<AlmsReportModel>) carotResponse.getData();
+                    if (list != null && list.size() > 0) {
+                        attendanceReport.addAll(list);
+                    }
+                    almsRecyclerViewAdapter.notifyDataSetChanged();
+
+                    for (int i = 0; i < attendanceReport.size(); i++) {
+                        String date[] = attendanceReport.get(i).getEDATE().replace(".", "/").split("/");
+                        int day = Integer.parseInt(date[0]);
+                        int month = Integer.parseInt(date[1]);
+                        int year = Integer.parseInt(date[2]);
+                        LocalDate localDate = LocalDate.of(year, month, day);
+                        CalendarDay calendarDay = CalendarDay.from(localDate);
+                        if (attendanceReport.get(i).getSTAT().equals("P") && attendanceReport.get(i).getSTATUS2().equals("P")) {
+                            presentList.add(calendarDay);
+                        } else if (attendanceReport.get(i).getSTAT().equals("A") && attendanceReport.get(i).getSTATUS2().equals("A")) {
+                            absentList.add(calendarDay);
+                        } else if (attendanceReport.get(i).getSTAT().equals("WO")) {
+                            wolist.add(calendarDay);
+                        }
+                    }
+                    total_days_count.setText(attendanceReport.get(0).getTotalPWD());
+                    present_day_count.setText(attendanceReport.get(0).getTotalPD());
+                    absent_day_count.setText(attendanceReport.get(0).getTotalAD());
+                    calendar_view.addDecorator(new EventDecorator(Color.GREEN, presentList));
+                    calendar_view.addDecorator(new EventDecorator(Color.RED, absentList));
+                    calendar_view.addDecorator(new EventDecorator(Color.GRAY, wolist));
+
+
+                }
+            }
+        }, empcode, fromDate, toDate);
+    }
+
+    public void initDatePicker() {
+        calendar = Calendar.getInstance();
+        calendar.setTimeInMillis(System.currentTimeMillis());
+        int mMonth = calendar.get(Calendar.MONTH) + 1;
+        String monthNo;
+        if (mMonth < 10) {
+            monthNo = "0" + mMonth;
+        } else {
+            monthNo = "" + mMonth;
+        }
+        String dayOfMonthStr;
+        if (calendar.get(Calendar.DAY_OF_MONTH) < 10) {
+            dayOfMonthStr = "0" + calendar.get(Calendar.DAY_OF_MONTH);
+        } else {
+            dayOfMonthStr = "" + calendar.get(Calendar.DAY_OF_MONTH);
+        }
+        year = String.valueOf(calendar.get(Calendar.YEAR));
+        SimpleDateFormat month_date = new SimpleDateFormat("MMMM");
+        month_name = month_date.format(calendar.getTime());
+
+        date_current.setText(month_name + ", " + calendar.get(Calendar.YEAR));
+        datePicker = new DatePickerDialog(ALMSCalendarActivity.this, (datePicker, i, i1, i2) -> {
+            int mMonth1 = i1 + 1;
+            String monthNo1;
+            if (mMonth1 < 10) {
+                monthNo1 = "0" + mMonth1;
+            } else {
+                monthNo1 = "" + mMonth1;
+            }
+            String dayOfMonthStr1;
+            if (i2 < 10) {
+                dayOfMonthStr1 = "0" + i2;
+            } else {
+                dayOfMonthStr1 = "" + i2;
+            }
+            calendar.set(Calendar.DAY_OF_MONTH, i2);
+            calendar.set(Calendar.MONTH, i1);
+            calendar.set(Calendar.YEAR, i);
+            month_name = month_date.format(calendar.getTime());
+            date_current.setText(month_name + ", " + calendar.get(Calendar.YEAR));
+        }, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH));
+        datePicker.getDatePicker().setMaxDate(Calendar.getInstance().getTimeInMillis() - 10000);
+        datePicker.getDatePicker().setFirstDayOfWeek(Calendar.MONDAY);
+
+
+    }
+
+    public void getConsolidatedReport1(String empcode, String fromDate, String toDate) {
+        attendanceReport.clear();
+        attendance_rv.getRecycledViewPool().clear();
+        AlmsServices almsServices = new AlmsServices();
+        almsRecyclerViewAdapter.notifyDataSetChanged();
+        almsServices.getConsolidatedReport(new OnTaskComplete() {
+            @Override
+            public void onTaskComplte(CarotResponse carotResponse) {
+                if (carotResponse.getStatuscode() == HttpsURLConnection.HTTP_OK) {
+                    List<AlmsReportModel> list = (List<AlmsReportModel>) carotResponse.getData();
+                    if (list != null && list.size() > 0) {
+                        punch_in_time.setText(list.get(0).getDAY_IN());
+                        punch_out_time.setText(list.get(0).getDAY_OUT());
+                        day.setText(list.get(0).getDAYNAME().toUpperCase());
+                        date.setText(list.get(0).getEDATE().replace(".", "/").split("/")[0]);
+                    }
+
+                }
+            }
+        }, empcode, fromDate, toDate);
+    }
+
+
 }
