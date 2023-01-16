@@ -4,34 +4,35 @@ import com.google.gson.annotations.SerializedName;
 
 public class LeaveTypeModel {
 
-    @SerializedName("lve_type_code")
-    String lve_type_code;
-    @SerializedName("lve_type_desc")
-    String lve_type_desc;
-    @SerializedName("active")
-    boolean active;
+    @SerializedName("Id")
+    long Id;
+    @SerializedName("lvtyp")
+    String lvtyp;
+    @SerializedName("short_Desc")
+    String short_Desc;
 
-    public String getLve_type_code() {
-        return lve_type_code;
+
+    public long getId() {
+        return Id;
     }
 
-    public void setLve_type_code(String lve_type_code) {
-        this.lve_type_code = lve_type_code;
+    public void setId(long id) {
+        Id = id;
     }
 
-    public String getLve_type_desc() {
-        return lve_type_desc;
+    public String getLvtyp() {
+        return lvtyp;
     }
 
-    public void setLve_type_desc(String lve_type_desc) {
-        this.lve_type_desc = lve_type_desc;
+    public void setLvtyp(String lvtyp) {
+        this.lvtyp = lvtyp;
     }
 
-    public boolean isActive() {
-        return active;
+    public String getShort_Desc() {
+        return short_Desc;
     }
 
-    public void setActive(boolean active) {
-        this.active = active;
+    public void setShort_Desc(String short_Desc) {
+        this.short_Desc = short_Desc;
     }
 }

@@ -413,6 +413,9 @@ public class LoginActivity extends AppCompatActivity {
                             mEditor.putString("Mobile", loginResponse.get(0).getMobile());
                             mEditor.putInt("Level",loginResponse.get(0).getUMEMPLEVEL());
                             mEditor.putBoolean("cvp",loginResponse.get(0).isCVPAccess());
+                            mEditor.putString("REPORTY_EMAIL",loginResponse.get(0).getUMREPORTINGTOEMAIL());
+                            mEditor.putString("REPORTY_EMP_NAME",loginResponse.get(0).getUMREPORTINGTONAME());
+                            mEditor.putString("REPORTY_EMP_CODE",loginResponse.get(0).getUMREPORTINGTO());
                             arrayList.clear();
                             String currentString = loginResponse.get(0).getAuthFor();
 

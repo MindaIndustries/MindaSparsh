@@ -463,10 +463,12 @@
                         </RelativeLayout>
                         </LinearLayout>
                         <LinearLayout
+
                             android:layout_weight="1"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content">
                             <RelativeLayout
+
                                 android:id="@+id/card_container_alms"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"

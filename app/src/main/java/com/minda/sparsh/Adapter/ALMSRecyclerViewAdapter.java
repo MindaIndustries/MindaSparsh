@@ -50,8 +50,21 @@ public class ALMSRecyclerViewAdapter extends RecyclerView.Adapter<ALMSRecyclerVi
         int month_now = calendar_now.get(Calendar.MONTH)+1;
         int year_now = calendar_now.get(Calendar.YEAR);
 
-        holder.punch_in_time.setText(attendanceList.get(position).getDAY_IN());
-        holder.punch_out_time.setText(attendanceList.get(position).getDAY_OUT());
+        if(attendanceList.get(position).getDAY_IN()!=null && attendanceList.get(position).getDAY_IN().trim().length()>0) {
+            holder.punch_in_time.setText(attendanceList.get(position).getDAY_IN());
+        }
+        else {
+            holder.punch_in_time.setText("-");
+
+        }
+        if(attendanceList.get(position).getDAY_OUT()!=null && attendanceList.get(position).getDAY_OUT().trim().length()>0) {
+
+            holder.punch_out_time.setText(attendanceList.get(position).getDAY_OUT());
+        }
+        else {
+            holder.punch_out_time.setText("-");
+
+        }
         holder.date.setText(attendanceList.get(position).getEDATE().replace(".","/").split("/")[0]);
         holder.day.setText(attendanceList.get(position).getDAYNAME().toUpperCase());
 

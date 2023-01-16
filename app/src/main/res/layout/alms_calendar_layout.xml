@@ -45,9 +45,25 @@
             android:layout_below="@+id/calendar_card"
             android:id="@+id/punch_details"
             app:cardCornerRadius="20dp" >
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:visibility="visible"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:background="@drawable/status_bg"
+                    android:layout_alignParentRight="true"
+                    android:id="@+id/status"
+                    android:textColor="@color/white"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
             <LinearLayout
+                android:layout_below="@+id/status"
                 android:weightSum="3"
-                android:padding="10dp"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:paddingBottom="10dp"
                 android:gravity="center"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
@@ -152,7 +168,7 @@
 
 
             </LinearLayout>
-
+            </RelativeLayout>
 
         </androidx.cardview.widget.CardView>
 
@@ -228,6 +244,7 @@
                         />
 
                     <TextView
+                        android:layout_marginRight="30dp"
                         android:layout_alignParentRight="true"
                         android:layout_marginTop="30dp"
                         android:layout_below="@+id/present_days"
@@ -274,6 +291,7 @@
                         android:layout_marginTop="30dp"
                         android:layout_below="@+id/absent_days"
                         android:text="3"
+                        android:layout_marginRight="30dp"
                         android:textColor="@color/white"
                         android:textSize="24sp"
                         android:layout_alignParentRight="true"
@@ -287,6 +305,7 @@
             </androidx.cardview.widget.CardView>
 
         </LinearLayout>
+
     </RelativeLayout>
 
 
@@ -322,41 +341,49 @@
                 android:layout_height="match_parent"/>
         </RelativeLayout>
 
-            <com.nambimobile.widgets.efab.ExpandableFabLayout
-                android:layout_below="@+id/list_layout"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <com.nambimobile.widgets.efab.Overlay
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    app:overlay_orientation="portrait"/>
-                <com.nambimobile.widgets.efab.ExpandableFab
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="bottom|end"
-                    android:layout_marginBottom="10dp"
-                    android:layout_marginEnd="10dp"
-                    android:layout_marginRight="10dp"
-                    app:efab_orientation="portrait"/>
-                <com.nambimobile.widgets.efab.FabOption
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:fab_orientation="portrait"
-                    app:label_text="Leave Request"
-                    android:id="@+id/leave_req_btn"
-                    android:onClick="onClickPortraitOption1"/>
-                <com.nambimobile.widgets.efab.FabOption
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:fab_orientation="portrait"
-                    app:label_text="Leave Balance"
-                    android:onClick="onClickPortraitOption2"/>
-
-
-
-            </com.nambimobile.widgets.efab.ExpandableFabLayout>
         </RelativeLayout>
+
     </ScrollView>
+    <RelativeLayout
+        android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.nambimobile.widgets.efab.ExpandableFabLayout
+            android:layout_alignParentBottom="true"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <com.nambimobile.widgets.efab.Overlay
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:overlay_orientation="portrait"/>
+            <com.nambimobile.widgets.efab.ExpandableFab
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom|end"
+                android:layout_marginBottom="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginRight="10dp"
+                app:efab_orientation="portrait"/>
+            <com.nambimobile.widgets.efab.FabOption
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:fab_orientation="portrait"
+                app:label_text="Leave Request"
+                android:id="@+id/leave_req_btn"
+                android:onClick="onClickPortraitOption1"/>
+            <com.nambimobile.widgets.efab.FabOption
+                android:id="@+id/leave_balance_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:fab_orientation="portrait"
+                app:label_text="Leave Balance"
+                android:onClick="onClickPortraitOption2"/>
+
+
+
+        </com.nambimobile.widgets.efab.ExpandableFabLayout>
+    </RelativeLayout>
 
 </RelativeLayout>

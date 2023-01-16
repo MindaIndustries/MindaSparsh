@@ -27,7 +27,7 @@ android {
         applicationId "com.minda.sparsh"
         minSdkVersion 21
         targetSdkVersion 31
-        versionCode 72
+        versionCode 74
         versionName "1.39"
         multiDexEnabled true
         testInstrumentationRunner = 'android.support.test.runner.AndroidJUnitRunner'
@@ -91,6 +91,7 @@ dependencies {
     implementation 'com.github.native-ss:xml-to-pdf:1.0.0'
     implementation 'com.budiyev.android:code-scanner:2.1.0'
     implementation 'com.nambimobile.widgets:expandable-fab:1.2.1'
+
 
 
 

@@ -23,6 +23,10 @@ public class LeaveBalanceModel {
     Long AvailableBalance;
     @SerializedName("curryr_year")
     Long curryr_year;
+    @SerializedName("LTA_Balance")
+    int LTA_Balance;
+    @SerializedName("Balance")
+    Long Balance;
 
     public String getLeaveType() {
         return LeaveType;
@@ -102,5 +106,22 @@ public class LeaveBalanceModel {
 
     public void setCurryr_year(Long curryr_year) {
         this.curryr_year = curryr_year;
+    }
+
+
+    public int getLTA_Balance() {
+        return LTA_Balance;
+    }
+
+    public void setLTA_Balance(int LTA_Balance) {
+        this.LTA_Balance = LTA_Balance;
+    }
+
+    public Long getBalance() {
+        return Balance;
+    }
+
+    public void setBalance(Long balance) {
+        Balance = balance;
     }
 }

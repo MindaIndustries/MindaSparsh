@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -26,6 +27,7 @@ import com.minda.sparsh.listener.CarotResponse;
 import com.minda.sparsh.listener.OnTaskComplete;
 import com.minda.sparsh.model.AlmsReportModel;
 import com.minda.sparsh.services.AlmsServices;
+import com.minda.sparsh.util.Utility;
 import com.nambimobile.widgets.efab.FabOption;
 import com.prolificinteractive.materialcalendarview.CalendarDay;
 import com.prolificinteractive.materialcalendarview.MaterialCalendarView;
@@ -47,7 +49,9 @@ public class ALMSCalendarActivity extends AppCompatActivity {
 
     MaterialCalendarView calendar_view, calendar2;
     Toolbar toolbar;
-    TextView title, date_current, date, day, punch_in_time, punch_out_time, total_days_count, present_day_count, absent_day_count;
+    LinearLayout ll1;
+    CardView total_days_card;
+    TextView title, date_current, date, day, punch_in_time, punch_out_time, total_days_count, present_day_count, absent_day_count, status;
     RelativeLayout calendarLayout, listLayout, main_container;
     RecyclerView attendance_rv;
     ALMSRecyclerViewAdapter almsRecyclerViewAdapter;
@@ -57,13 +61,16 @@ public class ALMSCalendarActivity extends AppCompatActivity {
     ArrayList<CalendarDay> presentList = new ArrayList<>();
     ArrayList<CalendarDay> absentList = new ArrayList<>();
     ArrayList<CalendarDay> wolist = new ArrayList<>();
+    ArrayList<CalendarDay> odlist = new ArrayList<>();
+    ArrayList<CalendarDay> leavelist = new ArrayList<>();
+
     DatePickerDialog datePicker;
     Calendar calendar;
     String year;
     CardView punch_details;
     Calendar calendar1;
     String month_name;
-    FabOption leave_req_btn;
+    FabOption leave_req_btn,leave_balance_btn;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -77,6 +84,7 @@ public class ALMSCalendarActivity extends AppCompatActivity {
         attendance_rv = findViewById(R.id.attendance_rv);
         date_current = findViewById(R.id.date_current);
         punch_details = findViewById(R.id.punch_details);
+        total_days_card = findViewById(R.id.total_days_card);
         date = findViewById(R.id.date);
         day = findViewById(R.id.day);
         punch_in_time = findViewById(R.id.punch_in_time);
@@ -85,6 +93,9 @@ public class ALMSCalendarActivity extends AppCompatActivity {
         present_day_count = findViewById(R.id.present_day_count);
         absent_day_count = findViewById(R.id.absent_day_count);
         leave_req_btn = findViewById(R.id.leave_req_btn);
+        leave_balance_btn = findViewById(R.id.leave_balance_btn);
+        status = findViewById(R.id.status);
+        ll1 = findViewById(R.id.ll1);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
@@ -110,15 +121,34 @@ public class ALMSCalendarActivity extends AppCompatActivity {
             }
         });
         calendar1 = Calendar.getInstance();
-        getConsolidatedReport(empCode, fromDate, toDate);
+        if(Utility.isOnline(ALMSCalendarActivity.this)) {
+            getConsolidatedReport(empCode, fromDate, toDate);
+        }
         //calendar_view.state().edit().setMaximumDate(CalendarDay.from(calendar1.get(Calendar.YEAR), calendar1.get(Calendar.MONTH)+1,calendar1.get(Calendar.DAY_OF_MONTH))).commit();
         calendar_view.setOnDateChangedListener(new OnDateSelectedListener() {
             @Override
             public void onDateSelected(@NonNull @NotNull MaterialCalendarView widget, @NonNull @NotNull CalendarDay date, boolean selected) {
-                //  punch_details.setVisibility(View.VISIBLE);
+                punch_details.setVisibility(View.VISIBLE);
+
+                /*if(punch_details.getVisibility()==View.VISIBLE){
+                    punch_details.setVisibility(View.GONE);
+                    ll1.setVisibility(View.VISIBLE);
+                    total_days_card.setVisibility(View.VISIBLE);
+
+                }else {
+                    punch_details.setVisibility(View.VISIBLE);
+                    ll1.setVisibility(View.GONE);
+                    total_days_card.setVisibility(View.GONE);
+                }*/
                 fromDate = date.getDay() + "." + (date.getMonth() - 1) + "." + date.getYear();
                 toDate = date.getDay() + "." + (date.getMonth()) + "." + date.getYear();
-                getConsolidatedReport1(empCode, fromDate, toDate);
+                Calendar cal=Calendar.getInstance();
+                SimpleDateFormat month_date = new SimpleDateFormat("MMMM");
+                cal.set(Calendar.MONTH,date.getMonth()-1);
+                String month_name = month_date.format(cal.getTime());
+                date_current.setText(month_name + ", " + date.getYear());
+
+                getConsolidatedReport1(empCode, toDate, toDate);
 
             }
         });
@@ -129,12 +159,24 @@ public class ALMSCalendarActivity extends AppCompatActivity {
                 startActivity(in);
             }
         });
+        leave_balance_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent in = new Intent(ALMSCalendarActivity.this, LeaveBalanceActivity.class);
+                startActivity(in);
+            }
+        });
 
         calendar_view.setOnMonthChangedListener(new OnMonthChangedListener() {
             @Override
             public void onMonthChanged(MaterialCalendarView widget, CalendarDay date) {
                 fromDate = "21." + (date.getMonth() - 1) + "." + date.getYear();
                 toDate = "20." + (date.getMonth()) + "." + date.getYear();
+                Calendar cal=Calendar.getInstance();
+                SimpleDateFormat month_date = new SimpleDateFormat("MMMM");
+                cal.set(Calendar.MONTH,date.getMonth()-1);
+                String month_name = month_date.format(cal.getTime());
+                date_current.setText(month_name + ", " + date.getYear());
                 getConsolidatedReport(empCode, fromDate, toDate);
             }
         });
@@ -205,13 +247,24 @@ public class ALMSCalendarActivity extends AppCompatActivity {
                         } else if (attendanceReport.get(i).getSTAT().equals("WO")) {
                             wolist.add(calendarDay);
                         }
+                        else if(attendanceReport.get(i).getSTAT().equals("OD") && attendanceReport.get(i).getSTATUS2().equals("OD")){
+                            odlist.add(calendarDay);
+                        }
+                        else if(attendanceReport.get(i).getSTAT().equals("EL") || attendanceReport.get(i).getSTAT().equals("CL")|| attendanceReport.get(i).getSTAT().equals("SL")){
+                            leavelist.add(calendarDay);
+                        }
+                        else if(attendanceReport.get(i).getSTATUS2().equals("EL") || attendanceReport.get(i).getSTATUS2().equals("CL")|| attendanceReport.get(i).getSTATUS2().equals("SL")){
+                            leavelist.add(calendarDay);
+                        }
                     }
                     total_days_count.setText(attendanceReport.get(0).getTotalPWD());
                     present_day_count.setText(attendanceReport.get(0).getTotalPD());
                     absent_day_count.setText(attendanceReport.get(0).getTotalAD());
-                    calendar_view.addDecorator(new EventDecorator(Color.GREEN, presentList));
-                    calendar_view.addDecorator(new EventDecorator(Color.RED, absentList));
+                    calendar_view.addDecorator(new EventDecorator(Color.parseColor("#00A36C"), presentList));
+                    calendar_view.addDecorator(new EventDecorator(Color.parseColor("#FF0000"), absentList));
                     calendar_view.addDecorator(new EventDecorator(Color.GRAY, wolist));
+                    calendar_view.addDecorator(new EventDecorator(Color.parseColor("#FF9800"),odlist));
+                    calendar_view.addDecorator(new EventDecorator(Color.parseColor("#dbaf1d"),leavelist));
 
 
                 }
@@ -258,6 +311,10 @@ public class ALMSCalendarActivity extends AppCompatActivity {
             calendar.set(Calendar.MONTH, i1);
             calendar.set(Calendar.YEAR, i);
             month_name = month_date.format(calendar.getTime());
+            fromDate = "21." + (calendar.get(Calendar.MONTH)) + "." + calendar.get(Calendar.YEAR);
+            toDate = "20." + (calendar.get(Calendar.MONTH)+1) + "." + calendar_view.getCurrentDate().getYear();
+            getConsolidatedReport(empCode, fromDate, toDate);
+
             date_current.setText(month_name + ", " + calendar.get(Calendar.YEAR));
         }, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH));
         datePicker.getDatePicker().setMaxDate(Calendar.getInstance().getTimeInMillis() - 10000);
@@ -277,8 +334,55 @@ public class ALMSCalendarActivity extends AppCompatActivity {
                 if (carotResponse.getStatuscode() == HttpsURLConnection.HTTP_OK) {
                     List<AlmsReportModel> list = (List<AlmsReportModel>) carotResponse.getData();
                     if (list != null && list.size() > 0) {
-                        punch_in_time.setText(list.get(0).getDAY_IN());
-                        punch_out_time.setText(list.get(0).getDAY_OUT());
+                        if(list.get(0).getDAY_IN()!=null && list.get(0).getDAY_IN().trim().length()>0) {
+                            punch_in_time.setText(list.get(0).getDAY_IN());
+                        }
+                        else{
+                            punch_in_time.setText("-");
+                        }
+                        if(list.get(0).getDAY_OUT()!=null && list.get(0).getDAY_OUT().trim().length()>0) {
+                            punch_out_time.setText(list.get(0).getDAY_OUT());
+                        }
+                        else{
+                            punch_out_time.setText("-");
+                        }
+                        status.setVisibility(View.VISIBLE);
+                        if(list.get(0).getSTAT().equals("OD") || list.get(0).getSTATUS2().equals("OD")){
+                            status.setText("OD");
+                            status.setBackgroundColor(Color.parseColor("#FF9800"));
+                        }
+                        else if(list.get(0).getSTAT().equals("CL") || list.get(0).getSTATUS2().equals("CL")){
+                            status.setText("CL");
+                            status.setBackgroundColor(Color.parseColor("#dbaf1d"));
+
+                        }
+                        else if(list.get(0).getSTAT().equals("EL") || list.get(0).getSTATUS2().equals("EL")){
+                            status.setText("EL");
+                            status.setBackgroundColor(Color.parseColor("#dbaf1d"));
+
+                        }
+                        else if(list.get(0).getSTAT().equals("SL") || list.get(0).getSTATUS2().equals("SL")){
+                            status.setText("SL");
+                            status.setBackgroundColor(Color.parseColor("#dbaf1d"));
+
+                        }
+                        else if(list.get(0).getSTAT().equals("P") && list.get(0).getSTATUS2().equals("P")){
+                            status.setText("P");
+                            status.setBackgroundColor(Color.parseColor("#00A36C"));
+                        }
+                     else if (list.get(0).getSTAT().equals("WO")) {
+                        status.setText("WO");
+                            status.setBackgroundColor(Color.GRAY);
+
+                        }
+                        else if (list.get(0).getSTAT().equals("A")) {
+                            status.setText("A");
+                            status.setBackgroundColor(Color.parseColor("#FF0000"));
+
+                        }
+                     else{
+                         status.setVisibility(View.GONE);
+                        }
                         day.setText(list.get(0).getDAYNAME().toUpperCase());
                         date.setText(list.get(0).getEDATE().replace(".", "/").split("/")[0]);
                     }
