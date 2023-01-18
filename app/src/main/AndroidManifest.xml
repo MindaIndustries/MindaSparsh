@@ -280,6 +280,9 @@
         <activity android:name=".LeaveBalanceActivity"
             android:screenOrientation="portrait"
             android:theme="@style/spinnertheme"/>
+        <activity android:name=".LeaveRegularizationActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/spinnertheme"/>
 
         <meta-data
             android:name="io.fabric.ApiKey"

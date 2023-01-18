@@ -26,7 +26,7 @@ public class LeaveBalanceModel {
     @SerializedName("LTA_Balance")
     int LTA_Balance;
     @SerializedName("Balance")
-    Long Balance;
+    double Balance;
 
     public String getLeaveType() {
         return LeaveType;
@@ -117,11 +117,12 @@ public class LeaveBalanceModel {
         this.LTA_Balance = LTA_Balance;
     }
 
-    public Long getBalance() {
+
+    public double getBalance() {
         return Balance;
     }
 
-    public void setBalance(Long balance) {
+    public void setBalance(double balance) {
         Balance = balance;
     }
 }

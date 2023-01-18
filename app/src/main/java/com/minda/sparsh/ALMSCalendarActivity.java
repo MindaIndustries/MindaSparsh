@@ -70,7 +70,7 @@ public class ALMSCalendarActivity extends AppCompatActivity {
     CardView punch_details;
     Calendar calendar1;
     String month_name;
-    FabOption leave_req_btn,leave_balance_btn;
+    FabOption leave_req_btn,leave_regular_btn,leave_balance_btn;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -94,6 +94,7 @@ public class ALMSCalendarActivity extends AppCompatActivity {
         absent_day_count = findViewById(R.id.absent_day_count);
         leave_req_btn = findViewById(R.id.leave_req_btn);
         leave_balance_btn = findViewById(R.id.leave_balance_btn);
+        leave_regular_btn = findViewById(R.id.leave_regular_btn);
         status = findViewById(R.id.status);
         ll1 = findViewById(R.id.ll1);
         setSupportActionBar(toolbar);
@@ -163,6 +164,13 @@ public class ALMSCalendarActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent in = new Intent(ALMSCalendarActivity.this, LeaveBalanceActivity.class);
+                startActivity(in);
+            }
+        });
+        leave_regular_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent in = new Intent(ALMSCalendarActivity.this, LeaveRegularizationActivity.class);
                 startActivity(in);
             }
         });

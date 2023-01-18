@@ -381,6 +381,15 @@
                 app:label_text="Leave Balance"
                 android:onClick="onClickPortraitOption2"/>
 
+            <com.nambimobile.widgets.efab.FabOption
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:fab_orientation="portrait"
+                app:label_text="Leave Regularization"
+                android:id="@+id/leave_regular_btn"
+                android:onClick="onClickPortraitOption1"
+                />
+
 
 
         </com.nambimobile.widgets.efab.ExpandableFabLayout>

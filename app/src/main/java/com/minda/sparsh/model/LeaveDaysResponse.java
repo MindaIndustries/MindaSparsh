@@ -4,14 +4,14 @@ import com.google.gson.annotations.SerializedName;
 
 public class LeaveDaysResponse {
     @SerializedName("Count")
-    int Count;
+    double Count;
 
 
-    public int getCount() {
+    public double getCount() {
         return Count;
     }
 
-    public void setCount(int count) {
+    public void setCount(double count) {
         Count = count;
     }
 }

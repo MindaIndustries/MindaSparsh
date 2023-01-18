@@ -38,6 +38,7 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
 import com.google.android.material.textfield.TextInputEditText;
+import com.google.android.material.textfield.TextInputLayout;
 import com.minda.sparsh.cvp.CVPViewCalendar;
 import com.minda.sparsh.listener.CarotResponse;
 import com.minda.sparsh.listener.OnTaskComplete;
@@ -64,18 +65,19 @@ import javax.net.ssl.HttpsURLConnection;
 public class LeaveRequestActivity extends AppCompatActivity {
     Toolbar toolbar;
     TextView title;
-    AppCompatAutoCompleteTextView leave_type;
+    AppCompatAutoCompleteTextView leave_type,session_spinner;
     TextInputEditText start_date, end_date, comment, available_bal,no_of_days;
+    TextInputLayout customerSpinnerLayout9,customerSpinnerLayout8;
     ArrayList<LeaveBalanceModel> leaveBalanceList = new ArrayList<>();
     String empCode;
     SharedPreferences myPref;
-    ArrayAdapter<String> leaveTypeAdapter;
+    ArrayAdapter<String> leaveTypeAdapter, sessionAdapter;
     ArrayList<String> leavetypes = new ArrayList<>();
     DatePickerDialog datePicker, datePicker1;
     Calendar calendar, calendar1;
     String year, year1;
     Button cancel,submit;
-    String leaveType,leavetypeAbb, session;
+    String leaveType,leavetypeAbb, session="ES";
     TextView m_certificate;
     ImageView upload;
     String authperson,reportyEmailId,reportyEmpName,EmpName;
@@ -93,6 +95,7 @@ public class LeaveRequestActivity extends AppCompatActivity {
 
 
     List<LeaveTypeModel> LeaveTypesList = new ArrayList<>();
+    ArrayList<String>  session_values = new ArrayList<>();
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -110,6 +113,11 @@ public class LeaveRequestActivity extends AppCompatActivity {
         submit = findViewById(R.id.submit);
         m_certificate = findViewById(R.id.m_certificate);
         upload = findViewById(R.id.upload_certificate);
+        customerSpinnerLayout9 =findViewById(R.id.customerSpinnerLayout9);
+        customerSpinnerLayout8 = findViewById(R.id.customerSpinnerLayout8);
+        session_spinner = findViewById(R.id.session);
+        session_values.add("1st Session");
+        session_values.add("2nd Session");
 
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -131,9 +139,22 @@ public class LeaveRequestActivity extends AppCompatActivity {
 
         leaveTypeAdapter = new ArrayAdapter<>(LeaveRequestActivity.this, android.R.layout.simple_spinner_item, leavetypes);
         leave_type.setAdapter(leaveTypeAdapter);
+        sessionAdapter = new ArrayAdapter<>(LeaveRequestActivity.this, android.R.layout.simple_spinner_item, session_values);
+        session_spinner.setAdapter(sessionAdapter);
         getLeaveTypes(empCode);
         initDatePicker();
         initDatePicker1();
+        session_spinner.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                if(i==0){
+                    session = "FN";
+                }
+                else{
+                    session = "AN";
+                }
+            }
+        });
         leave_type.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
@@ -146,12 +167,21 @@ public class LeaveRequestActivity extends AppCompatActivity {
                 getLeaveBalance(empCode,year,leavetypeAbb);
                 if(leavetypes.get(i).contains("First Half")){
                     session = "FN";
+                    customerSpinnerLayout8.setVisibility(View.GONE);
                 }
                 else if(leavetypes.get(i).contains("Second Half")){
                     session = "AN";
+                    customerSpinnerLayout8.setVisibility(View.GONE);
                 }
                 else {
                     session = "ES";
+                    customerSpinnerLayout8.setVisibility(View.VISIBLE);
+                }
+                if(leavetypes.get(i).equalsIgnoreCase("Short Leave")){
+                    customerSpinnerLayout9.setVisibility(View.VISIBLE);
+                }
+                else{
+                    customerSpinnerLayout9.setVisibility(View.GONE);
                 }
 
             }
@@ -176,26 +206,28 @@ public class LeaveRequestActivity extends AppCompatActivity {
             public void onClick(View view) {
 
                 if(start_date.getText().toString().length()==0){
+                    Toast.makeText(LeaveRequestActivity.this,"Please select Start Date", Toast.LENGTH_LONG).show();
+
                     return;
 
                 }
                 else if(end_date.getText().toString().length()==0){
+                    Toast.makeText(LeaveRequestActivity.this,"Please select End Date", Toast.LENGTH_LONG).show();
                     return;
                 }
                 else if(leaveType.length()==0){
+                    Toast.makeText(LeaveRequestActivity.this,"Please select Leave Type", Toast.LENGTH_LONG).show();
+
                     return;
                 }
-                else if(available_bal.getText().toString().length()==0 && Integer.parseInt(available_bal.getText().toString())<=0){
+                else if(!leaveType.contains("Leave Without Pay")&& Double.parseDouble(available_bal.getText().toString())<=0){
+                    Toast.makeText(LeaveRequestActivity.this,"You do not have Leave Balance", Toast.LENGTH_LONG).show();
                     return;
                 }
-                else if(no_of_days.getText().toString().length()==0 && Integer.parseInt(no_of_days.getText().toString())<=0){
+                else if(no_of_days.getText().toString().length()==0 || Double.parseDouble(no_of_days.getText().toString())<=0){
                     return;
                 }
                 applyLeave(empCode,start_date.getText().toString(),end_date.getText().toString(),year,leavetypeAbb,no_of_days.getText().toString(),"",session,authperson,comment.getText().toString(),"",reportyEmailId,reportyEmpName,EmpName,fileName,fileByte);
-
-
-
-
 
             }
         });
@@ -310,8 +342,13 @@ public class LeaveRequestActivity extends AppCompatActivity {
                     if(list!=null && list.size()>0){
                         leaveBalanceList.addAll(list);
                         available_bal.setText(""+leaveBalanceList.get(0).getBalance());
-                        if(leaveBalanceList.get(0).getBalance()==0){
+                        if((!leaveBalanceList.get(0).getLeaveType().equals("BL") && leaveBalanceList.get(0).getBalance()==0.5) ){
+                         //   Toast.makeText(LeaveRequestActivity.this,"You do not have Leave balance!", Toast.LENGTH_LONG).show();
+
+                        }
+                        if(!(leaveBalanceList.get(0).getLeaveType().equals("LWP")||leaveBalanceList.get(0).getLeaveType().equals("LWPESIC")) && leaveBalanceList.get(0).getBalance()<=0){
                             Toast.makeText(LeaveRequestActivity.this,"You do not have Leave balance!", Toast.LENGTH_LONG).show();
+
                         }
                         checkLeaveValidation(empcode,start_date.getText().toString(),end_date.getText().toString());
                     }
@@ -381,6 +418,10 @@ public class LeaveRequestActivity extends AppCompatActivity {
                     List<LeaveDaysResponse> list = (List<LeaveDaysResponse>) carotResponse.getData();
                     if(list!=null && list.size()>0){
                         no_of_days.setText(""+list.get(0).getCount());
+                    }
+                    if(leavetypeAbb.equals("BL")){
+                        no_of_days.setText("0.5");
+                        session = "AN";
                     }
                     if(leavetypeAbb.equals("SL") && list.get(0).getCount()>3){
                         m_certificate.setVisibility(View.VISIBLE);
