@@ -11,7 +11,7 @@ import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.Matrix;
-import android.media.Image;
+
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -21,7 +21,6 @@ import android.provider.OpenableColumns;
 import android.util.Base64;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -39,9 +38,6 @@ import androidx.core.content.ContextCompat;
 
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
-import com.minda.sparsh.cvp.CVPViewCalendar;
-import com.minda.sparsh.listener.CarotResponse;
-import com.minda.sparsh.listener.OnTaskComplete;
 import com.minda.sparsh.model.ApplyLeaveResponse;
 import com.minda.sparsh.model.LeaveBalanceModel;
 import com.minda.sparsh.model.LeaveDaysResponse;
@@ -57,7 +53,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.HashMap;
 import java.util.List;
 
 import javax.net.ssl.HttpsURLConnection;
@@ -130,12 +125,7 @@ public class LeaveRequestActivity extends AppCompatActivity {
         authperson = myPref.getString("REPORTY_EMP_CODE","");
         reportyEmailId = myPref.getString("REPORTY_EMAIL","");
         reportyEmpName = myPref.getString("REPORTY_EMP_NAME","");
-        upload.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                selectFile();
-            }
-        });
+        upload.setOnClickListener(view -> selectFile());
 
         leaveTypeAdapter = new ArrayAdapter<>(LeaveRequestActivity.this, android.R.layout.simple_spinner_item, leavetypes);
         leave_type.setAdapter(leaveTypeAdapter);
@@ -144,47 +134,41 @@ public class LeaveRequestActivity extends AppCompatActivity {
         getLeaveTypes(empCode);
         initDatePicker();
         initDatePicker1();
-        session_spinner.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                if(i==0){
-                    session = "FN";
-                }
-                else{
-                    session = "AN";
-                }
+        session_spinner.setOnItemClickListener((adapterView, view, i, l) -> {
+            if(i==0){
+                session = "FN";
+            }
+            else{
+                session = "AN";
             }
         });
-        leave_type.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                if(start_date.getText().toString().length()==0 && end_date.getText().toString().length()==0){
-                    Toast.makeText(LeaveRequestActivity.this, "Select Start Date & End Date ", Toast.LENGTH_SHORT).show();
-                    return;
-                }
-                leaveType = leavetypes.get(i);
-                leavetypeAbb = LeaveTypesList.get(i).getShort_Desc().toUpperCase();
-                getLeaveBalance(empCode,year,leavetypeAbb);
-                if(leavetypes.get(i).contains("First Half")){
-                    session = "FN";
-                    customerSpinnerLayout8.setVisibility(View.GONE);
-                }
-                else if(leavetypes.get(i).contains("Second Half")){
-                    session = "AN";
-                    customerSpinnerLayout8.setVisibility(View.GONE);
-                }
-                else {
-                    session = "ES";
-                    customerSpinnerLayout8.setVisibility(View.VISIBLE);
-                }
-                if(leavetypes.get(i).equalsIgnoreCase("Short Leave")){
-                    customerSpinnerLayout9.setVisibility(View.VISIBLE);
-                }
-                else{
-                    customerSpinnerLayout9.setVisibility(View.GONE);
-                }
-
+        leave_type.setOnItemClickListener((adapterView, view, i, l) -> {
+            if(start_date.getText().toString().length()==0 && end_date.getText().toString().length()==0){
+                Toast.makeText(LeaveRequestActivity.this, "Select Start Date & End Date ", Toast.LENGTH_SHORT).show();
+                return;
             }
+            leaveType = leavetypes.get(i);
+            leavetypeAbb = LeaveTypesList.get(i).getShort_Desc().toUpperCase();
+            getLeaveBalance(empCode,year,leavetypeAbb);
+            if(leavetypes.get(i).contains("First Half")){
+                session = "FN";
+                customerSpinnerLayout8.setVisibility(View.GONE);
+            }
+            else if(leavetypes.get(i).contains("Second Half")){
+                session = "AN";
+                customerSpinnerLayout8.setVisibility(View.GONE);
+            }
+            else {
+                session = "ES";
+                customerSpinnerLayout8.setVisibility(View.VISIBLE);
+            }
+            if(leavetypes.get(i).equalsIgnoreCase("Short Leave")){
+                customerSpinnerLayout9.setVisibility(View.VISIBLE);
+            }
+            else{
+                customerSpinnerLayout9.setVisibility(View.GONE);
+            }
+
         });
         start_date.setOnTouchListener((view, motionEvent) -> {
             datePicker.show();
@@ -195,41 +179,32 @@ public class LeaveRequestActivity extends AppCompatActivity {
             return false;
         });
 
-        cancel.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                onBackPressed();
-            }
-        });
-        submit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+        cancel.setOnClickListener(view -> onBackPressed());
+        submit.setOnClickListener(view -> {
 
-                if(start_date.getText().toString().length()==0){
-                    Toast.makeText(LeaveRequestActivity.this,"Please select Start Date", Toast.LENGTH_LONG).show();
+            if(start_date.getText().toString().length()==0){
+                Toast.makeText(LeaveRequestActivity.this,"Please select Start Date", Toast.LENGTH_LONG).show();
 
-                    return;
-
-                }
-                else if(end_date.getText().toString().length()==0){
-                    Toast.makeText(LeaveRequestActivity.this,"Please select End Date", Toast.LENGTH_LONG).show();
-                    return;
-                }
-                else if(leaveType.length()==0){
-                    Toast.makeText(LeaveRequestActivity.this,"Please select Leave Type", Toast.LENGTH_LONG).show();
-
-                    return;
-                }
-                else if(!leaveType.contains("Leave Without Pay")&& Double.parseDouble(available_bal.getText().toString())<=0){
-                    Toast.makeText(LeaveRequestActivity.this,"You do not have Leave Balance", Toast.LENGTH_LONG).show();
-                    return;
-                }
-                else if(no_of_days.getText().toString().length()==0 || Double.parseDouble(no_of_days.getText().toString())<=0){
-                    return;
-                }
-                applyLeave(empCode,start_date.getText().toString(),end_date.getText().toString(),year,leavetypeAbb,no_of_days.getText().toString(),"",session,authperson,comment.getText().toString(),"",reportyEmailId,reportyEmpName,EmpName,fileName,fileByte);
+                return;
 
             }
+            else if(end_date.getText().toString().length()==0){
+                Toast.makeText(LeaveRequestActivity.this,"Please select End Date", Toast.LENGTH_LONG).show();
+                return;
+            }
+            else if(leaveType.length()==0){
+                Toast.makeText(LeaveRequestActivity.this,"Please select Leave Type", Toast.LENGTH_LONG).show();
+                return;
+            }
+            else if(!leaveType.contains("Leave Without Pay")&& Double.parseDouble(available_bal.getText().toString())<=0){
+                Toast.makeText(LeaveRequestActivity.this,"You do not have Leave Balance", Toast.LENGTH_LONG).show();
+                return;
+            }
+            else if(no_of_days.getText().toString().length()==0 || Double.parseDouble(no_of_days.getText().toString())<=0){
+                return;
+            }
+            applyLeave(empCode,start_date.getText().toString(),end_date.getText().toString(),year,leavetypeAbb,no_of_days.getText().toString(),"",session,authperson,comment.getText().toString(),"",reportyEmailId,reportyEmpName,EmpName,fileName,fileByte);
+
         });
     }
 
@@ -334,24 +309,21 @@ public class LeaveRequestActivity extends AppCompatActivity {
     public void getLeaveBalance(String empcode, String year, String leaveType) {
        leaveBalanceList.clear();
        AlmsServices almsServices = new AlmsServices();
-        almsServices.getLeaveBalance(new OnTaskComplete() {
-            @Override
-            public void onTaskComplte(CarotResponse carotResponse) {
-                if (carotResponse.getStatuscode() == HttpsURLConnection.HTTP_OK) {
-                    List<LeaveBalanceModel> list = (List<LeaveBalanceModel>) carotResponse.getData();
-                    if(list!=null && list.size()>0){
-                        leaveBalanceList.addAll(list);
-                        available_bal.setText(""+leaveBalanceList.get(0).getBalance());
-                        if((!leaveBalanceList.get(0).getLeaveType().equals("BL") && leaveBalanceList.get(0).getBalance()==0.5) ){
-                         //   Toast.makeText(LeaveRequestActivity.this,"You do not have Leave balance!", Toast.LENGTH_LONG).show();
+        almsServices.getLeaveBalance(carotResponse -> {
+            if (carotResponse.getStatuscode() == HttpsURLConnection.HTTP_OK) {
+                List<LeaveBalanceModel> list = (List<LeaveBalanceModel>) carotResponse.getData();
+                if(list!=null && list.size()>0){
+                    leaveBalanceList.addAll(list);
+                    available_bal.setText(""+leaveBalanceList.get(0).getBalance());
+                    if((!leaveBalanceList.get(0).getLeaveType().equals("BL") && leaveBalanceList.get(0).getBalance()==0.5) ){
+                     //   Toast.makeText(LeaveRequestActivity.this,"You do not have Leave balance!", Toast.LENGTH_LONG).show();
 
-                        }
-                        if(!(leaveBalanceList.get(0).getLeaveType().equals("LWP")||leaveBalanceList.get(0).getLeaveType().equals("LWPESIC")) && leaveBalanceList.get(0).getBalance()<=0){
-                            Toast.makeText(LeaveRequestActivity.this,"You do not have Leave balance!", Toast.LENGTH_LONG).show();
-
-                        }
-                        checkLeaveValidation(empcode,start_date.getText().toString(),end_date.getText().toString());
                     }
+                    if(!(leaveBalanceList.get(0).getLeaveType().equals("LWP")||leaveBalanceList.get(0).getLeaveType().equals("LWPESIC")) && leaveBalanceList.get(0).getBalance()<=0){
+                        Toast.makeText(LeaveRequestActivity.this,"You do not have Leave balance!", Toast.LENGTH_LONG).show();
+
+                    }
+                    checkLeaveValidation(empcode,start_date.getText().toString(),end_date.getText().toString());
                 }
             }
         }, empcode, year, leaveType);
@@ -359,23 +331,21 @@ public class LeaveRequestActivity extends AppCompatActivity {
     }
 
     public void getLeaveTypes(String empcode){
+        LeaveTypesList.clear();
         leavetypes.clear();
         AlmsServices almsServices = new AlmsServices();
-        almsServices.getLeaveTypes(new OnTaskComplete() {
-            @Override
-            public void onTaskComplte(CarotResponse carotResponse) {
-                if (carotResponse.getStatuscode() == HttpsURLConnection.HTTP_OK) {
-                    List<LeaveTypeModel> list = (List<LeaveTypeModel>) carotResponse.getData();
-                    if(list!=null && list.size()>0) {
-                        LeaveTypesList.addAll(list);
-                        for (LeaveTypeModel leaveTypeModel : list) {
-                            leavetypes.add(leaveTypeModel.getLvtyp());
-                            leaveTypeAdapter.notifyDataSetChanged();
-                        }
-                    }
+        almsServices.getLeaveTypes(carotResponse -> {
+            if (carotResponse.getStatuscode() == HttpsURLConnection.HTTP_OK) {
+                List<LeaveTypeModel> list = (List<LeaveTypeModel>) carotResponse.getData();
+                if(list!=null && list.size()>0) {
+                    LeaveTypesList.addAll(list);
+                    for (LeaveTypeModel leaveTypeModel : list) {
+                        leavetypes.add(leaveTypeModel.getLvtyp());
+                        leaveTypeAdapter.notifyDataSetChanged();
                     }
                 }
-        },empcode);
+                }
+            },empcode);
     }
 
     @Override
@@ -391,68 +361,59 @@ public class LeaveRequestActivity extends AppCompatActivity {
     public void checkLeaveValidation(String empcode, String fromDate, String toDate){
 
         AlmsServices almsServices = new AlmsServices();
-        almsServices.checkLeaveValidation(new OnTaskComplete() {
-            @Override
-            public void onTaskComplte(CarotResponse carotResponse) {
-                if(carotResponse.getStatuscode()== HttpsURLConnection.HTTP_OK){
-                    List<LeaveValidationResponse> list = (List<LeaveValidationResponse>) carotResponse.getData();
-                    if(list!= null && list.size()>0){
-                        if(list.get(0).getData().equals("You can`t apply for this period")){
-                            Toast.makeText(LeaveRequestActivity.this, "You can`t apply for this period", Toast.LENGTH_SHORT).show();
-                        }
-                        else{
-                            getTotalLeaveDays(leavetypeAbb,start_date.getText().toString(),end_date.getText().toString());
-                        }
+        almsServices.checkLeaveValidation(carotResponse -> {
+            if(carotResponse.getStatuscode()== HttpsURLConnection.HTTP_OK){
+                List<LeaveValidationResponse> list = (List<LeaveValidationResponse>) carotResponse.getData();
+                if(list!= null && list.size()>0){
+                    if(list.get(0).getData().equals("You can`t apply for this period")){
+                        Toast.makeText(LeaveRequestActivity.this, "You can`t apply for this period", Toast.LENGTH_SHORT).show();
+                    }
+                    else{
+                        getTotalLeaveDays(leavetypeAbb,start_date.getText().toString(),end_date.getText().toString());
                     }
                 }
-
             }
+
         },empcode,fromDate, toDate);
     }
     public void getTotalLeaveDays(String leaveType,String fromDate, String toDate){
         AlmsServices almsServices = new AlmsServices();
-        almsServices.getTotalLeaveDays(new OnTaskComplete() {
-            @Override
-            public void onTaskComplte(CarotResponse carotResponse) {
-                if(carotResponse.getStatuscode()== HttpsURLConnection.HTTP_OK){
-                    List<LeaveDaysResponse> list = (List<LeaveDaysResponse>) carotResponse.getData();
-                    if(list!=null && list.size()>0){
-                        no_of_days.setText(""+list.get(0).getCount());
-                    }
-                    if(leavetypeAbb.equals("BL")){
-                        no_of_days.setText("0.5");
-                        session = "AN";
-                    }
-                    if(leavetypeAbb.equals("SL") && list.get(0).getCount()>3){
-                        m_certificate.setVisibility(View.VISIBLE);
-                        upload.setVisibility(View.VISIBLE);
-                    }
-                    else{
-                        m_certificate.setVisibility(View.GONE);
-                        upload.setVisibility(View.GONE);
+        almsServices.getTotalLeaveDays(carotResponse -> {
+            if(carotResponse.getStatuscode()== HttpsURLConnection.HTTP_OK){
+                List<LeaveDaysResponse> list = (List<LeaveDaysResponse>) carotResponse.getData();
+                if(list!=null && list.size()>0){
+                    no_of_days.setText(""+list.get(0).getCount());
+                }
+                if(leavetypeAbb.equals("BL")){
+                    no_of_days.setText("0.5");
+                    session = "AN";
+                }
+                if(leavetypeAbb.equals("SL") && list.get(0).getCount()>3){
+                    m_certificate.setVisibility(View.VISIBLE);
+                    upload.setVisibility(View.VISIBLE);
+                }
+                else{
+                    m_certificate.setVisibility(View.GONE);
+                    upload.setVisibility(View.GONE);
 
-                    }
-                 }
-            }
+                }
+             }
         }, leaveType, fromDate,toDate);
 
     }
     public void applyLeave(String Empcode, String Fromdate, String Todate, String Year, String LeaveType, String NoOfDays, String ReasonCode, String Session, String AuthPerson, String Remark, String Place, String ReportyEmailID, String ReportyEmpName, String EmpName, String FileName, String Files){
         AlmsServices almsServices = new AlmsServices();
-        almsServices.applyLeave(new OnTaskComplete() {
-            @Override
-            public void onTaskComplte(CarotResponse carotResponse) {
-                if(carotResponse.getStatuscode()==HttpsURLConnection.HTTP_OK){
-                    List<ApplyLeaveResponse> list = (List<ApplyLeaveResponse>) carotResponse.getData();
-                    if(list!=null && list.size()>0){
-                        if(list.get(0).getLeaveRequestNo()!=null && list.get(0).getLeaveRequestNo().length()>0){
-                            showMsg("Your leave request has been created successfully.\n" +
-                                    "Request No: "+list.get(0).getLeaveRequestNo(),"");
-                        }
+        almsServices.applyLeave(carotResponse -> {
+            if(carotResponse.getStatuscode()==HttpsURLConnection.HTTP_OK){
+                List<ApplyLeaveResponse> list = (List<ApplyLeaveResponse>) carotResponse.getData();
+                if(list!=null && list.size()>0){
+                    if(list.get(0).getLeaveRequestNo()!=null && list.get(0).getLeaveRequestNo().length()>0){
+                        showMsg("Your leave request has been created successfully.\n" +
+                                "Request No: "+list.get(0).getLeaveRequestNo(),"");
                     }
-                 }
+                }
+             }
 
-            }
         },Empcode, Fromdate,Todate, Year,LeaveType, NoOfDays,ReasonCode,Session,AuthPerson,Remark,Place,ReportyEmailID,ReportyEmpName,EmpName,FileName,Files);
     }
     public void selectFile() {

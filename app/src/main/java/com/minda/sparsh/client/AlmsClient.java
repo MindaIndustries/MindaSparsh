@@ -4,6 +4,7 @@ import com.minda.sparsh.model.AlmsReportModel;
 import com.minda.sparsh.model.ApplyLeaveResponse;
 import com.minda.sparsh.model.LeaveBalanceModel;
 import com.minda.sparsh.model.LeaveDaysResponse;
+import com.minda.sparsh.model.LeaveRegularizeModel;
 import com.minda.sparsh.model.LeaveTypeModel;
 import com.minda.sparsh.model.LeaveValidationResponse;
 
@@ -38,4 +39,12 @@ public interface AlmsClient {
     @FormUrlEncoded
     @POST("service/ApplyLeave")
     Call<List<ApplyLeaveResponse>> applyLeave(@Field("EmpCode") String EmpCode, @Field("Fromdate") String Fromdate, @Field("Todate") String Todate, @Field("Year") String Year, @Field("LeaveType") String LeaveType, @Field("NoOfDays") String NoOfDays, @Field("ReasonCode") String ReasonCode,@Field("Session") String Session,@Field("AuthPerson") String AuthPerson, @Field("Remark") String Remark, @Field("Place") String Place, @Field("ReportyEmailID") String ReportyEmailID, @Field("ReportyEmpName") String ReportyEmpName, @Field("EmpName") String EmpName, @Field("FileName") String FileName, @Field("Files") String Files);
+
+    @FormUrlEncoded
+    @POST("service/ApplyLeaveRegular")
+    Call<List<ApplyLeaveResponse>> ApplyLeaveRegular(@Field("EmpCode") String EmpCode, @Field("Fromdate") String Fromdate, @Field("Todate") String Todate, @Field("Year") String Year, @Field("LeaveType") String LeaveType, @Field("NoOfDays") String NoOfDays, @Field("ReasonCode") String ReasonCode,@Field("Session") String Session,@Field("AuthPerson") String AuthPerson, @Field("Remark") String Remark, @Field("Place") String Place, @Field("ReportyEmailID") String ReportyEmailID, @Field("ReportyEmpName") String ReportyEmpName, @Field("EmpName") String EmpName, @Field("FileName") String FileName, @Field("Files") String Files, @Field("FSHrs") String FSHrs,@Field("SSHrs") String SSHrs);
+
+    @POST("service/GetLeaveTypeRegularize")
+    Call<List<LeaveRegularizeModel>> GetLeaveTypeRegularize(@Query("EmpCode") String EmpCode);
+
 }

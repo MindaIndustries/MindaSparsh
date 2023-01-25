@@ -7,6 +7,7 @@ import com.minda.sparsh.model.AlmsReportModel;
 import com.minda.sparsh.model.ApplyLeaveResponse;
 import com.minda.sparsh.model.LeaveBalanceModel;
 import com.minda.sparsh.model.LeaveDaysResponse;
+import com.minda.sparsh.model.LeaveRegularizeModel;
 import com.minda.sparsh.model.LeaveTypeModel;
 import com.minda.sparsh.model.LeaveValidationResponse;
 import com.minda.sparsh.util.RetrofitClient2;
@@ -20,6 +21,7 @@ import javax.net.ssl.HttpsURLConnection;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+import retrofit2.http.Field;
 
 public class AlmsServices {
 
@@ -168,5 +170,59 @@ public class AlmsServices {
                 onTaskComplete.onTaskComplte(carotResponse);
             }
         });
+    }
+
+    public void applyLeaveRegular(OnTaskComplete onTaskComplete, String Empcode, String Fromdate, String Todate, String Year, String LeaveType, String NoOfDays, String ReasonCode, String Session, String AuthPerson, String Remark, String Place, String ReportyEmailID, String ReportyEmpName, String EmpName, String FileName, String Files, @Field("FSHrs") String FSHrs, @Field("SSHrs") String SSHrs){
+
+        AlmsClient almsClient = RetrofitClient2.getClientScanQR(AlmsClient.class);
+        Call<List<ApplyLeaveResponse>> call = almsClient.ApplyLeaveRegular(Empcode,Fromdate,Todate,Year, LeaveType,NoOfDays,ReasonCode,Session,AuthPerson,Remark,Place,ReportyEmailID,ReportyEmpName,EmpName, FileName,Files,FSHrs,SSHrs);
+        call.enqueue(new Callback<List<ApplyLeaveResponse>>() {
+            @Override
+            public void onResponse(Call<List<ApplyLeaveResponse>> call, Response<List<ApplyLeaveResponse>> response) {
+                CarotResponse carotResponse = new CarotResponse();
+                carotResponse.setStatuscode(response.code());
+                if (response.code() == HttpsURLConnection.HTTP_OK) {
+                    carotResponse.setData(response.body());
+                }
+                onTaskComplete.onTaskComplte(carotResponse);
+            }
+
+            @Override
+            public void onFailure(Call<List<ApplyLeaveResponse>> call, Throwable t) {
+                CarotResponse carotResponse = new CarotResponse();
+                if (t instanceof IOException) {
+                    carotResponse.setMessage("Please hold on a moment, the internet connectivity seems to be slow");
+                }
+                onTaskComplete.onTaskComplte(carotResponse);
+            }
+        });
+
+    }
+
+    public void getLeaveTypeRegularize(OnTaskComplete onTaskComplete, String Empcode){
+        AlmsClient almsClient = RetrofitClient2.getClientScanQR(AlmsClient.class);
+        Call<List<LeaveRegularizeModel>> call = almsClient.GetLeaveTypeRegularize(Empcode);
+        call.enqueue(new Callback<List<LeaveRegularizeModel>>() {
+            @Override
+            public void onResponse(Call<List<LeaveRegularizeModel>> call, Response<List<LeaveRegularizeModel>> response) {
+                CarotResponse carotResponse = new CarotResponse();
+                carotResponse.setStatuscode(response.code());
+                if (response.code() == HttpsURLConnection.HTTP_OK) {
+                    carotResponse.setData(response.body());
+                }
+                onTaskComplete.onTaskComplte(carotResponse);
+            }
+
+            @Override
+            public void onFailure(Call<List<LeaveRegularizeModel>> call, Throwable t) {
+                CarotResponse carotResponse = new CarotResponse();
+                if (t instanceof IOException) {
+                    carotResponse.setMessage("Please hold on a moment, the internet connectivity seems to be slow");
+                }
+                onTaskComplete.onTaskComplte(carotResponse);
+            }
+        });
+
+
     }
 }
