@@ -46,8 +46,6 @@ public class ViewCalendarAdapter extends RecyclerView.Adapter<ViewCalendarAdapte
         View itemView = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.cvp_view_row, parent, false);
 
-
-
         return new ViewHolder(itemView);
     }
 

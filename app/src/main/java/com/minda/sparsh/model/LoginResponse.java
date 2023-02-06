@@ -319,6 +319,17 @@ public class LoginResponse {
     @SerializedName("FunctionName")
     String FunctionName;
 
+    public int getReporty() {
+        return Reporty;
+    }
+
+    public void setReporty(int reporty) {
+        Reporty = reporty;
+    }
+
+    @SerializedName("Reporty")
+    int Reporty;
+
 
     public Integer getUserID() {
         return userID;

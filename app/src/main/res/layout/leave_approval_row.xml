@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/card_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_marginTop="10dp"
+                    android:id="@+id/req_no"
+                    android:textColor="@color/colorPrimary"
+                    android:layout_marginLeft="15dp"
+                    android:fontFamily="@font/museosans_700"
+                    android:layout_alignParentLeft="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+                <TextView
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:background="@drawable/status_bg"
+                    android:id="@+id/leave_type"
+                    android:fontFamily="@font/museosans_700"
+                    android:textColor="@color/white"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:text="" />
+                <RelativeLayout
+                    android:layout_marginTop="10dp"
+                    android:padding="20dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:layout_marginTop="10dp"
+                        android:fontFamily="@font/museosans_700"
+                        android:layout_alignParentLeft="true"
+                        android:id="@+id/emp_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+
+                    <TextView
+                        android:layout_marginTop="15dp"
+                        android:layout_alignParentLeft="true"
+                        android:id="@+id/from_date"
+                        android:layout_toLeftOf="@+id/view"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/emp_name"
+                        android:text="From" />
+
+                    <TextView
+                        android:layout_marginTop="15dp"
+                        android:layout_alignParentRight="true"
+                        android:id="@+id/to_date"
+                        android:text="To"
+                        android:layout_toRightOf="@+id/view"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/emp_name" />
+
+                    <TextView
+                        android:fontFamily="@font/museosans_700"
+                        android:padding="10dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_toLeftOf="@+id/view"
+                        android:id="@+id/from_dt_value"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/from_date"
+                        android:layout_alignParentLeft="true"
+                        android:layout_marginRight="10dp"
+                        android:background="@drawable/rect_date_leaves" />
+                    <TextView
+                        android:fontFamily="@font/museosans_700"
+                        android:padding="10dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_toRightOf="@+id/view"
+                        android:id="@+id/to_dt_value"
+                        android:layout_alignParentRight="true"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/to_date"
+                        android:background="@drawable/rect_date_leaves" />
+
+                    <android.widget.Button
+                        android:background="@drawable/btn_bg"
+                        android:layout_marginRight="20dp"
+                        android:layout_toLeftOf="@+id/reject"
+                        android:layout_marginTop="15dp"
+                        android:layout_below="@+id/from_dt_value"
+                        android:id="@+id/approve"
+                        android:text="Approve"
+                        android:textColor="@color/white"
+                        android:layout_width="wrap_content"
+                        android:layout_height="40dp"/>
+                    <android.widget.Button
+                        android:background="@drawable/btn_bg"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginTop="15dp"
+                        android:layout_below="@+id/from_dt_value"
+                        android:id="@+id/reject"
+                        android:text="Reject"
+                        android:textColor="@color/white"
+                        android:layout_width="wrap_content"
+                        android:layout_height="40dp"/>
+                    <View
+                        android:id="@+id/view"
+                        android:layout_centerHorizontal="true"
+                        android:layout_width="1dp"
+                        android:layout_height="1dp"/>
+
+                </RelativeLayout>
+
+            </RelativeLayout>
+
+
+        </androidx.cardview.widget.CardView>
+        <LinearLayout
+            android:layout_below="@+id/card_view"
+            android:layout_width="match_parent"
+            android:layout_height="8dp"/>
+    </RelativeLayout>
+
+
+</RelativeLayout>

@@ -7,16 +7,28 @@
     <RelativeLayout
         android:paddingLeft="10dp"
         android:paddingRight="10dp"
+        android:paddingTop="15dp"
+        android:paddingBottom="15dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <androidx.cardview.widget.CardView
             app:cardCornerRadius="5dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <LinearLayout
+                    android:id="@+id/row"
+                    android:weightSum="100"
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
         <LinearLayout
+            android:layout_weight="95"
             android:orientation="horizontal"
             android:weightSum="4"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content">
 
             <TextView
@@ -29,28 +41,46 @@
 
             <TextView
                 android:id="@+id/from"
-                android:fontFamily="@font/museosans_700"
+                android:fontFamily="@font/museosans_500"
                 android:layout_weight="1"
                 android:text=""
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"/>
             <TextView
                 android:id="@+id/to"
-                android:fontFamily="@font/museosans_700"
+                android:fontFamily="@font/museosans_500"
                 android:layout_weight="1"
                 android:text=""
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"/>
             <TextView
                 android:id="@+id/status"
-                android:fontFamily="@font/museosans_700"
+                android:fontFamily="@font/museosans_500"
                 android:layout_weight="1"
                 android:text=""
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"/>
 
         </LinearLayout>
-
+                <LinearLayout
+                    android:layout_weight="5"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content">
+                    <ImageView
+                        android:id="@+id/options"
+                        android:src="@drawable/more_options"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+                </LinearLayout>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_marginTop="10dp"
+                    android:layout_below="@+id/row"
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:background="#f0f0f0"
+                    />
+            </RelativeLayout>
         </androidx.cardview.widget.CardView>
     </RelativeLayout>
 

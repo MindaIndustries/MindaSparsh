@@ -416,6 +416,7 @@ public class LoginActivity extends AppCompatActivity {
                             mEditor.putString("REPORTY_EMAIL",loginResponse.get(0).getUMREPORTINGTOEMAIL());
                             mEditor.putString("REPORTY_EMP_NAME",loginResponse.get(0).getUMREPORTINGTONAME());
                             mEditor.putString("REPORTY_EMP_CODE",loginResponse.get(0).getUMREPORTINGTO());
+                            mEditor.putInt("Reporty",loginResponse.get(0).getReporty());
                             arrayList.clear();
                             String currentString = loginResponse.get(0).getAuthFor();
 

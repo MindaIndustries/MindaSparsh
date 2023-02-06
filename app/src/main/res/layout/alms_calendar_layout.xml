@@ -196,7 +196,7 @@
                     />
                 <TextView
                     android:background="@drawable/rec_bg_calendar"
-                    android:text="24"
+                    android:text=""
                     android:textSize="20sp"
                     android:padding="10dp"
                     android:textColor="@color/white"
@@ -248,7 +248,7 @@
                         android:layout_alignParentRight="true"
                         android:layout_marginTop="30dp"
                         android:layout_below="@+id/present_days"
-                        android:text="21"
+                        android:text=""
                         android:textSize="24sp"
                         android:textColor="@color/white"
                         android:layout_width="wrap_content"
@@ -290,7 +290,7 @@
                     <TextView
                         android:layout_marginTop="30dp"
                         android:layout_below="@+id/absent_days"
-                        android:text="3"
+                        android:text=""
                         android:layout_marginRight="30dp"
                         android:textColor="@color/white"
                         android:textSize="24sp"
@@ -350,6 +350,8 @@
         android:layout_height="match_parent">
 
         <com.nambimobile.widgets.efab.ExpandableFabLayout
+            android:id="@+id/expandable_fab"
+            android:visibility="visible"
             android:layout_alignParentBottom="true"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
@@ -389,10 +391,64 @@
                 android:id="@+id/leave_regular_btn"
                 android:onClick="onClickPortraitOption1"
                 />
+            <com.nambimobile.widgets.efab.FabOption
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:fab_orientation="portrait"
+                app:label_text="Leave Approvals"
+                android:id="@+id/leave_approvals"
+                android:onClick="onClickPortraitOption1"
+                />
+
+
+        </com.nambimobile.widgets.efab.ExpandableFabLayout>
+        <com.nambimobile.widgets.efab.ExpandableFabLayout
+            android:id="@+id/expandable_fab1"
+            android:visibility="gone"
+            android:layout_alignParentBottom="true"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <com.nambimobile.widgets.efab.Overlay
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:overlay_orientation="portrait"/>
+            <com.nambimobile.widgets.efab.ExpandableFab
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom|end"
+                android:layout_marginBottom="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginRight="10dp"
+                app:efab_orientation="portrait"/>
+            <com.nambimobile.widgets.efab.FabOption
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:fab_orientation="portrait"
+                app:label_text="Leave Request"
+                android:id="@+id/leave_req_btn1"
+                android:onClick="onClickPortraitOption1"/>
+            <com.nambimobile.widgets.efab.FabOption
+                android:id="@+id/leave_balance_btn1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:fab_orientation="portrait"
+                app:label_text="Leave Balance"
+                android:onClick="onClickPortraitOption2"/>
+
+            <com.nambimobile.widgets.efab.FabOption
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:fab_orientation="portrait"
+                app:label_text="Leave Regularization"
+                android:id="@+id/leave_regular_btn1"
+                android:onClick="onClickPortraitOption1"
+                />
 
 
 
         </com.nambimobile.widgets.efab.ExpandableFabLayout>
+
     </RelativeLayout>
 
 </RelativeLayout>

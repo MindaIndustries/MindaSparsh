@@ -6,25 +6,25 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.view.MotionEvent;
-import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.widget.Toolbar;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.textfield.TextInputEditText;
-import com.minda.sparsh.listener.CarotResponse;
-import com.minda.sparsh.listener.OnTaskComplete;
+import com.minda.sparsh.model.ApplyLeaveResponse;
 import com.minda.sparsh.model.LeaveDaysResponse;
 import com.minda.sparsh.model.LeaveRegularizeModel;
+import com.minda.sparsh.model.LeaveValidationResponse;
 import com.minda.sparsh.services.AlmsServices;
+import com.minda.sparsh.util.Utility;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -38,18 +38,21 @@ public class LeaveRegularizationActivity extends AppCompatActivity {
     TextView title;
     DatePickerDialog datePicker, datePicker1;
     Calendar calendar, calendar1;
-    String year, year1;
+    String year, year1, session = "ES";
     int leaveType = 0;
-    TextInputEditText start_date, end_date, no_of_days, start_time, end_time;
+    TextInputEditText start_date, end_date, no_of_days, comment, start_time, end_time;
     Button cancel, submit;
-    AutoCompleteTextView leave_type;
-    ArrayAdapter<String> leaveTypeAdapter;
+    AutoCompleteTextView leave_type, session_spinner;
+    ArrayAdapter<String> leaveTypeAdapter, sessionAdapter;
     ArrayList<String> leavetypes = new ArrayList<>();
     List<LeaveRegularizeModel> leaveTypeList = new ArrayList<>();
     String empCode;
     SharedPreferences myPref;
     TimePickerDialog timePickerDialog, timePickerDialog1;
     Date millisecondsdailyfrom = null, millisecondsdailyto = null;
+    String authperson, reportyEmailId, reportyEmpName, EmpName;
+    ArrayList<String> session_values = new ArrayList<>();
+
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -65,14 +68,37 @@ public class LeaveRegularizationActivity extends AppCompatActivity {
         start_date = findViewById(R.id.start_date);
         end_date = findViewById(R.id.end_date);
         no_of_days = findViewById(R.id.no_of_days);
+        comment = findViewById(R.id.comment);
         cancel = findViewById(R.id.cancel);
         submit = findViewById(R.id.submit);
         leave_type = findViewById(R.id.leave_type);
         start_time = findViewById(R.id.start_time);
         end_time = findViewById(R.id.end_time);
+        session_spinner = findViewById(R.id.session);
+        sessionAdapter = new ArrayAdapter<>(LeaveRegularizationActivity.this, android.R.layout.simple_spinner_item, session_values);
+        session_spinner.setAdapter(sessionAdapter);
+
         myPref = getSharedPreferences("MyPref", Context.MODE_PRIVATE);
         empCode = myPref.getString("Id", "Id");
+        EmpName = myPref.getString("username", "");
+        authperson = myPref.getString("REPORTY_EMP_CODE", "");
+        reportyEmailId = myPref.getString("REPORTY_EMAIL", "");
+        reportyEmpName = myPref.getString("REPORTY_EMP_NAME", "");
 
+        session_values.add("Full Session");
+        session_values.add("1st Session");
+        session_values.add("2nd Session");
+        sessionAdapter = new ArrayAdapter<>(LeaveRegularizationActivity.this, android.R.layout.simple_spinner_item, session_values);
+        session_spinner.setAdapter(sessionAdapter);
+        session_spinner.setOnItemClickListener((adapterView, view, i, l) -> {
+            if (i == 0) {
+                session = "ES";
+            } else if (i == 1) {
+                session = "FN";
+            } else {
+                session = "AN";
+            }
+        });
 
         initDatePicker();
         initDatePicker1();
@@ -88,8 +114,8 @@ public class LeaveRegularizationActivity extends AppCompatActivity {
                 return;
             }
             leaveType = leaveTypeList.get(i).getLeavecode();
-            getTotalLeaveDays(String.valueOf(leaveType), start_date.getText().toString(), end_date.getText().toString());
-
+            checkLeaveValidation(empCode,start_date.getText().toString(),end_date.getText().toString());
+            //getTotalLeaveDays(String.valueOf(leaveType), start_date.getText().toString(), end_date.getText().toString());
         });
 
         start_date.setOnTouchListener((view, motionEvent) -> {
@@ -100,37 +126,31 @@ public class LeaveRegularizationActivity extends AppCompatActivity {
             datePicker1.show();
             return false;
         });
-        start_time.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View view, MotionEvent motionEvent) {
-                timePickerDialog.show();
-                return false;
-            }
+        start_time.setOnTouchListener((view, motionEvent) -> {
+            timePickerDialog.show();
+            return false;
         });
-        end_time.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View view, MotionEvent motionEvent) {
-                timePickerDialog1.show();
-                return false;
-            }
+        end_time.setOnTouchListener((view, motionEvent) -> {
+            timePickerDialog1.show();
+            return false;
         });
 
         cancel.setOnClickListener(view -> onBackPressed());
-        submit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (start_date.getText().toString().length() == 0) {
-                    Toast.makeText(LeaveRegularizationActivity.this, "Please select Start Date", Toast.LENGTH_LONG).show();
-                    return;
-                } else if (end_date.getText().toString().length() == 0) {
-                    Toast.makeText(LeaveRegularizationActivity.this, "Please select End Date", Toast.LENGTH_LONG).show();
-                    return;
-                } else if (leaveType == 0) {
-                    Toast.makeText(LeaveRegularizationActivity.this, "Please select Regularization Type", Toast.LENGTH_LONG).show();
-                    return;
-                } else if (no_of_days.getText().toString().length() == 0 || Double.parseDouble(no_of_days.getText().toString()) <= 0) {
-                    return;
-                }
+        submit.setOnClickListener(view -> {
+            if (start_date.getText().toString().length() == 0) {
+                Toast.makeText(LeaveRegularizationActivity.this, "Please select Start Date", Toast.LENGTH_LONG).show();
+                return;
+            } else if (end_date.getText().toString().length() == 0) {
+                Toast.makeText(LeaveRegularizationActivity.this, "Please select End Date", Toast.LENGTH_LONG).show();
+                return;
+            } else if (leaveType == 0) {
+                Toast.makeText(LeaveRegularizationActivity.this, "Please select Regularization Type", Toast.LENGTH_LONG).show();
+                return;
+            } else if (no_of_days.getText().toString().length() == 0 || Double.parseDouble(no_of_days.getText().toString()) <= 0) {
+                return;
+            }
+            if (Utility.isOnline(LeaveRegularizationActivity.this)) {
+                applyLeaveRegular(empCode, start_date.getText().toString(), end_date.getText().toString(), year, "" + leaveType, no_of_days.getText().toString(), "", session, authperson, comment.getText().toString(), "", reportyEmailId, reportyEmpName, EmpName, "", "", start_time.getText().toString(), end_time.getText().toString());
             }
         });
 
@@ -232,38 +252,52 @@ public class LeaveRegularizationActivity extends AppCompatActivity {
         //  datePicker.getDatePicker().setMinDate(Calendar.getInstance().getTimeInMillis() - 10000);
 
     }
-    public void initTimePicker(){
 
-            final Calendar cal1 = Calendar.getInstance();
-            final int hour_init, minute_init;
-            cal1.add(Calendar.HOUR_OF_DAY, calendar.get(Calendar.HOUR_OF_DAY));
-            cal1.add(Calendar.MINUTE, calendar.get(Calendar.MINUTE));
-            hour_init = cal1.get(Calendar.HOUR_OF_DAY);
-            minute_init = cal1.get(Calendar.MINUTE);
+    public void initTimePicker() {
+
+        final Calendar cal1 = Calendar.getInstance();
+        final int hour_init, minute_init;
+        cal1.add(Calendar.HOUR_OF_DAY, calendar.get(Calendar.HOUR_OF_DAY));
+        cal1.add(Calendar.MINUTE, calendar.get(Calendar.MINUTE));
+        hour_init = cal1.get(Calendar.HOUR_OF_DAY);
+        minute_init = cal1.get(Calendar.MINUTE);
+        cal1.set(Calendar.DAY_OF_MONTH, calendar.get(Calendar.DAY_OF_MONTH));
+        cal1.set(Calendar.MONTH, calendar.get(Calendar.MONTH));
+        cal1.set(Calendar.YEAR, calendar.get(Calendar.YEAR));
+        millisecondsdailyfrom = cal1.getTime();
+
+        timePickerDialog = new TimePickerDialog(LeaveRegularizationActivity.this, (view, hourOfDay, minute) -> {
+            cal1.set(Calendar.HOUR_OF_DAY, hourOfDay);
+            cal1.set(Calendar.MINUTE, minute);
+            cal1.set(Calendar.AM_PM, cal1.get(Calendar.AM_PM));
             cal1.set(Calendar.DAY_OF_MONTH, calendar.get(Calendar.DAY_OF_MONTH));
             cal1.set(Calendar.MONTH, calendar.get(Calendar.MONTH));
             cal1.set(Calendar.YEAR, calendar.get(Calendar.YEAR));
-
-            timePickerDialog = new TimePickerDialog(LeaveRegularizationActivity.this, (view, hourOfDay, minute) -> {
-                String AM_PM;
-                if (cal1.get(Calendar.AM_PM) == Calendar.AM) {
-                    AM_PM = "AM";
-                } else {
-                    AM_PM = "PM";
+            millisecondsdailyfrom = cal1.getTime();
+              /*  if(millisecondsdailyfrom.before(Calendar.getInstance().getTime())){
+                    Toast.makeText(this, "End Time can't be less than Start Time", Toast.LENGTH_LONG).show();
+                    start_time.setText("");
+                    return;
                 }
+                else{*/
+            String minute_str =null ;
+            if (minute < 10) {
+                minute_str = "0" + minute;
+            } else {
+                minute_str = "" + minute;
+            }
 
-                cal1.set(Calendar.HOUR_OF_DAY, hourOfDay);
-                cal1.set(Calendar.MINUTE, minute);
-                cal1.set(Calendar.AM_PM, cal1.get(Calendar.AM_PM));
-                cal1.set(Calendar.DAY_OF_MONTH, calendar.get(Calendar.DAY_OF_MONTH));
-                cal1.set(Calendar.MONTH, calendar.get(Calendar.MONTH));
-                cal1.set(Calendar.YEAR, calendar.get(Calendar.YEAR));
+            start_time.setText("" + hourOfDay + "." + minute_str);
+            end_time.setText("");
 
-            }, hour_init, minute_init, false);
+            //   }
+
+        }, hour_init, minute_init, true);
 
 
     }
-    public void initTimePicker1(){
+
+    public void initTimePicker1() {
         final Calendar cal2 = Calendar.getInstance();
         final int hour_init, minute_init;
         cal2.add(Calendar.HOUR_OF_DAY, calendar.get(Calendar.HOUR_OF_DAY));
@@ -273,24 +307,33 @@ public class LeaveRegularizationActivity extends AppCompatActivity {
         cal2.set(Calendar.DAY_OF_MONTH, calendar.get(Calendar.DAY_OF_MONTH));
         cal2.set(Calendar.MONTH, calendar.get(Calendar.MONTH));
         cal2.set(Calendar.YEAR, calendar.get(Calendar.YEAR));
+        millisecondsdailyto = cal2.getTime();
 
         timePickerDialog1 = new TimePickerDialog(LeaveRegularizationActivity.this, (view, hourOfDay, minute) -> {
-            String AM_PM;
-            if (cal2.get(Calendar.AM_PM) == Calendar.AM) {
-                AM_PM = "AM";
-            } else {
-                AM_PM = "PM";
-            }
-
             cal2.set(Calendar.HOUR_OF_DAY, hourOfDay);
             cal2.set(Calendar.MINUTE, minute);
             cal2.set(Calendar.AM_PM, cal2.get(Calendar.AM_PM));
             cal2.set(Calendar.DAY_OF_MONTH, calendar.get(Calendar.DAY_OF_MONTH));
             cal2.set(Calendar.MONTH, calendar.get(Calendar.MONTH));
             cal2.set(Calendar.YEAR, calendar.get(Calendar.YEAR));
+            millisecondsdailyto = cal2.getTime();
+            if (millisecondsdailyto.before(millisecondsdailyfrom)) {
+                Toast.makeText(this, "End Time can't be less than Start Time", Toast.LENGTH_LONG).show();
+                end_time.setText("");
+                return;
+            } else {
+                String minute_str = null;
+                if (minute < 10) {
+                    minute_str = "0" + minute;
+                } else {
+                    minute_str = "" + minute;
+                }
 
-        }, hour_init, minute_init, false);
+                end_time.setText("" + hourOfDay + "." + minute_str);
 
+            }
+
+        }, hour_init, minute_init, true);
 
 
     }
@@ -306,14 +349,11 @@ public class LeaveRegularizationActivity extends AppCompatActivity {
 
     public void getTotalLeaveDays(String leaveType, String fromDate, String toDate) {
         AlmsServices almsServices = new AlmsServices();
-        almsServices.getTotalLeaveDays(new OnTaskComplete() {
-            @Override
-            public void onTaskComplte(CarotResponse carotResponse) {
-                if (carotResponse.getStatuscode() == HttpsURLConnection.HTTP_OK) {
-                    List<LeaveDaysResponse> list = (List<LeaveDaysResponse>) carotResponse.getData();
-                    if (list != null && list.size() > 0) {
-                        no_of_days.setText("" + list.get(0).getCount());
-                    }
+        almsServices.getTotalLeaveDays(carotResponse -> {
+            if (carotResponse.getStatuscode() == HttpsURLConnection.HTTP_OK) {
+                List<LeaveDaysResponse> list = (List<LeaveDaysResponse>) carotResponse.getData();
+                if (list != null && list.size() > 0) {
+                    no_of_days.setText("" + list.get(0).getCount());
                 }
             }
         }, leaveType, fromDate, toDate);
@@ -324,21 +364,70 @@ public class LeaveRegularizationActivity extends AppCompatActivity {
         leavetypes.clear();
         leaveTypeList.clear();
         AlmsServices almsServices = new AlmsServices();
-        almsServices.getLeaveTypeRegularize(new OnTaskComplete() {
-            @Override
-            public void onTaskComplte(CarotResponse carotResponse) {
-                if (carotResponse.getStatuscode() == HttpsURLConnection.HTTP_OK) {
-                    List<LeaveRegularizeModel> list = (List<LeaveRegularizeModel>) carotResponse.getData();
-                    if (list != null && list.size() > 0) {
-                        leaveTypeList.addAll(list);
-                        for (LeaveRegularizeModel leaveRegularizeModel : leaveTypeList) {
-                            leavetypes.add(leaveRegularizeModel.getLeave());
-                        }
-                        leaveTypeAdapter.notifyDataSetChanged();
+        almsServices.getLeaveTypeRegularize(carotResponse -> {
+            if (carotResponse.getStatuscode() == HttpsURLConnection.HTTP_OK) {
+                List<LeaveRegularizeModel> list = (List<LeaveRegularizeModel>) carotResponse.getData();
+                if (list != null && list.size() > 0) {
+                    leaveTypeList.addAll(list);
+                    for (LeaveRegularizeModel leaveRegularizeModel : leaveTypeList) {
+                        leavetypes.add(leaveRegularizeModel.getLeave());
                     }
+                    leaveTypeAdapter.notifyDataSetChanged();
                 }
             }
         }, empcode);
+    }
+
+
+    public void applyLeaveRegular(String Empcode, String Fromdate, String Todate, String Year, String LeaveType, String NoOfDays, String ReasonCode, String Session, String AuthPerson, String Remark, String Place, String ReportyEmailID, String ReportyEmpName, String EmpName, String FileName, String Files, String FSHrs, String SSHrs) {
+        AlmsServices almsServices = new AlmsServices();
+        almsServices.applyLeaveRegular(carotResponse -> {
+            if (carotResponse.getStatuscode() == HttpsURLConnection.HTTP_OK) {
+                List<ApplyLeaveResponse> list = (List<ApplyLeaveResponse>) carotResponse.getData();
+                if (list != null && list.size() > 0) {
+                    if (list.get(0).getLeaveRequestNo() != null && list.get(0).getLeaveRequestNo().length() > 0) {
+                        showMsg("Your leave request has been created successfully.\n" +
+                                "Request No: " + list.get(0).getLeaveRequestNo(), "");
+                    }
+                }
+            }
+        }, Empcode, Fromdate, Todate, Year, LeaveType, NoOfDays, ReasonCode, Session, AuthPerson, Remark, Place, ReportyEmailID, ReportyEmpName, EmpName, FileName, Files, FSHrs, SSHrs);
+
+
+    }
+
+    public void showMsg(String msg, String title) {
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
+        alertDialogBuilder.setMessage(msg);
+        alertDialogBuilder.setTitle(title);
+
+        alertDialogBuilder.setPositiveButton("Ok", (arg0, arg1) -> {
+            arg0.dismiss();
+            onBackPressed();
+        });
+
+        //alertDialogBuilder.setNegativeButton("Cancel", (dialog, which) -> dialog.dismiss());
+
+        AlertDialog alertDialog = alertDialogBuilder.create();
+        alertDialog.show();
+    }
+    public void checkLeaveValidation(String empcode, String fromDate, String toDate){
+
+        AlmsServices almsServices = new AlmsServices();
+        almsServices.checkLeaveValidation(carotResponse -> {
+            if(carotResponse.getStatuscode()== HttpsURLConnection.HTTP_OK){
+                List<LeaveValidationResponse> list = (List<LeaveValidationResponse>) carotResponse.getData();
+                if(list!= null && list.size()>0){
+                    if(list.get(0).getData().equals("You can`t apply for this period")){
+                        Toast.makeText(LeaveRegularizationActivity.this, "You can`t apply for this period", Toast.LENGTH_SHORT).show();
+                    }
+                    else{
+                        getTotalLeaveDays(String.valueOf(leaveType),start_date.getText().toString(),end_date.getText().toString());
+                    }
+                }
+            }
+
+        },empcode,fromDate, toDate);
     }
 
 

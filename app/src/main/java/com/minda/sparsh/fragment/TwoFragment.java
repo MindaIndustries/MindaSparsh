@@ -154,10 +154,10 @@ public class TwoFragment extends Fragment {
                         if(list.get(0)!=null){
                             AboutUsDetails aboutUsDetails = list.get(0);
 
-                           /* if(aboutUsDetails.getFY()!=null && aboutUsDetails.getFY().length()>0) {
-                                fy.setText(aboutUsDetails.getFY());
+                            if(aboutUsDetails.getFY()!=null && aboutUsDetails.getFY().length()>0) {
+                                grp.setText("Group Turnover "+aboutUsDetails.getFY());
                             }
-                           */ if(aboutUsDetails.getGrpTrnOver()!=null && aboutUsDetails.getGrpTrnOver().length()>0){
+                            if(aboutUsDetails.getGrpTrnOver()!=null && aboutUsDetails.getGrpTrnOver().length()>0){
                                 trnover_value.setText(aboutUsDetails.getGrpTrnOver()+" ");
                             }
                             if(aboutUsDetails.getPlantsGlobally()!=null && aboutUsDetails.getPlantsGlobally().length()>0){
@@ -181,6 +181,7 @@ public class TwoFragment extends Fragment {
                             if(aboutUsDetails.getDesignRegsistration()!=null && aboutUsDetails.getDesignRegsistration().length()>0){
                                 design_reg_value.setText(aboutUsDetails.getDesignRegsistration());
                             }
+
                         }
                     }
                 }

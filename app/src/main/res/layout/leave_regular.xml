@@ -115,7 +115,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:layout_toRightOf="@+id/view"
-                android:hint="End Date *">
+                android:hint="End Time *">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/end_time"
@@ -185,7 +185,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:visibility="gone"
+                android:visibility="visible"
                 android:hint="Session *">
 
                 <androidx.appcompat.widget.AppCompatAutoCompleteTextView

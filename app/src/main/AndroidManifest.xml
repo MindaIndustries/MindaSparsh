@@ -16,26 +16,26 @@
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.CALL_PHONE" />
-<queries>
-    <intent>
-        <action android:name="android.media.action.IMAGE_CAPTURE" />
-    </intent>
-    <intent>
-        <action android:name="android.intent.action.GET_CONTENT" />
-    </intent>
-</queries>
+
+    <queries>
+        <intent>
+            <action android:name="android.media.action.IMAGE_CAPTURE" />
+        </intent>
+        <intent>
+            <action android:name="android.intent.action.GET_CONTENT" />
+        </intent>
+    </queries>
 
     <application
         android:hardwareAccelerated="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:largeHeap="true"
+        android:requestLegacyExternalStorage="true"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
-        tools:replace="android:icon"
-        android:requestLegacyExternalStorage="true"
-        >
+        tools:replace="android:icon">
 
 
         <meta-data
@@ -44,11 +44,12 @@
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
+
         <activity
             android:name=".SplashActivity"
-            android:theme="@style/AppThemeSplash"
+            android:exported="true"
             android:screenOrientation="portrait"
-            android:exported="true">
+            android:theme="@style/AppThemeSplash">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -59,7 +60,7 @@
         <activity
             android:name=".ApproveListActivity1"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar"/>
+            android:theme="@style/AppTheme.NoActionBar" />
 
         <activity
             android:name=".IdentityAccessManagementActivity1"
@@ -107,14 +108,13 @@
         <activity
             android:name=".DashBoardActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar"
-            />
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".BaseActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:exported="true"
             android:name=".NotificationActivity"
+            android:exported="true"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
@@ -135,8 +135,8 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".ViewImageActivity"
-            android:theme="@style/spinnertheme"
             android:screenOrientation="portrait"
+            android:theme="@style/spinnertheme"
 
             />
         <activity
@@ -234,55 +234,67 @@
             android:name=".MyTaskDetail"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".MarketingDashboard"
+        <activity
+            android:name=".MarketingDashboard"
             android:screenOrientation="portrait"
-            android:theme="@style/spinnertheme"
-            />
-        <activity android:name=".cvp.CustomerVisitReport"
+            android:theme="@style/spinnertheme" />
+        <activity
+            android:name=".cvp.CustomerVisitReport"
             android:screenOrientation="portrait"
-            android:theme="@style/spinnertheme"
-            />
-        <activity android:name=".cvp.ViewMOMDetails"
+            android:theme="@style/spinnertheme" />
+        <activity
+            android:name=".cvp.ViewMOMDetails"
             android:screenOrientation="landscape"
-            android:theme="@style/spinnertheme"
-            />
-        <activity android:name=".QRCodeScanner"
+            android:theme="@style/spinnertheme" />
+        <activity
+            android:name=".QRCodeScanner"
             android:screenOrientation="portrait"
-            android:theme="@style/spinnertheme"
-            />
-        <activity android:name=".MeetingRoomActivity"
+            android:theme="@style/spinnertheme" />
+        <activity
+            android:name=".MeetingRoomActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/spinnertheme"
-            />
-        <activity android:name=".MeetingRoomDetailActivity"
+            android:theme="@style/spinnertheme" />
+        <activity
+            android:name=".MeetingRoomDetailActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/spinnertheme"
-            />
-        <activity android:name=".BookMeetingRoom"
+            android:theme="@style/spinnertheme" />
+        <activity
+            android:name=".BookMeetingRoom"
             android:screenOrientation="portrait"
-            android:theme="@style/spinnertheme"
-            />
-        <activity android:name=".MeetingRoomBookings"
+            android:theme="@style/spinnertheme" />
+        <activity
+            android:name=".MeetingRoomBookings"
             android:screenOrientation="portrait"
-            android:theme="@style/spinnertheme"
-            />
-        <activity android:name=".IAMViewStatusActivity"
+            android:theme="@style/spinnertheme" />
+        <activity
+            android:name=".IAMViewStatusActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar"
-            />
-        <activity android:name=".ALMSCalendarActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".ALMSCalendarActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar"
-            />
-        <activity android:name=".LeaveRequestActivity"
+            android:theme="@style/spinnertheme" />
+        <activity
+            android:name=".LeaveRequestActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/spinnertheme"/>
-        <activity android:name=".LeaveBalanceActivity"
+            android:theme="@style/spinnertheme" />
+        <activity
+            android:name=".LeaveBalanceActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/spinnertheme"/>
-        <activity android:name=".LeaveRegularizationActivity"
+            android:theme="@style/spinnertheme" />
+        <activity
+            android:name=".LeaveRegularizationActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/spinnertheme"/>
+            android:theme="@style/spinnertheme" />
+        <activity
+            android:name=".LeaveApprovals"
+            android:screenOrientation="portrait"
+            android:theme="@style/spinnertheme" />
+        <activity
+            android:name=".LeaveRequestDetails"
+            android:screenOrientation="portrait"
+            android:theme="@style/spinnertheme" />
+
 
         <meta-data
             android:name="io.fabric.ApiKey"
@@ -295,23 +307,25 @@
             android:grantUriPermissions="true"
             tools:replace="android:authorities">
             <meta-data
-                tools:replace="android:resource"
                 android:name="android.support.FILE_PROVIDER_PATHS"
-                android:resource="@xml/provider_paths" />
+                android:resource="@xml/provider_paths"
+                tools:replace="android:resource" />
         </provider>
 
-        <service android:exported="true" android:name=".MyFirebaseMessagingService">
+        <service
+            android:name=".MyFirebaseMessagingService"
+            android:exported="true">
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
         </service>
-<!--
-        <service android:name=".MyFirebaseInstanceIDService">
-            <intent-filter>
-                <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
-            </intent-filter>
-        </service>
--->
+        <!--
+                <service android:name=".MyFirebaseInstanceIDService">
+                    <intent-filter>
+                        <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
+                    </intent-filter>
+                </service>
+        -->
         <service android:name=".util.BackgroundNotificationService" />
 
     </application>

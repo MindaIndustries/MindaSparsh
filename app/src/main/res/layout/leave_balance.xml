@@ -2,8 +2,8 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#f0f0f0"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
     <include layout="@layout/toolbar" />
 
     <ScrollView
@@ -12,385 +12,401 @@
         android:layout_below="@+id/toolbar"
         android:layout_marginTop="?attr/actionBarSize"
         android:fillViewport="true">
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:padding="20dp">
-        <LinearLayout
-            android:id="@+id/ll1"
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-        <androidx.cardview.widget.CardView
-            android:layout_marginRight="10dp"
-            android:layout_weight="1"
-            android:layout_width="0dp"
-            android:elevation="10dp"
-            app:cardBackgroundColor="@color/white"
-            android:layout_height="wrap_content">
-
-            <RelativeLayout
-                android:gravity="center"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-                <TextView
-                    android:layout_centerHorizontal="true"
-                    android:padding="10dp"
-                    android:textColor="@color/white"
-                    android:id="@+id/leave1"
-                    android:gravity="center"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text=""
-                    android:fontFamily="@font/museosans_700"
-                    android:background="@drawable/heading_bg"
-                    />
-
-                <RelativeLayout
-                    android:id="@+id/leave_balance1"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/leave1"
-                    android:layout_centerInParent="true"
-                    android:layout_marginTop="20dp"
-                    android:gravity="center"
-                    android:padding="10dp">
-
-                    <TextView
-                        android:id="@+id/leave1_value"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_centerHorizontal="true"
-                        android:layout_toLeftOf="@+id/leave1_value_out"
-                        android:fontFamily="@font/museosans_700"
-                        android:gravity="center"
-                        android:text=""
-                        android:textSize="20sp" />
-
-                    <TextView
-                        android:id="@+id/leave1_value_out"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignBottom="@+id/leave1_value"
-                        android:layout_centerHorizontal="true"
-                        android:fontFamily="@font/museosans_500"
-                        android:gravity="center"
-                        android:text=""
-                        android:textSize="20sp" />
-
-                </RelativeLayout>
-
-                <TextView
-                    android:padding="10dp"
-                    android:layout_centerHorizontal="true"
-                    android:layout_below="@+id/leave_balance1"
-                    android:text=""
-                    android:gravity="center"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
-
-
-            </RelativeLayout>
-
-        </androidx.cardview.widget.CardView>
-            <androidx.cardview.widget.CardView
-                android:layout_marginLeft="10dp"
-                android:layout_weight="1"
-                android:layout_width="0dp"
-                android:elevation="10dp"
-                app:cardBackgroundColor="@color/white"
-                android:layout_height="wrap_content">
-
-                <RelativeLayout
-                    android:gravity="center"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-                    <TextView
-                        android:layout_centerHorizontal="true"
-                        android:padding="10dp"
-                        android:textColor="@color/white"
-                        android:id="@+id/leave2"
-                        android:gravity="center"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text=""
-                        android:fontFamily="@font/museosans_700"
-                        android:background="@drawable/heading_bg1"
-
-                        />
-
-                    <RelativeLayout
-                        android:layout_marginTop="20dp"
-                        android:padding="10dp"
-                        android:gravity="center"
-                        android:id="@+id/leave_balance2"
-                        android:layout_below="@+id/leave2"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
-                        <TextView
-                            android:layout_centerHorizontal="true"
-                            android:text=""
-                            android:textSize="20sp"
-                            android:layout_toLeftOf="@+id/leave2_value_out"
-                            android:gravity="center"
-                            android:fontFamily="@font/museosans_700"
-                            android:id="@+id/leave2_value"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"/>
-                        <TextView
-                            android:layout_alignBottom="@+id/leave2_value"
-                            android:layout_centerHorizontal="true"
-                            android:text=""
-                            android:textSize="20sp"
-                            android:gravity="center"
-                            android:fontFamily="@font/museosans_500"
-                            android:id="@+id/leave2_value_out"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"/>
-
-                    </RelativeLayout>
-
-
-                    <TextView
-                        android:padding="10dp"
-                        android:layout_centerHorizontal="true"
-                        android:layout_below="@+id/leave_balance2"
-                        android:text=""
-                        android:gravity="center"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"/>
-
-
-                </RelativeLayout>
-
-            </androidx.cardview.widget.CardView>
-        </LinearLayout>
-        <LinearLayout
-            android:layout_marginTop="20dp"
-            android:id="@id/ll2"
-            android:layout_below="@+id/ll1"
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <androidx.cardview.widget.CardView
-                android:layout_marginRight="10dp"
-                android:layout_weight="1"
-                android:layout_width="0dp"
-                android:elevation="10dp"
-                app:cardBackgroundColor="@color/white"
-                android:layout_height="wrap_content">
-
-                <RelativeLayout
-
-                    android:gravity="center"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-                    <TextView
-                        android:layout_centerHorizontal="true"
-                        android:padding="10dp"
-                        android:textColor="@color/white"
-                        android:id="@+id/leave3"
-                        android:gravity="center"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text=""
-                        android:fontFamily="@font/museosans_700"
-                        android:background="@drawable/heading_bg2"
-                        />
-
-                    <RelativeLayout
-                        android:layout_marginTop="20dp"
-                        android:padding="10dp"
-                        android:gravity="center"
-                        android:id="@+id/leave_balance3"
-                        android:layout_below="@+id/leave3"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
-                        <TextView
-                            android:layout_centerHorizontal="true"
-                            android:text=""
-                            android:textSize="20sp"
-                            android:layout_toLeftOf="@+id/leave3_value_out"
-                            android:gravity="center"
-                            android:fontFamily="@font/museosans_700"
-                            android:id="@+id/leave3_value"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"/>
-                        <TextView
-                            android:layout_alignBottom="@+id/leave3_value"
-                            android:layout_centerHorizontal="true"
-                            android:text=""
-                            android:textSize="20sp"
-                            android:gravity="center"
-                            android:fontFamily="@font/museosans_500"
-                            android:id="@+id/leave3_value_out"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"/>
-
-                    </RelativeLayout>
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@+id/leave_balance3"
-                        android:layout_centerHorizontal="true"
-                        android:gravity="center"
-                        android:padding="10dp"
-                        android:text="" />
-
-
-                </RelativeLayout>
-
-            </androidx.cardview.widget.CardView>
-            <androidx.cardview.widget.CardView
-                android:layout_marginLeft="10dp"
-                android:layout_weight="1"
-                android:layout_width="0dp"
-                android:elevation="10dp"
-                app:cardBackgroundColor="@color/white"
-                android:layout_height="wrap_content">
-
-                <RelativeLayout
-                    android:gravity="center"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-                    <TextView
-                        android:layout_centerHorizontal="true"
-                        android:padding="10dp"
-                        android:textColor="@color/white"
-                        android:id="@+id/leave4"
-                        android:gravity="center"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text=""
-                        android:fontFamily="@font/museosans_700"
-                        android:background="@drawable/heading_bg3"
-
-                        />
-
-                    <RelativeLayout
-                        android:layout_marginTop="20dp"
-                        android:padding="10dp"
-                        android:gravity="center"
-                        android:id="@+id/leave_balance4"
-                        android:layout_below="@+id/leave4"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
-                        <TextView
-                            android:layout_centerHorizontal="true"
-                            android:text=""
-                            android:textSize="20sp"
-                            android:layout_toLeftOf="@+id/leave4_value_out"
-                            android:gravity="center"
-                            android:fontFamily="@font/museosans_700"
-                            android:id="@+id/leave4_value"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"/>
-                        <TextView
-                            android:layout_alignBottom="@+id/leave4_value"
-                            android:layout_centerHorizontal="true"
-                            android:text=""
-                            android:textSize="20sp"
-                            android:gravity="center"
-                            android:fontFamily="@font/museosans_500"
-                            android:id="@+id/leave4_value_out"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"/>
-
-                    </RelativeLayout>
-
-                    <TextView
-                        android:padding="10dp"
-                        android:layout_centerHorizontal="true"
-                        android:layout_below="@+id/leave_balance4"
-                        android:text=""
-                        android:gravity="center"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"/>
-
-
-                </RelativeLayout>
-
-            </androidx.cardview.widget.CardView>
-        </LinearLayout>
         <RelativeLayout
-            android:layout_marginTop="10dp"
-            android:layout_below="@+id/ll2"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-            <TextView
-                android:textColor="@android:color/black"
-                android:textSize="18sp"
-                android:id="@+id/heading"
-                android:fontFamily="@font/museosans_500"
-                android:text="Leave Request Info"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
-
-            <RelativeLayout
-                android:paddingTop="15dp"
-                android:paddingBottom="15dp"
-                android:paddingLeft="10dp"
-                android:paddingRight="10dp"
-                android:layout_marginTop="10dp"
-                android:layout_below="@+id/heading"
-                android:id="@+id/heading_label"
+            android:layout_height="match_parent"
+            android:padding="20dp">
+            <LinearLayout
+                android:id="@+id/ll1"
+                android:orientation="horizontal"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@android:color/white"
-                >
+                android:layout_height="wrap_content">
 
-                <LinearLayout
-                    android:orientation="horizontal"
-                    android:weightSum="4"
-                    android:layout_width="match_parent"
+                <androidx.cardview.widget.CardView
+                    android:layout_marginRight="10dp"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    app:cardElevation="10dp"
+                    app:cardBackgroundColor="@color/white"
                     android:layout_height="wrap_content">
 
-                    <TextView
-                        android:fontFamily="@font/museosans_500"
-                        android:layout_weight="1"
-                        android:text="Req.No."
-                        android:layout_width="0dp"
-                        android:textSize="14sp"
-                        android:layout_height="wrap_content"/>
+                    <RelativeLayout
+                        android:gravity="center"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+                        <TextView
+                            android:layout_centerHorizontal="true"
+                            android:padding="5dp"
+                            android:textColor="@color/white"
+                            android:id="@+id/leave1"
+                            android:gravity="center"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text=""
+                            android:fontFamily="@font/museosans_700"
+                            android:background="@drawable/heading_bg"
+                            />
 
-                    <TextView
-                        android:fontFamily="@font/museosans_500"
-                        android:layout_weight="1"
-                        android:text="From"
-                        android:textSize="14sp"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"/>
-                    <TextView
-                        android:fontFamily="@font/museosans_500"
-                        android:layout_weight="1"
-                        android:text="To"
-                        android:textSize="14sp"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"/>
-                    <TextView
-                        android:fontFamily="@font/museosans_500"
-                        android:layout_weight="1"
-                        android:text="Status"
-                        android:textSize="14sp"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"/>
+                        <RelativeLayout
+                            android:id="@+id/leave_balance1"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/leave1"
+                            android:layout_centerInParent="true"
+                            android:layout_marginTop="20dp"
+                            android:layout_marginBottom="20dp"
+                            android:gravity="center"
+                            android:padding="10dp">
 
-                </LinearLayout>
-            </RelativeLayout>
-            <androidx.recyclerview.widget.RecyclerView
-                android:layout_marginTop="5dp"
-                android:layout_below="@+id/heading_label"
-                android:id="@+id/leave_req"
+                            <TextView
+                                android:id="@+id/leave1_value"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerHorizontal="true"
+                                android:layout_toLeftOf="@+id/leave1_value_out"
+                                android:fontFamily="@font/museosans_700"
+                                android:gravity="center"
+                                android:text=""
+                                android:textSize="20sp" />
+
+                            <TextView
+                                android:id="@+id/leave1_value_out"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignBottom="@+id/leave1_value"
+                                android:layout_centerHorizontal="true"
+                                android:fontFamily="@font/museosans_500"
+                                android:gravity="center"
+                                android:text=""
+                                android:textSize="20sp" />
+
+                        </RelativeLayout>
+
+
+
+
+                    </RelativeLayout>
+
+                </androidx.cardview.widget.CardView>
+                <androidx.cardview.widget.CardView
+                    android:layout_marginLeft="10dp"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    app:cardElevation="10dp"
+                    app:cardBackgroundColor="@color/white"
+                    android:layout_height="wrap_content">
+
+                    <RelativeLayout
+                        android:gravity="center"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+                        <TextView
+                            android:layout_centerHorizontal="true"
+                            android:padding="5dp"
+                            android:textColor="@color/white"
+                            android:id="@+id/leave2"
+                            android:gravity="center"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text=""
+                            android:fontFamily="@font/museosans_700"
+                            android:background="@drawable/heading_bg1"
+
+                            />
+
+                        <RelativeLayout
+                            android:layout_marginTop="20dp"
+                            android:layout_marginBottom="20dp"
+                            android:padding="10dp"
+                            android:gravity="center"
+                            android:id="@+id/leave_balance2"
+                            android:layout_below="@+id/leave2"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+                            <TextView
+                                android:layout_centerHorizontal="true"
+                                android:text=""
+                                android:textSize="20sp"
+                                android:layout_toLeftOf="@+id/leave2_value_out"
+                                android:gravity="center"
+                                android:fontFamily="@font/museosans_700"
+                                android:id="@+id/leave2_value"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"/>
+                            <TextView
+                                android:layout_alignBottom="@+id/leave2_value"
+                                android:layout_centerHorizontal="true"
+                                android:text=""
+                                android:textSize="20sp"
+                                android:gravity="center"
+                                android:fontFamily="@font/museosans_500"
+                                android:id="@+id/leave2_value_out"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"/>
+
+                        </RelativeLayout>
+
+
+
+                    </RelativeLayout>
+
+                </androidx.cardview.widget.CardView>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_marginTop="20dp"
+                android:id="@id/ll2"
+                android:layout_below="@+id/ll1"
+                android:orientation="horizontal"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"/>
+                android:layout_height="wrap_content">
+
+                <androidx.cardview.widget.CardView
+                    android:layout_marginRight="10dp"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    app:cardElevation="10dp"
+                    app:cardBackgroundColor="@color/white"
+                    android:layout_height="wrap_content">
+
+                    <RelativeLayout
+
+                        android:gravity="center"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+                        <TextView
+                            android:layout_centerHorizontal="true"
+                            android:padding="5dp"
+                            android:textColor="@color/white"
+                            android:id="@+id/leave3"
+                            android:gravity="center"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text=""
+                            android:fontFamily="@font/museosans_700"
+                            android:background="@drawable/heading_bg2"
+                            />
+
+                        <RelativeLayout
+                            android:layout_marginTop="20dp"
+                            android:layout_marginBottom="20dp"
+                            android:padding="10dp"
+                            android:gravity="center"
+                            android:id="@+id/leave_balance3"
+                            android:layout_below="@+id/leave3"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+                            <TextView
+                                android:layout_centerHorizontal="true"
+                                android:text=""
+                                android:textSize="20sp"
+                                android:layout_toLeftOf="@+id/leave3_value_out"
+                                android:gravity="center"
+                                android:fontFamily="@font/museosans_700"
+                                android:id="@+id/leave3_value"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"/>
+                            <TextView
+                                android:layout_alignBottom="@+id/leave3_value"
+                                android:layout_centerHorizontal="true"
+                                android:text=""
+                                android:textSize="20sp"
+                                android:gravity="center"
+                                android:fontFamily="@font/museosans_500"
+                                android:id="@+id/leave3_value_out"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"/>
+
+                        </RelativeLayout>
+
+
+                    </RelativeLayout>
+
+                </androidx.cardview.widget.CardView>
+                <androidx.cardview.widget.CardView
+                    android:layout_marginLeft="10dp"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    app:cardElevation="10dp"
+                    app:cardBackgroundColor="@color/white"
+                    android:layout_height="wrap_content">
+
+                    <RelativeLayout
+                        android:gravity="center"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+                        <TextView
+                            android:layout_centerHorizontal="true"
+                            android:padding="5dp"
+                            android:textColor="@color/white"
+                            android:id="@+id/leave4"
+                            android:gravity="center"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text=""
+                            android:fontFamily="@font/museosans_700"
+                            android:background="@drawable/heading_bg3"
+
+                            />
+
+                        <RelativeLayout
+                            android:layout_marginTop="20dp"
+                            android:layout_marginBottom="20dp"
+                            android:padding="10dp"
+                            android:gravity="center"
+                            android:id="@+id/leave_balance4"
+                            android:layout_below="@+id/leave4"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+                            <TextView
+                                android:layout_centerHorizontal="true"
+                                android:text=""
+                                android:textSize="20sp"
+                                android:layout_toLeftOf="@+id/leave4_value_out"
+                                android:gravity="center"
+                                android:fontFamily="@font/museosans_700"
+                                android:id="@+id/leave4_value"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"/>
+                            <TextView
+                                android:layout_alignBottom="@+id/leave4_value"
+                                android:layout_centerHorizontal="true"
+                                android:text=""
+                                android:textSize="20sp"
+                                android:gravity="center"
+                                android:fontFamily="@font/museosans_500"
+                                android:id="@+id/leave4_value_out"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"/>
+
+                        </RelativeLayout>
+                    </RelativeLayout>
+
+                </androidx.cardview.widget.CardView>
+            </LinearLayout>
+            <RelativeLayout
+                android:layout_marginTop="10dp"
+                android:layout_below="@+id/ll2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <View
+                    android:id="@+id/view"
+                    android:layout_centerHorizontal="true"
+                    android:layout_width="1dp"
+                    android:layout_height="1dp"/>
+
+                <TextView
+                    android:textColor="@android:color/black"
+                    android:textSize="18sp"
+                    android:id="@+id/heading"
+                    android:layout_toLeftOf="@+id/view"
+                    android:fontFamily="@font/museosans_700"
+                    android:text="My Requests"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="left|center"
+                    android:layout_alignBottom="@+id/customerSpinnerLayout0"
+                    android:layout_alignTop="@+id/customerSpinnerLayout0"/>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/customerSpinnerLayout0"
+                    style="@style/box"
+                    android:layout_toRightOf="@+id/view"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="5dp"
+                    android:hint="Select">
+
+                    <androidx.appcompat.widget.AppCompatAutoCompleteTextView
+                        android:id="@+id/leave_type"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:editable="false"
+                        tools:ignore="KeyboardInaccessibleWidget" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <RelativeLayout
+                    android:paddingTop="15dp"
+                    android:paddingBottom="15dp"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_below="@+id/customerSpinnerLayout0"
+                    android:id="@+id/heading_label"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#f0f0f0"
+                    >
+                    <LinearLayout
+                        android:weightSum="100"
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                    <LinearLayout
+                        android:layout_weight="95"
+                        android:orientation="horizontal"
+                        android:weightSum="4"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:textColor="@color/black"
+                            android:fontFamily="@font/museosans_500"
+                            android:layout_weight="1"
+                            android:text="Req.No."
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"/>
+
+                        <TextView
+                            android:textColor="@color/black"
+                            android:fontFamily="@font/museosans_500"
+                            android:layout_weight="1"
+                            android:text="From"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"/>
+                        <TextView
+                            android:textColor="@color/black"
+                            android:fontFamily="@font/museosans_500"
+                            android:layout_weight="1"
+                            android:text="To"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"/>
+                        <TextView
+                            android:textColor="@color/black"
+                            android:fontFamily="@font/museosans_500"
+                            android:layout_weight="1"
+                            android:text="Status"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"/>
+
+                    </LinearLayout>
+                        <LinearLayout
+                            android:layout_weight="5"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content">
+                             </LinearLayout>
+                    </LinearLayout>
+                </RelativeLayout>
+                <androidx.recyclerview.widget.RecyclerView
+                    android:layout_marginTop="5dp"
+                    android:layout_below="@+id/heading_label"
+                    android:id="@+id/leave_req"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"/>
+                <androidx.recyclerview.widget.RecyclerView
+                    android:layout_marginTop="5dp"
+                    android:layout_below="@+id/heading_label"
+                    android:id="@+id/reg_req"
+                    android:visibility="gone"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"/>
+
+            </RelativeLayout>
+
 
         </RelativeLayout>
-
-
-    </RelativeLayout>
 
 
     </ScrollView>

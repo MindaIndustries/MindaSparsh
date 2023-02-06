@@ -48,8 +48,6 @@ import com.minda.sparsh.util.Utility;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -111,6 +109,7 @@ public class LeaveRequestActivity extends AppCompatActivity {
         customerSpinnerLayout9 =findViewById(R.id.customerSpinnerLayout9);
         customerSpinnerLayout8 = findViewById(R.id.customerSpinnerLayout8);
         session_spinner = findViewById(R.id.session);
+        session_values.add("Full Session");
         session_values.add("1st Session");
         session_values.add("2nd Session");
 
@@ -136,6 +135,9 @@ public class LeaveRequestActivity extends AppCompatActivity {
         initDatePicker1();
         session_spinner.setOnItemClickListener((adapterView, view, i, l) -> {
             if(i==0){
+                session = "ES";
+            }
+            else if(i==1){
                 session = "FN";
             }
             else{
@@ -203,8 +205,9 @@ public class LeaveRequestActivity extends AppCompatActivity {
             else if(no_of_days.getText().toString().length()==0 || Double.parseDouble(no_of_days.getText().toString())<=0){
                 return;
             }
-            applyLeave(empCode,start_date.getText().toString(),end_date.getText().toString(),year,leavetypeAbb,no_of_days.getText().toString(),"",session,authperson,comment.getText().toString(),"",reportyEmailId,reportyEmpName,EmpName,fileName,fileByte);
-
+            if(Utility.isOnline(LeaveRequestActivity.this)) {
+                applyLeave(empCode, start_date.getText().toString(), end_date.getText().toString(), year, leavetypeAbb, no_of_days.getText().toString(), "", session, authperson, comment.getText().toString(), "", reportyEmailId, reportyEmpName, EmpName, fileName, fileByte);
+            }
         });
     }
 
@@ -610,9 +613,7 @@ public class LeaveRequestActivity extends AppCompatActivity {
             System.out.println(bytesArray);
             fileByte = Base64.encodeToString(bytesArray, Base64.NO_WRAP);
 
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
 

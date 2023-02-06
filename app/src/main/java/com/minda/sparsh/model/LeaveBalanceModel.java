@@ -28,6 +28,7 @@ public class LeaveBalanceModel {
     @SerializedName("Balance")
     double Balance;
 
+
     public String getLeaveType() {
         return LeaveType;
     }
@@ -125,4 +126,5 @@ public class LeaveBalanceModel {
     public void setBalance(double balance) {
         Balance = balance;
     }
-}
+
+   }

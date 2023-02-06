@@ -2,9 +2,12 @@ package com.minda.sparsh.client;
 
 import com.minda.sparsh.model.AlmsReportModel;
 import com.minda.sparsh.model.ApplyLeaveResponse;
+import com.minda.sparsh.model.ApprovalRequestModel;
 import com.minda.sparsh.model.LeaveBalanceModel;
 import com.minda.sparsh.model.LeaveDaysResponse;
+import com.minda.sparsh.model.LeaveRegularizationModel;
 import com.minda.sparsh.model.LeaveRegularizeModel;
+import com.minda.sparsh.model.LeaveRequestModel;
 import com.minda.sparsh.model.LeaveTypeModel;
 import com.minda.sparsh.model.LeaveValidationResponse;
 
@@ -47,4 +50,22 @@ public interface AlmsClient {
     @POST("service/GetLeaveTypeRegularize")
     Call<List<LeaveRegularizeModel>> GetLeaveTypeRegularize(@Query("EmpCode") String EmpCode);
 
+    @FormUrlEncoded
+    @POST("service/GetMyLeaveRequests")
+    Call<List<LeaveRequestModel>> GetMyLeaveRequests(@Field("EmpCode") String EmpCode, @Field("Reqtype") String Reqtype);
+    @FormUrlEncoded
+    @POST("service/GetMyLeaveRequests")
+    Call<List<LeaveRegularizationModel>> GetMyRegularizationRequests(@Field("EmpCode") String EmpCode, @Field("Reqtype") String Reqtype);
+
+    @FormUrlEncoded
+    @POST("service/CancelLeave")
+    Call<List<ApplyLeaveResponse>> CancelLeave(@Field("EmpCode") String EmpCode, @Field("ReqNo") String ReqNo);
+
+    @FormUrlEncoded
+    @POST("service/GetApprovalRequests")
+    Call<List<ApprovalRequestModel>> GetApprovalRequests(@Field("EmpCode") String EmpCode);
+
+    @FormUrlEncoded
+    @POST("service/AppRejLeave")
+    Call<List<ApplyLeaveResponse>> ApplyRejectLeave(@Field("EmpCode") String EmpCode, @Field("RFormNo") String RFormNo, @Field("Action") String  Action,@Field("LOC") String LOC, @Field("Reqtype") String Reqtype, @Field("strhrs") String strhrs, @Field("ReportyEmpName") String ReportyEmpName);
 }
