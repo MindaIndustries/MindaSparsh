@@ -86,7 +86,6 @@ public class LeaveRegularizationActivity extends AppCompatActivity {
         reportyEmpName = myPref.getString("REPORTY_EMP_NAME", "");
 
         session_values.add("Full Session");
-        session_values.add("1st Session");
         session_values.add("2nd Session");
         sessionAdapter = new ArrayAdapter<>(LeaveRegularizationActivity.this, android.R.layout.simple_spinner_item, session_values);
         session_spinner.setAdapter(sessionAdapter);

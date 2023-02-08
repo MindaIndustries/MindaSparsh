@@ -1,8 +1,11 @@
 package com.minda.sparsh.model;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import com.google.gson.annotations.SerializedName;
 
-public class LeaveRegularizationModel {
+public class LeaveRegularizationModel implements Parcelable {
 
     @SerializedName("ReqNo")
     String ReqNo;
@@ -35,6 +38,60 @@ public class LeaveRegularizationModel {
     @SerializedName("ReqAuthDesc")
     String ReqAuthDesc;
 
+
+    protected LeaveRegularizationModel(Parcel in) {
+        ReqNo = in.readString();
+        ReqType = in.readString();
+        ReqTypeDesc = in.readString();
+        EmpNo = in.readString();
+        empname = in.readString();
+        dept = in.readString();
+        AuthEmpName = in.readString();
+        FromDate = in.readString();
+        ToDate = in.readString();
+        NoOfDays = in.readString();
+        Remarks = in.readString();
+        CreatedOn = in.readString();
+        AuthPerson = in.readString();
+        ActiveDesc = in.readString();
+        ReqAuthDesc = in.readString();
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(ReqNo);
+        dest.writeString(ReqType);
+        dest.writeString(ReqTypeDesc);
+        dest.writeString(EmpNo);
+        dest.writeString(empname);
+        dest.writeString(dept);
+        dest.writeString(AuthEmpName);
+        dest.writeString(FromDate);
+        dest.writeString(ToDate);
+        dest.writeString(NoOfDays);
+        dest.writeString(Remarks);
+        dest.writeString(CreatedOn);
+        dest.writeString(AuthPerson);
+        dest.writeString(ActiveDesc);
+        dest.writeString(ReqAuthDesc);
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    public static final Creator<LeaveRegularizationModel> CREATOR = new Creator<LeaveRegularizationModel>() {
+        @Override
+        public LeaveRegularizationModel createFromParcel(Parcel in) {
+            return new LeaveRegularizationModel(in);
+        }
+
+        @Override
+        public LeaveRegularizationModel[] newArray(int size) {
+            return new LeaveRegularizationModel[size];
+        }
+    };
 
     public String getReqNo() {
         return ReqNo;

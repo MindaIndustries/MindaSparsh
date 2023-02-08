@@ -1,8 +1,10 @@
 package com.minda.sparsh;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
@@ -149,22 +151,22 @@ public class LeaveBalanceActivity extends AppCompatActivity implements MyLeaveRe
                             case "Casual Leave":
                                 leave1.setText(leaveBalanceModel.getLeaveType());
                                 leave1_value.setText("" + leaveBalanceModel.getAvailableBalance() + "/");
-                                leave1_value_out.setText("" + leaveBalanceModel.getOpeningBalance());
+                                leave1_value_out.setText("" + leaveBalanceModel.getTotalEligible());
                                 break;
                             case "EL (Encashable)":
                                 leave2.setText(leaveBalanceModel.getLeaveType());
                                 leave2_value.setText("" + leaveBalanceModel.getAvailableBalance() + "/");
-                                leave2_value_out.setText("" + leaveBalanceModel.getOpeningBalance());
+                                leave2_value_out.setText("" + leaveBalanceModel.getTotalEligible());
                                 break;
                             case "EL (Non Encashable)":
                                 leave3.setText(leaveBalanceModel.getLeaveType());
                                 leave3_value.setText("" + leaveBalanceModel.getAvailableBalance() + "/");
-                                leave3_value_out.setText("" + leaveBalanceModel.getOpeningBalance());
+                                leave3_value_out.setText("" + leaveBalanceModel.getTotalEligible());
                                 break;
                             case "Sick Leave":
                                 leave4.setText(leaveBalanceModel.getLeaveType());
                                 leave4_value.setText("" + leaveBalanceModel.getAvailableBalance() + "/");
-                                leave4_value_out.setText("" + leaveBalanceModel.getOpeningBalance());
+                                leave4_value_out.setText("" + leaveBalanceModel.getTotalEligible());
                                 break;
 
                         }
@@ -220,7 +222,13 @@ public class LeaveBalanceActivity extends AppCompatActivity implements MyLeaveRe
     @Override
     public void onClick(View view, int position) {
         this.view = view;
-        showPopUpMenu(position);
+        if (leave_req.getVisibility() == View.VISIBLE) {
+            showMsgUpdate("", "Are you sure you want to cancel this request?", leaveRequests.get(position).getLVE_REQNO());
+        } else {
+            showMsgUpdate("", "Are you sure you want to cancel this request?", regularzationRequests.get(position).getReqNo());
+        }
+
+        //showPopUpMenu(position);
     }
 
     @Override
@@ -253,6 +261,15 @@ public class LeaveBalanceActivity extends AppCompatActivity implements MyLeaveRe
             public boolean onMenuItemClick(MenuItem item) {
                 switch (item.getItemId()) {
                     case R.id.view:
+                        Intent in = new Intent(LeaveBalanceActivity.this, LeaveViewActivity.class);
+
+                        if (leave_req.getVisibility() == View.VISIBLE) {
+                            in.putExtra("leave_model", (Parcelable) leaveRequests.get(position));
+                        } else {
+                            in.putExtra("regular_model", (Parcelable) regularzationRequests.get(position));
+
+                        }
+                        startActivity(in);
                         break;
                     case R.id.cancel:
                         if (leave_req.getVisibility() == View.VISIBLE) {
@@ -313,9 +330,6 @@ public class LeaveBalanceActivity extends AppCompatActivity implements MyLeaveRe
             arg0.dismiss();
             onBackPressed();
         });
-
-        //alertDialogBuilder.setNegativeButton("Cancel", (dialog, which) -> dialog.dismiss());
-
         AlertDialog alertDialog = alertDialogBuilder.create();
         alertDialog.show();
     }

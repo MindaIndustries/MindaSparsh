@@ -1,8 +1,11 @@
 package com.minda.sparsh.model;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import com.google.gson.annotations.SerializedName;
 
-public class LeaveRequestModel {
+public class LeaveRequestModel implements Parcelable {
 
     @SerializedName("LVE_REQNO")
     String LVE_REQNO;
@@ -30,6 +33,56 @@ public class LeaveRequestModel {
     String LVE_STATUS_CODE;
     @SerializedName("LVE_AUTH")
     String LVE_AUTH;
+
+    protected LeaveRequestModel(Parcel in) {
+        LVE_REQNO = in.readString();
+        EMPNO = in.readString();
+        LVE_FROMDT = in.readString();
+        LVE_TODT = in.readString();
+        LVE_NOOFDAYS = in.readDouble();
+        LVE_PAY = in.readString();
+        REASON_DESC = in.readString();
+        LVE_TYPE = in.readString();
+        LVE_CODE = in.readString();
+        LVE_RECEIVED_DT = in.readString();
+        LVE_STATUS = in.readString();
+        LVE_STATUS_CODE = in.readString();
+        LVE_AUTH = in.readString();
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(LVE_REQNO);
+        dest.writeString(EMPNO);
+        dest.writeString(LVE_FROMDT);
+        dest.writeString(LVE_TODT);
+        dest.writeDouble(LVE_NOOFDAYS);
+        dest.writeString(LVE_PAY);
+        dest.writeString(REASON_DESC);
+        dest.writeString(LVE_TYPE);
+        dest.writeString(LVE_CODE);
+        dest.writeString(LVE_RECEIVED_DT);
+        dest.writeString(LVE_STATUS);
+        dest.writeString(LVE_STATUS_CODE);
+        dest.writeString(LVE_AUTH);
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    public static final Creator<LeaveRequestModel> CREATOR = new Creator<LeaveRequestModel>() {
+        @Override
+        public LeaveRequestModel createFromParcel(Parcel in) {
+            return new LeaveRequestModel(in);
+        }
+
+        @Override
+        public LeaveRequestModel[] newArray(int size) {
+            return new LeaveRequestModel[size];
+        }
+    };
 
     public String getLVE_REQNO() {
         return LVE_REQNO;

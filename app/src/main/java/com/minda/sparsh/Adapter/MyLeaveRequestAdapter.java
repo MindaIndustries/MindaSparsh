@@ -66,11 +66,22 @@ public class MyLeaveRequestAdapter extends RecyclerView.Adapter<MyLeaveRequestAd
                     holder.status.setTextColor(mContext.getResources().getColor(R.color.green));
                     holder.status.setText("Approved");
                 }
+                holder.options.setVisibility(View.GONE);
+
             } else {
+                if (leaveRequests.get(position).getLVE_STATUS().equalsIgnoreCase("Pending")) {
+                    holder.options.setVisibility(View.VISIBLE);
+                    holder.status.setTextColor(mContext.getResources().getColor(R.color.yellow));
+                }
+                else{
+                    holder.options.setVisibility(View.GONE);
+                    holder.status.setTextColor(mContext.getResources().getColor(R.color.red));
+                }
                 holder.status.setText(leaveRequests.get(position).getLVE_STATUS());
-                holder.status.setTextColor(mContext.getResources().getColor(R.color.yellow));
 
             }
+
+
         }
 
     }

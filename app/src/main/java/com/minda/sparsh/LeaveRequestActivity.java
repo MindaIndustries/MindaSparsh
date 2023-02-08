@@ -85,6 +85,7 @@ public class LeaveRequestActivity extends AppCompatActivity {
 
     byte[] bytes;
     Bitmap bmp;
+    boolean no_sick_leave_allowed=false, no_sick_leave_allowed1 = false;
 
 
     List<LeaveTypeModel> LeaveTypesList = new ArrayList<>();
@@ -151,7 +152,6 @@ public class LeaveRequestActivity extends AppCompatActivity {
             }
             leaveType = leavetypes.get(i);
             leavetypeAbb = LeaveTypesList.get(i).getShort_Desc().toUpperCase();
-            getLeaveBalance(empCode,year,leavetypeAbb);
             if(leavetypes.get(i).contains("First Half")){
                 session = "FN";
                 customerSpinnerLayout8.setVisibility(View.GONE);
@@ -170,6 +170,18 @@ public class LeaveRequestActivity extends AppCompatActivity {
             else{
                 customerSpinnerLayout9.setVisibility(View.GONE);
             }
+            getLeaveBalance(empCode,year,leavetypeAbb);
+
+            if(leavetypes.get(i).contains("Sick Leave") &&  (no_sick_leave_allowed || no_sick_leave_allowed1) ){
+                Toast.makeText(LeaveRequestActivity.this," Future date is not allowed in the Sick Leave",Toast.LENGTH_LONG).show();
+                leaveType = "";
+                leavetypeAbb = "";
+                leave_type.setText("");
+                leaveTypeAdapter.getFilter().filter(null);
+                return;
+            }
+            getLeaveBalance(empCode,year,leavetypeAbb);
+
 
         });
         start_date.setOnTouchListener((view, motionEvent) -> {
@@ -255,6 +267,12 @@ public class LeaveRequestActivity extends AppCompatActivity {
             leaveType="";
             no_of_days.setText("");
             available_bal.setText("");
+            if(calendar.after(Calendar.getInstance())){
+                no_sick_leave_allowed = true;
+            }
+            else {
+                no_sick_leave_allowed = false;
+            }
         },calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH));
 
         //  datePicker.getDatePicker().setMinDate(Calendar.getInstance().getTimeInMillis() - 10000);
@@ -303,6 +321,13 @@ public class LeaveRequestActivity extends AppCompatActivity {
             leaveTypeAdapter.getFilter().filter(null);
             no_of_days.setText("");
             available_bal.setText("");
+            if(calendar1.after(Calendar.getInstance())){
+                no_sick_leave_allowed = true;
+            }
+            else {
+                no_sick_leave_allowed = false;
+            }
+
         },calendar1.get(Calendar.YEAR), calendar1.get(Calendar.MONTH), calendar1.get(Calendar.DAY_OF_MONTH));
 
         //  datePicker.getDatePicker().setMinDate(Calendar.getInstance().getTimeInMillis() - 10000);
@@ -343,8 +368,10 @@ public class LeaveRequestActivity extends AppCompatActivity {
                 if(list!=null && list.size()>0) {
                     LeaveTypesList.addAll(list);
                     for (LeaveTypeModel leaveTypeModel : list) {
-                        leavetypes.add(leaveTypeModel.getLvtyp());
-                        leaveTypeAdapter.notifyDataSetChanged();
+                        if(leaveTypeModel.getLvtyp()!=null) {
+                            leavetypes.add(leaveTypeModel.getLvtyp());
+                            leaveTypeAdapter.notifyDataSetChanged();
+                        }
                     }
                 }
                 }

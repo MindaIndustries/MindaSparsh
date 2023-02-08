@@ -8,21 +8,21 @@ public class LeaveBalanceModel {
     @SerializedName("Unit")
     String Unit;
     @SerializedName("OpeningBalance")
-    Long OpeningBalance;
+    double OpeningBalance;
     @SerializedName("Earned")
-    Long Earned;
+    double Earned;
     @SerializedName("TotalEligible")
-    Long TotalEligible;
+    double TotalEligible;
     @SerializedName("Availed")
-    Long Availed;
+    double Availed;
     @SerializedName("Planned")
-    Long Planned;
+    double Planned;
     @SerializedName("Encashed")
-    Long Encashed;
+    double Encashed;
     @SerializedName("AvailableBalance")
-    Long AvailableBalance;
+    double AvailableBalance;
     @SerializedName("curryr_year")
-    Long curryr_year;
+    double curryr_year;
     @SerializedName("LTA_Balance")
     int LTA_Balance;
     @SerializedName("Balance")
@@ -45,70 +45,69 @@ public class LeaveBalanceModel {
         Unit = unit;
     }
 
-    public Long getOpeningBalance() {
+    public double getOpeningBalance() {
         return OpeningBalance;
     }
 
-    public void setOpeningBalance(Long openingBalance) {
+    public void setOpeningBalance(double openingBalance) {
         OpeningBalance = openingBalance;
     }
 
-    public Long getEarned() {
+    public double getEarned() {
         return Earned;
     }
 
-    public void setEarned(Long earned) {
+    public void setEarned(double earned) {
         Earned = earned;
     }
 
-    public Long getTotalEligible() {
+    public double getTotalEligible() {
         return TotalEligible;
     }
 
-    public void setTotalEligible(Long totalEligible) {
+    public void setTotalEligible(double totalEligible) {
         TotalEligible = totalEligible;
     }
 
-    public Long getAvailed() {
+    public double getAvailed() {
         return Availed;
     }
 
-    public void setAvailed(Long availed) {
+    public void setAvailed(double availed) {
         Availed = availed;
     }
 
-    public Long getPlanned() {
+    public double getPlanned() {
         return Planned;
     }
 
-    public void setPlanned(Long planned) {
+    public void setPlanned(double planned) {
         Planned = planned;
     }
 
-    public Long getEncashed() {
+    public double getEncashed() {
         return Encashed;
     }
 
-    public void setEncashed(Long encashed) {
+    public void setEncashed(double encashed) {
         Encashed = encashed;
     }
 
-    public Long getAvailableBalance() {
+    public double getAvailableBalance() {
         return AvailableBalance;
     }
 
-    public void setAvailableBalance(Long availableBalance) {
+    public void setAvailableBalance(double availableBalance) {
         AvailableBalance = availableBalance;
     }
 
-    public Long getCurryr_year() {
+    public double getCurryr_year() {
         return curryr_year;
     }
 
-    public void setCurryr_year(Long curryr_year) {
+    public void setCurryr_year(double curryr_year) {
         this.curryr_year = curryr_year;
     }
-
 
     public int getLTA_Balance() {
         return LTA_Balance;
@@ -118,7 +117,6 @@ public class LeaveBalanceModel {
         this.LTA_Balance = LTA_Balance;
     }
 
-
     public double getBalance() {
         return Balance;
     }
@@ -126,5 +124,4 @@ public class LeaveBalanceModel {
     public void setBalance(double balance) {
         Balance = balance;
     }
-
-   }
+}

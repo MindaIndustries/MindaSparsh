@@ -374,6 +374,7 @@ public class ALMSCalendarActivity extends AppCompatActivity {
             if (carotResponse.getStatuscode() == HttpsURLConnection.HTTP_OK) {
                 List<AlmsReportModel> list = (List<AlmsReportModel>) carotResponse.getData();
                 if (list != null && list.size() > 0) {
+
                     if (list.get(0).getDAY_IN() != null && list.get(0).getDAY_IN().trim().length() > 0) {
                         punch_in_time.setText(list.get(0).getDAY_IN());
                     } else {
@@ -385,44 +386,50 @@ public class ALMSCalendarActivity extends AppCompatActivity {
                         punch_out_time.setText("-");
                     }
                     status.setVisibility(View.VISIBLE);
-                    if (list.get(0).getSTAT().equals("OD") || list.get(0).getSTATUS2().equals("OD")) {
-                        status.setText("OD");
-                        status.setBackgroundColor(Color.parseColor("#FF9800"));
+                    if(list.get(0).getSTAT()!=null) {
+                        if (list.get(0).getSTAT().equals("OD") || list.get(0).getSTATUS2().equals("OD")) {
+                            status.setText("OD");
+                            status.setBackgroundColor(Color.parseColor("#FF9800"));
+                        }
+
+                        if (list.get(0).getSTAT().equals("FTP") || list.get(0).getSTATUS2().equals("FTP")) {
+                            status.setText("FTP");
+                            status.setBackgroundColor(Color.parseColor("#FF9800"));
+                        } else if (list.get(0).getSTAT().equals("CL") || list.get(0).getSTATUS2().equals("CL")) {
+                            status.setText("CL");
+                            status.setBackgroundColor(Color.parseColor("#dbaf1d"));
+
+                        } else if (list.get(0).getSTAT().equals("EL") || list.get(0).getSTATUS2().equals("EL")) {
+                            status.setText("EL");
+                            status.setBackgroundColor(Color.parseColor("#dbaf1d"));
+
+                        } else if (list.get(0).getSTAT().equals("SL") || list.get(0).getSTATUS2().equals("SL")) {
+                            status.setText("SL");
+                            status.setBackgroundColor(Color.parseColor("#dbaf1d"));
+
+                        } else if (list.get(0).getSTAT().equals("P") && list.get(0).getSTATUS2().equals("P")) {
+                            status.setText("P");
+                            status.setBackgroundColor(Color.parseColor("#00A36C"));
+                        } else if (list.get(0).getSTAT().equals("WO")) {
+                            status.setText("WO");
+                            status.setBackgroundColor(Color.GRAY);
+
+                        } else if (list.get(0).getSTAT().equals("A")) {
+                            status.setText("A");
+                            status.setBackgroundColor(Color.parseColor("#FF0000"));
+
+                        } else {
+                            status.setVisibility(View.GONE);
+                        }
                     }
-
-                    if (list.get(0).getSTAT().equals("FTP") || list.get(0).getSTATUS2().equals("FTP")) {
-                        status.setText("FTP");
-                        status.setBackgroundColor(Color.parseColor("#FF9800"));
+                    if(list.get(0).getDAYNAME()!=null) {
+                        day.setText(list.get(0).getDAYNAME().toUpperCase());
                     }
-                    else if (list.get(0).getSTAT().equals("CL") || list.get(0).getSTATUS2().equals("CL")) {
-                        status.setText("CL");
-                        status.setBackgroundColor(Color.parseColor("#dbaf1d"));
+                    if(list.get(0).getEDATE()!=null) {
 
-                    } else if (list.get(0).getSTAT().equals("EL") || list.get(0).getSTATUS2().equals("EL")) {
-                        status.setText("EL");
-                        status.setBackgroundColor(Color.parseColor("#dbaf1d"));
+                        date.setText(list.get(0).getEDATE().replace(".", "/").split("/")[0]);
 
-                    } else if (list.get(0).getSTAT().equals("SL") || list.get(0).getSTATUS2().equals("SL")) {
-                        status.setText("SL");
-                        status.setBackgroundColor(Color.parseColor("#dbaf1d"));
-
-                    } else if (list.get(0).getSTAT().equals("P") && list.get(0).getSTATUS2().equals("P")) {
-                        status.setText("P");
-                        status.setBackgroundColor(Color.parseColor("#00A36C"));
-                    } else if (list.get(0).getSTAT().equals("WO")) {
-                        status.setText("WO");
-                        status.setBackgroundColor(Color.GRAY);
-
-                    } else if (list.get(0).getSTAT().equals("A")) {
-                        status.setText("A");
-                        status.setBackgroundColor(Color.parseColor("#FF0000"));
-
-                    } else {
-                        status.setVisibility(View.GONE);
-                    }
-                    day.setText(list.get(0).getDAYNAME().toUpperCase());
-                    date.setText(list.get(0).getEDATE().replace(".", "/").split("/")[0]);
-                }
+                    }                }
 
             }
         }, empcode, fromDate, toDate);
