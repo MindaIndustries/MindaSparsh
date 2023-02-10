@@ -58,9 +58,9 @@ import javax.net.ssl.HttpsURLConnection;
 public class LeaveRequestActivity extends AppCompatActivity {
     Toolbar toolbar;
     TextView title;
-    AppCompatAutoCompleteTextView leave_type,session_spinner;
-    TextInputEditText start_date, end_date, comment, available_bal,no_of_days;
-    TextInputLayout customerSpinnerLayout9,customerSpinnerLayout8;
+    AppCompatAutoCompleteTextView leave_type, session_spinner;
+    TextInputEditText start_date, end_date, comment, available_bal, no_of_days;
+    TextInputLayout customerSpinnerLayout9, customerSpinnerLayout8;
     ArrayList<LeaveBalanceModel> leaveBalanceList = new ArrayList<>();
     String empCode;
     SharedPreferences myPref;
@@ -69,11 +69,11 @@ public class LeaveRequestActivity extends AppCompatActivity {
     DatePickerDialog datePicker, datePicker1;
     Calendar calendar, calendar1;
     String year, year1;
-    Button cancel,submit;
-    String leaveType,leavetypeAbb, session="ES";
+    Button cancel, submit;
+    String leaveType, leavetypeAbb, session = "ES";
     TextView m_certificate;
     ImageView upload;
-    String authperson,reportyEmailId,reportyEmpName,EmpName;
+    String authperson, reportyEmailId, reportyEmpName, EmpName;
     private File mDestinationFile;
     String fileName = "", fileType, fileByte = "";
     public static final int MY_PERMISSIONS_REQUEST_READ_EXTERNAL_STORAGE = 123;
@@ -85,11 +85,11 @@ public class LeaveRequestActivity extends AppCompatActivity {
 
     byte[] bytes;
     Bitmap bmp;
-    boolean no_sick_leave_allowed=false, no_sick_leave_allowed1 = false;
+    boolean no_sick_leave_allowed = false, no_sick_leave_allowed1 = false;
 
 
     List<LeaveTypeModel> LeaveTypesList = new ArrayList<>();
-    ArrayList<String>  session_values = new ArrayList<>();
+    ArrayList<String> session_values = new ArrayList<>();
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -107,7 +107,7 @@ public class LeaveRequestActivity extends AppCompatActivity {
         submit = findViewById(R.id.submit);
         m_certificate = findViewById(R.id.m_certificate);
         upload = findViewById(R.id.upload_certificate);
-        customerSpinnerLayout9 =findViewById(R.id.customerSpinnerLayout9);
+        customerSpinnerLayout9 = findViewById(R.id.customerSpinnerLayout9);
         customerSpinnerLayout8 = findViewById(R.id.customerSpinnerLayout8);
         session_spinner = findViewById(R.id.session);
         session_values.add("Full Session");
@@ -121,10 +121,10 @@ public class LeaveRequestActivity extends AppCompatActivity {
         title.setText("Leave Request");
         myPref = getSharedPreferences("MyPref", Context.MODE_PRIVATE);
         empCode = myPref.getString("Id", "Id");
-        EmpName = myPref.getString("username","");
-        authperson = myPref.getString("REPORTY_EMP_CODE","");
-        reportyEmailId = myPref.getString("REPORTY_EMAIL","");
-        reportyEmpName = myPref.getString("REPORTY_EMP_NAME","");
+        EmpName = myPref.getString("username", "");
+        authperson = myPref.getString("REPORTY_EMP_CODE", "");
+        reportyEmailId = myPref.getString("REPORTY_EMAIL", "");
+        reportyEmpName = myPref.getString("REPORTY_EMP_NAME", "");
         upload.setOnClickListener(view -> selectFile());
 
         leaveTypeAdapter = new ArrayAdapter<>(LeaveRequestActivity.this, android.R.layout.simple_spinner_item, leavetypes);
@@ -135,52 +135,47 @@ public class LeaveRequestActivity extends AppCompatActivity {
         initDatePicker();
         initDatePicker1();
         session_spinner.setOnItemClickListener((adapterView, view, i, l) -> {
-            if(i==0){
+            if (i == 0) {
                 session = "ES";
-            }
-            else if(i==1){
+            } else if (i == 1) {
                 session = "FN";
-            }
-            else{
+            } else {
                 session = "AN";
             }
         });
         leave_type.setOnItemClickListener((adapterView, view, i, l) -> {
-            if(start_date.getText().toString().length()==0 && end_date.getText().toString().length()==0){
+            if (start_date.getText().toString().length() == 0 && end_date.getText().toString().length() == 0) {
                 Toast.makeText(LeaveRequestActivity.this, "Select Start Date & End Date ", Toast.LENGTH_SHORT).show();
                 return;
             }
             leaveType = leavetypes.get(i);
             leavetypeAbb = LeaveTypesList.get(i).getShort_Desc().toUpperCase();
-            if(leavetypes.get(i).contains("First Half")){
+            if (leavetypes.get(i).contains("First Half")) {
                 session = "FN";
                 customerSpinnerLayout8.setVisibility(View.GONE);
-            }
-            else if(leavetypes.get(i).contains("Second Half")){
+            } else if (leavetypes.get(i).contains("Second Half")) {
                 session = "AN";
                 customerSpinnerLayout8.setVisibility(View.GONE);
-            }
-            else {
+            } else {
                 session = "ES";
                 customerSpinnerLayout8.setVisibility(View.VISIBLE);
             }
-            if(leavetypes.get(i).equalsIgnoreCase("Short Leave")){
+            if (leavetypes.get(i).equalsIgnoreCase("Short Leave")) {
                 customerSpinnerLayout9.setVisibility(View.VISIBLE);
-            }
-            else{
+            } else {
                 customerSpinnerLayout9.setVisibility(View.GONE);
             }
-            getLeaveBalance(empCode,year,leavetypeAbb);
+            getLeaveBalance(empCode, year, leavetypeAbb);
 
-            if(leavetypes.get(i).contains("Sick Leave") &&  (no_sick_leave_allowed || no_sick_leave_allowed1) ){
-                Toast.makeText(LeaveRequestActivity.this," Future date is not allowed in the Sick Leave",Toast.LENGTH_LONG).show();
+            if (leavetypes.get(i).contains("Sick Leave") && (no_sick_leave_allowed || no_sick_leave_allowed1)) {
+                Toast.makeText(LeaveRequestActivity.this, " Future date is not allowed in the Sick Leave", Toast.LENGTH_LONG).show();
                 leaveType = "";
                 leavetypeAbb = "";
                 leave_type.setText("");
                 leaveTypeAdapter.getFilter().filter(null);
                 return;
             }
-            getLeaveBalance(empCode,year,leavetypeAbb);
+            getLeaveBalance(empCode, year, leavetypeAbb);
 
 
         });
@@ -196,34 +191,30 @@ public class LeaveRequestActivity extends AppCompatActivity {
         cancel.setOnClickListener(view -> onBackPressed());
         submit.setOnClickListener(view -> {
 
-            if(start_date.getText().toString().length()==0){
-                Toast.makeText(LeaveRequestActivity.this,"Please select Start Date", Toast.LENGTH_LONG).show();
+            if (start_date.getText().toString().length() == 0) {
+                Toast.makeText(LeaveRequestActivity.this, "Please select Start Date", Toast.LENGTH_LONG).show();
 
                 return;
 
-            }
-            else if(end_date.getText().toString().length()==0){
-                Toast.makeText(LeaveRequestActivity.this,"Please select End Date", Toast.LENGTH_LONG).show();
+            } else if (end_date.getText().toString().length() == 0) {
+                Toast.makeText(LeaveRequestActivity.this, "Please select End Date", Toast.LENGTH_LONG).show();
+                return;
+            } else if (leaveType.length() == 0) {
+                Toast.makeText(LeaveRequestActivity.this, "Please select Leave Type", Toast.LENGTH_LONG).show();
+                return;
+            } else if (!leaveType.contains("Leave Without Pay") && Double.parseDouble(available_bal.getText().toString()) <= 0) {
+                Toast.makeText(LeaveRequestActivity.this, "You do not have Leave Balance", Toast.LENGTH_LONG).show();
+                return;
+            } else if (no_of_days.getText().toString().length() == 0 || Double.parseDouble(no_of_days.getText().toString()) <= 0) {
                 return;
             }
-            else if(leaveType.length()==0){
-                Toast.makeText(LeaveRequestActivity.this,"Please select Leave Type", Toast.LENGTH_LONG).show();
-                return;
-            }
-            else if(!leaveType.contains("Leave Without Pay")&& Double.parseDouble(available_bal.getText().toString())<=0){
-                Toast.makeText(LeaveRequestActivity.this,"You do not have Leave Balance", Toast.LENGTH_LONG).show();
-                return;
-            }
-            else if(no_of_days.getText().toString().length()==0 || Double.parseDouble(no_of_days.getText().toString())<=0){
-                return;
-            }
-            if(Utility.isOnline(LeaveRequestActivity.this)) {
+            if (Utility.isOnline(LeaveRequestActivity.this)) {
                 applyLeave(empCode, start_date.getText().toString(), end_date.getText().toString(), year, leavetypeAbb, no_of_days.getText().toString(), "", session, authperson, comment.getText().toString(), "", reportyEmailId, reportyEmpName, EmpName, fileName, fileByte);
             }
         });
     }
 
-    public void initDatePicker(){
+    public void initDatePicker() {
         calendar = Calendar.getInstance();
         calendar.setTimeInMillis(System.currentTimeMillis());
         int mMonth = calendar.get(Calendar.MONTH) + 1;
@@ -241,7 +232,7 @@ public class LeaveRequestActivity extends AppCompatActivity {
         }
         year = String.valueOf(calendar.get(Calendar.YEAR));
 
-     //   start_date.setText(dayOfMonthStr+"-"+monthNo+"-"+calendar.get(Calendar.YEAR));
+        //   start_date.setText(dayOfMonthStr+"-"+monthNo+"-"+calendar.get(Calendar.YEAR));
         datePicker = new DatePickerDialog(LeaveRequestActivity.this, (datePicker, i, i1, i2) -> {
             int mMonth1 = i1 + 1;
             String monthNo1;
@@ -264,21 +255,21 @@ public class LeaveRequestActivity extends AppCompatActivity {
             end_date.setText("" + dayOfMonthStr1 + "." + monthNo1 + "." + i);
             leave_type.setText("");
             leaveTypeAdapter.getFilter().filter(null);
-            leaveType="";
+            leaveType = "";
             no_of_days.setText("");
             available_bal.setText("");
-            if(calendar.after(Calendar.getInstance())){
+            if (calendar.after(Calendar.getInstance())) {
                 no_sick_leave_allowed = true;
-            }
-            else {
+            } else {
                 no_sick_leave_allowed = false;
             }
-        },calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH));
+        }, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH));
 
         //  datePicker.getDatePicker().setMinDate(Calendar.getInstance().getTimeInMillis() - 10000);
 
     }
-    public void initDatePicker1(){
+
+    public void initDatePicker1() {
         calendar1 = Calendar.getInstance();
         calendar1.setTimeInMillis(System.currentTimeMillis());
         int mMonth = calendar1.get(Calendar.MONTH) + 1;
@@ -317,65 +308,64 @@ public class LeaveRequestActivity extends AppCompatActivity {
             year1 = String.valueOf(calendar1.get(Calendar.YEAR));
             end_date.setText("" + dayOfMonthStr1 + "." + monthNo1 + "." + i);
             leave_type.setText("");
-            leaveType="";
+            leaveType = "";
             leaveTypeAdapter.getFilter().filter(null);
             no_of_days.setText("");
             available_bal.setText("");
-            if(calendar1.after(Calendar.getInstance())){
+            if (calendar1.after(Calendar.getInstance())) {
                 no_sick_leave_allowed = true;
-            }
-            else {
+            } else {
                 no_sick_leave_allowed = false;
             }
 
-        },calendar1.get(Calendar.YEAR), calendar1.get(Calendar.MONTH), calendar1.get(Calendar.DAY_OF_MONTH));
+        }, calendar1.get(Calendar.YEAR), calendar1.get(Calendar.MONTH), calendar1.get(Calendar.DAY_OF_MONTH));
 
         //  datePicker.getDatePicker().setMinDate(Calendar.getInstance().getTimeInMillis() - 10000);
 
     }
 
     public void getLeaveBalance(String empcode, String year, String leaveType) {
-       leaveBalanceList.clear();
-       AlmsServices almsServices = new AlmsServices();
+        leaveBalanceList.clear();
+        AlmsServices almsServices = new AlmsServices();
         almsServices.getLeaveBalance(carotResponse -> {
             if (carotResponse.getStatuscode() == HttpsURLConnection.HTTP_OK) {
                 List<LeaveBalanceModel> list = (List<LeaveBalanceModel>) carotResponse.getData();
-                if(list!=null && list.size()>0){
+                if (list != null && list.size() > 0) {
                     leaveBalanceList.addAll(list);
-                    available_bal.setText(""+leaveBalanceList.get(0).getBalance());
-                    if((!leaveBalanceList.get(0).getLeaveType().equals("BL") && leaveBalanceList.get(0).getBalance()==0.5) ){
-                     //   Toast.makeText(LeaveRequestActivity.this,"You do not have Leave balance!", Toast.LENGTH_LONG).show();
+                    available_bal.setText("" + leaveBalanceList.get(0).getBalance());
+                    if ((!leaveBalanceList.get(0).getLeaveType().equals("BL") && leaveBalanceList.get(0).getBalance() == 0.5)) {
+                        //   Toast.makeText(LeaveRequestActivity.this,"You do not have Leave balance!", Toast.LENGTH_LONG).show();
 
                     }
-                    if(!(leaveBalanceList.get(0).getLeaveType().equals("LWP")||leaveBalanceList.get(0).getLeaveType().equals("LWPESIC")) && leaveBalanceList.get(0).getBalance()<=0){
-                        Toast.makeText(LeaveRequestActivity.this,"You do not have Leave balance!", Toast.LENGTH_LONG).show();
+                    if (!(leaveBalanceList.get(0).getLeaveType().equals("LWP") || leaveBalanceList.get(0).getLeaveType().equals("LWPESIC")) && leaveBalanceList.get(0).getBalance() <= 0) {
+                        Toast.makeText(LeaveRequestActivity.this, "You do not have Leave balance!", Toast.LENGTH_LONG).show();
 
                     }
-                    checkLeaveValidation(empcode,start_date.getText().toString(),end_date.getText().toString());
+                    checkLeaveValidation(empcode, start_date.getText().toString(), end_date.getText().toString());
                 }
             }
         }, empcode, year, leaveType);
 
     }
 
-    public void getLeaveTypes(String empcode){
+    public void getLeaveTypes(String empcode) {
         LeaveTypesList.clear();
         leavetypes.clear();
         AlmsServices almsServices = new AlmsServices();
         almsServices.getLeaveTypes(carotResponse -> {
             if (carotResponse.getStatuscode() == HttpsURLConnection.HTTP_OK) {
                 List<LeaveTypeModel> list = (List<LeaveTypeModel>) carotResponse.getData();
-                if(list!=null && list.size()>0) {
+                if (list != null && list.size() > 0) {
                     LeaveTypesList.addAll(list);
                     for (LeaveTypeModel leaveTypeModel : list) {
-                        if(leaveTypeModel.getLvtyp()!=null) {
+                        if (leaveTypeModel.getLvtyp() != null) {
                             leavetypes.add(leaveTypeModel.getLvtyp());
                             leaveTypeAdapter.notifyDataSetChanged();
                         }
                     }
                 }
-                }
-            },empcode);
+            }
+        }, empcode);
     }
 
     @Override
@@ -388,64 +378,65 @@ public class LeaveRequestActivity extends AppCompatActivity {
     }
 
 
-    public void checkLeaveValidation(String empcode, String fromDate, String toDate){
+    public void checkLeaveValidation(String empcode, String fromDate, String toDate) {
 
         AlmsServices almsServices = new AlmsServices();
         almsServices.checkLeaveValidation(carotResponse -> {
-            if(carotResponse.getStatuscode()== HttpsURLConnection.HTTP_OK){
+            if (carotResponse.getStatuscode() == HttpsURLConnection.HTTP_OK) {
                 List<LeaveValidationResponse> list = (List<LeaveValidationResponse>) carotResponse.getData();
-                if(list!= null && list.size()>0){
-                    if(list.get(0).getData().equals("You can`t apply for this period")){
+                if (list != null && list.size() > 0) {
+                    if (list.get(0).getData().equals("You can`t apply for this period")) {
                         Toast.makeText(LeaveRequestActivity.this, "You can`t apply for this period", Toast.LENGTH_SHORT).show();
-                    }
-                    else{
-                        getTotalLeaveDays(leavetypeAbb,start_date.getText().toString(),end_date.getText().toString());
+                    } else {
+                        getTotalLeaveDays(leavetypeAbb, start_date.getText().toString(), end_date.getText().toString());
                     }
                 }
             }
 
-        },empcode,fromDate, toDate);
+        }, empcode, fromDate, toDate);
     }
-    public void getTotalLeaveDays(String leaveType,String fromDate, String toDate){
+
+    public void getTotalLeaveDays(String leaveType, String fromDate, String toDate) {
         AlmsServices almsServices = new AlmsServices();
         almsServices.getTotalLeaveDays(carotResponse -> {
-            if(carotResponse.getStatuscode()== HttpsURLConnection.HTTP_OK){
+            if (carotResponse.getStatuscode() == HttpsURLConnection.HTTP_OK) {
                 List<LeaveDaysResponse> list = (List<LeaveDaysResponse>) carotResponse.getData();
-                if(list!=null && list.size()>0){
-                    no_of_days.setText(""+list.get(0).getCount());
+                if (list != null && list.size() > 0) {
+                    no_of_days.setText("" + list.get(0).getCount());
                 }
-                if(leavetypeAbb.equals("BL")){
+                if (leavetypeAbb.equals("BL")) {
                     no_of_days.setText("0.5");
                     session = "AN";
                 }
-                if(leavetypeAbb.equals("SL") && list.get(0).getCount()>3){
+                if (leavetypeAbb.equals("SL") && list.get(0).getCount() > 3) {
                     m_certificate.setVisibility(View.VISIBLE);
                     upload.setVisibility(View.VISIBLE);
-                }
-                else{
+                } else {
                     m_certificate.setVisibility(View.GONE);
                     upload.setVisibility(View.GONE);
 
                 }
-             }
-        }, leaveType, fromDate,toDate);
+            }
+        }, leaveType, fromDate, toDate,empCode);
 
     }
-    public void applyLeave(String Empcode, String Fromdate, String Todate, String Year, String LeaveType, String NoOfDays, String ReasonCode, String Session, String AuthPerson, String Remark, String Place, String ReportyEmailID, String ReportyEmpName, String EmpName, String FileName, String Files){
+
+    public void applyLeave(String Empcode, String Fromdate, String Todate, String Year, String LeaveType, String NoOfDays, String ReasonCode, String Session, String AuthPerson, String Remark, String Place, String ReportyEmailID, String ReportyEmpName, String EmpName, String FileName, String Files) {
         AlmsServices almsServices = new AlmsServices();
         almsServices.applyLeave(carotResponse -> {
-            if(carotResponse.getStatuscode()==HttpsURLConnection.HTTP_OK){
+            if (carotResponse.getStatuscode() == HttpsURLConnection.HTTP_OK) {
                 List<ApplyLeaveResponse> list = (List<ApplyLeaveResponse>) carotResponse.getData();
-                if(list!=null && list.size()>0){
-                    if(list.get(0).getLeaveRequestNo()!=null && list.get(0).getLeaveRequestNo().length()>0){
+                if (list != null && list.size() > 0) {
+                    if (list.get(0).getLeaveRequestNo() != null && list.get(0).getLeaveRequestNo().length() > 0) {
                         showMsg("Your leave request has been created successfully.\n" +
-                                "Request No: "+list.get(0).getLeaveRequestNo(),"");
+                                "Request No: " + list.get(0).getLeaveRequestNo(), "");
                     }
                 }
-             }
+            }
 
-        },Empcode, Fromdate,Todate, Year,LeaveType, NoOfDays,ReasonCode,Session,AuthPerson,Remark,Place,ReportyEmailID,ReportyEmpName,EmpName,FileName,Files);
+        }, Empcode, Fromdate, Todate, Year, LeaveType, NoOfDays, ReasonCode, Session, AuthPerson, Remark, Place, ReportyEmailID, ReportyEmpName, EmpName, FileName, Files);
     }
+
     public void selectFile() {
         requestAppPermissions();
     }
@@ -547,10 +538,10 @@ public class LeaveRequestActivity extends AppCompatActivity {
                 thumbnail);
         fileType = "jpg";
         bmp = thumbnail;
-      //  attachtext.setText(fileName);
+        //  attachtext.setText(fileName);
         this.fileName = fileName;
         fileByte = Base64.encodeToString(bytes, Base64.NO_WRAP);
-      //  docView.setVisibility(View.VISIBLE);
+        //  docView.setVisibility(View.VISIBLE);
         //docView.setImageBitmap(thumbnail);
     }
 
@@ -586,10 +577,10 @@ public class LeaveRequestActivity extends AppCompatActivity {
         fileType = "jpg";
         bytes = getBytesFromBitmap(bm);
         bmp = bm;
-       // attachtext.setText(fileName);
+        // attachtext.setText(fileName);
         fileByte = Base64.encodeToString(bytes, Base64.NO_WRAP);
-      //  docView.setVisibility(View.VISIBLE);
-     //   docView.setImageBitmap(bm);
+        //  docView.setVisibility(View.VISIBLE);
+        //   docView.setImageBitmap(bm);
     }
 
     @Override
@@ -621,7 +612,7 @@ public class LeaveRequestActivity extends AppCompatActivity {
         returnCursor.moveToFirst();
         fileName = returnCursor.getString(nameIndex);
         returnCursor.close();
-       // attachtext.setText(fileName);
+        // attachtext.setText(fileName);
         //attachtext.setVisibility(View.VISIBLE);
         //docView.setVisibility(View.GONE);
 
@@ -686,6 +677,7 @@ public class LeaveRequestActivity extends AppCompatActivity {
         return (ContextCompat.checkSelfPermission(LeaveRequestActivity.this, Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED);
 
     }
+
     private static Bitmap rotateImageIfRequired(Context context, Bitmap img, Uri selectedImage) {
 
         // Detect rotation
@@ -719,6 +711,7 @@ public class LeaveRequestActivity extends AppCompatActivity {
         mediaCursor.close();
         return rotation;
     }
+
     public void showMsg(String msg, String title) {
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
         alertDialogBuilder.setMessage(msg);
@@ -728,8 +721,6 @@ public class LeaveRequestActivity extends AppCompatActivity {
             arg0.dismiss();
             onBackPressed();
         });
-
-        //alertDialogBuilder.setNegativeButton("Cancel", (dialog, which) -> dialog.dismiss());
 
         AlertDialog alertDialog = alertDialogBuilder.create();
         alertDialog.show();

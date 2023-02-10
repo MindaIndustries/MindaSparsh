@@ -37,7 +37,7 @@ public interface AlmsClient {
 
     @FormUrlEncoded
     @POST("service/GetTotalLeaveDays")
-    Call<List<LeaveDaysResponse>> getTotalLeaveDays(@Field("LeaveType") String LeaveType, @Field("Fromdate") String Fromdate,@Field("Todate") String Todate );
+    Call<List<LeaveDaysResponse>> getTotalLeaveDays(@Field("LeaveType") String LeaveType, @Field("Fromdate") String Fromdate,@Field("Todate") String Todate, @Field("EmpCode") String EmpCode );
 
     @FormUrlEncoded
     @POST("service/ApplyLeave")
@@ -59,7 +59,7 @@ public interface AlmsClient {
 
     @FormUrlEncoded
     @POST("service/CancelLeave")
-    Call<List<ApplyLeaveResponse>> CancelLeave(@Field("EmpCode") String EmpCode, @Field("ReqNo") String ReqNo);
+    Call<List<ApplyLeaveResponse>> CancelLeave(@Field("EmpCode") String EmpCode, @Field("ReqNo") String ReqNo, @Field("Action") String Action,@Field("Reqtype") String Reqtype );
 
     @FormUrlEncoded
     @POST("service/GetApprovalRequests")

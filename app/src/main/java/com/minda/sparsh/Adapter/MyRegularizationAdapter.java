@@ -65,7 +65,7 @@ public class MyRegularizationAdapter extends RecyclerView.Adapter<MyRegularizati
             } else {
                 holder.options.setVisibility(View.VISIBLE);
                 holder.status.setText(leaveRequests.get(position).getActiveDesc());
-                holder.status.setTextColor(mContext.getResources().getColor(R.color.yellow));
+                holder.status.setTextColor(mContext.getResources().getColor(R.color.yellow_attendance));
 
             }
         }

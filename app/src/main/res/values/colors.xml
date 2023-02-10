@@ -18,5 +18,6 @@
     <color name="translucent">#99ffffff</color>
     <color name="disableBtn">#8F8782</color>
     <color name="screen_bg">#F6F6F6</color>
+    <color name ="yellow_attendance">#FFD700</color>
 
 </resources>

@@ -78,7 +78,7 @@ public class VisitorManagementActivity extends AppCompatActivity implements View
     static String tv_from_date_value = "", tv_to_date_value = "";
     static final int PICK_CONTACT = 1;
     private static final int PERMISSION_REQUEST_CODE = 200;
-    String callFromActivity;
+    String callFromActivity="";
     Integer visitorId;
     Boolean callCondition = true;
     Spinner sp_start_time_hour, sp_start_time_minutes, sp_end_time_hour, sp_end_time_minutes;
@@ -93,7 +93,7 @@ public class VisitorManagementActivity extends AppCompatActivity implements View
         setContentView(R.layout.activity_visitor_management);
 
         Intent intent = getIntent();
-        if (intent != null) {
+        if (intent != null && (intent.getStringExtra(Constant.CALL_FROM_ACTIVITY)!=null)) {
             callFromActivity = intent.getStringExtra(Constant.CALL_FROM_ACTIVITY);
             visitorId = intent.getIntExtra(Constant.VISITOR_ID, 0);
         }

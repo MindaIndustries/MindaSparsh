@@ -21,7 +21,6 @@ import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.minda.sparsh.Adapter.ALMSRecyclerViewAdapter;
 import com.minda.sparsh.decorators.EventDecorator;
 import com.minda.sparsh.model.AlmsReportModel;
@@ -38,6 +37,7 @@ import org.threeten.bp.LocalDate;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import javax.net.ssl.HttpsURLConnection;
@@ -71,6 +71,7 @@ public class ALMSCalendarActivity extends AppCompatActivity {
     String month_name;
     FabOption leave_req_btn, leave_regular_btn, leave_balance_btn, leave_approvals, leave_req_btn1, leave_regular_btn1, leave_balance_btn1;
     ExpandableFabLayout expandable_fab, expandable_fab1;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -99,8 +100,8 @@ public class ALMSCalendarActivity extends AppCompatActivity {
         leave_balance_btn1 = findViewById(R.id.leave_balance_btn1);
         leave_regular_btn1 = findViewById(R.id.leave_regular_btn1);
 
-        expandable_fab =findViewById(R.id.expandable_fab);
-        expandable_fab1 =findViewById(R.id.expandable_fab1);
+        expandable_fab = findViewById(R.id.expandable_fab);
+        expandable_fab1 = findViewById(R.id.expandable_fab1);
 
         status = findViewById(R.id.status);
         ll1 = findViewById(R.id.ll1);
@@ -111,7 +112,7 @@ public class ALMSCalendarActivity extends AppCompatActivity {
         title.setText("My Attendance");
         myPref = getSharedPreferences("MyPref", Context.MODE_PRIVATE);
         empCode = myPref.getString("Id", "Id");
-        Reporty = myPref.getInt("Reporty",0);
+        Reporty = myPref.getInt("Reporty", 0);
         calendar_view = findViewById(R.id.calendar_view);
         calendar2 = findViewById(R.id.calendar2);
         almsRecyclerViewAdapter = new ALMSRecyclerViewAdapter(ALMSCalendarActivity.this, attendanceReport);
@@ -119,10 +120,9 @@ public class ALMSCalendarActivity extends AppCompatActivity {
         attendance_rv.setLayoutManager(mLayoutManager);
         attendance_rv.setAdapter(almsRecyclerViewAdapter);
         calendar_view.getCurrentDate();
-        if(calendar_view.getCurrentDate().getMonth()==1){
+        if (calendar_view.getCurrentDate().getMonth() == 1) {
             fromDate = "21." + "12" + "." + calendar_view.getCurrentDate().getYear();
-        }
-        else {
+        } else {
             fromDate = "21." + (calendar_view.getCurrentDate().getMonth() - 1) + "." + calendar_view.getCurrentDate().getYear();
         }
         toDate = "20." + (calendar_view.getCurrentDate().getMonth()) + "." + calendar_view.getCurrentDate().getYear();
@@ -132,12 +132,11 @@ public class ALMSCalendarActivity extends AppCompatActivity {
         if (Utility.isOnline(ALMSCalendarActivity.this)) {
             getConsolidatedReport(empCode, fromDate, toDate);
         }
-        if(Reporty>0){
+        if (Reporty > 0) {
             expandable_fab.setVisibility(View.VISIBLE);
             expandable_fab1.setVisibility(View.GONE);
 
-        }
-        else {
+        } else {
             expandable_fab1.setVisibility(View.VISIBLE);
             expandable_fab.setVisibility(View.GONE);
 
@@ -151,7 +150,20 @@ public class ALMSCalendarActivity extends AppCompatActivity {
         });
         //calendar_view.state().edit().setMaximumDate(CalendarDay.from(calendar1.get(Calendar.YEAR), calendar1.get(Calendar.MONTH)+1,calendar1.get(Calendar.DAY_OF_MONTH))).commit();
         calendar_view.setOnDateChangedListener((widget, date, selected) -> {
-            punch_details.setVisibility(View.VISIBLE);
+
+            Calendar cal1 = Calendar.getInstance();
+            Calendar cal2 = Calendar.getInstance();
+            cal2.set(Calendar.DAY_OF_MONTH,date.getDay());
+            if(date.getMonth()==1){
+                cal2.set(Calendar.MONTH,12);
+            }
+            else {
+                cal2.set(Calendar.MONTH, date.getMonth() - 1);
+            }
+            cal2.set(Calendar.YEAR, date.getYear());
+
+            if(new Date(cal1.getTimeInMillis()).after(new Date(cal2.getTimeInMillis()))) {
+                punch_details.setVisibility(View.VISIBLE);
 
             /*if(punch_details.getVisibility()==View.VISIBLE){
                 punch_details.setVisibility(View.GONE);
@@ -163,16 +175,18 @@ public class ALMSCalendarActivity extends AppCompatActivity {
                 ll1.setVisibility(View.GONE);
                 total_days_card.setVisibility(View.GONE);
             }*/
-            fromDate = date.getDay() + "." + (date.getMonth() - 1) + "." + date.getYear();
-            toDate = date.getDay() + "." + (date.getMonth()) + "." + date.getYear();
-            Calendar cal = Calendar.getInstance();
-            SimpleDateFormat month_date = new SimpleDateFormat("MMMM");
-            cal.set(Calendar.MONTH, date.getMonth() - 1);
-            String month_name = month_date.format(cal.getTime());
-            date_current.setText(month_name + ", " + date.getYear());
-
-            getConsolidatedReport1(empCode, toDate, toDate);
-
+                fromDate = date.getDay() + "." + (date.getMonth() - 1) + "." + date.getYear();
+                toDate = date.getDay() + "." + (date.getMonth()) + "." + date.getYear();
+                Calendar cal = Calendar.getInstance();
+                SimpleDateFormat month_date = new SimpleDateFormat("MMMM");
+                cal.set(Calendar.MONTH, date.getMonth() - 1);
+                String month_name = month_date.format(cal.getTime());
+                date_current.setText(month_name + ", " + date.getYear());
+                getConsolidatedReport1(empCode, toDate, toDate);
+            }
+            else{
+                punch_details.setVisibility(View.GONE);
+            }
         });
         leave_req_btn.setOnClickListener(view -> {
             Intent in = new Intent(ALMSCalendarActivity.this, LeaveRequestActivity.class);
@@ -204,10 +218,9 @@ public class ALMSCalendarActivity extends AppCompatActivity {
         });
 
         calendar_view.setOnMonthChangedListener((widget, date) -> {
-            if(date.getMonth()==1){
-                fromDate = "21." +"12" + "." + (date.getYear()-1);
-            }
-            else {
+            if (date.getMonth() == 1) {
+                fromDate = "21." + "12" + "." + (date.getYear() - 1);
+            } else {
                 fromDate = "21." + (date.getMonth() - 1) + "." + date.getYear();
             }
             toDate = "20." + (date.getMonth()) + "." + date.getYear();
@@ -219,10 +232,9 @@ public class ALMSCalendarActivity extends AppCompatActivity {
             getConsolidatedReport(empCode, fromDate, toDate);
         });
         calendar2.setOnMonthChangedListener((widget, date) -> {
-            if(date.getMonth()==1) {
-                fromDate = "21." + "12" + "." + (date.getYear()-1);
-            }
-            else {
+            if (date.getMonth() == 1) {
+                fromDate = "21." + "12" + "." + (date.getYear() - 1);
+            } else {
                 fromDate = "21." + (date.getMonth() - 1) + "." + date.getYear();
             }
             toDate = "20." + (date.getMonth()) + "." + date.getYear();
@@ -240,7 +252,13 @@ public class ALMSCalendarActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull @NotNull MenuItem item) {
 
         if (item.getItemId() == android.R.id.home) {
-            onBackPressed();
+            if (calendarLayout.getVisibility() == View.VISIBLE) {
+                onBackPressed();
+            } else {
+                listLayout.setVisibility(View.GONE);
+                calendarLayout.setVisibility(View.VISIBLE);
+                item.setIcon(R.drawable.listview_icon);
+            }
             return true;
         } else if (item.getItemId() == R.id.listview) {
             if (calendarLayout.getVisibility() == View.VISIBLE) {
@@ -349,10 +367,9 @@ public class ALMSCalendarActivity extends AppCompatActivity {
             calendar.set(Calendar.MONTH, i1);
             calendar.set(Calendar.YEAR, i);
             month_name = month_date.format(calendar.getTime());
-            if(calendar.get(Calendar.MONTH) ==0){
-                fromDate = "21." + (calendar.get(Calendar.MONTH)+12) + "." +(calendar.get(Calendar.YEAR)-1);
-            }
-            else {
+            if (calendar.get(Calendar.MONTH) == 0) {
+                fromDate = "21." + (calendar.get(Calendar.MONTH) + 12) + "." + (calendar.get(Calendar.YEAR) - 1);
+            } else {
                 fromDate = "21." + (calendar.get(Calendar.MONTH)) + "." + calendar.get(Calendar.YEAR);
             }
             toDate = "20." + (calendar.get(Calendar.MONTH) + 1) + "." + calendar.get(Calendar.YEAR);
@@ -386,7 +403,7 @@ public class ALMSCalendarActivity extends AppCompatActivity {
                         punch_out_time.setText("-");
                     }
                     status.setVisibility(View.VISIBLE);
-                    if(list.get(0).getSTAT()!=null) {
+                    if (list.get(0).getSTAT() != null) {
                         if (list.get(0).getSTAT().equals("OD") || list.get(0).getSTATUS2().equals("OD")) {
                             status.setText("OD");
                             status.setBackgroundColor(Color.parseColor("#FF9800"));
@@ -422,14 +439,13 @@ public class ALMSCalendarActivity extends AppCompatActivity {
                             status.setVisibility(View.GONE);
                         }
                     }
-                    if(list.get(0).getDAYNAME()!=null) {
+                    if (list.get(0).getDAYNAME() != null) {
                         day.setText(list.get(0).getDAYNAME().toUpperCase());
                     }
-                    if(list.get(0).getEDATE()!=null) {
-
+                    if (list.get(0).getEDATE() != null) {
                         date.setText(list.get(0).getEDATE().replace(".", "/").split("/")[0]);
-
-                    }                }
+                    }
+                }
 
             }
         }, empcode, fromDate, toDate);

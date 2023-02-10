@@ -1,5 +1,6 @@
 package com.minda.sparsh.services;
 
+import com.minda.sparsh.R;
 import com.minda.sparsh.client.AlmsClient;
 import com.minda.sparsh.listener.CarotResponse;
 import com.minda.sparsh.listener.OnTaskComplete;
@@ -124,9 +125,9 @@ public class AlmsServices {
             }
         });
     }
-    public void getTotalLeaveDays(OnTaskComplete onTaskComplete, String LeaveType, String Fromdate, String Todate){
+    public void getTotalLeaveDays(OnTaskComplete onTaskComplete, String LeaveType, String Fromdate, String Todate, String EmpCode){
         AlmsClient almsClient = RetrofitClient2.getClientScanQR(AlmsClient.class);
-        Call<List<LeaveDaysResponse>> call = almsClient.getTotalLeaveDays(LeaveType,Fromdate,Todate);
+        Call<List<LeaveDaysResponse>> call = almsClient.getTotalLeaveDays(LeaveType,Fromdate,Todate, EmpCode);
         call.enqueue(new Callback<List<LeaveDaysResponse>>() {
             @Override
             public void onResponse(Call<List<LeaveDaysResponse>> call, Response<List<LeaveDaysResponse>> response) {
@@ -274,9 +275,9 @@ public class AlmsServices {
     }
 
 
-    public void cancelLeave(OnTaskComplete onTaskComplete, String empcode, String reqno){
+    public void cancelLeave(OnTaskComplete onTaskComplete, String empcode, String reqno, String Action, String ReqType){
         AlmsClient almsClient = RetrofitClient2.getClientScanQR(AlmsClient.class);
-        Call<List<ApplyLeaveResponse>> call = almsClient.CancelLeave(empcode,reqno);
+        Call<List<ApplyLeaveResponse>> call = almsClient.CancelLeave(empcode,reqno, Action, ReqType);
         call.enqueue(new Callback<List<ApplyLeaveResponse>>() {
             @Override
             public void onResponse(Call<List<ApplyLeaveResponse>> call, Response<List<ApplyLeaveResponse>> response) {

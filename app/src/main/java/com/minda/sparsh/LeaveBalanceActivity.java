@@ -7,13 +7,10 @@ import android.os.Bundle;
 import android.os.Parcelable;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
-import android.widget.ImageView;
 import android.widget.PopupMenu;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
@@ -24,9 +21,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.minda.sparsh.Adapter.MyLeaveRequestAdapter;
 import com.minda.sparsh.Adapter.MyRegularizationAdapter;
-import com.minda.sparsh.cvp.CVPViewCalendar;
-import com.minda.sparsh.listener.CarotResponse;
-import com.minda.sparsh.listener.OnTaskComplete;
 import com.minda.sparsh.model.ApplyLeaveResponse;
 import com.minda.sparsh.model.LeaveBalanceModel;
 import com.minda.sparsh.model.LeaveRegularizationModel;
@@ -36,6 +30,7 @@ import com.minda.sparsh.util.Utility;
 
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Collections;
 import java.util.List;
 
 import javax.net.ssl.HttpsURLConnection;
@@ -98,22 +93,19 @@ public class LeaveBalanceActivity extends AppCompatActivity implements MyLeaveRe
         leave_type.setSelection(0);
         leave_type.setText("Leaves");
         arrayAdapter.getFilter().filter(null);
-        leave_type.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                if (i == 0) {
-                    reg_req.setVisibility(View.GONE);
-                    leave_req.setVisibility(View.VISIBLE);
-                    reqType = "L";
-                    getMyLeaveRequests();
-                } else {
-                    reg_req.setVisibility(View.VISIBLE);
-                    leave_req.setVisibility(View.GONE);
-                    reqType = "R";
-                    getMyRegularizeRequests();
-                }
-
+        leave_type.setOnItemClickListener((adapterView, view, i, l) -> {
+            if (i == 0) {
+                reg_req.setVisibility(View.GONE);
+                leave_req.setVisibility(View.VISIBLE);
+                reqType = "L";
+                getMyLeaveRequests();
+            } else {
+                reg_req.setVisibility(View.VISIBLE);
+                leave_req.setVisibility(View.GONE);
+                reqType = "R";
+                getMyRegularizeRequests();
             }
+
         });
         myLeaveRequestAdapter = new MyLeaveRequestAdapter(LeaveBalanceActivity.this, leaveRequests);
         LinearLayoutManager mLayoutManager = new LinearLayoutManager(LeaveBalanceActivity.this, LinearLayoutManager.VERTICAL, false);
@@ -127,7 +119,6 @@ public class LeaveBalanceActivity extends AppCompatActivity implements MyLeaveRe
         reg_req.setAdapter(myRegularizationAdapter);
         myLeaveRequestAdapter.setClickListener(this);
         myRegularizationAdapter.setClickListener(this);
-
 
     }
 
@@ -181,19 +172,38 @@ public class LeaveBalanceActivity extends AppCompatActivity implements MyLeaveRe
         leaveRequests.clear();
         leave_req.getRecycledViewPool().clear();
         AlmsServices almsServices = new AlmsServices();
-        almsServices.getMyLeaveRequests(new OnTaskComplete() {
-            @Override
-            public void onTaskComplte(CarotResponse carotResponse) {
+        almsServices.getMyLeaveRequests(carotResponse -> {
 
-                if (carotResponse.getStatuscode() == HttpsURLConnection.HTTP_OK) {
-                    List<LeaveRequestModel> list = (List<LeaveRequestModel>) carotResponse.getData();
-                    if (list != null && list.size() > 0) {
-                        leaveRequests.addAll(list);
-                        myLeaveRequestAdapter.notifyDataSetChanged();
-                    }
+            if (carotResponse.getStatuscode() == HttpsURLConnection.HTTP_OK) {
+                List<LeaveRequestModel> list = (List<LeaveRequestModel>) carotResponse.getData();
+                if (list != null && list.size() > 0) {
+                    leaveRequests.addAll(list);
+                    Collections.sort(leaveRequests, (o1, o2) -> {
+                        String[] date1 = o1.getLVE_RECEIVED_DT().replace(".", "/").split("/");
+                        Calendar calendar = Calendar.getInstance();
+                        calendar.set(Calendar.DAY_OF_MONTH, Integer.parseInt(date1[0]));
+                        calendar.set(Calendar.MONTH, (Integer.parseInt(date1[1]) - 1));
+                        calendar.set(Calendar.YEAR, Integer.parseInt(date1[2]));
+                        String[] date2 = o1.getLVE_RECEIVED_DT().replace(".", "/").split("/");
+                        Calendar calendar1 = Calendar.getInstance();
+                        calendar1.set(Calendar.DAY_OF_MONTH, Integer.parseInt(date2[0]));
+                        calendar1.set(Calendar.MONTH, (Integer.parseInt(date2[1]) - 1));
+                        calendar1.set(Calendar.YEAR, Integer.parseInt(date2[2]));
+
+
+                        if (calendar1.before(calendar)){
+                            return 1;
+                        } else if (calendar1.after(calendar)) {
+                            return -1;
+                        } else {
+                            return 0;
+                        }
+
+                    });
+                    myLeaveRequestAdapter.notifyDataSetChanged();
                 }
-
             }
+
         }, empCode, "L");
 
     }
@@ -203,18 +213,38 @@ public class LeaveBalanceActivity extends AppCompatActivity implements MyLeaveRe
         regularzationRequests.clear();
         reg_req.getRecycledViewPool().clear();
         AlmsServices almsServices = new AlmsServices();
-        almsServices.getMyRegularizeRequests(new OnTaskComplete() {
-            @Override
-            public void onTaskComplte(CarotResponse carotResponse) {
-                if (carotResponse.getStatuscode() == HttpsURLConnection.HTTP_OK) {
-                    List<LeaveRegularizationModel> list = (List<LeaveRegularizationModel>) carotResponse.getData();
-                    if (list != null && list.size() > 0) {
-                        regularzationRequests.addAll(list);
-                        myRegularizationAdapter.notifyDataSetChanged();
-                    }
-                }
+        almsServices.getMyRegularizeRequests(carotResponse -> {
+            if (carotResponse.getStatuscode() == HttpsURLConnection.HTTP_OK) {
+                List<LeaveRegularizationModel> list = (List<LeaveRegularizationModel>) carotResponse.getData();
+                if (list != null && list.size() > 0) {
+                    regularzationRequests.addAll(list);
+                    Collections.sort(regularzationRequests, (o1, o2) -> {
+                        String[] date1 = o1.getCreatedOn().replace(".", "/").split("/");
+                        Calendar calendar = Calendar.getInstance();
+                        calendar.set(Calendar.DAY_OF_MONTH, Integer.parseInt(date1[0]));
+                        calendar.set(Calendar.MONTH, (Integer.parseInt(date1[1]) - 1));
+                        calendar.set(Calendar.YEAR, Integer.parseInt(date1[2]));
 
+                        String[] date2 = o1.getCreatedOn().replace(".", "/").split("/");
+                        Calendar calendar1 = Calendar.getInstance();
+                        calendar1.set(Calendar.DAY_OF_MONTH, Integer.parseInt(date2[0]));
+                        calendar1.set(Calendar.MONTH, (Integer.parseInt(date2[1]) - 1));
+                        calendar1.set(Calendar.YEAR, Integer.parseInt(date2[2]));
+
+
+                        if (calendar1.before(calendar)){
+                            return 1;
+                        } else if (calendar1.after(calendar)) {
+                            return -1;
+                        } else {
+                            return 0;
+                        }
+
+                    });
+                    myRegularizationAdapter.notifyDataSetChanged();
+                }
             }
+
         }, empCode, "R");
 
     }
@@ -223,9 +253,9 @@ public class LeaveBalanceActivity extends AppCompatActivity implements MyLeaveRe
     public void onClick(View view, int position) {
         this.view = view;
         if (leave_req.getVisibility() == View.VISIBLE) {
-            showMsgUpdate("", "Are you sure you want to cancel this request?", leaveRequests.get(position).getLVE_REQNO());
+            showMsgUpdate("", "Are you sure you want to cancel this request?", leaveRequests.get(position).getLVE_REQNO(),"L","");
         } else {
-            showMsgUpdate("", "Are you sure you want to cancel this request?", regularzationRequests.get(position).getReqNo());
+            showMsgUpdate("", "Are you sure you want to cancel this request?", regularzationRequests.get(position).getReqNo(),"R",regularzationRequests.get(position).getReqType());
         }
 
         //showPopUpMenu(position);
@@ -234,8 +264,11 @@ public class LeaveBalanceActivity extends AppCompatActivity implements MyLeaveRe
     @Override
     public void onClick1(View view, int position) {
         this.view = view;
-        showPopUpMenu(position);
-
+        if (leave_req.getVisibility() == View.VISIBLE) {
+            showMsgUpdate("", "Are you sure you want to cancel this request?", leaveRequests.get(position).getLVE_REQNO(),"L","");
+        } else {
+            showMsgUpdate("", "Are you sure you want to cancel this request?", regularzationRequests.get(position).getReqNo(),"R",regularzationRequests.get(position).getReqType());
+        }
     }
 
     public void showPopUpMenu(int position) {
@@ -257,62 +290,57 @@ public class LeaveBalanceActivity extends AppCompatActivity implements MyLeaveRe
 
         }
 
-        popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
-            public boolean onMenuItemClick(MenuItem item) {
-                switch (item.getItemId()) {
-                    case R.id.view:
-                        Intent in = new Intent(LeaveBalanceActivity.this, LeaveViewActivity.class);
+        popup.setOnMenuItemClickListener(item -> {
+            switch (item.getItemId()) {
+                case R.id.view:
+                    Intent in = new Intent(LeaveBalanceActivity.this, LeaveViewActivity.class);
 
-                        if (leave_req.getVisibility() == View.VISIBLE) {
-                            in.putExtra("leave_model", (Parcelable) leaveRequests.get(position));
-                        } else {
-                            in.putExtra("regular_model", (Parcelable) regularzationRequests.get(position));
+                    if (leave_req.getVisibility() == View.VISIBLE) {
+                        in.putExtra("leave_model", (Parcelable) leaveRequests.get(position));
+                    } else {
+                        in.putExtra("regular_model", (Parcelable) regularzationRequests.get(position));
 
-                        }
-                        startActivity(in);
-                        break;
-                    case R.id.cancel:
-                        if (leave_req.getVisibility() == View.VISIBLE) {
-                            showMsgUpdate("", "Are you sure you want to cancel this request?", leaveRequests.get(position).getLVE_REQNO());
-                        } else {
-                            showMsgUpdate("", "Are you sure you want to cancel this request?", regularzationRequests.get(position).getReqNo());
-                        }
-                        break;
-                }
-
-
-                return true;
+                    }
+                    startActivity(in);
+                    break;
+                case R.id.cancel:
+                    if (leave_req.getVisibility() == View.VISIBLE) {
+                        showMsgUpdate("", "Are you sure you want to cancel this request?", leaveRequests.get(position).getLVE_REQNO(),"","");
+                    } else {
+                        showMsgUpdate("", "Are you sure you want to cancel this request?", regularzationRequests.get(position).getReqNo(),"","");
+                    }
+                    break;
             }
+
+
+            return true;
         });
         popup.show();
     }
 
-    public void cancelRequest(String reqno) {
+    public void cancelRequest(String reqno, String action, String req) {
         AlmsServices almsServices = new AlmsServices();
-        almsServices.cancelLeave(new OnTaskComplete() {
-            @Override
-            public void onTaskComplte(CarotResponse carotResponse) {
-                if (carotResponse.getStatuscode() == HttpsURLConnection.HTTP_OK) {
-                    List<ApplyLeaveResponse> list = (List<ApplyLeaveResponse>) carotResponse.getData();
-                    if (list != null && list.size() > 0) {
-                        if (list.get(0).getLeaveRequestNo() != null && list.get(0).getLeaveRequestNo().length() > 0) {
-                            showMsg("Your leave request has been cancelled.", "");
-                        }
+        almsServices.cancelLeave(carotResponse -> {
+            if (carotResponse.getStatuscode() == HttpsURLConnection.HTTP_OK) {
+                List<ApplyLeaveResponse> list = (List<ApplyLeaveResponse>) carotResponse.getData();
+                if (list != null && list.size() > 0) {
+                    if (list.get(0).getLeaveRequestNo() != null && list.get(0).getLeaveRequestNo().length() > 0) {
+                        showMsg("Your leave request has been cancelled.", "");
                     }
                 }
             }
-        }, empCode, reqno);
+        }, empCode, reqno,action, req);
 
     }
 
-    public void showMsgUpdate(String title, String message, String reqno) {
+    public void showMsgUpdate(String title, String message, String reqno, String action, String req) {
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
         alertDialogBuilder.setTitle("");
         alertDialogBuilder.setMessage(message);
         alertDialogBuilder.setCancelable(false);
         alertDialogBuilder.setPositiveButton("YES", (arg0, arg1) -> {
             if (Utility.isOnline(LeaveBalanceActivity.this)) {
-                cancelRequest(reqno);
+                cancelRequest(reqno,action, req);
             }
             arg0.dismiss();
         });
@@ -328,7 +356,8 @@ public class LeaveBalanceActivity extends AppCompatActivity implements MyLeaveRe
 
         alertDialogBuilder.setPositiveButton("Ok", (arg0, arg1) -> {
             arg0.dismiss();
-            onBackPressed();
+            finish();
+            startActivity(getIntent());
         });
         AlertDialog alertDialog = alertDialogBuilder.create();
         alertDialog.show();

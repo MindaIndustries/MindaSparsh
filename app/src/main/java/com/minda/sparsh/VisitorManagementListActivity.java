@@ -23,6 +23,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -105,7 +106,7 @@ public class VisitorManagementListActivity extends AppCompatActivity implements 
     public void onClick(View view) {
         if (view.getId() == R.id.btn_create) {
             Intent intent = new Intent(getApplicationContext(), VisitorManagementActivity.class);
-            intent.putExtra(Constant.CALL_FROM_ACTIVITY, "Visitor_list");
+            //   intent.putExtra(Constant.CALL_FROM_ACTIVITY, "Visitor_list");
             startActivity(intent);
             finish();
         }
