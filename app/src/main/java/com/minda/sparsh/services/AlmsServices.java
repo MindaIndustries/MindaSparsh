@@ -1,6 +1,5 @@
 package com.minda.sparsh.services;
 
-import com.minda.sparsh.R;
 import com.minda.sparsh.client.AlmsClient;
 import com.minda.sparsh.listener.CarotResponse;
 import com.minda.sparsh.listener.OnTaskComplete;
