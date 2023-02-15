@@ -221,7 +221,6 @@
                 android:layout_marginTop="10dp"
                 app:cardElevation="10dp"
                 android:id="@+id/present_card"
-                android:layout_below="@+id/calendar_card"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 app:cardBackgroundColor="@color/colorPrimary"
