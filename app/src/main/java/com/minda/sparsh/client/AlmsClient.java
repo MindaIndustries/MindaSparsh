@@ -3,6 +3,7 @@ package com.minda.sparsh.client;
 import com.minda.sparsh.model.AlmsReportModel;
 import com.minda.sparsh.model.ApplyLeaveResponse;
 import com.minda.sparsh.model.ApprovalRequestModel;
+import com.minda.sparsh.model.HolidayListModel;
 import com.minda.sparsh.model.LeaveBalanceModel;
 import com.minda.sparsh.model.LeaveDaysResponse;
 import com.minda.sparsh.model.LeaveRegularizationModel;
@@ -68,4 +69,9 @@ public interface AlmsClient {
     @FormUrlEncoded
     @POST("service/AppRejLeave")
     Call<List<ApplyLeaveResponse>> ApplyRejectLeave(@Field("EmpCode") String EmpCode, @Field("RFormNo") String RFormNo, @Field("Action") String  Action,@Field("LOC") String LOC, @Field("Reqtype") String Reqtype, @Field("strhrs") String strhrs, @Field("ReportyEmpName") String ReportyEmpName);
+
+    @FormUrlEncoded
+    @POST("service/GetHolidayList")
+    Call<List<HolidayListModel>> GetHolidayList(@Field("EmpCode") String EmpCode, @Field("Year") String Year);
+
 }

@@ -13,8 +13,7 @@
         android:layout_marginTop="?attr/actionBarSize"
         android:fillViewport="true"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        >
+        android:layout_height="match_parent">
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -55,6 +54,7 @@
                     android:background="@drawable/status_bg"
                     android:layout_alignParentRight="true"
                     android:id="@+id/status"
+                    android:fontFamily="@font/museosans_700"
                     android:textColor="@color/white"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"/>
@@ -136,7 +136,7 @@
                         />
                 </RelativeLayout>
                 <RelativeLayout
-                    android:layout_marginLeft="10dp"
+                    android:layout_marginLeftv="10dp"
                     android:layout_weight="1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
@@ -305,6 +305,44 @@
 
         </LinearLayout>
 
+<!--
+        <androidx.cardview.widget.CardView
+            android:layout_marginTop="15dp"
+            android:id="@+id/total_leave"
+            android:layout_below="@+id/ll1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="20dp"
+            >
+            <RelativeLayout
+                android:padding="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_centerInParent="true"
+                    android:layout_alignParentLeft="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/leaves"
+                    android:textSize="18sp"
+                    android:fontFamily="@font/museosans_700"
+                    android:text="Leaves"
+                    />
+                <TextView
+                    android:background="@drawable/rec_bg_calendar"
+                    android:text=""
+                    android:textSize="20sp"
+                    android:padding="10dp"
+                    android:textColor="@color/white"
+                    android:fontFamily="@font/museosans_700"
+                    android:layout_alignParentRight="true"
+                    android:id="@+id/leaves_count"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+            </RelativeLayout>
+        </androidx.cardview.widget.CardView>
+-->
+
     </RelativeLayout>
 
 
@@ -394,6 +432,15 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:fab_orientation="portrait"
+                app:label_text="Holidays"
+                android:id="@+id/holiday_list"
+                android:onClick="onClickPortraitOption1"
+                />
+
+            <com.nambimobile.widgets.efab.FabOption
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:fab_orientation="portrait"
                 app:label_text="Leave Approvals"
                 android:id="@+id/leave_approvals"
                 android:onClick="onClickPortraitOption1"
@@ -441,6 +488,14 @@
                 app:fab_orientation="portrait"
                 app:label_text="Leave Regularization"
                 android:id="@+id/leave_regular_btn1"
+                android:onClick="onClickPortraitOption1"
+                />
+            <com.nambimobile.widgets.efab.FabOption
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:fab_orientation="portrait"
+                app:label_text="Holidays"
+                android:id="@+id/holiday_list1"
                 android:onClick="onClickPortraitOption1"
                 />
 

@@ -6,6 +6,7 @@ import com.minda.sparsh.listener.OnTaskComplete;
 import com.minda.sparsh.model.AlmsReportModel;
 import com.minda.sparsh.model.ApplyLeaveResponse;
 import com.minda.sparsh.model.ApprovalRequestModel;
+import com.minda.sparsh.model.HolidayListModel;
 import com.minda.sparsh.model.LeaveBalanceModel;
 import com.minda.sparsh.model.LeaveDaysResponse;
 import com.minda.sparsh.model.LeaveRegularizationModel;
@@ -340,6 +341,32 @@ public class AlmsServices {
 
             @Override
             public void onFailure(Call<List<ApplyLeaveResponse>> call, Throwable t) {
+                CarotResponse carotResponse = new CarotResponse();
+                if (t instanceof IOException) {
+                    carotResponse.setMessage("Please hold on a moment, the internet connectivity seems to be slow");
+                }
+                onTaskComplete.onTaskComplte(carotResponse);
+            }
+        });
+
+    }
+
+    public void GetHolidayList(OnTaskComplete onTaskComplete, String EmpCode, String Year){
+        AlmsClient almsClient = RetrofitClient2.getClientScanQR(AlmsClient.class);
+        Call<List<HolidayListModel>> call = almsClient.GetHolidayList(EmpCode,Year);
+        call.enqueue(new Callback<List<HolidayListModel>>() {
+            @Override
+            public void onResponse(Call<List<HolidayListModel>> call, Response<List<HolidayListModel>> response) {
+                CarotResponse carotResponse = new CarotResponse();
+                carotResponse.setStatuscode(response.code());
+                if (response.code() == HttpsURLConnection.HTTP_OK) {
+                    carotResponse.setData(response.body());
+                }
+                onTaskComplete.onTaskComplte(carotResponse);
+            }
+
+            @Override
+            public void onFailure(Call<List<HolidayListModel>> call, Throwable t) {
                 CarotResponse carotResponse = new CarotResponse();
                 if (t instanceof IOException) {
                     carotResponse.setMessage("Please hold on a moment, the internet connectivity seems to be slow");

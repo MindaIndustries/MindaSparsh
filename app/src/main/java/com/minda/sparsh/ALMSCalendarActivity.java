@@ -70,7 +70,7 @@ public class ALMSCalendarActivity extends AppCompatActivity {
     CardView punch_details;
     Calendar calendar1;
     String month_name;
-    FabOption leave_req_btn, leave_regular_btn, leave_balance_btn, leave_approvals, leave_req_btn1, leave_regular_btn1, leave_balance_btn1;
+    FabOption leave_req_btn, leave_regular_btn, leave_balance_btn, leave_approvals, holidays, leave_req_btn1, leave_regular_btn1, leave_balance_btn1, holidays1;
     ExpandableFabLayout expandable_fab, expandable_fab1;
 
     @Override
@@ -100,6 +100,8 @@ public class ALMSCalendarActivity extends AppCompatActivity {
         leave_req_btn1 = findViewById(R.id.leave_req_btn1);
         leave_balance_btn1 = findViewById(R.id.leave_balance_btn1);
         leave_regular_btn1 = findViewById(R.id.leave_regular_btn1);
+        holidays = findViewById(R.id.holiday_list);
+        holidays1 = findViewById(R.id.holiday_list1);
 
         expandable_fab = findViewById(R.id.expandable_fab);
         expandable_fab1 = findViewById(R.id.expandable_fab1);
@@ -197,6 +199,22 @@ public class ALMSCalendarActivity extends AppCompatActivity {
             Intent in = new Intent(ALMSCalendarActivity.this, LeaveRegularizationActivity.class);
             startActivity(in);
         });
+        holidays.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent in = new Intent(ALMSCalendarActivity.this, HolidaysActivity.class);
+                startActivity(in);
+
+            }
+        });
+        holidays1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent in = new Intent(ALMSCalendarActivity.this, HolidaysActivity.class);
+                startActivity(in);
+
+            }
+        });
 
         calendar_view.setOnMonthChangedListener((widget, date) -> {
             if (date.getMonth() == 1) {
@@ -222,6 +240,7 @@ public class ALMSCalendarActivity extends AppCompatActivity {
             toDate = "20." + (date.getMonth()) + "." + date.getYear();
             getConsolidatedReport(empCode, fromDate, toDate);
         });
+
     }
 
     @Override
@@ -282,21 +301,22 @@ public class ALMSCalendarActivity extends AppCompatActivity {
                         int year = Integer.parseInt(date[2]);
                         LocalDate localDate = LocalDate.of(year, month, day);
                         CalendarDay calendarDay = CalendarDay.from(localDate);
-                        if (attendanceReport.get(i).getSTAT().equals("P") && attendanceReport.get(i).getSTATUS2().equals("P")) {
-                            presentList.add(calendarDay);
-                        } else if (attendanceReport.get(i).getSTAT().equals("A") || attendanceReport.get(i).getSTATUS2().equals("A")) {
-                            absentList.add(calendarDay);
-                        } else if (attendanceReport.get(i).getSTAT().equals("WO")) {
-                            wolist.add(calendarDay);
-                        } else if (attendanceReport.get(i).getSTAT().equals("OD") && attendanceReport.get(i).getSTATUS2().equals("OD")) {
-                            odlist.add(calendarDay);
-                        } else if (attendanceReport.get(i).getSTAT().equals("EL") || attendanceReport.get(i).getSTAT().equals("CL") || attendanceReport.get(i).getSTAT().equals("SL")) {
-                            leavelist.add(calendarDay);
-                        } else if (attendanceReport.get(i).getSTATUS2().equals("EL") || attendanceReport.get(i).getSTATUS2().equals("CL") || attendanceReport.get(i).getSTATUS2().equals("SL")) {
-                            leavelist.add(calendarDay);
-                        }
-                        else if(attendanceReport.get(i).getSTAT().equals("SH") || attendanceReport.get(i).getSTATUS2().equals("SH")){
-                            shortList.add(calendarDay);
+                        if (attendanceReport.get(i).getSTAT() != null && attendanceReport.get(i).getSTATUS2() != null) {
+                            if (attendanceReport.get(i).getSTAT().equals("P") && attendanceReport.get(i).getSTATUS2().equals("P")) {
+                                presentList.add(calendarDay);
+                            } else if (attendanceReport.get(i).getSTAT().equals("A") || attendanceReport.get(i).getSTATUS2().equals("A")) {
+                                absentList.add(calendarDay);
+                            } else if (attendanceReport.get(i).getSTAT().equals("WO")) {
+                                wolist.add(calendarDay);
+                            } else if (attendanceReport.get(i).getSTAT().equals("OD") && attendanceReport.get(i).getSTATUS2().equals("OD")) {
+                                odlist.add(calendarDay);
+                            } else if (attendanceReport.get(i).getSTAT().equals("EL") || attendanceReport.get(i).getSTAT().equals("CL") || attendanceReport.get(i).getSTAT().equals("SL")) {
+                                leavelist.add(calendarDay);
+                            } else if (attendanceReport.get(i).getSTATUS2().equals("EL") || attendanceReport.get(i).getSTATUS2().equals("CL") || attendanceReport.get(i).getSTATUS2().equals("SL")) {
+                                leavelist.add(calendarDay);
+                            } else if (attendanceReport.get(i).getSTAT().equals("SH") || attendanceReport.get(i).getSTATUS2().equals("SH")) {
+                                shortList.add(calendarDay);
+                            }
                         }
                     }
                 }
@@ -308,7 +328,7 @@ public class ALMSCalendarActivity extends AppCompatActivity {
                 calendar_view.addDecorator(new EventDecorator(Color.GRAY, wolist));
                 calendar_view.addDecorator(new EventDecorator(Color.parseColor("#FF9800"), odlist));
                 calendar_view.addDecorator(new EventDecorator(Color.parseColor("#dbaf1d"), leavelist));
-                calendar_view.addDecorator(new EventDecorator(Color.parseColor("#FF0000"), shortList));
+                calendar_view.addDecorator(new EventDecorator(Color.parseColor("#ffc0cb"), shortList));
             }
         }, empcode, fromDate, toDate);
     }
@@ -423,7 +443,7 @@ public class ALMSCalendarActivity extends AppCompatActivity {
                         }
                         else if(list.get(0).getSTAT().equals("SH") || list.get(0).getSTATUS2().equals("SH")){
                             status.setText("SH");
-                            status.setBackgroundColor(Color.parseColor("#FF0000"));
+                            status.setBackgroundColor(Color.parseColor("#ffc0cb"));
 
                         }
                         else {

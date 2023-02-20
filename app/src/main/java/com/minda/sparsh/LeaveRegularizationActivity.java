@@ -75,7 +75,7 @@ public class LeaveRegularizationActivity extends AppCompatActivity {
         start_time = findViewById(R.id.start_time);
         end_time = findViewById(R.id.end_time);
         session_spinner = findViewById(R.id.session);
-        sessionAdapter = new ArrayAdapter<>(LeaveRegularizationActivity.this, android.R.layout.simple_spinner_item, session_values);
+        sessionAdapter = new ArrayAdapter<>(LeaveRegularizationActivity.this, android.R.layout.simple_list_item_1, session_values);
         session_spinner.setAdapter(sessionAdapter);
 
         myPref = getSharedPreferences("MyPref", Context.MODE_PRIVATE);
@@ -88,7 +88,7 @@ public class LeaveRegularizationActivity extends AppCompatActivity {
         session_values.add("Full Session");
         session_values.add("1st Session");
         session_values.add("2nd Session");
-        sessionAdapter = new ArrayAdapter<>(LeaveRegularizationActivity.this, android.R.layout.simple_spinner_item, session_values);
+        sessionAdapter = new ArrayAdapter<>(LeaveRegularizationActivity.this, android.R.layout.simple_list_item_1, session_values);
         session_spinner.setAdapter(sessionAdapter);
         session_spinner.setOnItemClickListener((adapterView, view, i, l) -> {
             if (i == 0) {
@@ -105,7 +105,7 @@ public class LeaveRegularizationActivity extends AppCompatActivity {
         initTimePicker();
         initTimePicker1();
 
-        leaveTypeAdapter = new ArrayAdapter<>(LeaveRegularizationActivity.this, android.R.layout.simple_spinner_item, leavetypes);
+        leaveTypeAdapter = new ArrayAdapter<>(LeaveRegularizationActivity.this, android.R.layout.simple_list_item_1, leavetypes);
         leave_type.setAdapter(leaveTypeAdapter);
         getLeaveTypeRegularize(empCode);
         leave_type.setOnItemClickListener((adapterView, view, i, l) -> {

@@ -119,7 +119,6 @@ public class LeaveBalanceActivity extends AppCompatActivity implements MyLeaveRe
         reg_req.setAdapter(myRegularizationAdapter);
         myLeaveRequestAdapter.setClickListener(this);
         myRegularizationAdapter.setClickListener(this);
-
     }
 
     @Override
@@ -159,7 +158,6 @@ public class LeaveBalanceActivity extends AppCompatActivity implements MyLeaveRe
                                 leave4_value.setText("" + leaveBalanceModel.getAvailableBalance() + "/");
                                 leave4_value_out.setText("" + leaveBalanceModel.getTotalEligible());
                                 break;
-
                         }
                     }
                 }
@@ -189,8 +187,6 @@ public class LeaveBalanceActivity extends AppCompatActivity implements MyLeaveRe
                         calendar1.set(Calendar.DAY_OF_MONTH, Integer.parseInt(date2[0]));
                         calendar1.set(Calendar.MONTH, (Integer.parseInt(date2[1]) - 1));
                         calendar1.set(Calendar.YEAR, Integer.parseInt(date2[2]));
-
-
                         if (calendar1.before(calendar)){
                             return 1;
                         } else if (calendar1.after(calendar)) {
@@ -198,7 +194,6 @@ public class LeaveBalanceActivity extends AppCompatActivity implements MyLeaveRe
                         } else {
                             return 0;
                         }
-
                     });
                     myLeaveRequestAdapter.notifyDataSetChanged();
                 }

@@ -127,9 +127,9 @@ public class LeaveRequestActivity extends AppCompatActivity {
         reportyEmpName = myPref.getString("REPORTY_EMP_NAME", "");
         upload.setOnClickListener(view -> selectFile());
 
-        leaveTypeAdapter = new ArrayAdapter<>(LeaveRequestActivity.this, android.R.layout.simple_spinner_item, leavetypes);
+        leaveTypeAdapter = new ArrayAdapter<>(LeaveRequestActivity.this, android.R.layout.simple_list_item_1, leavetypes);
         leave_type.setAdapter(leaveTypeAdapter);
-        sessionAdapter = new ArrayAdapter<>(LeaveRequestActivity.this, android.R.layout.simple_spinner_item, session_values);
+        sessionAdapter = new ArrayAdapter<>(LeaveRequestActivity.this, android.R.layout.simple_list_item_1, session_values);
         session_spinner.setAdapter(sessionAdapter);
         getLeaveTypes(empCode);
         initDatePicker();
