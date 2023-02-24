@@ -16,6 +16,8 @@ import com.minda.sparsh.model.AlmsReportModel;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.text.SimpleDateFormat;
+import java.time.Month;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
@@ -67,6 +69,11 @@ public class ALMSRecyclerViewAdapter extends RecyclerView.Adapter<ALMSRecyclerVi
         }
         holder.date.setText(attendanceList.get(position).getEDATE().replace(".","/").split("/")[0]);
         holder.day.setText(attendanceList.get(position).getDAYNAME().toUpperCase());
+        Calendar cal  = Calendar.getInstance();
+        cal.set(Calendar.MONTH, (Integer.parseInt(attendanceList.get(position).getEDATE().replace(".","/").split("/")[1]))-1);
+        SimpleDateFormat month_date = new SimpleDateFormat("MMM");
+        String month_name = month_date.format(cal.getTime());
+        holder.month.setText(month_name);
 
         if(attendanceList.get(position).getEDATE().equals((day_now+"."+month_now+"."+year_now))){
             holder.row.setBackgroundColor(mContext.getResources().getColor(R.color.colorPrimary));
@@ -100,6 +107,8 @@ public class ALMSRecyclerViewAdapter extends RecyclerView.Adapter<ALMSRecyclerVi
         TextView punch_in;
         @BindView(R.id.punch_out)
         TextView punch_out;
+        @BindView(R.id.month)
+        TextView month;
 
         public ViewHolder(@NonNull @NotNull View itemView) {
             super(itemView);

@@ -500,7 +500,7 @@
                                                 android:layout_height="wrap_content"
                                                 android:layout_marginTop="20dp"
                                                 android:fontFamily="@font/museosans_700"
-                                                android:text="ALMS"
+                                                android:text="ALMS 2.0"
                                                 android:textColor="#4a4f54"
                                                 android:textSize="16sp"
                                                 android:visibility="visible" />
@@ -524,7 +524,7 @@
                                     android:layout_alignLeft="@+id/card_view_alms"
                                     android:layout_marginLeft="20dp"
                                     android:elevation="10dp"
-                                    android:src="@drawable/meeting" />
+                                    android:src="@drawable/alms2" />
 
                             </RelativeLayout>
                         </LinearLayout>

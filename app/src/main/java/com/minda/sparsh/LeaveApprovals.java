@@ -3,12 +3,10 @@ package com.minda.sparsh;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.os.PersistableBundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
@@ -18,7 +16,6 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.minda.sparsh.Adapter.LeaveApprovalAdapter;
-import com.minda.sparsh.Adapter.MyLeaveRequestAdapter;
 import com.minda.sparsh.listener.CarotResponse;
 import com.minda.sparsh.listener.OnTaskComplete;
 import com.minda.sparsh.model.ApplyLeaveResponse;
@@ -31,7 +28,6 @@ import java.util.List;
 
 import javax.net.ssl.HttpsURLConnection;
 
-import retrofit2.http.HTTP;
 
 public class LeaveApprovals extends AppCompatActivity implements LeaveApprovalAdapter.OnItemClickListener {
     Toolbar toolbar;

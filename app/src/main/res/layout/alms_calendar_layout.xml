@@ -24,7 +24,7 @@
         android:padding="20dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-    <androidx.cardview.widget.CardView
+       <androidx.cardview.widget.CardView
         android:id="@+id/calendar_card"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -136,7 +136,7 @@
                         />
                 </RelativeLayout>
                 <RelativeLayout
-                    android:layout_marginLeftv="10dp"
+                    android:layout_marginLeft="10dp"
                     android:layout_weight="1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
@@ -172,11 +172,12 @@
 
         </androidx.cardview.widget.CardView>
 
+
         <androidx.cardview.widget.CardView
             android:layout_marginTop="15dp"
             android:id="@+id/total_days_card"
             android:layout_below="@+id/punch_details"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:cardCornerRadius="20dp"
             >
@@ -207,13 +208,50 @@
                     android:layout_height="wrap_content"/>
             </RelativeLayout>
         </androidx.cardview.widget.CardView>
+        <androidx.cardview.widget.CardView
+            android:layout_marginTop="15dp"
+            android:visibility="gone"
+            android:id="@+id/total_leaves_card"
+            android:layout_below="@+id/total_days_card"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="20dp"
+            >
+            <RelativeLayout
+                android:padding="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_centerInParent="true"
+                    android:layout_alignParentLeft="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/leaves"
+                    android:textSize="18sp"
+                    android:fontFamily="@font/museosans_700"
+                    android:text="Leaves"
+                    />
+                <TextView
+                    android:background="@drawable/rec_bg_calendar"
+                    android:text=""
+                    android:textSize="20sp"
+                    android:padding="10dp"
+                    android:textColor="@color/white"
+                    android:fontFamily="@font/museosans_700"
+                    android:layout_alignParentRight="true"
+                    android:id="@+id/leaves_count"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+            </RelativeLayout>
+        </androidx.cardview.widget.CardView>
+
 
         <LinearLayout
             android:layout_marginTop="10dp"
             android:id="@+id/ll1"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_below="@+id/total_days_card"
+            android:layout_below="@+id/total_leaves_card"
             android:orientation="horizontal">
             <androidx.cardview.widget.CardView
                 android:layout_marginRight="10dp"
@@ -305,43 +343,45 @@
 
         </LinearLayout>
 
-<!--
-        <androidx.cardview.widget.CardView
-            android:layout_marginTop="15dp"
-            android:id="@+id/total_leave"
-            android:layout_below="@+id/ll1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:cardCornerRadius="20dp"
-            >
-            <RelativeLayout
-                android:padding="20dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <TextView
-                    android:layout_centerInParent="true"
-                    android:layout_alignParentLeft="true"
-                    android:layout_width="wrap_content"
+
+
+        <!--
+                <androidx.cardview.widget.CardView
+                    android:layout_marginTop="15dp"
+                    android:id="@+id/total_leave"
+                    android:layout_below="@+id/ll1"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/leaves"
-                    android:textSize="18sp"
-                    android:fontFamily="@font/museosans_700"
-                    android:text="Leaves"
-                    />
-                <TextView
-                    android:background="@drawable/rec_bg_calendar"
-                    android:text=""
-                    android:textSize="20sp"
-                    android:padding="10dp"
-                    android:textColor="@color/white"
-                    android:fontFamily="@font/museosans_700"
-                    android:layout_alignParentRight="true"
-                    android:id="@+id/leaves_count"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
-            </RelativeLayout>
-        </androidx.cardview.widget.CardView>
--->
+                    app:cardCornerRadius="20dp"
+                    >
+                    <RelativeLayout
+                        android:padding="20dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                        <TextView
+                            android:layout_centerInParent="true"
+                            android:layout_alignParentLeft="true"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/leaves"
+                            android:textSize="18sp"
+                            android:fontFamily="@font/museosans_700"
+                            android:text="Leaves"
+                            />
+                        <TextView
+                            android:background="@drawable/rec_bg_calendar"
+                            android:text=""
+                            android:textSize="20sp"
+                            android:padding="10dp"
+                            android:textColor="@color/white"
+                            android:fontFamily="@font/museosans_700"
+                            android:layout_alignParentRight="true"
+                            android:id="@+id/leaves_count"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
+                    </RelativeLayout>
+                </androidx.cardview.widget.CardView>
+        -->
 
     </RelativeLayout>
 

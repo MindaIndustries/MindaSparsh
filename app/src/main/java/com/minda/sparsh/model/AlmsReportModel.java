@@ -21,6 +21,8 @@ public class AlmsReportModel {
     String TotalPD;
     @SerializedName("TotalAD")
     String TotalAD;
+    @SerializedName("TotalLD")
+    String TotalLD;
 
     public String getDAY_IN() {
         return DAY_IN;
@@ -92,5 +94,13 @@ public class AlmsReportModel {
 
     public void setTotalAD(String totalAD) {
         TotalAD = totalAD;
+    }
+
+    public String getTotalLD() {
+        return TotalLD;
+    }
+
+    public void setTotalLD(String totalLD) {
+        TotalLD = totalLD;
     }
 }

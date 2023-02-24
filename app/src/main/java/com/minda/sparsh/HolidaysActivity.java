@@ -13,9 +13,6 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.minda.sparsh.Adapter.HolidayAdapter;
-import com.minda.sparsh.Adapter.MyLeaveRequestAdapter;
-import com.minda.sparsh.listener.CarotResponse;
-import com.minda.sparsh.listener.OnTaskComplete;
 import com.minda.sparsh.model.HolidayListModel;
 import com.minda.sparsh.services.AlmsServices;
 import com.minda.sparsh.util.Utility;
@@ -31,7 +28,7 @@ public class HolidaysActivity extends AppCompatActivity {
     RecyclerView holiday_list;
     String empCode, year;
     SharedPreferences myPref;
-    ArrayList<HolidayListModel> holidaylist =new ArrayList<HolidayListModel>();
+    ArrayList<HolidayListModel> holidaylist =new ArrayList<>();
     HolidayAdapter holidayAdapter;
 
 
@@ -60,19 +57,16 @@ public class HolidaysActivity extends AppCompatActivity {
 
     public void getHolidayList(String empcode, String year){
         AlmsServices almsServices = new AlmsServices();
-        almsServices.GetHolidayList(new OnTaskComplete() {
-            @Override
-            public void onTaskComplte(CarotResponse carotResponse) {
-                if(carotResponse.getStatuscode() == HttpsURLConnection.HTTP_OK){
-                    List<HolidayListModel> listModels = (List<HolidayListModel>) carotResponse.getData();
-                    if(listModels!=null && listModels.size()>0){
-                        holidaylist.addAll(listModels);
-                    }
-
-                    holidayAdapter.notifyDataSetChanged();
-
-
+        almsServices.GetHolidayList(carotResponse -> {
+            if(carotResponse.getStatuscode() == HttpsURLConnection.HTTP_OK){
+                List<HolidayListModel> listModels = (List<HolidayListModel>) carotResponse.getData();
+                if(listModels!=null && listModels.size()>0){
+                    holidaylist.addAll(listModels);
                 }
+
+                holidayAdapter.notifyDataSetChanged();
+
+
             }
         },empcode, year);
     }

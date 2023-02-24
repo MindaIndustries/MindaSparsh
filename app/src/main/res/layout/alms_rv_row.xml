@@ -35,7 +35,7 @@
                     android:layout_height="wrap_content"
                     android:id="@+id/date"
                     android:textSize="20sp"
-                    android:text="12"
+                    android:text=""
                     android:layout_marginTop="5dp"
                     android:textColor="@color/black"
                     />
@@ -48,11 +48,27 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/day"
-                    android:text="MON"
+                    android:text=""
                     android:maxLength="3"
                     android:textColor="@color/black"
                     android:textSize="20sp"
                     />
+
+                <TextView
+                    android:fontFamily="@font/museosans_700"
+                    android:gravity="center"
+                    android:layout_marginTop="20dp"
+                    android:layout_below="@+id/day"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/month"
+                    android:text=""
+                    android:maxLength="3"
+                    android:textColor="@color/black"
+                    android:textSize="20sp"
+                    />
+
+
 
             </RelativeLayout>
             <RelativeLayout
