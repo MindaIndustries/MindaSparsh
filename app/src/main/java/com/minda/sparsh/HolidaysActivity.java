@@ -4,10 +4,12 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatAutoCompleteTextView;
 import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -18,6 +20,8 @@ import com.minda.sparsh.services.AlmsServices;
 import com.minda.sparsh.util.Utility;
 
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import javax.net.ssl.HttpsURLConnection;
@@ -30,7 +34,10 @@ public class HolidaysActivity extends AppCompatActivity {
     SharedPreferences myPref;
     ArrayList<HolidayListModel> holidaylist =new ArrayList<>();
     HolidayAdapter holidayAdapter;
+    ArrayAdapter<String> yearsAdapter;
+    ArrayList<String> years = new ArrayList<>();
 
+    AppCompatAutoCompleteTextView yearDropdown;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -39,6 +46,7 @@ public class HolidaysActivity extends AppCompatActivity {
         toolbar = findViewById(R.id.toolbar);
         title = findViewById(R.id.title);
         holiday_list = findViewById(R.id.holiday_list);
+        yearDropdown = findViewById(R.id.year_dropdown);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
@@ -50,6 +58,21 @@ public class HolidaysActivity extends AppCompatActivity {
         LinearLayoutManager mLayoutManager = new LinearLayoutManager(HolidaysActivity.this, LinearLayoutManager.VERTICAL, false);
         holiday_list.setLayoutManager(mLayoutManager);
         holiday_list.setAdapter(holidayAdapter);
+        years.add("2023");
+
+        Calendar cal = Calendar.getInstance();
+        cal.set(Calendar.DAY_OF_MONTH,31);
+        cal.set(Calendar.MONTH,11);
+        cal.set(Calendar.YEAR,2023);
+        if(new Date(Calendar.getInstance().getTimeInMillis()).after(new Date(cal.getTimeInMillis()))){
+            years.add("2024");
+        }
+
+        yearsAdapter = new ArrayAdapter<>(HolidaysActivity.this, android.R.layout.simple_spinner_item,years);
+        yearDropdown.setAdapter(yearsAdapter);
+      //  yearDropdown.setSelection(0);
+        //yearDropdown.setText(Calendar.getInstance().get(Calendar.YEAR));
+
         if(Utility.isOnline(HolidaysActivity.this)) {
             getHolidayList(empCode, year);
         }

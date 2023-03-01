@@ -83,6 +83,11 @@ public class ALMSCalendarActivity extends AppCompatActivity {
         setContentView(R.layout.alms_calendar_layout);
         toolbar = findViewById(R.id.toolbar);
         title = findViewById(R.id.title);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        getSupportActionBar().setHomeAsUpIndicator(R.drawable.back);
+        title.setText("My Attendance");
         calendarLayout = findViewById(R.id.calendar_layout);
         listLayout = findViewById(R.id.list_layout);
         main_container = findViewById(R.id.main_container);
@@ -118,11 +123,6 @@ public class ALMSCalendarActivity extends AppCompatActivity {
 
         status = findViewById(R.id.status);
         ll1 = findViewById(R.id.ll1);
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
-        getSupportActionBar().setHomeAsUpIndicator(R.drawable.back);
-        title.setText("My Attendance");
         myPref = getSharedPreferences("MyPref", Context.MODE_PRIVATE);
         empCode = myPref.getString("Id", "Id");
         Reporty = myPref.getInt("Reporty", 0);
@@ -135,9 +135,14 @@ public class ALMSCalendarActivity extends AppCompatActivity {
         calendar1 = Calendar.getInstance();
 
         int day = calendar1.get(Calendar.DAY_OF_MONTH);
-        int month = calendar1.get(Calendar.MONTH)+1;
+        int month = calendar1.get(Calendar.MONTH) + 1;
         int year = calendar1.get(Calendar.YEAR);
         LocalDate localDate = LocalDate.of(year, month, day);
+
+        if(getIntent().getBooleanExtra("list",false)){
+            listLayout.setVisibility(View.VISIBLE);
+            calendarLayout.setVisibility(View.GONE);
+        }
 
         calendar_view.setCurrentDate(CalendarDay.from(localDate));
         calendar_view.getCurrentDate();
@@ -147,8 +152,8 @@ public class ALMSCalendarActivity extends AppCompatActivity {
         } else {
             fromDate = "21." + (calendar_view.getCurrentDate().getMonth() - 1) + "." + calendar_view.getCurrentDate().getYear();
         }
-        toDate = day+"."+ month+"."+year;
-     //   toDate = "20." + (calendar_view.getCurrentDate().getMonth()) + "." + calendar_view.getCurrentDate().getYear();
+        toDate = day + "." + month + "." + year;
+        //   toDate = "20." + (calendar_view.getCurrentDate().getMonth()) + "." + calendar_view.getCurrentDate().getYear();
         initDatePicker();
         date_current.setOnClickListener(view -> datePicker.show());
 
@@ -236,10 +241,9 @@ public class ALMSCalendarActivity extends AppCompatActivity {
             } else {
                 fromDate = "21." + (date.getMonth() - 1) + "." + date.getYear();
             }
-            if(date.getMonth() == calendar1.get(Calendar.MONTH)+1){
-                toDate = day+"."+ month+"."+year;
-            }
-            else {
+            if (date.getMonth() == calendar1.get(Calendar.MONTH) + 1) {
+                toDate = day + "." + month + "." + year;
+            } else {
                 toDate = "20." + (date.getMonth()) + "." + date.getYear();
             }
             Calendar cal = Calendar.getInstance();
@@ -257,13 +261,12 @@ public class ALMSCalendarActivity extends AppCompatActivity {
             } else {
                 fromDate = "21." + (date.getMonth() - 1) + "." + date.getYear();
             }
-            if(date.getMonth() == calendar1.get(Calendar.MONTH)+1){
-                toDate = day+"."+ month+"."+year;
-            }
-            else {
+            if (date.getMonth() == calendar1.get(Calendar.MONTH) + 1) {
+                toDate = day + "." + month + "." + year;
+            } else {
                 toDate = "20." + (date.getMonth()) + "." + date.getYear();
             }
-        //    toDate = "20." + (date.getMonth()) + "." + date.getYear();
+            //    toDate = "20." + (date.getMonth()) + "." + date.getYear();
             getConsolidatedReport(empCode, fromDate, toDate);
         });
 
@@ -271,7 +274,7 @@ public class ALMSCalendarActivity extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.alms_menu, menu);
+       // getMenuInflater().inflate(R.menu.alms_menu, menu);
         return true;
     }
 
@@ -279,15 +282,16 @@ public class ALMSCalendarActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull @NotNull MenuItem item) {
 
         if (item.getItemId() == android.R.id.home) {
-            if (calendarLayout.getVisibility() == View.VISIBLE) {
+            onBackPressed();
+           /* if (calendarLayout.getVisibility() == View.VISIBLE) {
                 onBackPressed();
             } else {
                 listLayout.setVisibility(View.GONE);
                 calendarLayout.setVisibility(View.VISIBLE);
                 item.setIcon(R.drawable.listview_icon);
             }
-            return true;
-        } else if (item.getItemId() == R.id.listview) {
+*/            return true;
+        }/* else if (item.getItemId() == R.id.listview) {
             if (calendarLayout.getVisibility() == View.VISIBLE) {
                 listLayout.setVisibility(View.VISIBLE);
                 calendarLayout.setVisibility(View.GONE);
@@ -298,7 +302,7 @@ public class ALMSCalendarActivity extends AppCompatActivity {
                 calendarLayout.setVisibility(View.VISIBLE);
                 item.setIcon(R.drawable.listview_icon);
             }
-        }
+        }*/
         return super.onOptionsItemSelected(item);
     }
 

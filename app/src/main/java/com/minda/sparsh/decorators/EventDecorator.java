@@ -1,5 +1,12 @@
 package com.minda.sparsh.decorators;
 
+import android.graphics.drawable.Drawable;
+
+import androidx.annotation.DrawableRes;
+import androidx.core.content.res.ResourcesCompat;
+
+import com.google.maps.android.ui.SquareTextView;
+import com.minda.sparsh.R;
 import com.prolificinteractive.materialcalendarview.CalendarDay;
 import com.prolificinteractive.materialcalendarview.DayViewDecorator;
 import com.prolificinteractive.materialcalendarview.DayViewFacade;
@@ -28,6 +35,8 @@ public class EventDecorator implements DayViewDecorator {
 
   @Override
   public void decorate(DayViewFacade view) {
-    view.addSpan(new DotSpan(8, color));
+    view.addSpan(new DotSpan(12, color));
+
   }
+
 }

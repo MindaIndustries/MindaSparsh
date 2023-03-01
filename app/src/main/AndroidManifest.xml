@@ -302,6 +302,10 @@
             android:name=".HolidaysActivity"
             android:screenOrientation="portrait"
             android:theme="@style/spinnertheme" />
+        <activity
+            android:name=".ALMSDashboardActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/spinnertheme" />
 
         <meta-data
             android:name="io.fabric.ApiKey"

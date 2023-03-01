@@ -10,6 +10,7 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.minda.sparsh.ALMSCalendarActivity;
+import com.minda.sparsh.ALMSDashboardActivity;
 import com.minda.sparsh.BottomUpConcernActivity;
 import com.minda.sparsh.DashBoardActivity;
 import com.minda.sparsh.EHS_Home;
@@ -75,7 +76,7 @@ public class ThreeFragment extends Fragment {
         card_view_alms.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent in = new Intent(getActivity(), ALMSCalendarActivity.class);
+                Intent in = new Intent(getActivity(), ALMSDashboardActivity.class);
                 startActivity(in);
 
             }

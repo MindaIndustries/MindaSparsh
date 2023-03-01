@@ -49,7 +49,7 @@ public class AbnormalityAdapter extends BaseAdapter {
     private final ProgressDialog progress;
     long time, time_target, time_update, time_abnormility, oneday = 86400000;
     private String mUserChoosenTask = "";
-    String username,empcode;
+    String username, empcode;
 
     SharedPreferences myPref;
 
@@ -127,279 +127,276 @@ public class AbnormalityAdapter extends BaseAdapter {
             holder = (ViewHolder) convertView.getTag();
         }
 
-                holder.tv_updatedby.setText(homeData.get(position).getUploadedBy());
-            holder.level.setText(homeData.get(position).getFlag());
-            holder.remark.setOnClickListener(view -> {
-                if(holder.remark.getText().toString()!=null && !holder.remark.getText().toString().equals("NA")  ) {
-                    showRemarks(holder.remark.getText().toString());
-                }
-            });
-
-            switch(homeData.get(position).getFlag()){
-                case "Pending for assigning at BEST Coordinator":
-                    holder.remark.setText("NA");
-                    break;
-                case "Pending at HOD":
-                    if(homeData.get(position).getAssignRemark()!=null) {
-                        holder.remark.setText("" + homeData.get(position).getAssignRemark());
-                    }
-                    break;
-                case "Pending at User":
-                    if(homeData.get(position).getSendBackRemark()!=null) {
-                        holder.remark.setText("" + homeData.get(position).getSendBackRemark());
-                    }
-                    break;
-                case "Pending for approval at BEST Coordinator":
-                    holder.remark.setText("NA");
-                    break;
-                case "Closed":
-                    if(homeData.get(position).getCloserRemark()!=null) {
-                        holder.remark.setText("" + homeData.get(position).getCloserRemark());
-                    }
-                    break;
-
+        holder.tv_updatedby.setText(homeData.get(position).getUploadedBy());
+        holder.level.setText(homeData.get(position).getFlag());
+        holder.remark.setOnClickListener(view -> {
+            if (holder.remark.getText().toString() != null && !holder.remark.getText().toString().equals("NA")) {
+                showRemarks(holder.remark.getText().toString());
             }
-            if (homeData.get(position).getTargetDate() != null && !homeData.get(position).getTargetDate().equalsIgnoreCase("")) {
-                holder.tv_test_date.setText(homeData.get(position).getTargetDate());
+        });
+
+        switch (homeData.get(position).getFlag()) {
+            case "Pending for assigning at BEST Coordinator":
+                holder.remark.setText("NA");
+                break;
+            case "Pending at HOD":
+                if (homeData.get(position).getAssignRemark() != null) {
+                    holder.remark.setText("" + homeData.get(position).getAssignRemark());
+                }
+                break;
+            case "Pending at User":
+                if (homeData.get(position).getSendBackRemark() != null) {
+                    holder.remark.setText("" + homeData.get(position).getSendBackRemark());
+                }
+                break;
+            case "Pending for approval at BEST Coordinator":
+                holder.remark.setText("NA");
+                break;
+            case "Closed":
+                if (homeData.get(position).getCloserRemark() != null) {
+                    holder.remark.setText("" + homeData.get(position).getCloserRemark());
+                }
+                break;
+
+        }
+        if (homeData.get(position).getTargetDate() != null && !homeData.get(position).getTargetDate().equalsIgnoreCase("")) {
+            holder.tv_test_date.setText(homeData.get(position).getTargetDate());
+        }
+        else{
+            holder.tv_test_date.setText("Add Date");
+
+        }
+
+        holder.tv_result.setText(homeData.get(position).getBenefits());
+        if (homeData.get(position).getTargetDate() != null) {
+            String tergetdate, updatedate, abnormilitydate;
+
+            tergetdate = homeData.get(position).getTargetDate() + " " + "11:59 PM";
+            updatedate = homeData.get(position).getImplementationDate() + " " + "11:59 PM";
+            abnormilitydate = homeData.get(position).getAbnormalityDate() + " " + "11:59 PM";
+
+            SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy hh:mm a");
+            try {
+                Date mDate = sdf.parse(tergetdate);
+                time_target = mDate.getTime();
+                if (homeData.get(position).getImplementationDate() != null) {
+                    Date mDate1 = sdf.parse(updatedate);
+                    time_update = mDate1.getTime();
+                }
+                Date mDate2 = sdf.parse(abnormilitydate);
+                time_abnormility = mDate2.getTime();
+
+            } catch (ParseException e) {
+                e.printStackTrace();
             }
 
-            holder.tv_result.setText(homeData.get(position).getBenefits());
-            if (homeData.get(position).getTargetDate() != null) {
-                String tergetdate, updatedate, abnormilitydate;
+            if (time_target < time) {
 
-                tergetdate = homeData.get(position).getTargetDate() + " " + "11:59 PM";
-                updatedate = homeData.get(position).getImplementationDate() + " " + "11:59 PM";
-                abnormilitydate = homeData.get(position).getAbnormalityDate() + " " + "11:59 PM";
-
-                SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy hh:mm a");
-                try {
-                    Date mDate = sdf.parse(tergetdate);
-                    time_target = mDate.getTime();
-                    if(homeData.get(position).getImplementationDate()!=null) {
-                        Date mDate1 = sdf.parse(updatedate);
-                        time_update = mDate1.getTime();
+                if (homeData.get(position).getStatus()) {
+                    holder.tv_status.setBackgroundResource(R.color.red);
+                    if (time_update != 0) {
+                        holder.tv_status.setText(String.valueOf((time_update - time_target) / oneday) + " D Late");
+                    } else {
+                        holder.tv_status.setText(String.valueOf((time - time_target) / oneday) + " D Late");
                     }
-                    Date mDate2 = sdf.parse(abnormilitydate);
-                    time_abnormility = mDate2.getTime();
 
-                } catch (ParseException e) {
-                    e.printStackTrace();
-                }
-
-                if (time_target < time) {
-
-                    if (homeData.get(position).getStatus()) {
-                        holder.tv_status.setBackgroundResource(R.color.red);
+                } else {
+                    if (time_update > time_target) {
+                        holder.tv_status.setBackgroundResource(R.color.orange);
                         if (time_update != 0) {
                             holder.tv_status.setText(String.valueOf((time_update - time_target) / oneday) + " D Late");
                         } else {
                             holder.tv_status.setText(String.valueOf((time - time_target) / oneday) + " D Late");
                         }
-
                     } else {
-                        if (time_update > time_target) {
-                            holder.tv_status.setBackgroundResource(R.color.orange);
-                            if (time_update != 0) {
-                                holder.tv_status.setText(String.valueOf((time_update - time_target) / oneday) + " D Late");
-                            } else {
-                                holder.tv_status.setText(String.valueOf((time - time_target) / oneday) + " D Late");
-                            }
-                        } else {
-                            holder.tv_status.setBackgroundResource(R.color.green);
-                        }
-                    }
-                } else {
-                    if (homeData.get(position).getStatus()) {
-                        holder.tv_status.setBackgroundResource(R.color.white);
-                    } else {
-                        if (time_update > time_target) {
-                            holder.tv_status.setBackgroundResource(R.color.orange);
-                            if (time_update != 0) {
-                                holder.tv_status.setText(String.valueOf((time_update - time_target) / oneday) + " D Late");
-                            } else {
-                                holder.tv_status.setText(String.valueOf((time - time_target) / oneday) + " D Late");
-                            }
-                        } else {
-                            holder.tv_status.setBackgroundResource(R.color.green);
-                        }
-
+                        holder.tv_status.setBackgroundResource(R.color.green);
                     }
                 }
-
-
             } else {
-                String abnormilitydate;
-
-                abnormilitydate = homeData.get(position).getAbnormalityDate() + " " + "11:59 PM";
-
-
-                SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy hh:mm a");
-                try {
-                    Date mDate = sdf.parse(abnormilitydate);
-                    time_abnormility = mDate.getTime();
-                } catch (ParseException e) {
-                    e.printStackTrace();
-                }
-
-                if (time_abnormility + (3 * oneday) < time) {
-                    holder.tv_status.setBackgroundResource(R.color.red);
-                } else {
+                if (homeData.get(position).getStatus()) {
                     holder.tv_status.setBackgroundResource(R.color.white);
+                } else {
+                    if (time_update > time_target) {
+                        holder.tv_status.setBackgroundResource(R.color.orange);
+                        if (time_update != 0) {
+                            holder.tv_status.setText(String.valueOf((time_update - time_target) / oneday) + " D Late");
+                        } else {
+                            holder.tv_status.setText(String.valueOf((time - time_target) / oneday) + " D Late");
+                        }
+                    } else {
+                        holder.tv_status.setBackgroundResource(R.color.green);
+                    }
+
                 }
             }
 
-            holder.tv_Actual_date.setText(homeData.get(position).getImplementationDate());
+
+        } else {
+            String abnormilitydate;
+
+            abnormilitydate = homeData.get(position).getAbnormalityDate() + " " + "11:59 PM";
+
+
+            SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy hh:mm a");
+            try {
+                Date mDate = sdf.parse(abnormilitydate);
+                time_abnormility = mDate.getTime();
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+
+            if (time_abnormility + (3 * oneday) < time) {
+                holder.tv_status.setBackgroundResource(R.color.red);
+            } else {
+                holder.tv_status.setBackgroundResource(R.color.white);
+            }
+        }
+
+        holder.tv_Actual_date.setText(homeData.get(position).getImplementationDate());
 //            holder.tv_test_date.setText(homeData.get(position).getAbnormalityDate());
-            holder.tv_action.setText(homeData.get(position).getAction());
-            holder.tv_department.setText(homeData.get(position).getDepartmentName());
-            holder.tv_plant.setText(homeData.get(position).getPlantName());
-            holder.tv_business.setText(homeData.get(position).getBusinessName());
-            holder.tv_category.setText(homeData.get(position).getCategory());
-            holder.tv_domain.setText(homeData.get(position).getDomain());
-            holder.tv_date.setText(homeData.get(position).getAbnormalityDate());
-            holder.tv_abnormality.setText(homeData.get(position).getDescription());
-            holder.tv_sn.setText(String.valueOf(position + 1));
-            holder.tv_uplodedBy.setText(homeData.get(position).getUpdatedBy());
-            holder.tv_abnormality.setOnClickListener(view -> {
-                if (homeData.get(position).getDescription().length() != 0)
-                    showdetail("Abnormality", homeData.get(position).getDescription());
-            });
-            holder.tv_action.setOnClickListener(view -> {
-                if (homeData.get(position).getAction() != null) {
-                    if (homeData.get(position).getAction().length() != 0)
-                        showdetail("Action", homeData.get(position).getAction());
-                }
-            });
-            holder.tv_result.setOnClickListener(view -> {
-                if (homeData.get(position).getBenefits() != null) {
-                    if (homeData.get(position).getBenefits().length() != 0)
-                        showdetail("Benifits", homeData.get(position).getBenefits());
-                }
-            });
+        holder.tv_action.setText(homeData.get(position).getAction());
+        holder.tv_department.setText(homeData.get(position).getDepartmentName());
+        holder.tv_plant.setText(homeData.get(position).getPlantName());
+        holder.tv_business.setText(homeData.get(position).getBusinessName());
+        holder.tv_category.setText(homeData.get(position).getCategory());
+        holder.tv_domain.setText(homeData.get(position).getDomain());
+        holder.tv_date.setText(homeData.get(position).getAbnormalityDate());
+        holder.tv_abnormality.setText(homeData.get(position).getDescription());
+        holder.tv_sn.setText(String.valueOf(position + 1));
+        holder.tv_uplodedBy.setText(homeData.get(position).getUpdatedBy());
+        holder.tv_abnormality.setOnClickListener(view -> {
+            if (homeData.get(position).getDescription().length() != 0)
+                showdetail("Abnormality", homeData.get(position).getDescription());
+        });
+        holder.tv_action.setOnClickListener(view -> {
+            if (homeData.get(position).getAction() != null) {
+                if (homeData.get(position).getAction().length() != 0)
+                    showdetail("Action", homeData.get(position).getAction());
+            }
+        });
+        holder.tv_result.setOnClickListener(view -> {
+            if (homeData.get(position).getBenefits() != null) {
+                if (homeData.get(position).getBenefits().length() != 0)
+                    showdetail("Benifits", homeData.get(position).getBenefits());
+            }
+        });
 
-            holder.tv_update.setOnClickListener(view -> {
+        holder.tv_update.setOnClickListener(view -> {
 
-                // showUpdateOptions();
-                if (AbnormalityAddressingActivity.Role.equalsIgnoreCase("C")) {
-                    if (holder.tv_test_date.getText().toString() != null && holder.tv_test_date.getText().toString().length() > 0 && !holder.tv_test_date.getText().toString().equalsIgnoreCase("Add Date")/*get(position).getTargetDate() != null*/) {
-                        Intent intent = new Intent(mContext, AbnormalityAddressing2Activity.class);
-                        intent.putExtra("ID", homeData.get(position).getID());
-                        intent.putExtra("domain", homeData.get(position).getDomain());
-                        intent.putExtra("business", homeData.get(position).getBusinessName());
-                        intent.putExtra("plant", homeData.get(position).getPlantName());
-                        intent.putExtra("department", homeData.get(position).getDepartmentName());
-                        mContext.startActivity(intent);
-                        AbnormalityAddressingActivity context = (AbnormalityAddressingActivity) mContext;
-                        context.finish();
-                    } else {
-                        Snackbar.make(view, "Please Set Target Date First", Snackbar.LENGTH_LONG).show();
-                    }
+            // showUpdateOptions();
+            if (AbnormalityAddressingActivity.Role.equalsIgnoreCase("C")) {
+                if (holder.tv_test_date.getText().toString() != null && holder.tv_test_date.getText().toString().length() > 0 && !holder.tv_test_date.getText().toString().equalsIgnoreCase("Add Date")/*get(position).getTargetDate() != null*/) {
+                    Intent intent = new Intent(mContext, AbnormalityAddressing2Activity.class);
+                    intent.putExtra("ID", homeData.get(position).getID());
+                    intent.putExtra("domain", homeData.get(position).getDomain());
+                    intent.putExtra("business", homeData.get(position).getBusinessName());
+                    intent.putExtra("plant", homeData.get(position).getPlantName());
+                    intent.putExtra("department", homeData.get(position).getDepartmentName());
+                    mContext.startActivity(intent);
+                    AbnormalityAddressingActivity context = (AbnormalityAddressingActivity) mContext;
+                    context.finish();
                 } else {
-                    Snackbar.make(view, "You are not Authorized", Snackbar.LENGTH_LONG).show();
+                    Snackbar.make(view, "Please Set Target Date First", Snackbar.LENGTH_LONG).show();
                 }
-            });
+            } else {
+                Snackbar.make(view, "You are not Authorized", Snackbar.LENGTH_LONG).show();
+            }
+        });
 
-            holder.tv_view.setOnClickListener(view -> {
+        holder.tv_view.setOnClickListener(view -> {
                /* Intent intent = new Intent(mContext, ViewImageActivity.class);
                 intent.putExtra("ID", homeData.get(position).getID());
                 intent.putExtra("Level",homeData.get(position).getFlag());
                 mContext.startActivity(intent);
           */
-                switch(homeData.get(position).getFlag()){
-                    case "Pending at HOD":
-                        if (AbnormalityAddressingActivity.Role.equalsIgnoreCase("HOD") && homeData.get(position).getAssignedto().equals(empcode)) {
-                            if (holder.tv_test_date.getText().toString() != null && holder.tv_test_date.getText().toString().length() > 0 && !holder.tv_test_date.getText().toString().equalsIgnoreCase("Add Date")/*get(position).getTargetDate() != null*/) {
-                                Intent intent = new Intent(mContext, AbnormalityAddressing2Activity.class);
-                                intent.putExtra("ID", homeData.get(position).getID());
-                                intent.putExtra("domain", homeData.get(position).getDomain());
-                                intent.putExtra("business", homeData.get(position).getBusinessName());
-                                intent.putExtra("plant", homeData.get(position).getPlantName());
-                                intent.putExtra("department", homeData.get(position).getDepartmentName());
-                                mContext.startActivity(intent);
-                                AbnormalityAddressingActivity context = (AbnormalityAddressingActivity) mContext;
-                                context.finish();
-                            }
-
-                            else{
-                                Intent intent = new Intent(mContext, ViewImageActivity.class);
-                                intent.putExtra("ID", homeData.get(position).getID());
-                                intent.putExtra("Level",homeData.get(position).getFlag());
-                                intent.putExtra("assignedto", homeData.get(position).getAssignedto());
-                                mContext.startActivity(intent);
-
-                            }
-
-                        }else {
+            switch (homeData.get(position).getFlag()) {
+                case "Pending at HOD":
+                    if (AbnormalityAddressingActivity.Role.equalsIgnoreCase("HOD") && homeData.get(position).getAssignedto().equals(empcode)) {
+                        if (holder.tv_test_date.getText().toString() != null && holder.tv_test_date.getText().toString().length() > 0 && !holder.tv_test_date.getText().toString().equalsIgnoreCase("Add Date")/*get(position).getTargetDate() != null*/) {
+                            Intent intent = new Intent(mContext, AbnormalityAddressing2Activity.class);
+                            intent.putExtra("ID", homeData.get(position).getID());
+                            intent.putExtra("domain", homeData.get(position).getDomain());
+                            intent.putExtra("business", homeData.get(position).getBusinessName());
+                            intent.putExtra("plant", homeData.get(position).getPlantName());
+                            intent.putExtra("department", homeData.get(position).getDepartmentName());
+                            mContext.startActivity(intent);
+                            AbnormalityAddressingActivity context = (AbnormalityAddressingActivity) mContext;
+                            context.finish();
+                        } else {
                             Intent intent = new Intent(mContext, ViewImageActivity.class);
                             intent.putExtra("ID", homeData.get(position).getID());
-                            intent.putExtra("Level",homeData.get(position).getFlag());
+                            intent.putExtra("Level", homeData.get(position).getFlag());
+                            intent.putExtra("assignedto", homeData.get(position).getAssignedto());
                             mContext.startActivity(intent);
 
-                            // Snackbar.make(view, "Please Set Target Date First", Snackbar.LENGTH_LONG).show();
                         }
-                        break;
-                    case "Pending for assigning at BEST Coordinator":
-                    case "Closed":
-                        Intent intent = new Intent(mContext, ViewImageActivity.class);
-                        intent.putExtra("ID", homeData.get(position).getID());
-                        intent.putExtra("Level",homeData.get(position).getFlag());
-                        mContext.startActivity(intent);
-                        break;
-                    case "Pending for approval at BEST Coordinator":
-
-                        if(AbnormalityAddressingActivity.Role.equalsIgnoreCase("C")) {
-                            Intent intent1 = new Intent(mContext, ViewImageActivity.class);
-                            intent1.putExtra("ID", homeData.get(position).getID());
-                            intent1.putExtra("Level", homeData.get(position).getFlag());
-                            mContext.startActivity(intent1);
-                        }
-                        else{
-                            Intent intent1 = new Intent(mContext, ViewImageActivity.class);
-                            intent1.putExtra("ID", homeData.get(position).getID());
-                            intent1.putExtra("Level", homeData.get(position).getFlag());
-                            mContext.startActivity(intent1);
-
-                        }
-                        break;
-                    case "Pending at User":
-                        if(username.equalsIgnoreCase(homeData.get(position).getUploadedBy())){
-                            Intent intent4 = new Intent(mContext, AbnormalityAddressingActivity.class);
-                            intent4.putExtra("ab", (Parcelable) homeData.get(position));
-                            intent4.putExtra("ADD", true);
-                            mContext.startActivity(intent4);
-                        }
-                        else{
-                            Intent intent3 = new Intent(mContext, ViewImageActivity.class);
-                            intent3.putExtra("ID", homeData.get(position).getID());
-                            intent3.putExtra("Level",homeData.get(position).getFlag());
-                            intent3.putExtra("uploadedby",homeData.get(position).getUploadedBy());
-                            mContext.startActivity(intent3);
-                        }
-                        break;
-
-                }
-
-            });
-
-            holder.tv_test_date.setOnClickListener(view -> {
-
-                if (AbnormalityAddressingActivity.Role.equalsIgnoreCase("C")) {
-                    if (holder.tv_test_date.getText().toString().equalsIgnoreCase("Add Date")) {
-                        setdate(homeData.get(position).getID(), position, holder.tv_test_date);
 
                     } else {
-                        Snackbar.make(view, "You have Already set Target Date", Snackbar.LENGTH_LONG).show();
-                    }
+                        Intent intent = new Intent(mContext, ViewImageActivity.class);
+                        intent.putExtra("ID", homeData.get(position).getID());
+                        intent.putExtra("Level", homeData.get(position).getFlag());
+                        mContext.startActivity(intent);
 
+                        // Snackbar.make(view, "Please Set Target Date First", Snackbar.LENGTH_LONG).show();
+                    }
+                    break;
+                case "Pending for assigning at BEST Coordinator":
+                case "Closed":
+                    Intent intent = new Intent(mContext, ViewImageActivity.class);
+                    intent.putExtra("ID", homeData.get(position).getID());
+                    intent.putExtra("Level", homeData.get(position).getFlag());
+                    mContext.startActivity(intent);
+                    break;
+                case "Pending for approval at BEST Coordinator":
+
+                    if (AbnormalityAddressingActivity.Role.equalsIgnoreCase("C")) {
+                        Intent intent1 = new Intent(mContext, ViewImageActivity.class);
+                        intent1.putExtra("ID", homeData.get(position).getID());
+                        intent1.putExtra("Level", homeData.get(position).getFlag());
+                        mContext.startActivity(intent1);
+                    } else {
+                        Intent intent1 = new Intent(mContext, ViewImageActivity.class);
+                        intent1.putExtra("ID", homeData.get(position).getID());
+                        intent1.putExtra("Level", homeData.get(position).getFlag());
+                        mContext.startActivity(intent1);
+
+                    }
+                    break;
+                case "Pending at User":
+                    if (username.equalsIgnoreCase(homeData.get(position).getUploadedBy())) {
+                        Intent intent4 = new Intent(mContext, AbnormalityAddressingActivity.class);
+                        intent4.putExtra("ab", (Parcelable) homeData.get(position));
+                        intent4.putExtra("ADD", true);
+                        mContext.startActivity(intent4);
+                    } else {
+                        Intent intent3 = new Intent(mContext, ViewImageActivity.class);
+                        intent3.putExtra("ID", homeData.get(position).getID());
+                        intent3.putExtra("Level", homeData.get(position).getFlag());
+                        intent3.putExtra("uploadedby", homeData.get(position).getUploadedBy());
+                        mContext.startActivity(intent3);
+                    }
+                    break;
+
+            }
+
+        });
+
+        holder.tv_test_date.setOnClickListener(view -> {
+
+            if (AbnormalityAddressingActivity.Role.equalsIgnoreCase("C")) {
+                if (holder.tv_test_date.getText().toString().equalsIgnoreCase("Add Date")) {
+                    setdate(homeData.get(position).getID(), position, holder.tv_test_date);
 
                 } else {
-                    Snackbar.make(view, "You are not Authorized", Snackbar.LENGTH_LONG).show();
+                    Snackbar.make(view, "You have Already set Target Date", Snackbar.LENGTH_LONG).show();
                 }
-            });
-            //"\n" + promotionData.get(position).getEventDate());
 
 
-
+            } else {
+                Snackbar.make(view, "You are not Authorized", Snackbar.LENGTH_LONG).show();
+            }
+        });
+        //"\n" + promotionData.get(position).getEventDate());
 
 
         return convertView;

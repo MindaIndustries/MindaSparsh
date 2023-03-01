@@ -33,6 +33,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/calendar_view"
+            app:mcv_monthLabels="@color/black_dark"
+            app:mcv_weekDayTextAppearance="@color/black_dark"
             />
     </androidx.cardview.widget.CardView>
 
@@ -422,6 +424,7 @@
 
     </ScrollView>
     <RelativeLayout
+        android:visibility="gone"
         android:layout_alignParentBottom="true"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
