@@ -6,10 +6,12 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -113,9 +115,26 @@ public class ALMSCalendarActivity extends AppCompatActivity {
         leave_regular_btn1 = findViewById(R.id.leave_regular_btn1);
         holidays = findViewById(R.id.holiday_list);
         holidays1 = findViewById(R.id.holiday_list1);
-        progressDialog = new ProgressDialog(this);
-        progressDialog.setMessage("Loading...");
+     /*   progressDialog = new ProgressDialog(this);
+        progressDialog.setContentView(R.layout.progress_bar_layout);
+        progressDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+     //   progressDialog.setIndeterminate(true);
+
+       // progressDialog.setMessage("Loading...");
         progressDialog.setCancelable(false);
+*/
+
+        progressDialog = new ProgressDialog(this);
+        try {
+            progressDialog.show();
+        } catch (WindowManager.BadTokenException e) {
+
+        }
+        progressDialog.setCancelable(false);
+        progressDialog.getWindow()
+                .setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
+        progressDialog.setContentView(R.layout.progress_bar_layout);
+        // dialog.setMessage(Message);
 
 
         expandable_fab = findViewById(R.id.expandable_fab);

@@ -119,6 +119,10 @@ public class ALMSDashboardActivity extends AppCompatActivity {
                     Intent in1 = new Intent(ALMSDashboardActivity.this, LeaveRegularizationActivity.class);
                     startActivity(in1);
                     break;
+                case R.id.comp_off_credit:
+                    Intent in2 = new Intent(ALMSDashboardActivity.this, LeaveCompOffCredit.class);
+                    startActivity(in2);
+                    break;
             }
             return true;
         });

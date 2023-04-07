@@ -165,7 +165,7 @@ public class LeaveRequestActivity extends AppCompatActivity {
             } else {
                 customerSpinnerLayout9.setVisibility(View.GONE);
             }
-            getLeaveBalance(empCode, year, leavetypeAbb);
+          //  getLeaveBalance(empCode, year, leavetypeAbb);
 
             if (leavetypes.get(i).contains("Sick Leave") && (no_sick_leave_allowed || no_sick_leave_allowed1)) {
                 Toast.makeText(LeaveRequestActivity.this, " Future date is not allowed in the Sick Leave", Toast.LENGTH_LONG).show();
@@ -193,7 +193,6 @@ public class LeaveRequestActivity extends AppCompatActivity {
 
             if (start_date.getText().toString().length() == 0) {
                 Toast.makeText(LeaveRequestActivity.this, "Please select Start Date", Toast.LENGTH_LONG).show();
-
                 return;
 
             } else if (end_date.getText().toString().length() == 0) {
@@ -205,7 +204,7 @@ public class LeaveRequestActivity extends AppCompatActivity {
             } else if (!leaveType.contains("Leave Without Pay") && Double.parseDouble(available_bal.getText().toString()) <= 0) {
                 Toast.makeText(LeaveRequestActivity.this, "You do not have Leave Balance", Toast.LENGTH_LONG).show();
                 return;
-            } else if (no_of_days.getText().toString().length() == 0 || Double.parseDouble(no_of_days.getText().toString()) <= 0) {
+            } else if ((no_of_days.getVisibility()== View.VISIBLE) &&( no_of_days.getText().toString().length() == 0 || Double.parseDouble(no_of_days.getText().toString()) <= 0)) {
                 return;
             }
             if (Utility.isOnline(LeaveRequestActivity.this)) {

@@ -27,6 +27,8 @@ public class LeaveBalanceModel {
     int LTA_Balance;
     @SerializedName("Balance")
     double Balance;
+    @SerializedName("Applied")
+    double Applied;
 
 
     public String getLeaveType() {
@@ -123,5 +125,13 @@ public class LeaveBalanceModel {
 
     public void setBalance(double balance) {
         Balance = balance;
+    }
+
+    public double getApplied() {
+        return Applied;
+    }
+
+    public void setApplied(double applied) {
+        Applied = applied;
     }
 }

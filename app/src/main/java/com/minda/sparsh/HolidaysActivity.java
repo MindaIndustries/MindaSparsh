@@ -70,8 +70,8 @@ public class HolidaysActivity extends AppCompatActivity {
 
         yearsAdapter = new ArrayAdapter<>(HolidaysActivity.this, android.R.layout.simple_spinner_item,years);
         yearDropdown.setAdapter(yearsAdapter);
-      //  yearDropdown.setSelection(0);
-        //yearDropdown.setText(Calendar.getInstance().get(Calendar.YEAR));
+        yearDropdown.setSelection(0);
+        yearDropdown.setText(""+Calendar.getInstance().get(Calendar.YEAR));
 
         if(Utility.isOnline(HolidaysActivity.this)) {
             getHolidayList(empCode, year);

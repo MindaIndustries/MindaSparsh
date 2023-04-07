@@ -52,6 +52,8 @@ public class LeaveBalanceActivity extends AppCompatActivity implements MyLeaveRe
     ArrayList<String> leaveTypes = new ArrayList<>();
     String reqType;
     View view;
+    TextView balance_value, availed1, applied1, balance_value1, availed2, applied_value, balance_value3, availed3, applied_value3, balance_value4, availed4, applied_value4;
+
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -68,6 +70,21 @@ public class LeaveBalanceActivity extends AppCompatActivity implements MyLeaveRe
         empCode = myPref.getString("Id", "Id");
         calendar = Calendar.getInstance();
         year = String.valueOf(calendar.get(Calendar.YEAR));
+
+        balance_value = findViewById(R.id.balance_value);
+        availed1 = findViewById(R.id.availed1);
+        applied1 = findViewById(R.id.applied1);
+        balance_value1 = findViewById(R.id.balance_value1);
+        availed2 = findViewById(R.id.availed2);
+        applied_value = findViewById(R.id.applied_value);
+        balance_value3 = findViewById(R.id.balance_value3);
+        availed3 = findViewById(R.id.availed3);
+        applied_value3 = findViewById(R.id.applied_value3);
+        balance_value4 = findViewById(R.id.balance_value4);
+        availed4 = findViewById(R.id.availed4);
+        applied_value4 = findViewById(R.id.applied_value4);
+
+
         leave1 = findViewById(R.id.leave1);
         leave2 = findViewById(R.id.leave2);
         leave3 = findViewById(R.id.leave3);
@@ -140,23 +157,27 @@ public class LeaveBalanceActivity extends AppCompatActivity implements MyLeaveRe
                         switch (leaveBalanceModel.getLeaveType()) {
                             case "Casual Leave":
                                 leave1.setText(leaveBalanceModel.getLeaveType());
-                                leave1_value.setText("" + leaveBalanceModel.getAvailableBalance() + "/");
-                                leave1_value_out.setText("" + leaveBalanceModel.getTotalEligible());
+                                balance_value.setText("" + leaveBalanceModel.getAvailableBalance());
+                                availed1.setText("" + leaveBalanceModel.getAvailed());
+                                applied1.setText("" + leaveBalanceModel.getApplied());
                                 break;
                             case "EL (Encashable)":
                                 leave2.setText(leaveBalanceModel.getLeaveType());
-                                leave2_value.setText("" + leaveBalanceModel.getAvailableBalance() + "/");
-                                leave2_value_out.setText("" + leaveBalanceModel.getTotalEligible());
+                                balance_value1.setText("" + leaveBalanceModel.getAvailableBalance());
+                                availed2.setText("" + leaveBalanceModel.getAvailed());
+                                applied_value.setText("" + leaveBalanceModel.getApplied());
                                 break;
                             case "EL (Non Encashable)":
                                 leave3.setText(leaveBalanceModel.getLeaveType());
-                                leave3_value.setText("" + leaveBalanceModel.getAvailableBalance() + "/");
-                                leave3_value_out.setText("" + leaveBalanceModel.getTotalEligible());
+                                balance_value3.setText("" + leaveBalanceModel.getAvailableBalance());
+                                availed3.setText("" + leaveBalanceModel.getAvailed());
+                                applied_value3.setText("" + leaveBalanceModel.getApplied());
                                 break;
                             case "Sick Leave":
                                 leave4.setText(leaveBalanceModel.getLeaveType());
-                                leave4_value.setText("" + leaveBalanceModel.getAvailableBalance() + "/");
-                                leave4_value_out.setText("" + leaveBalanceModel.getTotalEligible());
+                                balance_value4.setText("" + leaveBalanceModel.getAvailableBalance());
+                                availed4.setText("" + leaveBalanceModel.getAvailed());
+                                applied_value4.setText("" + leaveBalanceModel.getApplied());
                                 break;
                         }
                     }
@@ -187,7 +208,7 @@ public class LeaveBalanceActivity extends AppCompatActivity implements MyLeaveRe
                         calendar1.set(Calendar.DAY_OF_MONTH, Integer.parseInt(date2[0]));
                         calendar1.set(Calendar.MONTH, (Integer.parseInt(date2[1]) - 1));
                         calendar1.set(Calendar.YEAR, Integer.parseInt(date2[2]));
-                        if (calendar1.before(calendar)){
+                        if (calendar1.before(calendar)) {
                             return 1;
                         } else if (calendar1.after(calendar)) {
                             return -1;
@@ -227,7 +248,7 @@ public class LeaveBalanceActivity extends AppCompatActivity implements MyLeaveRe
                         calendar1.set(Calendar.YEAR, Integer.parseInt(date2[2]));
 
 
-                        if (calendar1.before(calendar)){
+                        if (calendar1.before(calendar)) {
                             return 1;
                         } else if (calendar1.after(calendar)) {
                             return -1;
@@ -248,9 +269,9 @@ public class LeaveBalanceActivity extends AppCompatActivity implements MyLeaveRe
     public void onClick(View view, int position) {
         this.view = view;
         if (leave_req.getVisibility() == View.VISIBLE) {
-            showMsgUpdate("", "Are you sure you want to cancel this request?", leaveRequests.get(position).getLVE_REQNO(),"L","");
+            showMsgUpdate("", "Are you sure you want to cancel this request?", leaveRequests.get(position).getLVE_REQNO(), "L", "");
         } else {
-            showMsgUpdate("", "Are you sure you want to cancel this request?", regularzationRequests.get(position).getReqNo(),"R",regularzationRequests.get(position).getReqType());
+            showMsgUpdate("", "Are you sure you want to cancel this request?", regularzationRequests.get(position).getReqNo(), "R", regularzationRequests.get(position).getReqType());
         }
 
         //showPopUpMenu(position);
@@ -260,9 +281,9 @@ public class LeaveBalanceActivity extends AppCompatActivity implements MyLeaveRe
     public void onClick1(View view, int position) {
         this.view = view;
         if (leave_req.getVisibility() == View.VISIBLE) {
-            showMsgUpdate("", "Are you sure you want to cancel this request?", leaveRequests.get(position).getLVE_REQNO(),"L","");
+            showMsgUpdate("", "Are you sure you want to cancel this request?", leaveRequests.get(position).getLVE_REQNO(), "L", "");
         } else {
-            showMsgUpdate("", "Are you sure you want to cancel this request?", regularzationRequests.get(position).getReqNo(),"R",regularzationRequests.get(position).getReqType());
+            showMsgUpdate("", "Are you sure you want to cancel this request?", regularzationRequests.get(position).getReqNo(), "R", regularzationRequests.get(position).getReqType());
         }
     }
 
@@ -300,9 +321,9 @@ public class LeaveBalanceActivity extends AppCompatActivity implements MyLeaveRe
                     break;
                 case R.id.cancel:
                     if (leave_req.getVisibility() == View.VISIBLE) {
-                        showMsgUpdate("", "Are you sure you want to cancel this request?", leaveRequests.get(position).getLVE_REQNO(),"","");
+                        showMsgUpdate("", "Are you sure you want to cancel this request?", leaveRequests.get(position).getLVE_REQNO(), "", "");
                     } else {
-                        showMsgUpdate("", "Are you sure you want to cancel this request?", regularzationRequests.get(position).getReqNo(),"","");
+                        showMsgUpdate("", "Are you sure you want to cancel this request?", regularzationRequests.get(position).getReqNo(), "", "");
                     }
                     break;
             }
@@ -324,7 +345,7 @@ public class LeaveBalanceActivity extends AppCompatActivity implements MyLeaveRe
                     }
                 }
             }
-        }, empCode, reqno,action, req);
+        }, empCode, reqno, action, req);
 
     }
 
@@ -335,7 +356,7 @@ public class LeaveBalanceActivity extends AppCompatActivity implements MyLeaveRe
         alertDialogBuilder.setCancelable(false);
         alertDialogBuilder.setPositiveButton("YES", (arg0, arg1) -> {
             if (Utility.isOnline(LeaveBalanceActivity.this)) {
-                cancelRequest(reqno,action, req);
+                cancelRequest(reqno, action, req);
             }
             arg0.dismiss();
         });

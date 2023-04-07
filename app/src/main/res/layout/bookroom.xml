@@ -149,7 +149,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/agendalayout"
                 android:layout_marginTop="10dp"
-                android:hint="Internal Attendees*">
+                android:hint="Internal Attendees">
 
                 <com.google.android.material.textfield.MaterialAutoCompleteTextView
                     android:id="@+id/internal_att"

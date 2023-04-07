@@ -250,11 +250,11 @@
                 android:layout_marginTop="20dp"
                 android:layout_marginEnd="10dp"
                 android:layout_toStartOf="@+id/view"
-                android:background="@drawable/btn_bg"
+                android:background="@drawable/border_btn_bg"
                 android:fontFamily="@font/museosans_700"
                 android:paddingLeft="10dp"
                 android:text="Cancel"
-                android:textColor="@color/white"
+                android:textColor="@color/colorPrimary"
                 android:textSize="14sp" />
 
             <android.widget.Button
@@ -265,7 +265,7 @@
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="20dp"
                 android:layout_toEndOf="@+id/view"
-                android:background="@drawable/btn_bg"
+                android:background="@drawable/border_btn_bg1"
                 android:fontFamily="@font/museosans_700"
                 android:gravity="center"
                 android:paddingLeft="10dp"

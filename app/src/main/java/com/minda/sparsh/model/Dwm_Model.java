@@ -1,89 +1,111 @@
 package com.minda.sparsh.model;
 
+import com.google.gson.annotations.SerializedName;
+
 /**
  * Created by admin on 6/2/2017.
  */
 
 public class Dwm_Model {
 
-
+    @SerializedName("Id")
     private Integer id;
-
+    @SerializedName("EmpCode")
     private String empCode;
-
+    @SerializedName("ReportingTo")
     private String reportingTo;
-
+    @SerializedName("DailyMMeeting")
     private Integer dailyMMeeting;
-
+    @SerializedName("DWNGemba")
     private Integer dWNGemba;
-
+    @SerializedName("QualityReview")
     private Integer qualityReview;
-
+    @SerializedName("CustomerVisits")
     private Integer customerVisits;
-
+    @SerializedName("CostingReview")
     private Integer costingReview;
-
+    @SerializedName("PeopleUnit")
     private Integer peopleUnit;
-
+    @SerializedName("PeopleBM")
     private Integer peopleBM;
-
+    @SerializedName("PeopleLLLG")
     private Integer peopleLLLG;
-
+    @SerializedName("PeopleTraining")
     private Integer peopleTraining;
-
+    @SerializedName("PeopleBest")
     private Integer peopleBest;
-
+    @SerializedName("PeopleCDP")
     private Integer peopleCDP;
-
+    @SerializedName("ManagementCorp")
     private Integer managementCorp;
-
+    @SerializedName("ManagementProtivity")
     private Integer managementProtivity;
-
+    @SerializedName("ManagementUnit")
     private Integer managementUnit;
-
+    @SerializedName("ManagementMeeting")
     private Integer managementMeeting;
-
+    @SerializedName("RegularMMC")
     private Integer regularMMC;
-
+    @SerializedName("RegularSystem")
     private Integer regularSystem;
-
+    @SerializedName("RegularIndent")
     private Integer regularIndent;
-
+    @SerializedName("RegularDevelopment")
     private Integer regularDevelopment;
-
+    @SerializedName("RegularSAP")
     private Integer regularSAP;
-
+    @SerializedName("RegularManufact")
     private Integer regularManufact;
-
+    @SerializedName("RegularMPCP")
     private Integer regularMPCP;
-
+    @SerializedName("RegularSafety")
     private Integer regularSafety;
-
+    @SerializedName("SupplierComm")
     private Integer supplierComm;
-
+    @SerializedName("SupplierWorst")
     private Integer supplierWorst;
-
+    @SerializedName("SupplierSupplier")
     private Integer supplierSupplier;
-
+    @SerializedName("CreatedDate")
     private String createdDate;
-
+    @SerializedName("ModifiedDate")
     private String modifiedDate;
-
+    @SerializedName("IsDeleted")
     private String isDeleted;
-
+    @SerializedName("ReportingDate")
     private String reportingDate;
-
+    @SerializedName("Achievement")
     private String achievement;
-
+    @SerializedName("Remarks")
     private String remarks;
-
+    @SerializedName("Frenquency")
     private String frenquency;
-
+    @SerializedName("Time")
     private String time;
-
+    @SerializedName("TotalTime")
     private String totalTime;
-
+    @SerializedName("SubmitStatus")
     private String submitStatus;
+    @SerializedName("GembaVisitFunction")
+    Integer GembaVisitFunction;
+    @SerializedName("GembaVisitFunctionRmk")
+    String GembaVisitFunctionRmk;
+    @SerializedName("QIPActivitystatus")
+    Integer QIPActivitystatus;
+    @SerializedName("QIPActivityRmk")
+    String QIPActivityRmk;
+    @SerializedName("NewDevelopment")
+    Integer NewDevelopment;
+    @SerializedName("NewDevelopmentRmk")
+    String NewDevelopmentRmk;
+    @SerializedName("definedagenda")
+    Integer definedagenda;
+    @SerializedName("definedagendaRmk")
+    String definedagendaRmk;
+    @SerializedName("Offloadingprocesses")
+    Integer Offloadingprocesses;
+    @SerializedName("OffloadingprocessesRmk")
+    String OffloadingprocessesRmk;
 
     private String createdDate1;
 
@@ -128,6 +150,7 @@ public class Dwm_Model {
     private Integer Lpa;
     private Integer LPA;
     private Integer Covid;
+
     private Integer LpaCovid;
     private String LapRemark;
     private String LpaCovidremark;
@@ -833,5 +856,85 @@ public class Dwm_Model {
 
     public void setLPA(Integer LPA) {
         this.LPA = LPA;
+    }
+
+    public Integer getGembaVisitFunction() {
+        return GembaVisitFunction;
+    }
+
+    public void setGembaVisitFunction(Integer gembaVisitFunction) {
+        GembaVisitFunction = gembaVisitFunction;
+    }
+
+    public String getGembaVisitFunctionRmk() {
+        return GembaVisitFunctionRmk;
+    }
+
+    public void setGembaVisitFunctionRmk(String gembaVisitFunctionRmk) {
+        GembaVisitFunctionRmk = gembaVisitFunctionRmk;
+    }
+
+    public Integer getQIPActivitystatus() {
+        return QIPActivitystatus;
+    }
+
+    public void setQIPActivitystatus(Integer QIPActivitystatus) {
+        this.QIPActivitystatus = QIPActivitystatus;
+    }
+
+    public String getQIPActivityRmk() {
+        return QIPActivityRmk;
+    }
+
+    public void setQIPActivityRmk(String QIPActivityRmk) {
+        this.QIPActivityRmk = QIPActivityRmk;
+    }
+
+    public Integer getNewDevelopment() {
+        return NewDevelopment;
+    }
+
+    public void setNewDevelopment(Integer newDevelopment) {
+        NewDevelopment = newDevelopment;
+    }
+
+    public String getNewDevelopmentRmk() {
+        return NewDevelopmentRmk;
+    }
+
+    public void setNewDevelopmentRmk(String newDevelopmentRmk) {
+        NewDevelopmentRmk = newDevelopmentRmk;
+    }
+
+    public Integer getDefinedagenda() {
+        return definedagenda;
+    }
+
+    public void setDefinedagenda(Integer definedagenda) {
+        this.definedagenda = definedagenda;
+    }
+
+    public String getDefinedagendaRmk() {
+        return definedagendaRmk;
+    }
+
+    public void setDefinedagendaRmk(String definedagendaRmk) {
+        this.definedagendaRmk = definedagendaRmk;
+    }
+
+    public Integer getOffloadingprocesses() {
+        return Offloadingprocesses;
+    }
+
+    public void setOffloadingprocesses(Integer offloadingprocesses) {
+        Offloadingprocesses = offloadingprocesses;
+    }
+
+    public String getOffloadingprocessesRmk() {
+        return OffloadingprocessesRmk;
+    }
+
+    public void setOffloadingprocessesRmk(String offloadingprocessesRmk) {
+        OffloadingprocessesRmk = offloadingprocessesRmk;
     }
 }

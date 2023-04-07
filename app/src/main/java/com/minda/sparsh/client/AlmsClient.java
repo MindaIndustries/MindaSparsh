@@ -74,4 +74,8 @@ public interface AlmsClient {
     @POST("service/GetHolidayList")
     Call<List<HolidayListModel>> GetHolidayList(@Field("EmpCode") String EmpCode, @Field("Year") String Year);
 
+    @FormUrlEncoded
+    @POST("service/CreateComOffReq")
+    Call<List<ApplyLeaveResponse>> CreateCompOffRequest(@Field("EmpCode") String EmpCode, @Field("Fromdate") String Fromdate, @Field("Todate") String Todate, @Field("Year") String Year, @Field("LeaveType") String LeaveType, @Field("NoOfDays") String NoOfDays,@Field("ReasonCode") String ReasonCode,@Field("Session") String Session,@Field("AuthPerson") String AuthPerson, @Field("Remark") String Remark, @Field("Place") String Place, @Field("ReportyEmailID") String ReportyEmailID, @Field("ReportyEmpName") String ReportyEmpName, @Field("EmpName") String EmpName, @Field("FileName") String FileName, @Field("Files") String Files);
+
 }

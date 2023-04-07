@@ -6,4 +6,8 @@
     <item
         android:id="@+id/regularize"
         android:title="Leave Regularization"/>
+
+    <item
+        android:id="@+id/comp_off_credit"
+        android:title="C-Off Credit"/>
 </menu>

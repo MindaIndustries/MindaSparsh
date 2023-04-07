@@ -121,7 +121,16 @@ public class ParseData {
                 value.setLapRemark(jo.optString("LapRemark"));
                 value.setCovidRemark(jo.optString("CovidRemark"));
                 value.setLpaCovidremark(jo.optString("LpaCovidremark"));
-
+                value.setGembaVisitFunction(jo.optInt("GembaVisitFunction"));
+                value.setGembaVisitFunctionRmk(jo.optString("GembaVisitFunctionRmk"));
+                value.setQIPActivitystatus(jo.optInt("QIPActivitystatus"));
+                value.setQIPActivityRmk(jo.optString("QIPActivityRmk"));
+                value.setNewDevelopment(jo.optInt("NewDevelopment"));
+                value.setNewDevelopmentRmk(jo.optString("NewDevelopmentRmk"));
+                value.setDefinedagenda(jo.optInt("definedagenda"));
+                value.setDefinedagendaRmk(jo.optString("definedagendaRmk"));
+                value.setOffloadingprocesses(jo.optInt("Offloadingprocesses"));
+                value.setOffloadingprocessesRmk(jo.getString("OffloadingprocessesRmk"));
                 values.add(value);
             }
         } catch (Exception e) {

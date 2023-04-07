@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
     <include layout="@layout/toolbar" />
 
     <ScrollView
@@ -12,40 +13,42 @@
         android:layout_below="@+id/toolbar"
         android:layout_marginTop="?attr/actionBarSize"
         android:fillViewport="true">
+
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:padding="20dp">
+
             <LinearLayout
                 android:id="@+id/ll1"
-                android:orientation="horizontal"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
 
                 <androidx.cardview.widget.CardView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
                     android:layout_marginRight="10dp"
                     android:layout_weight="1"
-                    android:layout_width="0dp"
-                    app:cardElevation="10dp"
                     app:cardBackgroundColor="@color/white"
-                    android:layout_height="wrap_content">
+                    app:cardElevation="10dp">
 
                     <RelativeLayout
-                        android:gravity="center"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent">
+                        android:layout_height="match_parent"
+                        android:gravity="center">
+
                         <TextView
-                            android:layout_centerHorizontal="true"
-                            android:padding="5dp"
-                            android:textColor="@color/white"
                             android:id="@+id/leave1"
-                            android:gravity="center"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text=""
-                            android:fontFamily="@font/museosans_700"
+                            android:layout_centerHorizontal="true"
                             android:background="@drawable/heading_bg"
-                            />
+                            android:fontFamily="@font/museosans_700"
+                            android:gravity="center"
+                            android:padding="5dp"
+                            android:text=""
+                            android:textColor="@color/white" />
 
                         <RelativeLayout
                             android:id="@+id/leave_balance1"
@@ -53,10 +56,92 @@
                             android:layout_height="wrap_content"
                             android:layout_below="@+id/leave1"
                             android:layout_centerInParent="true"
-                            android:layout_marginTop="20dp"
-                            android:layout_marginBottom="20dp"
                             android:gravity="center"
                             android:padding="10dp">
+
+                            <LinearLayout
+                                android:id="@+id/linear1"
+                                android:gravity="center"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal"
+                                android:weightSum="2">
+
+                                <TextView
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:fontFamily="@font/museosans_700"
+                                    android:text="Balance" />
+
+                                <TextView
+                                    android:id="@+id/balance_value"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:fontFamily="@font/museosans_700"
+                                    android:text="" />
+
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:id="@+id/linear2"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/linear1"
+                                android:layout_marginTop="10dp"
+                                android:orientation="horizontal"
+                                android:weightSum="2">
+
+                                <TextView
+                                    android:id="@+id/bal1"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:fontFamily="@font/museosans_700"
+                                    android:text="Availed" />
+
+                                <TextView
+                                    android:id="@+id/availed1"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:fontFamily="@font/museosans_700"
+                                    android:text="" />
+
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:id="@+id/linear21"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/linear2"
+                                android:layout_marginTop="10dp"
+                                android:orientation="horizontal"
+                                android:weightSum="2">
+
+                                <TextView
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:text="Applied"
+                                    android:fontFamily="@font/museosans_700"
+                                    />
+
+                                <TextView
+                                    android:id="@+id/applied1"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:fontFamily="@font/museosans_700"
+                                    android:text="" />
+
+
+                            </LinearLayout>
+
+
 
                             <TextView
                                 android:id="@+id/leave1_value"
@@ -67,7 +152,8 @@
                                 android:fontFamily="@font/museosans_700"
                                 android:gravity="center"
                                 android:text=""
-                                android:textSize="20sp" />
+                                android:textSize="20sp"
+                                android:visibility="gone" />
 
                             <TextView
                                 android:id="@+id/leave1_value_out"
@@ -78,143 +164,317 @@
                                 android:fontFamily="@font/museosans_500"
                                 android:gravity="center"
                                 android:text=""
-                                android:textSize="20sp" />
+                                android:textSize="20sp"
+                                android:visibility="gone" />
 
                         </RelativeLayout>
-
-
 
 
                     </RelativeLayout>
 
                 </androidx.cardview.widget.CardView>
+
                 <androidx.cardview.widget.CardView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
                     android:layout_weight="1"
-                    android:layout_width="0dp"
-                    app:cardElevation="10dp"
                     app:cardBackgroundColor="@color/white"
-                    android:layout_height="wrap_content">
+                    app:cardElevation="10dp">
 
                     <RelativeLayout
-                        android:gravity="center"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent">
+                        android:layout_height="match_parent"
+                        android:gravity="center">
+
                         <TextView
-                            android:layout_centerHorizontal="true"
-                            android:padding="5dp"
-                            android:textColor="@color/white"
                             android:id="@+id/leave2"
-                            android:gravity="center"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text=""
-                            android:fontFamily="@font/museosans_700"
+                            android:layout_centerHorizontal="true"
                             android:background="@drawable/heading_bg1"
+                            android:fontFamily="@font/museosans_700"
+                            android:gravity="center"
+                            android:padding="5dp"
+                            android:text=""
+                            android:textColor="@color/white"
 
                             />
 
                         <RelativeLayout
-                            android:layout_marginTop="20dp"
-                            android:layout_marginBottom="20dp"
-                            android:padding="10dp"
-                            android:gravity="center"
                             android:id="@+id/leave_balance2"
-                            android:layout_below="@+id/leave2"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content">
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/leave2"
+                            android:gravity="center"
+                            android:padding="10dp">
+
+                            <LinearLayout
+                                android:id="@+id/linear3"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal"
+                                android:weightSum="2">
+
+                                <TextView
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:text="Balance"
+                                    android:fontFamily="@font/museosans_700"
+                                    />
+
+                                <TextView
+                                    android:id="@+id/balance_value1"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:text=""
+                                    android:fontFamily="@font/museosans_700"
+                                    />
+
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:id="@+id/linear4"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/linear3"
+                                android:layout_marginTop="10dp"
+                                android:orientation="horizontal"
+                                android:weightSum="2">
+
+                                <TextView
+                                    android:id="@+id/bal2"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:text="Availed"
+                                    android:fontFamily="@font/museosans_700"
+                                    />
+
+                                <TextView
+                                    android:id="@+id/availed2"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:text=""
+                                    android:fontFamily="@font/museosans_700"
+                                    />
+
+
+                            </LinearLayout>
+                            <LinearLayout
+                                android:id="@+id/linear41"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/linear4"
+                                android:layout_marginTop="10dp"
+                                android:orientation="horizontal"
+                                android:weightSum="2">
+
+                                <TextView
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:text="Applied"
+                                    android:fontFamily="@font/museosans_700"
+                                    />
+
+                                <TextView
+                                    android:id="@+id/applied_value"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:text=""
+                                    android:fontFamily="@font/museosans_700"
+                                    />
+
+
+                            </LinearLayout>
+
+
                             <TextView
-                                android:layout_centerHorizontal="true"
-                                android:text=""
-                                android:textSize="20sp"
-                                android:layout_toLeftOf="@+id/leave2_value_out"
-                                android:gravity="center"
-                                android:fontFamily="@font/museosans_700"
                                 android:id="@+id/leave2_value"
                                 android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"/>
-                            <TextView
-                                android:layout_alignBottom="@+id/leave2_value"
+                                android:layout_height="wrap_content"
                                 android:layout_centerHorizontal="true"
+                                android:layout_toLeftOf="@+id/leave2_value_out"
+                                android:fontFamily="@font/museosans_700"
+                                android:gravity="center"
                                 android:text=""
                                 android:textSize="20sp"
-                                android:gravity="center"
-                                android:fontFamily="@font/museosans_500"
+                                android:visibility="gone" />
+
+                            <TextView
                                 android:id="@+id/leave2_value_out"
                                 android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"/>
+                                android:layout_height="wrap_content"
+                                android:layout_alignBottom="@+id/leave2_value"
+                                android:layout_centerHorizontal="true"
+                                android:fontFamily="@font/museosans_500"
+                                android:gravity="center"
+                                android:text=""
+                                android:textSize="20sp"
+                                android:visibility="gone" />
 
                         </RelativeLayout>
-
 
 
                     </RelativeLayout>
 
                 </androidx.cardview.widget.CardView>
             </LinearLayout>
+
             <LinearLayout
-                android:layout_marginTop="20dp"
                 android:id="@id/ll2"
-                android:layout_below="@+id/ll1"
-                android:orientation="horizontal"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/ll1"
+                android:layout_marginTop="20dp"
+                android:orientation="horizontal">
 
                 <androidx.cardview.widget.CardView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
                     android:layout_marginRight="10dp"
                     android:layout_weight="1"
-                    android:layout_width="0dp"
-                    app:cardElevation="10dp"
                     app:cardBackgroundColor="@color/white"
-                    android:layout_height="wrap_content">
+                    app:cardElevation="10dp">
 
                     <RelativeLayout
 
-                        android:gravity="center"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent">
+                        android:layout_height="match_parent"
+                        android:gravity="center">
+
                         <TextView
-                            android:layout_centerHorizontal="true"
-                            android:padding="5dp"
-                            android:textColor="@color/white"
                             android:id="@+id/leave3"
-                            android:gravity="center"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text=""
-                            android:fontFamily="@font/museosans_700"
+                            android:layout_centerHorizontal="true"
                             android:background="@drawable/heading_bg2"
-                            />
+                            android:fontFamily="@font/museosans_700"
+                            android:gravity="center"
+                            android:padding="5dp"
+                            android:text=""
+                            android:textColor="@color/white" />
 
                         <RelativeLayout
-                            android:layout_marginTop="20dp"
-                            android:layout_marginBottom="20dp"
-                            android:padding="10dp"
-                            android:gravity="center"
                             android:id="@+id/leave_balance3"
-                            android:layout_below="@+id/leave3"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content">
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/leave3"
+                            android:gravity="center"
+                            android:padding="10dp">
+
+                            <LinearLayout
+                                android:id="@+id/linear5"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal"
+                                android:weightSum="2">
+
+                                <TextView
+                                    android:fontFamily="@font/museosans_700"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:text="Balance" />
+
+                                <TextView
+                                    android:fontFamily="@font/museosans_700"
+                                    android:id="@+id/balance_value3"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:text="" />
+
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:id="@+id/linear6"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/linear5"
+                                android:layout_marginTop="10dp"
+                                android:orientation="horizontal"
+                                android:weightSum="2">
+
+                                <TextView
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:text="Availed"
+                                    android:fontFamily="@font/museosans_700"
+                                    />
+
+                                <TextView
+                                    android:id="@+id/availed3"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:text=""
+                                    android:fontFamily="@font/museosans_700"
+                                    />
+
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:id="@+id/linear61"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/linear6"
+                                android:layout_marginTop="10dp"
+                                android:orientation="horizontal"
+                                android:weightSum="2">
+
+                                <TextView
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:text="Applied"
+                                    android:fontFamily="@font/museosans_700"
+                                    />
+
+                                <TextView
+                                    android:id="@+id/applied_value3"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:text=""
+                                    android:fontFamily="@font/museosans_700"
+                                    />
+
+
+                            </LinearLayout>
+
                             <TextView
-                                android:layout_centerHorizontal="true"
-                                android:text=""
-                                android:textSize="20sp"
-                                android:layout_toLeftOf="@+id/leave3_value_out"
-                                android:gravity="center"
-                                android:fontFamily="@font/museosans_700"
                                 android:id="@+id/leave3_value"
                                 android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"/>
-                            <TextView
-                                android:layout_alignBottom="@+id/leave3_value"
+                                android:layout_height="wrap_content"
                                 android:layout_centerHorizontal="true"
+                                android:layout_toLeftOf="@+id/leave3_value_out"
+                                android:fontFamily="@font/museosans_700"
+                                android:gravity="center"
                                 android:text=""
                                 android:textSize="20sp"
-                                android:gravity="center"
-                                android:fontFamily="@font/museosans_500"
+                                android:visibility="gone" />
+
+                            <TextView
                                 android:id="@+id/leave3_value_out"
                                 android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"/>
+                                android:layout_height="wrap_content"
+                                android:layout_alignBottom="@+id/leave3_value"
+                                android:layout_centerHorizontal="true"
+                                android:fontFamily="@font/museosans_500"
+                                android:gravity="center"
+                                android:text=""
+                                android:textSize="20sp"
+                                android:visibility="gone" />
 
                         </RelativeLayout>
 
@@ -222,100 +482,192 @@
                     </RelativeLayout>
 
                 </androidx.cardview.widget.CardView>
+
                 <androidx.cardview.widget.CardView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
                     android:layout_weight="1"
-                    android:layout_width="0dp"
-                    app:cardElevation="10dp"
                     app:cardBackgroundColor="@color/white"
-                    android:layout_height="wrap_content">
+                    app:cardElevation="10dp">
 
                     <RelativeLayout
-                        android:gravity="center"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent">
+                        android:layout_height="match_parent"
+                        android:gravity="center">
+
                         <TextView
-                            android:layout_centerHorizontal="true"
-                            android:padding="5dp"
-                            android:textColor="@color/white"
                             android:id="@+id/leave4"
-                            android:gravity="center"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text=""
-                            android:fontFamily="@font/museosans_700"
+                            android:layout_centerHorizontal="true"
                             android:background="@drawable/heading_bg3"
+                            android:fontFamily="@font/museosans_700"
+                            android:gravity="center"
+                            android:padding="5dp"
+                            android:text=""
+                            android:textColor="@color/white"
 
                             />
 
                         <RelativeLayout
-                            android:layout_marginTop="20dp"
-                            android:layout_marginBottom="20dp"
-                            android:padding="10dp"
-                            android:gravity="center"
                             android:id="@+id/leave_balance4"
-                            android:layout_below="@+id/leave4"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content">
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/leave4"
+                            android:gravity="center"
+                            android:padding="10dp">
+
+                            <LinearLayout
+                                android:id="@+id/linear7"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal"
+                                android:weightSum="2">
+
+                                <TextView
+
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:text="Balance"
+                                    android:fontFamily="@font/museosans_700"
+                                    />
+
+                                <TextView
+                                    android:id="@+id/balance_value4"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:text=""
+                                    android:fontFamily="@font/museosans_700"
+                                    />
+
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:id="@+id/linear8"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/linear7"
+                                android:layout_marginTop="10dp"
+                                android:orientation="horizontal"
+                                android:weightSum="2">
+
+                                <TextView
+                                    android:id="@+id/bal4"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:text="Availed"
+                                    android:fontFamily="@font/museosans_700"
+                                    />
+
+                                <TextView
+                                    android:id="@+id/availed4"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:text=""
+                                    android:fontFamily="@font/museosans_700"
+                                    />
+
+
+                            </LinearLayout>
+                            <LinearLayout
+                                android:id="@+id/linear81"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/linear8"
+                                android:layout_marginTop="10dp"
+                                android:orientation="horizontal"
+                                android:weightSum="2">
+
+                                <TextView
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:text="Applied"
+                                    android:fontFamily="@font/museosans_700"
+                                    />
+
+                                <TextView
+                                    android:id="@+id/applied_value4"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:text=""
+                                    android:fontFamily="@font/museosans_700"
+                                    />
+
+
+                            </LinearLayout>
+
                             <TextView
-                                android:layout_centerHorizontal="true"
-                                android:text=""
-                                android:textSize="20sp"
-                                android:layout_toLeftOf="@+id/leave4_value_out"
-                                android:gravity="center"
-                                android:fontFamily="@font/museosans_700"
                                 android:id="@+id/leave4_value"
                                 android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"/>
-                            <TextView
-                                android:layout_alignBottom="@+id/leave4_value"
+                                android:layout_height="wrap_content"
                                 android:layout_centerHorizontal="true"
+                                android:layout_toLeftOf="@+id/leave4_value_out"
+                                android:fontFamily="@font/museosans_700"
+                                android:gravity="center"
                                 android:text=""
                                 android:textSize="20sp"
-                                android:gravity="center"
-                                android:fontFamily="@font/museosans_500"
+                                android:visibility="gone" />
+
+                            <TextView
                                 android:id="@+id/leave4_value_out"
                                 android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"/>
+                                android:layout_height="wrap_content"
+                                android:layout_alignBottom="@+id/leave4_value"
+                                android:layout_centerHorizontal="true"
+                                android:fontFamily="@font/museosans_500"
+                                android:gravity="center"
+                                android:text=""
+                                android:textSize="20sp"
+                                android:visibility="gone" />
 
                         </RelativeLayout>
                     </RelativeLayout>
 
                 </androidx.cardview.widget.CardView>
             </LinearLayout>
+
             <RelativeLayout
-                android:layout_marginTop="10dp"
-                android:layout_below="@+id/ll2"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/ll2"
+                android:layout_marginTop="10dp">
+
                 <View
                     android:id="@+id/view"
-                    android:layout_centerHorizontal="true"
                     android:layout_width="1dp"
-                    android:layout_height="1dp"/>
+                    android:layout_height="1dp"
+                    android:layout_centerHorizontal="true" />
 
                 <TextView
-                    android:textColor="@android:color/black"
-                    android:textSize="18sp"
                     android:id="@+id/heading"
-                    android:layout_toLeftOf="@+id/view"
-                    android:fontFamily="@font/museosans_700"
-                    android:text="My Requests"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:gravity="left|center"
+                    android:layout_alignTop="@+id/customerSpinnerLayout0"
                     android:layout_alignBottom="@+id/customerSpinnerLayout0"
-                    android:layout_alignTop="@+id/customerSpinnerLayout0"/>
+                    android:layout_toLeftOf="@+id/view"
+                    android:fontFamily="@font/museosans_700"
+                    android:gravity="left|center"
+                    android:text="My Requests"
+                    android:textColor="@android:color/black"
+                    android:textSize="18sp" />
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/customerSpinnerLayout0"
                     style="@style/box"
-                    android:layout_toRightOf="@+id/view"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
                     android:layout_alignParentRight="true"
+                    android:layout_marginTop="10dp"
                     android:layout_marginRight="5dp"
+                    android:layout_toRightOf="@+id/view"
                     android:hint="Select">
 
                     <androidx.appcompat.widget.AppCompatAutoCompleteTextView
@@ -327,81 +679,85 @@
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <RelativeLayout
-                    android:paddingTop="15dp"
-                    android:paddingBottom="15dp"
-                    android:paddingLeft="10dp"
-                    android:paddingRight="10dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_below="@+id/customerSpinnerLayout0"
                     android:id="@+id/heading_label"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_below="@+id/customerSpinnerLayout0"
+                    android:layout_marginTop="10dp"
                     android:background="#f0f0f0"
-                    >
+                    android:paddingLeft="10dp"
+                    android:paddingTop="15dp"
+                    android:paddingRight="10dp"
+                    android:paddingBottom="15dp">
+
                     <LinearLayout
-                        android:weightSum="100"
-                        android:orientation="horizontal"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
-
-                    <LinearLayout
-                        android:layout_weight="95"
+                        android:layout_height="wrap_content"
                         android:orientation="horizontal"
-                        android:weightSum="4"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content">
+                        android:weightSum="100">
 
-                        <TextView
-                            android:textColor="@color/black"
-                            android:fontFamily="@font/museosans_500"
-                            android:layout_weight="1"
-                            android:text="Req.No."
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"/>
-
-                        <TextView
-                            android:textColor="@color/black"
-                            android:fontFamily="@font/museosans_500"
-                            android:layout_weight="1"
-                            android:text="From"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"/>
-                        <TextView
-                            android:textColor="@color/black"
-                            android:fontFamily="@font/museosans_500"
-                            android:layout_weight="1"
-                            android:text="To"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"/>
-                        <TextView
-                            android:textColor="@color/black"
-                            android:fontFamily="@font/museosans_500"
-                            android:layout_weight="1"
-                            android:text="Status"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"/>
-
-                    </LinearLayout>
                         <LinearLayout
-                            android:layout_weight="5"
                             android:layout_width="0dp"
-                            android:layout_height="wrap_content">
-                             </LinearLayout>
+                            android:layout_height="wrap_content"
+                            android:layout_weight="95"
+                            android:orientation="horizontal"
+                            android:weightSum="4">
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:fontFamily="@font/museosans_500"
+                                android:text="Req.No."
+                                android:textColor="@color/black" />
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:fontFamily="@font/museosans_500"
+                                android:text="From"
+                                android:textColor="@color/black" />
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:fontFamily="@font/museosans_500"
+                                android:text="To"
+                                android:textColor="@color/black" />
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:fontFamily="@font/museosans_500"
+                                android:text="Status"
+                                android:textColor="@color/black" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="5"></LinearLayout>
                     </LinearLayout>
                 </RelativeLayout>
+
                 <androidx.recyclerview.widget.RecyclerView
-                    android:layout_marginTop="5dp"
-                    android:layout_below="@+id/heading_label"
                     android:id="@+id/leave_req"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"/>
-                <androidx.recyclerview.widget.RecyclerView
-                    android:layout_marginTop="5dp"
+                    android:layout_height="match_parent"
                     android:layout_below="@+id/heading_label"
+                    android:layout_marginTop="5dp" />
+
+                <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/reg_req"
-                    android:visibility="gone"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"/>
+                    android:layout_height="match_parent"
+                    android:layout_below="@+id/heading_label"
+                    android:layout_marginTop="5dp"
+                    android:visibility="gone" />
 
             </RelativeLayout>
 

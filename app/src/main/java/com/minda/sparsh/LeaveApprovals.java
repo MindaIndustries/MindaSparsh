@@ -7,6 +7,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
@@ -22,6 +23,7 @@ import com.minda.sparsh.model.ApplyLeaveResponse;
 import com.minda.sparsh.model.ApprovalRequestModel;
 import com.minda.sparsh.services.AlmsServices;
 import com.minda.sparsh.util.RetrofitClient2;
+import com.minda.sparsh.util.Utility;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,9 +33,9 @@ import javax.net.ssl.HttpsURLConnection;
 
 public class LeaveApprovals extends AppCompatActivity implements LeaveApprovalAdapter.OnItemClickListener {
     Toolbar toolbar;
-    TextView title,no_record;
+    TextView title, no_record;
     SharedPreferences myPref;
-    String empCode,EmpName,action;
+    String empCode, EmpName, action;
     ArrayList<ApprovalRequestModel> approvalList = new ArrayList<>();
     RecyclerView approval_req;
     LeaveApprovalAdapter leaveApprovalAdapter;
@@ -57,12 +59,17 @@ public class LeaveApprovals extends AppCompatActivity implements LeaveApprovalAd
         title.setText("Leave Approvals");
         myPref = getSharedPreferences("MyPref", Context.MODE_PRIVATE);
         empCode = myPref.getString("Id", "Id");
-        EmpName = myPref.getString("username","");
+        EmpName = myPref.getString("username", "");
         leaveApprovalAdapter = new LeaveApprovalAdapter(LeaveApprovals.this, approvalList);
         LinearLayoutManager mLayoutManager = new LinearLayoutManager(LeaveApprovals.this, LinearLayoutManager.VERTICAL, false);
         approval_req.setLayoutManager(mLayoutManager);
         approval_req.setAdapter(leaveApprovalAdapter);
-        getApprovalRequests(empCode);
+        if(Utility.isOnline(LeaveApprovals.this)){
+            getApprovalRequests(empCode);
+        }
+        else{
+            Toast.makeText(LeaveApprovals.this, "Oops! Something went wrong.", Toast.LENGTH_SHORT).show();
+        }
         leaveApprovalAdapter.setClickListener(this);
 
 
@@ -77,50 +84,53 @@ public class LeaveApprovals extends AppCompatActivity implements LeaveApprovalAd
         return super.onOptionsItemSelected(item);
     }
 
-    public void getApprovalRequests(String empcode){
+    public void getApprovalRequests(String empcode) {
         AlmsServices almsServices = new AlmsServices();
         almsServices.getApprovalRequests(new OnTaskComplete() {
             @Override
             public void onTaskComplte(CarotResponse carotResponse) {
-                if(carotResponse.getStatuscode()== HttpsURLConnection.HTTP_OK){
+                if (carotResponse.getStatuscode() == HttpsURLConnection.HTTP_OK) {
                     List<ApprovalRequestModel> list = (List<ApprovalRequestModel>) carotResponse.getData();
-                    if(list!=null && list.size()>0){
-                        approvalList.addAll(list);
-                        no_record.setVisibility(View.GONE);
-
-                    }
-                    else{
+                    if (list != null && list.size() > 0) {
+                        if(list.get(0).getReqno()!=null) {
+                            approvalList.addAll(list);
+                            no_record.setVisibility(View.GONE);
+                        }
+                        else {
+                            no_record.setVisibility(View.VISIBLE);
+                        }
+                    } else {
                         no_record.setVisibility(View.VISIBLE);
                     }
                     leaveApprovalAdapter.notifyDataSetChanged();
 
                 }
             }
-        },empcode);
+        }, empcode);
     }
 
-    public void applyRejectLeaves(String Empcode,String RFormNo,String Action, String LOC, String Reqtype, String strhrs, String ReportyEmpName){
+    public void applyRejectLeaves(String Empcode, String RFormNo, String Action, String LOC, String Reqtype, String strhrs, String ReportyEmpName) {
         AlmsServices almsServices = new AlmsServices();
         almsServices.applyRejectLeaves(new OnTaskComplete() {
             @Override
             public void onTaskComplte(CarotResponse carotResponse) {
-                if(carotResponse.getStatuscode()== HttpsURLConnection.HTTP_OK){
+                if (carotResponse.getStatuscode() == HttpsURLConnection.HTTP_OK) {
                     List<ApplyLeaveResponse> list = (List<ApplyLeaveResponse>) carotResponse.getData();
-                    if(list!=null && list.size()>0){
-                        if(list.get(0).getMsg().equals("Success")) {
+                    if (list != null && list.size() > 0) {
+                        if (list.get(0).getMsg().equals("Success")) {
                             if (Action.equals("A")) {
-                                showMsg("Leave request "+  list.get(0).getLeaveRequestNo()+" has been Approved successfully.","");
-                            }
-                            else{
-                                showMsg("Leave request "+  list.get(0).getLeaveRequestNo()+" has been Rejected successfully.","");
+                                showMsg("Leave request " + list.get(0).getLeaveRequestNo() + " has been Approved successfully.", "");
+                            } else {
+                                showMsg("Leave request " + list.get(0).getLeaveRequestNo() + " has been Rejected successfully.", "");
 
                             }
                         }
                     }
                 }
             }
-        }, Empcode,RFormNo,Action,LOC,Reqtype,strhrs,ReportyEmpName);
+        }, Empcode, RFormNo, Action, LOC, Reqtype, strhrs, ReportyEmpName);
     }
+
     public void showMsg(String msg, String title) {
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
         alertDialogBuilder.setMessage(msg);
@@ -141,12 +151,16 @@ public class LeaveApprovals extends AppCompatActivity implements LeaveApprovalAd
     @Override
     public void onClick(View view, int position) {
 
-        if(view.getId() == R.id.approve){
-            action="A";
-        }
-        else {
+        if (view.getId() == R.id.approve) {
+            action = "A";
+        } else {
             action = "R";
         }
-        applyRejectLeaves(empCode,approvalList.get(position).getReqno(),action, RetrofitClient2.LOC,approvalList.get(position).getReqType(), String.valueOf(approvalList.get(position).getNoOfDays()),EmpName);
+        if (Utility.isOnline(LeaveApprovals.this)) {
+            applyRejectLeaves(empCode, approvalList.get(position).getReqno(), action, RetrofitClient2.LOC, approvalList.get(position).getReqType(), String.valueOf(approvalList.get(position).getNoOfDays()), EmpName);
+        }
+        else{
+            Toast.makeText(LeaveApprovals.this, "Oops! Something went wrong.", Toast.LENGTH_SHORT).show();
+        }
     }
 }
