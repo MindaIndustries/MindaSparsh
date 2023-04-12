@@ -392,7 +392,7 @@ public class LeaveRequestActivity extends AppCompatActivity {
                 }
             }
 
-        }, empcode, fromDate, toDate);
+        }, empcode, fromDate, toDate,"");
     }
 
     public void getTotalLeaveDays(String leaveType, String fromDate, String toDate) {

@@ -6,6 +6,7 @@ import com.minda.sparsh.listener.OnTaskComplete;
 import com.minda.sparsh.model.AlmsReportModel;
 import com.minda.sparsh.model.ApplyLeaveResponse;
 import com.minda.sparsh.model.ApprovalRequestModel;
+import com.minda.sparsh.model.CheckCompOffValidation;
 import com.minda.sparsh.model.HolidayListModel;
 import com.minda.sparsh.model.LeaveBalanceModel;
 import com.minda.sparsh.model.LeaveDaysResponse;
@@ -101,9 +102,9 @@ public class AlmsServices {
         });
 
     }
-    public void checkLeaveValidation(OnTaskComplete onTaskComplete,String empcode, String fromDate, String toDate){
+    public void checkLeaveValidation(OnTaskComplete onTaskComplete,String empcode, String fromDate, String toDate, String Leavetype){
         AlmsClient almsClient = RetrofitClient2.getClientScanQR(AlmsClient.class);
-        Call<List<LeaveValidationResponse>> call = almsClient.checkLeaveValidation(empcode,fromDate,toDate);
+        Call<List<LeaveValidationResponse>> call = almsClient.checkLeaveValidation(empcode,fromDate,toDate,Leavetype);
         call.enqueue(new Callback<List<LeaveValidationResponse>>() {
             @Override
             public void onResponse(Call<List<LeaveValidationResponse>> call, Response<List<LeaveValidationResponse>> response) {
@@ -125,6 +126,32 @@ public class AlmsServices {
             }
         });
     }
+    public void checkLeaveValidationCompOff(OnTaskComplete onTaskComplete,String empcode, String fromDate, String toDate, String Leavetype){
+        AlmsClient almsClient = RetrofitClient2.getClientScanQR(AlmsClient.class);
+        Call<List<CheckCompOffValidation>> call = almsClient.checkLeaveValidationCompOff(empcode,fromDate,toDate,Leavetype);
+        call.enqueue(new Callback<List<CheckCompOffValidation>>() {
+            @Override
+            public void onResponse(Call<List<CheckCompOffValidation>> call, Response<List<CheckCompOffValidation>> response) {
+                CarotResponse carotResponse = new CarotResponse();
+                carotResponse.setStatuscode(response.code());
+                if (response.code() == HttpsURLConnection.HTTP_OK) {
+                    carotResponse.setData(response.body());
+                }
+                onTaskComplete.onTaskComplte(carotResponse);
+            }
+
+            @Override
+            public void onFailure(Call<List<CheckCompOffValidation>> call, Throwable t) {
+                CarotResponse carotResponse = new CarotResponse();
+                if (t instanceof IOException) {
+                    carotResponse.setMessage("Please hold on a moment, the internet connectivity seems to be slow");
+                }
+                onTaskComplete.onTaskComplte(carotResponse);
+            }
+        });
+    }
+
+
     public void getTotalLeaveDays(OnTaskComplete onTaskComplete, String LeaveType, String Fromdate, String Todate, String EmpCode){
         AlmsClient almsClient = RetrofitClient2.getClientScanQR(AlmsClient.class);
         Call<List<LeaveDaysResponse>> call = almsClient.getTotalLeaveDays(LeaveType,Fromdate,Todate, EmpCode);

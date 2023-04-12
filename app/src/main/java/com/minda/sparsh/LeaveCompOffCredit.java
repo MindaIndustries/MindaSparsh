@@ -19,7 +19,9 @@ import com.google.android.material.textfield.TextInputEditText;
 import com.minda.sparsh.listener.CarotResponse;
 import com.minda.sparsh.listener.OnTaskComplete;
 import com.minda.sparsh.model.ApplyLeaveResponse;
+import com.minda.sparsh.model.CheckCompOffValidation;
 import com.minda.sparsh.model.LeaveDaysResponse;
+import com.minda.sparsh.model.LeaveValidationResponse;
 import com.minda.sparsh.services.AlmsServices;
 
 import java.util.Calendar;
@@ -93,6 +95,7 @@ public class LeaveCompOffCredit extends AppCompatActivity {
                 }
                 else if(days.getText().toString().equals("0")){
                     Toast.makeText(LeaveCompOffCredit.this, "You are not Eligible", Toast.LENGTH_LONG).show();
+                    return;
                 }
                 else{
                     createCompOff(empCode,startDate.getText().toString(),endDate.getText().toString(),year,"CO",days.getText().toString(),"","ES",authperson,comment.getText().toString(),"",reportyEmailId,reportyEmpName, EmpName,"","");
@@ -106,6 +109,25 @@ public class LeaveCompOffCredit extends AppCompatActivity {
                 onBackPressed();
             }
         });
+    }
+    public void checkLeaveValidation(String empcode, String fromDate, String toDate, String LeaveType) {
+
+        AlmsServices almsServices = new AlmsServices();
+        almsServices.checkLeaveValidationCompOff(carotResponse -> {
+            if (carotResponse.getStatuscode() == HttpsURLConnection.HTTP_OK) {
+                List<CheckCompOffValidation> list = (List<CheckCompOffValidation>) carotResponse.getData();
+                if (list != null && list.size() > 0) {
+                    if (((list.get(0).getCoff_allow() != null && list.get(0).getCoff_allow()==1) && (list.get(0).getRemarks().equalsIgnoreCase("Eligible")) && (list.get(0).getWORK_HOURS()==1)) || ((list.get(0).getCOFF_ALLOW()!=null && list.get(0).getCOFF_ALLOW()==1 )&& (list.get(0).getREMARKS().equalsIgnoreCase("Not worked")) && (list.get(0).getWORK_HOURS()==1))) {
+                        getTotalLeaveDays("CO",startDate.getText().toString(), endDate.getText().toString());
+                    }
+                else {
+                    days.setText("");
+                    Toast.makeText(LeaveCompOffCredit.this, "You can`t apply for this period", Toast.LENGTH_SHORT).show();
+                    }
+                }
+            }
+
+        }, empcode, fromDate, toDate,LeaveType);
     }
 
     public void initDatePicker() {
@@ -147,8 +169,9 @@ public class LeaveCompOffCredit extends AppCompatActivity {
             year = String.valueOf(calendar.get(Calendar.YEAR));
             startDate.setText("" + dayOfMonthStr1 + "." + monthNo1 + "." + i);
             endDate.setText("" + dayOfMonthStr1 + "." + monthNo1 + "." + i);
-            getTotalLeaveDays("CO",startDate.getText().toString(), endDate.getText().toString());
-           }, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH));
+         //   getTotalLeaveDays("CO",startDate.getText().toString(), endDate.getText().toString());
+            checkLeaveValidation(empCode,startDate.getText().toString(), endDate.getText().toString(),"CO");
+        }, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH));
 
           datePicker.getDatePicker().setMaxDate(Calendar.getInstance().getTimeInMillis() - 10000);
 
@@ -192,7 +215,8 @@ public class LeaveCompOffCredit extends AppCompatActivity {
             calendar1.set(Calendar.YEAR, i);
             year1 = String.valueOf(calendar1.get(Calendar.YEAR));
             endDate.setText("" + dayOfMonthStr1 + "." + monthNo1 + "." + i);
-            getTotalLeaveDays("CO",startDate.getText().toString(), endDate.getText().toString());
+          //  getTotalLeaveDays("CO",startDate.getText().toString(), endDate.getText().toString());
+            checkLeaveValidation(empCode,startDate.getText().toString(), endDate.getText().toString(),"CO");
 
 
         }, calendar1.get(Calendar.YEAR), calendar1.get(Calendar.MONTH), calendar1.get(Calendar.DAY_OF_MONTH));

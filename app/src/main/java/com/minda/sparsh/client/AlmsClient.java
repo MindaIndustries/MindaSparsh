@@ -3,6 +3,7 @@ package com.minda.sparsh.client;
 import com.minda.sparsh.model.AlmsReportModel;
 import com.minda.sparsh.model.ApplyLeaveResponse;
 import com.minda.sparsh.model.ApprovalRequestModel;
+import com.minda.sparsh.model.CheckCompOffValidation;
 import com.minda.sparsh.model.HolidayListModel;
 import com.minda.sparsh.model.LeaveBalanceModel;
 import com.minda.sparsh.model.LeaveDaysResponse;
@@ -34,7 +35,12 @@ public interface AlmsClient {
 
     @FormUrlEncoded
     @POST("service/CheckLeaveApplyValidation")
-    Call<List<LeaveValidationResponse>> checkLeaveValidation(@Field("EmpCode") String EmpCode, @Field("Fromdate") String Fromdate, @Field("Todate") String Todate);
+    Call<List<LeaveValidationResponse>> checkLeaveValidation(@Field("EmpCode") String EmpCode, @Field("Fromdate") String Fromdate, @Field("Todate") String Todate, @Field("LeaveType") String LeaveType);
+
+    @FormUrlEncoded
+    @POST("service/CheckLeaveApplyValidation")
+    Call<List<CheckCompOffValidation>> checkLeaveValidationCompOff(@Field("EmpCode") String EmpCode, @Field("Fromdate") String Fromdate, @Field("Todate") String Todate, @Field("LeaveType") String LeaveType);
+
 
     @FormUrlEncoded
     @POST("service/GetTotalLeaveDays")
