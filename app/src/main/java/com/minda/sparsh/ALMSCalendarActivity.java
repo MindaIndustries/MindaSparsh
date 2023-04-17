@@ -66,6 +66,7 @@ public class ALMSCalendarActivity extends AppCompatActivity {
     ArrayList<CalendarDay> odlist = new ArrayList<>();
     ArrayList<CalendarDay> leavelist = new ArrayList<>();
     ArrayList<CalendarDay> shortList = new ArrayList<>();
+    ArrayList<CalendarDay> holidayList = new ArrayList<>();
 
     DatePickerDialog datePicker;
     Calendar calendar;
@@ -369,6 +370,8 @@ public class ALMSCalendarActivity extends AppCompatActivity {
                                 leavelist.add(calendarDay);
                             } else if (attendanceReport.get(i).getSTAT().equals("SH") || attendanceReport.get(i).getSTATUS2().equals("SH")) {
                                 shortList.add(calendarDay);
+                            } else if(attendanceReport.get(i).getSTAT().equals("H")||attendanceReport.get(i).getSTATUS2().equals("H")){
+                                holidayList.add(calendarDay);
                             }
                         }
                     }
@@ -382,6 +385,7 @@ public class ALMSCalendarActivity extends AppCompatActivity {
                 calendar_view.addDecorator(new EventDecorator(Color.parseColor("#FF9800"), odlist));
                 calendar_view.addDecorator(new EventDecorator(Color.parseColor("#dbaf1d"), leavelist));
                 calendar_view.addDecorator(new EventDecorator(Color.parseColor("#ffc0cb"), shortList));
+                calendar_view.addDecorator(new EventDecorator(Color.parseColor("#0089c8"), holidayList));
             }
         }, empcode, fromDate, toDate);
     }
@@ -500,6 +504,9 @@ public class ALMSCalendarActivity extends AppCompatActivity {
                             status.setText("SH");
                             status.setBackgroundColor(Color.parseColor("#ffc0cb"));
 
+                        } else if (list.get(0).getSTAT().equals("H") || list.get(0).getSTATUS2().equals("H")) {
+                            status.setText("H");
+                            status.setBackgroundColor(Color.parseColor("#0089c8"));
                         } else {
                             status.setVisibility(View.GONE);
                         }

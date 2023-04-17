@@ -23,6 +23,7 @@ public class HttpConnection {
     public static final String itsurveyUrl = "https://dev.mindasparsh.com/itsurvey/defaulltM.aspx?";
     public static final String c_rurl = "https://dev.mindasparsh.com/ChangeRequest/ChangeRequestForm.aspx?";
     //  prod environment
+
   /*  public static String BASE_URL = "https://app.mindasparsh.com/service.asmx/";
     public static final String mindacareUrl = "https://app.mindasparsh.com/mindacare/login.aspx?";
     public static final String itsurveyUrl = "https://app.mindasparsh.com/itsurvey/defaulltM.aspx?";
