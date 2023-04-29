@@ -64,6 +64,7 @@ public class ALMSCalendarActivity extends AppCompatActivity {
     ArrayList<CalendarDay> absentList = new ArrayList<>();
     ArrayList<CalendarDay> wolist = new ArrayList<>();
     ArrayList<CalendarDay> odlist = new ArrayList<>();
+    ArrayList<CalendarDay> ftplist = new ArrayList<>();
     ArrayList<CalendarDay> leavelist = new ArrayList<>();
     ArrayList<CalendarDay> shortList = new ArrayList<>();
     ArrayList<CalendarDay> holidayList = new ArrayList<>();
@@ -159,7 +160,7 @@ public class ALMSCalendarActivity extends AppCompatActivity {
         int year = calendar1.get(Calendar.YEAR);
         LocalDate localDate = LocalDate.of(year, month, day);
 
-        if(getIntent().getBooleanExtra("list",false)){
+        if (getIntent().getBooleanExtra("list", false)) {
             listLayout.setVisibility(View.VISIBLE);
             calendarLayout.setVisibility(View.GONE);
         }
@@ -294,7 +295,7 @@ public class ALMSCalendarActivity extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-       // getMenuInflater().inflate(R.menu.alms_menu, menu);
+        // getMenuInflater().inflate(R.menu.alms_menu, menu);
         return true;
     }
 
@@ -310,7 +311,8 @@ public class ALMSCalendarActivity extends AppCompatActivity {
                 calendarLayout.setVisibility(View.VISIBLE);
                 item.setIcon(R.drawable.listview_icon);
             }
-*/            return true;
+*/
+            return true;
         }/* else if (item.getItemId() == R.id.listview) {
             if (calendarLayout.getVisibility() == View.VISIBLE) {
                 listLayout.setVisibility(View.VISIBLE);
@@ -364,13 +366,15 @@ public class ALMSCalendarActivity extends AppCompatActivity {
                                 wolist.add(calendarDay);
                             } else if (attendanceReport.get(i).getSTAT().equals("OD") && attendanceReport.get(i).getSTATUS2().equals("OD")) {
                                 odlist.add(calendarDay);
+                            } else if (attendanceReport.get(i).getSTAT().equals("FTP") && attendanceReport.get(i).getSTATUS2().equals("FTP")) {
+                                ftplist.add(calendarDay);
                             } else if (attendanceReport.get(i).getSTAT().equals("EL") || attendanceReport.get(i).getSTAT().equals("CL") || attendanceReport.get(i).getSTAT().equals("SL")) {
                                 leavelist.add(calendarDay);
                             } else if (attendanceReport.get(i).getSTATUS2().equals("EL") || attendanceReport.get(i).getSTATUS2().equals("CL") || attendanceReport.get(i).getSTATUS2().equals("SL")) {
                                 leavelist.add(calendarDay);
                             } else if (attendanceReport.get(i).getSTAT().equals("SH") || attendanceReport.get(i).getSTATUS2().equals("SH")) {
                                 shortList.add(calendarDay);
-                            } else if(attendanceReport.get(i).getSTAT().equals("H")||attendanceReport.get(i).getSTATUS2().equals("H")){
+                            } else if (attendanceReport.get(i).getSTAT().equals("H") || attendanceReport.get(i).getSTATUS2().equals("H")) {
                                 holidayList.add(calendarDay);
                             }
                         }
@@ -383,6 +387,7 @@ public class ALMSCalendarActivity extends AppCompatActivity {
                 calendar_view.addDecorator(new EventDecorator(Color.parseColor("#FF0000"), absentList));
                 calendar_view.addDecorator(new EventDecorator(Color.GRAY, wolist));
                 calendar_view.addDecorator(new EventDecorator(Color.parseColor("#FF9800"), odlist));
+                calendar_view.addDecorator(new EventDecorator(Color.parseColor("#FF9800"), ftplist));
                 calendar_view.addDecorator(new EventDecorator(Color.parseColor("#dbaf1d"), leavelist));
                 calendar_view.addDecorator(new EventDecorator(Color.parseColor("#ffc0cb"), shortList));
                 calendar_view.addDecorator(new EventDecorator(Color.parseColor("#0089c8"), holidayList));

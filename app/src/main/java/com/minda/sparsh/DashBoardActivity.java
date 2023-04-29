@@ -17,6 +17,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.tabs.TabLayout;
+import com.google.firebase.analytics.FirebaseAnalytics;
 import com.google.firebase.messaging.FirebaseMessaging;
 import com.minda.sparsh.fragment.FiveFragment;
 import com.minda.sparsh.fragment.FourFragment;
@@ -65,7 +66,9 @@ public class DashBoardActivity extends BaseActivity implements View.OnClickListe
     String Description, title;
     int applicableId;
     AlertDialog alertDialog;
-   /* String[] arr = new String[]{"9355689701", "9818427076",
+    private FirebaseAnalytics mFirebaseAnalytics;
+
+    /* String[] arr = new String[]{"9355689701", "9818427076",
             "9958050362",
             "7082007046",
             "8861002125",
@@ -203,6 +206,12 @@ public class DashBoardActivity extends BaseActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dash_board);
+        mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
+        Bundle bundle = new Bundle();
+        bundle.putString(FirebaseAnalytics.Param.ITEM_ID, "HomeScreen");
+        bundle.putString(FirebaseAnalytics.Param.ITEM_NAME,"HomeScreen" );
+        bundle.putString(FirebaseAnalytics.Param.CONTENT_TYPE, "text");
+        mFirebaseAnalytics.logEvent(FirebaseAnalytics.Event.SELECT_CONTENT, bundle);
 
         tv_unread = findViewById(R.id.tv_unread);
         tv_user_name = findViewById(R.id.tv_user_name);

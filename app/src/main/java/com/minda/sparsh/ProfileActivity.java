@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.analytics.FirebaseAnalytics;
 import com.minda.sparsh.model.LoginResponse;
 import com.minda.sparsh.util.RetrofitClient2;
 import com.minda.sparsh.util.Utility;
@@ -50,6 +51,7 @@ public class ProfileActivity extends BaseActivity {
     TextView deputedunit;
     String empCode_str, pass;
     SharedPreferences myPref;
+    private FirebaseAnalytics mFirebaseAnalytics;
 
 
     @Override
@@ -64,6 +66,12 @@ public class ProfileActivity extends BaseActivity {
         title.setText(getResources().getString(R.string.my_profile));
         myPref = getSharedPreferences("MyPref", MODE_PRIVATE);
         pass = myPref.getString("pass", "");
+        mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
+        Bundle bundle = new Bundle();
+        bundle.putString(FirebaseAnalytics.Param.ITEM_ID, "Profile");
+        bundle.putString(FirebaseAnalytics.Param.ITEM_NAME, "ProfileActivty");
+        bundle.putString(FirebaseAnalytics.Param.CONTENT_TYPE, "text");
+        mFirebaseAnalytics.logEvent(FirebaseAnalytics.Event.SELECT_CONTENT, bundle);
 
         empCode_str = myPref.getString("Id", "Id");
         if (empCode_str.length() > 0) {

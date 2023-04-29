@@ -17,6 +17,8 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Toast;
+
+import com.google.firebase.analytics.FirebaseAnalytics;
 import com.google.firebase.messaging.FirebaseMessaging;
 import com.minda.sparsh.Adapter.SlidingImage_Adapter;
 import com.minda.sparsh.connection.HttpConnection;
@@ -70,6 +72,8 @@ public class LoginActivity extends AppCompatActivity {
     String version = "";
     ImageView view_pass;
     boolean ispassvisible;
+    private FirebaseAnalytics mFirebaseAnalytics;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -77,6 +81,8 @@ public class LoginActivity extends AppCompatActivity {
         getSupportActionBar().hide();
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         progress = new ProgressDialog(this);
+        mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
+
 //        IMAGES.add(R.drawable.login_background) ;
 //        IMAGES.add(R.drawable.login1) ;
 //        IMAGES.add(R.drawable.login2);
@@ -440,6 +446,11 @@ public class LoginActivity extends AppCompatActivity {
                          //   refreshedToken = FirebaseMessaging.getInstance().getToken().getResult();
                            // HitMyorder(Id, refreshedToken);
                             mEditor.apply();
+                            Bundle bundle = new Bundle();
+                            bundle.putString(FirebaseAnalytics.Param.ITEM_ID, "Login");
+                            bundle.putString(FirebaseAnalytics.Param.ITEM_NAME, loginResponse.get(0).getUMUSERID());
+                            bundle.putString(FirebaseAnalytics.Param.CONTENT_TYPE, "text");
+                            mFirebaseAnalytics.logEvent(FirebaseAnalytics.Event.SELECT_CONTENT, bundle);
                             startActivity(intent);
                             finish();
                         } catch (Exception e) {

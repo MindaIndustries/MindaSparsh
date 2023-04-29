@@ -503,6 +503,9 @@
                                                 android:text="Attendance &amp; Leave"
                                                 android:textColor="#4a4f54"
                                                 android:textSize="16sp"
+                                                app:autoSizeMaxTextSize="14sp"
+                                                app:autoSizeMinTextSize="12sp"
+                                                app:autoSizeStepGranularity="2sp"
                                                 android:visibility="visible" />
 
                                         </RelativeLayout>
