@@ -43,7 +43,7 @@ public class RetrofitClient2 {
     public static final String LOC = "d";
     //https://qas.mindasparsh.com/Api/service/GetAutoNameAbnormlaity?prefixText=Ravi&val=4
     //prod
-   /* public static final String notifUrl="https://app.mindasparsh.com";
+  /*  public static final String notifUrl="https://app.mindasparsh.com";
     public static final String BASE_URL = "https://app.mindasparsh.com/Service.asmx/";
     public static final String ehs_img = "https://app.mindasparsh.com/ehs/files/";
     public static final String EHS_BASE_URL = "https://app.mindasparsh.com/ServiceEHS.asmx/";
@@ -58,10 +58,10 @@ public class RetrofitClient2 {
     public static final String baseurlqr = "https://services.mindasparsh.com/MeetingRoom/API/";
     public static final String baseurlAbnormalityNew = "https://bridge.mindasparsh.com/API/";
         public static final String LOC = "d";
-   */ //new CKey
+  */  //new CKey
      public static final String CKEY = "bWRhQHNQciRyWiNHISE=";
 
-    //public static final String CKEY = "mda@sPr$rZ#G!!";
+  //  public static final String CKEY = "mda@sPr$rZ#G!!";
 
     private static Retrofit retrofit = null;
     static Dispatcher dispatcher1 = new Dispatcher();

@@ -855,7 +855,6 @@ public class EHSInitiateFragment extends Fragment {
                         int i = unitsName.indexOf(getArguments().getString("unit"));
                         if (i >= 0)
                             unitSpinner.setText(unitsName.get(i));
-
                     }
                 }
 
