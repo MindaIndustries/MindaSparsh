@@ -162,8 +162,15 @@ public class LeaveRequestActivity extends AppCompatActivity {
             }
             if (leavetypes.get(i).equalsIgnoreCase("Short Leave")) {
                 customerSpinnerLayout9.setVisibility(View.VISIBLE);
+                session_values.clear();
+                session_values.add("1st Session");
+                session_values.add("2nd Session");
             } else {
                 customerSpinnerLayout9.setVisibility(View.GONE);
+                session_values.add("Full Session");
+                session_values.add("1st Session");
+                session_values.add("2nd Session");
+
             }
           //  getLeaveBalance(empCode, year, leavetypeAbb);
 

@@ -72,8 +72,6 @@ public class NotificationActivity extends AppCompatActivity {
                     else{
                         no_list.setVisibility(View.VISIBLE);
                     }
-
-
                 }
 
                 @Override

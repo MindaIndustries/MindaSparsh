@@ -56,13 +56,13 @@
             <Button
                 android:id="@+id/btn_view"
                 android:layout_width="0dp"
-                android:layout_height="25dp"
+                android:layout_height="18dp"
                 android:layout_margin="1dp"
                 android:layout_weight=".5"
                 android:background="@drawable/rec_button"
+                android:fontFamily="@font/museosans_300"
                 android:gravity="center"
                 android:text="View"
-                android:fontFamily="@font/museosans_300"
                 android:textColor="@color/black"
                 android:textSize="12sp" />
         </LinearLayout>

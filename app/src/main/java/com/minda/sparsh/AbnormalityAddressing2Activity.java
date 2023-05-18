@@ -153,8 +153,8 @@ public class AbnormalityAddressing2Activity extends AppCompatActivity {
         });
 
 
-        lay_out =  findViewById(R.id.lay_out);
-        list_abnormalty =  findViewById(R.id.list_abnormalty);
+        //lay_out =  findViewById(R.id.lay_out);
+      //  list_abnormalty =  findViewById(R.id.list_abnormalty);
 
 
         Im_capture =  findViewById(R.id.Im_capture);
@@ -773,7 +773,7 @@ public class AbnormalityAddressing2Activity extends AppCompatActivity {
                     if (Departmentresponse != null && Departmentresponse.size() > 0) {
                         if (Departmentresponse.get(0).getColumn1().equalsIgnoreCase("success")) {
                          //   Toast.makeText(AbnormalityAddressing2Activity.this, "Date Save Successfully", Toast.LENGTH_LONG).show();
-                            showMsg("Abnormaity Updated Successfully","Success");
+                            showMsg("Abnormality Updated Successfully","Success");
                          /*   Intent intent = new Intent(AbnormalityAddressing2Activity.this, AbnormalityAddressingActivity.class);
                             intent.putExtra("ADD", false);
                             startActivity(intent);

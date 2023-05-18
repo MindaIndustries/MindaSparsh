@@ -58,7 +58,7 @@ public class ManufacturingFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View convertView = inflater.inflate(R.layout.fragment_manufacturing, container, false);
-        dmwButton = convertView.findViewById(R.id.dwm_btn);
+      //  dmwButton = convertView.findViewById(R.id.dwm_btn);
        // dwm_btn1 = convertView.findViewById(R.id.dwm_btn1);
         //ehs = convertView.findViewById(R.id.ehs);
         cardView = convertView.findViewById(R.id.card_view);
@@ -142,8 +142,9 @@ public class ManufacturingFragment extends Fragment {
 
                     showProgress(false);
                     if (t instanceof IOException) {
-                        if(getActivity()!=null && isAdded())
-                        Toast.makeText(getActivity(), "Please hold on a moment, the internet connectivity seems to be slow", Toast.LENGTH_LONG).show();
+                        if (getActivity() != null && isAdded()) {
+                            Toast.makeText(getActivity(), "Please hold on a moment, the internet connectivity seems to be slow", Toast.LENGTH_LONG).show();
+                        }
                     }
 
                 }

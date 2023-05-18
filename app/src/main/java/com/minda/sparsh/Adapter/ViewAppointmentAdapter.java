@@ -171,7 +171,7 @@ public class ViewAppointmentAdapter extends RecyclerView.Adapter<ViewAppointment
                         if (rps != null) {
                             if (rps.get(0).getColumn1() != null) {
 
-                                Toast.makeText(context, "Visit Canceled", Toast.LENGTH_LONG).show();
+                                Toast.makeText(context, "Visit Cancelled", Toast.LENGTH_LONG).show();
                                 ((VisitorManagementListActivity) context).finish();
 
                             } else {

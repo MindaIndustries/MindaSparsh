@@ -149,6 +149,11 @@ public class LeaveRegularizationActivity extends AppCompatActivity {
             } else if (no_of_days.getText().toString().length() == 0 || Double.parseDouble(no_of_days.getText().toString()) <= 0) {
                 return;
             }
+            else if(start_time.getText().length()==0 && end_time.getText().toString().length()==0){
+                Toast.makeText(LeaveRegularizationActivity.this, "Please enter Start Time & End Time", Toast.LENGTH_LONG).show();
+
+                return;
+            }
             if (Utility.isOnline(LeaveRegularizationActivity.this)) {
                 applyLeaveRegular(empCode, start_date.getText().toString(), end_date.getText().toString(), year, "" + leaveType, no_of_days.getText().toString(), "", session, authperson, comment.getText().toString(), "", reportyEmailId, reportyEmpName, EmpName, "", "", start_time.getText().toString(), end_time.getText().toString());
             }
