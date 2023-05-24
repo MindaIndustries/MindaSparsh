@@ -67,25 +67,28 @@ public class ALMSRecyclerViewAdapter extends RecyclerView.Adapter<ALMSRecyclerVi
             holder.punch_out_time.setText("-");
 
         }
-        if(attendanceList.get(position).getEDATE()!=null)
-        holder.date.setText(attendanceList.get(position).getEDATE().replace(".","/").split("/")[0]);
-        if(attendanceList.get(position).getDAYNAME()!=null)
-        holder.day.setText(attendanceList.get(position).getDAYNAME().toUpperCase());
-        Calendar cal  = Calendar.getInstance();
-        if(attendanceList.get(position).getEDATE()!=null)
-            cal.set(Calendar.MONTH, (Integer.parseInt(attendanceList.get(position).getEDATE().replace(".","/").split("/")[1]))-1);
-        SimpleDateFormat month_date = new SimpleDateFormat("MMM");
-        String month_name = month_date.format(cal.getTime());
-        holder.month.setText(month_name);
+        if(attendanceList.get(position).getEDATE()!=null) {
+            holder.date.setText(attendanceList.get(position).getEDATE().replace(".", "/").split("/")[0]);
+            if (attendanceList.get(position).getDAYNAME() != null) {
+                holder.day.setText(attendanceList.get(position).getDAYNAME().toUpperCase());
+            }
+            Calendar cal = Calendar.getInstance();
+            if (attendanceList.get(position).getEDATE() != null) {
+                cal.set(Calendar.MONTH, (Integer.parseInt(attendanceList.get(position).getEDATE().replace(".", "/").split("/")[1])) - 1);
+            }
+            SimpleDateFormat month_date = new SimpleDateFormat("MMM");
+            String month_name = month_date.format(cal.getTime());
+            holder.month.setText(month_name);
 
-        if(attendanceList.get(position).getEDATE().equals((day_now+"."+month_now+"."+year_now))){
-            holder.row.setBackgroundColor(mContext.getResources().getColor(R.color.colorPrimary));
-         //   holder.date.setTextColor(Color.WHITE);
-          //  holder.day.setTextColor(Color.WHITE);
-            holder.punch_in_time.setTextColor(Color.WHITE);
-            holder.punch_out_time.setTextColor(Color.WHITE);
-            holder.punch_in.setTextColor(Color.WHITE);
-            holder.punch_out.setTextColor(Color.WHITE);
+            if (attendanceList.get(position).getEDATE().equals((day_now + "." + month_now + "." + year_now))) {
+                holder.row.setBackgroundColor(mContext.getResources().getColor(R.color.colorPrimary));
+                //   holder.date.setTextColor(Color.WHITE);
+                //  holder.day.setTextColor(Color.WHITE);
+                holder.punch_in_time.setTextColor(Color.WHITE);
+                holder.punch_out_time.setTextColor(Color.WHITE);
+                holder.punch_in.setTextColor(Color.WHITE);
+                holder.punch_out.setTextColor(Color.WHITE);
+            }
         }
 
     }

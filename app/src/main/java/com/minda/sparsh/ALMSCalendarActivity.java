@@ -343,54 +343,60 @@ public class ALMSCalendarActivity extends AppCompatActivity {
             if (carotResponse.getStatuscode() == HttpsURLConnection.HTTP_OK) {
                 List<AlmsReportModel> list = (List<AlmsReportModel>) carotResponse.getData();
                 if (list != null && list.size() > 0) {
-                    attendanceReport.addAll(list);
+                    if (list.get(0).getMsg() != null) {
+                        attendanceReport.clear();
+                    } else {
+                        attendanceReport.addAll(list);
+                    }
                 }
                 almsRecyclerViewAdapter.notifyDataSetChanged();
 
-                for (int i = 0; i < attendanceReport.size(); i++) {
-                    if (attendanceReport.get(i).getEDATE() != null) {
+                if(attendanceReport.size()>0) {
+                    for (int i = 0; i < attendanceReport.size(); i++) {
+                        if (attendanceReport.get(i).getEDATE() != null) {
 
 
-                        String date[] = attendanceReport.get(i).getEDATE().replace(".", "/").split("/");
-                        int day = Integer.parseInt(date[0]);
-                        int month = Integer.parseInt(date[1]);
-                        int year = Integer.parseInt(date[2]);
-                        LocalDate localDate = LocalDate.of(year, month, day);
-                        CalendarDay calendarDay = CalendarDay.from(localDate);
-                        if (attendanceReport.get(i).getSTAT() != null && attendanceReport.get(i).getSTATUS2() != null) {
-                            if (attendanceReport.get(i).getSTAT().equals("P") && attendanceReport.get(i).getSTATUS2().equals("P")) {
-                                presentList.add(calendarDay);
-                            } else if (attendanceReport.get(i).getSTAT().equals("A") || attendanceReport.get(i).getSTATUS2().equals("A")) {
-                                absentList.add(calendarDay);
-                            } else if (attendanceReport.get(i).getSTAT().equals("WO")) {
-                                wolist.add(calendarDay);
-                            } else if (attendanceReport.get(i).getSTAT().equals("OD") && attendanceReport.get(i).getSTATUS2().equals("OD")) {
-                                odlist.add(calendarDay);
-                            } else if (attendanceReport.get(i).getSTAT().equals("FTP") && attendanceReport.get(i).getSTATUS2().equals("FTP")) {
-                                ftplist.add(calendarDay);
-                            } else if (attendanceReport.get(i).getSTAT().equals("EL") || attendanceReport.get(i).getSTAT().equals("CL") || attendanceReport.get(i).getSTAT().equals("SL")) {
-                                leavelist.add(calendarDay);
-                            } else if (attendanceReport.get(i).getSTATUS2().equals("EL") || attendanceReport.get(i).getSTATUS2().equals("CL") || attendanceReport.get(i).getSTATUS2().equals("SL")) {
-                                leavelist.add(calendarDay);
-                            } else if (attendanceReport.get(i).getSTAT().equals("SH") || attendanceReport.get(i).getSTATUS2().equals("SH")) {
-                                shortList.add(calendarDay);
-                            } else if (attendanceReport.get(i).getSTAT().equals("H") || attendanceReport.get(i).getSTATUS2().equals("H")) {
-                                holidayList.add(calendarDay);
+                            String date[] = attendanceReport.get(i).getEDATE().replace(".", "/").split("/");
+                            int day = Integer.parseInt(date[0]);
+                            int month = Integer.parseInt(date[1]);
+                            int year = Integer.parseInt(date[2]);
+                            LocalDate localDate = LocalDate.of(year, month, day);
+                            CalendarDay calendarDay = CalendarDay.from(localDate);
+                            if (attendanceReport.get(i).getSTAT() != null && attendanceReport.get(i).getSTATUS2() != null) {
+                                if (attendanceReport.get(i).getSTAT().equals("P") && attendanceReport.get(i).getSTATUS2().equals("P")) {
+                                    presentList.add(calendarDay);
+                                } else if (attendanceReport.get(i).getSTAT().equals("A") || attendanceReport.get(i).getSTATUS2().equals("A")) {
+                                    absentList.add(calendarDay);
+                                } else if (attendanceReport.get(i).getSTAT().equals("WO")) {
+                                    wolist.add(calendarDay);
+                                } else if (attendanceReport.get(i).getSTAT().equals("OD") && attendanceReport.get(i).getSTATUS2().equals("OD")) {
+                                    odlist.add(calendarDay);
+                                } else if (attendanceReport.get(i).getSTAT().equals("FTP") && attendanceReport.get(i).getSTATUS2().equals("FTP")) {
+                                    ftplist.add(calendarDay);
+                                } else if (attendanceReport.get(i).getSTAT().equals("EL") || attendanceReport.get(i).getSTAT().equals("CL") || attendanceReport.get(i).getSTAT().equals("SL")) {
+                                    leavelist.add(calendarDay);
+                                } else if (attendanceReport.get(i).getSTATUS2().equals("EL") || attendanceReport.get(i).getSTATUS2().equals("CL") || attendanceReport.get(i).getSTATUS2().equals("SL")) {
+                                    leavelist.add(calendarDay);
+                                } else if (attendanceReport.get(i).getSTAT().equals("SH") || attendanceReport.get(i).getSTATUS2().equals("SH")) {
+                                    shortList.add(calendarDay);
+                                } else if (attendanceReport.get(i).getSTAT().equals("H") || attendanceReport.get(i).getSTATUS2().equals("H")) {
+                                    holidayList.add(calendarDay);
+                                }
                             }
                         }
                     }
+                    total_days_count.setText(attendanceReport.get(0).getTotalPWD());
+                    present_day_count.setText(attendanceReport.get(0).getTotalPD());
+                    absent_day_count.setText(attendanceReport.get(0).getTotalAD());
+                    calendar_view.addDecorator(new EventDecorator(Color.parseColor("#00A36C"), presentList));
+                    calendar_view.addDecorator(new EventDecorator(Color.parseColor("#FF0000"), absentList));
+                    calendar_view.addDecorator(new EventDecorator(Color.GRAY, wolist));
+                    calendar_view.addDecorator(new EventDecorator(Color.parseColor("#FF9800"), odlist));
+                    calendar_view.addDecorator(new EventDecorator(Color.parseColor("#FF9800"), ftplist));
+                    calendar_view.addDecorator(new EventDecorator(Color.parseColor("#dbaf1d"), leavelist));
+                    calendar_view.addDecorator(new EventDecorator(Color.parseColor("#ffc0cb"), shortList));
+                    calendar_view.addDecorator(new EventDecorator(Color.parseColor("#0089c8"), holidayList));
                 }
-                total_days_count.setText(attendanceReport.get(0).getTotalPWD());
-                present_day_count.setText(attendanceReport.get(0).getTotalPD());
-                absent_day_count.setText(attendanceReport.get(0).getTotalAD());
-                calendar_view.addDecorator(new EventDecorator(Color.parseColor("#00A36C"), presentList));
-                calendar_view.addDecorator(new EventDecorator(Color.parseColor("#FF0000"), absentList));
-                calendar_view.addDecorator(new EventDecorator(Color.GRAY, wolist));
-                calendar_view.addDecorator(new EventDecorator(Color.parseColor("#FF9800"), odlist));
-                calendar_view.addDecorator(new EventDecorator(Color.parseColor("#FF9800"), ftplist));
-                calendar_view.addDecorator(new EventDecorator(Color.parseColor("#dbaf1d"), leavelist));
-                calendar_view.addDecorator(new EventDecorator(Color.parseColor("#ffc0cb"), shortList));
-                calendar_view.addDecorator(new EventDecorator(Color.parseColor("#0089c8"), holidayList));
             }
         }, empcode, fromDate, toDate);
     }

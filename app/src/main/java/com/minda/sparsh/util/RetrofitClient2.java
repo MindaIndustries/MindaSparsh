@@ -26,7 +26,7 @@ public class RetrofitClient2 {
     //master public static final String BASE_URL = "http://176.9.28.166/MindaSparshTest/Service.asmx/";
     // public static final String BASE_URL = "http://52.172.191.61/Test.mindasparsh.com/Service.asmx/";
     //dev
-    public static final String notifUrl = "https://dev.mindasparsh.com";
+   /* public static final String notifUrl = "https://dev.mindasparsh.com";
     public static final String BASE_URL = "https://dev.mindasparsh.com/Service.asmx/";
     public static final String EHS_BASE_URL = "https://dev.mindasparsh.com/ServiceEHS.asmx/";
     public static final String ehs_img = "https://dev.mindasparsh.com/ehs/files/";
@@ -40,10 +40,10 @@ public class RetrofitClient2 {
     public static final String BASEURL = "https://qas.mindasparsh.com/API/CVP/";
     public static final String baseurlqr = "https://qas.mindasparsh.com/API/";
         public static final String baseurlAbnormalityNew = "https://qas.mindasparsh.com/API/";
-    public static final String LOC = "d";
+    public static final String LOC = "d";*/
     //https://qas.mindasparsh.com/Api/service/GetAutoNameAbnormlaity?prefixText=Ravi&val=4
     //prod
-  /*  public static final String notifUrl="https://app.mindasparsh.com";
+    public static final String notifUrl="https://app.mindasparsh.com";
     public static final String BASE_URL = "https://app.mindasparsh.com/Service.asmx/";
     public static final String ehs_img = "https://app.mindasparsh.com/ehs/files/";
     public static final String EHS_BASE_URL = "https://app.mindasparsh.com/ServiceEHS.asmx/";
@@ -58,10 +58,10 @@ public class RetrofitClient2 {
     public static final String baseurlqr = "https://services.mindasparsh.com/MeetingRoom/API/";
     public static final String baseurlAbnormalityNew = "https://bridge.mindasparsh.com/API/";
         public static final String LOC = "d";
-  */  //new CKey
-     public static final String CKEY = "bWRhQHNQciRyWiNHISE=";
+    //new CKey
+  //   public static final String CKEY = "bWRhQHNQciRyWiNHISE=";
 
-  //  public static final String CKEY = "mda@sPr$rZ#G!!";
+    public static final String CKEY = "mda@sPr$rZ#G!!";
 
     private static Retrofit retrofit = null;
     static Dispatcher dispatcher1 = new Dispatcher();
