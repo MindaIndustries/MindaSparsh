@@ -135,6 +135,7 @@ public class LeaveApprovals extends AppCompatActivity implements LeaveApprovalAd
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
         alertDialogBuilder.setMessage(msg);
         alertDialogBuilder.setTitle(title);
+        alertDialogBuilder.setCancelable(false);
 
         alertDialogBuilder.setPositiveButton("Ok", (arg0, arg1) -> {
             arg0.dismiss();

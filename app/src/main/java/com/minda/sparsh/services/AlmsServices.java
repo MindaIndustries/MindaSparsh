@@ -25,6 +25,7 @@ import javax.net.ssl.HttpsURLConnection;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+import retrofit2.http.Field;
 
 public class AlmsServices {
 
@@ -176,9 +177,9 @@ public class AlmsServices {
             }
         });
     }
-    public void applyLeave(OnTaskComplete onTaskComplete,String Empcode, String Fromdate, String Todate, String Year, String LeaveType, String NoOfDays, String ReasonCode, String Session, String AuthPerson, String Remark, String Place, String ReportyEmailID, String ReportyEmpName, String EmpName, String FileName, String Files){
+    public void applyLeave(OnTaskComplete onTaskComplete, String Empcode, String Fromdate, String Todate, String Year, String LeaveType, String NoOfDays, String ReasonCode, String Session, String AuthPerson, String Remark, String Place, String ReportyEmailID, String ReportyEmpName, String EmpName, String FileName, String Files, String FSHrs, String SSHrs){
         AlmsClient almsClient = RetrofitClient2.getClientScanQR(AlmsClient.class);
-        Call<List<ApplyLeaveResponse>> call = almsClient.applyLeave(Empcode,Fromdate,Todate,Year, LeaveType,NoOfDays,ReasonCode,Session,AuthPerson,Remark,Place,ReportyEmailID,ReportyEmpName,EmpName, FileName,Files);
+        Call<List<ApplyLeaveResponse>> call = almsClient.applyLeave(Empcode,Fromdate,Todate,Year, LeaveType,NoOfDays,ReasonCode,Session,AuthPerson,Remark,Place,ReportyEmailID,ReportyEmpName,EmpName, FileName,Files, FSHrs,SSHrs);
         call.enqueue(new Callback<List<ApplyLeaveResponse>>() {
             @Override
             public void onResponse(Call<List<ApplyLeaveResponse>> call, Response<List<ApplyLeaveResponse>> response) {

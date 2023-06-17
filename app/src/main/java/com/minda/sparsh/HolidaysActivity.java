@@ -4,6 +4,8 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
@@ -72,6 +74,19 @@ public class HolidaysActivity extends AppCompatActivity {
         yearDropdown.setAdapter(yearsAdapter);
         yearDropdown.setSelection(0);
         yearDropdown.setText(""+Calendar.getInstance().get(Calendar.YEAR));
+        yearsAdapter.getFilter().filter(null);
+        yearDropdown.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                year = years.get(i);
+                if(Utility.isOnline(HolidaysActivity.this)) {
+                    getHolidayList(empCode, year);
+                }
+            }
+        });
+
+
+
 
         if(Utility.isOnline(HolidaysActivity.this)) {
             getHolidayList(empCode, year);
@@ -83,6 +98,7 @@ public class HolidaysActivity extends AppCompatActivity {
         almsServices.GetHolidayList(carotResponse -> {
             if(carotResponse.getStatuscode() == HttpsURLConnection.HTTP_OK){
                 List<HolidayListModel> listModels = (List<HolidayListModel>) carotResponse.getData();
+                holidaylist.clear();
                 if(listModels!=null && listModels.size()>0){
                     holidaylist.addAll(listModels);
                 }

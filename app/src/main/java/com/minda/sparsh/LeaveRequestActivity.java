@@ -3,6 +3,8 @@ package com.minda.sparsh;
 import android.Manifest;
 import android.app.Activity;
 import android.app.DatePickerDialog;
+import android.app.ProgressDialog;
+import android.app.TimePickerDialog;
 import android.content.ContentResolver;
 import android.content.Context;
 import android.content.Intent;
@@ -12,6 +14,7 @@ import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.Matrix;
 
+import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -21,6 +24,7 @@ import android.provider.OpenableColumns;
 import android.util.Base64;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -49,8 +53,11 @@ import com.minda.sparsh.util.Utility;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.InputStream;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import javax.net.ssl.HttpsURLConnection;
@@ -59,8 +66,8 @@ public class LeaveRequestActivity extends AppCompatActivity {
     Toolbar toolbar;
     TextView title;
     AppCompatAutoCompleteTextView leave_type, session_spinner;
-    TextInputEditText start_date, end_date, comment, available_bal, no_of_days;
-    TextInputLayout customerSpinnerLayout9, customerSpinnerLayout8;
+    TextInputEditText start_date, end_date, comment, available_bal, no_of_days, start_time, end_time;
+    TextInputLayout customerSpinnerLayout9, customerSpinnerLayout8, customerSpinnerLayout00, customerSpinnerLayout01;
     ArrayList<LeaveBalanceModel> leaveBalanceList = new ArrayList<>();
     String empCode;
     SharedPreferences myPref;
@@ -86,10 +93,15 @@ public class LeaveRequestActivity extends AppCompatActivity {
     byte[] bytes;
     Bitmap bmp;
     boolean no_sick_leave_allowed = false, no_sick_leave_allowed1 = false;
-
-
+    ProgressDialog progressDialog;
+    TimePickerDialog timePickerDialog, timePickerDialog1;
+    Date millisecondsdailyfrom = null, millisecondsdailyto = null;
+    Date millisecondsdatefrom=null,millisecondsdateto=null;
     List<LeaveTypeModel> LeaveTypesList = new ArrayList<>();
     ArrayList<String> session_values = new ArrayList<>();
+    String no_of_days_api;
+    public static final String YMD_DASH_WITH_TIME = "yyyy-MM-dd HH:mm:ss";
+    int hh_start,mm_start;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -100,6 +112,8 @@ public class LeaveRequestActivity extends AppCompatActivity {
         leave_type = findViewById(R.id.leave_type);
         start_date = findViewById(R.id.start_date);
         end_date = findViewById(R.id.end_date);
+        start_time = findViewById(R.id.start_time);
+        end_time = findViewById(R.id.end_time);
         comment = findViewById(R.id.comment);
         available_bal = findViewById(R.id.available_bal);
         no_of_days = findViewById(R.id.no_of_days);
@@ -109,6 +123,8 @@ public class LeaveRequestActivity extends AppCompatActivity {
         upload = findViewById(R.id.upload_certificate);
         customerSpinnerLayout9 = findViewById(R.id.customerSpinnerLayout9);
         customerSpinnerLayout8 = findViewById(R.id.customerSpinnerLayout8);
+        customerSpinnerLayout00 = findViewById(R.id.customerSpinnerLayout00);
+        customerSpinnerLayout01 = findViewById(R.id.customerSpinnerLayout01);
         session_spinner = findViewById(R.id.session);
         session_values.add("Full Session");
         session_values.add("1st Session");
@@ -119,6 +135,8 @@ public class LeaveRequestActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setHomeAsUpIndicator(R.drawable.back);
         title.setText("Leave Request");
+        progressDialog = new ProgressDialog(this);
+
         myPref = getSharedPreferences("MyPref", Context.MODE_PRIVATE);
         empCode = myPref.getString("Id", "Id");
         EmpName = myPref.getString("username", "");
@@ -134,6 +152,17 @@ public class LeaveRequestActivity extends AppCompatActivity {
         getLeaveTypes(empCode);
         initDatePicker();
         initDatePicker1();
+        initTimePicker();
+        initTimePicker1();
+
+        start_time.setOnTouchListener((view, motionEvent) -> {
+            timePickerDialog.show();
+            return false;
+        });
+        end_time.setOnTouchListener((view, motionEvent) -> {
+            timePickerDialog1.show();
+            return false;
+        });
         session_spinner.setOnItemClickListener((adapterView, view, i, l) -> {
             if (i == 0) {
                 session = "ES";
@@ -152,21 +181,46 @@ public class LeaveRequestActivity extends AppCompatActivity {
             leavetypeAbb = LeaveTypesList.get(i).getShort_Desc().toUpperCase();
             if (leavetypes.get(i).contains("First Half")) {
                 session = "FN";
-                customerSpinnerLayout8.setVisibility(View.GONE);
+
+               // customerSpinnerLayout8.setVisibility(View.GONE);
             } else if (leavetypes.get(i).contains("Second Half")) {
                 session = "AN";
-                customerSpinnerLayout8.setVisibility(View.GONE);
-            } else {
+              //  customerSpinnerLayout8.setVisibility(View.GONE);
+            }
+            else {
                 session = "ES";
                 customerSpinnerLayout8.setVisibility(View.VISIBLE);
             }
-            if (leavetypes.get(i).equalsIgnoreCase("Short Leave")) {
+            if (leavetypes.get(i).equalsIgnoreCase("Short Leave") || leavetypes.get(i).equalsIgnoreCase("Special Birthday Leave")) {
                 customerSpinnerLayout9.setVisibility(View.VISIBLE);
                 session_values.clear();
                 session_values.add("1st Session");
                 session_values.add("2nd Session");
-            } else {
+               if(leavetypes.get(i).equalsIgnoreCase("Short Leave")){
+                   customerSpinnerLayout00.setVisibility(View.VISIBLE);
+                   customerSpinnerLayout01.setVisibility(View.VISIBLE);
+               }
+               else{
+                   customerSpinnerLayout00.setVisibility(View.GONE);
+                   customerSpinnerLayout01.setVisibility(View.GONE);
+               }
+
+            }
+            else if(leavetypes.get(i).contains("Leave Without Pay")){
+                customerSpinnerLayout9.setVisibility(View.VISIBLE);
+                session_values.clear();
+                session_values.add("Full Session");
+                session_values.add("1st Session");
+                session_values.add("2nd Session");
+                customerSpinnerLayout00.setVisibility(View.GONE);
+                customerSpinnerLayout01.setVisibility(View.GONE);
+                Toast.makeText(LeaveRequestActivity.this, "For Leave without pay, balance is not required.", Toast.LENGTH_LONG).show();
+            }
+            else {
                 customerSpinnerLayout9.setVisibility(View.GONE);
+                customerSpinnerLayout00.setVisibility(View.GONE);
+                customerSpinnerLayout01.setVisibility(View.GONE);
+                session_values.clear();
                 session_values.add("Full Session");
                 session_values.add("1st Session");
                 session_values.add("2nd Session");
@@ -208,14 +262,37 @@ public class LeaveRequestActivity extends AppCompatActivity {
             } else if (leaveType.length() == 0) {
                 Toast.makeText(LeaveRequestActivity.this, "Please select Leave Type", Toast.LENGTH_LONG).show();
                 return;
-            } else if (!leaveType.contains("Leave Without Pay") && Double.parseDouble(available_bal.getText().toString()) <= 0) {
-                Toast.makeText(LeaveRequestActivity.this, "You do not have Leave Balance", Toast.LENGTH_LONG).show();
-                return;
-            } else if ((no_of_days.getVisibility()== View.VISIBLE) &&( no_of_days.getText().toString().length() == 0 || Double.parseDouble(no_of_days.getText().toString()) <= 0)) {
+            } else if (leaveType.contains("Leave Without Pay") && Double.parseDouble(available_bal.getText().toString()) <= 0) {
+              //  Toast.makeText(LeaveRequestActivity.this, "For Leave without pay, balance is not required.", Toast.LENGTH_LONG).show();
+               // return;
+            }
+            else if(leaveType.equals("Short Leave") && (start_time.getText().toString().length()==0 || end_time.getText().toString().length()==0)){
+                Toast.makeText(LeaveRequestActivity.this, "Please select Start Time & End Time", Toast.LENGTH_LONG).show();
                 return;
             }
+            else if ((no_of_days.getVisibility()== View.VISIBLE) &&( no_of_days.getText().toString().length() == 0 || Double.parseDouble(no_of_days.getText().toString()) <= 0)) {
+                return;
+            }
+            else if(Double.parseDouble(no_of_days.getText().toString()) >Double.parseDouble(available_bal.getText().toString())){
+                Toast.makeText(LeaveRequestActivity.this, "Your Leave days are exceeding leave balance", Toast.LENGTH_LONG).show();
+
+                return;
+            }
+
+
             if (Utility.isOnline(LeaveRequestActivity.this)) {
-                applyLeave(empCode, start_date.getText().toString(), end_date.getText().toString(), year, leavetypeAbb, no_of_days.getText().toString(), "", session, authperson, comment.getText().toString(), "", reportyEmailId, reportyEmpName, EmpName, fileName, fileByte);
+                progressDialog = new ProgressDialog(this);
+                try {
+                    progressDialog.show();
+                } catch (WindowManager.BadTokenException e) {
+
+                }
+                progressDialog.setCancelable(false);
+                progressDialog.getWindow()
+                        .setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
+                progressDialog.setContentView(R.layout.progress_bar_layout);
+
+                applyLeave(empCode, start_date.getText().toString(), end_date.getText().toString(), year, leavetypeAbb, no_of_days_api, "", session, authperson, comment.getText().toString(), "", reportyEmailId, reportyEmpName, EmpName, fileName, fileByte,start_time.getText().toString(), end_time.getText().toString());
             }
         });
     }
@@ -240,6 +317,7 @@ public class LeaveRequestActivity extends AppCompatActivity {
 
         //   start_date.setText(dayOfMonthStr+"-"+monthNo+"-"+calendar.get(Calendar.YEAR));
         datePicker = new DatePickerDialog(LeaveRequestActivity.this, (datePicker, i, i1, i2) -> {
+
             int mMonth1 = i1 + 1;
             String monthNo1;
             if (mMonth1 < 10) {
@@ -256,6 +334,7 @@ public class LeaveRequestActivity extends AppCompatActivity {
             calendar.set(Calendar.DAY_OF_MONTH, i2);
             calendar.set(Calendar.MONTH, i1);
             calendar.set(Calendar.YEAR, i);
+            millisecondsdatefrom = calendar.getTime();
             year = String.valueOf(calendar.get(Calendar.YEAR));
             start_date.setText("" + dayOfMonthStr1 + "." + monthNo1 + "." + i);
             end_date.setText("" + dayOfMonthStr1 + "." + monthNo1 + "." + i);
@@ -311,22 +390,133 @@ public class LeaveRequestActivity extends AppCompatActivity {
             calendar1.set(Calendar.DAY_OF_MONTH, i2);
             calendar1.set(Calendar.MONTH, i1);
             calendar1.set(Calendar.YEAR, i);
-            year1 = String.valueOf(calendar1.get(Calendar.YEAR));
-            end_date.setText("" + dayOfMonthStr1 + "." + monthNo1 + "." + i);
-            leave_type.setText("");
-            leaveType = "";
-            leaveTypeAdapter.getFilter().filter(null);
-            no_of_days.setText("");
-            available_bal.setText("");
-            if (calendar1.after(Calendar.getInstance())) {
-                no_sick_leave_allowed = true;
-            } else {
-                no_sick_leave_allowed = false;
+            millisecondsdateto = calendar1.getTime();
+            if(millisecondsdatefrom==null){
+                Toast.makeText(this, "Select Start Date", Toast.LENGTH_LONG).show();
             }
+           else if (millisecondsdatefrom.after(millisecondsdateto)) {
+                Toast.makeText(this, "End Date can't be less than Start Date", Toast.LENGTH_LONG).show();
+                end_time.setText("");
+                return;
+            }
+            else {
 
+                year1 = String.valueOf(calendar1.get(Calendar.YEAR));
+                end_date.setText("" + dayOfMonthStr1 + "." + monthNo1 + "." + i);
+                leave_type.setText("");
+                leaveType = "";
+                leaveTypeAdapter.getFilter().filter(null);
+                no_of_days.setText("");
+                available_bal.setText("");
+                if (calendar1.after(Calendar.getInstance())) {
+                    no_sick_leave_allowed = true;
+                } else {
+                    no_sick_leave_allowed = false;
+                }
+            }
         }, calendar1.get(Calendar.YEAR), calendar1.get(Calendar.MONTH), calendar1.get(Calendar.DAY_OF_MONTH));
 
         //  datePicker.getDatePicker().setMinDate(Calendar.getInstance().getTimeInMillis() - 10000);
+
+    }
+
+
+    public void initTimePicker() {
+
+        final Calendar cal1 = Calendar.getInstance();
+        final int hour_init, minute_init;
+        cal1.add(Calendar.HOUR_OF_DAY, calendar.get(Calendar.HOUR_OF_DAY));
+        cal1.add(Calendar.MINUTE, calendar.get(Calendar.MINUTE));
+        hour_init = cal1.get(Calendar.HOUR_OF_DAY);
+        minute_init = cal1.get(Calendar.MINUTE);
+        cal1.set(Calendar.DAY_OF_MONTH, calendar.get(Calendar.DAY_OF_MONTH));
+        cal1.set(Calendar.MONTH, calendar.get(Calendar.MONTH));
+        cal1.set(Calendar.YEAR, calendar.get(Calendar.YEAR));
+        millisecondsdailyfrom = cal1.getTime();
+
+        timePickerDialog = new TimePickerDialog(LeaveRequestActivity.this, (view, hourOfDay, minute) -> {
+            cal1.set(Calendar.HOUR_OF_DAY, hourOfDay);
+            cal1.set(Calendar.MINUTE, minute);
+            cal1.set(Calendar.AM_PM, cal1.get(Calendar.AM_PM));
+            cal1.set(Calendar.DAY_OF_MONTH, calendar.get(Calendar.DAY_OF_MONTH));
+            cal1.set(Calendar.MONTH, calendar.get(Calendar.MONTH));
+            cal1.set(Calendar.YEAR, calendar.get(Calendar.YEAR));
+            millisecondsdailyfrom = cal1.getTime();
+              /*  if(millisecondsdailyfrom.before(Calendar.getInstance().getTime())){
+                    Toast.makeText(this, "End Time can't be less than Start Time", Toast.LENGTH_LONG).show();
+                    start_time.setText("");
+                    return;
+                }
+                else{*/
+            String minute_str =null ;
+            if (minute < 10) {
+                minute_str = "0" + minute;
+            } else {
+                minute_str = "" + minute;
+            }
+
+            start_time.setText("" + hourOfDay + "." + minute_str);
+            hh_start = hourOfDay;
+            mm_start = Integer.parseInt(minute_str);
+            end_time.setText("");
+
+            //   }
+
+        }, hour_init, minute_init, true);
+
+
+    }
+
+    public void initTimePicker1() {
+        final Calendar cal2 = Calendar.getInstance();
+        final int hour_init, minute_init;
+        cal2.add(Calendar.HOUR_OF_DAY, calendar.get(Calendar.HOUR_OF_DAY));
+        cal2.add(Calendar.MINUTE, calendar.get(Calendar.MINUTE));
+        hour_init = cal2.get(Calendar.HOUR_OF_DAY);
+        minute_init = cal2.get(Calendar.MINUTE);
+        cal2.set(Calendar.DAY_OF_MONTH, calendar.get(Calendar.DAY_OF_MONTH));
+        cal2.set(Calendar.MONTH, calendar.get(Calendar.MONTH));
+        cal2.set(Calendar.YEAR, calendar.get(Calendar.YEAR));
+        millisecondsdailyto = cal2.getTime();
+
+        timePickerDialog1 = new TimePickerDialog(LeaveRequestActivity.this, (view, hourOfDay, minute) -> {
+            cal2.set(Calendar.HOUR_OF_DAY, hourOfDay);
+            cal2.set(Calendar.MINUTE, minute);
+            cal2.set(Calendar.AM_PM, cal2.get(Calendar.AM_PM));
+            cal2.set(Calendar.DAY_OF_MONTH, calendar.get(Calendar.DAY_OF_MONTH));
+            cal2.set(Calendar.MONTH, calendar.get(Calendar.MONTH));
+            cal2.set(Calendar.YEAR, calendar.get(Calendar.YEAR));
+            millisecondsdailyto = cal2.getTime();
+            if(millisecondsdailyfrom == null){
+                Toast.makeText(this, "Select Satrt Time", Toast.LENGTH_LONG).show();
+                return;
+            }
+            if (millisecondsdailyfrom.after(millisecondsdailyto)) {
+                Toast.makeText(this, "End Time can't be less than Start Time", Toast.LENGTH_LONG).show();
+                end_time.setText("");
+                return;
+            } else {
+                String minute_str = null;
+                if (minute < 10) {
+                    minute_str = "0" + minute;
+                } else {
+                    minute_str = "" + minute;
+                }
+                long two_hrs = (1000 * 60 * 120)+1000 ; //120 minutes in milliseconds
+                long differ = (millisecondsdailyto.getTime() - millisecondsdailyfrom.getTime());
+                if (differ <= two_hrs && differ >= -two_hrs ){
+                    end_time.setText("" + hourOfDay + "." + minute_str);
+                    // under +/-120 minutes, do the work
+                }else{
+                    // over 120 minutes
+                    Toast.makeText(this, "Short leave can be of max. 2 hrs.", Toast.LENGTH_LONG).show();
+
+                }
+
+            }
+
+        }, hour_init, minute_init, true);
+
 
     }
 
@@ -402,17 +592,25 @@ public class LeaveRequestActivity extends AppCompatActivity {
         }, empcode, fromDate, toDate,"");
     }
 
-    public void getTotalLeaveDays(String leaveType, String fromDate, String toDate) {
+    public void getTotalLeaveDays(String shortleavetyp, String fromDate, String toDate) {
         AlmsServices almsServices = new AlmsServices();
         almsServices.getTotalLeaveDays(carotResponse -> {
             if (carotResponse.getStatuscode() == HttpsURLConnection.HTTP_OK) {
                 List<LeaveDaysResponse> list = (List<LeaveDaysResponse>) carotResponse.getData();
                 if (list != null && list.size() > 0) {
+                    no_of_days_api = ""+list.get(0).getCount();
                     no_of_days.setText("" + list.get(0).getCount());
                 }
-                if (leavetypeAbb.equals("BL")) {
+               /* if (leavetypeAbb.equals("BL")) {
                     no_of_days.setText("0.5");
-                    session = "AN";
+                   // session = "AN";
+                }*/
+
+                if(leaveType.equals("Special Birthday Leave") || leaveType.contains("Half")){
+                    no_of_days.setText("" + (list.get(0).getCount()/2));
+                    if(leaveType.equals("Special Birthday Leave")) {
+                        no_of_days_api = "0.5";
+                    }
                 }
                 if (leavetypeAbb.equals("SL") && list.get(0).getCount() > 3) {
                     m_certificate.setVisibility(View.VISIBLE);
@@ -420,14 +618,13 @@ public class LeaveRequestActivity extends AppCompatActivity {
                 } else {
                     m_certificate.setVisibility(View.GONE);
                     upload.setVisibility(View.GONE);
-
                 }
             }
-        }, leaveType, fromDate, toDate,empCode);
+        }, shortleavetyp, fromDate, toDate,empCode);
 
     }
 
-    public void applyLeave(String Empcode, String Fromdate, String Todate, String Year, String LeaveType, String NoOfDays, String ReasonCode, String Session, String AuthPerson, String Remark, String Place, String ReportyEmailID, String ReportyEmpName, String EmpName, String FileName, String Files) {
+    public void applyLeave(String Empcode, String Fromdate, String Todate, String Year, String LeaveType, String NoOfDays, String ReasonCode, String Session, String AuthPerson, String Remark, String Place, String ReportyEmailID, String ReportyEmpName, String EmpName, String FileName, String Files, String fs_hrs, String ss_hrs) {
         AlmsServices almsServices = new AlmsServices();
         almsServices.applyLeave(carotResponse -> {
             if (carotResponse.getStatuscode() == HttpsURLConnection.HTTP_OK) {
@@ -439,8 +636,9 @@ public class LeaveRequestActivity extends AppCompatActivity {
                     }
                 }
             }
+            progressDialog.dismiss();
 
-        }, Empcode, Fromdate, Todate, Year, LeaveType, NoOfDays, ReasonCode, Session, AuthPerson, Remark, Place, ReportyEmailID, ReportyEmpName, EmpName, FileName, Files);
+        }, Empcode, Fromdate, Todate, Year, LeaveType, NoOfDays, ReasonCode, Session, AuthPerson, Remark, Place, ReportyEmailID, ReportyEmpName, EmpName, FileName, Files,fs_hrs,ss_hrs);
     }
 
     public void selectFile() {
@@ -540,8 +738,7 @@ public class LeaveRequestActivity extends AppCompatActivity {
         Utility.saveFileToSdCard(mDestinationFile, thumbnail);
         String fileName = mDestinationFile.getName();
         System.out.println("fileName" + fileName);
-        bytes = getBytesFromBitmap(
-                thumbnail);
+        bytes = getBytesFromBitmap(thumbnail);
         fileType = "jpg";
         bmp = thumbnail;
         //  attachtext.setText(fileName);
@@ -606,7 +803,7 @@ public class LeaveRequestActivity extends AppCompatActivity {
     private void onSelectFile(Intent data) {
         Uri fileUri = data.getData();
 
-        File file = new File(fileUri.getPath());
+      //  File file = new File(fileUri.getPath());
         String mimeType = getContentResolver().getType(fileUri);
         fileType = mimeType.replace("application/", "");
 
@@ -731,5 +928,6 @@ public class LeaveRequestActivity extends AppCompatActivity {
         AlertDialog alertDialog = alertDialogBuilder.create();
         alertDialog.show();
     }
+
 
 }

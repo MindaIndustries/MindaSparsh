@@ -1,11 +1,14 @@
 package com.minda.sparsh;
 
 import android.app.DatePickerDialog;
+import android.app.ProgressDialog;
 import android.app.TimePickerDialog;
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.WindowManager;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
@@ -50,8 +53,11 @@ public class LeaveRegularizationActivity extends AppCompatActivity {
     SharedPreferences myPref;
     TimePickerDialog timePickerDialog, timePickerDialog1;
     Date millisecondsdailyfrom = null, millisecondsdailyto = null;
+    Date millisecondsdatefrom=null,millisecondsdateto=null;
+
     String authperson, reportyEmailId, reportyEmpName, EmpName;
     ArrayList<String> session_values = new ArrayList<>();
+    ProgressDialog progressDialog;
 
 
     @Override
@@ -77,6 +83,8 @@ public class LeaveRegularizationActivity extends AppCompatActivity {
         session_spinner = findViewById(R.id.session);
         sessionAdapter = new ArrayAdapter<>(LeaveRegularizationActivity.this, android.R.layout.simple_list_item_1, session_values);
         session_spinner.setAdapter(sessionAdapter);
+        progressDialog = new ProgressDialog(this);
+
 
         myPref = getSharedPreferences("MyPref", Context.MODE_PRIVATE);
         empCode = myPref.getString("Id", "Id");
@@ -155,7 +163,19 @@ public class LeaveRegularizationActivity extends AppCompatActivity {
                 return;
             }
             if (Utility.isOnline(LeaveRegularizationActivity.this)) {
-                applyLeaveRegular(empCode, start_date.getText().toString(), end_date.getText().toString(), year, "" + leaveType, no_of_days.getText().toString(), "", session, authperson, comment.getText().toString(), "", reportyEmailId, reportyEmpName, EmpName, "", "", start_time.getText().toString(), end_time.getText().toString());
+                 progressDialog = new ProgressDialog(this);
+                    try {
+                        progressDialog.show();
+                    } catch (WindowManager.BadTokenException e) {
+
+                    }
+                    progressDialog.setCancelable(false);
+                    progressDialog.getWindow()
+                            .setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
+                    progressDialog.setContentView(R.layout.progress_bar_layout);
+
+
+                    applyLeaveRegular(empCode, start_date.getText().toString(), end_date.getText().toString(), year, "" + leaveType, no_of_days.getText().toString(), "", session, authperson, comment.getText().toString(), "", reportyEmailId, reportyEmpName, EmpName, "", "", start_time.getText().toString(), end_time.getText().toString());
             }
         });
 
@@ -197,6 +217,7 @@ public class LeaveRegularizationActivity extends AppCompatActivity {
             calendar.set(Calendar.DAY_OF_MONTH, i2);
             calendar.set(Calendar.MONTH, i1);
             calendar.set(Calendar.YEAR, i);
+            millisecondsdatefrom = calendar.getTime();
             year = String.valueOf(calendar.get(Calendar.YEAR));
             start_date.setText("" + dayOfMonthStr1 + "." + monthNo1 + "." + i);
             end_date.setText("" + dayOfMonthStr1 + "." + monthNo1 + "." + i);
@@ -246,12 +267,23 @@ public class LeaveRegularizationActivity extends AppCompatActivity {
             calendar1.set(Calendar.DAY_OF_MONTH, i2);
             calendar1.set(Calendar.MONTH, i1);
             calendar1.set(Calendar.YEAR, i);
-            year1 = String.valueOf(calendar1.get(Calendar.YEAR));
-            end_date.setText("" + dayOfMonthStr1 + "." + monthNo1 + "." + i);
-            leave_type.setText("");
-            leaveType = 0;
-            leaveTypeAdapter.getFilter().filter(null);
-            no_of_days.setText("");
+            millisecondsdateto = calendar1.getTime();
+            if(millisecondsdatefrom==null){
+                Toast.makeText(this, "Select Start Date", Toast.LENGTH_LONG).show();
+            }
+            else if (millisecondsdatefrom.after(millisecondsdateto)) {
+                Toast.makeText(this, "End Date can't be less than Start Date", Toast.LENGTH_LONG).show();
+                end_time.setText("");
+                return;
+            }
+            else {
+                year1 = String.valueOf(calendar1.get(Calendar.YEAR));
+                end_date.setText("" + dayOfMonthStr1 + "." + monthNo1 + "." + i);
+                leave_type.setText("");
+                leaveType = 0;
+                leaveTypeAdapter.getFilter().filter(null);
+                no_of_days.setText("");
+            }
         }, calendar1.get(Calendar.YEAR), calendar1.get(Calendar.MONTH), calendar1.get(Calendar.DAY_OF_MONTH));
 
         //  datePicker.getDatePicker().setMinDate(Calendar.getInstance().getTimeInMillis() - 10000);
@@ -396,6 +428,8 @@ public class LeaveRegularizationActivity extends AppCompatActivity {
                     }
                 }
             }
+            progressDialog.dismiss();
+
         }, Empcode, Fromdate, Todate, Year, LeaveType, NoOfDays, ReasonCode, Session, AuthPerson, Remark, Place, ReportyEmailID, ReportyEmpName, EmpName, FileName, Files, FSHrs, SSHrs);
 
 

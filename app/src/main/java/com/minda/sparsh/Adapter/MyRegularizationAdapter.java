@@ -45,6 +45,7 @@ public class MyRegularizationAdapter extends RecyclerView.Adapter<MyRegularizati
     public void onBindViewHolder(@NonNull @NotNull ViewHolder holder, int position) {
         if(leaveRequests.get(position).getReqNo()!=null) {
             holder.req_no.setText(leaveRequests.get(position).getReqNo());
+            holder.req_typ.setText(leaveRequests.get(position).getReqType());
         }
         if(leaveRequests.get(position).getFromDate()!=null)
             holder.from.setText(leaveRequests.get(position).getFromDate());
@@ -88,6 +89,8 @@ public class MyRegularizationAdapter extends RecyclerView.Adapter<MyRegularizati
         TextView status;
         @BindView(R.id.options)
         ImageView options;
+        @BindView(R.id.req_typ)
+        TextView req_typ;
 
 
         public ViewHolder(@NonNull @NotNull View itemView) {

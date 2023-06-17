@@ -48,6 +48,7 @@ public class MyLeaveRequestAdapter extends RecyclerView.Adapter<MyLeaveRequestAd
     public void onBindViewHolder(@NonNull @NotNull ViewHolder holder, int position) {
         if (leaveRequests.get(position).getLVE_REQNO() != null) {
             holder.req_no.setText(leaveRequests.get(position).getLVE_REQNO());
+            holder.req_typ.setText(leaveRequests.get(position).getLVE_CODE());
         }
 
         if (leaveRequests.get(position).getLVE_FROMDT() != null) {
@@ -117,6 +118,8 @@ public class MyLeaveRequestAdapter extends RecyclerView.Adapter<MyLeaveRequestAd
         TextView status;
         @BindView(R.id.options)
         ImageView options;
+        @BindView(R.id.req_typ)
+        TextView req_typ;
 
         public ViewHolder(@NonNull @NotNull View itemView) {
             super(itemView);

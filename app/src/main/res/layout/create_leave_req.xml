@@ -149,13 +149,60 @@
                     tools:ignore="KeyboardInaccessibleWidget" />
             </com.google.android.material.textfield.TextInputLayout>
 
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/customerSpinnerLayout00"
+                style="@style/edittext"
+                android:visibility="gone"
+                android:layout_below="@+id/customerSpinnerLayout9"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="5dp"
+                android:layout_toLeftOf="@+id/view"
+                android:hint="Start Time *">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/start_time"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:editable="false"
+                    android:focusedByDefault="true"
+                    android:gravity="left"
+                    android:hint=""
+                    android:imeOptions="actionNext"
+                    android:padding="18dp" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/customerSpinnerLayout01"
+                style="@style/edittext"
+                android:visibility="gone"
+                android:layout_below="@+id/customerSpinnerLayout9"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_toRightOf="@+id/view"
+                android:hint="End Time *">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/end_time"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:editable="false"
+                    android:focusedByDefault="true"
+                    android:gravity="left"
+                    android:hint=""
+                    android:imeOptions="actionNext"
+                    android:padding="18dp" />
+            </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/customerSpinnerLayout7"
                 style="@style/edittext"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/customerSpinnerLayout9"
+                android:layout_below="@+id/customerSpinnerLayout00"
                 android:layout_marginTop="10dp"
                 android:hint="Remarks">
 

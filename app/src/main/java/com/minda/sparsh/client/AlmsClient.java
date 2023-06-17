@@ -48,7 +48,7 @@ public interface AlmsClient {
 
     @FormUrlEncoded
     @POST("service/ApplyLeave")
-    Call<List<ApplyLeaveResponse>> applyLeave(@Field("EmpCode") String EmpCode, @Field("Fromdate") String Fromdate, @Field("Todate") String Todate, @Field("Year") String Year, @Field("LeaveType") String LeaveType, @Field("NoOfDays") String NoOfDays, @Field("ReasonCode") String ReasonCode,@Field("Session") String Session,@Field("AuthPerson") String AuthPerson, @Field("Remark") String Remark, @Field("Place") String Place, @Field("ReportyEmailID") String ReportyEmailID, @Field("ReportyEmpName") String ReportyEmpName, @Field("EmpName") String EmpName, @Field("FileName") String FileName, @Field("Files") String Files);
+    Call<List<ApplyLeaveResponse>> applyLeave(@Field("EmpCode") String EmpCode, @Field("Fromdate") String Fromdate, @Field("Todate") String Todate, @Field("Year") String Year, @Field("LeaveType") String LeaveType, @Field("NoOfDays") String NoOfDays, @Field("ReasonCode") String ReasonCode,@Field("Session") String Session,@Field("AuthPerson") String AuthPerson, @Field("Remark") String Remark, @Field("Place") String Place, @Field("ReportyEmailID") String ReportyEmailID, @Field("ReportyEmpName") String ReportyEmpName, @Field("EmpName") String EmpName, @Field("FileName") String FileName, @Field("Files") String Files, @Field("FSHrs") String FSHrs,@Field("SSHrs") String SSHrs);
 
     @FormUrlEncoded
     @POST("service/ApplyLeaveRegular")
