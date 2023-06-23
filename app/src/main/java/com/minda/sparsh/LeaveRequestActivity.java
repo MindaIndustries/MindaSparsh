@@ -171,6 +171,17 @@ public class LeaveRequestActivity extends AppCompatActivity {
             } else {
                 session = "AN";
             }
+
+             if(leaveType.contains("Leave Without Pay") && (session.equals("FN") || session.equals("AN"))){
+                 if(Double.parseDouble(no_of_days_api)>=1) {
+                     no_of_days.setText(""+Double.parseDouble(no_of_days_api)/2);
+                 }
+
+             }
+             else{
+                 no_of_days.setText(""+no_of_days_api);
+
+             }
         });
         leave_type.setOnItemClickListener((adapterView, view, i, l) -> {
             if (start_date.getText().toString().length() == 0 && end_date.getText().toString().length() == 0) {
@@ -229,7 +240,7 @@ public class LeaveRequestActivity extends AppCompatActivity {
           //  getLeaveBalance(empCode, year, leavetypeAbb);
 
             if (leavetypes.get(i).contains("Sick Leave") && (no_sick_leave_allowed || no_sick_leave_allowed1)) {
-                Toast.makeText(LeaveRequestActivity.this, " Future date is not allowed in the Sick Leave", Toast.LENGTH_LONG).show();
+                Toast.makeText(LeaveRequestActivity.this, "Future date is not allowed in the Sick Leave", Toast.LENGTH_LONG).show();
                 leaveType = "";
                 leavetypeAbb = "";
                 leave_type.setText("");
@@ -606,7 +617,7 @@ public class LeaveRequestActivity extends AppCompatActivity {
                    // session = "AN";
                 }*/
 
-                if(leaveType.equals("Special Birthday Leave") || leaveType.contains("Half")){
+                if(leaveType.equals("Special Birthday Leave") || leaveType.contains("Half") ){
                     no_of_days.setText("" + (list.get(0).getCount()/2));
                     if(leaveType.equals("Special Birthday Leave")) {
                         no_of_days_api = "0.5";
@@ -919,6 +930,7 @@ public class LeaveRequestActivity extends AppCompatActivity {
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
         alertDialogBuilder.setMessage(msg);
         alertDialogBuilder.setTitle(title);
+        alertDialogBuilder.setCancelable(false);
 
         alertDialogBuilder.setPositiveButton("Ok", (arg0, arg1) -> {
             arg0.dismiss();
