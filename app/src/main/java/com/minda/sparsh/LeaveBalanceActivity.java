@@ -52,7 +52,7 @@ public class LeaveBalanceActivity extends AppCompatActivity implements MyLeaveRe
     ArrayList<String> leaveTypes = new ArrayList<>();
     String reqType;
     View view;
-    TextView balance_value, availed1, applied1, balance_value1, availed2, applied_value, balance_value3, availed3, applied_value3, balance_value4, availed4, applied_value4;
+    TextView no_record,no_record1, balance_value, availed1, applied1, balance_value1, availed2, applied_value, balance_value3, availed3, applied_value3, balance_value4, availed4, applied_value4;
 
 
     @Override
@@ -66,6 +66,8 @@ public class LeaveBalanceActivity extends AppCompatActivity implements MyLeaveRe
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setHomeAsUpIndicator(R.drawable.back);
         title.setText("Leave Balance");
+        no_record = findViewById(R.id.no_record);
+        no_record1 = findViewById(R.id.no_record1);
         myPref = getSharedPreferences("MyPref", Context.MODE_PRIVATE);
         empCode = myPref.getString("Id", "Id");
         calendar = Calendar.getInstance();
@@ -184,7 +186,7 @@ public class LeaveBalanceActivity extends AppCompatActivity implements MyLeaveRe
                 }
 
             }
-        }, empcode, year, leaveType);
+        }, empcode, year, leaveType, "", "");
     }
 
     public void getMyLeaveRequests() {
@@ -196,26 +198,34 @@ public class LeaveBalanceActivity extends AppCompatActivity implements MyLeaveRe
             if (carotResponse.getStatuscode() == HttpsURLConnection.HTTP_OK) {
                 List<LeaveRequestModel> list = (List<LeaveRequestModel>) carotResponse.getData();
                 if (list != null && list.size() > 0) {
-                    leaveRequests.addAll(list);
-                    Collections.sort(leaveRequests, (o1, o2) -> {
-                        String[] date1 = o1.getLVE_RECEIVED_DT().replace(".", "/").split("/");
-                        Calendar calendar = Calendar.getInstance();
-                        calendar.set(Calendar.DAY_OF_MONTH, Integer.parseInt(date1[0]));
-                        calendar.set(Calendar.MONTH, (Integer.parseInt(date1[1]) - 1));
-                        calendar.set(Calendar.YEAR, Integer.parseInt(date1[2]));
-                        String[] date2 = o1.getLVE_RECEIVED_DT().replace(".", "/").split("/");
-                        Calendar calendar1 = Calendar.getInstance();
-                        calendar1.set(Calendar.DAY_OF_MONTH, Integer.parseInt(date2[0]));
-                        calendar1.set(Calendar.MONTH, (Integer.parseInt(date2[1]) - 1));
-                        calendar1.set(Calendar.YEAR, Integer.parseInt(date2[2]));
-                        if (calendar1.before(calendar)) {
-                            return 1;
-                        } else if (calendar1.after(calendar)) {
-                            return -1;
-                        } else {
-                            return 0;
-                        }
-                    });
+                    if(list.get(0).getLVE_REQNO()!=null) {
+                        leaveRequests.addAll(list);
+                        no_record.setVisibility(View.GONE);
+
+                        Collections.sort(leaveRequests, (o1, o2) -> {
+                            String[] date1 = o1.getLVE_RECEIVED_DT().replace(".", "/").split("/");
+                            Calendar calendar = Calendar.getInstance();
+                            calendar.set(Calendar.DAY_OF_MONTH, Integer.parseInt(date1[0]));
+                            calendar.set(Calendar.MONTH, (Integer.parseInt(date1[1]) - 1));
+                            calendar.set(Calendar.YEAR, Integer.parseInt(date1[2]));
+                            String[] date2 = o1.getLVE_RECEIVED_DT().replace(".", "/").split("/");
+                            Calendar calendar1 = Calendar.getInstance();
+                            calendar1.set(Calendar.DAY_OF_MONTH, Integer.parseInt(date2[0]));
+                            calendar1.set(Calendar.MONTH, (Integer.parseInt(date2[1]) - 1));
+                            calendar1.set(Calendar.YEAR, Integer.parseInt(date2[2]));
+                            if (calendar1.before(calendar)) {
+                                return 1;
+                            } else if (calendar1.after(calendar)) {
+                                return -1;
+                            } else {
+                                return 0;
+                            }
+                        });
+                    }
+                    else{
+                        no_record.setVisibility(View.VISIBLE);
+
+                    }
                     myLeaveRequestAdapter.notifyDataSetChanged();
                 }
             }
@@ -233,31 +243,38 @@ public class LeaveBalanceActivity extends AppCompatActivity implements MyLeaveRe
             if (carotResponse.getStatuscode() == HttpsURLConnection.HTTP_OK) {
                 List<LeaveRegularizationModel> list = (List<LeaveRegularizationModel>) carotResponse.getData();
                 if (list != null && list.size() > 0) {
-                    regularzationRequests.addAll(list);
-                    Collections.sort(regularzationRequests, (o1, o2) -> {
-                        String[] date1 = o1.getCreatedOn().replace(".", "/").split("/");
-                        Calendar calendar = Calendar.getInstance();
-                        calendar.set(Calendar.DAY_OF_MONTH, Integer.parseInt(date1[0]));
-                        calendar.set(Calendar.MONTH, (Integer.parseInt(date1[1]) - 1));
-                        calendar.set(Calendar.YEAR, Integer.parseInt(date1[2]));
+                    if(list.get(0).getReqNo()!=null) {
+                        no_record1.setVisibility(View.GONE);
+                        regularzationRequests.addAll(list);
+                        Collections.sort(regularzationRequests, (o1, o2) -> {
+                            String[] date1 = o1.getCreatedOn().replace(".", "/").split("/");
+                            Calendar calendar = Calendar.getInstance();
+                            calendar.set(Calendar.DAY_OF_MONTH, Integer.parseInt(date1[0]));
+                            calendar.set(Calendar.MONTH, (Integer.parseInt(date1[1]) - 1));
+                            calendar.set(Calendar.YEAR, Integer.parseInt(date1[2]));
 
-                        String[] date2 = o1.getCreatedOn().replace(".", "/").split("/");
-                        Calendar calendar1 = Calendar.getInstance();
-                        calendar1.set(Calendar.DAY_OF_MONTH, Integer.parseInt(date2[0]));
-                        calendar1.set(Calendar.MONTH, (Integer.parseInt(date2[1]) - 1));
-                        calendar1.set(Calendar.YEAR, Integer.parseInt(date2[2]));
+                            String[] date2 = o1.getCreatedOn().replace(".", "/").split("/");
+                            Calendar calendar1 = Calendar.getInstance();
+                            calendar1.set(Calendar.DAY_OF_MONTH, Integer.parseInt(date2[0]));
+                            calendar1.set(Calendar.MONTH, (Integer.parseInt(date2[1]) - 1));
+                            calendar1.set(Calendar.YEAR, Integer.parseInt(date2[2]));
 
 
-                        if (calendar1.before(calendar)) {
-                            return 1;
-                        } else if (calendar1.after(calendar)) {
-                            return -1;
-                        } else {
-                            return 0;
-                        }
+                            if (calendar1.before(calendar)) {
+                                return 1;
+                            } else if (calendar1.after(calendar)) {
+                                return -1;
+                            } else {
+                                return 0;
+                            }
 
-                    });
+                        });
+                    }
+                    else {
+                        no_record1.setVisibility(View.VISIBLE);
+                    }
                     myRegularizationAdapter.notifyDataSetChanged();
+
                 }
             }
 

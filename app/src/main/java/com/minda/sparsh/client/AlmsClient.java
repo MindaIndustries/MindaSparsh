@@ -28,7 +28,7 @@ public interface AlmsClient {
 
     @FormUrlEncoded
     @POST("service/GetLeavebalance")
-    Call<List<LeaveBalanceModel>> GetLeavebalance(@Field("EmpCode") String EmpCode, @Field("Year") String Year, @Field("LeaveType") String LeaveType);
+    Call<List<LeaveBalanceModel>> GetLeavebalance(@Field("EmpCode") String EmpCode, @Field("Year") String Year, @Field("LeaveType") String LeaveType, @Field("FromDate") String FromDate, @Field("ToDate") String ToDate);
 
     @POST("service/GetLeaveType")
     Call<List<LeaveTypeModel>> getLeaveTypes(@Query("EmpCode")String EmpCode);

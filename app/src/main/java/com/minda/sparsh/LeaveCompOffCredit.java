@@ -1,11 +1,14 @@
 package com.minda.sparsh;
 
 import android.app.DatePickerDialog;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -23,6 +26,7 @@ import com.minda.sparsh.model.CheckCompOffValidation;
 import com.minda.sparsh.model.LeaveDaysResponse;
 import com.minda.sparsh.model.LeaveValidationResponse;
 import com.minda.sparsh.services.AlmsServices;
+import com.minda.sparsh.util.Utility;
 
 import java.util.Calendar;
 import java.util.List;
@@ -41,6 +45,8 @@ public class LeaveCompOffCredit extends AppCompatActivity {
     String year, year1;
     String empCode;
     String authperson, reportyEmailId, reportyEmpName, EmpName;
+    ProgressDialog progressDialog;
+
 
 
     @Override
@@ -55,6 +61,7 @@ public class LeaveCompOffCredit extends AppCompatActivity {
         days = findViewById(R.id.days);
         submit = findViewById(R.id.submit);
         cancel = findViewById(R.id.cancel);
+        progressDialog = new ProgressDialog(this);
 
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -97,8 +104,21 @@ public class LeaveCompOffCredit extends AppCompatActivity {
                     Toast.makeText(LeaveCompOffCredit.this, "You are not Eligible", Toast.LENGTH_LONG).show();
                     return;
                 }
-                else{
-                    createCompOff(empCode,startDate.getText().toString(),endDate.getText().toString(),year,"CO",days.getText().toString(),"","ES",authperson,comment.getText().toString(),"",reportyEmailId,reportyEmpName, EmpName,"","");
+                else {
+                    if (Utility.isOnline(LeaveCompOffCredit.this)) {
+                        progressDialog = new ProgressDialog(LeaveCompOffCredit.this);
+                        try {
+                            progressDialog.show();
+                        } catch (WindowManager.BadTokenException e) {
+
+                        }
+                        progressDialog.setCancelable(false);
+                        progressDialog.getWindow()
+                                .setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
+                        progressDialog.setContentView(R.layout.progress_bar_layout);
+
+                        createCompOff(empCode, startDate.getText().toString(), endDate.getText().toString(), year, "CO", days.getText().toString(), "", "ES", authperson, comment.getText().toString(), "", reportyEmailId, reportyEmpName, EmpName, "", "");
+                    }
                 }
             }
         });
@@ -277,6 +297,7 @@ public class LeaveCompOffCredit extends AppCompatActivity {
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
         alertDialogBuilder.setMessage(msg);
         alertDialogBuilder.setTitle(title);
+        alertDialogBuilder.setCancelable(false);
 
         alertDialogBuilder.setPositiveButton("Ok", (arg0, arg1) -> {
             arg0.dismiss();

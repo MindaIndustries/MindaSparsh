@@ -551,7 +551,7 @@ public class LeaveRequestActivity extends AppCompatActivity {
                     checkLeaveValidation(empcode, start_date.getText().toString(), end_date.getText().toString());
                 }
             }
-        }, empcode, year, leaveType);
+        }, empcode, year, leaveType, start_date.getText().toString(), end_date.getText().toString());
 
     }
 

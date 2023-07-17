@@ -1,10 +1,13 @@
 package com.minda.sparsh;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -40,6 +43,7 @@ public class LeaveApprovals extends AppCompatActivity implements LeaveApprovalAd
     RecyclerView approval_req;
     LeaveApprovalAdapter leaveApprovalAdapter;
     Button approve, reject;
+    ProgressDialog progressDialog;
 
 
     @Override
@@ -64,7 +68,19 @@ public class LeaveApprovals extends AppCompatActivity implements LeaveApprovalAd
         LinearLayoutManager mLayoutManager = new LinearLayoutManager(LeaveApprovals.this, LinearLayoutManager.VERTICAL, false);
         approval_req.setLayoutManager(mLayoutManager);
         approval_req.setAdapter(leaveApprovalAdapter);
+        progressDialog = new ProgressDialog(this);
+
         if(Utility.isOnline(LeaveApprovals.this)){
+            progressDialog = new ProgressDialog(this);
+            try {
+                progressDialog.show();
+            } catch (WindowManager.BadTokenException e) {
+
+            }
+            progressDialog.setCancelable(false);
+            progressDialog.getWindow()
+                    .setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
+            progressDialog.setContentView(R.layout.progress_bar_layout);
             getApprovalRequests(empCode);
         }
         else{
@@ -105,6 +121,8 @@ public class LeaveApprovals extends AppCompatActivity implements LeaveApprovalAd
                     leaveApprovalAdapter.notifyDataSetChanged();
 
                 }
+                progressDialog.dismiss();
+
             }
         }, empcode);
     }
@@ -122,7 +140,6 @@ public class LeaveApprovals extends AppCompatActivity implements LeaveApprovalAd
                                 showMsg("Leave request " + list.get(0).getLeaveRequestNo() + " has been Approved successfully.", "");
                             } else {
                                 showMsg("Leave request " + list.get(0).getLeaveRequestNo() + " has been Rejected successfully.", "");
-
                             }
                         }
                     }
@@ -161,7 +178,7 @@ public class LeaveApprovals extends AppCompatActivity implements LeaveApprovalAd
             applyRejectLeaves(empCode, approvalList.get(position).getReqno(), action, RetrofitClient2.LOC, approvalList.get(position).getReqType(), String.valueOf(approvalList.get(position).getNoOfDays()), EmpName);
         }
         else{
-            Toast.makeText(LeaveApprovals.this, "Oops! Something went wrong.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(LeaveApprovals.this, "Please Check Your Network Connection", Toast.LENGTH_SHORT).show();
         }
     }
 }

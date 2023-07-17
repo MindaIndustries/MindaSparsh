@@ -54,9 +54,9 @@ public class AlmsServices {
         });
     }
     
-    public void getLeaveBalance(OnTaskComplete onTaskComplete, String empcode, String year, String leaveType){
+    public void getLeaveBalance(OnTaskComplete onTaskComplete, String empcode, String year, String leaveType, String FromDate, String ToDate){
         AlmsClient almsClient = RetrofitClient2.getClientScanQR(AlmsClient.class);
-        Call<List<LeaveBalanceModel>> call = almsClient.GetLeavebalance(empcode,year,leaveType);
+        Call<List<LeaveBalanceModel>> call = almsClient.GetLeavebalance(empcode,year,leaveType, FromDate, ToDate);
         call.enqueue(new Callback<List<LeaveBalanceModel>>() {
             @Override
             public void onResponse(Call<List<LeaveBalanceModel>> call, Response<List<LeaveBalanceModel>> response) {
