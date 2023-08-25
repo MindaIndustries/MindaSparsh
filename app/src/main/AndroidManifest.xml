@@ -57,6 +57,7 @@
             </intent-filter>
         </activity>
 
+
         <activity
             android:name=".ApproveListActivity1"
             android:screenOrientation="portrait"
@@ -102,9 +103,13 @@
         <activity
             android:name=".LoginActivity"
             android:screenOrientation="portrait" />
+        <activity android:name=".DWMActivity"
+            android:screenOrientation="landscape"
+            />
         <activity
-            android:name=".DWMActivity"
-            android:screenOrientation="landscape" />
+            android:name=".DWMPlant"
+            android:screenOrientation="landscape"
+            android:theme="@style/spinnertheme"/>
         <activity
             android:name=".DashBoardActivity"
             android:screenOrientation="portrait"

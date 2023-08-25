@@ -177,6 +177,9 @@ public class LeaveRegularizationActivity extends AppCompatActivity {
 
                     applyLeaveRegular(empCode, start_date.getText().toString(), end_date.getText().toString(), year, "" + leaveType, no_of_days.getText().toString(), "", session, authperson, comment.getText().toString(), "", reportyEmailId, reportyEmpName, EmpName, "", "", start_time.getText().toString(), end_time.getText().toString());
             }
+            else{
+            Toast.makeText(LeaveRegularizationActivity.this, "Please Check Your Network Connection", Toast.LENGTH_LONG).show();
+            }
         });
 
     }
@@ -426,7 +429,13 @@ public class LeaveRegularizationActivity extends AppCompatActivity {
                         showMsg("Your leave request has been created successfully.\n" +
                                 "Request No: " + list.get(0).getLeaveRequestNo(), "");
                     }
+                    else {
+                        showMsg("Oops! something went wrong!!!", "");
+                    }
                 }
+            }
+            else{
+                showMsg("Oops! something went wrong!!!", "");
             }
             progressDialog.dismiss();
 

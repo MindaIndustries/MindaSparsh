@@ -47,6 +47,12 @@ public class ALMSDashboardActivity extends AppCompatActivity {
         img4 = findViewById(R.id.img4);
         myPref = getSharedPreferences("MyPref", Context.MODE_PRIVATE);
         Reporty = myPref.getInt("Reporty", 0);
+        if(Reporty > 0){
+            rl6.setVisibility(View.VISIBLE);
+        }
+        else{
+            rl6.setVisibility(View.GONE);
+        }
 
 
         rl1.setOnClickListener(new View.OnClickListener() {
@@ -88,6 +94,7 @@ public class ALMSDashboardActivity extends AppCompatActivity {
         rl6.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 Intent in = new Intent(ALMSDashboardActivity.this, LeaveApprovals.class);
                 startActivity(in);
             }
@@ -107,6 +114,13 @@ public class ALMSDashboardActivity extends AppCompatActivity {
     public void showPopUpMenu() {
         PopupMenu popup = new PopupMenu(ALMSDashboardActivity.this, img4);
         popup.getMenuInflater().inflate(R.menu.leaves_req_reg, popup.getMenu());
+        MenuItem menuItem = popup.getMenu().findItem(R.id.comp_off_credit);
+        if(myPref.getInt("Level",0)<7){
+            menuItem.setVisible(true);
+        }
+        else{
+            menuItem.setVisible(false);
+        }
 
         popup.setOnMenuItemClickListener(item -> {
 

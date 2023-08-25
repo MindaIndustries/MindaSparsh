@@ -97,7 +97,6 @@ public class MyLeaveRequestAdapter extends RecyclerView.Adapter<MyLeaveRequestAd
 
             }
 
-
         }
 
     }

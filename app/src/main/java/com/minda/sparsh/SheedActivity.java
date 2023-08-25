@@ -47,6 +47,7 @@ public class SheedActivity extends AppCompatActivity {
 
             if (loginAccess.contains("dwm") || loginAccess.contains("DWM")) {
                 Intent intent = new Intent(SheedActivity.this, DWMActivity.class);
+                intent.putExtra("type","PH");
                 startActivity(intent);
             } else {
                 Toast.makeText(SheedActivity.this, "You Are Not Authorized", Toast.LENGTH_LONG).show();
@@ -69,6 +70,7 @@ public class SheedActivity extends AppCompatActivity {
 
             if (loginAccess.contains("odwm") || loginAccess.contains("ODWM")) {
                 Intent intent = new Intent(SheedActivity.this, DWMOperationHeadActivity.class);
+                intent.putExtra("type","OH");
                 startActivity(intent);
             } else {
                 Toast.makeText(SheedActivity.this, "You Are Not Authorized", Toast.LENGTH_LONG).show();
