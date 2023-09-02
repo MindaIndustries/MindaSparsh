@@ -55,17 +55,20 @@ public class ALMSRecyclerViewAdapter extends RecyclerView.Adapter<ALMSRecyclerVi
         if(attendanceList.get(position).getDAY_IN()!=null && attendanceList.get(position).getDAY_IN().trim().length()>0) {
             holder.punch_in_time.setText(attendanceList.get(position).getDAY_IN());
         }
-        else {
+        else if(attendanceList.get(position).getSTAT()!=null && attendanceList.get(position).getSTAT().length()>0){
+            holder.punch_in_time.setText(attendanceList.get(position).getSTAT());
+        }
+        else{
             holder.punch_in_time.setText("-");
-
         }
         if(attendanceList.get(position).getDAY_OUT()!=null && attendanceList.get(position).getDAY_OUT().trim().length()>0) {
-
             holder.punch_out_time.setText(attendanceList.get(position).getDAY_OUT());
+        }
+        else if(attendanceList.get(position).getSTATUS2()!=null && attendanceList.get(position).getSTATUS2().length()>0){
+            holder.punch_out_time.setText(attendanceList.get(position).getSTATUS2());
         }
         else {
             holder.punch_out_time.setText("-");
-
         }
         if(attendanceList.get(position).getEDATE()!=null) {
             holder.date.setText(attendanceList.get(position).getEDATE().replace(".", "/").split("/")[0]);
